@@ -1,0 +1,111 @@
+// auth.js - Simplified authentication for Internal Integration Token
+const API_BASE = window.location.origin;
+
+class AuthManager {
+    constructor() {
+        this.init();
+    }
+
+    async init() {
+        const status = await this.checkStatus();
+
+        if (status.authenticated) {
+            // Check if databases are already selected
+            const hasDatabase = await this.checkDatabases();
+
+            if (hasDatabase) {
+                // Skip setup, go directly to dashboard
+                this.showDashboard();
+            } else {
+                // Show setup wizard to select databases
+                this.showSetup();
+            }
+        } else {
+            this.showAuthScreen();
+        }
+    }
+
+    async checkDatabases() {
+        try {
+            const response = await fetch(`${API_BASE}/api/databases/selected`, {
+                credentials: 'include'
+            });
+            const data = await response.json();
+            return data.success && data.databases && data.databases.length > 0;
+        } catch (error) {
+            console.error('Error checking databases:', error);
+            return false;
+        }
+    }
+
+    async checkStatus() {
+        try {
+            const response = await fetch(`${API_BASE}/auth/status`, {
+                credentials: 'include'
+            });
+            return await response.json();
+        } catch (error) {
+            console.error('Error checking auth status:', error);
+            return { authenticated: false };
+        }
+    }
+
+    showAuthScreen() {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('auth-screen').classList.remove('hidden');
+
+        // Show message about token configuration
+        const authContainer = document.querySelector('.auth-container');
+        if (!authContainer.querySelector('.token-message')) {
+            const message = document.createElement('p');
+            message.className = 'token-message';
+            message.style.cssText = 'color: #f87171; margin-top: 1rem; font-size: 0.9rem;';
+            message.textContent = '⚠️ Notion Integration Token chưa được cấu hình. Vui lòng kiểm tra file .env';
+            authContainer.appendChild(message);
+        }
+    }
+
+    showSetup() {
+        console.log('[Auth] Showing setup screen');
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('auth-screen').classList.add('hidden');
+        document.getElementById('setup').classList.remove('hidden');
+
+        // Initialize setup wizard
+        if (!window.setupWizard) {
+            console.log('[Auth] Creating new SetupWizard instance');
+            window.setupWizard = new SetupWizard();
+        }
+        window.setupWizard.init();
+    }
+
+    showDashboard() {
+        document.getElementById('loading').classList.add('hidden');
+        document.getElementById('auth-screen').classList.add('hidden');
+        document.getElementById('setup').classList.add('hidden');
+        document.getElementById('dashboard').classList.remove('hidden');
+
+        // Initialize dashboard
+        if (window.dashboardApp) {
+            window.dashboardApp.init();
+        } else {
+            window.dashboardApp = new DashboardApp();
+        }
+    }
+
+    async logout() {
+        try {
+            await fetch(`${API_BASE}/auth/logout`, {
+                method: 'POST',
+                credentials: 'include'
+            });
+
+            window.location.href = '/';
+        } catch (error) {
+            console.error('Logout error:', error);
+        }
+    }
+}
+
+// Initialize auth manager
+window.auth = new AuthManager();

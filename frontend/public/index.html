@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Real-time Notion Dashboard for Sprint Reports and Analytics">
+    <title>Notion Dashboard - Real-time Analytics</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="loading-spinner"></div>
+        <p>Loading Notion Dashboard...</p>
+    </div>
+
+    <!-- Auth Screen -->
+    <div id="auth-screen" class="auth-screen hidden">
+        <div class="auth-container">
+            <div class="logo">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <h1>Notion Dashboard</h1>
+            </div>
+            <p class="auth-subtitle">✅ Notion Token đã cấu hình! Click để bắt đầu</p>
+            <button id="connect-notion-btn" class="btn-primary" onclick="window.auth && window.auth.showSetup()">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" fill="currentColor" />
+                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" />
+                </svg>
+                Start Dashboard
+            </button>
+        </div>
+    </div>
+
+    <!-- Setup Screen -->
+    <div id="setup" class="setup-screen hidden">
+        <div class="setup-container">
+            <h2>Select Databases</h2>
+            <p class="setup-subtitle">Choose which databases to track for reports</p>
+
+            <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
+                <button id="select-all-btn" class="btn-secondary" style="flex: 1;">✓ Select All</button>
+                <button id="deselect-all-btn" class="btn-secondary" style="flex: 1;">✗ Deselect All</button>
+            </div>
+
+            <div id="database-list" class="database-list">
+                <!-- Databases will be loaded here -->
+            </div>
+
+            <div class="setup-actions">
+                <button id="save-databases-btn" class="btn-primary">
+                    Save & Continue
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="dashboard hidden">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>Dashboard</h1>
+                <div id="connection-status" class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Connected</span>
+                </div>
+            </div>
+
+            <!-- Tree Structure for Projects and Databases -->
+            <div id="project-tree" class="project-tree">
+                <!-- Will be populated dynamically -->
+            </div>
+
+            <!-- Logout removed -->
+        </aside>
+
+        <!-- Resize Handle -->
+        <div class="sidebar-resize-handle"></div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <h2 id="report-title">Select a Report</h2>
+                <button id="refresh-btn" class="btn-icon" title="Refresh Data">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" />
+                    </svg>
+                </button>
+            </header>
+
+            <div id="report-container" class="report-container">
+                <div class="welcome-message">
+                    <h3>Welcome to Notion Dashboard</h3>
+                    <p>Select a report from the sidebar to get started</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Include Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- App Scripts -->
+    <script type="module" src="js/charts.js"></script>
+    <script type="module" src="js/tables.js"></script>
+    <script type="module" src="js/raw-table.js"></script>
+    <script src="js/sidebar-resize.js"></script>
+    <script type="module" src="js/setup.js"></script>
+    <script type="module" src="js/app.js"></script>
+    <script type="module" src="js/auth.js"></script>
+</body>
+
+</html>

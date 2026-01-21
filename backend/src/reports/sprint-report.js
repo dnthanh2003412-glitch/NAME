@@ -15,25 +15,18 @@ export class SprintReport extends BaseReport {
         const allRecords = Object.values(rawData).flat();
 
         // 1. Build ID -> Name Map to resolve Relations
-        // 1. Build ID -> Name Map to resolve Relations
         const idToNameMap = new Map();
-
-        // Debug counters
         let mappedCount = 0;
-        let sprintCount = 0;
-        let productCount = 0;
 
         for (const record of allRecords) {
             if (!record.properties) continue;
 
             // Smart Title Detection
-            // 1. Try exact matches first
             let name = this.getProperty(record, 'Name') ||
                 this.getProperty(record, 'Title') ||
                 this.getProperty(record, 'Tên') ||
                 this.getProperty(record, 'Tên task');
 
-            // 2. If null, try case-insensitive search for keywords
             if (!name) {
                 const lowerProps = Object.keys(record.properties).reduce((acc, key) => {
                     acc[key.toLowerCase()] = record.properties[key];
@@ -47,63 +40,43 @@ export class SprintReport extends BaseReport {
                     lowerProps['tên'];
             }
 
-            // 3. Fallback: Use the record's ID as name if nothing found? No, better to leave undefined
-            // But we need to distinguish Sprints and Products.
-
-            // If we found a name, store it
             if (name) {
-                // If it's a huge string (rich text), format it? Fetcher already does that.
                 idToNameMap.set(record.id, name);
                 mappedCount++;
-
-                // Heuristic to guess type for debug
-                if (record.database_name?.toLowerCase().includes('sprint')) sprintCount++;
-                if (record.database_name?.toLowerCase().includes('product')) productCount++;
             }
         }
 
-        console.log(`[SprintReport] Mapped ${mappedCount} items (Sprints: ~${sprintCount}, Products: ~${productCount})`);
-
-        // --- DEBUG: Dump data to file to investigate property names ---
-        try {
-            // fs is imported at top level
-            const debugPath = 'C:\\Users\\Datpq\\.gemini\\antigravity\\brain\\112f6963-d7a0-4f46-8b0b-508d637e5ca4\\report_debug.json';
-            const debugData = {
-                mappedCount,
-                sampleMap: Array.from(idToNameMap.entries()).slice(0, 50),
-                sampleRecords: allRecords.slice(0, 10).map(r => ({
-                    id: r.id,
-                    db: r.database_name,
-                    props: Object.keys(r.properties || {})
-                }))
-            };
-            fs.writeFileSync(debugPath, JSON.stringify(debugData, null, 2));
-            console.log('[SprintReport] Wrote debug data to', debugPath);
-        } catch (e) { console.error('[SprintReport] Debug write failed', e); }
-        // -------------------------------------------------------------
+        console.log(`[SprintReport] Mapped ${mappedCount} items for name resolution`);
 
         const grouped = {};
 
         for (const record of allRecords) {
-            // Only process items that look like tasks (have Status or Points)
-            // or we process everything and if it lacks fields it goes to "Others"
-            // But usually we filter for tasks. For now, we process all and see.
-
-            // Extract Project (Dự án) - use project_name which groups databases
+            // Extract Project
             let project = record.project_name || record.database_name || 'Unknown Project';
 
-            // Extract Product from Product column
-            let product = this.resolveValue(record, ['Product', 'Sản phẩm'], idToNameMap) || 'No Product';
+            // Extract Product - support generic and specific names
+            let product = this.resolveValue(record, ['Product', 'Sản phẩm', 'Product Name', 'Tên sản phẩm'], idToNameMap) || 'No Product';
 
             // Extract Sprint
-            let sprint = this.resolveValue(record, ['Sprint', 'Đợt'], idToNameMap) || 'No Sprint';
+            let sprint = this.resolveValue(record, ['Sprint', 'Đợt', 'Sprint Name', 'Tên Sprint'], idToNameMap) || 'No Sprint';
 
-            // Extract Assignee (Người thực hiện)
+            // Extract Assignee
             let assignee = this.extractAssigneeName(record);
 
-            // Extract Task Points
-            const points = parseFloat(this.getProperty(record, 'Task point') ||
+            // Extract Task Points - Priority: Calculated Confired > Request Point > Generic Point
+            // Based on user cache structure: "Task point yêu cầu dự án", "Task point thực tế confirmed"
+
+            // Check for pre-calculated confirmed/unconfirmed points first (from cache analysis)
+            const preCalConf = parseFloat(this.getProperty(record, 'Task point thực tế confirmed') ||
+                this.getProperty(record, 'Năng xuất thực tế - confirmed point')) || 0;
+
+            const preCalUnconf = parseFloat(this.getProperty(record, 'Task point thực tế unconfirmed') ||
+                this.getProperty(record, 'Năng xuất thực tế - unconfirmed point')) || 0;
+
+            // Generic/Request points
+            const requestPoints = parseFloat(this.getProperty(record, 'Task point') ||
                 this.getProperty(record, 'task_point') ||
+                this.getProperty(record, 'Task point yêu cầu dự án') ||
                 this.getProperty(record, 'Point') ||
                 this.getProperty(record, 'Points') ||
                 this.getProperty(record, 'Product point')) || 0;
@@ -113,11 +86,28 @@ export class SprintReport extends BaseReport {
                 this.getProperty(record, 'status') ||
                 this.getProperty(record, 'Trạng thái') || '';
 
-            const isConfirmed = status.toLowerCase().includes('done') ||
+            const isConfirmedStatus = status.toLowerCase().includes('done') ||
                 status.toLowerCase().includes('ok') ||
                 status.toLowerCase().includes('confirmed') ||
-                status.toLowerCase().includes('approved') || // Added Approved
-                status.toLowerCase().includes('hoàn thành'); // Vietnamese support
+                status.toLowerCase().includes('approved') ||
+                status.toLowerCase().includes('hoàn thành') ||
+                status.toLowerCase().includes('đạt');
+
+            // Logic: If pre-calculated points exist, use them. Otherwise calculate based on status and request points.
+            let confirmed = 0;
+            let unconfirmed = 0;
+            let total = 0;
+
+            if (preCalConf > 0 || preCalUnconf > 0) {
+                confirmed = preCalConf;
+                unconfirmed = preCalUnconf;
+                total = confirmed + unconfirmed;
+            } else {
+                // Fallback to manual calculation
+                confirmed = isConfirmedStatus ? requestPoints : 0;
+                unconfirmed = isConfirmedStatus ? 0 : requestPoints;
+                total = requestPoints;
+            }
 
             // Grouping Structure: grouped[project][sprint][assignee]
             if (!grouped[project]) grouped[project] = {};
@@ -137,9 +127,9 @@ export class SprintReport extends BaseReport {
                 grouped[project][sprint][assignee].products.add(product);
             }
 
-            grouped[project][sprint][assignee].confirmed += isConfirmed ? points : 0;
-            grouped[project][sprint][assignee].unconfirmed += isConfirmed ? 0 : points;
-            grouped[project][sprint][assignee].total += points;
+            grouped[project][sprint][assignee].confirmed += confirmed;
+            grouped[project][sprint][assignee].unconfirmed += unconfirmed;
+            grouped[project][sprint][assignee].total += total;
         }
 
         return grouped;

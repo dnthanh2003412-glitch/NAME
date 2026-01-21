@@ -24,18 +24,23 @@ export class ProductivityReport extends BaseReport {
             // Extract actual hours
             const actualHours = parseFloat(this.getProperty(record, 'Số công thực tế') ||
                 this.getProperty(record, 'actual_hours') ||
+                this.getProperty(record, 'Thực tế') ||
                 this.getProperty(record, 'Actual Hours')) || 0;
 
             // Extract expected hours (from requirements or other field)
             const expectedHours = parseFloat(this.getProperty(record, 'Số công yêu cầu') ||
                 this.getProperty(record, 'expected_hours') ||
                 this.getProperty(record, 'Expected Hours') ||
-                this.getProperty(record, 'Task point')) || 0;
+                this.getProperty(record, 'Yêu cầu') ||
+                this.getProperty(record, 'Task point') || // Fallback if no specific hours
+                this.getProperty(record, 'Task point yêu cầu dự án')) || 0;
 
             // Extract task points
             const points = parseFloat(this.getProperty(record, 'Task point') ||
                 this.getProperty(record, 'task_point') ||
-                this.getProperty(record, 'Point')) || 0;
+                this.getProperty(record, 'Point') ||
+                this.getProperty(record, 'Năng xuất thực tế - confirmed point') ||
+                this.getProperty(record, 'Points')) || 0;
 
             // Initialize assignee group
             if (!grouped[assignee]) {

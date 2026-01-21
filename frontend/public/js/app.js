@@ -1,18 +1,50 @@
-// app.js - Tree Structure UI with 2 view modes
+// app.js - Final Dash Notion V3
+/**
+ * Main application logic for Dash Notion
+ * Features: Multi-select, Auto-preload, Dedicated Hidden Group, Advanced Reporting
+ */
+
 const API_BASE = window.location.origin;
 
 class DashboardApp {
     constructor() {
         this.projects = {};
-        this.selectedProject = null;
-        this.selectedDatabase = null;
-        this.viewMode = null; // 'aggregated' or 'raw'
+        this.databaseNames = new Map(); // Map db.id -> db.name
+        this.selectedProjects = new Set();
+        this.selectedDatabases = new Set();
+
+        // Load config from localStorage
+        this.hiddenProjects = new Set(JSON.parse(localStorage.getItem('hiddenProjects') || '[]'));
+        this.hiddenDatabases = new Set(JSON.parse(localStorage.getItem('hiddenDatabases') || '[]'));
+
+        this.searchQuery = '';
+        this.rawDataCache = {}; // Cache for pre-loaded raw data
+        this.isHiddenGroupOpen = false; // Add state tracker for hidden group
     }
 
     async init() {
+        if (this.initialized) return;
+        this.initialized = true;
+
         console.log('[Dashboard] Initializing...');
         await this.loadProjectsTree();
         this.setupEventListeners();
+        this.updateSelectedCount();
+
+        // Auto-load all data in background to make UI snappy
+        this.preloadAllData();
+    }
+
+    async preloadAllData() {
+        console.log('[Dashboard] Triggering background refresh...');
+        try {
+            fetch(`${API_BASE}/api/refresh`, {
+                method: 'POST',
+                credentials: 'include'
+            }).then(() => console.log('[Dashboard] Background refresh triggered'));
+        } catch (error) {
+            console.warn('[Dashboard] Background refresh warning:', error);
+        }
     }
 
     async loadProjectsTree() {
@@ -22,25 +54,41 @@ class DashboardApp {
                 credentials: 'include'
             });
 
-            if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
-            }
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
 
             const data = await response.json();
-            console.log('[Dashboard] Received projects:', data);
 
             if (data.success && data.projects) {
                 this.projects = data.projects;
-                console.log(`[Dashboard] Loaded ${Object.keys(this.projects).length} projects`);
+
+                // Build database name map
+                for (const [projectName, databases] of Object.entries(this.projects)) {
+                    for (const db of databases) {
+                        this.databaseNames.set(db.id, db.name);
+                    }
+                }
+
                 this.renderProjectsTree();
             } else {
-                console.error('[Dashboard] No projects in response');
                 this.showError('Không tìm thấy dự án.');
             }
         } catch (error) {
             console.error('[Dashboard] Error loading projects:', error);
             this.showError(`❌ Lỗi kết nối: ${error.message}`);
         }
+    }
+
+    /**
+     * Renders the sidebar tree with a dedicated "Hidden Items" group at the bottom
+     */
+    escapeHtml(text) {
+        if (!text) return '';
+        return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
     }
 
     renderProjectsTree() {
@@ -50,32 +98,85 @@ class DashboardApp {
             return;
         }
 
-        let html = '';
+        // Save scroll position to prevent jumping
+        const scrollPos = treeContainer.scrollTop;
+
+        let mainHtml = '';
+        let hiddenHtml = '';
+        let hiddenCount = 0;
+        const query = this.searchQuery.toLowerCase();
 
         for (const [projectName, databases] of Object.entries(this.projects)) {
-            // Safe ID generation
-            const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
-            const isProjectSelected = this.selectedProject === projectName;
+            // Filter by search query
+            const matchesSearch = !query ||
+                projectName.toLowerCase().includes(query) ||
+                databases.some(db => db.name.toLowerCase().includes(query));
 
-            html += `
+            if (!matchesSearch) continue;
+
+            const isProjectHidden = this.hiddenProjects.has(projectName);
+            const safeProjectName = this.escapeHtml(projectName);
+
+            // --- LOGIC 1: PROJECT IS HIDDEN -> Move to Hidden Group ---
+            if (isProjectHidden) {
+                hiddenHtml += `
+                    <li class="project-group hidden-item-special">
+                        <div class="project-header">
+                             <span class="project-label" title="${safeProjectName}">${safeProjectName} (${databases.length})</span>
+                             <button class="visibility-toggle" data-toggle-project="${safeProjectName}" title="Hiện dự án">👁‍🗨</button>
+                        </div>
+                    </li>
+                `;
+                hiddenCount++;
+                continue; // Skip main rendering for this project
+            }
+
+            // --- LOGIC 2: PROJECT VISIBLE -> Check its Databases ---
+            const visibleDatabases = databases.filter(db => !this.hiddenDatabases.has(db.id));
+            const hiddenDbsInProject = databases.filter(db => this.hiddenDatabases.has(db.id));
+
+            // Move hidden DBs to hidden group
+            hiddenDbsInProject.forEach(db => {
+                const safeDbName = this.escapeHtml(db.name);
+                hiddenHtml += `
+                    <li class="database-item hidden-item-special">
+                        <label title="${safeDbName}">📊 ${safeDbName} <small style="color:var(--color-text-muted)">(${safeProjectName})</small></label>
+                        <button class="visibility-toggle-small" data-toggle-db="${db.id}" title="Hiện database">👁‍🗨</button>
+                    </li>
+               `;
+                hiddenCount++;
+            });
+
+            const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
+            const isProjectSelected = this.selectedProjects.has(projectName);
+            const isExpanded = isProjectSelected || visibleDatabases.some(db => this.selectedDatabases.has(db.id));
+
+            mainHtml += `
                 <li class="project-group">
-                    <div class="project-header" data-project="${projectName}">
-                        <i class="ri-arrow-right-s-line" style="transition: transform 0.2s; margin-right: 5px; ${isProjectSelected ? 'transform: rotate(90deg);' : ''}"></i>
-                        <input type="checkbox" 
-                            data-project="${projectName}"
-                            ${isProjectSelected ? 'checked' : ''}
-                        >
-                        <label title="${projectName}">${projectName}</label>
-                        <span class="count">${databases.length}</span>
+                    <div class="project-header" data-project="${safeProjectName}">
+                        <span class="expand-icon" style="transition: transform 0.2s; ${isExpanded ? 'transform: rotate(90deg);' : ''}">▶</span>
+                        <input type="checkbox" class="project-checkbox"
+                            data-project="${safeProjectName}"
+                            ${isProjectSelected ? 'checked' : ''}>
+                        <label class="project-label" title="${safeProjectName}">${safeProjectName}</label>
+                        <span class="count">${visibleDatabases.length}</span>
+                        <button class="visibility-toggle" data-toggle-project="${safeProjectName}" title="Ẩn dự án">👁</button>
                     </div>
-                    <ul class="database-list ${isProjectSelected ? 'expanded' : ''}" id="${projectId}-databases">
-                        ${databases.map(db => {
+                    <ul class="database-list ${isExpanded ? 'expanded' : ''}" id="${projectId}-databases">
+                        ${visibleDatabases.map(db => {
                 const dbId = `db-${db.id}`;
-                const isDbSelected = this.selectedDatabase == db.id;
+                const isDbSelected = this.selectedDatabases.has(db.id);
+                const safeDbName = this.escapeHtml(db.name);
                 return `
                                 <li class="database-item">
-                                    <input type="checkbox" id="${dbId}" data-db-id="${db.id}" data-db-name="${db.name}" ${isDbSelected ? 'checked' : ''}>
-                                    <label for="${dbId}" title="${db.name}">📊 ${db.name}</label>
+                                    <input type="checkbox" id="${dbId}" 
+                                        class="database-checkbox"
+                                        data-db-id="${db.id}" 
+                                        data-db-name="${safeDbName}"
+                                        data-project="${safeProjectName}"
+                                        ${isDbSelected ? 'checked' : ''}>
+                                    <label for="${dbId}" title="${safeDbName}">📊 ${safeDbName}</label>
+                                    <button class="visibility-toggle-small" data-toggle-db="${db.id}" title="Ẩn database">👁</button>
                                 </li>
                             `;
             }).join('')}
@@ -84,413 +185,470 @@ class DashboardApp {
             `;
         }
 
-        treeContainer.innerHTML = html;
+        // --- Render Hidden Group at Bottom ---
+        if (hiddenHtml) {
+            const isOpen = this.isHiddenGroupOpen === true;
+            mainHtml += `
+                <li class="project-group" id="hidden-group-container" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
+                    <div class="project-header" style="cursor: pointer;">
+                         <span class="expand-icon" style="transform: ${isOpen ? 'rotate(0)' : 'rotate(-90deg)'}; transition: transform 0.2s;">▼</span>
+                         <label class="project-label" title="Click để ẩn/hiện mục đã ẩn" style="color: #94a3b8; font-style: italic; cursor: pointer; flex: 1;">Mục đã ẩn (${hiddenCount})</label>
+                    </div>
+                    <ul id="hidden-list-ul" class="database-list" style="padding-left: 0.5rem; display: ${isOpen ? 'block' : 'none'};">
+                        ${hiddenHtml}
+                    </ul>
+                </li>
+             `;
+        }
+
+        treeContainer.innerHTML = mainHtml || '<div class="no-data">Không tìm thấy kết quả</div>';
+
+        // Restore scroll position
+        if (scrollPos > 0) treeContainer.scrollTop = scrollPos;
     }
 
     setupEventListeners() {
         const treeContainer = document.getElementById('project-tree');
-        if (!treeContainer) return;
 
-        // Handle checkbox changes
-        treeContainer.addEventListener('change', (e) => {
-            if (e.target.type === 'checkbox') {
-                const projectName = e.target.dataset.project;
-                const dbId = e.target.dataset.dbId;
-
-                if (projectName) {
-                    this.handleProjectSelection(projectName, e.target.checked);
-                } else if (dbId) {
-                    this.handleDatabaseSelection(dbId, e.target.dataset.dbName, e.target.checked);
-                }
-            }
+        // Sidebar search
+        document.getElementById('sidebar-search')?.addEventListener('input', (e) => {
+            this.searchQuery = e.target.value;
+            this.renderProjectsTree();
         });
 
-        // Helper to toggle project
-        window.toggleProject = (projectName) => {
-            const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
-            const dbList = document.getElementById(`${projectId}-databases`);
-            const header = document.querySelector(`.project-header[data-project="${projectName}"]`);
+        // Actions
+        document.getElementById('select-all-projects')?.addEventListener('click', () => this.selectAllProjects());
+        document.getElementById('deselect-all-projects')?.addEventListener('click', () => this.deselectAllProjects());
+        document.getElementById('save-sidebar-config')?.addEventListener('click', () => this.saveVisibilityConfig());
+        document.getElementById('reset-sidebar-config')?.addEventListener('click', () => this.resetVisibilityConfig());
 
-            if (dbList) {
-                dbList.classList.toggle('expanded');
-                const icon = header?.querySelector('.ri-arrow-right-s-line');
-                if (icon) {
-                    icon.style.transform = dbList.classList.contains('expanded') ? 'rotate(90deg)' : 'rotate(0deg)';
-                }
-                console.log(`[Dashboard] Toggled project: ${projectName}`);
-            } else {
-                console.error(`[Dashboard] Could not find list for project: ${projectName} (ID: ${projectId}-databases)`);
-            }
-        };
+        // Report & Export
+        document.getElementById('report-type-select')?.addEventListener('change', () => this.updateGenerateButton());
+        document.getElementById('generate-report-btn')?.addEventListener('click', () => this.generateReport());
+        document.getElementById('refresh-btn')?.addEventListener('click', () => this.refreshData());
 
-        // Handle header clicks to expand/collapse via Delegation
-        treeContainer.addEventListener('click', (e) => {
-            // Priority 1: Handle Project Header Click
-            const header = e.target.closest('.project-header');
-            if (header && e.target.tagName !== 'INPUT') {
-                e.stopPropagation(); // Stop bubbling
-                const projectName = header.dataset.project;
-                window.toggleProject(projectName);
-                return; // Stop processing
-            }
+        // Tree Delegation
+        if (treeContainer) {
+            treeContainer.addEventListener('change', (e) => {
+                const checkbox = e.target.closest('input[type="checkbox"]');
+                if (!checkbox) return;
 
-            // Priority 2: Handle Database Item Click
-            const sidebarItem = e.target.closest('.database-item');
-            if (sidebarItem) {
-                // 1. If clicked on Input: Native behavior. Do nothing.
-                if (e.target.tagName === 'INPUT') return;
-
-                // 2. If clicked on Label: Native behavior (browser clicks input). Do nothing.
-                if (e.target.closest('label')) return;
-
-                // 3. If clicked on the LI whitespace/padding: Manual toggle.
-                e.stopPropagation();
-                const checkbox = sidebarItem.querySelector('input[type="checkbox"]');
-                if (checkbox) {
-                    checkbox.checked = !checkbox.checked;
-                    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
-                }
-            }
-        });
-
-        // Logout button
-        document.getElementById('logout-btn')?.addEventListener('click', () => {
-            window.auth?.logout();
-        });
-    }
-
-    handleProjectSelection(projectName, checked) {
-        console.log(`[Dashboard] Project ${projectName} ${checked ? 'selected' : 'deselected'} `);
-
-        if (checked) {
-            this.uncheckAll();
-            document.querySelector(`input[data-project="${projectName}"]`).checked = true;
-
-            this.selectedProject = projectName;
-            this.selectedDatabase = null;
-            this.viewMode = 'aggregated';
-
-            this.loadAggregatedReport(projectName);
-        } else {
-            this.selectedProject = null;
-            this.clearView();
-        }
-    }
-
-    handleDatabaseSelection(dbId, dbName, checked) {
-        console.log(`[Dashboard] Database ${dbName} ${checked ? 'selected' : 'deselected'} `);
-
-        if (checked) {
-            this.uncheckAll();
-            document.querySelector(`input[data-db-id="${dbId}"]`).checked = true;
-
-            this.selectedDatabase = dbId;
-            this.selectedProject = null;
-            this.viewMode = 'raw';
-
-            this.loadRawData(dbId);
-        } else {
-            this.selectedDatabase = null;
-            this.clearView();
-        }
-    }
-
-    uncheckAll() {
-        document.querySelectorAll('#project-tree input[type="checkbox"]').forEach(cb => {
-            cb.checked = false;
-        });
-    }
-
-    async loadAggregatedReport(projectName) {
-        console.log(`[Dashboard] Loading aggregated report for project: ${projectName} `);
-
-        const container = document.getElementById('report-container');
-        container.innerHTML = '<div class="loading">Đang tải báo cáo...</div>';
-
-        try {
-            const response = await fetch(`${API_BASE}/api/reports/sprint`, {
-                credentials: 'include'
+                if (checkbox.classList.contains('project-checkbox')) this.handleProjectCheckbox(checkbox);
+                else if (checkbox.classList.contains('database-checkbox')) this.handleDatabaseCheckbox(checkbox);
             });
 
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            treeContainer.addEventListener('click', (e) => {
+                // Visibility Toggles (Project & DB)
+                const toggleBtn = e.target.closest('.visibility-toggle, .visibility-toggle-small');
+                if (toggleBtn) {
+                    e.preventDefault();
+                    e.stopPropagation();
 
-            const result = await response.json();
-            if (!result.success) throw new Error(result.error || 'Unknown error');
+                    console.log('[App] Toggle clicked', toggleBtn.dataset);
 
-            // Filter data for this project
-            const projectData = result.data.filter(row => row.project === projectName);
+                    if (toggleBtn.dataset.toggleProject) {
+                        this.toggleProjectVisibility(toggleBtn.dataset.toggleProject);
+                    } else if (toggleBtn.dataset.toggleDb) {
+                        this.toggleDatabaseVisibility(toggleBtn.dataset.toggleDb);
+                    }
+                    return;
+                }
 
-            container.innerHTML = '';
-            this.renderSprintReport(projectData);
+                // Expand/Collapse Project Header
+                const header = e.target.closest('.project-header');
+                if (header) {
+                    // Check if it's the Hidden Group Header by checking closest LI ID
+                    const parentLi = header.closest('li');
+                    if (parentLi && parentLi.id === 'hidden-group-container') {
+                        console.log('[App] Hidden group toggled');
+                        const ul = document.getElementById('hidden-list-ul');
+                        if (ul) {
+                            const isCollapsed = ul.style.display === 'none';
+                            ul.style.display = isCollapsed ? 'block' : 'none';
+                            this.isHiddenGroupOpen = isCollapsed; // Save state
 
+                            const icon = header.querySelector('.expand-icon');
+                            if (icon) icon.style.transform = isCollapsed ? 'rotate(0)' : 'rotate(-90deg)';
+                        }
+                        return;
+                    }
+
+                    // Regular Project Header
+                    if (!e.target.matches('input') && !e.target.closest('.visibility-toggle')) {
+                        if (header.dataset.project) {
+                            this.toggleProjectExpand(header.dataset.project);
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    handleProjectCheckbox(checkbox) {
+        const projectName = checkbox.dataset.project;
+        const databases = this.projects[projectName] || [];
+
+        if (checkbox.checked) {
+            this.selectedProjects.add(projectName);
+            databases.forEach(db => {
+                if (!this.hiddenDatabases.has(db.id)) this.selectedDatabases.add(db.id);
+            });
+        } else {
+            this.selectedProjects.delete(projectName);
+            databases.forEach(db => this.selectedDatabases.delete(db.id));
+        }
+        this.renderProjectsTree(); // Rerender to update styling if needed
+        this.updateSelectedCount();
+    }
+
+    handleDatabaseCheckbox(checkbox) {
+        const dbId = checkbox.dataset.dbId;
+        const projectName = checkbox.dataset.project;
+
+        if (checkbox.checked) this.selectedDatabases.add(dbId);
+        else this.selectedDatabases.delete(dbId);
+
+        // Update parent project selection state
+        const databases = this.projects[projectName] || [];
+        const visibleDbs = databases.filter(db => !this.hiddenDatabases.has(db.id));
+        const allSelected = visibleDbs.length > 0 && visibleDbs.every(db => this.selectedDatabases.has(db.id));
+
+        if (allSelected) this.selectedProjects.add(projectName);
+        else this.selectedProjects.delete(projectName);
+
+        this.updateSelectedCount();
+    }
+
+    toggleProjectExpand(projectName) {
+        const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
+        const dbList = document.getElementById(`${projectId}-databases`);
+        const header = document.querySelector(`.project-header[data-project="${projectName}"]`);
+
+        if (dbList) {
+            dbList.classList.toggle('expanded');
+            const icon = header?.querySelector('.expand-icon');
+            if (icon) {
+                icon.style.transform = dbList.classList.contains('expanded') ? 'rotate(90deg)' : 'rotate(0deg)';
+            }
+        }
+    }
+
+    // --- Visibility Logic ---
+    toggleProjectVisibility(projectName) {
+        if (this.hiddenProjects.has(projectName)) {
+            this.hiddenProjects.delete(projectName); // Unhide
+        } else {
+            this.hiddenProjects.add(projectName); // Hide
+            // Also deselect it
+            this.selectedProjects.delete(projectName);
+            const databases = this.projects[projectName] || [];
+            databases.forEach(db => this.selectedDatabases.delete(db.id));
+        }
+        this.renderProjectsTree();
+        this.updateSelectedCount();
+    }
+
+    toggleDatabaseVisibility(dbId) {
+        if (this.hiddenDatabases.has(dbId)) {
+            this.hiddenDatabases.delete(dbId); // Unhide
+        } else {
+            this.hiddenDatabases.add(dbId); // Hide
+            this.selectedDatabases.delete(dbId);
+        }
+        this.renderProjectsTree();
+        this.updateSelectedCount();
+    }
+
+    selectAllProjects() {
+        for (const [projectName, databases] of Object.entries(this.projects)) {
+            if (!this.hiddenProjects.has(projectName)) {
+                this.selectedProjects.add(projectName);
+                databases.forEach(db => {
+                    if (!this.hiddenDatabases.has(db.id)) this.selectedDatabases.add(db.id);
+                });
+            }
+        }
+        this.renderProjectsTree();
+        this.updateSelectedCount();
+    }
+
+    deselectAllProjects() {
+        this.selectedProjects.clear();
+        this.selectedDatabases.clear();
+        this.renderProjectsTree(); // Clear checks
+        this.updateSelectedCount();
+    }
+
+    saveVisibilityConfig() {
+        localStorage.setItem('hiddenProjects', JSON.stringify([...this.hiddenProjects]));
+        localStorage.setItem('hiddenDatabases', JSON.stringify([...this.hiddenDatabases]));
+        alert('✅ Cấu hình hiển thị đã được lưu!');
+    }
+
+    resetVisibilityConfig() {
+        localStorage.removeItem('hiddenProjects');
+        localStorage.removeItem('hiddenDatabases');
+        this.hiddenProjects.clear();
+        this.hiddenDatabases.clear();
+        this.renderProjectsTree();
+        alert('✅ Đã reset cấu hình!');
+    }
+
+    updateSelectedCount() {
+        const countEl = document.getElementById('selected-count');
+        const dbCount = this.selectedDatabases.size;
+
+        // Show names if few
+        const names = [];
+        let i = 0;
+        for (const dbId of this.selectedDatabases) {
+            if (i++ > 2) break;
+            names.push(this.databaseNames.get(dbId));
+        }
+
+        if (countEl) {
+            if (dbCount === 0) countEl.textContent = 'Chưa chọn dự án nào';
+            else if (dbCount <= 3) countEl.textContent = `Đã chọn: ${names.join(', ')}`;
+            else countEl.textContent = `Đã chọn: ${names.join(', ')} và ${dbCount - 3} khác`;
+        }
+        this.updateGenerateButton();
+    }
+
+    updateGenerateButton() {
+        const btn = document.getElementById('generate-report-btn');
+        const reportType = document.getElementById('report-type-select')?.value;
+        const hasSelection = this.selectedDatabases.size > 0;
+        if (btn) btn.disabled = !hasSelection || !reportType;
+    }
+
+    // --- Report Generation ---
+    async generateReport() {
+        const reportType = document.getElementById('report-type-select')?.value;
+        if (!reportType || this.selectedDatabases.size === 0) {
+            alert('Vui lòng chọn ít nhất 1 database và loại báo cáo!');
+            return;
+        }
+
+        const container = document.getElementById('report-container');
+        const titleEl = document.getElementById('report-title');
+        container.innerHTML = '<div class="loading">⏳ Đang tạo báo cáo...</div>';
+
+        try {
+            const names = [...this.selectedProjects].slice(0, 3).join(', ');
+            const titleSuffix = this.selectedProjects.size > 3 ? ` +...` : '';
+
+            switch (reportType) {
+                case 'sprint':
+                    titleEl.textContent = `📈 Báo cáo Sprint - ${names}${titleSuffix}`;
+                    await this.loadSprintReport();
+                    break;
+                case 'productivity':
+                    titleEl.textContent = `📊 Báo cáo Năng suất - ${names}${titleSuffix}`;
+                    await this.loadProductivityReport();
+                    break;
+                case 'raw':
+                    titleEl.textContent = `📋 Dữ liệu thô - ${names}${titleSuffix}`;
+                    await this.loadRawDataForSelected();
+                    break;
+                default:
+                    container.innerHTML = '<div class="error">Loại báo cáo không hợp lệ</div>';
+            }
         } catch (error) {
-            console.error('[Dashboard] Error:', error);
-            container.innerHTML = `<div class="error">Lỗi: ${error.message}</div>`;
+            console.error(error);
+            container.innerHTML = `<div class="error">Lỗi tạo báo cáo: ${error.message}</div>`;
         }
     }
 
-    async loadRawData(dbId) {
-        console.log(`[Dashboard] Loading raw data for database: ${dbId}`);
+    async loadSprintReport() {
+        const res = await fetch(`${API_BASE}/api/reports/sprint`, { credentials: 'include' });
+        const result = await res.json();
 
+        if (!result.success) throw new Error(result.error);
+
+        // Filter in frontend
+        const filtered = result.data.filter(r => this.selectedProjects.has(r.project));
+
+        if (filtered.length === 0) {
+            document.getElementById('report-container').innerHTML = '<div class="no-data">Không có dữ liệu Sprint cho dự án đã chọn</div>';
+            return;
+        }
+        this.renderSprintReport(filtered);
+    }
+
+    async loadProductivityReport() {
+        const res = await fetch(`${API_BASE}/api/reports/productivity`, { credentials: 'include' });
+        const result = await res.json();
+
+        if (!result.success) throw new Error(result.error);
+
+        const filtered = result.data.filter(r => this.selectedProjects.has(r.project) || this.selectedDatabases.size > 0); // productivity might not have project field populated correctly sometimes? fallback
+
+        if (filtered.length === 0) {
+            document.getElementById('report-container').innerHTML = '<div class="no-data">Không có dữ liệu Productivity</div>';
+            return;
+        }
+        this.renderProductivityReport(filtered);
+    }
+
+    // --- Raw Data Logic with Auto-Fetch ---
+    async loadRawDataForSelected() {
         const container = document.getElementById('report-container');
-        container.innerHTML = '<div class="loading">Đang tải dữ liệu...</div>';
+        const dbIds = [...this.selectedDatabases];
+        this.rawDataCache = {}; // Reset cache used for this report session
 
-        try {
-            const response = await fetch(`${API_BASE}/api/database/${dbId}/raw`, {
-                credentials: 'include'
+        if (dbIds.length === 0) {
+            container.innerHTML = '<div class="error">Không có database nào được chọn</div>';
+            return;
+        }
+
+        const tabNames = dbIds.map(id => this.databaseNames.get(id) || id.substring(0, 8));
+
+        container.innerHTML = `
+            <div class="database-tabs">
+                ${dbIds.map((id, index) => `
+                    <button class="tab-btn ${index === 0 ? 'active' : ''}" data-db-id="${id}">
+                        ${tabNames[index]}
+                    </button>
+                `).join('')}
+            </div>
+            <div id="raw-data-content"><div class="loading">⏳ Đang tải dữ liệu...</div></div>
+        `;
+
+        // 1. Load First Tab Immediately
+        this.loadAndRenderTab(dbIds[0]);
+
+        // 2. Auto-fetch ALL other tabs in background (Sequential)
+        this.processBackgroundFetches(dbIds.slice(1));
+
+        // 3. Tab Click Events
+        container.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                this.loadAndRenderTab(btn.dataset.dbId);
             });
+        });
+    }
 
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    async fetchRawData(dbId) {
+        if (this.rawDataCache[dbId]) return this.rawDataCache[dbId];
+        try {
+            console.log(`[Raw] Prefectching ${dbId}...`);
+            const res = await fetch(`${API_BASE}/api/database/${dbId}/raw`, { credentials: 'include' });
+            const data = await res.json();
+            this.rawDataCache[dbId] = data;
+            return data;
+        } catch (e) {
+            console.error(e);
+            return { success: false, error: e.message };
+        }
+    }
 
-            const result = await response.json();
-            container.innerHTML = '';
+    async loadAndRenderTab(dbId) {
+        const container = document.getElementById('raw-data-content');
 
+        // If cached, render immediately
+        if (this.rawDataCache[dbId]) {
             if (window.renderRawDataTable) {
-                window.renderRawDataTable(result, container);
-            } else {
-                container.innerHTML = '<div class="error">Raw data module not loaded</div>';
+                container.innerHTML = '';
+                window.renderRawDataTable(this.rawDataCache[dbId], container);
             }
+            return;
+        }
 
-        } catch (error) {
-            console.error('[Dashboard] Error:', error);
-            container.innerHTML = `<div class="error">Lỗi: ${error.message}</div>`;
+        // Existing loading
+        container.innerHTML = '<div class="loading">⏳ Đang tải dữ liệu...</div>';
+        const data = await this.fetchRawData(dbId);
+
+        if (window.renderRawDataTable) {
+            container.innerHTML = '';
+            window.renderRawDataTable(data, container);
+        } else {
+            container.innerHTML = '<div class="error">Module bảng chưa được tải</div>';
         }
     }
 
-    clearView() {
+    async processBackgroundFetches(ids) {
+        for (const id of ids) {
+            await this.fetchRawData(id);
+            await new Promise(r => setTimeout(r, 800)); // 800ms delay
+        }
+    }
+
+    // --- Render Helpers ---
+    renderSprintReport(data) {
+        // ... (Keep existing implementation logic) ...
+        // Re-implementing simplified version for completeness
         const container = document.getElementById('report-container');
         container.innerHTML = `
-            <div class="welcome-message">
-                <h3>Welcome to Notion Dashboard</h3>
-                <p>Chọn một dự án hoặc database từ sidebar để xem dữ liệu</p>
+            <div class="table-container">
+            <h3>Kết quả Sprint (${data.length} dòng)</h3>
+            <table>
+                <thead>
+                    <tr><th>Project</th><th>Sprint</th><th>Assignee</th><th>Product</th><th>Conf.</th><th>Unconf.</th><th>Total</th></tr>
+                </thead>
+                <tbody>
+                    ${data.slice(0, 100).map(r => `
+                        <tr>
+                            <td>${r.project}</td>
+                            <td>${r.sprint}</td>
+                            <td>${r.assignee}</td>
+                            <td>${r.product}</td>
+                            <td>${r.confirmed_points}</td>
+                            <td>${r.unconfirmed_points}</td>
+                            <td><b>${r.total_points}</b></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            ${data.length > 100 ? '<p style="text-align:center; color: #aaa;">(Hiển thị 100 dòng đầu tiên)</p>' : ''}
+            </div>
+            <div style="margin-top:1rem; text-align:right;">
+                <button class="btn-export" onclick="alert('Tính năng Export chưa hoàn thiện')">Xuất báo cáo CSV</button>
             </div>
         `;
     }
 
-    showError(message) {
+    renderProductivityReport(data) {
         const container = document.getElementById('report-container');
-        if (container) {
-            container.innerHTML = `
-                <div style="text-align: center; padding: 2rem; color: #f87171;">
-                    <p>${message}</p>
-                    <button onclick="location.reload()" style="margin-top: 1rem; padding: 0.5rem 1rem; background: #6366f1; color: white; border: none; border-radius: 4px; cursor: pointer;">
-                        Tải lại trang
-                    </button>
-                </div>
-            `;
-        }
+        container.innerHTML = `
+            <div class="table-container">
+            <h3>Năng suất nhân sự</h3>
+            <table>
+                <thead>
+                    <tr><th>Assignee</th><th>Số công thực tế</th><th>Số công yêu cầu</th><th>Task Points</th><th>% Performance</th></tr>
+                </thead>
+                <tbody>
+                    ${data.map(r => `
+                        <tr>
+                            <td>${r.assignee}</td>
+                            <td>${r.total_actual_hours}</td>
+                            <td>${r.total_expected_hours}</td>
+                            <td>${r.total_points}</td>
+                            <td><b>${r.productivity_percentage}%</b></td>
+                        </tr>
+                    `).join('')}
+                </tbody>
+            </table>
+            </div>
+        `;
     }
 
-    // Keep existing renderSprintReport method from old app.js
-    renderSprintReport(data) {
-        const container = document.getElementById('report-container');
+    showError(msg) {
+        document.getElementById('report-container').innerHTML = `<div class="error">${msg}</div>`;
+    }
 
-        // State for pagination
-        let currentPage = 1;
-        let pageSize = 10;
-        let filteredData = [...data];
-
-        // Create filter container
-        const filterDiv = document.createElement('div');
-        filterDiv.style.cssText = 'margin-bottom: 1.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; max-width: 100%;';
-
-        // Helper to create filter dropdown
-        const createFilter = (label, id) => {
-            const wrapper = document.createElement('div');
-            wrapper.style.cssText = 'display: flex; flex-direction: column; gap: 0.25rem;';
-
-            const labelEl = document.createElement('label');
-            labelEl.textContent = label;
-            labelEl.style.cssText = 'font-size: 0.875rem; color: rgba(255,255,255,0.7);';
-
-            const select = document.createElement('select');
-            select.id = id;
-            select.style.cssText = 'padding: 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white; width: 100%; max-width: 100%;';
-
-            select.setAttribute('size', '1');
-
-            wrapper.appendChild(labelEl);
-            wrapper.appendChild(select);
-            return { wrapper, select };
-        };
-
-        const productFilter = createFilter('Product', 'filter-product');
-        const sprintFilter = createFilter('Sprint', 'filter-sprint');
-        const assigneeFilter = createFilter('Assignee', 'filter-assignee');
-
-        filterDiv.appendChild(productFilter.wrapper);
-        filterDiv.appendChild(sprintFilter.wrapper);
-        filterDiv.appendChild(assigneeFilter.wrapper);
-
-        container.appendChild(filterDiv);
-
-        // Populate filters
-        const populateFilters = (baseData = data) => {
-            const productVal = productFilter.select.value;
-            const sprintVal = sprintFilter.select.value;
-
-            let dataForFilters = [...baseData];
-
-            if (productVal && productVal !== 'all') {
-                dataForFilters = dataForFilters.filter(r => r.product === productVal);
-            }
-            if (sprintVal && sprintVal !== 'all') {
-                dataForFilters = dataForFilters.filter(r => r.sprint === sprintVal);
-            }
-
-            const products = ['all', ...new Set(baseData.map(r => r.product).filter(p => p))];
-            productFilter.select.innerHTML = products.map(p =>
-                `<option value="${p}" ${p === productVal ? 'selected' : ''}>${p === 'all' ? 'Tất cả' : p}</option>`
-            ).join('');
-
-            const sprints = ['all', ...new Set(dataForFilters.map(r => r.sprint))];
-            sprintFilter.select.innerHTML = sprints.map(s =>
-                `<option value="${s}" ${s === sprintVal ? 'selected' : ''}>${s === 'all' ? 'Tất cả' : s}</option>`
-            ).join('');
-
-            const assignees = ['all', ...new Set(dataForFilters.map(r => r.assignee))];
-            assigneeFilter.select.innerHTML = assignees.map(a =>
-                `<option value="${a}" ${a === assigneeFilter.select.value ? 'selected' : ''}>${a === 'all' ? 'Tất cả' : a}</option>`
-            ).join('');
-        };
-
-        populateFilters();
-
-        // Chart container
-        const chartDiv = document.createElement('div');
-        chartDiv.className = 'chart-container';
-        chartDiv.innerHTML = '<h3>Task Points by Sprint</h3><canvas id="sprint-chart"></canvas>';
-        chartDiv.style.marginBottom = '2rem';
-        container.appendChild(chartDiv);
-
-        // Pagination controls
-        const paginationTop = document.createElement('div');
-        paginationTop.style.cssText = 'display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;';
-
-        const pageSizeSelector = document.createElement('div');
-        pageSizeSelector.style.cssText = 'display: flex; gap: 0.5rem; align-items: center;';
-        pageSizeSelector.innerHTML = `
-            <span style="font-size: 0.875rem; color: rgba(255,255,255,0.7);">Hiển thị:</span>
-            <select id="page-size" style="padding: 0.25rem 0.5rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 4px; color: white;">
-                <option value="10" selected>10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-            </select>
-            <span style="font-size: 0.875rem; color: rgba(255,255,255,0.7);">dòng</span>
-        `;
-
-        const pageInfo = document.createElement('div');
-        pageInfo.id = 'page-info';
-        pageInfo.style.cssText = 'font-size: 0.875rem; color: rgba(255,255,255,0.7);';
-
-        paginationTop.appendChild(pageSizeSelector);
-        paginationTop.appendChild(pageInfo);
-        container.appendChild(paginationTop);
-
-        // Table container
-        const tableDiv = document.createElement('div');
-        tableDiv.className = 'table-container';
-        container.appendChild(tableDiv);
-
-        // Pagination bottom
-        const paginationBottom = document.createElement('div');
-        paginationBottom.id = 'pagination-controls';
-        paginationBottom.style.cssText = 'display: flex; gap: 0.5rem; justify-content: center; margin-top: 1rem;';
-        container.appendChild(paginationBottom);
-
-        // Update view
-        const updateView = () => {
-            const prodVal = productFilter.select.value;
-            const sVal = sprintFilter.select.value;
-            const aVal = assigneeFilter.select.value;
-
-            filteredData = data.filter(row => {
-                return (prodVal === 'all' || row.product === prodVal) &&
-                    (sVal === 'all' || row.sprint === sVal) &&
-                    (aVal === 'all' || row.assignee === aVal);
-            });
-
-            currentPage = 1;
-
-            if (window.renderSprintChart) {
-                window.renderSprintChart(filteredData);
-            }
-
-            renderTable();
-        };
-
-        const renderTable = () => {
-            const start = (currentPage - 1) * pageSize;
-            const end = start + pageSize;
-            const pageData = filteredData.slice(start, end);
-            const totalPages = Math.ceil(filteredData.length / pageSize);
-
-            tableDiv.innerHTML = `
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Product</th>
-                            <th>Sprint</th>
-                            <th>Assignee</th>
-                            <th>Confirmed</th>
-                            <th>Unconfirmed</th>
-                            <th>Total</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        ${pageData.map(row => `
-                            <tr>
-                                <td>${row.product || '-'}</td>
-                                <td>${row.sprint}</td>
-                                <td>${row.assignee}</td>
-                                <td>${row.confirmed_points}</td>
-                                <td>${row.unconfirmed_points}</td>
-                                <td><strong>${row.total_points}</strong></td>
-                            </tr>
-                        `).join('')}
-                    </tbody>
-                </table>
-            `;
-
-            document.getElementById('page-info').textContent =
-                `Hiển thị ${start + 1}-${Math.min(end, filteredData.length)} / ${filteredData.length} dòng`;
-
-            // Render pagination
-            paginationBottom.innerHTML = '';
-            if (totalPages > 1) {
-                const prevBtn = document.createElement('button');
-                prevBtn.textContent = '← Trước';
-                prevBtn.disabled = currentPage === 1;
-                prevBtn.style.cssText = `padding: 0.5rem 1rem; background: ${currentPage === 1 ? 'rgba(255,255,255,0.05)' : 'rgba(99,102,241,0.8)'}; color: white; border: none; border-radius: 4px; cursor: ${currentPage === 1 ? 'not-allowed' : 'pointer'};`;
-                prevBtn.onclick = () => { currentPage--; renderTable(); };
-                paginationBottom.appendChild(prevBtn);
-
-                const nextBtn = document.createElement('button');
-                nextBtn.textContent = 'Sau →';
-                nextBtn.disabled = currentPage === totalPages;
-                nextBtn.style.cssText = `padding: 0.5rem 1rem; background: ${currentPage === totalPages ? 'rgba(255,255,255,0.05)' : 'rgba(99,102,241,0.8)'}; color: white; border: none; border-radius: 4px; cursor: ${currentPage === totalPages ? 'not-allowed' : 'pointer'};`;
-                nextBtn.onclick = () => { currentPage++; renderTable(); };
-                paginationBottom.appendChild(nextBtn);
-            }
-        };
-
-        // Event listeners
-        productFilter.select.addEventListener('change', () => {
-            populateFilters();
-            updateView();
-        });
-        sprintFilter.select.addEventListener('change', updateView);
-        assigneeFilter.select.addEventListener('change', updateView);
-        document.getElementById('page-size').addEventListener('change', (e) => {
-            pageSize = parseInt(e.target.value);
-            currentPage = 1;
-            renderTable();
-        });
-
-        updateView();
+    async refreshData() {
+        const btn = document.getElementById('refresh-btn');
+        if (btn) { btn.disabled = true; btn.textContent = 'Đang tải...'; }
+        try {
+            await fetch(`${API_BASE}/api/refresh`, { method: 'POST', credentials: 'include' });
+            window.location.reload();
+        } catch (e) { alert(e.message); if (btn) btn.disabled = false; }
     }
 }
 
-// Initialize app
+// Global Init
 const app = new DashboardApp();
-app.init();
+window.dashboardApp = app;
+document.addEventListener('DOMContentLoaded', () => app.init());

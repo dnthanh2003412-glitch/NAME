@@ -55,14 +55,6 @@ class NotionDashboardServer {
 
         this.app.use(express.json());
 
-        // Setup API routes
-        setupRoutes(this.app, this.db);
-
-        // Serve frontend static files LAST
-        const frontendPath = join(__dirname, '..', '..', 'frontend', 'public');
-        this.app.use(express.static(frontendPath));
-        console.log('[Server] Serving frontend from:', frontendPath);
-
         // Setup WebSocket server
         this.wsServer = new RealtimeServer(this.server);
 
@@ -73,6 +65,14 @@ class NotionDashboardServer {
             this.wsServer,
             () => this.getAccessToken()
         );
+
+        // Setup API routes (Now passing poller)
+        setupRoutes(this.app, this.db, this.poller);
+
+        // Serve frontend static files LAST (after API routes)
+        const frontendPath = join(__dirname, '..', '..', 'frontend', 'public');
+        this.app.use(express.static(frontendPath));
+        console.log('[Server] Serving frontend from:', frontendPath);
 
         // Start polling immediately
         this.poller.start(pollingInterval);

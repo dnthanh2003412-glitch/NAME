@@ -20,19 +20,23 @@ export class DataFetcher {
         const results = {};
         const dbMetadata = {};
 
-        // First, fetch database metadata to get names
+        // Helper sleep function
+        const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+        // First, fetch database metadata to get names (Sequential with delay)
         for (const dbId of databaseIds) {
             try {
                 const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                 dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
+                await sleep(350); // Rate limit protection
             } catch (error) {
                 console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
                 dbMetadata[dbId] = 'Unknown Database';
             }
         }
 
-        // Fetch in parallel for speed
-        const promises = databaseIds.map(async (dbId) => {
+        // Fetch data (Sequential with delay to prevent Rate Limit)
+        for (const dbId of databaseIds) {
             try {
                 const pages = await this.client.getAllPages(dbId);
                 const databaseName = dbMetadata[dbId];
@@ -45,13 +49,16 @@ export class DataFetcher {
                 }));
                 results[dbId] = transformed;
                 console.log(`[Fetcher] ✅ Database ${dbId} (${databaseName}): ${transformed.length} records`);
+
+                await sleep(350); // Rate limit protection between heavy fetches
             } catch (error) {
                 console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
                 results[dbId] = [];
             }
-        });
+        }
 
-        await Promise.all(promises);
+        // Remove Promise.all logic since we are now sequential
+        // await Promise.all(promises);
 
         const totalRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
         console.log(`[Fetcher] ✅ Total records fetched: ${totalRecords}`);
@@ -150,7 +157,8 @@ export class DataFetcher {
             case 'people':
                 return property.people?.map(p => ({
                     id: p.id,
-                    name: p.name
+                    name: p.name || p.person?.email || 'Unknown User',
+                    email: p.person?.email || null
                 })) || [];
 
             case 'checkbox':

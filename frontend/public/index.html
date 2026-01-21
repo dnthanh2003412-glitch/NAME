@@ -20,7 +20,7 @@
     <!-- Loading Screen -->
     <div id="loading" class="loading-screen">
         <div class="loading-spinner"></div>
-        <p>Loading Notion Dashboard...</p>
+        <p>Đang tải dữ liệu...</p>
     </div>
 
     <!-- Auth Screen -->
@@ -38,7 +38,7 @@
                     <path d="M12 2L2 7l10 5 10-5-10-5z" fill="currentColor" />
                     <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" />
                 </svg>
-                Start Dashboard
+                Bắt đầu
             </button>
         </div>
     </div>
@@ -46,12 +46,12 @@
     <!-- Setup Screen -->
     <div id="setup" class="setup-screen hidden">
         <div class="setup-container">
-            <h2>Select Databases</h2>
-            <p class="setup-subtitle">Choose which databases to track for reports</p>
+            <h2>Chọn Cơ sở dữ liệu</h2>
+            <p class="setup-subtitle">Chọn các database bạn muốn theo dõi báo cáo</p>
 
             <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
-                <button id="select-all-btn" class="btn-secondary" style="flex: 1;">✓ Select All</button>
-                <button id="deselect-all-btn" class="btn-secondary" style="flex: 1;">✗ Deselect All</button>
+                <button id="select-all-btn" class="btn-secondary" style="flex: 1;">✓ Chọn tất cả</button>
+                <button id="deselect-all-btn" class="btn-secondary" style="flex: 1;">✗ Bỏ chọn tất cả</button>
             </div>
 
             <div id="database-list" class="database-list">
@@ -60,7 +60,7 @@
 
             <div class="setup-actions">
                 <button id="save-databases-btn" class="btn-primary">
-                    Save & Continue
+                    Lưu & Tiếp tục
                 </button>
             </div>
         </div>
@@ -68,44 +68,97 @@
 
     <!-- Main Dashboard -->
     <div id="dashboard" class="dashboard hidden">
+        <!-- Mobile Overlay -->
+        <div class="mobile-overlay" id="mobile-overlay"></div>
+
+        <!-- Mobile Menu Toggle -->
+        <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
+            ☰
+        </button>
+
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>Dashboard</h1>
+                <h1>📊 Dashboard</h1>
                 <div id="connection-status" class="status-indicator">
                     <span class="status-dot"></span>
                     <span class="status-text">Connected</span>
                 </div>
             </div>
 
-            <!-- Tree Structure for Projects and Databases -->
+            <!-- Sidebar Search -->
+            <div class="sidebar-search">
+                <input type="text" id="sidebar-search" placeholder="🔍 Tìm kiếm dự án...">
+            </div>
+
+            <!-- Sidebar Actions -->
+            <div class="sidebar-actions">
+                <button id="select-all-projects" class="btn-small" title="Chọn tất cả">✓</button>
+                <button id="deselect-all-projects" class="btn-small" title="Bỏ chọn tất cả">✗</button>
+                <button id="toggle-hidden-items" class="btn-small" title="Ẩn/Hiện mục đã ẩn">👁‍🗨</button>
+                <button id="save-sidebar-config" class="btn-small" title="Lưu cấu hình hiển thị">💾</button>
+                <button id="reset-sidebar-config" class="btn-small" title="Đặt lại cấu hình">🔄</button>
+            </div>
+
+            <!-- Project Tree -->
             <div id="project-tree" class="project-tree">
                 <!-- Will be populated dynamically -->
             </div>
 
-            <!-- Logout removed -->
-        </aside>
-
-        <!-- Resize Handle -->
-        <div class="sidebar-resize-handle"></div>
+            <!-- Resize Handle -->
+            <div class="sidebar-resize-handle"></div>
         </aside>
 
         <!-- Main Content -->
         <main class="main-content">
+            <!-- Report Generator Panel -->
+            <div class="report-generator-panel">
+                <h3>📊 TẠO BÁO CÁO</h3>
+
+                <!-- Report Type Selector -->
+                <div class="report-type-section">
+                    <label>Chọn mẫu báo cáo:</label>
+                    <select id="report-type-select">
+                        <option value="">-- Chọn loại báo cáo --</option>
+                        <option value="sprint">📈 Sprint Report</option>
+                        <option value="productivity">📊 Productivity Report</option>
+                        <option value="raw">📋 Raw Data Export</option>
+                        <option value="report4" disabled>📑 Report 4 (Coming soon)</option>
+                        <option value="report5" disabled>📑 Report 5 (Coming soon)</option>
+                    </select>
+                </div>
+
+                <!-- Selected Projects Info -->
+                <div class="selected-projects-info">
+                    <span id="selected-count">Đã chọn: 0 dự án</span>
+                </div>
+
+                <!-- Generate Button -->
+                <div class="generate-actions">
+                    <button id="generate-report-btn" class="btn-primary" disabled>
+                        📄 Tạo Báo Cáo
+                    </button>
+                    <button id="refresh-btn" class="btn-icon" title="Refresh Data">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Report Title -->
             <header class="content-header">
-                <h2 id="report-title">Select a Report</h2>
-                <button id="refresh-btn" class="btn-icon" title="Refresh Data">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                    </svg>
-                </button>
+                <h2 id="report-title">Chọn dự án và loại báo cáo để bắt đầu</h2>
             </header>
 
+            <!-- Report Container -->
             <div id="report-container" class="report-container">
                 <div class="welcome-message">
-                    <h3>Welcome to Notion Dashboard</h3>
-                    <p>Select a report from the sidebar to get started</p>
+                    <h3>👋 Chào mừng đến Notion Dashboard</h3>
+                    <p>1. Tick chọn các dự án ở sidebar bên trái</p>
+                    <p>2. Chọn loại báo cáo từ dropdown</p>
+                    <p>3. Click "Tạo Báo Cáo" để xem kết quả</p>
                 </div>
             </div>
         </main>

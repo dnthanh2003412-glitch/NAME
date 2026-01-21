@@ -10,18 +10,37 @@ class AuthManager {
         const status = await this.checkStatus();
 
         if (status.authenticated) {
-            // Check if databases are already selected
-            const hasDatabase = await this.checkDatabases();
-
-            if (hasDatabase) {
-                // Skip setup, go directly to dashboard
-                this.showDashboard();
-            } else {
-                // Show setup wizard to select databases
-                this.showSetup();
-            }
+            // Auto-select all databases and go to dashboard
+            await this.autoSelectAllDatabases();
+            this.showDashboard();
         } else {
             this.showAuthScreen();
+        }
+    }
+
+    async autoSelectAllDatabases() {
+        try {
+            // Fetch all available databases
+            const response = await fetch(`${API_BASE}/api/databases`, {
+                credentials: 'include'
+            });
+            const data = await response.json();
+
+            if (data.success && data.databases && data.databases.length > 0) {
+                // Select all databases
+                const allDbIds = data.databases.map(db => db.id);
+
+                await fetch(`${API_BASE}/api/databases/select`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    credentials: 'include',
+                    body: JSON.stringify({ database_ids: allDbIds })
+                });
+
+                console.log(`[Auth] ✅ Auto-selected ${allDbIds.length} databases`);
+            }
+        } catch (error) {
+            console.error('[Auth] Error auto-selecting databases:', error);
         }
     }
 

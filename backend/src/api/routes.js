@@ -6,7 +6,7 @@ import { reportRegistry } from '../reports/index.js';
 
 const router = express.Router();
 
-export function setupRoutes(app, db) {
+export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
 
     // ============ AUTH ROUTES ============
@@ -149,7 +149,6 @@ export function setupRoutes(app, db) {
                 columns.forEach(col => {
                     const originalVal = record.properties?.[col];
                     const val = formatValue(originalVal, lookupMap);
-
                     row[col] = val;
                 });
                 return row;
@@ -203,8 +202,24 @@ export function setupRoutes(app, db) {
         });
     });
 
+    // ============ SYSTEM ROUTES ============
+    app.post('/api/refresh', async (req, res) => {
+        if (!poller) {
+            return res.status(503).json({ error: 'Pooling service not available' });
+        }
+        try {
+            console.log('[API] Triggering manual refresh...');
+            await poller.triggerPoll();
+            res.json({ success: true, message: 'Data refreshed successfully' });
+        } catch (error) {
+            console.error('[API] Refresh failed:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
     console.log('[Routes] ✅ All routes registered');
 }
+
 
 function extractProjectName(databaseName) {
     // Priority: Extract content inside square brackets [Project Name]
@@ -267,8 +282,15 @@ function formatValue(value, lookupMap = new Map()) {
         // Select / Status / Multi-select item
         if (value.name) return value.name;
 
-        // User
-        if (value.object === 'user') return value.name || 'Unknown User';
+        // User / People object - Prioritize name over email
+        if (value.object === 'user' || value.email !== undefined) {
+            return value.name || value.email || 'Unknown User';
+        }
+
+        // People object from fetcher (has name and email)
+        if (value.name && value.id) {
+            return value.name;
+        }
 
         // Formula
         if (value.string !== undefined) return value.string;
@@ -293,6 +315,8 @@ function formatValue(value, lookupMap = new Map()) {
             if (lookupMap.has(value.id)) {
                 return lookupMap.get(value.id);
             }
+            // Fallback: If it's a Relation but not found in map, maybe return a placeholder or just ID
+            // For tasks, it implies the related db wasn't fetched.
             return value.id;
         }
 
@@ -318,7 +342,16 @@ function formatValue(value, lookupMap = new Map()) {
     // 4. Primitives (String, Number, Boolean)
     // CRITICAL FIX: Check if the string itself is an ID in our lookup map
     const strVal = String(value);
-    if (lookupMap.has(strVal)) {
+
+    // UUID regex check to avoid false positives on normal text
+    const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(strVal);
+
+    if (isUUID && lookupMap.has(strVal)) {
+        return lookupMap.get(strVal);
+    }
+
+    // Also try checking map even if not strict UUID (for some system IDs)
+    if (strVal.length > 20 && lookupMap.has(strVal)) {
         return lookupMap.get(strVal);
     }
 

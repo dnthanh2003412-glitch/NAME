@@ -43,5 +43,37 @@
                 document.body.style.userSelect = '';
             }
         });
+
+        // Mobile menu toggle functionality
+        const mobileToggle = document.getElementById('mobile-menu-toggle');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+
+        if (mobileToggle && mobileOverlay) {
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+                mobileOverlay.classList.toggle('active');
+                mobileToggle.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+            });
+
+            mobileOverlay.addEventListener('click', () => {
+                sidebar.classList.remove('open');
+                mobileOverlay.classList.remove('active');
+                mobileToggle.textContent = '☰';
+            });
+
+            // Close sidebar when clicking on a database item on mobile
+            sidebar.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    if (e.target.closest('.database-item') ||
+                        (e.target.type === 'checkbox' && e.target.dataset.dbId)) {
+                        setTimeout(() => {
+                            sidebar.classList.remove('open');
+                            mobileOverlay.classList.remove('active');
+                            mobileToggle.textContent = '☰';
+                        }, 300);
+                    }
+                }
+            });
+        }
     });
 })();

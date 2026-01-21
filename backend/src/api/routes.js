@@ -102,40 +102,72 @@ export function setupRoutes(app, db, poller) {
             const allDatabases = await discovery.discoverDatabases();
             const dbInfo = allDatabases.find(d => d.id === id);
 
-            // --- Build Lookup Map for Relations ---
+            // --- Build Lookup Maps ---
             const allData = db.getAllData(); // Get data from ALL databases
             const lookupMap = new Map();
+            const globalUserMap = new Map(); // Map Email -> Name
 
             Object.values(allData).flat().forEach(record => {
-                // Fetcher has already flattened properties to strings/simple values
-                let name = record.properties?.['Name'] ||
-                    record.properties?.['Title'] ||
-                    record.properties?.['Tên'] ||
-                    record.properties?.['Tên task'] ||
-                    record.properties?.['Product'] ||
-                    record.properties?.['Sprint'] ||
-                    record.properties?.['Sản phẩm'] ||
-                    record.properties?.['Đợt'];
+                // 1. Build Relation Map (ID -> Title)
+                // Use explicit _title field from fetcher if available (Reliable!)
+                let name = record._title;
 
-                // Try case-insensitive lookup if direct match fails
+                // Fallback to heuristic lookup if _title missing (legacy data)
                 if (!name && record.properties) {
-                    const lowerProps = Object.keys(record.properties).reduce((acc, key) => {
-                        acc[key.toLowerCase()] = record.properties[key];
-                        return acc;
-                    }, {});
-
-                    name = lowerProps['name'] ||
-                        lowerProps['title'] ||
-                        lowerProps['tên'] ||
-                        lowerProps['sprint name'] ||
-                        lowerProps['product name'];
+                    name = record.properties['Name'] || record.properties['Title'] || record.properties['Tên'];
+                    if (!name) { // Last resort deep search
+                        const lowerProps = Object.keys(record.properties).reduce((acc, key) => { acc[key.toLowerCase()] = record.properties[key]; return acc; }, {});
+                        name = lowerProps['name'] ||
+                            lowerProps['title'] ||
+                            lowerProps['task name'] ||
+                            lowerProps['sprint name'] ||
+                            lowerProps['product name'] ||
+                            lowerProps['project name'] ||
+                            lowerProps['subject'] ||
+                            lowerProps['item'] ||
+                            lowerProps['content'] ||
+                            lowerProps['summary'] ||
+                            lowerProps['work'];
+                    }
                 }
 
-                if (record.id && name) {
-                    // Start of title can sometimes be an array if fetcher logic varies, 
-                    // but usually it's a string. Safe check:
-                    if (typeof name !== 'string') name = String(name);
-                    lookupMap.set(record.id, name);
+                if (record.id) {
+                    const id = record.id.toLowerCase();
+                    if (name) {
+                        if (typeof name !== 'string') name = String(name);
+                        lookupMap.set(id, name);
+                    } else {
+                        // Add placeholder so we at least know the record exists
+                        lookupMap.set(id, `[Untitled: ${record.id}]`);
+                    }
+                }
+
+                // 2. Build User Map (Email -> Name)
+                if (record.properties) {
+                    Object.values(record.properties).forEach(val => {
+                        // Check for array of users (e.g. Owner, Person)
+                        if (Array.isArray(val)) {
+                            val.forEach(item => {
+                                if (item && typeof item === 'object') {
+                                    if (item.email && item.name) {
+                                        if (item.name !== item.email && item.name !== 'Unknown User') {
+                                            globalUserMap.set(item.email.toLowerCase().trim(), item.name);
+                                        }
+                                    }
+                                    // Also harvest users from "Created by" / "Last edited by"
+                                    if (item.object === 'user' && item.name) {
+                                        globalUserMap.set(item.name.toLowerCase(), item.name);
+                                    }
+                                }
+                            });
+                        }
+                        // Check for single user object
+                        else if (val && typeof val === 'object' && val.email && val.name) {
+                            if (val.name !== val.email && val.name !== 'Unknown User') {
+                                globalUserMap.set(val.email.toLowerCase().trim(), val.name);
+                            }
+                        }
+                    });
                 }
             });
             // --------------------------------------
@@ -148,7 +180,7 @@ export function setupRoutes(app, db, poller) {
                 const row = {};
                 columns.forEach(col => {
                     const originalVal = record.properties?.[col];
-                    const val = formatValue(originalVal, lookupMap);
+                    const val = formatValue(originalVal, lookupMap, globalUserMap);
                     row[col] = val;
                 });
                 return row;
@@ -245,7 +277,7 @@ function extractProjectName(databaseName) {
 /**
  * Helper: Format Notion property value for display (Enhanced Recursive with Lookup)
  */
-function formatValue(value, lookupMap = new Map()) {
+function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
     // 1. Null/Undefined
     if (value === null || value === undefined) return '';
 
@@ -254,7 +286,7 @@ function formatValue(value, lookupMap = new Map()) {
         if (value.length === 0) return '';
 
         // Map over items and format recursively
-        return value.map(v => formatValue(v, lookupMap))
+        return value.map(v => formatValue(v, lookupMap, globalUserMap))
             .filter(v => v !== '') // Filter empty strings
             .join(', ');
     }
@@ -265,14 +297,14 @@ function formatValue(value, lookupMap = new Map()) {
         // --- Notion Type Wrapper --- 
         // Example: { type: "rollup", rollup: { ... } }
         if (value.type && value[value.type] !== undefined) {
-            return formatValue(value[value.type], lookupMap);
+            return formatValue(value[value.type], lookupMap, globalUserMap);
         }
 
         // --- Specific Object Structures ---
 
         // Rollup specific (sometimes has 'array' property inside)
         if (value.array && Array.isArray(value.array)) {
-            return formatValue(value.array, lookupMap);
+            return formatValue(value.array, lookupMap, globalUserMap);
         }
 
         // Title / Rich Text / Text
@@ -282,14 +314,23 @@ function formatValue(value, lookupMap = new Map()) {
         // Select / Status / Multi-select item
         if (value.name) return value.name;
 
-        // User / People object - Prioritize name over email
+        // User / People object - Prioritize name over email, but use Map if name is email-like
         if (value.object === 'user' || value.email !== undefined) {
-            return value.name || value.email || 'Unknown User';
+            let name = value.name || value.email || 'Unknown User';
+            // Enhance name from map if it looks like an email or is fallback
+            if (name.includes('@') && globalUserMap.has(name.toLowerCase().trim())) {
+                name = globalUserMap.get(name.toLowerCase().trim());
+            }
+            return name;
         }
 
         // People object from fetcher (has name and email)
         if (value.name && value.id) {
-            return value.name;
+            let name = value.name;
+            if (name.includes('@') && globalUserMap.has(name.toLowerCase().trim())) {
+                name = globalUserMap.get(name.toLowerCase().trim());
+            }
+            return name;
         }
 
         // Formula
@@ -311,21 +352,25 @@ function formatValue(value, lookupMap = new Map()) {
         // Relation Resolution
         // If it's a raw relation object { id: "..." }, we try to look it up.
         if (value.id) {
+            const id = value.id.toLowerCase();
             // Check lookup map first
-            if (lookupMap.has(value.id)) {
-                return lookupMap.get(value.id);
+            if (lookupMap.has(id)) {
+                return lookupMap.get(id);
             }
             // Fallback: If it's a Relation but not found in map, maybe return a placeholder or just ID
-            // For tasks, it implies the related db wasn't fetched.
             return value.id;
         }
 
         // --- Fallback for Deeply Nested / Unknown Objects ---
         try {
+            // Handle Title / Rich Text arrays directly if wrapped as object accidentally
+            if (value.title && Array.isArray(value.title)) return formatValue(value.title, lookupMap, globalUserMap);
+            if (value.rich_text && Array.isArray(value.rich_text)) return formatValue(value.rich_text, lookupMap, globalUserMap);
+
             // If object has a single key that is an object/array, try diving in
             const keys = Object.keys(value);
             if (keys.length === 1 && typeof value[keys[0]] === 'object') {
-                return formatValue(value[keys[0]], lookupMap);
+                return formatValue(value[keys[0]], lookupMap, globalUserMap);
             }
 
             // If it has 'string' / 'number' property directly
@@ -340,19 +385,29 @@ function formatValue(value, lookupMap = new Map()) {
     }
 
     // 4. Primitives (String, Number, Boolean)
-    // CRITICAL FIX: Check if the string itself is an ID in our lookup map
     const strVal = String(value);
 
     // UUID regex check to avoid false positives on normal text
     const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(strVal);
 
-    if (isUUID && lookupMap.has(strVal)) {
-        return lookupMap.get(strVal);
+    if (isUUID) {
+        const id = strVal.toLowerCase();
+        if (lookupMap.has(id)) {
+            return lookupMap.get(id);
+        }
+    }
+
+    // Check if primitive is an email we can resolve
+    if (strVal.includes('@') && globalUserMap.has(strVal.toLowerCase().trim())) {
+        return globalUserMap.get(strVal.toLowerCase().trim());
     }
 
     // Also try checking map even if not strict UUID (for some system IDs)
-    if (strVal.length > 20 && lookupMap.has(strVal)) {
-        return lookupMap.get(strVal);
+    if (strVal.length > 20) {
+        const id = strVal.toLowerCase();
+        if (lookupMap.has(id)) {
+            return lookupMap.get(id);
+        }
     }
 
     return strVal;

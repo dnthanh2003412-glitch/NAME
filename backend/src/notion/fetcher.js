@@ -118,7 +118,13 @@ export class DataFetcher {
 
         // Transform properties to simple key-value pairs
         for (const [key, prop] of Object.entries(page.properties)) {
-            transformed.properties[key] = this.extractPropertyValue(prop);
+            const value = this.extractPropertyValue(prop);
+            transformed.properties[key] = value;
+
+            // Store explicit title for lookup reliability
+            if (prop.type === 'title') {
+                transformed._title = value;
+            }
         }
 
         return transformed;

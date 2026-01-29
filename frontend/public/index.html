@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
@@ -19,24 +19,45 @@
 <body>
     <!-- Loading Screen -->
     <div id="loading" class="loading-screen">
-        <div class="loading-spinner"></div>
-        <p>Đang tải dữ liệu...</p>
+        <div class="loading-content">
+            <div class="loading-logo">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 3h18v18H3V3z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    <path d="M9 9h6M9 13h6M9 17h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </div>
+            <div class="loading-spinner"></div>
+            <p class="loading-text">Đang tải dữ liệu...</p>
+        </div>
     </div>
 
     <!-- Auth Screen -->
     <div id="auth-screen" class="auth-screen hidden">
         <div class="auth-container">
-            <div class="logo">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
+            <div class="auth-logo">
+                <div class="logo-icon">
+                    <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="2" />
+                        <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </div>
                 <h1>Notion Dashboard</h1>
+                <p class="tagline">Real-time Sprint Analytics</p>
             </div>
-            <p class="auth-subtitle">✅ Notion Token đã cấu hình! Click để bắt đầu</p>
-            <button id="connect-notion-btn" class="btn-primary" onclick="window.auth && window.auth.showSetup()">
+            <div class="auth-status">
+                <span class="status-badge success">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                    Notion Token đã cấu hình
+                </span>
+            </div>
+            <button id="connect-notion-btn" class="btn-primary btn-large"
+                onclick="window.auth && window.auth.showSetup()">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M12 2L2 7l10 5 10-5-10-5z" fill="currentColor" />
-                    <path d="M2 17l10 5 10-5M2 12l10 5 10-5" stroke="currentColor" stroke-width="2" />
+                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
                 </svg>
                 Bắt đầu
             </button>
@@ -46,12 +67,24 @@
     <!-- Setup Screen -->
     <div id="setup" class="setup-screen hidden">
         <div class="setup-container">
-            <h2>Chọn Cơ sở dữ liệu</h2>
-            <p class="setup-subtitle">Chọn các database bạn muốn theo dõi báo cáo</p>
+            <div class="setup-header">
+                <h2>Chọn Cơ sở dữ liệu</h2>
+                <p class="setup-subtitle">Chọn các database bạn muốn theo dõi báo cáo</p>
+            </div>
 
-            <div style="margin-bottom: 1rem; display: flex; gap: 0.5rem;">
-                <button id="select-all-btn" class="btn-secondary" style="flex: 1;">✓ Chọn tất cả</button>
-                <button id="deselect-all-btn" class="btn-secondary" style="flex: 1;">✗ Bỏ chọn tất cả</button>
+            <div class="setup-actions-top">
+                <button id="select-all-btn" class="btn-outline">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Chọn tất cả
+                </button>
+                <button id="deselect-all-btn" class="btn-outline">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    Bỏ chọn
+                </button>
             </div>
 
             <div id="database-list" class="database-list">
@@ -59,7 +92,12 @@
             </div>
 
             <div class="setup-actions">
-                <button id="save-databases-btn" class="btn-primary">
+                <button id="save-databases-btn" class="btn-primary btn-large">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor"
+                            stroke-width="2" />
+                        <path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" stroke-width="2" />
+                    </svg>
                     Lưu & Tiếp tục
                 </button>
             </div>
@@ -73,13 +111,21 @@
 
         <!-- Mobile Menu Toggle -->
         <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle Menu">
-            ☰
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
         </button>
 
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h1>📊 Dashboard</h1>
+                <div class="sidebar-brand">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+                        <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                    <span>Dashboard</span>
+                </div>
                 <div id="connection-status" class="status-indicator">
                     <span class="status-dot"></span>
                     <span class="status-text">Connected</span>
@@ -88,16 +134,57 @@
 
             <!-- Sidebar Search -->
             <div class="sidebar-search">
-                <input type="text" id="sidebar-search" placeholder="🔍 Tìm kiếm dự án...">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2" />
+                    <path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+                <input type="text" id="sidebar-search" placeholder="Tìm kiếm dự án...">
             </div>
 
-            <!-- Sidebar Actions -->
-            <div class="sidebar-actions">
-                <button id="select-all-projects" class="btn-small" title="Chọn tất cả">✓</button>
-                <button id="deselect-all-projects" class="btn-small" title="Bỏ chọn tất cả">✗</button>
-                <button id="toggle-hidden-items" class="btn-small" title="Ẩn/Hiện mục đã ẩn">👁‍🗨</button>
-                <button id="save-sidebar-config" class="btn-small" title="Lưu cấu hình hiển thị">💾</button>
-                <button id="reset-sidebar-config" class="btn-small" title="Đặt lại cấu hình">🔄</button>
+            <!-- Sidebar Toolbar -->
+            <div class="sidebar-toolbar">
+                <div class="toolbar-group">
+                    <button id="select-all-projects" class="toolbar-btn" title="Chọn tất cả">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+                            <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                    <button id="deselect-all-projects" class="toolbar-btn" title="Bỏ chọn tất cả">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="toolbar-divider"></div>
+                <div class="toolbar-group">
+                    <button id="toggle-hidden-items" class="toolbar-btn" title="Ẩn/Hiện mục đã ẩn">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" stroke="currentColor"
+                                stroke-width="2" />
+                            <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </button>
+                </div>
+                <div class="toolbar-divider"></div>
+                <div class="toolbar-group">
+                    <button id="save-sidebar-config" class="toolbar-btn" title="Lưu cấu hình">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke="currentColor"
+                                stroke-width="2" />
+                            <path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" stroke-width="2" />
+                        </svg>
+                    </button>
+                    <button id="reset-sidebar-config" class="toolbar-btn" title="Đặt lại cấu hình">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                            <path d="M1 4v6h6M23 20v-6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M20.49 9A9 9 0 005.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 013.51 15"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </div>
             </div>
 
             <!-- Project Tree -->
@@ -111,37 +198,43 @@
 
         <!-- Main Content -->
         <main class="main-content">
-            <!-- Report Generator Panel -->
-            <div class="report-generator-panel">
-                <h3>📊 TẠO BÁO CÁO</h3>
-
-                <!-- Report Type Selector -->
-                <div class="report-type-section">
-                    <label>Chọn mẫu báo cáo:</label>
-                    <select id="report-type-select">
-                        <option value="">-- Chọn loại báo cáo --</option>
-                        <option value="sprint">📈 Sprint Report</option>
-                        <option value="productivity">📊 Productivity Report</option>
-                        <option value="raw">📋 Raw Data Export</option>
-                        <option value="report4" disabled>📑 Report 4 (Coming soon)</option>
-                        <option value="report5" disabled>📑 Report 5 (Coming soon)</option>
-                    </select>
+            <!-- Report Control Bar -->
+            <div class="report-control-bar">
+                <div class="control-left">
+                    <div class="selected-info">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2v11z"
+                                stroke="currentColor" stroke-width="2" />
+                        </svg>
+                        <span id="selected-count">Chưa chọn dự án</span>
+                    </div>
                 </div>
-
-                <!-- Selected Projects Info -->
-                <div class="selected-projects-info">
-                    <span id="selected-count">Đã chọn: 0 dự án</span>
+                <div class="control-center">
+                    <div class="report-select-wrapper">
+                        <select id="report-type-select">
+                            <option value="">-- Chọn loại báo cáo --</option>
+                            <option value="sprint">📈 Sprint Report</option>
+                            <option value="productivity">📊 Productivity Report</option>
+                            <option value="raw">📋 Raw Data Export</option>
+                            <option value="report4" disabled>📑 Report 4 (Sắp có)</option>
+                            <option value="report5" disabled>📑 Report 5 (Sắp có)</option>
+                        </select>
+                    </div>
                 </div>
-
-                <!-- Generate Button -->
-                <div class="generate-actions">
-                    <button id="generate-report-btn" class="btn-primary" disabled>
-                        📄 Tạo Báo Cáo
-                    </button>
-                    <button id="refresh-btn" class="btn-icon" title="Refresh Data">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2"
+                <div class="control-right">
+                    <button id="generate-report-btn" class="btn-generate" disabled>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z" stroke="currentColor"
+                                stroke-width="2" />
+                            <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" />
+                        </svg>
+                        Tạo Báo Cáo
+                    </button>
+                    <button id="refresh-btn" class="btn-icon-round" title="Làm mới dữ liệu">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                            <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                     </button>
                 </div>
@@ -154,11 +247,80 @@
 
             <!-- Report Container -->
             <div id="report-container" class="report-container">
-                <div class="welcome-message">
-                    <h3>👋 Chào mừng đến Notion Dashboard</h3>
-                    <p>1. Tick chọn các dự án ở sidebar bên trái</p>
-                    <p>2. Chọn loại báo cáo từ dropdown</p>
-                    <p>3. Click "Tạo Báo Cáo" để xem kết quả</p>
+                <div class="welcome-section">
+                    <div class="welcome-hero">
+                        <div class="hero-icon">
+                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
+                                    stroke-width="1.5" />
+                                <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </div>
+                        <h3>Chào mừng đến với Notion Dashboard</h3>
+                        <p class="hero-subtitle">Hệ thống báo cáo & phân tích dữ liệu thời gian thực</p>
+                    </div>
+
+                    <div class="quick-start">
+                        <div class="step-card">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Chọn dự án</h4>
+                                <p>Tích vào checkbox ở thanh bên trái để chọn dự án cần làm báo cáo</p>
+                            </div>
+                        </div>
+                        <div class="step-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Chọn loại báo cáo</h4>
+                                <p>Sprint, Productivity, hoặc Raw Data từ dropdown ở thanh trên</p>
+                            </div>
+                        </div>
+                        <div class="step-arrow">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <div class="step-card">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>Tạo báo cáo</h4>
+                                <p>Nhấn nút "Tạo Báo Cáo" để xem kết quả phân tích</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                            <span>Dữ liệu tải ngầm, thao tác mượt mà</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"
+                                    stroke-width="2" />
+                            </svg>
+                            <span>Token được lưu an toàn trong session</span>
+                        </div>
+                        <div class="feature-item">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <span>Xuất Excel với Raw Data Report</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

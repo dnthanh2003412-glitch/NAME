@@ -1,0 +1,597 @@
+import { Client } from '@notionhq/client';
+
+/**
+ * Projects Service
+ * Fetches hierarchical project structure from [Chung]Dự án database
+ */
+export class ProjectsService {
+    constructor(accessToken) {
+        this.notion = new Client({ auth: accessToken });
+        this.parentDbId = '32e4b218-7829-4f9d-b06d-bbe41ea33dae'; // [Chung]Dự án
+        this.requestDelay = 350;
+
+        // In-memory Cache
+        this.cachedTree = null;
+        this.lastCacheTime = 0;
+        this.CACHE_TTL = 1000 * 60 * 15; // 15 minutes
+        this.isRefreshing = false;
+        this.refreshPromise = null; // To hold the promise of an ongoing refresh
+
+        // Start background refresh immediately
+        this.refreshCache().catch(console.error);
+    }
+
+    async delay(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    /**
+     * Get all projects with their child databases (Cache-First)
+     * @param {Object} options - Filter options
+     * @returns {Promise<Array>} Array of projects with databases
+     */
+    async getProjectsTree(options = {}) {
+        // If cache exists and is fresh enough, return it
+        if (this.cachedTree && (Date.now() - this.lastCacheTime < this.CACHE_TTL)) {
+            console.log('[Projects] Serving tree from cache');
+            return this.filterTree(this.cachedTree, options);
+        }
+
+        // If cache is stale or doesn't exist, and a refresh is ongoing, wait for it
+        if (this.isRefreshing && this.refreshPromise) {
+            console.log('[Projects] Waiting for ongoing refresh...');
+            await this.refreshPromise;
+            // After waiting, the cache should be updated, so serve from it
+            return this.filterTree(this.cachedTree, options);
+        }
+
+        // If no cache, or cache is stale and no refresh is ongoing, force refresh
+        console.log('[Projects] Cache stale or empty, forcing refresh...');
+        await this.refreshCache();
+        return this.filterTree(this.cachedTree, options);
+    }
+
+    async refreshCache() {
+        if (this.isRefreshing) return this.refreshPromise;
+
+        this.isRefreshing = true;
+        console.log('[Projects] Starting smart cache refresh (Priority First)...');
+
+        this.refreshPromise = (async () => {
+            try {
+                // PHASE 1: Priority Scan
+                const priorityTree = await this.buildTreePhase(true); // true = priority only
+                this.cachedTree = priorityTree;
+                this.lastCacheTime = Date.now();
+                console.log(`[Projects] Phase 1 Complete: ${priorityTree.length} priority projects cached.`);
+
+                // PHASE 2: Everything else (Background)
+                // We keep the first promise unresolved until Phase 2?? No, resolve now so UI gets data.
+                // But we need to trigger Phase 2 without blocking.
+
+                this.buildTreePhase(false, priorityTree).then(fullTree => {
+                    this.cachedTree = fullTree;
+                    this.lastCacheTime = Date.now();
+                    console.log(`[Projects] Phase 2 Complete: ${fullTree.length} total projects cached.`);
+                }).catch(e => console.error('Phase 2 Scan Error:', e));
+
+            } catch (e) {
+                console.error('[Projects] Cache refresh failed:', e);
+            } finally {
+                this.isRefreshing = false;
+                this.refreshPromise = null;
+            }
+        })();
+
+        await this.refreshPromise;
+    }
+
+    async buildTreePhase(priorityOnly = false, existingTree = []) {
+        console.log(`[Projects] Building tree phase (PriorityOnly: ${priorityOnly})...`);
+
+        // 1. Get ALL visible databases (Fast, single request mostly)
+        const allDatabases = await this.getAllVisibleDatabases();
+        const dbMap = new Map(allDatabases.map(db => [db.id, db]));
+
+        // 2. Get active projects
+        const projects = await this.getAllProjects('active');
+
+        // Filter Projects
+        const PRIORITY_KEYWORDS = [
+            'Disk Knight', 'SHAVUOT', 'NINJAGO', 'FC MOBILE',
+            'HARRY', 'MIRACULOUS', 'XANHSM',
+            'KNIGHTS', 'GENEVIEVE', 'Sunny Side',
+            'Đại Hiệp', 'UPZI', 'LEGO', 'Victory',
+            'Immortals', 'Mami', 'MAMI', 'GEN', 'HAR', 'LEG'
+        ];
+
+        const targetProjects = projects.filter(p => {
+            const name = p.properties.Name?.title?.[0]?.plain_text || '';
+            const isPriority = PRIORITY_KEYWORDS.some(k => name.toLowerCase().includes(k.toLowerCase()));
+
+            if (priorityOnly) return isPriority;
+
+            const alreadyScanned = existingTree.some(ep => ep.id === p.id);
+            return !alreadyScanned;
+        });
+
+        console.log(`[Projects] Phase target: ${targetProjects.length} projects to scan.`);
+
+        // 3. Scan & Map
+        const newResults = [];
+
+        for (const project of targetProjects) {
+            const projectInfo = this.extractProjectInfo(project);
+            let matchedDatabases = [];
+
+            // OPTIMIZATION:
+            // Phase 1 (Priority) -> Use Smart Mapping (FAST)
+            // Phase 2 (Background) -> Use Structure Scan (ACCURATE)
+
+            if (priorityOnly) {
+                // SMART MAPPING MODE
+                matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
+            } else {
+                // STRUCTURE SCAN MODE (Classic "Y Nguyên")
+                const pageDbIds = await this.scanPageForDatabases(project.id);
+                if (pageDbIds.size > 0) {
+                    matchedDatabases = Array.from(pageDbIds)
+                        .map(id => {
+                            const db = dbMap.get(id);
+                            if (db) return { id: db.id, name: db.name, type: this.determineDatabaseType(db.name) };
+                            return null;
+                        })
+                        .filter(Boolean);
+                }
+
+                // Fallback for empty scans? Yes.
+                if (matchedDatabases.length === 0) {
+                    matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
+                }
+
+                // Rate limiting for scan
+                await this.delay(50);
+            }
+
+            newResults.push({
+                ...projectInfo,
+                databases: matchedDatabases,
+                hasData: matchedDatabases.length > 0
+            });
+        }
+
+        // Merge Phase 1 updates into existing tree?
+        // If Priority Scan re-runs, updates...
+        // Actually, merge logic needs to be map-based to avoid duplicates if project re-scanned.
+        // But here we filtered targetProjects disjointly (if !priorityOnly).
+        // If priorityOnly, existingTree is usually empty or irrelevant.
+
+        const resultMap = new Map(existingTree.map(p => [p.id, p]));
+        newResults.forEach(p => resultMap.set(p.id, p));
+
+        const totalTree = Array.from(resultMap.values());
+
+        // Sort
+        totalTree.sort((a, b) => {
+            const statusOrder = { 'In Progress': 1, 'Planning': 2, 'Backlog': 3, 'Paused': 4, 'Seedbed': 5, 'Done': 6 };
+            const aOrder = statusOrder[a.status] || 99;
+            const bOrder = statusOrder[b.status] || 99;
+            if (aOrder !== bOrder) return aOrder - bOrder;
+            return a.name.localeCompare(b.name);
+        });
+
+        return totalTree;
+    }
+
+    // Remove old buildFullTree since it's replaced
+    async buildFullTree_deprecated() { return []; }
+
+    /**
+     * Recursively find database IDs inside a page
+     */
+    async scanPageForDatabases(pageId, depth = 0) {
+        if (depth > 2) return new Set(); // Limit depth to avoid infinite loops/timeouts
+
+        const foundIds = new Set();
+
+        try {
+            let hasMore = true;
+            let cursor = undefined;
+
+            while (hasMore) {
+                const response = await this.notion.blocks.children.list({
+                    block_id: pageId,
+                    start_cursor: cursor,
+                    page_size: 100
+                });
+
+                for (const block of response.results) {
+                    // 1. Inline Database
+                    if (block.type === 'child_database') {
+                        foundIds.add(block.id);
+                    }
+                    // 2. Linked Database
+                    else if (block.type === 'link_to_page' && block.link_to_page.type === 'database_id') {
+                        foundIds.add(block.link_to_page.database_id);
+                    }
+                    // 3. Containers (Toggle, Column, Synced Block) -> Recurse!
+                    else if (block.has_children) {
+                        // Only specific types usually contain DBs
+                        if (['toggle', 'column_list', 'column', 'synced_block'].includes(block.type)) {
+                            const childIds = await this.scanPageForDatabases(block.id, depth + 1);
+                            childIds.forEach(id => foundIds.add(id));
+                        }
+                    }
+                }
+
+                hasMore = response.has_more;
+                cursor = response.next_cursor;
+                // Don't scan ALL pages of children if there are too many, just first 100 blocks usually enough
+                if (depth > 0) hasMore = false;
+            }
+        } catch (e) {
+            // Ignore permission errors for specific blocks
+            // console.warn(`Failed to scan block ${pageId}:`, e.message);
+        }
+
+        return foundIds;
+    }
+
+    filterTree(tree, options) {
+        const { statusFilter = null } = options;
+        if (!statusFilter || statusFilter === 'all') {
+            return tree; // Return the full tree if no filter or 'all'
+        }
+
+        return tree.filter(p => {
+            if (statusFilter === 'active') {
+                return p.status !== 'Done';
+            }
+            return p.status === statusFilter;
+        });
+    }
+
+    /**
+     * Get ALL visible databases utilizing Search API
+     */
+    async getAllVisibleDatabases() {
+        let allDatabases = [];
+        let hasMore = true;
+        let startCursor = undefined;
+
+        try {
+            while (hasMore) {
+                try {
+                    const response = await this.notion.search({
+                        filter: {
+                            value: 'database',
+                            property: 'object'
+                        },
+                        start_cursor: startCursor,
+                        page_size: 100
+                    });
+
+                    allDatabases = allDatabases.concat(response.results);
+                    hasMore = response.has_more;
+                    startCursor = response.next_cursor;
+                    await this.delay(this.requestDelay);
+                } catch (e) {
+                    console.warn(`[Projects] Search pagination warning: ${e.message}`);
+                    // Break loop on pagination error but return what we have
+                    break;
+                }
+            }
+
+            return allDatabases.map(db => ({
+                id: db.id,
+                name: db.title?.[0]?.plain_text || 'Untitled',
+                parent: db.parent
+            }));
+        } catch (error) {
+            console.error('[Projects] Error searching databases:', error.message);
+            return [];
+        }
+    }
+
+    extractProjectInfo(project) {
+        let name = 'Untitled';
+        let status = '';
+        let brand = [];
+        let year = '';
+        let projectId = '';
+
+        for (const [key, prop] of Object.entries(project.properties)) {
+            if (prop.type === 'title') {
+                name = prop.title?.map(t => t.plain_text).join('') || 'Untitled';
+            }
+            if (prop.type === 'status') {
+                status = prop.status?.name || '';
+            }
+            if (key === 'Brand' && prop.type === 'multi_select') {
+                brand = prop.multi_select?.map(s => s.name) || [];
+            }
+            if (key === 'Năm' && prop.type === 'select') {
+                year = prop.select?.name || '';
+            }
+            if (key === 'ID' && prop.type === 'unique_id') {
+                projectId = prop.unique_id?.prefix + '-' + prop.unique_id?.number;
+            }
+        }
+
+        const keywords = [name];
+
+        // Dictionary for Project Code -> Database Keyword alias
+        const CODE_ALIASES = {
+            'GEN': 'Gene',
+            'HAR': 'Harry',
+            'MAM': 'Mami',
+            'LEG': 'Lego',
+            'MIR': 'Chibi', // Mapped to Chibi per debug
+            'CHIBI': 'Chibi',
+            'IMM': 'Immortals',
+            'SUN': 'Sunny',
+            'DK': 'Knight', // Disk Knight -> Knight
+            'OTH4': 'Shavuot' // Guessing
+        };
+
+        // 1. Bracket content [Code]
+        const bracketMatch = name.match(/\[(.*?)\]/);
+        if (bracketMatch) {
+            keywords.push(bracketMatch[1]); // e.g. DeeDee_2026_LEG
+            const parts = bracketMatch[1].split('_');
+            if (parts.length > 1) {
+                const code = parts[parts.length - 1]; // LEG
+                keywords.push(code);
+
+                // Add Alias
+                if (CODE_ALIASES[code]) {
+                    keywords.push(CODE_ALIASES[code]);
+                }
+            }
+        }
+
+        // 2. Name after brackets
+        const nameAfterBracket = name.replace(/\[.*?\]\s*/, '').trim();
+        if (nameAfterBracket.length > 0) {
+            keywords.push(nameAfterBracket);
+
+            if (nameAfterBracket.includes(' ')) {
+                // First word
+                const words = nameAfterBracket.split(' ');
+                words.forEach(w => {
+                    // Add significant words (>3 chars)
+                    if (w.length > 3) keywords.push(w);
+                });
+
+                // First two words combined
+                if (words.length >= 2) {
+                    keywords.push(`${words[0]} ${words[1]}`);
+                }
+            }
+        }
+
+        // 3. Specific Project Aliases (Manual Overrides)
+        if (name.includes("GENEVIEVE")) keywords.push("Gene");
+        if (name.includes("MIRACULOUS")) keywords.push("Chibi");
+        if (name.includes("XANHSM")) keywords.push("XANHSM");
+        if (name.toLowerCase().includes("lego")) keywords.push("Lego");
+
+        return {
+            id: project.id,
+            name,
+            status,
+            brand,
+            year,
+            projectId,
+            keywords: [...new Set(keywords)].filter(k => k && k.length > 2)
+        };
+    }
+
+    findMatchingDatabases(projectInfo, allDatabases) {
+        const matched = [];
+
+        for (const db of allDatabases) {
+            const dbNameLower = db.name.toLowerCase();
+
+            // Skip parent database itself
+            if (db.id === this.parentDbId) continue;
+
+            let isMatch = false;
+
+            // Checks keywords
+            for (const keyword of projectInfo.keywords) {
+                const keywordLower = keyword.toLowerCase();
+
+                // Strict check: Database name must contain project keyword
+                // Ideally in brackets like [Gene] or just Gene at start
+                if (dbNameLower.includes(`[${keywordLower}]`) ||
+                    dbNameLower.startsWith(`${keywordLower} `) ||
+                    dbNameLower.includes(` ${keywordLower} `)) {
+
+                    isMatch = true;
+                    break;
+                }
+            }
+
+            if (isMatch) {
+                const dbType = this.determineDatabaseType(db.name);
+                matched.push({
+                    id: db.id,
+                    name: db.name,
+                    type: dbType
+                });
+            }
+        }
+
+        return matched;
+    }
+
+    /**
+     * Get all projects from parent database
+     */
+    async getAllProjects(statusFilter = null) {
+        let allProjects = [];
+        let hasMore = true;
+        let startCursor = undefined;
+
+        const queryOptions = {
+            database_id: this.parentDbId,
+            page_size: 100
+        };
+
+        // Add status filter if provided
+        if (statusFilter && statusFilter !== 'all') {
+            if (statusFilter === 'active') {
+                queryOptions.filter = {
+                    property: 'Status',
+                    status: {
+                        does_not_equal: 'Done'
+                    }
+                };
+            } else {
+                queryOptions.filter = {
+                    property: 'Status',
+                    status: {
+                        equals: statusFilter
+                    }
+                };
+            }
+        }
+
+        while (hasMore) {
+            queryOptions.start_cursor = startCursor;
+            const response = await this.notion.databases.query(queryOptions);
+            allProjects = allProjects.concat(response.results);
+            hasMore = response.has_more;
+            startCursor = response.next_cursor;
+            await this.delay(this.requestDelay);
+        }
+
+        return allProjects;
+    }
+
+    /**
+     * Determine database type based on name
+     */
+    determineDatabaseType(name) {
+        const nameLower = name.toLowerCase();
+        if (nameLower.includes('task')) return 'tasks';
+        if (nameLower.includes('product')) return 'products';
+        if (nameLower.includes('sprint')) return 'sprints';
+        if (nameLower.includes('doc')) return 'docs';
+        if (nameLower.includes('changelog')) return 'changelog';
+        if (nameLower.includes('issue')) return 'issues';
+        if (nameLower.includes('báo cáo') || nameLower.includes('report')) return 'reports';
+        return 'other';
+    }
+
+    /**
+     * Fetch data for a specific database
+     */
+    async fetchDatabaseData(databaseId) {
+        console.log(`[Projects] Fetching data for database ${databaseId}...`);
+
+        try {
+            let allPages = [];
+            let hasMore = true;
+            let startCursor = undefined;
+
+            while (hasMore) {
+                const response = await this.notion.databases.query({
+                    database_id: databaseId,
+                    start_cursor: startCursor,
+                    page_size: 100
+                });
+
+                allPages = allPages.concat(response.results);
+                hasMore = response.has_more;
+                startCursor = response.next_cursor;
+
+                if (hasMore) {
+                    await this.delay(this.requestDelay);
+                }
+            }
+
+            // Transform pages
+            const transformed = allPages.map(page => this.transformPage(page, databaseId));
+
+            console.log(`[Projects] Fetched ${transformed.length} records from database`);
+            return transformed;
+
+        } catch (error) {
+            console.error(`[Projects] Error fetching database ${databaseId}:`, error.message);
+            throw error;
+        }
+    }
+
+    /**
+     * Transform page to simplified format
+     */
+    transformPage(page, databaseId) {
+        const transformed = {
+            id: page.id,
+            database_id: databaseId,
+            created_time: page.created_time,
+            last_edited_time: page.last_edited_time,
+            properties: {}
+        };
+
+        for (const [key, prop] of Object.entries(page.properties)) {
+            const value = this.extractPropertyValue(prop);
+            transformed.properties[key] = value;
+
+            if (prop.type === 'title') {
+                transformed._title = value;
+            }
+        }
+
+        return transformed;
+    }
+
+    /**
+     * Extract value from Notion property
+     */
+    extractPropertyValue(property) {
+        const type = property.type;
+
+        switch (type) {
+            case 'title':
+                return property.title?.map(t => t.plain_text).join('') || '';
+            case 'rich_text':
+                return property.rich_text?.map(t => t.plain_text).join('') || '';
+            case 'number':
+                return property.number;
+            case 'select':
+                return property.select?.name || null;
+            case 'multi_select':
+                return property.multi_select?.map(s => s.name) || [];
+            case 'date':
+                return property.date ? {
+                    start: property.date.start,
+                    end: property.date.end
+                } : null;
+            case 'people':
+                return property.people?.map(p => ({
+                    id: p.id,
+                    name: p.name || p.person?.email || 'Unknown'
+                })) || [];
+            case 'checkbox':
+                return property.checkbox;
+            case 'status':
+                return property.status?.name || null;
+            case 'relation':
+                return property.relation?.map(r => r.id) || [];
+            case 'formula':
+                if (property.formula?.type === 'string') return property.formula.string;
+                if (property.formula?.type === 'number') return property.formula.number;
+                if (property.formula?.type === 'boolean') return property.formula.boolean;
+                return null;
+            case 'rollup':
+                if (property.rollup?.type === 'number') return property.rollup.number;
+                if (property.rollup?.type === 'array') return property.rollup.array;
+                return null;
+            default:
+                return null;
+        }
+    }
+}

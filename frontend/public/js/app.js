@@ -1,172 +1,362 @@
-// app.js - Final Dash Notion V3
-/**
- * Main application logic for Dash Notion
- * Features: Multi-select, Auto-preload, Dedicated Hidden Group, Advanced Reporting
- */
+// app.js - Final Dash Notion V3 (Refined)
 
 const API_BASE = window.location.origin;
 
 class DashboardApp {
     constructor() {
-        this.projects = {};
-        this.databaseNames = new Map(); // Map db.id -> db.name
-        this.selectedProjects = new Set();
-        this.selectedDatabases = new Set();
+        this.projectsHierarchy = [];
+        this.databaseNames = new Map();
 
-        // Load config from localStorage
-        this.hiddenProjects = new Set(JSON.parse(localStorage.getItem('hiddenProjects') || '[]'));
-        this.hiddenDatabases = new Set(JSON.parse(localStorage.getItem('hiddenDatabases') || '[]'));
+        // Persistence: Load selected databases
+        this.selectedDatabases = new Set();
+        this.selectedProjects = new Set();
+        this.hiddenProjects = new Set();
+        this.hiddenDatabases = new Set();
+
+        this.loadPersistedState();
 
         this.searchQuery = '';
-        this.rawDataCache = {}; // Cache for pre-loaded raw data
-        this.isHiddenGroupOpen = false; // Add state tracker for hidden group
+        this.isHiddenGroupOpen = false;
+        this.databaseCounts = {}; // Store record counts
+        this.initialFetchDone = false;
     }
 
     async init() {
-        if (this.initialized) return;
-        this.initialized = true;
-
         console.log('[Dashboard] Initializing...');
-        await this.loadProjectsTree();
         this.setupEventListeners();
-        this.updateSelectedCount();
 
-        // Auto-load all data in background to make UI snappy
-        this.preloadAllData();
+        // Initial Load
+        await this.loadProjectsTree();
+
+        // Start Polling
+        this.startPolling();
     }
 
-    async preloadAllData() {
-        console.log('[Dashboard] Triggering background refresh...');
+    loadPersistedState() {
         try {
-            fetch(`${API_BASE}/api/refresh`, {
-                method: 'POST',
-                credentials: 'include'
-            }).then(() => console.log('[Dashboard] Background refresh triggered'));
-        } catch (error) {
-            console.warn('[Dashboard] Background refresh warning:', error);
+            // Load selected databases
+            const savedSelected = localStorage.getItem('dashNotion_selectedDatabases');
+            if (savedSelected) {
+                const ids = JSON.parse(savedSelected);
+                if (Array.isArray(ids)) ids.forEach(id => this.selectedDatabases.add(id));
+            }
+
+            // Load hidden items
+            const savedHiddenProj = localStorage.getItem('dashNotion_hiddenProjects');
+            if (savedHiddenProj) {
+                const names = JSON.parse(savedHiddenProj);
+                if (Array.isArray(names)) names.forEach(n => this.hiddenProjects.add(n));
+            }
+
+            const savedHiddenDb = localStorage.getItem('dashNotion_hiddenDatabases');
+            if (savedHiddenDb) {
+                const ids = JSON.parse(savedHiddenDb);
+                if (Array.isArray(ids)) ids.forEach(id => this.hiddenDatabases.add(id));
+            }
+
+        } catch (e) {
+            console.error('Error loading state:', e);
         }
     }
 
-    async loadProjectsTree() {
-        console.log('[Dashboard] Loading projects tree...');
-        try {
-            const response = await fetch(`${API_BASE}/api/databases/grouped`, {
-                credentials: 'include'
+    savePersistedState() {
+        localStorage.setItem('dashNotion_selectedDatabases', JSON.stringify([...this.selectedDatabases]));
+        localStorage.setItem('dashNotion_hiddenProjects', JSON.stringify([...this.hiddenProjects]));
+        localStorage.setItem('dashNotion_hiddenDatabases', JSON.stringify([...this.hiddenDatabases]));
+    }
+
+    setupEventListeners() {
+        // Search
+        const searchInput = document.getElementById('sidebar-search') || document.getElementById('project-search'); // Fallback
+        if (searchInput) {
+            searchInput.addEventListener('input', (e) => {
+                this.searchQuery = e.target.value.trim();
+                this.renderProjectsTreeHierarchical();
             });
+        }
 
-            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        // Report Controls
+        const generateBtn = document.getElementById('generate-report-btn');
+        if (generateBtn) {
+            generateBtn.addEventListener('click', () => this.generateReport());
+        }
 
+        const reportTypeSelect = document.getElementById('report-type-select');
+        if (reportTypeSelect) {
+            reportTypeSelect.addEventListener('change', () => this.updateGenerateButtonState());
+        }
+
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (refreshBtn) {
+            refreshBtn.addEventListener('click', () => {
+                this.loadProjectsTree(); // Refresh tree
+                this.fetchSelectedDatabases(false); // Refresh data
+            });
+        }
+    }
+
+    updateGenerateButtonState() {
+        const generateBtn = document.getElementById('generate-report-btn');
+        const reportType = document.getElementById('report-type-select')?.value;
+        const hasSelection = this.selectedDatabases.size > 0;
+
+        if (generateBtn) {
+            generateBtn.disabled = !(hasSelection && reportType);
+            // Update Selected Count Text
+            const countSpan = document.getElementById('selected-count');
+            if (countSpan) {
+                countSpan.textContent = hasSelection ? `Đã chọn ${this.selectedDatabases.size} database` : 'Chưa chọn dự án';
+            }
+        }
+    }
+
+    generateReport() {
+        const reportType = document.getElementById('report-type-select')?.value;
+        if (!reportType) return;
+
+        const container = document.getElementById('report-container');
+        if (!container) return;
+
+        // Clear Welcome Screen
+        container.innerHTML = '';
+
+        switch (reportType) {
+            case 'raw':
+                this.renderRawDataReport(container);
+                break;
+            case 'sprint':
+                this.renderSprintReport(container); // Placeholder
+                break;
+            case 'productivity':
+                this.renderProductivityReport(container); // Placeholder
+                break;
+            default:
+                container.innerHTML = '<div class="error-state">Loại báo cáo chưa được hỗ trợ</div>';
+        }
+    }
+
+    renderRawDataReport(container) {
+        // Show loading state, then fetch
+        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu thô...</div>';
+
+        // fetchSelectedDatabases will call renderDatabaseData which appends tables to report-container
+        this.fetchSelectedDatabases(true).then(() => {
+            // After fetching completes, tables have been rendered by renderDatabaseData
+            // Remove loading if still present
+            const loadingEl = container.querySelector('.loading-state');
+            if (loadingEl) loadingEl.remove();
+
+            // If no data was rendered (no sections), show message
+            if (container.children.length === 0) {
+                container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu nào được tải.</div>';
+            }
+        }).catch(err => {
+            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
+        });
+    }
+
+    renderSprintReport(container) {
+        container.innerHTML = '<div class="report-content"><h3>Sprint Report</h3><p>Tính năng đang phát triển...</p></div>';
+    }
+
+    renderProductivityReport(container) {
+        container.innerHTML = '<div class="report-content"><h3>Productivity Report</h3><p>Tính năng đang phát triển...</p></div>';
+    }
+
+    async loadProjectsTree() {
+        const treeContainer = document.getElementById('project-tree');
+        if (treeContainer) treeContainer.innerHTML = '<div class="loading-spinner">Loading projects...</div>';
+
+        try {
+            const response = await fetch(`${API_BASE}/api/projects/tree?status=active`);
             const data = await response.json();
 
-            if (data.success && data.projects) {
-                this.projects = data.projects;
+            if (data.success) {
+                this.projectsHierarchy = data.projects || data.tree; // Expecting { projects: [...] }
+                this.renderProjectsTreeHierarchical();
 
-                // Build database name map
-                for (const [projectName, databases] of Object.entries(this.projects)) {
-                    for (const db of databases) {
-                        this.databaseNames.set(db.id, db.name);
-                    }
+                // Auto-fetch if we have selections
+                if (this.selectedDatabases.size > 0 && !this.initialFetchDone) {
+                    this.initialFetchDone = true;
+                    // Provide feedback
+                    this.showLoading(`Restoring ${this.selectedDatabases.size} databases...`);
+                    // Use cache preference = true
+                    setTimeout(() => this.fetchSelectedDatabases(true), 500);
                 }
-
-                this.renderProjectsTree();
             } else {
-                this.showError('Không tìm thấy dự án.');
+                console.warn('API error:', data.error);
+                this.showError('Failed to load project tree.');
             }
         } catch (error) {
-            console.error('[Dashboard] Error loading projects:', error);
-            this.showError(`❌ Lỗi kết nối: ${error.message}`);
+            console.error('Network error loading projects:', error);
+            this.showError('Network error. Check server.');
         }
     }
 
     /**
-     * Renders the sidebar tree with a dedicated "Hidden Items" group at the bottom
+     * Renders sidebar with Whitelist filtering and Status grouping
      */
-    escapeHtml(text) {
-        if (!text) return '';
-        return String(text)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-
-    renderProjectsTree() {
+    renderProjectsTreeHierarchical() {
         const treeContainer = document.getElementById('project-tree');
-        if (!treeContainer || Object.keys(this.projects).length === 0) {
-            treeContainer.innerHTML = '<div class="no-data">Chưa có dữ liệu dự án</div>';
-            return;
-        }
+        if (!treeContainer || !this.projectsHierarchy) return;
 
-        // Save scroll position to prevent jumping
         const scrollPos = treeContainer.scrollTop;
-
-        let mainHtml = '';
-        let hiddenHtml = '';
-        let hiddenCount = 0;
         const query = this.searchQuery.toLowerCase();
+        let mainHtml = '';
 
-        for (const [projectName, databases] of Object.entries(this.projects)) {
-            // Filter by search query
+        // Whitelist project keywords
+        const WHITELIST_KEYWORDS = [
+            'Disk Knight', 'SHAVUOT', 'NINJAGO', 'FC MOBILE',
+            'HARRY', 'MIRACULOUS', 'XANHSM',
+            'KNIGHTS', 'GENEVIEVE', 'Sunny Side',
+            'Đại Hiệp', 'UPZI', 'LEGO', 'Victory',
+            'Immortals', 'Mami', 'GEN', 'HAR', 'LEG'
+        ];
+
+        // 1. Filter & Group
+        const pinnedProjects = [];
+        const otherProjects = [];
+        const hiddenProjectsList = [];
+
+        for (const project of this.projectsHierarchy) {
+            // Search filter
             const matchesSearch = !query ||
-                projectName.toLowerCase().includes(query) ||
-                databases.some(db => db.name.toLowerCase().includes(query));
+                project.name.toLowerCase().includes(query) ||
+                (project.databases && project.databases.some(db => db.name.toLowerCase().includes(query)));
 
             if (!matchesSearch) continue;
 
-            const isProjectHidden = this.hiddenProjects.has(projectName);
-            const safeProjectName = this.escapeHtml(projectName);
+            // Hidden Check (Only effective if NO search query)
+            // If searching, show everything matching
+            const isHidden = this.hiddenProjects.has(project.name) && !query;
 
-            // --- LOGIC 1: PROJECT IS HIDDEN -> Move to Hidden Group ---
-            if (isProjectHidden) {
-                hiddenHtml += `
-                    <li class="project-group hidden-item-special">
-                        <div class="project-header">
-                             <span class="project-label" title="${safeProjectName}">${safeProjectName} (${databases.length})</span>
-                             <button class="visibility-toggle" data-toggle-project="${safeProjectName}" title="Hiện dự án">👁‍🗨</button>
-                        </div>
-                    </li>
-                `;
-                hiddenCount++;
-                continue; // Skip main rendering for this project
+            if (isHidden) {
+                hiddenProjectsList.push(project);
+                continue;
             }
 
-            // --- LOGIC 2: PROJECT VISIBLE -> Check its Databases ---
-            const visibleDatabases = databases.filter(db => !this.hiddenDatabases.has(db.id));
-            const hiddenDbsInProject = databases.filter(db => this.hiddenDatabases.has(db.id));
+            const isPinned = WHITELIST_KEYWORDS.some(k => project.name.toLowerCase().includes(k.toLowerCase()));
 
-            // Move hidden DBs to hidden group
-            hiddenDbsInProject.forEach(db => {
-                const safeDbName = this.escapeHtml(db.name);
-                hiddenHtml += `
-                    <li class="database-item hidden-item-special">
-                        <label title="${safeDbName}">📊 ${safeDbName} <small style="color:var(--color-text-muted)">(${safeProjectName})</small></label>
-                        <button class="visibility-toggle-small" data-toggle-db="${db.id}" title="Hiện database">👁‍🗨</button>
-                    </li>
-               `;
-                hiddenCount++;
-            });
+            if (isPinned) {
+                pinnedProjects.push(project);
+            } else {
+                otherProjects.push(project);
+            }
+        }
 
-            const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
-            const isProjectSelected = this.selectedProjects.has(projectName);
-            const isExpanded = isProjectSelected || visibleDatabases.some(db => this.selectedDatabases.has(db.id));
+        // 2. Render Pinned Projects by Status
+        const statusGroups = {};
+        for (const project of pinnedProjects) {
+            const status = project.status || 'Unknown';
+            if (!statusGroups[status]) statusGroups[status] = [];
+            statusGroups[status].push(project);
+        }
+
+        const statusOrder = ['In Progress', 'Done', 'Planning', 'Backlog', 'Paused', 'Seedbed'];
+
+        // Render by Status (Pinned)
+        let hasPinnedContent = false;
+        for (const status of statusOrder) {
+            const projects = statusGroups[status];
+            if (!projects || projects.length === 0) continue;
+
+            hasPinnedContent = true;
+            const statusIcon = this.getStatusIcon(status);
+            mainHtml += `
+                <div class="status-group-header" data-status="${status}">
+                    <span class="status-icon">${statusIcon}</span>
+                    <span class="status-label">${status}</span>
+                    <span class="status-count">${projects.length}</span>
+                </div>
+            `;
+            mainHtml += this.renderProjectList(projects);
+        }
+
+        // 3. Render Hidden Projects Section (If any)
+        if (hiddenProjectsList.length > 0) {
+            mainHtml += `
+                <div class="other-projects-header" onclick="app.toggleHiddenProjectsSection()" style="margin-top: 20px; border-top: 1px dashed #475569;">
+                    ${this.isHiddenProjectsOpen ? '▼' : '▶'} Dự án đã ẩn (${hiddenProjectsList.length})
+                </div>
+            `;
+            if (this.isHiddenProjectsOpen) {
+                mainHtml += `<div id="hidden-projects-list">${this.renderProjectList(hiddenProjectsList, true)}</div>`;
+            }
+        }
+
+        // 4. Render Other Projects (Collapsed)
+        if (otherProjects.length > 0) {
+            const style = this.isHiddenGroupOpen ? 'display: block;' : 'display: none;';
+            const arrow = this.isHiddenGroupOpen ? '▼' : '▶';
 
             mainHtml += `
-                <li class="project-group">
-                    <div class="project-header" data-project="${safeProjectName}">
-                        <span class="expand-icon" style="transition: transform 0.2s; ${isExpanded ? 'transform: rotate(90deg);' : ''}">▶</span>
-                        <input type="checkbox" class="project-checkbox"
-                            data-project="${safeProjectName}"
-                            ${isProjectSelected ? 'checked' : ''}>
-                        <label class="project-label" title="${safeProjectName}">${safeProjectName}</label>
-                        <span class="count">${visibleDatabases.length}</span>
-                        <button class="visibility-toggle" data-toggle-project="${safeProjectName}" title="Ẩn dự án">👁</button>
+                <div class="other-projects-header" onclick="app.toggleHiddenGroup()">
+                    ${arrow} Dự án khác (${otherProjects.length})
+                </div>
+                <div id="other-projects-list" style="${style}">
+                    ${this.renderProjectList(otherProjects)}
+                </div>
+            `;
+        }
+
+        if (!hasPinnedContent && otherProjects.length === 0 && hiddenProjectsList.length === 0) {
+            mainHtml = '<div class="no-data" style="padding:20px; text-align:center; color:#64748b;">Không tìm thấy kết quả</div>';
+        }
+
+        treeContainer.innerHTML = mainHtml;
+
+        // Restore scroll
+        if (scrollPos > 0) treeContainer.scrollTop = scrollPos;
+    }
+
+    renderProjectList(projects, isHiddenSection = false) {
+        let html = '';
+        for (const project of projects) {
+            const safeProjectName = this.escapeHtml(project.name);
+            const projectId = `project-${this.hashString(project.name)}`;
+            const databases = project.databases || [];
+
+            if (databases.length === 0) continue;
+
+            // Determine if expanded
+            const isProjectSelected = this.selectedProjects.has(project.name);
+            const visibleDatabases = databases.filter(db => !this.hiddenDatabases.has(db.id));
+            const hasSelections = visibleDatabases.some(db => this.selectedDatabases.has(db.id));
+            const isExpanded = isProjectSelected || hasSelections;
+
+            // Visibility Icon
+            const eyeIcon = isHiddenSection ? 'strikethrough-eye' : 'eye'; // Simplified icon logic
+            const eyeTitle = isHiddenSection ? 'Hiện dự án' : 'Ẩn dự án';
+            const eyeAction = `event.stopPropagation(); app.toggleProjectVisibility('${safeProjectName.replace(/'/g, "\\'")}')`;
+            // Note: toggleProjectVisibility logic handles boolean toggle.
+
+            html += `
+                <div class="project-group">
+                     <div class="project-header" data-project="${safeProjectName}" onclick="app.toggleProjectExpand('${projectId}-databases', this)">
+                        <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
+                        <div class="project-label" title="${safeProjectName}">${safeProjectName}</div>
+                        
+                        <!-- Toggle Project Visibility -->
+                         <div class="visibility-toggle" onclick="${eyeAction}" title="${eyeTitle}">
+                            ${isHiddenSection ? '🚫' : '👁'}
+                         </div>
                     </div>
+
                     <ul class="database-list ${isExpanded ? 'expanded' : ''}" id="${projectId}-databases">
-                        ${visibleDatabases.map(db => {
+                         ${visibleDatabases.map(db => {
                 const dbId = `db-${db.id}`;
                 const isDbSelected = this.selectedDatabases.has(db.id);
                 const safeDbName = this.escapeHtml(db.name);
+                const dbIcon = this.getDatabaseIcon(db.type);
+
+                // RECORD COUNT
+                const count = this.databaseCounts[db.id];
+                // Show counts if available, otherwise show placeholder if selectd? 
+                // Only show badge if count is defined (loaded)
+                const countLabel = (count !== undefined)
+                    ? `<span class="db-count-badge">${count}</span>`
+                    : ''; // Don't show anything if not loaded to keep clean
+
                 return `
                                 <li class="database-item">
                                     <input type="checkbox" id="${dbId}" 
@@ -174,481 +364,288 @@ class DashboardApp {
                                         data-db-id="${db.id}" 
                                         data-db-name="${safeDbName}"
                                         data-project="${safeProjectName}"
-                                        ${isDbSelected ? 'checked' : ''}>
-                                    <label for="${dbId}" title="${safeDbName}">📊 ${safeDbName}</label>
-                                    <button class="visibility-toggle-small" data-toggle-db="${db.id}" title="Ẩn database">👁</button>
+                                        ${isDbSelected ? 'checked' : ''}
+                                        onchange="app.handleDatabaseCheckbox(this)">
+                                    <label for="${dbId}" title="${safeDbName}">
+                                        ${dbIcon} ${safeDbName}
+                                        ${countLabel}
+                                    </label>
+                                     <div class="visibility-toggle-small" 
+                                            onclick="event.stopPropagation(); app.toggleDatabaseVisibility('${db.id}')"
+                                            title="Ẩn database">👁</div>
                                 </li>
                             `;
             }).join('')}
                     </ul>
-                </li>
+                </div>
             `;
         }
-
-        // --- Render Hidden Group at Bottom ---
-        if (hiddenHtml) {
-            const isOpen = this.isHiddenGroupOpen === true;
-            mainHtml += `
-                <li class="project-group" id="hidden-group-container" style="margin-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 10px;">
-                    <div class="project-header" style="cursor: pointer;">
-                         <span class="expand-icon" style="transform: ${isOpen ? 'rotate(0)' : 'rotate(-90deg)'}; transition: transform 0.2s;">▼</span>
-                         <label class="project-label" title="Click để ẩn/hiện mục đã ẩn" style="color: #94a3b8; font-style: italic; cursor: pointer; flex: 1;">Mục đã ẩn (${hiddenCount})</label>
-                    </div>
-                    <ul id="hidden-list-ul" class="database-list" style="padding-left: 0.5rem; display: ${isOpen ? 'block' : 'none'};">
-                        ${hiddenHtml}
-                    </ul>
-                </li>
-             `;
-        }
-
-        treeContainer.innerHTML = mainHtml || '<div class="no-data">Không tìm thấy kết quả</div>';
-
-        // Restore scroll position
-        if (scrollPos > 0) treeContainer.scrollTop = scrollPos;
+        return html;
     }
 
-    setupEventListeners() {
-        const treeContainer = document.getElementById('project-tree');
-
-        // Sidebar search
-        document.getElementById('sidebar-search')?.addEventListener('input', (e) => {
-            this.searchQuery = e.target.value;
-            this.renderProjectsTree();
-        });
-
-        // Actions
-        document.getElementById('select-all-projects')?.addEventListener('click', () => this.selectAllProjects());
-        document.getElementById('deselect-all-projects')?.addEventListener('click', () => this.deselectAllProjects());
-        document.getElementById('save-sidebar-config')?.addEventListener('click', () => this.saveVisibilityConfig());
-        document.getElementById('reset-sidebar-config')?.addEventListener('click', () => this.resetVisibilityConfig());
-
-        // Report & Export
-        document.getElementById('report-type-select')?.addEventListener('change', () => this.updateGenerateButton());
-        document.getElementById('generate-report-btn')?.addEventListener('click', () => this.generateReport());
-        document.getElementById('refresh-btn')?.addEventListener('click', () => this.refreshData());
-
-        // Tree Delegation
-        if (treeContainer) {
-            treeContainer.addEventListener('change', (e) => {
-                const checkbox = e.target.closest('input[type="checkbox"]');
-                if (!checkbox) return;
-
-                if (checkbox.classList.contains('project-checkbox')) this.handleProjectCheckbox(checkbox);
-                else if (checkbox.classList.contains('database-checkbox')) this.handleDatabaseCheckbox(checkbox);
-            });
-
-            treeContainer.addEventListener('click', (e) => {
-                // Visibility Toggles (Project & DB)
-                const toggleBtn = e.target.closest('.visibility-toggle, .visibility-toggle-small');
-                if (toggleBtn) {
-                    e.preventDefault();
-                    e.stopPropagation();
-
-                    console.log('[App] Toggle clicked', toggleBtn.dataset);
-
-                    if (toggleBtn.dataset.toggleProject) {
-                        this.toggleProjectVisibility(toggleBtn.dataset.toggleProject);
-                    } else if (toggleBtn.dataset.toggleDb) {
-                        this.toggleDatabaseVisibility(toggleBtn.dataset.toggleDb);
-                    }
-                    return;
-                }
-
-                // Expand/Collapse Project Header
-                const header = e.target.closest('.project-header');
-                if (header) {
-                    // Check if it's the Hidden Group Header by checking closest LI ID
-                    const parentLi = header.closest('li');
-                    if (parentLi && parentLi.id === 'hidden-group-container') {
-                        console.log('[App] Hidden group toggled');
-                        const ul = document.getElementById('hidden-list-ul');
-                        if (ul) {
-                            const isCollapsed = ul.style.display === 'none';
-                            ul.style.display = isCollapsed ? 'block' : 'none';
-                            this.isHiddenGroupOpen = isCollapsed; // Save state
-
-                            const icon = header.querySelector('.expand-icon');
-                            if (icon) icon.style.transform = isCollapsed ? 'rotate(0)' : 'rotate(-90deg)';
-                        }
-                        return;
-                    }
-
-                    // Regular Project Header
-                    if (!e.target.matches('input') && !e.target.closest('.visibility-toggle')) {
-                        if (header.dataset.project) {
-                            this.toggleProjectExpand(header.dataset.project);
-                        }
-                    }
-                }
-            });
-        }
+    toggleHiddenProjectsSection() {
+        this.isHiddenProjectsOpen = !this.isHiddenProjectsOpen;
+        this.renderProjectsTreeHierarchical();
     }
 
-    handleProjectCheckbox(checkbox) {
-        const projectName = checkbox.dataset.project;
-        const databases = this.projects[projectName] || [];
+    toggleHiddenGroup() {
+        this.isHiddenGroupOpen = !this.isHiddenGroupOpen;
+        this.renderProjectsTreeHierarchical();
+    }
 
-        if (checkbox.checked) {
-            this.selectedProjects.add(projectName);
-            databases.forEach(db => {
-                if (!this.hiddenDatabases.has(db.id)) this.selectedDatabases.add(db.id);
-            });
-        } else {
-            this.selectedProjects.delete(projectName);
-            databases.forEach(db => this.selectedDatabases.delete(db.id));
+    // ACTIONS
+
+    async fetchSelectedDatabases(useCache = false) {
+        if (this.selectedDatabases.size === 0) {
+            this.clearMainView();
+            return;
         }
-        this.renderProjectsTree(); // Rerender to update styling if needed
-        this.updateSelectedCount();
+
+        const dbIds = Array.from(this.selectedDatabases);
+        this.showLoading(`Fetching ${dbIds.length} databases...`);
+
+        try {
+            // Fetch one by one to show progress, or batch? Batch is better for User, one by one is better for Progress UI.
+            // Let's use simple logic: Loop fetch.
+
+            for (const dbId of dbIds) {
+                // If we want to force refresh, append ?refresh=true
+                // If we want cache, rely on backend cache logic
+                const url = `${API_BASE}/api/projects/database/${dbId}`;
+
+                // If using cache, we assume backend handles it. But backend cache might be in-memory.
+                // If we really want to avoid wait time on reload, we need backend to persist or use browser cache.
+                // For now, let's rely on backend speed.
+
+                const response = await fetch(url);
+                const result = await response.json();
+
+                if (result.success) {
+                    // Update Count
+                    this.updateDatabaseCounts(dbId, result.data.length);
+                    // Render Table (Simplified for this snippet)
+                    this.renderDatabaseData(dbId, result.data, result.meta);
+                } else {
+                    console.error(`Failed to fetch ${dbId}`);
+                }
+            }
+        } catch (e) {
+            console.error(e);
+            this.showError('Error fetching data');
+        } finally {
+            this.hideLoading();
+        }
     }
 
     handleDatabaseCheckbox(checkbox) {
         const dbId = checkbox.dataset.dbId;
-        const projectName = checkbox.dataset.project;
 
-        if (checkbox.checked) this.selectedDatabases.add(dbId);
-        else this.selectedDatabases.delete(dbId);
-
-        // Update parent project selection state
-        const databases = this.projects[projectName] || [];
-        const visibleDbs = databases.filter(db => !this.hiddenDatabases.has(db.id));
-        const allSelected = visibleDbs.length > 0 && visibleDbs.every(db => this.selectedDatabases.has(db.id));
-
-        if (allSelected) this.selectedProjects.add(projectName);
-        else this.selectedProjects.delete(projectName);
-
-        this.updateSelectedCount();
-    }
-
-    toggleProjectExpand(projectName) {
-        const projectId = `project-${projectName.replace(/[^a-zA-Z0-9]/g, '-')}`;
-        const dbList = document.getElementById(`${projectId}-databases`);
-        const header = document.querySelector(`.project-header[data-project="${projectName}"]`);
-
-        if (dbList) {
-            dbList.classList.toggle('expanded');
-            const icon = header?.querySelector('.expand-icon');
-            if (icon) {
-                icon.style.transform = dbList.classList.contains('expanded') ? 'rotate(90deg)' : 'rotate(0deg)';
-            }
+        if (checkbox.checked) {
+            this.selectedDatabases.add(dbId);
+        } else {
+            this.selectedDatabases.delete(dbId);
+            this.removeDatabaseView(dbId);
         }
+
+        this.savePersistedState();
+        this.updateGenerateButtonState();
+
+        // Debounce Fetch
+        if (this.fetchDebounce) clearTimeout(this.fetchDebounce);
+        this.fetchDebounce = setTimeout(() => {
+            this.fetchSelectedDatabases(true /* use cache preference */);
+        }, 500);
     }
 
-    // --- Visibility Logic ---
     toggleProjectVisibility(projectName) {
         if (this.hiddenProjects.has(projectName)) {
-            this.hiddenProjects.delete(projectName); // Unhide
+            this.hiddenProjects.delete(projectName);
         } else {
-            this.hiddenProjects.add(projectName); // Hide
-            // Also deselect it
-            this.selectedProjects.delete(projectName);
-            const databases = this.projects[projectName] || [];
-            databases.forEach(db => this.selectedDatabases.delete(db.id));
+            this.hiddenProjects.add(projectName);
         }
-        this.renderProjectsTree();
-        this.updateSelectedCount();
+        this.savePersistedState();
+        this.renderProjectsTreeHierarchical();
     }
 
     toggleDatabaseVisibility(dbId) {
         if (this.hiddenDatabases.has(dbId)) {
-            this.hiddenDatabases.delete(dbId); // Unhide
+            this.hiddenDatabases.delete(dbId);
         } else {
-            this.hiddenDatabases.add(dbId); // Hide
-            this.selectedDatabases.delete(dbId);
+            this.hiddenDatabases.add(dbId);
         }
-        this.renderProjectsTree();
-        this.updateSelectedCount();
+        this.savePersistedState();
+        this.renderProjectsTreeHierarchical();
     }
 
-    selectAllProjects() {
-        for (const [projectName, databases] of Object.entries(this.projects)) {
-            if (!this.hiddenProjects.has(projectName)) {
-                this.selectedProjects.add(projectName);
-                databases.forEach(db => {
-                    if (!this.hiddenDatabases.has(db.id)) this.selectedDatabases.add(db.id);
-                });
-            }
+    toggleHiddenGroup() {
+        this.isHiddenGroupOpen = !this.isHiddenGroupOpen;
+        this.renderProjectsTreeHierarchical();
+    }
+
+    toggleProjectExpand(elementId, header) {
+        const el = document.getElementById(elementId);
+        const icon = header.querySelector('.expand-icon');
+        if (el) {
+            el.classList.toggle('expanded');
+            if (icon) icon.textContent = el.classList.contains('expanded') ? '▼' : '▶';
         }
-        this.renderProjectsTree();
-        this.updateSelectedCount();
     }
 
-    deselectAllProjects() {
-        this.selectedProjects.clear();
-        this.selectedDatabases.clear();
-        this.renderProjectsTree(); // Clear checks
-        this.updateSelectedCount();
+    // UPDATERS
+
+    updateDatabaseCounts(dbId, count) {
+        this.databaseCounts[dbId] = count;
+        // Re-render only if needed, or find element and update
+        // Full re-render is safe
+        this.renderProjectsTreeHierarchical();
     }
 
-    saveVisibilityConfig() {
-        localStorage.setItem('hiddenProjects', JSON.stringify([...this.hiddenProjects]));
-        localStorage.setItem('hiddenDatabases', JSON.stringify([...this.hiddenDatabases]));
-        alert('✅ Cấu hình hiển thị đã được lưu!');
-    }
-
-    resetVisibilityConfig() {
-        localStorage.removeItem('hiddenProjects');
-        localStorage.removeItem('hiddenDatabases');
-        this.hiddenProjects.clear();
-        this.hiddenDatabases.clear();
-        this.renderProjectsTree();
-        alert('✅ Đã reset cấu hình!');
-    }
-
-    updateSelectedCount() {
-        const countEl = document.getElementById('selected-count');
-        const dbCount = this.selectedDatabases.size;
-
-        // Show names if few
-        const names = [];
-        let i = 0;
-        for (const dbId of this.selectedDatabases) {
-            if (i++ > 2) break;
-            names.push(this.databaseNames.get(dbId));
-        }
-
-        if (countEl) {
-            if (dbCount === 0) countEl.textContent = 'Chưa chọn dự án nào';
-            else if (dbCount <= 3) countEl.textContent = `Đã chọn: ${names.join(', ')}`;
-            else countEl.textContent = `Đã chọn: ${names.join(', ')} và ${dbCount - 3} khác`;
-        }
-        this.updateGenerateButton();
-    }
-
-    updateGenerateButton() {
-        const btn = document.getElementById('generate-report-btn');
-        const reportType = document.getElementById('report-type-select')?.value;
-        const hasSelection = this.selectedDatabases.size > 0;
-        if (btn) btn.disabled = !hasSelection || !reportType;
-    }
-
-    // --- Report Generation ---
-    async generateReport() {
-        const reportType = document.getElementById('report-type-select')?.value;
-        if (!reportType || this.selectedDatabases.size === 0) {
-            alert('Vui lòng chọn ít nhất 1 database và loại báo cáo!');
-            return;
-        }
-
+    clearMainView() {
         const container = document.getElementById('report-container');
-        const titleEl = document.getElementById('report-title');
-        container.innerHTML = '<div class="loading">⏳ Đang tạo báo cáo...</div>';
-
-        try {
-            const names = [...this.selectedProjects].slice(0, 3).join(', ');
-            const titleSuffix = this.selectedProjects.size > 3 ? ` +...` : '';
-
-            switch (reportType) {
-                case 'sprint':
-                    titleEl.textContent = `📈 Báo cáo Sprint - ${names}${titleSuffix}`;
-                    await this.loadSprintReport();
-                    break;
-                case 'productivity':
-                    titleEl.textContent = `📊 Báo cáo Năng suất - ${names}${titleSuffix}`;
-                    await this.loadProductivityReport();
-                    break;
-                case 'raw':
-                    titleEl.textContent = `📋 Dữ liệu thô - ${names}${titleSuffix}`;
-                    await this.loadRawDataForSelected();
-                    break;
-                default:
-                    container.innerHTML = '<div class="error">Loại báo cáo không hợp lệ</div>';
-            }
-        } catch (error) {
-            console.error(error);
-            container.innerHTML = `<div class="error">Lỗi tạo báo cáo: ${error.message}</div>`;
-        }
+        if (container) container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Chọn database để xem dữ liệu</div>';
     }
 
-    async loadSprintReport() {
-        const res = await fetch(`${API_BASE}/api/reports/sprint`, { credentials: 'include' });
-        const result = await res.json();
-
-        if (!result.success) throw new Error(result.error);
-
-        // Filter in frontend
-        const filtered = result.data.filter(r => this.selectedProjects.has(r.project));
-
-        if (filtered.length === 0) {
-            document.getElementById('report-container').innerHTML = '<div class="no-data">Không có dữ liệu Sprint cho dự án đã chọn</div>';
-            return;
-        }
-        this.renderSprintReport(filtered);
+    removeDatabaseView(dbId) {
+        const el = document.getElementById(`db-section-${dbId}`);
+        if (el) el.remove();
     }
 
-    async loadProductivityReport() {
-        const res = await fetch(`${API_BASE}/api/reports/productivity`, { credentials: 'include' });
-        const result = await res.json();
-
-        if (!result.success) throw new Error(result.error);
-
-        const filtered = result.data.filter(r => this.selectedProjects.has(r.project) || this.selectedDatabases.size > 0); // productivity might not have project field populated correctly sometimes? fallback
-
-        if (filtered.length === 0) {
-            document.getElementById('report-container').innerHTML = '<div class="no-data">Không có dữ liệu Productivity</div>';
-            return;
-        }
-        this.renderProductivityReport(filtered);
-    }
-
-    // --- Raw Data Logic with Auto-Fetch ---
-    async loadRawDataForSelected() {
+    renderDatabaseData(dbId, data, meta) {
         const container = document.getElementById('report-container');
-        const dbIds = [...this.selectedDatabases];
-        this.rawDataCache = {}; // Reset cache used for this report session
+        if (!container) return;
 
-        if (dbIds.length === 0) {
-            container.innerHTML = '<div class="error">Không có database nào được chọn</div>';
-            return;
+        // Remove "loading" message if present
+        const loadingEl = container.querySelector('.loading-state');
+        if (loadingEl) loadingEl.remove();
+
+        // Check if section for this DB already exists
+        let section = document.getElementById(`db-section-${dbId}`);
+        if (!section) {
+            section = document.createElement('div');
+            section.id = `db-section-${dbId}`;
+            section.className = 'db-section';
+            container.appendChild(section);
         }
 
-        const tabNames = dbIds.map(id => this.databaseNames.get(id) || id.substring(0, 8));
+        // Build Table
+        const dbName = meta?.title || dbId;
+        const headers = data.length > 0 ? Object.keys(data[0]) : [];
 
-        container.innerHTML = `
-            <div class="database-tabs">
-                ${dbIds.map((id, index) => `
-                    <button class="tab-btn ${index === 0 ? 'active' : ''}" data-db-id="${id}">
-                        ${tabNames[index]}
-                    </button>
-                `).join('')}
-            </div>
-            <div id="raw-data-content"><div class="loading">⏳ Đang tải dữ liệu...</div></div>
-        `;
-
-        // 1. Load First Tab Immediately
-        this.loadAndRenderTab(dbIds[0]);
-
-        // 2. Auto-fetch ALL other tabs in background (Sequential)
-        this.processBackgroundFetches(dbIds.slice(1));
-
-        // 3. Tab Click Events
-        container.querySelectorAll('.tab-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                this.loadAndRenderTab(btn.dataset.dbId);
-            });
-        });
-    }
-
-    async fetchRawData(dbId) {
-        if (this.rawDataCache[dbId]) return this.rawDataCache[dbId];
-        try {
-            console.log(`[Raw] Prefectching ${dbId}...`);
-            const res = await fetch(`${API_BASE}/api/database/${dbId}/raw`, { credentials: 'include' });
-            const data = await res.json();
-            this.rawDataCache[dbId] = data;
-            return data;
-        } catch (e) {
-            console.error(e);
-            return { success: false, error: e.message };
-        }
-    }
-
-    async loadAndRenderTab(dbId) {
-        const container = document.getElementById('raw-data-content');
-
-        // If cached, render immediately
-        if (this.rawDataCache[dbId]) {
-            if (window.renderRawDataTable) {
-                container.innerHTML = '';
-                window.renderRawDataTable(this.rawDataCache[dbId], container);
-            }
-            return;
-        }
-
-        // Existing loading
-        container.innerHTML = '<div class="loading">⏳ Đang tải dữ liệu...</div>';
-        const data = await this.fetchRawData(dbId);
-
-        if (window.renderRawDataTable) {
-            container.innerHTML = '';
-            window.renderRawDataTable(data, container);
-        } else {
-            container.innerHTML = '<div class="error">Module bảng chưa được tải</div>';
-        }
-    }
-
-    async processBackgroundFetches(ids) {
-        for (const id of ids) {
-            await this.fetchRawData(id);
-            await new Promise(r => setTimeout(r, 800)); // 800ms delay
-        }
-    }
-
-    // --- Render Helpers ---
-    renderSprintReport(data) {
-        // ... (Keep existing implementation logic) ...
-        // Re-implementing simplified version for completeness
-        const container = document.getElementById('report-container');
-        container.innerHTML = `
-            <div class="table-container">
-            <h3>Kết quả Sprint (${data.length} dòng)</h3>
-            <table>
-                <thead>
-                    <tr><th>Project</th><th>Sprint</th><th>Assignee</th><th>Product</th><th>Conf.</th><th>Unconf.</th><th>Total</th></tr>
-                </thead>
-                <tbody>
-                    ${data.slice(0, 100).map(r => `
-                        <tr>
-                            <td>${r.project}</td>
-                            <td>${r.sprint}</td>
-                            <td>${r.assignee}</td>
-                            <td>${r.product}</td>
-                            <td>${r.confirmed_points}</td>
-                            <td>${r.unconfirmed_points}</td>
-                            <td><b>${r.total_points}</b></td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-            ${data.length > 100 ? '<p style="text-align:center; color: #aaa;">(Hiển thị 100 dòng đầu tiên)</p>' : ''}
-            </div>
-            <div style="margin-top:1rem; text-align:right;">
-                <button class="btn-export" onclick="alert('Tính năng Export chưa hoàn thiện')">Xuất báo cáo CSV</button>
+        let tableHtml = `
+            <div class="report-card" style="background:#1e293b;border-radius:12px;margin-bottom:20px;overflow:hidden;">
+                <div class="report-card-header" style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
+                    <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">${this.escapeHtml(dbName)}</h4>
+                    <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${data.length} bản ghi</span>
+                </div>
+                <div class="report-card-body" style="overflow-x:auto;max-height:400px;overflow-y:auto;">
+                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                        <thead style="background:#0f172a;position:sticky;top:0;">
+                            <tr>
+                                ${headers.map(h => `<th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;">${this.escapeHtml(h)}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            ${data.slice(0, 100).map((row, i) => `
+                                <tr style="border-bottom:1px solid #334155;${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
+                                    ${headers.map(h => `<td style="padding:10px 16px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;">${this.formatCell(row[h])}</td>`).join('')}
+                                </tr>
+                            `).join('')}
+                            ${data.length > 100 ? `<tr><td colspan="${headers.length}" style="padding:16px;text-align:center;color:#64748b;">... và ${data.length - 100} bản ghi khác</td></tr>` : ''}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
+
+        section.innerHTML = tableHtml;
     }
 
-    renderProductivityReport(data) {
-        const container = document.getElementById('report-container');
-        container.innerHTML = `
-            <div class="table-container">
-            <h3>Năng suất nhân sự</h3>
-            <table>
-                <thead>
-                    <tr><th>Assignee</th><th>Số công thực tế</th><th>Số công yêu cầu</th><th>Task Points</th><th>% Performance</th></tr>
-                </thead>
-                <tbody>
-                    ${data.map(r => `
-                        <tr>
-                            <td>${r.assignee}</td>
-                            <td>${r.total_actual_hours}</td>
-                            <td>${r.total_expected_hours}</td>
-                            <td>${r.total_points}</td>
-                            <td><b>${r.productivity_percentage}%</b></td>
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
-            </div>
-        `;
+    formatCell(value) {
+        if (value === null || value === undefined) return '<span style="color:#475569;">—</span>';
+        if (typeof value === 'object') {
+            // Handle Notion-specific formats
+            if (Array.isArray(value)) return this.escapeHtml(value.join(', '));
+            return this.escapeHtml(JSON.stringify(value));
+        }
+        return this.escapeHtml(String(value));
+    }
+
+    // UTILS
+
+    showLoading(msg) {
+        // Implement loading overlay
+        const loader = document.getElementById('global-loader');
+        if (loader) {
+            loader.style.display = 'flex';
+            const txt = loader.querySelector('.loading-text');
+            if (txt) txt.textContent = msg;
+        }
+    }
+
+    hideLoading() {
+        const loader = document.getElementById('global-loader');
+        if (loader) loader.style.display = 'none';
     }
 
     showError(msg) {
-        document.getElementById('report-container').innerHTML = `<div class="error">${msg}</div>`;
+        alert(msg); // Simple alert for now
     }
 
-    async refreshData() {
-        const btn = document.getElementById('refresh-btn');
-        if (btn) { btn.disabled = true; btn.textContent = 'Đang tải...'; }
-        try {
-            await fetch(`${API_BASE}/api/refresh`, { method: 'POST', credentials: 'include' });
-            window.location.reload();
-        } catch (e) { alert(e.message); if (btn) btn.disabled = false; }
+    escapeHtml(text) {
+        if (!text) return '';
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    hashString(str) {
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+        }
+        return "id" + Math.abs(hash);
+    }
+
+    getStatusIcon(status) {
+        const icons = {
+            'In Progress': '●',
+            'Planning': '●',
+            'Backlog': '●',
+            'Paused': '⏸️',
+            'Seedbed': '🌱',
+            'Done': '✓'
+        };
+        return icons[status] || '●';
+    }
+
+    getDatabaseIcon(type) {
+        const icons = {
+            'tasks': '✅',
+            'products': '📦',
+            'sprints': '🏃',
+            'docs': '📄',
+            'reports': '📊',
+            'issues': '🐛',
+            'other': '🗄️'
+        };
+        return icons[type] || '🗄️';
+    }
+
+    startPolling() {
+        setInterval(() => {
+            // Optional: check for updates
+        }, 60000);
     }
 }
 
-// Global Init
-const app = new DashboardApp();
-window.dashboardApp = app;
-document.addEventListener('DOMContentLoaded', () => app.init());
+// Initialize
+// const app = new DashboardApp(); // Managed by AuthManager now
+// document.addEventListener('DOMContentLoaded', () => app.init());
+// Expose for AuthManager
+window.DashboardApp = DashboardApp;
+window.app = new DashboardApp(); // Create instance but don't init
+

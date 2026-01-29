@@ -27,32 +27,52 @@ export class NotionClient {
         let hasMore = true;
         let startCursor = undefined;
         let pageCount = 0;
+        const maxRetries = 3;
 
         console.log(`[Notion] Fetching pages from database: ${databaseId}`);
 
         while (hasMore) {
-            try {
-                const response = await this.notion.databases.query({
-                    database_id: databaseId,
-                    start_cursor: startCursor,
-                    filter: filter,
-                    page_size: 100
-                });
+            let retries = 0;
+            let success = false;
 
-                allPages = allPages.concat(response.results);
-                hasMore = response.has_more;
-                startCursor = response.next_cursor;
-                pageCount++;
+            while (!success && retries < maxRetries) {
+                try {
+                    const response = await this.notion.databases.query({
+                        database_id: databaseId,
+                        start_cursor: startCursor,
+                        filter: filter,
+                        page_size: 100
+                    });
 
-                console.log(`[Notion] Fetched page ${pageCount}, got ${response.results.length} items (Total: ${allPages.length})`);
+                    allPages = allPages.concat(response.results);
+                    hasMore = response.has_more;
+                    startCursor = response.next_cursor;
+                    pageCount++;
+                    success = true;
 
-                // Rate limiting
-                if (hasMore) {
-                    await this.delay(this.requestDelay);
+                    console.log(`[Notion] Fetched page ${pageCount}, got ${response.results.length} items (Total: ${allPages.length})`);
+
+                    // Rate limiting
+                    if (hasMore) {
+                        await this.delay(this.requestDelay);
+                    }
+                } catch (error) {
+                    retries++;
+                    const isNetworkError = error.message?.includes('ECONNRESET') ||
+                        error.message?.includes('ETIMEDOUT') ||
+                        error.message?.includes('ENOTFOUND') ||
+                        error.code === 'ECONNRESET' ||
+                        error.code === 'rate_limited';
+
+                    if (isNetworkError && retries < maxRetries) {
+                        const backoff = Math.pow(2, retries) * 1000; // 2s, 4s, 8s
+                        console.warn(`[Notion] ⚠️ Retry ${retries}/${maxRetries} for page ${pageCount + 1} after ${backoff}ms...`);
+                        await this.delay(backoff);
+                    } else {
+                        console.error(`[Notion] Error fetching pages (attempt ${retries}):`, error.message);
+                        throw error;
+                    }
                 }
-            } catch (error) {
-                console.error(`[Notion] Error fetching pages:`, error);
-                throw error;
             }
         }
 

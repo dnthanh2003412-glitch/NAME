@@ -1,6 +1,7 @@
 import express from 'express';
 import { DatabaseDiscovery } from '../notion/discovery.js';
 import { DataFetcher } from '../notion/fetcher.js';
+import { ProjectsService } from '../notion/projects.js';
 import { DatabaseManager } from '../database/db.js';
 import { reportRegistry } from '../reports/index.js';
 
@@ -8,6 +9,7 @@ const router = express.Router();
 
 export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
+    const globalProjectsService = notionToken ? new ProjectsService(notionToken) : null;
 
     // ============ AUTH ROUTES ============
     app.get('/auth/status', (req, res) => {
@@ -86,6 +88,73 @@ export function setupRoutes(app, db, poller) {
             res.json({ success: true, projects: grouped });
         } catch (error) {
             console.error('[API] Error grouping databases:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // ============ PROJECTS TREE ROUTES ============
+
+    // Get hierarchical project tree from [Chung]Dự án
+    app.get('/api/projects/tree', async (req, res) => {
+        if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
+        if (!globalProjectsService) return res.status(500).json({ error: 'Service not initialized' });
+
+        const statusFilter = req.query.status || 'active';
+
+        try {
+            // Use Singleton's internal cache mechanism
+            const projects = await globalProjectsService.getProjectsTree({ statusFilter });
+            res.json({ success: true, projects, cached: true });
+        } catch (error) {
+            console.error('[API] Error fetching projects tree:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Get data for a specific child database
+    app.get('/api/projects/database/:id', async (req, res) => {
+        if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
+
+        const { id } = req.params;
+
+        try {
+            // Check cache first
+            const cachedData = db.getData(id);
+            if (cachedData && cachedData.length > 0) {
+                console.log(`[API] Returning cached data for database ${id}`);
+                return res.json({ success: true, data: cachedData, cached: true, meta: { title: id } });
+            }
+
+            // Fetch fresh data using DataFetcher
+            const fetcher = new DataFetcher(notionToken);
+            const result = await fetcher.fetchAllData([id]);
+            const data = result[id] || [];
+
+            // Cache it
+            db.saveData(id, data);
+
+            console.log(`[Fetcher] ✅ Database ${id.slice(0, 8)}...: ${data.length} records`);
+            res.json({ success: true, data, cached: false, meta: { title: id } });
+        } catch (error) {
+            console.error(`[API] Error fetching database ${id}:`, error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Clear projects tree cache
+    app.post('/api/projects/refresh', async (req, res) => {
+        if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
+
+        try {
+            // Clear cache
+            db.setConfig('projects_tree_active', null);
+            db.setConfig('projects_tree_active_time', null);
+            db.setConfig('projects_tree_all', null);
+            db.setConfig('projects_tree_all_time', null);
+
+            console.log('[API] Cleared projects tree cache');
+            res.json({ success: true, message: 'Cache cleared' });
+        } catch (error) {
             res.status(500).json({ error: error.message });
         }
     });

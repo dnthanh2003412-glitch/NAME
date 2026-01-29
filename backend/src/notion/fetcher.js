@@ -23,37 +23,75 @@ export class DataFetcher {
         // Helper sleep function
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        // First, fetch database metadata to get names (Sequential with delay)
+        // First, fetch database metadata to get names (Sequential with delay and retry)
         for (const dbId of databaseIds) {
-            try {
-                const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
-                dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
-                await sleep(350); // Rate limit protection
-            } catch (error) {
-                console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
-                dbMetadata[dbId] = 'Unknown Database';
+            let retries = 0;
+            const maxRetries = 3;
+            let success = false;
+
+            while (!success && retries < maxRetries) {
+                try {
+                    const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
+                    dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
+                    success = true;
+                    await sleep(350); // Rate limit protection
+                } catch (error) {
+                    retries++;
+                    const isNetworkError = error.message?.includes('ECONNRESET') ||
+                        error.message?.includes('ETIMEDOUT') ||
+                        error.message?.includes('ENOTFOUND');
+
+                    if (isNetworkError && retries < maxRetries) {
+                        const backoff = Math.pow(2, retries) * 1000;
+                        console.warn(`[Fetcher] ⚠️ Retry ${retries}/${maxRetries} for db name ${dbId.substring(0, 8)}... after ${backoff}ms`);
+                        await sleep(backoff);
+                    } else {
+                        console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
+                        dbMetadata[dbId] = 'Unknown Database';
+                        success = true; // Move on with placeholder name
+                    }
+                }
             }
         }
 
-        // Fetch data (Sequential with delay to prevent Rate Limit)
+        // Fetch data (Sequential with delay and retry to prevent Rate Limit)
         for (const dbId of databaseIds) {
-            try {
-                const pages = await this.client.getAllPages(dbId);
-                const databaseName = dbMetadata[dbId];
-                const projectName = this.extractProjectName(databaseName);
-                const transformed = pages.map(page => ({
-                    ...this.transformPage(page),
-                    database_name: databaseName,
-                    project_name: projectName,
-                    database_id: dbId
-                }));
-                results[dbId] = transformed;
-                console.log(`[Fetcher] ✅ Database ${dbId} (${databaseName}): ${transformed.length} records`);
+            let retries = 0;
+            const maxRetries = 3;
+            let success = false;
 
-                await sleep(350); // Rate limit protection between heavy fetches
-            } catch (error) {
-                console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
-                results[dbId] = [];
+            while (!success && retries < maxRetries) {
+                try {
+                    const pages = await this.client.getAllPages(dbId);
+                    const databaseName = dbMetadata[dbId];
+                    const projectName = this.extractProjectName(databaseName);
+                    const transformed = pages.map(page => ({
+                        ...this.transformPage(page),
+                        database_name: databaseName,
+                        project_name: projectName,
+                        database_id: dbId
+                    }));
+                    results[dbId] = transformed;
+                    success = true;
+                    console.log(`[Fetcher] ✅ Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
+
+                    await sleep(350); // Rate limit protection between heavy fetches
+                } catch (error) {
+                    retries++;
+                    const isNetworkError = error.message?.includes('ECONNRESET') ||
+                        error.message?.includes('ETIMEDOUT') ||
+                        error.message?.includes('ENOTFOUND');
+
+                    if (isNetworkError && retries < maxRetries) {
+                        const backoff = Math.pow(2, retries) * 1000;
+                        console.warn(`[Fetcher] ⚠️ Retry ${retries}/${maxRetries} for database ${dbId.substring(0, 8)}... after ${backoff}ms`);
+                        await sleep(backoff);
+                    } else {
+                        console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
+                        results[dbId] = [];
+                        success = true; // Move on
+                    }
+                }
             }
         }
 

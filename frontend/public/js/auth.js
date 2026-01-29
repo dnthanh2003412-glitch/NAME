@@ -11,7 +11,7 @@ class AuthManager {
 
         if (status.authenticated) {
             // Auto-select all databases and go to dashboard
-            await this.autoSelectAllDatabases();
+            // await this.autoSelectAllDatabases(); // Disabled to reduce load. User selects via Sidebar.
             this.showDashboard();
         } else {
             this.showAuthScreen();
@@ -105,10 +105,12 @@ class AuthManager {
         document.getElementById('dashboard').classList.remove('hidden');
 
         // Initialize dashboard
-        if (window.dashboardApp) {
-            window.dashboardApp.init();
+        // Use 'window.app' to match the variable name used in HTML onclick handlers
+        if (window.app) {
+            window.app.init();
         } else {
-            window.dashboardApp = new DashboardApp();
+            window.app = new DashboardApp();
+            window.app.init();
         }
     }
 

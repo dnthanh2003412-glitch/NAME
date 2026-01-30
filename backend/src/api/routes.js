@@ -119,7 +119,7 @@ export function setupRoutes(app, db, poller) {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         if (!globalProjectsService) return res.status(500).json({ error: 'Service not initialized' });
 
-        const statusFilter = req.query.status || 'active';
+        const statusFilter = req.query.status || 'all';
 
         try {
             // Use Singleton's internal cache mechanism
@@ -329,13 +329,14 @@ export function setupRoutes(app, db, poller) {
                 return res.json({ success: true, columns: PROD_COLUMNS, data: [], error: 'No projects selected' });
             }
 
-            const data = await prodService.generateReport(month, selectedDatabases);
+            const { validData, unknownUsers } = await prodService.generateReport(month, selectedDatabases);
             const stats = prodService.getStats(month);
 
             res.json({
                 success: true,
                 columns: PROD_COLUMNS,
-                data,
+                data: validData,
+                unknownUsers,
                 stats,
                 meta: { month }
             });

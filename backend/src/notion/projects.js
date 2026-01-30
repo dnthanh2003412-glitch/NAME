@@ -94,7 +94,7 @@ export class ProjectsService {
         const dbMap = new Map(allDatabases.map(db => [db.id, db]));
 
         // 2. Get active projects
-        const projects = await this.getAllProjects('active');
+        const projects = await this.getAllProjects('all');
 
         // Filter Projects
         const PRIORITY_KEYWORDS = [
@@ -128,29 +128,34 @@ export class ProjectsService {
             // Phase 1 (Priority) -> Use Smart Mapping (FAST)
             // Phase 2 (Background) -> Use Structure Scan (ACCURATE)
 
-            if (priorityOnly) {
-                // SMART MAPPING MODE
-                matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
-            } else {
-                // STRUCTURE SCAN MODE (Classic "Y Nguyên")
+            // HYBRID STRATEGY: Combine Speed (Smart Mapping) and Accuracy (Structure Scan)
+
+            // 1. Try Smart Mapping first (Fast - no API calls)
+            matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
+
+            // 2. If Smart Mapping yields nothing, OR we are in full scan mode (Phase 2), perform Page Scan
+            // This ensures Priority projects (Phase 1) that fail name-matching still get scanned.
+            if (matchedDatabases.length === 0 || !priorityOnly) {
                 const pageDbIds = await this.scanPageForDatabases(project.id);
+
                 if (pageDbIds.size > 0) {
-                    matchedDatabases = Array.from(pageDbIds)
+                    const scannedDbs = Array.from(pageDbIds)
                         .map(id => {
                             const db = dbMap.get(id);
                             if (db) return { id: db.id, name: db.name, type: this.determineDatabaseType(db.name) };
                             return null;
                         })
                         .filter(Boolean);
-                }
 
-                // Fallback for empty scans? Yes.
-                if (matchedDatabases.length === 0) {
-                    matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
+                    // Merge scanned DBs, avoiding duplicates
+                    const existingIds = new Set(matchedDatabases.map(d => d.id));
+                    scannedDbs.forEach(d => {
+                        if (!existingIds.has(d.id)) matchedDatabases.push(d);
+                    });
                 }
 
                 // Rate limiting for scan
-                await this.delay(50);
+                if (!priorityOnly) await this.delay(50);
             }
 
             newResults.push({

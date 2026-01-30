@@ -96,7 +96,12 @@ export class ProductivityService {
             });
         }
 
-        return reportData;
+        const validData = reportData.filter(r => r.seniority !== 'Chưa xác định');
+        const unknownUsers = reportData
+            .filter(r => r.seniority === 'Chưa xác định')
+            .map(r => ({ name: r.fullName, taskCount: r.taskCount }));
+
+        return { validData, unknownUsers };
     }
 
     calculateMetrics(tasks, kpi, standardDays, actualDays) {
@@ -149,7 +154,7 @@ export class ProductivityService {
         const completionPointConf = pointReq ? (pointConf / pointReq) : 0; // C18 (S)
         const completionPointTotal = pointReq ? (pointTotal / pointReq) : 0; // C19 (T)
 
-        const effortRatio = (standardDays * 2) ? (effortTotal / (standardDays * 2)) : 0; // C20 (U)
+        const effortRatio = (actualDays * 2) ? (effortTotal / (actualDays * 2)) : 0; // C20 (U) - Updated to use actualDays
 
         return {
             pointReq,

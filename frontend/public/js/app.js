@@ -135,24 +135,154 @@ class DashboardApp {
         }
     }
 
-    renderRawDataReport(container) {
-        // Show loading state, then fetch
+    async renderRawDataReport(container) {
+        // Show loading state
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu thô...</div>';
 
-        // fetchSelectedDatabases will call renderDatabaseData which appends tables to report-container
-        this.fetchSelectedDatabases(true).then(() => {
-            // After fetching completes, tables have been rendered by renderDatabaseData
-            // Remove loading if still present
-            const loadingEl = container.querySelector('.loading-state');
-            if (loadingEl) loadingEl.remove();
+        const dbIds = Array.from(this.selectedDatabases);
+        if (dbIds.length === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Chưa chọn database nào.</div>';
+            return;
+        }
 
-            // If no data was rendered (no sections), show message
+        try {
+            // Fetch raw data for each database
+            for (const dbId of dbIds) {
+                // Use the raw API endpoint which returns flattened data with all Notion columns
+                const url = `${API_BASE}/api/database/${dbId}/raw`;
+                const response = await fetch(url);
+                const result = await response.json();
+
+                if (result.success) {
+                    // Remove loading if still present
+                    const loadingEl = container.querySelector('.loading-state');
+                    if (loadingEl) loadingEl.remove();
+
+                    // Render the raw data table with all columns
+                    this.renderRawDatabaseTable(container, dbId, result);
+                } else {
+                    console.error(`Failed to fetch raw data for ${dbId}:`, result.error);
+                }
+            }
+
+            // If no data was rendered, show message
             if (container.children.length === 0) {
                 container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu nào được tải.</div>';
             }
-        }).catch(err => {
+        } catch (err) {
+            console.error('Error fetching raw data:', err);
             container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
-        });
+        }
+    }
+
+    renderRawDatabaseTable(container, dbId, result) {
+        const { database_name, columns, data, total_records } = result;
+
+        // Check if section already exists
+        let section = document.getElementById(`db-section-${dbId}`);
+        if (!section) {
+            section = document.createElement('div');
+            section.id = `db-section-${dbId}`;
+            section.className = 'db-section';
+            container.appendChild(section);
+        }
+
+        // Pagination state
+        let currentPage = 1;
+        let pageSize = 20; // Default: 20 rows
+
+        const renderTable = () => {
+            const totalPages = Math.ceil(data.length / pageSize);
+            const start = (currentPage - 1) * pageSize;
+            const end = Math.min(start + pageSize, data.length);
+            const pageData = data.slice(start, end);
+
+            let tableHtml = `
+                <div class="report-card" style="background:#1e293b;border-radius:12px;margin-bottom:20px;overflow:hidden;">
+                    <div class="report-card-header" style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                        <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">${this.escapeHtml(database_name)}</h4>
+                        <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${total_records} bản ghi</span>
+                    </div>
+                    
+                    <!-- Pagination Controls Top -->
+                    <div style="padding:12px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#0f172a;">
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <span style="color:#94a3b8;font-size:0.85rem;">Hiển thị:</span>
+                            <select id="rawPageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #334155;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                                <option value="20" ${pageSize === 20 ? 'selected' : ''}>20</option>
+                                <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
+                                <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
+                                <option value="200" ${pageSize === 200 ? 'selected' : ''}>200</option>
+                                <option value="${data.length}" ${pageSize >= data.length ? 'selected' : ''}>Tất cả</option>
+                            </select>
+                            <span style="color:#94a3b8;font-size:0.85rem;">dòng</span>
+                        </div>
+                        <span style="color:#94a3b8;font-size:0.85rem;">Đang hiển thị ${start + 1}-${end} / ${total_records}</span>
+                    </div>
+                    
+                    <div class="report-card-body" style="overflow-x:auto;max-height:600px;overflow-y:auto;">
+                        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                            <thead style="background:#0f172a;position:sticky;top:0;">
+                                <tr>
+                                    ${columns.map(col => `<th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;">${this.escapeHtml(col)}</th>`).join('')}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${pageData.map((row, i) => `
+                                    <tr style="border-bottom:1px solid #334155;${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
+                                        ${columns.map(col => `<td style="padding:10px 16px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${this.escapeHtml(String(row[col] || ''))}">${this.escapeHtml(String(row[col] || ''))}</td>`).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination Controls Bottom -->
+                    ${totalPages > 1 ? `
+                    <div style="padding:12px 20px;border-top:1px solid #334155;display:flex;justify-content:center;align-items:center;gap:8px;background:#0f172a;">
+                        <button id="rawPrevBtn-${dbId}" style="padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.85rem;" ${currentPage === 1 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>← Trước</button>
+                        <span style="color:#94a3b8;font-size:0.85rem;">Trang ${currentPage} / ${totalPages}</span>
+                        <button id="rawNextBtn-${dbId}" style="padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.85rem;" ${currentPage === totalPages ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>Sau →</button>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            section.innerHTML = tableHtml;
+
+            // Attach event listeners
+            const pageSizeSelect = document.getElementById(`rawPageSize-${dbId}`);
+            if (pageSizeSelect) {
+                pageSizeSelect.addEventListener('change', (e) => {
+                    pageSize = parseInt(e.target.value);
+                    currentPage = 1;
+                    renderTable();
+                });
+            }
+
+            const prevBtn = document.getElementById(`rawPrevBtn-${dbId}`);
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderTable();
+                    }
+                });
+            }
+
+            const nextBtn = document.getElementById(`rawNextBtn-${dbId}`);
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const totalPages = Math.ceil(data.length / pageSize);
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderTable();
+                    }
+                });
+            }
+        };
+
+        renderTable();
     }
 
     renderSprintReport(container) {
@@ -527,37 +657,106 @@ class DashboardApp {
             container.appendChild(section);
         }
 
-        // Build Table
+        // Build Table with Pagination
         const dbName = meta?.title || dbId;
         const headers = data.length > 0 ? Object.keys(data[0]) : [];
 
-        let tableHtml = `
-            <div class="report-card" style="background:#1e293b;border-radius:12px;margin-bottom:20px;overflow:hidden;">
-                <div class="report-card-header" style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
-                    <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">${this.escapeHtml(dbName)}</h4>
-                    <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${data.length} bản ghi</span>
-                </div>
-                <div class="report-card-body" style="overflow-x:auto;max-height:400px;overflow-y:auto;">
-                    <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-                        <thead style="background:#0f172a;position:sticky;top:0;">
-                            <tr>
-                                ${headers.map(h => `<th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;">${this.escapeHtml(h)}</th>`).join('')}
-                            </tr>
-                        </thead>
-                        <tbody>
-                            ${data.slice(0, 100).map((row, i) => `
-                                <tr style="border-bottom:1px solid #334155;${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
-                                    ${headers.map(h => `<td style="padding:10px 16px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;">${this.formatCell(row[h])}</td>`).join('')}
-                                </tr>
-                            `).join('')}
-                            ${data.length > 100 ? `<tr><td colspan="${headers.length}" style="padding:16px;text-align:center;color:#64748b;">... và ${data.length - 100} bản ghi khác</td></tr>` : ''}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        `;
+        // Pagination state
+        let currentPage = 1;
+        let pageSize = 20; // Default: 20 rows
 
-        section.innerHTML = tableHtml;
+        const renderTable = () => {
+            const totalPages = Math.ceil(data.length / pageSize);
+            const start = (currentPage - 1) * pageSize;
+            const end = Math.min(start + pageSize, data.length);
+            const pageData = data.slice(start, end);
+
+            let tableHtml = `
+                <div class="report-card" style="background:#1e293b;border-radius:12px;margin-bottom:20px;overflow:hidden;">
+                    <div class="report-card-header" style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+                        <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">${this.escapeHtml(dbName)}</h4>
+                        <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${data.length} bản ghi</span>
+                    </div>
+                    
+                    <!-- Pagination Controls Top -->
+                    <div style="padding:12px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#0f172a;">
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <span style="color:#94a3b8;font-size:0.85rem;">Hiển thị:</span>
+                            <select id="pageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #334155;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                                <option value="20" ${pageSize === 20 ? 'selected' : ''}>20</option>
+                                <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
+                                <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
+                                <option value="200" ${pageSize === 200 ? 'selected' : ''}>200</option>
+                                <option value="${data.length}" ${pageSize >= data.length ? 'selected' : ''}>Tất cả</option>
+                            </select>
+                            <span style="color:#94a3b8;font-size:0.85rem;">dòng</span>
+                        </div>
+                        <span style="color:#94a3b8;font-size:0.85rem;">Đang hiển thị ${start + 1}-${end} / ${data.length}</span>
+                    </div>
+                    
+                    <div class="report-card-body" style="overflow-x:auto;max-height:600px;overflow-y:auto;">
+                        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                            <thead style="background:#0f172a;position:sticky;top:0;">
+                                <tr>
+                                    ${headers.map(h => `<th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;">${this.escapeHtml(h)}</th>`).join('')}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${pageData.map((row, i) => `
+                                    <tr style="border-bottom:1px solid #334155;${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
+                                        ${headers.map(h => `<td style="padding:10px 16px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;">${this.formatCell(row[h])}</td>`).join('')}
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <!-- Pagination Controls Bottom -->
+                    ${totalPages > 1 ? `
+                    <div style="padding:12px 20px;border-top:1px solid #334155;display:flex;justify-content:center;align-items:center;gap:8px;background:#0f172a;">
+                        <button id="prevBtn-${dbId}" style="padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.85rem;" ${currentPage === 1 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>← Trước</button>
+                        <span style="color:#94a3b8;font-size:0.85rem;">Trang ${currentPage} / ${totalPages}</span>
+                        <button id="nextBtn-${dbId}" style="padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.85rem;" ${currentPage === totalPages ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>Sau →</button>
+                    </div>
+                    ` : ''}
+                </div>
+            `;
+
+            section.innerHTML = tableHtml;
+
+            // Attach event listeners
+            const pageSizeSelect = document.getElementById(`pageSize-${dbId}`);
+            if (pageSizeSelect) {
+                pageSizeSelect.addEventListener('change', (e) => {
+                    pageSize = parseInt(e.target.value);
+                    currentPage = 1;
+                    renderTable();
+                });
+            }
+
+            const prevBtn = document.getElementById(`prevBtn-${dbId}`);
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    if (currentPage > 1) {
+                        currentPage--;
+                        renderTable();
+                    }
+                });
+            }
+
+            const nextBtn = document.getElementById(`nextBtn-${dbId}`);
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    const totalPages = Math.ceil(data.length / pageSize);
+                    if (currentPage < totalPages) {
+                        currentPage++;
+                        renderTable();
+                    }
+                });
+            }
+        };
+
+        renderTable();
     }
 
     formatCell(value) {

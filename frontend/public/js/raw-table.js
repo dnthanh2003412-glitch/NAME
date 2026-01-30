@@ -20,7 +20,7 @@ export function renderRawDataTable(data, container) {
     let sortColumn = null;
     let sortDirection = 'asc';
     let currentPage = 1;
-    let pageSize = 50;
+    let pageSize = 20;
     let hiddenColumns = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
 
     // Get visible columns

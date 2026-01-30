@@ -58,8 +58,8 @@ class NotionDashboardServer {
         // Setup WebSocket server
         this.wsServer = new RealtimeServer(this.server);
 
-        // Setup polling service
-        const pollingInterval = parseInt(process.env.POLLING_INTERVAL) || 120000;
+        // Setup polling service (5 minutes default)
+        const pollingInterval = parseInt(process.env.POLLING_INTERVAL) || 300000;
         this.poller = new PollingService(
             this.db,
             this.wsServer,

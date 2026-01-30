@@ -88,9 +88,39 @@ class DashboardApp {
 
         const refreshBtn = document.getElementById('refresh-btn');
         if (refreshBtn) {
-            refreshBtn.addEventListener('click', () => {
-                this.loadProjectsTree(); // Refresh tree
-                this.fetchSelectedDatabases(false); // Refresh data
+            refreshBtn.addEventListener('click', async () => {
+                // Show loading state
+                refreshBtn.disabled = true;
+                refreshBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" class="spin">
+                    <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>`;
+                refreshBtn.style.animation = 'spin 1s linear infinite';
+
+                try {
+                    // Call refresh API to fetch latest data from Notion
+                    const response = await fetch(`${API_BASE}/api/refresh`, { method: 'POST' });
+                    const result = await response.json();
+
+                    if (result.success) {
+                        // Refresh the UI
+                        await this.loadProjectsTree();
+                        if (this.selectedDatabases.size > 0) {
+                            await this.fetchSelectedDatabases(false);
+                        }
+                        console.log('✅ Data refreshed from Notion');
+                    } else {
+                        console.error('Refresh failed:', result.error);
+                    }
+                } catch (err) {
+                    console.error('Refresh error:', err);
+                } finally {
+                    // Restore button
+                    refreshBtn.disabled = false;
+                    refreshBtn.innerHTML = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                        <path d="M21 12a9 9 0 11-2.636-6.364M21 3v6h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>`;
+                    refreshBtn.style.animation = '';
+                }
             });
         }
     }
@@ -176,7 +206,7 @@ class DashboardApp {
     }
 
     renderRawDatabaseTable(container, dbId, result) {
-        const { database_name, columns, data, total_records } = result;
+        const { database_name, columns: originalColumns, data: originalData, total_records } = result;
 
         // Check if section already exists
         let section = document.getElementById(`db-section-${dbId}`);
@@ -187,57 +217,197 @@ class DashboardApp {
             container.appendChild(section);
         }
 
-        // Pagination state
+        // State management
+        let columnOrder = [...originalColumns]; // For drag-drop reordering
+        let hiddenColumns = new Set(); // For column visibility
+        let filteredData = [...originalData];
+        let sortColumn = null;
+        let sortDirection = 'asc';
+        let searchQuery = '';
         let currentPage = 1;
-        let pageSize = 20; // Default: 20 rows
+        let pageSize = 20;
+        let showColumnPicker = false;
 
+        // Get visible columns
+        const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
+
+        // Apply search and sort
+        const applyFiltersAndSearch = () => {
+            filteredData = originalData.filter(row => {
+                // Global search across ALL columns
+                if (searchQuery) {
+                    const query = searchQuery.toLowerCase();
+                    const matchesSearch = originalColumns.some(col => {
+                        const value = String(row[col] || '').toLowerCase();
+                        return value.includes(query);
+                    });
+                    if (!matchesSearch) return false;
+                }
+                return true;
+            });
+
+            // Apply sorting
+            if (sortColumn) {
+                filteredData.sort((a, b) => {
+                    const aVal = a[sortColumn] || '';
+                    const bVal = b[sortColumn] || '';
+
+                    const aNum = parseFloat(aVal);
+                    const bNum = parseFloat(bVal);
+                    if (!isNaN(aNum) && !isNaN(bNum)) {
+                        return sortDirection === 'asc' ? aNum - bNum : bNum - aNum;
+                    }
+
+                    const aStr = String(aVal).toLowerCase();
+                    const bStr = String(bVal).toLowerCase();
+                    return sortDirection === 'asc' ? aStr.localeCompare(bStr) : bStr.localeCompare(aStr);
+                });
+            }
+
+            currentPage = 1;
+        };
+
+        // Export to Excel (only visible columns)
+        const exportToExcel = () => {
+            const dataToExport = filteredData.length > 0 ? filteredData : originalData;
+            const visibleCols = getVisibleColumns();
+            const html = `
+                <html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel">
+                <head><meta charset="UTF-8"></head>
+                <body>
+                    <table border="1">
+                        <tr>${visibleCols.map(col => `<th style="background:#4a5568;color:white;font-weight:bold;">${col}</th>`).join('')}</tr>
+                        ${dataToExport.map(row => `
+                            <tr>${visibleCols.map(col => `<td>${this.escapeHtml(String(row[col] || ''))}</td>`).join('')}</tr>
+                        `).join('')}
+                    </table>
+                </body>
+                </html>
+            `;
+            const blob = new Blob(['\uFEFF' + html], { type: 'application/vnd.ms-excel;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `${database_name.replace(/[^a-z0-9]/gi, '_')}.xls`;
+            a.click();
+            URL.revokeObjectURL(url);
+        };
+
+        // Render table
         const renderTable = () => {
-            const totalPages = Math.ceil(data.length / pageSize);
+            const visibleCols = getVisibleColumns();
+            const totalPages = Math.ceil(filteredData.length / pageSize) || 1;
             const start = (currentPage - 1) * pageSize;
-            const end = Math.min(start + pageSize, data.length);
-            const pageData = data.slice(start, end);
+            const end = Math.min(start + pageSize, filteredData.length);
+            const pageData = filteredData.slice(start, end);
+
+            const tableStyles = `
+                <style>
+                    #table-${dbId} th, #table-${dbId} td { border: 1px solid #475569; }
+                    #table-${dbId} th { cursor: grab; user-select: none; }
+                    #table-${dbId} th:hover { background: #334155; }
+                    #table-${dbId} th.dragging { opacity: 0.5; background: #4f46e5; }
+                    #table-${dbId} th.drag-over { border-left: 3px solid #4ade80; }
+                    .sort-icon { margin-left: 4px; opacity: 0.5; }
+                    .sort-icon.active { opacity: 1; color: #4ade80; }
+                    .column-picker-${dbId} { 
+                        position: absolute; right: 0; top: 100%; z-index: 100;
+                        background: #1e293b; border: 1px solid #475569; border-radius: 8px;
+                        padding: 8px; max-height: 300px; overflow-y: auto; min-width: 200px;
+                        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                    }
+                    .column-picker-${dbId} label { display: flex; align-items: center; gap: 8px; padding: 4px 8px; cursor: pointer; color: #e2e8f0; font-size: 0.8rem; }
+                    .column-picker-${dbId} label:hover { background: #334155; border-radius: 4px; }
+                </style>
+            `;
 
             let tableHtml = `
+                ${tableStyles}
                 <div class="report-card" style="background:#1e293b;border-radius:12px;margin-bottom:20px;overflow:hidden;">
                     <div class="report-card-header" style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
                         <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">${this.escapeHtml(database_name)}</h4>
-                        <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${total_records} bản ghi</span>
+                        <div style="display:flex;gap:8px;align-items:center;">
+                            <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${filteredData.length}/${total_records}</span>
+                            <button id="exportBtn-${dbId}" style="padding:6px 12px;background:#22c55e;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.8rem;font-weight:500;">📥 Export</button>
+                        </div>
                     </div>
                     
-                    <!-- Pagination Controls Top -->
+                    <!-- Toolbar -->
                     <div style="padding:12px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#0f172a;">
+                        <div style="display:flex;gap:8px;align-items:center;flex:1;max-width:400px;">
+                            <span style="color:#94a3b8;font-size:0.85rem;">🔍</span>
+                            <input type="text" id="searchInput-${dbId}" placeholder="Tìm kiếm tất cả cột..." 
+                                value="${searchQuery}"
+                                style="flex:1;padding:6px 10px;background:#1e293b;border:1px solid #475569;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                            ${searchQuery ? `<button id="clearSearch-${dbId}" style="padding:4px 8px;background:#ef4444;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.75rem;">✕</button>` : ''}
+                        </div>
                         <div style="display:flex;gap:8px;align-items:center;">
-                            <span style="color:#94a3b8;font-size:0.85rem;">Hiển thị:</span>
-                            <select id="rawPageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #334155;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                            <!-- Column Visibility Toggle -->
+                            <div style="position:relative;">
+                                <button id="colPickerBtn-${dbId}" style="padding:6px 10px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.8rem;">
+                                    👁 Cột (${visibleCols.length}/${originalColumns.length})
+                                </button>
+                                ${showColumnPicker ? `
+                                    <div class="column-picker-${dbId}">
+                                        <div style="padding:4px 8px;border-bottom:1px solid #475569;margin-bottom:4px;">
+                                            <button id="showAllCols-${dbId}" style="padding:3px 8px;background:#3b82f6;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.7rem;margin-right:4px;">Hiện tất cả</button>
+                                            <button id="hideAllCols-${dbId}" style="padding:3px 8px;background:#ef4444;border:none;border-radius:3px;color:#fff;cursor:pointer;font-size:0.7rem;">Ẩn tất cả</button>
+                                        </div>
+                                        ${originalColumns.map(col => `
+                                            <label>
+                                                <input type="checkbox" class="col-toggle" data-col="${col}" ${!hiddenColumns.has(col) ? 'checked' : ''}>
+                                                ${this.escapeHtml(col)}
+                                            </label>
+                                        `).join('')}
+                                    </div>
+                                ` : ''}
+                            </div>
+                            <select id="rawPageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #475569;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
                                 <option value="20" ${pageSize === 20 ? 'selected' : ''}>20</option>
                                 <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
                                 <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
                                 <option value="200" ${pageSize === 200 ? 'selected' : ''}>200</option>
-                                <option value="${data.length}" ${pageSize >= data.length ? 'selected' : ''}>Tất cả</option>
+                                <option value="${originalData.length}" ${pageSize >= originalData.length ? 'selected' : ''}>Tất cả</option>
                             </select>
-                            <span style="color:#94a3b8;font-size:0.85rem;">dòng</span>
+                            <span style="color:#94a3b8;font-size:0.8rem;">${start + 1}-${end}/${filteredData.length}</span>
                         </div>
-                        <span style="color:#94a3b8;font-size:0.85rem;">Đang hiển thị ${start + 1}-${end} / ${total_records}</span>
                     </div>
                     
                     <div class="report-card-body" style="overflow-x:auto;max-height:600px;overflow-y:auto;">
-                        <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
-                            <thead style="background:#0f172a;position:sticky;top:0;">
+                        <table id="table-${dbId}" style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                            <thead style="background:#0f172a;position:sticky;top:0;z-index:10;">
                                 <tr>
-                                    ${columns.map(col => `<th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;">${this.escapeHtml(col)}</th>`).join('')}
+                                    ${visibleCols.map((col, idx) => `
+                                        <th data-col="${col}" data-idx="${columnOrder.indexOf(col)}" draggable="true"
+                                            style="padding:10px 12px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;background:#0f172a;">
+                                            <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+                                                <span style="cursor:pointer;" data-sort="${col}">${this.escapeHtml(col)}</span>
+                                                <span class="sort-icon ${sortColumn === col ? 'active' : ''}" data-sort="${col}">
+                                                    ${sortColumn === col ? (sortDirection === 'asc' ? '↑' : '↓') : '↕'}
+                                                </span>
+                                            </div>
+                                        </th>
+                                    `).join('')}
                                 </tr>
                             </thead>
                             <tbody>
-                                ${pageData.map((row, i) => `
-                                    <tr style="border-bottom:1px solid #334155;${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
-                                        ${columns.map(col => `<td style="padding:10px 16px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="${this.escapeHtml(String(row[col] || ''))}">${this.escapeHtml(String(row[col] || ''))}</td>`).join('')}
+                                ${pageData.length > 0 ? pageData.map((row, i) => `
+                                    <tr style="${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
+                                        ${visibleCols.map(col => `
+                                            <td style="padding:10px 12px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" 
+                                                title="${this.escapeHtml(String(row[col] || ''))}">
+                                                ${this.escapeHtml(String(row[col] || ''))}
+                                            </td>
+                                        `).join('')}
                                     </tr>
-                                `).join('')}
+                                `).join('') : `
+                                    <tr><td colspan="${visibleCols.length}" style="padding:20px;text-align:center;color:#64748b;">Không có dữ liệu phù hợp</td></tr>
+                                `}
                             </tbody>
                         </table>
                     </div>
                     
-                    <!-- Pagination Controls Bottom -->
+                    <!-- Pagination -->
                     ${totalPages > 1 ? `
                     <div style="padding:12px 20px;border-top:1px solid #334155;display:flex;justify-content:center;align-items:center;gap:8px;background:#0f172a;">
                         <button id="rawPrevBtn-${dbId}" style="padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.85rem;" ${currentPage === 1 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>← Trước</button>
@@ -250,36 +420,146 @@ class DashboardApp {
 
             section.innerHTML = tableHtml;
 
-            // Attach event listeners
-            const pageSizeSelect = document.getElementById(`rawPageSize-${dbId}`);
-            if (pageSizeSelect) {
-                pageSizeSelect.addEventListener('change', (e) => {
-                    pageSize = parseInt(e.target.value);
-                    currentPage = 1;
+            // === Event Listeners ===
+
+            // Export button
+            document.getElementById(`exportBtn-${dbId}`)?.addEventListener('click', exportToExcel);
+
+            // Search - with optimized debounce and focus preservation
+            const searchInput = document.getElementById(`searchInput-${dbId}`);
+            if (searchInput) {
+                let debounceTimer;
+                searchInput.addEventListener('input', (e) => {
+                    clearTimeout(debounceTimer);
+                    const cursorPos = e.target.selectionStart;
+                    debounceTimer = setTimeout(() => {
+                        searchQuery = e.target.value;
+                        applyFiltersAndSearch();
+                        renderTable();
+                        // Restore focus after render
+                        const newInput = document.getElementById(`searchInput-${dbId}`);
+                        if (newInput) {
+                            newInput.focus();
+                            newInput.setSelectionRange(cursorPos, cursorPos);
+                        }
+                    }, 400); // Increased debounce for smoother typing
+                });
+            }
+
+            // Clear search
+            document.getElementById(`clearSearch-${dbId}`)?.addEventListener('click', () => {
+                searchQuery = '';
+                applyFiltersAndSearch();
+                renderTable();
+            });
+
+            // Page size
+            document.getElementById(`rawPageSize-${dbId}`)?.addEventListener('change', (e) => {
+                pageSize = parseInt(e.target.value);
+                currentPage = 1;
+                renderTable();
+            });
+
+            // Pagination buttons
+            document.getElementById(`rawPrevBtn-${dbId}`)?.addEventListener('click', () => {
+                if (currentPage > 1) { currentPage--; renderTable(); }
+            });
+            document.getElementById(`rawNextBtn-${dbId}`)?.addEventListener('click', () => {
+                if (currentPage < totalPages) { currentPage++; renderTable(); }
+            });
+
+            // Sort
+            section.querySelectorAll('[data-sort]').forEach(el => {
+                el.addEventListener('click', () => {
+                    const col = el.dataset.sort;
+                    if (sortColumn === col) {
+                        sortDirection = sortDirection === 'asc' ? 'desc' : 'asc';
+                    } else {
+                        sortColumn = col;
+                        sortDirection = 'asc';
+                    }
+                    applyFiltersAndSearch();
                     renderTable();
                 });
-            }
+            });
 
-            const prevBtn = document.getElementById(`rawPrevBtn-${dbId}`);
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    if (currentPage > 1) {
-                        currentPage--;
+            // Column Picker Toggle
+            document.getElementById(`colPickerBtn-${dbId}`)?.addEventListener('click', (e) => {
+                e.stopPropagation();
+                showColumnPicker = !showColumnPicker;
+                renderTable();
+            });
+
+            // Show/Hide All Columns
+            document.getElementById(`showAllCols-${dbId}`)?.addEventListener('click', () => {
+                hiddenColumns.clear();
+                renderTable();
+            });
+            document.getElementById(`hideAllCols-${dbId}`)?.addEventListener('click', () => {
+                originalColumns.forEach(col => hiddenColumns.add(col));
+                renderTable();
+            });
+
+            // Individual Column Toggle
+            section.querySelectorAll('.col-toggle').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const col = e.target.dataset.col;
+                    if (e.target.checked) {
+                        hiddenColumns.delete(col);
+                    } else {
+                        hiddenColumns.add(col);
+                    }
+                    renderTable();
+                });
+            });
+
+            // Close column picker when clicking outside
+            document.addEventListener('click', (e) => {
+                if (showColumnPicker && !e.target.closest(`#colPickerBtn-${dbId}`) && !e.target.closest(`.column-picker-${dbId}`)) {
+                    showColumnPicker = false;
+                    renderTable();
+                }
+            }, { once: true });
+
+            // Drag and Drop for columns
+            const table = document.getElementById(`table-${dbId}`);
+            const headers = table?.querySelectorAll('th[draggable="true"]');
+            let draggedIdx = null;
+
+            headers?.forEach(th => {
+                th.addEventListener('dragstart', (e) => {
+                    draggedIdx = parseInt(th.dataset.idx);
+                    th.classList.add('dragging');
+                    e.dataTransfer.effectAllowed = 'move';
+                });
+
+                th.addEventListener('dragend', () => {
+                    th.classList.remove('dragging');
+                    headers.forEach(h => h.classList.remove('drag-over'));
+                });
+
+                th.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    e.dataTransfer.dropEffect = 'move';
+                    th.classList.add('drag-over');
+                });
+
+                th.addEventListener('dragleave', () => {
+                    th.classList.remove('drag-over');
+                });
+
+                th.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const targetIdx = parseInt(th.dataset.idx);
+                    if (draggedIdx !== null && draggedIdx !== targetIdx) {
+                        // Reorder columns
+                        const [removed] = columnOrder.splice(draggedIdx, 1);
+                        columnOrder.splice(targetIdx, 0, removed);
                         renderTable();
                     }
+                    th.classList.remove('drag-over');
                 });
-            }
-
-            const nextBtn = document.getElementById(`rawNextBtn-${dbId}`);
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    const totalPages = Math.ceil(data.length / pageSize);
-                    if (currentPage < totalPages) {
-                        currentPage++;
-                        renderTable();
-                    }
-                });
-            }
+            });
         };
 
         renderTable();
@@ -454,6 +734,10 @@ class DashboardApp {
             const hasSelections = visibleDatabases.some(db => this.selectedDatabases.has(db.id));
             const isExpanded = isProjectSelected || hasSelections;
 
+            // Count databases for project label
+            const dbCount = visibleDatabases.length;
+            const projectCountLabel = `<span class="project-count-badge" style="background:#3b82f6;color:#fff;padding:2px 6px;border-radius:10px;font-size:0.7rem;margin-left:8px;">${dbCount}</span>`;
+
             // Visibility Icon
             const eyeIcon = isHiddenSection ? 'strikethrough-eye' : 'eye'; // Simplified icon logic
             const eyeTitle = isHiddenSection ? 'Hiện dự án' : 'Ẩn dự án';
@@ -464,13 +748,14 @@ class DashboardApp {
                 <div class="project-group">
                      <div class="project-header" data-project="${safeProjectName}" onclick="app.toggleProjectExpand('${projectId}-databases', this)">
                         <span class="expand-icon">${isExpanded ? '▼' : '▶'}</span>
-                        <div class="project-label" title="${safeProjectName}">${safeProjectName}</div>
+                        <div class="project-label" title="${safeProjectName}">${safeProjectName}${projectCountLabel}</div>
                         
                         <!-- Toggle Project Visibility -->
                          <div class="visibility-toggle" onclick="${eyeAction}" title="${eyeTitle}">
                             ${isHiddenSection ? '🚫' : '👁'}
                          </div>
                     </div>
+
 
                     <ul class="database-list ${isExpanded ? 'expanded' : ''}" id="${projectId}-databases">
                          ${visibleDatabases.map(db => {
@@ -481,10 +766,9 @@ class DashboardApp {
 
                 // RECORD COUNT
                 const count = this.databaseCounts[db.id];
-                // Show counts if available, otherwise show placeholder if selectd? 
-                // Only show badge if count is defined (loaded)
+                // Show counts if available with styled badge
                 const countLabel = (count !== undefined)
-                    ? `<span class="db-count-badge">${count}</span>`
+                    ? `<span class="db-count-badge" style="background:#22c55e;color:#000;padding:1px 6px;border-radius:10px;font-size:0.65rem;margin-left:6px;font-weight:600;">${count}</span>`
                     : ''; // Don't show anything if not loaded to keep clean
 
                 return `
@@ -580,11 +864,7 @@ class DashboardApp {
         this.savePersistedState();
         this.updateGenerateButtonState();
 
-        // Debounce Fetch
-        if (this.fetchDebounce) clearTimeout(this.fetchDebounce);
-        this.fetchDebounce = setTimeout(() => {
-            this.fetchSelectedDatabases(true /* use cache preference */);
-        }, 500);
+        // Don't auto-fetch here - wait for user to click "Tạo Báo Cáo" button
     }
 
     toggleProjectVisibility(projectName) {

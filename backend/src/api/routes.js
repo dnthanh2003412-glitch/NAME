@@ -7,9 +7,27 @@ import { reportRegistry } from '../reports/index.js';
 
 const router = express.Router();
 
+// In-memory cache for database discovery
+let databasesCache = null;
+let databasesCacheTime = 0;
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
 export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
     const globalProjectsService = notionToken ? new ProjectsService(notionToken) : null;
+
+    // Helper: Get databases with cache
+    const getCachedDatabases = async () => {
+        const now = Date.now();
+        if (databasesCache && (now - databasesCacheTime) < CACHE_TTL) {
+            return databasesCache;
+        }
+        const discovery = new DatabaseDiscovery(notionToken);
+        databasesCache = await discovery.discoverDatabases();
+        databasesCacheTime = now;
+        console.log(`[Cache] Refreshed databases cache: ${databasesCache.length} databases`);
+        return databasesCache;
+    };
 
     // ============ AUTH ROUTES ============
     app.get('/auth/status', (req, res) => {
@@ -167,8 +185,9 @@ export function setupRoutes(app, db, poller) {
             if (!cachedData || cachedData.length === 0) {
                 return res.json({ success: false, error: 'No data available for this database.' });
             }
-            const discovery = new DatabaseDiscovery(notionToken);
-            const allDatabases = await discovery.discoverDatabases();
+
+            // Use cached databases to get name (fast!)
+            const allDatabases = await getCachedDatabases();
             const dbInfo = allDatabases.find(d => d.id === id);
 
             // --- Build Lookup Maps ---

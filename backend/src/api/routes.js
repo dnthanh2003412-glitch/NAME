@@ -4,6 +4,8 @@ import { DataFetcher } from '../notion/fetcher.js';
 import { ProjectsService } from '../notion/projects.js';
 import { DatabaseManager } from '../database/db.js';
 import { reportRegistry } from '../reports/index.js';
+import { ProductivityService } from '../reports/productivity.js';
+import { COLUMNS as PROD_COLUMNS } from '../constants.js';
 
 const router = express.Router();
 
@@ -307,6 +309,51 @@ export function setupRoutes(app, db, poller) {
             res.json(result);
         } catch (error) {
             console.error(`[API] Error generating report ${reportName}:`, error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // ============ PRODUCTIVITY REPORT ROUTES ============
+    app.post('/api/reports/productivity', async (req, res) => {
+        const { month, databaseIds } = req.body; // "MM-YYYY" và optional array of database IDs
+        if (!month) return res.status(400).json({ error: 'Month is required' });
+
+        try {
+            const prodService = new ProductivityService(db);
+            // Ưu tiên dùng databaseIds từ request, fallback về config
+            const selectedDatabases = databaseIds && databaseIds.length > 0
+                ? databaseIds
+                : (db.getConfig('selected_databases') || []);
+
+            if (selectedDatabases.length === 0) {
+                return res.json({ success: true, columns: PROD_COLUMNS, data: [], error: 'No projects selected' });
+            }
+
+            const data = await prodService.generateReport(month, selectedDatabases);
+            const stats = prodService.getStats(month);
+
+            res.json({
+                success: true,
+                columns: PROD_COLUMNS,
+                data,
+                stats,
+                meta: { month }
+            });
+        } catch (error) {
+            console.error('[API] Productivity Report Error:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    app.post('/api/reports/productivity/update-stats', async (req, res) => {
+        const { month, updates } = req.body;
+        if (!month || !updates) return res.status(400).json({ error: 'Missing parameters' });
+
+        try {
+            const prodService = new ProductivityService(db);
+            const newStats = prodService.updateStats(month, updates);
+            res.json({ success: true, stats: newStats });
+        } catch (error) {
             res.status(500).json({ error: error.message });
         }
     });

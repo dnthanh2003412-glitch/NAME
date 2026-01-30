@@ -636,8 +636,379 @@ class DashboardApp {
         container.innerHTML = '<div class="report-content"><h3>Sprint Report</h3><p>Tính năng đang phát triển...</p></div>';
     }
 
-    renderProductivityReport(container) {
-        container.innerHTML = '<div class="report-content"><h3>Productivity Report</h3><p>Tính năng đang phát triển...</p></div>';
+    async renderProductivityReport(container) {
+        // 1. Setup Container & Toolbar
+        const now = new Date();
+        const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`; // YYYY-MM for input type="month"
+
+        container.innerHTML = `
+            <div class="report-toolbar" style="background:#1e293b;padding:16px;border-radius:12px;margin-bottom:20px;border:1px solid #334155;display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                    <label style="color:#94a3b8;font-size:0.8rem;">Chọn Tháng</label>
+                    <input type="month" id="prod-month-picker" value="${currentMonth}" 
+                        style="background:#0f172a;border:1px solid #475569;color:#e2e8f0;padding:6px 10px;border-radius:6px;font-family:inherit;">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                    <label style="color:#94a3b8;font-size:0.8rem;">Số công chuẩn (Tháng)</label>
+                    <input type="number" id="prod-std-days" placeholder="22" step="0.5"
+                        style="background:#0f172a;border:1px solid #475569;color:#e2e8f0;padding:6px 10px;border-radius:6px;width:100px;font-family:inherit;">
+                </div>
+                <div style="display:flex;flex-direction:column;gap:4px;">
+                    <label style="color:#94a3b8;font-size:0.8rem;">Lọc Nhân sự</label>
+                    <select id="prod-user-filter"
+                        style="background:#0f172a;border:1px solid #475569;color:#e2e8f0;padding:6px 10px;border-radius:6px;font-family:inherit;min-width:180px;">
+                        <option value="">Tất cả</option>
+                    </select>
+                </div>
+                <div style="margin-left:auto;">
+                    <button id="prod-refresh-btn" style="background:#3b82f6;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-weight:500;">
+                        🔄 Cập nhật báo cáo
+                    </button>
+                </div>
+            </div>
+            <div id="prod-report-body" style="background:#1e293b;border-radius:12px;overflow:hidden;min-height:200px;border:1px solid #334155;">
+                <div class="loading-state" style="padding:40px;text-align:center;color:#94a3b8;">Đang tải báo cáo...</div>
+            </div>
+        `;
+
+        const monthPicker = document.getElementById('prod-month-picker');
+        const stdDaysInput = document.getElementById('prod-std-days');
+        const refreshBtn = document.getElementById('prod-refresh-btn');
+        const bodyContainer = document.getElementById('prod-report-body');
+        const userFilter = document.getElementById('prod-user-filter');
+
+        // Store full data for filtering
+        let fullReportData = [];
+        let reportColumns = [];
+        let currentMonthStr = '';
+
+        const fetchReport = async () => {
+            const monthVal = monthPicker.value; // YYYY-MM
+            if (!monthVal) return;
+
+            const [y, m] = monthVal.split('-');
+            const monthStr = `${m}-${y}`; // MM-YYYY for Backend
+            currentMonthStr = monthStr;
+
+            bodyContainer.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#94a3b8;">⏳ Đang tính toán dữ liệu...</div>';
+
+            // Lấy database IDs đã chọn từ frontend state
+            const selectedDbIds = Array.from(this.selectedDatabases);
+
+            try {
+                const response = await fetch(`${API_BASE}/api/reports/productivity`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ month: monthStr, databaseIds: selectedDbIds })
+                });
+                const result = await response.json();
+
+                if (result.success) {
+                    // Update Standard Days Input
+                    if (result.stats?.standard_days) {
+                        stdDaysInput.value = result.stats.standard_days;
+                    }
+
+                    // Store full data
+                    fullReportData = result.data || [];
+                    reportColumns = result.columns || [];
+
+                    // Populate user filter dropdown
+                    populateUserFilter(fullReportData);
+
+                    // Render with current filter
+                    applyFilterAndRender();
+                } else {
+                    bodyContainer.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">${result.error || 'Lỗi không xác định'}</div>`;
+                }
+            } catch (err) {
+                console.error('Fetch Report Error:', err);
+                bodyContainer.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi kết nối: ${err.message}</div>`;
+            }
+        };
+
+        const populateUserFilter = (data) => {
+            const currentVal = userFilter.value;
+            userFilter.innerHTML = '<option value="">Tất cả</option>';
+
+            // Get unique names and sort alphabetically
+            const names = [...new Set(data.map(r => r.fullName).filter(n => n))].sort();
+            names.forEach(name => {
+                const option = document.createElement('option');
+                option.value = name;
+                option.textContent = name;
+                userFilter.appendChild(option);
+            });
+
+            // Restore previous selection if still valid
+            if (names.includes(currentVal)) {
+                userFilter.value = currentVal;
+            }
+        };
+
+        const applyFilterAndRender = () => {
+            const filterVal = userFilter.value;
+            let filteredData = fullReportData;
+
+            if (filterVal) {
+                filteredData = fullReportData.filter(r => r.fullName === filterVal);
+            }
+
+            renderTable(filteredData, reportColumns, currentMonthStr);
+        };
+
+        // User filter change handler
+        userFilter.addEventListener('change', applyFilterAndRender);
+
+        const updateStats = async (updates) => {
+            const monthVal = monthPicker.value;
+            const [y, m] = monthVal.split('-');
+            const monthStr = `${m}-${y}`;
+
+            try {
+                await fetch(`${API_BASE}/api/reports/productivity/update-stats`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ month: monthStr, updates })
+                });
+                // After update, refresh report to recalculate formulas
+                fetchReport();
+            } catch (err) {
+                console.error('Update Stats Error:', err);
+                alert('Không lưu được dữ liệu');
+            }
+        };
+
+        const renderTable = (data, columns, monthStr) => {
+            if (!data || data.length === 0) {
+                bodyContainer.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu cho tháng này.</div>';
+                return;
+            }
+
+            // Styles for the specialized table - DARK THEME
+            const styles = `
+                <style>
+                    .prod-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; color: #e2e8f0; }
+                    .prod-table th { background: #0f172a; padding: 10px; border: 1px solid #334155; text-align: left; font-weight: 600; white-space: nowrap; color: #94a3b8; }
+                    .prod-table td { padding: 8px 10px; border: 1px solid #334155; background: #1e293b; }
+                    .prod-table tr:hover td { background: #263548; }
+                    .editable-cell { position: relative; }
+                    .editable-cell input { 
+                        width: 100%; border: 1px solid transparent; background: transparent; color: #e2e8f0;
+                        padding: 4px; border-radius: 4px; text-align: right; 
+                    }
+                    .editable-cell input:hover { border-color: #475569; background: #0f172a; }
+                    .editable-cell input:focus { border-color: #3b82f6; background: #0f172a; outline: none; }
+                    .fill-handle {
+                        position: absolute; bottom: 2px; right: 2px;
+                        width: 8px; height: 8px;
+                        background: #3b82f6; cursor: crosshair;
+                        opacity: 0; transition: opacity 0.15s;
+                        border: 1px solid #1e293b;
+                    }
+                    .editable-cell:hover .fill-handle { opacity: 1; }
+                    .editable-cell.dragging .fill-handle { opacity: 1; background: #60a5fa; }
+                    .editable-cell.fill-target { background: rgba(59, 130, 246, 0.2); }
+                    .editable-cell.fill-target input { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; }
+                    .num-cell { text-align: right; }
+                </style>
+            `;
+
+            let html = `
+                ${styles}
+                <div style="overflow-x: auto; max-width: 100%;">
+                    <table class="prod-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">STT</th>
+                                ${columns.filter(c => c.id !== 'stt').map(c => `<th>${c.name}</th>`).join('')}
+                            </tr>
+                        </thead>
+                        <tbody>
+            `;
+
+            data.forEach((row, idx) => {
+                html += `<tr>`;
+                // STT
+                html += `<td style="text-align:center;">${idx + 1}</td>`;
+
+                columns.forEach(col => {
+                    if (col.id === 'stt') return;
+
+                    let val = row[col.id];
+                    let cellContent = '';
+
+                    // Formatting Logic
+                    if (col.id === 'actualDays') {
+                        // Editable Input with drag-fill handle
+                        cellContent = `<div class="editable-cell" data-row-idx="${idx}">
+                            <input type="number" step="0.5" value="${val || 0}" data-person="${row.fullName}" data-row-idx="${idx}" class="actual-days-input">
+                            <div class="fill-handle" data-row-idx="${idx}" title="Kéo để copy xuống"></div>
+                        </div>`;
+                    } else if (col.id === 'productivityReq') {
+                        // KPI value - show as decimal number (6.30, 7.83, 9.46)
+                        cellContent = `<div class="num-cell">${(parseFloat(val) || 0).toFixed(2)}</div>`;
+                    } else if (col.id.includes('Ratio') || col.id.includes('completion') || col.id.includes('productivity')) {
+                        // Percent (for productivity ratios, NOT productivityReq)
+                        const percent = (parseFloat(val) || 0) * 100;
+                        cellContent = `<div class="num-cell">${percent.toFixed(1)}%</div>`;
+                    } else if (typeof val === 'number') {
+                        // Number (2 decimals for floats, 0 for integers?)
+                        cellContent = `<div class="num-cell">${Number.isInteger(val) ? val : val.toFixed(2)}</div>`;
+                    } else {
+                        // Text
+                        cellContent = val || '';
+                    }
+
+                    html += `<td>${cellContent}</td>`;
+                });
+                html += `</tr>`;
+            });
+
+            html += `</tbody></table></div>`;
+            bodyContainer.innerHTML = html;
+
+            // Get all actual-days inputs for drag and paste operations
+            const allInputs = Array.from(bodyContainer.querySelectorAll('.actual-days-input'));
+
+            // Add Event Listeners for Inputs
+            allInputs.forEach((input, inputIdx) => {
+                // Normal change handler
+                input.addEventListener('change', (e) => {
+                    const person = e.target.dataset.person;
+                    const val = parseFloat(e.target.value);
+                    updateStats({ actual_days: { [person]: val } });
+                });
+
+                // Keyboard navigation (Enter/Tab to move, Ctrl+D to fill down)
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter') {
+                        e.preventDefault();
+                        const nextInput = allInputs[inputIdx + 1];
+                        if (nextInput) nextInput.focus();
+                    }
+
+                    // Ctrl+D: Copy current value to all rows below
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
+                        e.preventDefault();
+                        const currentVal = parseFloat(e.target.value) || 0;
+                        const updates = {};
+
+                        for (let i = inputIdx; i < allInputs.length; i++) {
+                            allInputs[i].value = currentVal;
+                            const person = allInputs[i].dataset.person;
+                            updates[person] = currentVal;
+                        }
+
+                        updateStats({ actual_days: updates });
+                    }
+                });
+
+                // Paste handler: support pasting multiple values (one per line)
+                input.addEventListener('paste', (e) => {
+                    const pasteData = e.clipboardData.getData('text');
+                    const lines = pasteData.split(/[\r\n]+/).map(l => l.trim()).filter(l => l);
+
+                    if (lines.length > 1) {
+                        e.preventDefault();
+                        const updates = {};
+
+                        for (let i = 0; i < lines.length && inputIdx + i < allInputs.length; i++) {
+                            const val = parseFloat(lines[i].replace(',', '.')) || 0;
+                            allInputs[inputIdx + i].value = val;
+                            const person = allInputs[inputIdx + i].dataset.person;
+                            updates[person] = val;
+                        }
+
+                        updateStats({ actual_days: updates });
+                    }
+                });
+            });
+
+            // Drag-fill functionality
+            let dragState = null;
+            const allCells = Array.from(bodyContainer.querySelectorAll('.editable-cell'));
+            const allHandles = Array.from(bodyContainer.querySelectorAll('.fill-handle'));
+
+            allHandles.forEach(handle => {
+                handle.addEventListener('mousedown', (e) => {
+                    e.preventDefault();
+                    const startIdx = parseInt(handle.dataset.rowIdx);
+                    const startInput = allInputs[startIdx];
+                    const startValue = parseFloat(startInput?.value) || 0;
+
+                    dragState = { startIdx, startValue, currentIdx: startIdx };
+                    allCells[startIdx]?.classList.add('dragging');
+                });
+            });
+
+            bodyContainer.addEventListener('mousemove', (e) => {
+                if (!dragState) return;
+
+                // Find which row the mouse is over
+                const target = e.target.closest('.editable-cell');
+                if (!target) return;
+
+                const hoverIdx = parseInt(target.dataset.rowIdx);
+                if (isNaN(hoverIdx)) return;
+
+                // Clear previous highlights
+                allCells.forEach(c => c.classList.remove('fill-target'));
+
+                // Highlight range from start to current
+                const minIdx = Math.min(dragState.startIdx, hoverIdx);
+                const maxIdx = Math.max(dragState.startIdx, hoverIdx);
+
+                for (let i = minIdx; i <= maxIdx; i++) {
+                    allCells[i]?.classList.add('fill-target');
+                }
+
+                dragState.currentIdx = hoverIdx;
+            });
+
+            const finishDrag = () => {
+                if (!dragState) return;
+
+                const { startIdx, startValue, currentIdx } = dragState;
+                const minIdx = Math.min(startIdx, currentIdx);
+                const maxIdx = Math.max(startIdx, currentIdx);
+
+                const updates = {};
+                for (let i = minIdx; i <= maxIdx; i++) {
+                    if (allInputs[i]) {
+                        allInputs[i].value = startValue;
+                        const person = allInputs[i].dataset.person;
+                        updates[person] = startValue;
+                    }
+                }
+
+                if (Object.keys(updates).length > 0) {
+                    updateStats({ actual_days: updates });
+                }
+
+                // Clear highlights
+                allCells.forEach(c => {
+                    c.classList.remove('dragging', 'fill-target');
+                });
+
+                dragState = null;
+            };
+
+            bodyContainer.addEventListener('mouseup', finishDrag);
+            bodyContainer.addEventListener('mouseleave', finishDrag);
+        };
+
+        // Event Listeners
+        refreshBtn.addEventListener('click', fetchReport);
+        monthPicker.addEventListener('change', fetchReport);
+
+        stdDaysInput.addEventListener('change', (e) => {
+            const val = parseFloat(e.target.value);
+            updateStats({ standard_days: val });
+        });
+
+        // Initial Load
+        fetchReport();
     }
 
     async loadProjectsTree() {

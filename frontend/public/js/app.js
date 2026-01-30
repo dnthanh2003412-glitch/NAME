@@ -97,7 +97,18 @@ class DashboardApp {
                 refreshBtn.style.animation = 'spin 1s linear infinite';
 
                 try {
-                    // Call refresh API to fetch latest data from Notion
+                    // First, sync selected databases to backend config
+                    const dbIds = Array.from(this.selectedDatabases);
+                    if (dbIds.length > 0) {
+                        await fetch(`${API_BASE}/api/databases/select`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ database_ids: dbIds })
+                        });
+                        console.log(`[Refresh] Synced ${dbIds.length} databases to backend`);
+                    }
+
+                    // Then call refresh API to fetch latest data from Notion
                     const response = await fetch(`${API_BASE}/api/refresh`, { method: 'POST' });
                     const result = await response.json();
 
@@ -106,6 +117,11 @@ class DashboardApp {
                         await this.loadProjectsTree();
                         if (this.selectedDatabases.size > 0) {
                             await this.fetchSelectedDatabases(false);
+                        }
+                        // Also regenerate report if one is active
+                        const reportType = document.getElementById('report-type-select')?.value;
+                        if (reportType) {
+                            this.generateReport();
                         }
                         console.log('✅ Data refreshed from Notion');
                     } else {
@@ -179,7 +195,7 @@ class DashboardApp {
             // Fetch raw data for each database
             for (const dbId of dbIds) {
                 // Use the raw API endpoint which returns flattened data with all Notion columns
-                const url = `${API_BASE}/api/database/${dbId}/raw`;
+                const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
                 const response = await fetch(url);
                 const result = await response.json();
 
@@ -207,6 +223,13 @@ class DashboardApp {
 
     renderRawDatabaseTable(container, dbId, result) {
         const { database_name, columns: originalColumns, data: originalData, total_records } = result;
+        console.log(`[Frontend] Render table for ${dbId}:`, {
+            name: database_name,
+            total_records_api: total_records,
+            data_length: originalData.length,
+            first_record: originalData[0],
+            last_record: originalData[originalData.length - 1]
+        });
 
         // Check if section already exists
         let section = document.getElementById(`db-section-${dbId}`);
@@ -215,6 +238,50 @@ class DashboardApp {
             section.id = `db-section-${dbId}`;
             section.className = 'db-section';
             container.appendChild(section);
+        }
+
+        // Prioritize Title Column for better visibility
+        // High priority exact matches - Order matters!
+        const priorityCandidates = ['TASKS', 'Tasks', 'Task Name', 'Task Main', 'Name', 'Subject', 'Project Name', 'Tên'];
+
+        // Find the best match from the priority list
+        let titleCol = null;
+        for (const candidate of priorityCandidates) {
+            if (originalColumns.includes(candidate)) {
+                titleCol = candidate;
+                break;
+            }
+        }
+
+        // If no exact match, try regex (but skip "Title" generic for now to avoid bad matches)
+        if (!titleCol) {
+            titleCol = originalColumns.find(col => {
+                const lower = col.toLowerCase();
+                return (/name|task/i.test(col) && !/fix|point|status|type|date|time|user|person|by|at/i.test(lower)) && col !== 'Title';
+            });
+        }
+
+        // Last resort: Title
+        if (!titleCol && originalColumns.includes('Title')) {
+            titleCol = 'Title';
+        }
+
+        if (titleCol) {
+            console.log(`[Frontend] Selected '${titleCol}' as main column.`);
+            const idx = originalColumns.indexOf(titleCol);
+            if (idx > -1) {
+                originalColumns.splice(idx, 1);
+                originalColumns.unshift(titleCol);
+            }
+        }
+
+        // FORCE REMOVE 'Title' if we selected something else (User request)
+        if (titleCol && titleCol !== 'Title') {
+            const genericTitleIdx = originalColumns.indexOf('Title');
+            if (genericTitleIdx > -1) {
+                originalColumns.splice(genericTitleIdx, 1);
+                console.log('[Frontend] Removed redundant "Title" column.');
+            }
         }
 
         // State management

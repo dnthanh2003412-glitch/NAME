@@ -74,12 +74,12 @@ export class PollingService {
             }
 
             // Fetch data
-            const fetcher = new DataFetcher(accessToken);
+            const fetcher = new DataFetcher(accessToken, this.db);
             const data = await fetcher.fetchAllData(selectedDatabases);
 
-            // Save to database
+            // Save to database (Upsert)
             for (const [dbId, records] of Object.entries(data)) {
-                this.db.saveData(dbId, records);
+                this.db.upsertData(dbId, records);
             }
 
             const totalRecords = Object.values(data).reduce((sum, arr) => sum + arr.length, 0);

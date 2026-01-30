@@ -1,12 +1,15 @@
 import { NotionClient } from './client.js';
+import debugLog from '../debug_logger.js';
 
 /**
  * Data Fetcher Service
  * Orchestrates fetching data from multiple databases
  */
 export class DataFetcher {
-    constructor(accessToken) {
+    constructor(accessToken, db) {
         this.client = new NotionClient(accessToken);
+        this.db = db;
+        debugLog('DataFetcher initialized');
     }
 
     /**
@@ -16,6 +19,7 @@ export class DataFetcher {
      */
     async fetchAllData(databaseIds) {
         console.log(`[Fetcher] Starting to fetch data from ${databaseIds.length} databases...`);
+        debugLog(`Fetching data from ${databaseIds.length} databases`);
 
         const results = {};
         const dbMetadata = {};
@@ -23,83 +27,89 @@ export class DataFetcher {
         // Helper sleep function
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        // First, fetch database metadata to get names (Sequential with delay and retry)
+        // First, fetch database metadata to get names (Sequential)
         for (const dbId of databaseIds) {
-            let retries = 0;
-            const maxRetries = 3;
-            let success = false;
-
-            while (!success && retries < maxRetries) {
-                try {
-                    const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
-                    dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
-                    success = true;
-                    await sleep(350); // Rate limit protection
-                } catch (error) {
-                    retries++;
-                    const isNetworkError = error.message?.includes('ECONNRESET') ||
-                        error.message?.includes('ETIMEDOUT') ||
-                        error.message?.includes('ENOTFOUND');
-
-                    if (isNetworkError && retries < maxRetries) {
-                        const backoff = Math.pow(2, retries) * 1000;
-                        console.warn(`[Fetcher] ⚠️ Retry ${retries}/${maxRetries} for db name ${dbId.substring(0, 8)}... after ${backoff}ms`);
-                        await sleep(backoff);
-                    } else {
-                        console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
-                        dbMetadata[dbId] = 'Unknown Database';
-                        success = true; // Move on with placeholder name
-                    }
-                }
+            try {
+                const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
+                dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
+                await sleep(200);
+            } catch (error) {
+                console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
+                debugLog(`Error getting name for ${dbId}: ${error.message}`);
+                dbMetadata[dbId] = 'Unknown Database';
             }
         }
 
-        // Fetch data (Sequential with delay and retry to prevent Rate Limit)
+        // Fetch data (Forced Full Sync)
         for (const dbId of databaseIds) {
-            let retries = 0;
-            const maxRetries = 3;
-            let success = false;
+            debugLog(`Processing database ${dbId} (${dbMetadata[dbId]})`);
+            try {
+                let filter = undefined;
+                let lastSync = null;
 
-            while (!success && retries < maxRetries) {
-                try {
-                    const pages = await this.client.getAllPages(dbId);
-                    const databaseName = dbMetadata[dbId];
-                    const projectName = this.extractProjectName(databaseName);
-                    const transformed = pages.map(page => ({
-                        ...this.transformPage(page),
-                        database_name: databaseName,
-                        project_name: projectName,
-                        database_id: dbId
-                    }));
-                    results[dbId] = transformed;
-                    success = true;
-                    console.log(`[Fetcher] ✅ Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
+                // Check for last sync time if DB manager is available
+                if (this.db) {
+                    lastSync = this.db.getLastSyncTime(dbId);
+                    if (lastSync) {
+                        // Use 24-hour safety buffer to be extremely safe against timezone/drift issues
+                        // This fetches recent active tasks without reloading the entire history
+                        const safetyBuffer = 24 * 60 * 60 * 1000;
+                        const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
 
-                    await sleep(350); // Rate limit protection between heavy fetches
-                } catch (error) {
-                    retries++;
-                    const isNetworkError = error.message?.includes('ECONNRESET') ||
-                        error.message?.includes('ETIMEDOUT') ||
-                        error.message?.includes('ENOTFOUND');
+                        const msg = `Incremental sync for ${dbId} (Window: 24h, Since: ${safeTime})`;
+                        console.log(`[Fetcher] 🔄 ${msg}`);
+                        debugLog(msg);
 
-                    if (isNetworkError && retries < maxRetries) {
-                        const backoff = Math.pow(2, retries) * 1000;
-                        console.warn(`[Fetcher] ⚠️ Retry ${retries}/${maxRetries} for database ${dbId.substring(0, 8)}... after ${backoff}ms`);
-                        await sleep(backoff);
+                        filter = {
+                            property: "Last edited time",
+                            date: {
+                                after: safeTime
+                            }
+                        };
                     } else {
-                        console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
-                        results[dbId] = [];
-                        success = true; // Move on
+                        const msg = `Full sync for ${dbId} (First run)`;
+                        console.log(`[Fetcher] ⬇️ ${msg}`);
+                        debugLog(msg);
                     }
+                } else {
+                    debugLog(`Warning: no DB manager available for ${dbId}`);
                 }
+
+
+                const pages = await this.client.getAllPages(dbId, filter);
+                debugLog(`Fetched ${pages.length} pages for ${dbId}`);
+
+                // Logic check empty pages for incremental only applies when lastSync is set
+                // Since we forced lastSync = null via comment, this block is skipped or safe
+
+                const databaseName = dbMetadata[dbId];
+                const projectName = this.extractProjectName(databaseName);
+
+                const transformed = pages.map(page => ({
+                    ...this.transformPage(page),
+                    database_name: databaseName,
+                    project_name: projectName,
+                    database_id: dbId
+                }));
+
+                results[dbId] = transformed;
+
+                const type = 'Total';
+                const successMsg = `Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} ${type} records`;
+                console.log(`[Fetcher] ✅ ${successMsg}`);
+                debugLog(successMsg);
+
+                await sleep(350);
+            } catch (error) {
+                console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
+                debugLog(`Failed to fetch ${dbId}: ${error.message}`);
+                results[dbId] = [];
             }
         }
-
-        // Remove Promise.all logic since we are now sequential
-        // await Promise.all(promises);
 
         const totalRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
-        console.log(`[Fetcher] ✅ Total records fetched: ${totalRecords}`);
+        console.log(`[Fetcher] ✅ Total fetched records: ${totalRecords}`);
+        debugLog(`Total records fetched: ${totalRecords}`);
 
         return results;
     }

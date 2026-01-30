@@ -264,6 +264,9 @@ export function setupRoutes(app, db, poller) {
             cachedData.forEach(record => {
                 if (record.properties) Object.keys(record.properties).forEach(key => columns.add(key));
             });
+
+            console.log(`[API] Columns for ${id}:`, Array.from(columns));
+
             const formattedData = cachedData.map(record => {
                 const row = {};
                 columns.forEach(col => {

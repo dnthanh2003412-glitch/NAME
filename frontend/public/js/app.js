@@ -342,12 +342,32 @@ class DashboardApp {
         const { months, years } = extractMonthsYears();
         
         let assigneeTableFilter = '';
-        let monthTableFilter = '';
-        let yearTableFilter = '';
+        let startDateFilter = '';
+        let endDateFilter = '';
         let sprintTableFilter = '';
+        
+        // Find fallback date column (LastEditTime)
+        const fallbackDateCol = originalColumns.find(c => 
+            c.toLowerCase().includes('lastedittime') || 
+            c.toLowerCase().includes('last edit') || 
+            c.toLowerCase().includes('updated')
+        ) || '';
 
         // Get visible columns
         const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
+        
+        // Parse date helper (supports multiple formats)
+        const parseDate = (val) => {
+            if (!val) return null;
+            if (val instanceof Date && !isNaN(val)) return val;
+            const str = String(val).trim();
+            // Try DD/MM/YYYY
+            const dmy = str.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
+            if (dmy) return new Date(parseInt(dmy[3]), parseInt(dmy[2]) - 1, parseInt(dmy[1]));
+            // Try YYYY-MM-DD or other ISO formats
+            const d = new Date(str);
+            return isNaN(d.getTime()) ? null : d;
+        };
 
         // Apply search and sort
         const applyFiltersAndSearch = () => {
@@ -362,14 +382,29 @@ class DashboardApp {
                     if (row[sprintCol] !== sprintTableFilter) return false;
                 }
                 
-                // Month/Year Filter
-                if (dateCol && (monthTableFilter || yearTableFilter)) {
-                    const dateStr = row[dateCol];
-                    if (!dateStr) return false;
-                    const d = new Date(dateStr);
-                    if (isNaN(d.getTime())) return false;
-                    if (monthTableFilter && (d.getMonth() + 1) !== parseInt(monthTableFilter)) return false;
-                    if (yearTableFilter && d.getFullYear() !== parseInt(yearTableFilter)) return false;
+                // Date Range Filter (with fallback)
+                if (dateCol && (startDateFilter || endDateFilter)) {
+                    // Try primary date column first
+                    let dateStr = row[dateCol];
+                    let d = parseDate(dateStr);
+                    
+                    // Fallback to secondary date column
+                    if (!d && fallbackDateCol) {
+                        dateStr = row[fallbackDateCol];
+                        d = parseDate(dateStr);
+                    }
+                    
+                    if (!d) return false;
+                    
+                    if (startDateFilter) {
+                        const start = new Date(startDateFilter);
+                        if (d < start) return false;
+                    }
+                    if (endDateFilter) {
+                        const end = new Date(endDateFilter);
+                        end.setHours(23, 59, 59, 999);
+                        if (d > end) return false;
+                    }
                 }
 
                 // Global search across ALL columns
@@ -666,9 +701,9 @@ class DashboardApp {
             // Listen for dashboard filter changes (custom event)
             document.addEventListener('dashboard-filter-change', (e) => {
                 if (e.detail) {
-                    const { selectedMonth, selectedYear, assigneeFilter, sprintFilter } = e.detail;
-                    monthTableFilter = selectedMonth || '';
-                    yearTableFilter = selectedYear || '';
+                    const { startDate, endDate, assigneeFilter, sprintFilter } = e.detail;
+                    startDateFilter = startDate || '';
+                    endDateFilter = endDate || '';
                     assigneeTableFilter = assigneeFilter || '';
                     sprintTableFilter = sprintFilter || '';
                     currentPage = 1;
@@ -781,35 +816,100 @@ class DashboardApp {
     async renderProductivityReport(container) {
         // 1. Setup Container & Toolbar
         const now = new Date();
-        const currentYear = now.getFullYear();
-        const currentMonthIdx = now.getMonth() + 1; // 1-12
+        
+        // Calculate default date range (this month)
+        const defaultStart = new Date(now.getFullYear(), now.getMonth(), 1);
+        const defaultEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+        
+        const formatDateForInput = (date) => {
+            if (!date) return '';
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return `${y}-${m}-${d}`;
+        };
+        
+        const formatDateDisplay = (date) => {
+            if (!date) return '';
+            return date.toLocaleDateString('vi-VN');
+        };
 
-        // Generate Year Options
-        const yearOptions = [];
-        for (let y = currentYear - 2; y <= currentYear + 2; y++) {
-            yearOptions.push(`<option value="${y}" ${y === currentYear ? 'selected' : ''}>${y}</option>`);
-        }
-
-        // Generate Month Options
-        const monthOptions = [];
-        for (let m = 1; m <= 12; m++) {
-            monthOptions.push(`<option value="${m}" ${m === currentMonthIdx ? 'selected' : ''}>Tháng ${m}</option>`);
-        }
+        // Get date presets
+        const getPresets = () => ({
+            'thisMonth': {
+                label: 'Tháng này',
+                start: new Date(now.getFullYear(), now.getMonth(), 1),
+                end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+            },
+            'lastMonth': {
+                label: 'Tháng trước',
+                start: new Date(now.getFullYear(), now.getMonth() - 1, 1),
+                end: new Date(now.getFullYear(), now.getMonth(), 0)
+            },
+            'last2Months': {
+                label: '2 tháng',
+                start: new Date(now.getFullYear(), now.getMonth() - 1, 1),
+                end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+            },
+            'last3Months': {
+                label: '3 tháng',
+                start: new Date(now.getFullYear(), now.getMonth() - 2, 1),
+                end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+            },
+            'thisQuarter': {
+                label: 'Quý này',
+                start: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1),
+                end: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3 + 3, 0)
+            },
+            'last6Months': {
+                label: '6 tháng',
+                start: new Date(now.getFullYear(), now.getMonth() - 5, 1),
+                end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+            },
+            'thisYear': {
+                label: 'Năm nay',
+                start: new Date(now.getFullYear(), 0, 1),
+                end: new Date(now.getFullYear(), 11, 31)
+            }
+        });
+        
+        const presets = getPresets();
+        let activePreset = 'thisMonth';
 
         container.innerHTML = `
             <div class="report-toolbar" style="background:#1e293b;padding:16px;border-radius:12px;margin-bottom:20px;border:1px solid #334155;">
-                <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
-                    <div style="display:flex;flex-direction:column;gap:4px;">
-                        <label style="color:#94a3b8;font-size:0.8rem;">Chọn Thời gian</label>
-                        <div style="display:flex;gap:8px;">
-                            <select id="prod-month-select" style="background:#0f172a;border:1px solid #475569;color:#e2e8f0;padding:6px 10px;border-radius:6px;font-family:inherit;min-width:100px;cursor:pointer;">
-                                ${monthOptions.join('')}
-                            </select>
-                            <select id="prod-year-select" style="background:#0f172a;border:1px solid #475569;color:#e2e8f0;padding:6px 10px;border-radius:6px;font-family:inherit;width:80px;cursor:pointer;">
-                                ${yearOptions.join('')}
-                            </select>
+                <!-- Date Range Filter Section -->
+                <div class="date-range-section" style="margin-bottom:16px;padding:12px;background:#0f172a;border-radius:8px;border:1px solid #334155;">
+                    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+                        <span style="color:#94a3b8;font-size:0.85rem;font-weight:500;">📅 Khoảng thời gian:</span>
+                        <div class="date-presets" style="display:flex;gap:6px;flex-wrap:wrap;">
+                            ${Object.entries(presets).map(([key, preset]) => `
+                                <button class="prod-preset-btn ${activePreset === key ? 'active' : ''}" data-preset="${key}" 
+                                    style="padding:4px 10px;font-size:0.75rem;border-radius:6px;border:1px solid ${activePreset === key ? '#3b82f6' : '#475569'};
+                                    background:${activePreset === key ? '#3b82f6' : 'transparent'};color:${activePreset === key ? '#fff' : '#94a3b8'};
+                                    cursor:pointer;transition:all 0.2s ease;white-space:nowrap;">
+                                    ${preset.label}
+                                </button>
+                            `).join('')}
                         </div>
                     </div>
+                    <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <label style="color:#94a3b8;font-size:0.8rem;">Từ ngày:</label>
+                            <input type="date" id="prod-start-date" value="${formatDateForInput(defaultStart)}" 
+                                style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#1e293b;color:#e2e8f0;font-size:0.85rem;">
+                        </div>
+                        <span style="color:#64748b;">→</span>
+                        <div style="display:flex;align-items:center;gap:8px;">
+                            <label style="color:#94a3b8;font-size:0.8rem;">Đến ngày:</label>
+                            <input type="date" id="prod-end-date" value="${formatDateForInput(defaultEnd)}" 
+                                style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#1e293b;color:#e2e8f0;font-size:0.85rem;">
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Other Settings -->
+                <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:12px;">
                     <div style="display:flex;flex-direction:column;gap:4px;">
                         <label style="color:#94a3b8;font-size:0.8rem;">Số công chuẩn</label>
                         <input type="number" id="prod-std-days" placeholder="22" step="0.5"
@@ -844,8 +944,8 @@ class DashboardApp {
             </div>
         `;
 
-        const monthSelect = document.getElementById('prod-month-select');
-        const yearSelect = document.getElementById('prod-year-select');
+        const startDateInput = document.getElementById('prod-start-date');
+        const endDateInput = document.getElementById('prod-end-date');
         const stdDaysInput = document.getElementById('prod-std-days');
         const refreshBtn = document.getElementById('prod-refresh-btn');
         const bodyContainer = document.getElementById('prod-report-body');
@@ -854,10 +954,64 @@ class DashboardApp {
         const dbCountSpan = document.getElementById('prod-db-count');
         const toggleDbsBtn = document.getElementById('prod-toggle-dbs');
 
+        // Preset button handlers
+        container.querySelectorAll('.prod-preset-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const presetKey = btn.dataset.preset;
+                const preset = presets[presetKey];
+                
+                startDateInput.value = preset.start ? formatDateForInput(preset.start) : '';
+                endDateInput.value = preset.end ? formatDateForInput(preset.end) : '';
+                activePreset = presetKey;
+                
+                // Update active state
+                container.querySelectorAll('.prod-preset-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'transparent';
+                    b.style.borderColor = '#475569';
+                    b.style.color = '#94a3b8';
+                });
+                btn.classList.add('active');
+                btn.style.background = '#3b82f6';
+                btn.style.borderColor = '#3b82f6';
+                btn.style.color = '#fff';
+                
+                // Auto fetch report
+                fetchReport();
+            });
+            
+            // Hover effect
+            btn.addEventListener('mouseenter', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.borderColor = '#3b82f6';
+                    btn.style.color = '#e2e8f0';
+                }
+            });
+            btn.addEventListener('mouseleave', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.borderColor = '#475569';
+                    btn.style.color = '#94a3b8';
+                }
+            });
+        });
+        
+        // Manual date input clears preset highlight
+        [startDateInput, endDateInput].forEach(input => {
+            input.addEventListener('change', () => {
+                container.querySelectorAll('.prod-preset-btn').forEach(b => {
+                    b.classList.remove('active');
+                    b.style.background = 'transparent';
+                    b.style.borderColor = '#475569';
+                    b.style.color = '#94a3b8';
+                });
+                activePreset = '';
+            });
+        });
+
         // Store full data for filtering
         let fullReportData = [];
         let reportColumns = [];
-        let currentMonthStr = '';
+        let currentDateRange = '';
         let chipsExpanded = true;  // Track chips panel state
 
         // NEW: State for column visibility, pagination
@@ -935,12 +1089,15 @@ class DashboardApp {
         renderDbChips();
 
         const fetchReport = async () => {
-            const m = monthSelect.value;
-            const y = yearSelect.value;
-            if (!m || !y) return;
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
+            
+            if (!startDate || !endDate) {
+                bodyContainer.innerHTML = '<div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">⚠️ Vui lòng chọn khoảng thời gian</div>';
+                return;
+            }
 
-            const monthStr = `${m.padStart(2, '0')}-${y}`; // MM-YYYY for Backend
-            currentMonthStr = monthStr;
+            currentDateRange = `${formatDateDisplay(new Date(startDate))} → ${formatDateDisplay(new Date(endDate))}`;
 
             bodyContainer.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#94a3b8;">⏳ Đang tính toán dữ liệu...</div>';
 
@@ -951,7 +1108,11 @@ class DashboardApp {
                 const response = await fetch(`${API_BASE}/api/reports/productivity`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ month: monthStr, databaseIds: selectedDbIds })
+                    body: JSON.stringify({ 
+                        startDate: startDate, 
+                        endDate: endDate, 
+                        databaseIds: selectedDbIds 
+                    })
                 });
                 const result = await response.json();
 
@@ -1044,7 +1205,7 @@ class DashboardApp {
                 filteredData = fullReportData.filter(r => r.fullName === filterVal);
             }
 
-            renderTable(filteredData, reportColumns, currentMonthStr);
+            renderTable(filteredData, reportColumns, currentDateRange);
 
             // Only render dashboard/warning on initial load or when explicitly requested
             if (renderDashToo || !dashboardRendered) {
@@ -1056,15 +1217,14 @@ class DashboardApp {
         userFilter.addEventListener('change', applyFilterAndRender);
 
         const updateStats = async (updates) => {
-            const m = monthSelect.value;
-            const y = yearSelect.value;
-            const monthStr = `${m.padStart(2, '0')}-${y}`;
+            const startDate = startDateInput.value;
+            const endDate = endDateInput.value;
 
             try {
                 await fetch(`${API_BASE}/api/reports/productivity/update-stats`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ month: monthStr, updates })
+                    body: JSON.stringify({ startDate, endDate, updates })
                 });
                 // After update, refresh report to recalculate formulas
                 fetchReport();
@@ -1074,9 +1234,9 @@ class DashboardApp {
             }
         };
 
-        const renderTable = (data, columns, monthStr) => {
+        const renderTable = (data, columns, dateRange) => {
             if (!data || data.length === 0) {
-                bodyContainer.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu cho tháng này.</div>';
+                bodyContainer.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu cho khoảng thời gian này.</div>';
                 return;
             }
 
@@ -1538,7 +1698,7 @@ class DashboardApp {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `Bao_cao_nang_suat_${currentMonthStr}.csv`;
+                a.download = `Bao_cao_nang_suat_${currentDateRange.replace(/[\s→\/]/g, '_')}.csv`;
                 a.click();
                 URL.revokeObjectURL(url);
             });
@@ -1581,7 +1741,7 @@ class DashboardApp {
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
                 a.href = url;
-                a.download = `Bao_cao_nang_suat_${currentMonthStr}.xls`;
+                a.download = `Bao_cao_nang_suat_${currentDateRange.replace(/[\s→\/]/g, '_')}.xls`;
                 a.click();
                 URL.revokeObjectURL(url);
             });
@@ -1589,8 +1749,6 @@ class DashboardApp {
 
         // Event Listeners
         refreshBtn.addEventListener('click', fetchReport);
-        monthSelect.addEventListener('change', fetchReport);
-        yearSelect.addEventListener('change', fetchReport);
 
         stdDaysInput.addEventListener('change', async (e) => {
             const val = parseFloat(e.target.value);

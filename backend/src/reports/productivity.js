@@ -7,12 +7,20 @@ export class ProductivityService {
 
     /**
      * Generate Productivity Report
-     * @param {string} monthStr - Format "MM-YYYY"
+     * @param {string} startDate - Format "YYYY-MM-DD"
+     * @param {string} endDate - Format "YYYY-MM-DD"
      * @param {Array<string>} databaseIds 
      */
-    async generateReport(monthStr, databaseIds) {
-        const stats = this.getStats(monthStr); // Helper to get Manual Inputs
+    async generateReport(startDate, endDate, databaseIds) {
+        const stats = this.getStats(startDate, endDate); // Helper to get Manual Inputs
         const reportData = [];
+        
+        // Parse date range
+        const start = startDate ? new Date(startDate) : null;
+        const end = endDate ? new Date(endDate) : null;
+        if (end) {
+            end.setHours(23, 59, 59, 999);
+        }
 
         // 1. Collect all data
         let allTasks = [];
@@ -21,7 +29,7 @@ export class ProductivityService {
             allTasks = allTasks.concat(data);
         }
 
-        // 2. Filter by Month and Status
+        // 2. Filter by Date Range and Status
         const relevantTasks = allTasks.filter(task => {
             const status = this.getPropertyValue(task, 'Task Status') || this.getPropertyValue(task, 'Status');
             // Use robust date parsing
@@ -30,12 +38,14 @@ export class ProductivityService {
             // Check Status = Done
             if (String(status).toLowerCase() !== 'done') return false;
 
-            // Check Month (MM-YYYY)
+            // Check Date Range
             if (!doneDate) return false;
+            
             // doneDate is a Date object now
-            const taskMonth = `${String(doneDate.getMonth() + 1).padStart(2, '0')}-${doneDate.getFullYear()}`;
+            if (start && doneDate < start) return false;
+            if (end && doneDate > end) return false;
 
-            return taskMonth === monthStr;
+            return true;
         });
 
         // 3. Group by Assignee
@@ -468,21 +478,24 @@ export class ProductivityService {
     }
 
     // Stats Management for Inputs
-    getStats(month) {
+    // Now uses date range key like "2024-01-01_2024-01-31"
+    getStats(startDate, endDate) {
+        const key = `${startDate || 'all'}_${endDate || 'all'}`;
         const meta = this.db.getMetadata('monthly_stats') || {};
-        return meta[month] || { standard_days: 0, actual_days: {} };
+        return meta[key] || { standard_days: 0, actual_days: {} };
     }
 
-    updateStats(month, updates) {
+    updateStats(startDate, endDate, updates) {
+        const key = `${startDate || 'all'}_${endDate || 'all'}`;
         const meta = this.db.getMetadata('monthly_stats') || {};
-        if (!meta[month]) meta[month] = { standard_days: 0, actual_days: {} };
+        if (!meta[key]) meta[key] = { standard_days: 0, actual_days: {} };
 
-        if (updates.standard_days !== undefined) meta[month].standard_days = parseFloat(updates.standard_days);
+        if (updates.standard_days !== undefined) meta[key].standard_days = parseFloat(updates.standard_days);
         if (updates.actual_days) {
-            meta[month].actual_days = { ...meta[month].actual_days, ...updates.actual_days };
+            meta[key].actual_days = { ...meta[key].actual_days, ...updates.actual_days };
         }
 
         this.db.setMetadata('monthly_stats', meta);
-        return meta[month];
+        return meta[key];
     }
 }

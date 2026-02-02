@@ -93,6 +93,109 @@ function filterByMonthYear(data, dateColName, month, year) {
 }
 
 /**
+ * Filter data by date range (from - to)
+ * Supports fallback column (e.g., DoneDate -> LastEditTime)
+ */
+function filterByDateRange(data, primaryDateCol, fallbackDateCol, startDate, endDate) {
+    if (!startDate && !endDate) return data;
+    
+    const start = startDate ? new Date(startDate) : null;
+    const end = endDate ? new Date(endDate) : null;
+    
+    // Set end date to end of day
+    if (end) {
+        end.setHours(23, 59, 59, 999);
+    }
+    
+    return data.filter(row => {
+        // Try primary date column first, then fallback
+        let dateVal = row[primaryDateCol];
+        let parsed = parseDate(dateVal);
+        
+        if (!parsed && fallbackDateCol) {
+            dateVal = row[fallbackDateCol];
+            parsed = parseDate(dateVal);
+        }
+        
+        if (!parsed) return false;
+        
+        if (start && parsed < start) return false;
+        if (end && parsed > end) return false;
+        return true;
+    });
+}
+
+/**
+ * Get date range presets
+ */
+function getDateRangePresets() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    
+    return {
+        'thisMonth': {
+            label: 'Tháng này',
+            start: new Date(now.getFullYear(), now.getMonth(), 1),
+            end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+        },
+        'lastMonth': {
+            label: 'Tháng trước',
+            start: new Date(now.getFullYear(), now.getMonth() - 1, 1),
+            end: new Date(now.getFullYear(), now.getMonth(), 0)
+        },
+        'last2Months': {
+            label: '2 tháng gần đây',
+            start: new Date(now.getFullYear(), now.getMonth() - 1, 1),
+            end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+        },
+        'last3Months': {
+            label: '3 tháng gần đây',
+            start: new Date(now.getFullYear(), now.getMonth() - 2, 1),
+            end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+        },
+        'thisQuarter': {
+            label: 'Quý này',
+            start: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1),
+            end: new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3 + 3, 0)
+        },
+        'last6Months': {
+            label: '6 tháng gần đây',
+            start: new Date(now.getFullYear(), now.getMonth() - 5, 1),
+            end: new Date(now.getFullYear(), now.getMonth() + 1, 0)
+        },
+        'thisYear': {
+            label: 'Năm nay',
+            start: new Date(now.getFullYear(), 0, 1),
+            end: new Date(now.getFullYear(), 11, 31)
+        },
+        'all': {
+            label: 'Tất cả',
+            start: null,
+            end: null
+        }
+    };
+}
+
+/**
+ * Format date to YYYY-MM-DD for input[type=date]
+ */
+function formatDateForInput(date) {
+    if (!date) return '';
+    const y = date.getFullYear();
+    const m = String(date.getMonth() + 1).padStart(2, '0');
+    const d = String(date.getDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+}
+
+/**
+ * Format date to Vietnamese display
+ */
+function formatDateDisplay(date) {
+    if (!date) return '';
+    return date.toLocaleDateString('vi-VN');
+}
+
+/**
  * Get unique values from column
  */
 function getUniqueValues(data, colName) {
@@ -297,7 +400,7 @@ function destroyChart(id) {
 export function renderRawDataDashboard(data, container, databaseName, options = {}) {
     if (!data || data.length === 0) return;
 
-    const { sprintFilter = '', assigneeFilter = '', selectedMonth = '', selectedYear = '' } = options;
+    const { sprintFilter = '', assigneeFilter = '', startDate = '', endDate = '', activePreset = 'thisMonth' } = options;
 
     // Detect available columns
     const sampleRow = data[0];
@@ -316,12 +419,25 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     const pointStatusCol = findCol('POINT STATUS', 'Point Status', 'Trạng thái điểm');
     const sceneTypeCol = findCol('LOẠI CẢNH', 'Loại cảnh', 'Scene Type', 'Scene');
     const taskTypeCol = findCol('TASK TYPE', 'Task Type', 'Loại task');
-    const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE', 'NGÀY LÀM', 'Ngày làm', 'Date', 'Created', 'Updated');
+    const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE');
+    const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'NGÀY LÀM', 'Ngày làm', 'Updated');
 
     // Get filter options
     const sprints = getUniqueValues(data, sprintCol);
     const assignees = getUniqueValues(data, assigneeCol);
-    const { months, years } = dateCol ? extractMonthsYears(data, dateCol) : { months: [], years: [] };
+    const presets = getDateRangePresets();
+    
+    // Get current date range values
+    let currentStartDate = startDate;
+    let currentEndDate = endDate;
+    let currentPreset = activePreset;
+    
+    // If no dates set, use default preset (this month)
+    if (!currentStartDate && !currentEndDate && activePreset && presets[activePreset]) {
+        const preset = presets[activePreset];
+        currentStartDate = preset.start ? formatDateForInput(preset.start) : '';
+        currentEndDate = preset.end ? formatDateForInput(preset.end) : '';
+    }
 
     // Apply filters
     let filteredData = [...data];
@@ -331,10 +447,8 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     if (assigneeFilter && assigneeCol) {
         filteredData = filteredData.filter(r => r[assigneeCol] === assigneeFilter);
     }
-    if (dateCol && (selectedMonth || selectedYear)) {
-        filteredData = filterByMonthYear(filteredData, dateCol,
-            selectedMonth ? parseInt(selectedMonth) : null,
-            selectedYear ? parseInt(selectedYear) : null);
+    if (dateCol && (currentStartDate || currentEndDate)) {
+        filteredData = filterByDateRange(filteredData, dateCol, fallbackDateCol, currentStartDate, currentEndDate);
     }
 
     // Build charts list
@@ -355,10 +469,12 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     const existing = container.querySelector('.raw-dashboard');
     if (existing) existing.remove();
 
-    // Current month/year for defaults
-    const now = new Date();
-    const currentMonth = selectedMonth || '';
-    const currentYear = selectedYear || (years.length > 0 ? years[0] : now.getFullYear());
+    // Format display dates
+    const displayStartDate = currentStartDate ? formatDateDisplay(new Date(currentStartDate)) : '';
+    const displayEndDate = currentEndDate ? formatDateDisplay(new Date(currentEndDate)) : '';
+    const dateRangeText = displayStartDate && displayEndDate 
+        ? `${displayStartDate} → ${displayEndDate}` 
+        : (displayStartDate ? `Từ ${displayStartDate}` : (displayEndDate ? `Đến ${displayEndDate}` : 'Tất cả'));
 
     // Create dashboard container with filter bar
     const dashDiv = document.createElement('div');
@@ -368,19 +484,43 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         <div class="dash-filter-bar">
             <h3 style="margin:0;color:#e2e8f0;font-size:1rem;">📊 Dashboard: ${databaseName || 'Raw Data'}</h3>
         </div>
+        
+        <!-- Date Range Filter Section -->
+        <div class="date-range-filter" style="margin-bottom:16px;padding:12px;background:#1e293b;border-radius:8px;border:1px solid #334155;">
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap;">
+                <span style="color:#94a3b8;font-size:0.85rem;font-weight:500;">📅 Khoảng thời gian:</span>
+                <div class="date-presets" style="display:flex;gap:6px;flex-wrap:wrap;">
+                    ${Object.entries(presets).map(([key, preset]) => `
+                        <button class="preset-btn ${currentPreset === key ? 'active' : ''}" data-preset="${key}" 
+                            style="padding:4px 10px;font-size:0.75rem;border-radius:6px;border:1px solid ${currentPreset === key ? '#3b82f6' : '#475569'};
+                            background:${currentPreset === key ? '#3b82f6' : 'transparent'};color:${currentPreset === key ? '#fff' : '#94a3b8'};
+                            cursor:pointer;transition:all 0.2s ease;white-space:nowrap;">
+                            ${preset.label}
+                        </button>
+                    `).join('')}
+                </div>
+            </div>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <label style="color:#94a3b8;font-size:0.8rem;">Từ ngày:</label>
+                    <input type="date" id="raw-start-date" value="${currentStartDate}" 
+                        style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:#e2e8f0;font-size:0.85rem;">
+                </div>
+                <span style="color:#64748b;">→</span>
+                <div style="display:flex;align-items:center;gap:8px;">
+                    <label style="color:#94a3b8;font-size:0.8rem;">Đến ngày:</label>
+                    <input type="date" id="raw-end-date" value="${currentEndDate}" 
+                        style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:#e2e8f0;font-size:0.85rem;">
+                </div>
+                <button id="raw-clear-dates" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;border:1px solid #ef4444;
+                    background:transparent;color:#ef4444;cursor:pointer;transition:all 0.2s;">✕ Xóa</button>
+            </div>
+        </div>
+        
+        <!-- Other Filters -->
         <div class="dash-filter-bar" style="margin-bottom:12px;">
-            <label>Chọn Thời gian:</label>
-            <select id="raw-month-filter" style="min-width:100px;">
-                <option value="">Tất cả tháng</option>
-                ${[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(m => `<option value="${m}" ${currentMonth == m ? 'selected' : ''}>Tháng ${m}</option>`).join('')}
-            </select>
-            <select id="raw-year-filter" style="min-width:80px;">
-                ${years.map(y => `<option value="${y}" ${currentYear == y ? 'selected' : ''}>${y}</option>`).join('')}
-                ${years.length === 0 ? `<option value="${now.getFullYear()}">${now.getFullYear()}</option>` : ''}
-            </select>
-            
             ${assigneeCol ? `
-                <label style="margin-left:16px;">Nhân sự:</label>
+                <label>Nhân sự:</label>
                 <select id="raw-assignee-filter" style="min-width:150px;">
                     <option value="">Tất cả</option>
                     ${assignees.map(a => `<option value="${a}" ${assigneeFilter === a ? 'selected' : ''}>${a}</option>`).join('')}
@@ -397,10 +537,10 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             
             <button id="raw-apply-filter" class="dash-filter-btn">🔄 Cập nhật</button>
         </div>
+        
         <p style="margin:0 0 12px 0;color:#64748b;font-size:0.8rem;">
             📊 ${filteredData.length} / ${data.length} task
-            ${selectedMonth ? ` | Tháng ${selectedMonth}` : ''}
-            ${selectedYear ? `/${selectedYear}` : ''}
+            | 🗓️ ${dateRangeText}
             ${sprintFilter ? ` | ${sprintFilter}` : ''}
             ${assigneeFilter ? ` | ${assigneeFilter}` : ''}
         </p>
@@ -410,28 +550,106 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     `;
     container.insertBefore(dashDiv, container.firstChild);
 
-    // Attach filter events
-    document.getElementById('raw-apply-filter')?.addEventListener('click', () => {
-        const newMonth = document.getElementById('raw-month-filter')?.value || '';
-        const newYear = document.getElementById('raw-year-filter')?.value || '';
+    // Preset button click handlers
+    dashDiv.querySelectorAll('.preset-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const presetKey = btn.dataset.preset;
+            const preset = presets[presetKey];
+            
+            document.getElementById('raw-start-date').value = preset.start ? formatDateForInput(preset.start) : '';
+            document.getElementById('raw-end-date').value = preset.end ? formatDateForInput(preset.end) : '';
+            
+            // Update active state
+            dashDiv.querySelectorAll('.preset-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = 'transparent';
+                b.style.borderColor = '#475569';
+                b.style.color = '#94a3b8';
+            });
+            btn.classList.add('active');
+            btn.style.background = '#3b82f6';
+            btn.style.borderColor = '#3b82f6';
+            btn.style.color = '#fff';
+            
+            // Auto apply filter
+            triggerFilterUpdate(presetKey);
+        });
+        
+        // Hover effect
+        btn.addEventListener('mouseenter', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.borderColor = '#3b82f6';
+                btn.style.color = '#e2e8f0';
+            }
+        });
+        btn.addEventListener('mouseleave', () => {
+            if (!btn.classList.contains('active')) {
+                btn.style.borderColor = '#475569';
+                btn.style.color = '#94a3b8';
+            }
+        });
+    });
+
+    // Clear dates button
+    document.getElementById('raw-clear-dates')?.addEventListener('click', () => {
+        document.getElementById('raw-start-date').value = '';
+        document.getElementById('raw-end-date').value = '';
+        dashDiv.querySelectorAll('.preset-btn').forEach(b => {
+            b.classList.remove('active');
+            b.style.background = 'transparent';
+            b.style.borderColor = '#475569';
+            b.style.color = '#94a3b8';
+        });
+        const allBtn = dashDiv.querySelector('.preset-btn[data-preset="all"]');
+        if (allBtn) {
+            allBtn.classList.add('active');
+            allBtn.style.background = '#3b82f6';
+            allBtn.style.borderColor = '#3b82f6';
+            allBtn.style.color = '#fff';
+        }
+        triggerFilterUpdate('all');
+    });
+
+    // Helper function to trigger filter update
+    function triggerFilterUpdate(presetKey = '') {
+        const newStartDate = document.getElementById('raw-start-date')?.value || '';
+        const newEndDate = document.getElementById('raw-end-date')?.value || '';
         const newAssignee = document.getElementById('raw-assignee-filter')?.value || '';
         const newSprint = document.getElementById('raw-sprint-filter')?.value || '';
         
         // Dispatch event to sync with table
         document.dispatchEvent(new CustomEvent('dashboard-filter-change', {
             detail: {
-                selectedMonth: newMonth,
-                selectedYear: newYear,
+                startDate: newStartDate,
+                endDate: newEndDate,
                 assigneeFilter: newAssignee,
-                sprintFilter: newSprint
+                sprintFilter: newSprint,
+                activePreset: presetKey
             }
         }));
         
         renderRawDataDashboard(data, container, databaseName, {
-            selectedMonth: newMonth,
-            selectedYear: newYear,
+            startDate: newStartDate,
+            endDate: newEndDate,
             assigneeFilter: newAssignee,
-            sprintFilter: newSprint
+            sprintFilter: newSprint,
+            activePreset: presetKey
+        });
+    }
+
+    // Attach filter events
+    document.getElementById('raw-apply-filter')?.addEventListener('click', () => triggerFilterUpdate());
+    
+    // Date input change - auto update preset buttons
+    ['raw-start-date', 'raw-end-date'].forEach(id => {
+        document.getElementById(id)?.addEventListener('change', () => {
+            // Clear preset active state when manually changing dates
+            dashDiv.querySelectorAll('.preset-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = 'transparent';
+                b.style.borderColor = '#475569';
+                b.style.color = '#94a3b8';
+            });
         });
     });
 
@@ -692,3 +910,7 @@ function renderGroupedChart(canvasId, data, columnName, chartType) {
 window.renderProductivityDashboard = renderProductivityDashboard;
 window.renderRawDataDashboard = renderRawDataDashboard;
 window.showDetailModal = showDetailModal;
+window.filterByDateRange = filterByDateRange;
+window.getDateRangePresets = getDateRangePresets;
+window.formatDateForInput = formatDateForInput;
+window.formatDateDisplay = formatDateDisplay;

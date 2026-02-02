@@ -1853,3 +1853,89 @@ tr {
         color: black !important;
     }
 }
+
+/* Date Range Filter Styles */
+.date-range-filter,
+.date-range-section {
+    background: #1e293b;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    padding: 12px;
+}
+
+.date-presets {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.preset-btn,
+.prod-preset-btn {
+    padding: 4px 10px;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: 1px solid #475569;
+    background: transparent;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.preset-btn:hover,
+.prod-preset-btn:hover {
+    border-color: #3b82f6;
+    color: #e2e8f0;
+}
+
+.preset-btn.active,
+.prod-preset-btn.active {
+    background: #3b82f6 !important;
+    border-color: #3b82f6 !important;
+    color: #fff !important;
+}
+
+/* Date inputs styling */
+input[type="date"] {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #475569;
+    background: #0f172a;
+    color: #e2e8f0;
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+input[type="date"]:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.7);
+    cursor: pointer;
+}
+
+/* Mobile responsive date range */
+@media (max-width: 768px) {
+    .date-range-filter,
+    .date-range-section {
+        padding: 8px;
+    }
+    
+    .date-presets {
+        gap: 4px;
+    }
+    
+    .preset-btn,
+    .prod-preset-btn {
+        padding: 3px 8px;
+        font-size: 0.7rem;
+    }
+    
+    input[type="date"] {
+        padding: 4px 8px;
+        font-size: 0.8rem;
+    }
+}

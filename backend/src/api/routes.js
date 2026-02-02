@@ -315,8 +315,11 @@ export function setupRoutes(app, db, poller) {
 
     // ============ PRODUCTIVITY REPORT ROUTES ============
     app.post('/api/reports/productivity', async (req, res) => {
-        const { month, databaseIds } = req.body; // "MM-YYYY" và optional array of database IDs
-        if (!month) return res.status(400).json({ error: 'Month is required' });
+        const { startDate, endDate, databaseIds } = req.body; // YYYY-MM-DD format
+        
+        if (!startDate || !endDate) {
+            return res.status(400).json({ error: 'startDate and endDate are required' });
+        }
 
         try {
             const prodService = new ProductivityService(db);
@@ -329,8 +332,8 @@ export function setupRoutes(app, db, poller) {
                 return res.json({ success: true, columns: PROD_COLUMNS, data: [], error: 'No projects selected' });
             }
 
-            const { validData, unknownUsers } = await prodService.generateReport(month, selectedDatabases);
-            const stats = prodService.getStats(month);
+            const { validData, unknownUsers } = await prodService.generateReport(startDate, endDate, selectedDatabases);
+            const stats = prodService.getStats(startDate, endDate);
 
             res.json({
                 success: true,
@@ -338,7 +341,7 @@ export function setupRoutes(app, db, poller) {
                 data: validData,
                 unknownUsers,
                 stats,
-                meta: { month }
+                meta: { startDate, endDate }
             });
         } catch (error) {
             console.error('[API] Productivity Report Error:', error);
@@ -347,12 +350,12 @@ export function setupRoutes(app, db, poller) {
     });
 
     app.post('/api/reports/productivity/update-stats', async (req, res) => {
-        const { month, updates } = req.body;
-        if (!month || !updates) return res.status(400).json({ error: 'Missing parameters' });
+        const { startDate, endDate, updates } = req.body;
+        if (!startDate || !endDate || !updates) return res.status(400).json({ error: 'Missing parameters' });
 
         try {
             const prodService = new ProductivityService(db);
-            const newStats = prodService.updateStats(month, updates);
+            const newStats = prodService.updateStats(startDate, endDate, updates);
             res.json({ success: true, stats: newStats });
         } catch (error) {
             res.status(500).json({ error: error.message });

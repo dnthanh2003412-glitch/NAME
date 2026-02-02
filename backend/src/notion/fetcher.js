@@ -274,7 +274,42 @@ export class DataFetcher {
             case 'number':
                 return rollup.number;
             case 'array':
-                return rollup.array;
+                // Process array items to extract meaningful values
+                if (!rollup.array || rollup.array.length === 0) return null;
+                
+                return rollup.array.map(item => {
+                    if (!item) return null;
+                    
+                    // Title type (from relation title rollup)
+                    if (item.type === 'title' && item.title) {
+                        return item.title.map(t => t.plain_text || '').join('');
+                    }
+                    // Rich text
+                    if (item.type === 'rich_text' && item.rich_text) {
+                        return item.rich_text.map(t => t.plain_text || '').join('');
+                    }
+                    // Select/Status
+                    if (item.type === 'select' && item.select) {
+                        return item.select.name;
+                    }
+                    if (item.type === 'status' && item.status) {
+                        return item.status.name;
+                    }
+                    // Number
+                    if (item.type === 'number') {
+                        return item.number;
+                    }
+                    // Date
+                    if (item.type === 'date' && item.date) {
+                        return item.date.start || item.date.end;
+                    }
+                    // Formula
+                    if (item.type === 'formula' && item.formula) {
+                        return item.formula.string ?? item.formula.number ?? item.formula.boolean ?? null;
+                    }
+                    
+                    return item;
+                }).filter(v => v !== null);
             default:
                 return null;
         }

@@ -80,6 +80,10 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
+    /* Performance optimizations */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
 }
 
 /* Custom Scrollbar */
@@ -587,6 +591,9 @@ body {
     overflow-y: auto;
     overflow-x: hidden;
     padding: 0 8px 16px;
+    /* Performance: optimize scrolling */
+    will-change: scroll-position;
+    contain: content;
 }
 
 .project-group {
@@ -1725,5 +1732,124 @@ option {
 
     to {
         transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   PERFORMANCE & ACCESSIBILITY IMPROVEMENTS
+   ============================================ */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus visible for keyboard navigation */
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--color-accent-primary);
+    outline-offset: 2px;
+}
+
+/* Improve table performance */
+.table-container table,
+.prod-table,
+.report-card table {
+    table-layout: fixed;
+    contain: content;
+}
+
+/* Optimize sidebar scrolling */
+.sidebar {
+    contain: layout style;
+}
+
+/* Better button active states */
+.btn-primary:active,
+.btn-generate:active,
+.btn-outline:active {
+    transform: scale(0.98);
+}
+
+/* Tooltip styles for better UX */
+[title] {
+    position: relative;
+}
+
+/* Improve input interactions */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    opacity: 1;
+    height: auto;
+}
+
+/* Better checkbox styling */
+input[type="checkbox"] {
+    cursor: pointer;
+    accent-color: var(--color-accent-primary);
+}
+
+/* Smooth table row hover */
+tr {
+    transition: background-color 0.15s ease;
+}
+
+/* Card hover effect enhancement */
+.report-card,
+.step-card,
+.feature-item {
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+/* Selection color */
+::selection {
+    background: var(--color-accent-primary);
+    color: white;
+}
+
+/* Placeholder styling */
+::placeholder {
+    color: var(--color-text-muted);
+    opacity: 1;
+}
+
+/* Print styles */
+@media print {
+    .sidebar,
+    .mobile-menu-toggle,
+    .mobile-overlay,
+    .report-control-bar,
+    .btn-export,
+    .pagination-controls {
+        display: none !important;
+    }
+    
+    .main-content {
+        width: 100% !important;
+        padding: 0 !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    table {
+        border-collapse: collapse;
+    }
+    
+    th, td {
+        border: 1px solid #ddd !important;
+        padding: 8px !important;
+        background: white !important;
+        color: black !important;
     }
 }

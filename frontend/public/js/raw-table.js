@@ -1,4 +1,8 @@
 // raw-table.js - Enhanced with Pagination, Search, Filter, Sort, Column Visibility, Export
+import { renderRawDataDashboard } from './dashboard.js';
+
+console.log('[raw-table] Loaded, renderRawDataDashboard:', typeof renderRawDataDashboard);
+
 /**
  * Render raw data table with full features
  */
@@ -20,7 +24,7 @@ export function renderRawDataTable(data, container) {
     let sortColumn = null;
     let sortDirection = 'asc';
     let currentPage = 1;
-    let pageSize = 20;
+    let pageSize = 10;
     let hiddenColumns = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
 
     // Get visible columns
@@ -109,6 +113,34 @@ export function renderRawDataTable(data, container) {
 
     container.innerHTML = '';
     container.appendChild(wrapper);
+
+    // Render Raw Data Dashboard (charts) - insert after header div
+    console.log('[raw-table] Attempting to render dashboard:', {
+        hasFn: typeof renderRawDataDashboard === 'function',
+        rowCount: rows.length,
+        dbName: database_name
+    });
+
+    if (typeof renderRawDataDashboard === 'function' && rows.length > 0) {
+        console.log('[raw-table] Calling renderRawDataDashboard with', rows.length, 'rows');
+        const headerDiv = wrapper.querySelector('.raw-data-header');
+        const dashContainer = document.createElement('div');
+        dashContainer.id = 'raw-dashboard-container';
+        dashContainer.style.marginTop = '16px';
+        if (headerDiv && headerDiv.nextSibling) {
+            headerDiv.parentNode.insertBefore(dashContainer, headerDiv.nextSibling);
+        } else {
+            wrapper.insertBefore(dashContainer, wrapper.children[1] || null);
+        }
+        try {
+            renderRawDataDashboard(rows, dashContainer, database_name);
+            console.log('[raw-table] Dashboard rendered successfully');
+        } catch (err) {
+            console.error('[raw-table] Dashboard error:', err);
+        }
+    } else {
+        console.log('[raw-table] Skipping dashboard - condition not met');
+    }
 
     // Render table headers
     const renderHeaders = () => {

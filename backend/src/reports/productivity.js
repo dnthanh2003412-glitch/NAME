@@ -97,9 +97,14 @@ export class ProductivityService {
         }
 
         const validData = reportData.filter(r => r.seniority !== 'Chưa xác định');
+        
+        // For unknown users, just return name and task count (no task details)
         const unknownUsers = reportData
             .filter(r => r.seniority === 'Chưa xác định')
-            .map(r => ({ name: r.fullName, taskCount: r.taskCount }));
+            .map(r => ({
+                name: r.fullName,
+                taskCount: r.taskCount
+            }));
 
         return { validData, unknownUsers };
     }
@@ -212,11 +217,15 @@ export class ProductivityService {
     extractValue(value) {
         if (value === null || value === undefined) return null;
 
-        // Handle array with nested objects (common in Notion rollups/formulas)
-        if (Array.isArray(value) && value.length > 0) {
-            const first = value[0];
-
-            if (first && typeof first === 'object') {
+        // Handle array with nested objects (common in Notion rollups/formulas/relations)
+        if (Array.isArray(value)) {
+            if (value.length === 0) return null;
+            
+            // Check if it's an array of relation objects (have 'id' property)
+            // Relations look like: [{id: "xxx-xxx"}, {id: "yyy-yyy"}]
+            if (value[0] && typeof value[0] === 'object') {
+                const first = value[0];
+                
                 // Formula wrapper
                 if (first.type === 'formula' && first.formula) {
                     const f = first.formula;
@@ -234,6 +243,20 @@ export class ProductivityService {
                 if (first.type === 'number') {
                     return first.number;
                 }
+                // Title/rich_text - extract plain text
+                if (first.type === 'text' || first.plain_text !== undefined) {
+                    return value.map(v => v.plain_text || '').join('');
+                }
+                // Relation - extract titles if available, otherwise return names from rollup
+                if (first.id && !first.type) {
+                    // This is a relation array - just IDs, will be handled by formatValue
+                    return value;
+                }
+            }
+            
+            // Array of primitives
+            if (typeof value[0] !== 'object') {
+                return value.join(', ');
             }
         }
 
@@ -241,16 +264,115 @@ export class ProductivityService {
     }
 
     /**
-     * Parse date from Ngày làm column
+     * Format value for display - handle objects, arrays, etc.
+     */
+    formatValue(value) {
+        if (value === null || value === undefined) return '-';
+        if (typeof value === 'string') return value || '-';
+        if (typeof value === 'number') return String(value);
+        if (typeof value === 'boolean') return value ? 'Yes' : 'No';
+        
+        // Handle date object
+        if (value instanceof Date) {
+            return value.toLocaleDateString('vi-VN');
+        }
+        
+        // Handle object with start/end (date range)
+        if (typeof value === 'object' && !Array.isArray(value) && (value.start || value.end)) {
+            const dateStr = value.end || value.start;
+            if (dateStr) {
+                const d = new Date(dateStr);
+                return !isNaN(d.getTime()) ? d.toLocaleDateString('vi-VN') : dateStr;
+            }
+            return '-';
+        }
+        
+        // Handle array (relations, rollups, multi-select)
+        if (Array.isArray(value)) {
+            if (value.length === 0) return '-';
+            
+            // Check if it's an array of UUIDs (relation IDs) - these can't be resolved to names
+            const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+            if (typeof value[0] === 'string' && uuidRegex.test(value[0])) {
+                return '-'; // Can't display relation IDs, need rollup for names
+            }
+            
+            // Check what type of array items we have
+            const results = value.map(item => {
+                if (item === null || item === undefined) return '';
+                if (typeof item === 'string') {
+                    // Skip UUID strings
+                    if (uuidRegex.test(item)) return null;
+                    return item;
+                }
+                if (typeof item === 'number') return String(item);
+                
+                // Object with various possible structures
+                if (typeof item === 'object') {
+                    // Has name (select, multi-select, status)
+                    if (item.name) return item.name;
+                    // Has title (relation with title rollup)
+                    if (item.title) {
+                        if (Array.isArray(item.title)) {
+                            return item.title.map(t => t.plain_text || '').join('');
+                        }
+                        return item.title;
+                    }
+                    // Has plain_text (rich text)
+                    if (item.plain_text !== undefined) return item.plain_text;
+                    // Relation object with just ID - skip (can't resolve without API call)
+                    if (item.id && Object.keys(item).length <= 2) return null;
+                    // Nested object
+                    return this.formatValue(item);
+                }
+                return '';
+            }).filter(v => v !== null && v !== '');
+            
+            return results.length > 0 ? results.join(', ') : '-';
+        }
+        
+        // Handle object with name property (select, status)
+        if (typeof value === 'object' && value.name) {
+            return value.name;
+        }
+        
+        // Handle object with title property
+        if (typeof value === 'object' && value.title) {
+            if (Array.isArray(value.title)) {
+                return value.title.map(t => t.plain_text || '').join('');
+            }
+            return String(value.title);
+        }
+        
+        // Handle object with plain_text
+        if (typeof value === 'object' && value.plain_text !== undefined) {
+            return value.plain_text || '-';
+        }
+        
+        // Fallback for unknown objects
+        if (typeof value === 'object') {
+            // Try to extract any meaningful string
+            const str = JSON.stringify(value);
+            // If it's just an ID object, return dash
+            if (str.includes('"id"') && !str.includes('"name"') && !str.includes('"title"')) {
+                return '-';
+            }
+        }
+        
+        return '-';
+    }
+
+    /**
+     * Parse date from DoneDate column (priority) or fallback columns
      * Returns null if column is empty - those tasks will be skipped
      */
     parseDate(task) {
         const props = task.properties;
         if (!props) return null;
 
-        // Find Ngày làm column (case-insensitive)
+        // Find date column - prioritize DoneDate
         let dateValue = null;
-        const dateKeys = ['Ngày làm', 'Ngay lam', 'NGÀY LÀM', 'ngày làm', 'Work Date', 'Done Date'];
+        const dateKeys = ['DoneDate', 'Done Date', 'DONE DATE', 'Ngày làm', 'Ngay lam', 'NGÀY LÀM', 'ngày làm', 'Work Date'];
 
         for (const key of dateKeys) {
             if (props[key] !== null && props[key] !== undefined) {
@@ -262,10 +384,11 @@ export class ProductivityService {
         // Also try case-insensitive search
         if (!dateValue) {
             const matchingKey = Object.keys(props).find(k =>
+                k.toLowerCase() === 'donedate' ||
+                k.toLowerCase() === 'done date' ||
                 k.toLowerCase().includes('ngày') ||
                 k.toLowerCase().includes('ngay') ||
-                k.toLowerCase() === 'work date' ||
-                k.toLowerCase() === 'done date'
+                k.toLowerCase() === 'work date'
             );
             if (matchingKey) {
                 dateValue = props[matchingKey];

@@ -1,4 +1,5 @@
 // app.js - Final Dash Notion V3 (Refined)
+import { renderProductivityDashboard, renderRawDataDashboard } from './dashboard.js';
 
 const API_BASE = window.location.origin;
 
@@ -240,6 +241,23 @@ class DashboardApp {
             container.appendChild(section);
         }
 
+        // Structure: Separate Dashboard and Table areas
+        if (!section.querySelector(`#dashboard-area-${dbId}`)) {
+            section.innerHTML = `
+                <div id="dashboard-area-${dbId}"></div>
+                <div id="table-area-${dbId}"></div>
+            `;
+        }
+        const dashboardArea = section.querySelector(`#dashboard-area-${dbId}`);
+        const tableArea = section.querySelector(`#table-area-${dbId}`);
+
+        // Render Dashboard (Static, won't be re-rendered on table update)
+        if (typeof renderRawDataDashboard === 'function' && originalData.length > 0) {
+            if (dashboardArea.childNodes.length === 0) {
+                renderRawDataDashboard(originalData, dashboardArea, database_name);
+            }
+        }
+
         // Prioritize Title Column for better visibility
         // High priority exact matches - Order matters!
         const priorityCandidates = ['TASKS', 'Tasks', 'Task Name', 'Task Main', 'Name', 'Subject', 'Project Name', 'Tên'];
@@ -292,8 +310,41 @@ class DashboardApp {
         let sortDirection = 'asc';
         let searchQuery = '';
         let currentPage = 1;
-        let pageSize = 20;
+        let pageSize = 10;
         let showColumnPicker = false;
+
+        // Assignee filter setup
+        const findCol = (...names) => {
+            let found = originalColumns.find(c => names.some(n => c.toLowerCase() === n.toLowerCase()));
+            if (found) return found;
+            return originalColumns.find(c => names.some(n => c.toLowerCase().includes(n.toLowerCase())));
+        };
+        const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
+        const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE', 'NGÀY LÀM', 'Ngày làm', 'Date', 'Created', 'Updated');
+        const sprintCol = findCol('Sprint', 'SPRINT');
+        const assignees = assigneeCol ? [...new Set(originalData.map(r => r[assigneeCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
+        const sprints = sprintCol ? [...new Set(originalData.map(r => r[sprintCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
+        
+        // Extract available months/years from date column
+        const extractMonthsYears = () => {
+            if (!dateCol) return { months: [], years: [] };
+            const yearsSet = new Set();
+            originalData.forEach(row => {
+                const dateStr = row[dateCol];
+                if (!dateStr) return;
+                const d = new Date(dateStr);
+                if (!isNaN(d.getTime())) {
+                    yearsSet.add(d.getFullYear());
+                }
+            });
+            return { months: [1,2,3,4,5,6,7,8,9,10,11,12], years: [...yearsSet].sort((a,b) => b-a) };
+        };
+        const { months, years } = extractMonthsYears();
+        
+        let assigneeTableFilter = '';
+        let monthTableFilter = '';
+        let yearTableFilter = '';
+        let sprintTableFilter = '';
 
         // Get visible columns
         const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
@@ -301,6 +352,26 @@ class DashboardApp {
         // Apply search and sort
         const applyFiltersAndSearch = () => {
             filteredData = originalData.filter(row => {
+                // Assignee Filter
+                if (assigneeTableFilter && assigneeCol) {
+                    if (row[assigneeCol] !== assigneeTableFilter) return false;
+                }
+                
+                // Sprint Filter
+                if (sprintTableFilter && sprintCol) {
+                    if (row[sprintCol] !== sprintTableFilter) return false;
+                }
+                
+                // Month/Year Filter
+                if (dateCol && (monthTableFilter || yearTableFilter)) {
+                    const dateStr = row[dateCol];
+                    if (!dateStr) return false;
+                    const d = new Date(dateStr);
+                    if (isNaN(d.getTime())) return false;
+                    if (monthTableFilter && (d.getMonth() + 1) !== parseInt(monthTableFilter)) return false;
+                    if (yearTableFilter && d.getFullYear() !== parseInt(yearTableFilter)) return false;
+                }
+
                 // Global search across ALL columns
                 if (searchQuery) {
                     const query = searchQuery.toLowerCase();
@@ -370,8 +441,9 @@ class DashboardApp {
 
             const tableStyles = `
                 <style>
+                    #table-${dbId} { border-collapse: separate; border-spacing: 0; }
                     #table-${dbId} th, #table-${dbId} td { border: 1px solid #475569; }
-                    #table-${dbId} th { cursor: grab; user-select: none; }
+                    #table-${dbId} th { cursor: grab; user-select: none; min-width: 120px; }
                     #table-${dbId} th:hover { background: #334155; }
                     #table-${dbId} th.dragging { opacity: 0.5; background: #4f46e5; }
                     #table-${dbId} th.drag-over { border-left: 3px solid #4ade80; }
@@ -385,6 +457,23 @@ class DashboardApp {
                     }
                     .column-picker-${dbId} label { display: flex; align-items: center; gap: 8px; padding: 4px 8px; cursor: pointer; color: #e2e8f0; font-size: 0.8rem; }
                     .column-picker-${dbId} label:hover { background: #334155; border-radius: 4px; }
+                    .table-scroll-container-${dbId} {
+                        overflow-x: auto;
+                        overflow-y: auto;
+                        max-height: 600px;
+                        scrollbar-width: thin;
+                        scrollbar-color: #475569 #1e293b;
+                    }
+                    .table-scroll-container-${dbId}::-webkit-scrollbar { height: 10px; width: 10px; }
+                    .table-scroll-container-${dbId}::-webkit-scrollbar-track { background: #1e293b; border-radius: 5px; }
+                    .table-scroll-container-${dbId}::-webkit-scrollbar-thumb { background: #475569; border-radius: 5px; }
+                    .table-scroll-container-${dbId}::-webkit-scrollbar-thumb:hover { background: #64748b; }
+                    .scroll-hint-${dbId} { 
+                        display: flex; align-items: center; gap: 6px; 
+                        padding: 6px 12px; background: rgba(59, 130, 246, 0.1); 
+                        border-radius: 4px; font-size: 0.75rem; color: #94a3b8;
+                        margin-bottom: 8px;
+                    }
                 </style>
             `;
 
@@ -401,12 +490,21 @@ class DashboardApp {
                     
                     <!-- Toolbar -->
                     <div style="padding:12px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;background:#0f172a;">
-                        <div style="display:flex;gap:8px;align-items:center;flex:1;max-width:400px;">
-                            <span style="color:#94a3b8;font-size:0.85rem;">🔍</span>
-                            <input type="text" id="searchInput-${dbId}" placeholder="Tìm kiếm tất cả cột..." 
-                                value="${searchQuery}"
-                                style="flex:1;padding:6px 10px;background:#1e293b;border:1px solid #475569;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
-                            ${searchQuery ? `<button id="clearSearch-${dbId}" style="padding:4px 8px;background:#ef4444;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.75rem;">✕</button>` : ''}
+                        <div style="display:flex;gap:8px;align-items:center;flex:1;max-width:600px;">
+                            <div style="display:flex;align-items:center;background:#1e293b;border:1px solid #475569;border-radius:4px;padding:0 8px;flex:1;">
+                                <span style="color:#94a3b8;font-size:0.85rem;">🔍</span>
+                                <input type="text" id="searchInput-${dbId}" placeholder="Tìm kiếm..." 
+                                    value="${searchQuery}"
+                                    style="border:none;background:transparent;color:#e2e8f0;padding:6px;width:100%;outline:none;">
+                                ${searchQuery ? `<button id="clearSearch-${dbId}" style="padding:4px 8px;background:none;border:none;color:#94a3b8;cursor:pointer;">✕</button>` : ''}
+                            </div>
+                            
+                            ${assignees.length > 0 ? `
+                                <select id="assigneeFilter-${dbId}" style="padding:6px 12px;background:#1e293b;border:1px solid #475569;border-radius:4px;color:#e2e8f0;font-size:0.85rem;max-width:150px;text-overflow:ellipsis;">
+                                    <option value="">Tất cả nhân sự</option>
+                                    ${assignees.map(a => `<option value="${a}" ${assigneeTableFilter === a ? 'selected' : ''}>${a}</option>`).join('')}
+                                </select>
+                            ` : ''}
                         </div>
                         <div style="display:flex;gap:8px;align-items:center;">
                             <!-- Column Visibility Toggle -->
@@ -430,24 +528,30 @@ class DashboardApp {
                                 ` : ''}
                             </div>
                             <select id="rawPageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #475569;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                                <option value="10" ${pageSize === 10 ? 'selected' : ''}>10</option>
                                 <option value="20" ${pageSize === 20 ? 'selected' : ''}>20</option>
                                 <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
                                 <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
-                                <option value="200" ${pageSize === 200 ? 'selected' : ''}>200</option>
                                 <option value="${originalData.length}" ${pageSize >= originalData.length ? 'selected' : ''}>Tất cả</option>
                             </select>
                             <span style="color:#94a3b8;font-size:0.8rem;">${start + 1}-${end}/${filteredData.length}</span>
                         </div>
                     </div>
                     
-                    <div class="report-card-body" style="overflow-x:auto;max-height:600px;overflow-y:auto;">
-                        <table id="table-${dbId}" style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                    <!-- Scroll Hint -->
+                    <div class="scroll-hint-${dbId}" style="margin:8px 20px;">
+                        <span>🖱️</span>
+                        <span>Shift + Lăn chuột để cuộn ngang | Kéo thả để sắp xếp cột</span>
+                    </div>
+                    
+                    <div class="table-scroll-container-${dbId}" id="tableScrollContainer-${dbId}" style="margin:0 20px 20px;">
+                        <table id="table-${dbId}" style="width:max-content;min-width:100%;border-collapse:collapse;font-size:0.85rem;">
                             <thead style="background:#0f172a;position:sticky;top:0;z-index:10;">
                                 <tr>
                                     ${visibleCols.map((col, idx) => `
                                         <th data-col="${col}" data-idx="${columnOrder.indexOf(col)}" draggable="true"
-                                            style="padding:10px 12px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;background:#0f172a;">
-                                            <div style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
+                                            style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;white-space:nowrap;background:#0f172a;min-width:120px;">
+                                            <div style="display:flex;align-items:center;justify-content:space-between;gap:8px;">
                                                 <span style="cursor:pointer;" data-sort="${col}">${this.escapeHtml(col)}</span>
                                                 <span class="sort-icon ${sortColumn === col ? 'active' : ''}" data-sort="${col}">
                                                     ${sortColumn === col ? (sortDirection === 'asc' ? '↑' : '↓') : '↕'}
@@ -461,7 +565,7 @@ class DashboardApp {
                                 ${pageData.length > 0 ? pageData.map((row, i) => `
                                     <tr style="${i % 2 === 0 ? 'background:#1e293b;' : 'background:#263548;'}">
                                         ${visibleCols.map(col => `
-                                            <td style="padding:10px 12px;color:#e2e8f0;max-width:300px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" 
+                                            <td style="padding:12px 16px;color:#e2e8f0;min-width:120px;max-width:400px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" 
                                                 title="${this.escapeHtml(String(row[col] || ''))}">
                                                 ${this.escapeHtml(String(row[col] || ''))}
                                             </td>
@@ -485,12 +589,24 @@ class DashboardApp {
                 </div>
             `;
 
-            section.innerHTML = tableHtml;
+            // Render into TABLE AREA only
+            tableArea.innerHTML = tableHtml;
 
             // === Event Listeners ===
 
             // Export button
             document.getElementById(`exportBtn-${dbId}`)?.addEventListener('click', exportToExcel);
+
+            // Shift + Scroll for horizontal scrolling
+            const scrollContainer = document.getElementById(`tableScrollContainer-${dbId}`);
+            if (scrollContainer) {
+                scrollContainer.addEventListener('wheel', (e) => {
+                    if (e.shiftKey) {
+                        e.preventDefault();
+                        scrollContainer.scrollLeft += e.deltaY * 2;
+                    }
+                }, { passive: false });
+            }
 
             // Search - with optimized debounce and focus preservation
             const searchInput = document.getElementById(`searchInput-${dbId}`);
@@ -533,6 +649,32 @@ class DashboardApp {
             });
             document.getElementById(`rawNextBtn-${dbId}`)?.addEventListener('click', () => {
                 if (currentPage < totalPages) { currentPage++; renderTable(); }
+            });
+
+            // Assignee Filter
+            document.getElementById(`assigneeFilter-${dbId}`)?.addEventListener('change', (e) => {
+                assigneeTableFilter = e.target.value;
+                currentPage = 1;
+                applyFiltersAndSearch();
+                renderTable();
+                // Sync with dashboard
+                const dashAssigneeFilter = document.getElementById('raw-assignee-filter');
+                if (dashAssigneeFilter) dashAssigneeFilter.value = assigneeTableFilter;
+                document.getElementById('raw-apply-filter')?.click();
+            });
+            
+            // Listen for dashboard filter changes (custom event)
+            document.addEventListener('dashboard-filter-change', (e) => {
+                if (e.detail) {
+                    const { selectedMonth, selectedYear, assigneeFilter, sprintFilter } = e.detail;
+                    monthTableFilter = selectedMonth || '';
+                    yearTableFilter = selectedYear || '';
+                    assigneeTableFilter = assigneeFilter || '';
+                    sprintTableFilter = sprintFilter || '';
+                    currentPage = 1;
+                    applyFiltersAndSearch();
+                    renderTable();
+                }
             });
 
             // Sort
@@ -721,7 +863,7 @@ class DashboardApp {
         // NEW: State for column visibility, pagination
         let hiddenColumns = new Set();
         let currentPage = 1;
-        let pageSize = 20;
+        let pageSize = 10;
         let showColumnPicker = false;
         const storageKey = 'prodReport_hiddenCols';
 
@@ -749,12 +891,12 @@ class DashboardApp {
             dbChipsContainer.innerHTML = selectedIds.map(dbId => {
                 const name = this.databaseNames.get(dbId) || dbId.slice(0, 8);
                 return `
-                    <label style="display:flex;align-items:center;gap:4px;background:#0f172a;padding:4px 8px;border-radius:4px;cursor:pointer;border:1px solid #334155;transition:all 0.15s;">
-                        <input type="checkbox" checked data-db-id="${dbId}" class="prod-db-chip-checkbox" 
-                            style="accent-color:#3b82f6;cursor:pointer;">
-                        <span style="color:#e2e8f0;font-size:0.75rem;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${name}</span>
-                    </label>
-                `;
+            <label style="display:flex;align-items:center;gap:4px;background:#0f172a;padding:4px 8px;border-radius:4px;cursor:pointer;border:1px solid #334155;transition:all 0.15s;">
+                <input type="checkbox" checked data-db-id="${dbId}" class="prod-db-chip-checkbox"
+                    style="accent-color:#3b82f6;cursor:pointer;">
+                    <span style="color:#e2e8f0;font-size:0.75rem;max-width:150px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${name}</span>
+            </label>
+        `;
             }).join('');
 
             // Add click handlers - auto refresh when toggling
@@ -827,8 +969,10 @@ class DashboardApp {
                     // Populate user filter dropdown
                     populateUserFilter(fullReportData);
 
-                    // Render with current filter
-                    applyFilterAndRender();
+                    // Reset flags and render with dashboard
+                    dashboardRendered = false;
+                    warningRendered = false;
+                    applyFilterAndRender(true);
                 } else {
                     bodyContainer.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">${result.error || 'Lỗi không xác định'}</div>`;
                 }
@@ -858,8 +1002,41 @@ class DashboardApp {
         };
 
         let currentUnknownUsers = []; // State for unmapped users warnings
+        let dashboardRendered = false; // Flag to prevent re-rendering dashboard
+        let warningRendered = false; // Flag to prevent re-rendering warning
 
-        const applyFilterAndRender = () => {
+        // Render dashboard and warning ONCE (separate from table)
+        const renderDashboardAndWarning = () => {
+            // Remove existing dashboard/warning if any
+            bodyContainer.querySelector('.prod-dashboard')?.remove();
+            bodyContainer.querySelector('.unmapped-warning')?.remove();
+            
+            // Render Productivity Dashboard (only once, with full data)
+            if (typeof renderProductivityDashboard === 'function' && fullReportData.length > 0) {
+                renderProductivityDashboard(fullReportData, bodyContainer);
+            }
+
+            // Show Warning for Unmapped Users - simple list without task details
+            if (currentUnknownUsers.length > 0) {
+                const warningHtml = `
+                <div class="unmapped-warning" style="background:#1e3a5f;color:#93c5fd;padding:16px;margin:16px;border-radius:8px;border:1px solid #3b82f6;font-size:0.9rem;">
+                    <strong>⚠️ Phát hiện nhân sự chưa được mapping (Dữ liệu này đang bị ẩn):</strong>
+                    <ul style="margin:8px 0 0 20px;padding:0;">
+                        ${currentUnknownUsers.map(u => `<li style="margin:4px 0;">👤 <strong>${u.name}</strong> (${u.taskCount} tasks)</li>`).join('')}
+                    </ul>
+                    <div style="margin-top:12px;font-size:0.8rem;opacity:0.8;">
+                        Vui lòng báo Admin thêm "Name Alias" cho các tên này để hệ thống gộp đúng vào nhân sự chính thức.
+                    </div>
+                </div>`;
+                bodyContainer.insertAdjacentHTML('afterbegin', warningHtml);
+            }
+            
+            dashboardRendered = true;
+            warningRendered = true;
+        };
+
+        // Only render table (for pagination/filter changes)
+        const applyFilterAndRender = (renderDashToo = false) => {
             const filterVal = userFilter.value;
             let filteredData = fullReportData;
 
@@ -869,19 +1046,9 @@ class DashboardApp {
 
             renderTable(filteredData, reportColumns, currentMonthStr);
 
-            // Show Warning for Unmapped Users (Persistent)
-            if (currentUnknownUsers.length > 0) {
-                const warningHtml = `
-                <div style="background:#451a03;color:#fbbf24;padding:12px;margin:16px;border-radius:8px;border:1px solid #92400e;font-size:0.9rem;">
-                    <strong>⚠️ Phát hiện nhân sự chưa được mapping (Dữ liệu này đang bị ẩn):</strong><br>
-                    <ul style="margin:4px 0 0 20px;padding:0;">
-                        ${currentUnknownUsers.map(u => `<li>${u.name} (${u.taskCount} tasks)</li>`).join('')}
-                    </ul>
-                    <div style="margin-top:8px;font-size:0.8rem;opacity:0.8;">
-                        Vui lòng báo Admin thêm "Name Alias" cho các tên này để hệ thống gộp đúng vào nhân sự chính thức.
-                    </div>
-                </div>`;
-                bodyContainer.insertAdjacentHTML('afterbegin', warningHtml);
+            // Only render dashboard/warning on initial load or when explicitly requested
+            if (renderDashToo || !dashboardRendered) {
+                renderDashboardAndWarning();
             }
         };
 
@@ -922,46 +1089,64 @@ class DashboardApp {
 
             // Styles for the specialized table - DARK THEME
             const styles = `
-                <style>
-                    .prod-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; color: #e2e8f0; }
-                    .prod-table th { background: #0f172a; padding: 10px; border: 1px solid #334155; text-align: left; font-weight: 600; white-space: nowrap; color: #94a3b8; }
-                    .prod-table td { padding: 8px 10px; border: 1px solid #334155; background: #1e293b; }
-                    .prod-table tr:hover td { background: #263548; }
-                    .editable-cell { position: relative; }
-                    .editable-cell input { 
-                        width: 100%; border: 1px solid transparent; background: transparent; color: #e2e8f0;
-                        padding: 4px; border-radius: 4px; text-align: right; 
-                    }
-                    .editable-cell input:hover { border-color: #475569; background: #0f172a; }
-                    .editable-cell input:focus { border-color: #3b82f6; background: #0f172a; outline: none; }
-                    .fill-handle {
-                        position: absolute; bottom: 2px; right: 2px;
-                        width: 8px; height: 8px;
-                        background: #3b82f6; cursor: crosshair;
-                        opacity: 0; transition: opacity 0.15s;
-                        border: 1px solid #1e293b;
-                    }
-                    .editable-cell:hover .fill-handle { opacity: 1; }
-                    .editable-cell.dragging .fill-handle { opacity: 1; background: #60a5fa; }
-                    .editable-cell.fill-target { background: rgba(59, 130, 246, 0.2); }
-                    .editable-cell.fill-target input { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; }
-                    .num-cell { text-align: right; }
-                    .prod-toolbar { display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:12px 16px;background:#0f172a;border-bottom:1px solid #334155; }
-                    .prod-toolbar-btn { padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.8rem;transition:all 0.15s; }
-                    .prod-toolbar-btn:hover { background:#475569; }
-                    .prod-toolbar-btn.primary { background:#3b82f6; }
-                    .prod-toolbar-btn.primary:hover { background:#2563eb; }
-                    .prod-toolbar-btn.success { background:#22c55e; }
-                    .prod-toolbar-btn.success:hover { background:#16a34a; }
-                    .prod-col-picker { position:absolute;right:0;top:100%;z-index:100;background:#1e293b;border:1px solid #475569;border-radius:8px;padding:8px;max-height:300px;overflow-y:auto;min-width:220px;box-shadow:0 4px 12px rgba(0,0,0,0.3); }
-                    .prod-col-picker label { display:flex;align-items:center;gap:8px;padding:4px 8px;cursor:pointer;color:#e2e8f0;font-size:0.8rem; }
-                    .prod-col-picker label:hover { background:#334155;border-radius:4px; }
-                    .prod-pagination { display:flex;gap:6px;align-items:center;justify-content:center;padding:12px;background:#0f172a;border-top:1px solid #334155; }
-                    .prod-pagination-btn { padding:6px 12px;background:#334155;border:none;border-radius:4px;color:#e2e8f0;cursor:pointer;font-size:0.8rem; }
-                    .prod-pagination-btn:hover:not(:disabled) { background:#475569; }
-                    .prod-pagination-btn:disabled { opacity:0.5;cursor:not-allowed; }
-                    .prod-pagination-btn.active { background:#3b82f6; }
-                </style>
+            <style>
+                .prod-table { width: max-content; min-width: 100%; border-collapse: collapse; font-size: 0.85rem; color: #e2e8f0; }
+                .prod-table th { background: #0f172a; padding: 12px 16px; border: 1px solid #334155; text-align: left; font-weight: 600; white-space: nowrap; color: #94a3b8; min-width: 120px; }
+                .prod-table td { padding: 10px 16px; border: 1px solid #334155; background: #1e293b; min-width: 100px; }
+                .prod-table tr:hover td { background: #263548; }
+                .editable-cell { position: relative; }
+                .editable-cell input {
+                    width: 100%; border: 1px solid transparent; background: transparent; color: #e2e8f0;
+                    padding: 4px; border-radius: 4px; text-align: right;
+                }
+                .editable-cell input:hover { border-color: #475569; background: #0f172a; }
+                .editable-cell input:focus { border-color: #3b82f6; background: #0f172a; outline: none; }
+                .fill-handle {
+                    position: absolute; bottom: 2px; right: 2px;
+                    width: 8px; height: 8px;
+                    background: #3b82f6; cursor: crosshair;
+                    opacity: 0; transition: opacity 0.15s;
+                    border: 1px solid #1e293b;
+                }
+                .editable-cell:hover .fill-handle { opacity: 1; }
+                .editable-cell.dragging .fill-handle { opacity: 1; background: #60a5fa; }
+                .editable-cell.fill-target { background: rgba(59, 130, 246, 0.2); }
+                .editable-cell.fill-target input { background: rgba(59, 130, 246, 0.1); border-color: #3b82f6; }
+                .num-cell { text-align: right; }
+                .prod-toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 12px 16px; background:#0f172a; border-bottom: 1px solid #334155; }
+                .prod-toolbar-btn { padding: 6px 12px; background:#334155; border: none; border-radius: 4px; color: #e2e8f0; cursor: pointer; font-size: 0.8rem; transition:all 0.15s; }
+                .prod-toolbar-btn:hover { background:#475569; }
+                .prod-toolbar-btn.primary { background:#3b82f6; }
+                .prod-toolbar-btn.primary:hover { background:#2563eb; }
+                .prod-toolbar-btn.success { background:#22c55e; }
+                .prod-toolbar-btn.success:hover { background:#16a34a; }
+                .prod-col-picker { position: absolute; right: 0; top: 100%; z-index: 100; background:#1e293b; border: 1px solid #475569; border-radius: 8px; padding: 8px; max-height: 300px; overflow-y: auto; min-width: 220px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
+                .prod-col-picker label { display: flex; align-items: center; gap: 8px; padding: 4px 8px; cursor: pointer; color: #e2e8f0; font-size: 0.8rem; }
+                .prod-col-picker label:hover { background:#334155; border-radius: 4px; }
+                .prod-pagination { display: flex; gap: 6px; align-items: center; justify-content: center; padding: 12px; background:#0f172a; border-top: 1px solid #334155; }
+                .prod-pagination-btn { padding: 6px 12px; background:#334155; border: none; border-radius: 4px; color: #e2e8f0; cursor: pointer; font-size: 0.8rem; }
+                .prod-pagination-btn:hover:not(:disabled) { background:#475569; }
+                .prod-pagination-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+                .prod-pagination-btn.active { background:#3b82f6; }
+                .prod-scroll-container {
+                    overflow-x: auto;
+                    overflow-y: auto;
+                    max-height: 600px;
+                    margin: 0 16px 16px;
+                    scrollbar-width: thin;
+                    scrollbar-color: #475569 #1e293b;
+                }
+                .prod-scroll-container::-webkit-scrollbar { height: 10px; width: 10px; }
+                .prod-scroll-container::-webkit-scrollbar-track { background: #1e293b; border-radius: 5px; }
+                .prod-scroll-container::-webkit-scrollbar-thumb { background: #475569; border-radius: 5px; }
+                .prod-scroll-container::-webkit-scrollbar-thumb:hover { background: #64748b; }
+                .prod-scroll-hint {
+                    display: flex; align-items: center; gap: 6px;
+                    padding: 6px 12px; background: rgba(59, 130, 246, 0.1);
+                    border-radius: 4px; font-size: 0.75rem; color: #94a3b8;
+                    margin: 8px 16px;
+                }
+            </style>
             `;
 
             let html = `
@@ -1006,12 +1191,17 @@ class DashboardApp {
                         <button id="prod-export-excel" class="prod-toolbar-btn success">📊 Export Excel</button>
                     </div>
                 </div>
-                <div style="overflow-x: auto; max-width: 100%;">
+                <!-- Scroll Hint -->
+                <div class="prod-scroll-hint">
+                    <span>🖱️</span>
+                    <span>Shift + Lăn chuột để cuộn ngang | Ctrl+D để copy giá trị xuống các dòng dưới</span>
+                </div>
+                <div class="prod-scroll-container" id="prod-scroll-container">
                     <table class="prod-table">
                         <thead>
                             <tr>
-                                <th style="width: 50px;">STT</th>
-                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th>${c.name}</th>`).join('')}
+                                <th style="width: 50px; min-width: 50px;">STT</th>
+                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th style="min-width:120px;">${c.name}</th>`).join('')}
                             </tr>
                         </thead>
                         <tbody>
@@ -1067,15 +1257,26 @@ class DashboardApp {
             // Pagination
             if (totalPages > 1) {
                 html += `
-                    <div class="prod-pagination">
-                        <button class="prod-pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>← Trước</button>
-                        <span style="color:#94a3b8;font-size:0.85rem;">Trang ${currentPage} / ${totalPages}</span>
-                        <button class="prod-pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>Sau →</button>
-                    </div>
+                <div class="prod-pagination">
+                    <button class="prod-pagination-btn" data-page="${currentPage - 1}" ${currentPage === 1 ? 'disabled' : ''}>← Trước</button>
+                    <span style="color:#94a3b8;font-size:0.85rem;">Trang ${currentPage} / ${totalPages}</span>
+                    <button class="prod-pagination-btn" data-page="${currentPage + 1}" ${currentPage === totalPages ? 'disabled' : ''}>Sau →</button>
+                </div>
                 `;
             }
 
             bodyContainer.innerHTML = html;
+
+            // Shift + Scroll for horizontal scrolling
+            const prodScrollContainer = document.getElementById('prod-scroll-container');
+            if (prodScrollContainer) {
+                prodScrollContainer.addEventListener('wheel', (e) => {
+                    if (e.shiftKey) {
+                        e.preventDefault();
+                        prodScrollContainer.scrollLeft += e.deltaY * 2;
+                    }
+                }, { passive: false });
+            }
 
             // Helper: Recalculate row metrics client-side
             const recalculateRow = (row, personName, actualDays) => {
@@ -1776,7 +1977,7 @@ class DashboardApp {
 
         // Pagination state
         let currentPage = 1;
-        let pageSize = 20; // Default: 20 rows
+        let pageSize = 10; // Default: 10 rows
 
         const renderTable = () => {
             const totalPages = Math.ceil(data.length / pageSize);
@@ -1796,10 +1997,10 @@ class DashboardApp {
                         <div style="display:flex;gap:8px;align-items:center;">
                             <span style="color:#94a3b8;font-size:0.85rem;">Hiển thị:</span>
                             <select id="pageSize-${dbId}" style="padding:4px 8px;background:#1e293b;border:1px solid #334155;border-radius:4px;color:#e2e8f0;font-size:0.85rem;">
+                                <option value="10" ${pageSize === 10 ? 'selected' : ''}>10</option>
                                 <option value="20" ${pageSize === 20 ? 'selected' : ''}>20</option>
                                 <option value="50" ${pageSize === 50 ? 'selected' : ''}>50</option>
                                 <option value="100" ${pageSize === 100 ? 'selected' : ''}>100</option>
-                                <option value="200" ${pageSize === 200 ? 'selected' : ''}>200</option>
                                 <option value="${data.length}" ${pageSize >= data.length ? 'selected' : ''}>Tất cả</option>
                             </select>
                             <span style="color:#94a3b8;font-size:0.85rem;">dòng</span>
@@ -1904,7 +2105,8 @@ class DashboardApp {
     }
 
     escapeHtml(text) {
-        if (!text) return '';
+        if (text === null || text === undefined) return '';
+        if (typeof text !== 'string') text = String(text);
         return text
             .replace(/&/g, "&amp;")
             .replace(/</g, "&lt;")

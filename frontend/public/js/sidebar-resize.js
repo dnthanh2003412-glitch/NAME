@@ -48,17 +48,25 @@
         const mobileToggle = document.getElementById('mobile-menu-toggle');
         const mobileOverlay = document.getElementById('mobile-overlay');
 
+        // SVG icons for mobile menu toggle
+        const menuIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M3 12h18M3 6h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>`;
+        const closeIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>`;
+
         if (mobileToggle && mobileOverlay) {
             mobileToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('open');
                 mobileOverlay.classList.toggle('active');
-                mobileToggle.textContent = sidebar.classList.contains('open') ? '✕' : '☰';
+                mobileToggle.innerHTML = sidebar.classList.contains('open') ? closeIcon : menuIcon;
             });
 
             mobileOverlay.addEventListener('click', () => {
                 sidebar.classList.remove('open');
                 mobileOverlay.classList.remove('active');
-                mobileToggle.textContent = '☰';
+                mobileToggle.innerHTML = menuIcon;
             });
 
             // Close sidebar when clicking on a database item on mobile
@@ -69,7 +77,7 @@
                         setTimeout(() => {
                             sidebar.classList.remove('open');
                             mobileOverlay.classList.remove('active');
-                            mobileToggle.textContent = '☰';
+                            mobileToggle.innerHTML = menuIcon;
                         }, 300);
                     }
                 }

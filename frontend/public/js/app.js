@@ -2317,6 +2317,15 @@ class DashboardApp {
         const dbIds = Array.from(this.selectedDatabases);
         this.showLoading(`Fetching ${dbIds.length} databases...`);
 
+        // Clear welcome section before rendering data
+        const container = document.getElementById('report-container');
+        if (container) {
+            const welcomeSection = container.querySelector('.welcome-section');
+            if (welcomeSection) {
+                container.innerHTML = '';
+            }
+        }
+
         try {
             // Fetch one by one to show progress, or batch? Batch is better for User, one by one is better for Progress UI.
             // Let's use simple logic: Loop fetch.
@@ -2429,7 +2438,11 @@ class DashboardApp {
         const container = document.getElementById('report-container');
         if (!container) return;
 
-        // Remove "loading" message if present
+        // Clear welcome section and any non-db-section content
+        const welcomeSection = container.querySelector('.welcome-section');
+        if (welcomeSection) welcomeSection.remove();
+        const emptyState = container.querySelector('.empty-state');
+        if (emptyState) emptyState.remove();
         const loadingEl = container.querySelector('.loading-state');
         if (loadingEl) loadingEl.remove();
 

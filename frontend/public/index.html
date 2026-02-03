@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css?v=20260203_v6">
 </head>
 
 <body>
@@ -250,78 +250,116 @@
 
             <!-- Report Container -->
             <div id="report-container" class="report-container">
-                <div class="welcome-section">
-                    <div class="welcome-hero">
-                        <div class="hero-icon">
-                            <svg width="64" height="64" viewBox="0 0 24 24" fill="none">
-                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor"
-                                    stroke-width="1.5" />
-                                <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
-                                    stroke-linecap="round" />
-                            </svg>
+                <div class="welcome-section welcome-wide">
+                    <!-- Left: Hero + Steps -->
+                    <div class="welcome-left">
+                        <div class="welcome-hero-mini">
+                            <div class="hero-icon-mini">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="1.5" />
+                                    <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3>Notion Dashboard</h3>
+                                <p>Báo cáo & phân tích dữ liệu</p>
+                            </div>
                         </div>
-                        <h3>Chào mừng đến với Notion Dashboard</h3>
-                        <p class="hero-subtitle">Hệ thống báo cáo & phân tích dữ liệu thời gian thực</p>
+                        
+                        <div class="guide-box">
+                            <h4 class="guide-title">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                Hướng dẫn lấy báo cáo
+                            </h4>
+                            <div class="steps-vertical">
+                                <div class="step-row"><span class="step-num">1</span> Chọn dự án ở sidebar trái</div>
+                                <div class="step-row"><span class="step-num">2</span> Chọn loại báo cáo từ dropdown</div>
+                                <div class="step-row"><span class="step-num">3</span> Nhấn "Tạo Báo Cáo"</div>
+                            </div>
+                        </div>
+                        
+                        <div class="hotkey-box">
+                            <h4 class="hotkey-title">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                                    <rect x="2" y="6" width="20" height="12" rx="2" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M8 14h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Phím tắt
+                            </h4>
+                            <div class="hotkey-grid">
+                                <div class="hotkey-item"><kbd>ESC</kbd> Đóng popup</div>
+                                <div class="hotkey-item"><kbd>Enter</kbd> Xác nhận</div>
+                                <div class="hotkey-item"><kbd>Ctrl+F</kbd> Tìm kiếm</div>
+                                <div class="hotkey-item"><kbd>Ctrl+D</kbd> Copy dòng xuống</div>
+                                <div class="hotkey-item"><kbd>Ctrl+S</kbd> Lưu / Xuất file</div>
+                                <div class="hotkey-item"><kbd>Ctrl+A</kbd> Chọn tất cả</div>
+                                <div class="hotkey-item"><kbd>←</kbd> <kbd>→</kbd> Chuyển trang</div>
+                                <div class="hotkey-item"><kbd>↑</kbd> <kbd>↓</kbd> Di chuyển dòng</div>
+                                <div class="hotkey-item"><kbd>Home</kbd> Trang đầu</div>
+                                <div class="hotkey-item"><kbd>End</kbd> Trang cuối</div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="quick-start">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <h4>Chọn dự án</h4>
-                                <p>Tích vào checkbox ở thanh bên trái để chọn dự án cần làm báo cáo</p>
+                    <!-- Right: Report Types -->
+                    <div class="welcome-right">
+                        <h4 class="section-label">Các loại báo cáo</h4>
+                        <div class="report-cards-grid">
+                            <div class="report-card-full sprint">
+                                <div class="report-card-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M12 6v6l4 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <strong>Sprint Report</strong>
+                                </div>
+                                <ul class="report-card-desc">
+                                    <li>Theo dõi tiến độ sprint</li>
+                                    <li>Biểu đồ phân bổ theo Status</li>
+                                    <li>Thống kê theo Assignee</li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="step-arrow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <h4>Chọn loại báo cáo</h4>
-                                <p>Sprint, Productivity, hoặc Raw Data từ dropdown ở thanh trên</p>
+                            <div class="report-card-full productivity">
+                                <div class="report-card-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M18 20V10M12 20V4M6 20v-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <strong>Productivity Report</strong>
+                                </div>
+                                <ul class="report-card-desc">
+                                    <li>Đo lường năng suất làm việc</li>
+                                    <li>So sánh giữa các thành viên</li>
+                                    <li>Phân tích xu hướng theo thời gian</li>
+                                </ul>
                             </div>
-                        </div>
-                        <div class="step-arrow">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                        </div>
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <h4>Tạo báo cáo</h4>
-                                <p>Nhấn nút "Tạo Báo Cáo" để xem kết quả phân tích</p>
+                            <div class="report-card-full raw">
+                                <div class="report-card-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M3 3h18v18H3zM3 9h18M9 21V9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                    <strong>Raw Data Report</strong>
+                                </div>
+                                <ul class="report-card-desc">
+                                    <li>Xem toàn bộ dữ liệu chi tiết</li>
+                                    <li>Lọc theo thời gian và status</li>
+                                    <li>Xuất file Excel đầy đủ</li>
+                                </ul>
                             </div>
-                        </div>
-                    </div>
-
-                    <div class="features-grid">
-                        <div class="feature-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke="currentColor" stroke-width="2"
-                                    stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <span>Dữ liệu tải ngầm, thao tác mượt mà</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor"
-                                    stroke-width="2" />
-                            </svg>
-                            <span>Token được lưu an toàn trong session</span>
-                        </div>
-                        <div class="feature-item">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"
-                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                    stroke-linejoin="round" />
-                            </svg>
-                            <span>Xuất Excel với Raw Data Report</span>
+                            <div class="report-card-full raw-all">
+                                <div class="report-card-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="2"/>
+                                    </svg>
+                                    <strong>Raw All Projects</strong>
+                                </div>
+                                <ul class="report-card-desc">
+                                    <li>Gộp tất cả Task database</li>
+                                    <li>Chuẩn hóa cột tự động</li>
+                                    <li>Dashboard phân tích tổng quan</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -332,15 +370,15 @@
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    <!-- App Scripts - v2 for cache busting -->
-    <script type="module" src="js/charts.js?v=20260202_final"></script>
-    <script type="module" src="js/tables.js?v=20260202_final"></script>
-    <script type="module" src="js/raw-table.js?v=20260202_final"></script>
-    <script type="module" src="js/dashboard.js?v=20260202_final"></script>
-    <script src="js/sidebar-resize.js?v=20260202_final"></script>
-    <script type="module" src="js/setup.js?v=20260202_final"></script>
-    <script type="module" src="js/app.js?v=20260202_final"></script>
-    <script type="module" src="js/auth.js?v=20260202_final"></script>
+    <!-- App Scripts - v6 for cache busting -->
+    <script type="module" src="js/charts.js?v=20260203_v6"></script>
+    <script type="module" src="js/tables.js?v=20260203_v6"></script>
+    <script type="module" src="js/raw-table.js?v=20260203_v6"></script>
+    <script type="module" src="js/dashboard.js?v=20260203_v6"></script>
+    <script src="js/sidebar-resize.js?v=20260203_v6"></script>
+    <script type="module" src="js/setup.js?v=20260203_v6"></script>
+    <script type="module" src="js/app.js?v=20260203_v6"></script>
+    <script type="module" src="js/auth.js?v=20260203_v6"></script>
 </body>
 
 </html>

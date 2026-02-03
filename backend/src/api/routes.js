@@ -1,4 +1,7 @@
 import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { DatabaseDiscovery } from '../notion/discovery.js';
 import { DataFetcher } from '../notion/fetcher.js';
 import { ProjectsService } from '../notion/projects.js';
@@ -7,12 +10,29 @@ import { reportRegistry } from '../reports/index.js';
 import { ProductivityService } from '../reports/productivity.js';
 import { COLUMNS as PROD_COLUMNS } from '../constants.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const router = express.Router();
 
 // In-memory cache for database discovery
 let databasesCache = null;
 let databasesCacheTime = 0;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
+// Load priority projects whitelist
+function loadPriorityProjects() {
+    try {
+        const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+        if (fs.existsSync(priorityPath)) {
+            const data = JSON.parse(fs.readFileSync(priorityPath, 'utf8'));
+            return data;
+        }
+    } catch (error) {
+        console.error('[Routes] Warning: Could not load priority_projects.json:', error.message);
+    }
+    return { projects: [], priority_databases: [] };
+}
 
 export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
@@ -48,6 +68,21 @@ export function setupRoutes(app, db, poller) {
     app.post('/auth/logout', (req, res) => {
         req.session.destroy();
         res.json({ success: true });
+    });
+
+    // ============ WHITELIST / PRIORITY ROUTES ============
+    app.get('/api/whitelist', (req, res) => {
+        try {
+            const priorityData = loadPriorityProjects();
+            res.json({ 
+                success: true, 
+                projects: priorityData.projects || [],
+                priority_databases: priorityData.priority_databases || []
+            });
+        } catch (error) {
+            console.error('[API] Error loading whitelist:', error);
+            res.status(500).json({ error: error.message });
+        }
     });
 
     // ============ DATABASE ROUTES ============
@@ -428,9 +463,12 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
         if (value.length === 0) return '';
 
         // Map over items and format recursively
-        return value.map(v => formatValue(v, lookupMap, globalUserMap))
-            .filter(v => v !== '') // Filter empty strings
-            .join(', ');
+        const formatted = value.map(v => formatValue(v, lookupMap, globalUserMap))
+            .filter(v => v !== ''); // Filter empty strings
+        
+        // Dedupe to avoid "D, D, D, D, D" display issues
+        const unique = [...new Set(formatted)];
+        return unique.join(', ');
     }
 
     // 3. Objects

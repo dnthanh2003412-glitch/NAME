@@ -1,5 +1,11 @@
 import { NotionClient } from './client.js';
 import debugLog from '../debug_logger.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Data Fetcher Service
@@ -9,7 +15,49 @@ export class DataFetcher {
     constructor(accessToken, db) {
         this.client = new NotionClient(accessToken);
         this.db = db;
+        this.priorityDatabases = this.loadPriorityDatabases();
         debugLog('DataFetcher initialized');
+    }
+
+    /**
+     * Load priority databases from config file
+     * @returns {Array<string>} Array of priority database IDs
+     */
+    loadPriorityDatabases() {
+        try {
+            const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+            if (fs.existsSync(priorityPath)) {
+                const data = JSON.parse(fs.readFileSync(priorityPath, 'utf8'));
+                const priorities = data.priority_databases || [];
+                console.log(`[Fetcher] 🌟 Loaded ${priorities.length} priority databases from whitelist`);
+                return priorities;
+            }
+        } catch (error) {
+            console.error('[Fetcher] Warning: Could not load priority_projects.json:', error.message);
+        }
+        return [];
+    }
+
+    /**
+     * Sort database IDs with priority databases first
+     * @param {Array<string>} databaseIds - Array of database IDs
+     * @returns {Array<string>} Sorted array with priority DBs first
+     */
+    sortByPriority(databaseIds) {
+        const prioritySet = new Set(this.priorityDatabases);
+        const priorityList = [];
+        const normalList = [];
+
+        for (const dbId of databaseIds) {
+            if (prioritySet.has(dbId)) {
+                priorityList.push(dbId);
+            } else {
+                normalList.push(dbId);
+            }
+        }
+
+        console.log(`[Fetcher] 📊 Priority order: ${priorityList.length} priority DBs first, then ${normalList.length} others`);
+        return [...priorityList, ...normalList];
     }
 
     /**
@@ -18,17 +66,21 @@ export class DataFetcher {
      * @returns {Promise<Object>} Object with database data keyed by ID
      */
     async fetchAllData(databaseIds) {
-        console.log(`[Fetcher] Starting to fetch data from ${databaseIds.length} databases...`);
-        debugLog(`Fetching data from ${databaseIds.length} databases`);
+        // Sort databases by priority
+        const sortedDatabaseIds = this.sortByPriority(databaseIds);
+        
+        console.log(`[Fetcher] Starting to fetch data from ${sortedDatabaseIds.length} databases...`);
+        debugLog(`Fetching data from ${sortedDatabaseIds.length} databases`);
 
         const results = {};
         const dbMetadata = {};
+        const prioritySet = new Set(this.priorityDatabases);
 
         // Helper sleep function
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
         // First, fetch database metadata to get names (Sequential)
-        for (const dbId of databaseIds) {
+        for (const dbId of sortedDatabaseIds) {
             try {
                 const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                 dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
@@ -41,7 +93,13 @@ export class DataFetcher {
         }
 
         // Fetch data (Forced Full Sync)
-        for (const dbId of databaseIds) {
+        let priorityCount = 0;
+        let normalCount = 0;
+        
+        for (const dbId of sortedDatabaseIds) {
+            const isPriority = prioritySet.has(dbId);
+            const icon = isPriority ? '🌟' : '📦';
+            
             debugLog(`Processing database ${dbId} (${dbMetadata[dbId]})`);
             try {
                 let filter = undefined;
@@ -56,7 +114,7 @@ export class DataFetcher {
                         const safetyBuffer = 24 * 60 * 60 * 1000;
                         const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
 
-                        const msg = `Incremental sync for ${dbId} (Window: 24h, Since: ${safeTime})`;
+                        const msg = `${icon} Incremental sync for ${dbId} (Window: 24h, Since: ${safeTime})`;
                         console.log(`[Fetcher] 🔄 ${msg}`);
                         debugLog(msg);
 
@@ -67,7 +125,7 @@ export class DataFetcher {
                             }
                         };
                     } else {
-                        const msg = `Full sync for ${dbId} (First run)`;
+                        const msg = `${icon} Full sync for ${dbId} (First run)`;
                         console.log(`[Fetcher] ⬇️ ${msg}`);
                         debugLog(msg);
                     }
@@ -94,10 +152,16 @@ export class DataFetcher {
 
                 results[dbId] = transformed;
 
-                const type = 'Total';
-                const successMsg = `Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} ${type} records`;
+                const priorityLabel = isPriority ? '🌟 PRIORITY' : '';
+                const successMsg = `Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records ${priorityLabel}`;
                 console.log(`[Fetcher] ✅ ${successMsg}`);
                 debugLog(successMsg);
+                
+                if (isPriority) {
+                    priorityCount++;
+                } else {
+                    normalCount++;
+                }
 
                 await sleep(350);
             } catch (error) {
@@ -108,7 +172,7 @@ export class DataFetcher {
         }
 
         const totalRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
-        console.log(`[Fetcher] ✅ Total fetched records: ${totalRecords}`);
+        console.log(`[Fetcher] ✅ Sync complete: ${totalRecords} total records (🌟 ${priorityCount} priority, 📦 ${normalCount} normal databases)`);
         debugLog(`Total records fetched: ${totalRecords}`);
 
         return results;

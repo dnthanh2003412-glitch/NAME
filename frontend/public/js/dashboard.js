@@ -3,6 +3,68 @@
 // Requires Chart.js (already included in project)
 
 /**
+ * Columns to hide/merge (duplicate or unnecessary)
+ * Map format: { 'columnToHide': 'targetColumnToMerge' } or { 'columnToHide': null } to just hide
+ */
+const COLUMNS_TO_HIDE_OR_MERGE = {
+    // Exact matches (case-insensitive matching will be done)
+    'Run n8n': null,
+    'P type': 'PRODUCT TYPE',
+    'Blocking': null,
+    '[dev] total main': null,
+    'product status': 'POINT STATUS',
+    'block by': null,
+    'description': null,
+    'Loai Canh': 'LOẠI CẢNH',
+    'UTKT': null,
+    'TP giả định 2': null,
+    'Task 2': 'TASKS',
+    'Task fix': 'TASKS',
+    'Task QC': 'TASKS',
+    'Loại cảnh': 'LOẠI CẢNH',  // Merge duplicate
+    'rollup': null,
+    'point status (1)': 'POINT STATUS',
+    'CRea': null,
+    // Common variations
+    'P Type': 'PRODUCT TYPE',
+    'Product Status': 'POINT STATUS',
+    'Block By': null,
+    'Description': null,
+    // Additional columns to hide
+    'Product type': 'PRODUCT TYPE',
+    'product (1)': null,
+    'phân loại': null,
+    '[Harry] product': null,
+    'blocked by': null,
+    'Last Edit Time': null,
+    'LastEditTime': null,
+    'Last Edited': null,
+    'Create Time': null,
+    'CreateTime': null,
+    'Created Time': null,
+};
+
+/**
+ * Check if a column should be hidden
+ */
+function shouldHideColumn(colName) {
+    const lowerCol = colName.toLowerCase();
+    for (const [hideCol, target] of Object.entries(COLUMNS_TO_HIDE_OR_MERGE)) {
+        if (hideCol.toLowerCase() === lowerCol) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/**
+ * Get visible columns (excluding hidden/merged ones)
+ */
+function getVisibleColumns(allColumns) {
+    return allColumns.filter(col => !shouldHideColumn(col));
+}
+
+/**
  * Màu sắc đẹp cho chart (dark theme)
  */
 const CHART_COLORS = {
@@ -206,6 +268,7 @@ function getUniqueValues(data, colName) {
 /**
  * Create modal element for detail view
  */
+let modalEscListener = null;
 function createModal() {
     if (document.getElementById('dashboard-modal')) return;
 
@@ -228,9 +291,9 @@ function createModal() {
                 background: #1e293b;
                 border: 1px solid #475569;
                 border-radius: 12px;
-                max-width: 800px;
-                max-height: 80vh;
-                width: 90%;
+                max-width: 95vw;
+                max-height: 85vh;
+                width: 95%;
                 overflow: hidden;
                 box-shadow: 0 20px 50px rgba(0,0,0,0.5);
             }
@@ -255,8 +318,8 @@ function createModal() {
             .modal-close:hover { color: #ef4444; }
             .modal-body {
                 padding: 20px;
-                max-height: calc(80vh - 60px);
-                overflow-y: auto;
+                max-height: calc(85vh - 60px);
+                overflow: auto;
             }
             .modal-table {
                 width: 100%;
@@ -331,40 +394,65 @@ function createModal() {
         modal.classList.remove('show');
     });
 
-    // Close modal when pressing ESC key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            modal.classList.remove('show');
-        }
-    });
+    // Close modal when pressing ESC key (only add once)
+    if (!modalEscListener) {
+        modalEscListener = (e) => {
+            if (e.key === 'Escape') {
+                const m = document.getElementById('dashboard-modal');
+                if (m && m.classList.contains('show')) {
+                    m.classList.remove('show');
+                }
+            }
+        };
+        document.addEventListener('keydown', modalEscListener);
+    }
 }
 
 /**
- * Show modal with data
+ * Show modal with data - displays ALL visible columns like the main table
  */
 function showDetailModal(title, data, columns) {
     createModal();
     const modal = document.getElementById('dashboard-modal');
-    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-title').textContent = `${title} (${data ? data.length : 0} mục)`;
 
     const body = document.getElementById('modal-body');
 
     if (!data || data.length === 0) {
         body.innerHTML = '<p style="color:#94a3b8;text-align:center;">Không có dữ liệu</p>';
     } else {
-        const cols = columns || Object.keys(data[0]).slice(0, 6);
+        // Get ALL columns from data, filter out hidden ones
+        const allCols = columns || Object.keys(data[0]);
+        const visibleCols = getVisibleColumns(allCols);
+        
+        // Prioritize important columns first
+        const priorityCols = ['TASKS', 'Tasks', 'Task Name', 'Name', 'ASSIGNEE', 'Assignee', 'PRODUCT TYPE', 'Sprint', 'POINT STATUS', 'DoneDate'];
+        const sortedCols = [
+            ...priorityCols.filter(c => visibleCols.includes(c)),
+            ...visibleCols.filter(c => !priorityCols.includes(c))
+        ];
+        
         body.innerHTML = `
-            <table class="modal-table">
-                <thead>
-                    <tr>${cols.map(c => `<th>${c}</th>`).join('')}</tr>
-                </thead>
-                <tbody>
-                    ${data.slice(0, 50).map(row => `
-                        <tr>${cols.map(c => `<td>${row[c] || '-'}</td>`).join('')}</tr>
-                    `).join('')}
-                </tbody>
-            </table>
-            ${data.length > 50 ? `<p style="color:#94a3b8;text-align:center;margin-top:12px;">...và ${data.length - 50} mục khác</p>` : ''}
+            <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="color:#94a3b8;font-size:0.85rem;">📊 ${data.length} mục | ${sortedCols.length} cột</span>
+            </div>
+            <div style="overflow-x:auto;max-height:60vh;">
+                <table class="modal-table">
+                    <thead>
+                        <tr>${sortedCols.map(c => `<th style="white-space:nowrap;">${c}</th>`).join('')}</tr>
+                    </thead>
+                    <tbody>
+                        ${data.slice(0, 100).map(row => `
+                            <tr>${sortedCols.map(c => {
+                                const val = row[c] || '-';
+                                const displayVal = String(val).length > 50 ? String(val).substring(0, 50) + '...' : val;
+                                return `<td style="white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis;" title="${String(val).replace(/"/g, '&quot;')}">${displayVal}</td>`;
+                            }).join('')}</tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            ${data.length > 100 ? `<p style="color:#94a3b8;text-align:center;margin-top:12px;">...và ${data.length - 100} mục khác</p>` : ''}
         `;
     }
 
@@ -400,7 +488,7 @@ function destroyChart(id) {
 export function renderRawDataDashboard(data, container, databaseName, options = {}) {
     if (!data || data.length === 0) return;
 
-    const { sprintFilter = '', assigneeFilter = '', startDate = '', endDate = '', activePreset = 'thisMonth' } = options;
+    const { sprintFilter = '', assigneeFilter = '', startDate = '', endDate = '', activePreset = 'all' } = options;
 
     // Detect available columns
     const sampleRow = data[0];
@@ -726,7 +814,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     if (elements.length > 0) {
                         const idx = elements[0].index;
                         const label = labels[idx];
-                        showDetailModal(`Nhân sự: ${label}`, seniorityGroups[label].items, ['fullName', 'seniority', 'taskCount', 'pointTotal']);
+                        showDetailModal(`Nhân sự: ${label}`, seniorityGroups[label].items);
                     }
                 },
                 plugins: {
@@ -769,7 +857,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     if (elements.length > 0) {
                         const idx = elements[0].index;
                         const label = labels[idx];
-                        showDetailModal(`Năng suất: ${label}`, seniorityGroups[label].items, ['fullName', 'productivityTotal', 'pointTotal', 'effortTotal']);
+                        showDetailModal(`Năng suất: ${label}`, seniorityGroups[label].items);
                     }
                 },
                 plugins: {
@@ -815,7 +903,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     if (elements.length > 0) {
                         const idx = elements[0].index;
                         const label = labels[idx];
-                        showDetailModal(`Hoàn thành Point: ${label}`, seniorityGroups[label].items, ['fullName', 'completionPointTotal', 'pointReq', 'pointTotal']);
+                        showDetailModal(`Hoàn thành Point: ${label}`, seniorityGroups[label].items);
                     }
                 },
                 plugins: {
@@ -835,19 +923,92 @@ export function renderProductivityDashboard(data, container, options = {}) {
 }
 
 /**
+ * Columns that need normalization (single-select, not multi)
+ */
+const NORMALIZE_COLUMNS = new Set([
+    'loại cảnh', 'loai canh', 'scene type', 'scene',
+    'point status', 'point_status', 'trạng thái điểm'
+]);
+
+/**
+ * Normalize values for specific columns
+ * Takes ONLY the first value if multiple (since these are single-select)
+ */
+function normalizeChartValue(val, columnName) {
+    if (!val || val === '' || val === '-') return 'Không xác định';
+    
+    const lowerCol = columnName.toLowerCase();
+    let cleanVal = String(val).trim();
+    
+    // If there's a comma (shouldn't happen for single-select, but handle rollups)
+    // Take only the FIRST value
+    if (cleanVal.includes(',')) {
+        cleanVal = cleanVal.split(',')[0].trim();
+    }
+    
+    // Point Status normalization - only 3 valid values
+    if (lowerCol.includes('point') && lowerCol.includes('status')) {
+        const lowerVal = cleanVal.toLowerCase();
+        if (lowerVal === 'confirmed' || lowerVal === 'confirm') {
+            return 'Confirmed';
+        }
+        if (lowerVal === 'unconfirmed' || lowerVal === 'unconfirm') {
+            return 'Unconfirmed';
+        }
+        return 'Không xác định';
+    }
+    
+    // Loại cảnh normalization - only S, A, B, C, D, E, F
+    if (lowerCol.includes('loại cảnh') || lowerCol.includes('loai canh') || lowerCol.includes('scene')) {
+        const upperVal = cleanVal.toUpperCase();
+        if (['S', 'A', 'B', 'C', 'D', 'E', 'F'].includes(upperVal)) {
+            return upperVal;
+        }
+        return 'Không xác định';
+    }
+    
+    return cleanVal;
+}
+
+/**
+ * Safe chart render wrapper - catches errors to prevent breaking other charts
+ */
+function safeRenderChart(chartFn, chartName) {
+    try {
+        chartFn();
+    } catch (e) {
+        console.error(`[Dashboard] Error rendering ${chartName}:`, e);
+    }
+}
+
+/**
  * Render a grouped chart
  */
 function renderGroupedChart(canvasId, data, columnName, chartType) {
-    destroyChart(canvasId);
-    const ctx = document.getElementById(canvasId);
-    if (!ctx) return;
+    try {
+        destroyChart(canvasId);
+        const ctx = document.getElementById(canvasId);
+        if (!ctx) return;
 
-    const groups = {};
-    data.forEach(row => {
-        const val = row[columnName] || 'Không xác định';
-        if (!groups[val]) groups[val] = { count: 0, items: [] };
-        groups[val].count++;
-        groups[val].items.push(row);
+        const lowerColName = columnName.toLowerCase();
+        const shouldNormalize = NORMALIZE_COLUMNS.has(lowerColName) || 
+                                lowerColName.includes('loại cảnh') || 
+                                lowerColName.includes('point status');
+
+        const groups = {};
+        data.forEach(row => {
+            let val = row[columnName];
+            
+            // Normalize if needed
+            if (shouldNormalize) {
+                val = normalizeChartValue(val, columnName);
+            } else {
+                val = val || 'Không xác định';
+            }
+            
+            if (!groups[val]) groups[val] = { count: 0, items: [] };
+            groups[val].count++;
+            groups[val].items.push(row);
     });
 
     let labels = Object.keys(groups).sort((a, b) => groups[b].count - groups[a].count);
@@ -881,8 +1042,8 @@ function renderGroupedChart(canvasId, data, columnName, chartType) {
                 if (elements.length > 0) {
                     const idx = elements[0].index;
                     const label = labels[idx];
-                    const displayCols = Object.keys(data[0]).slice(0, 5);
-                    showDetailModal(`${columnName}: ${label}`, groups[label].items, displayCols);
+                    // Show ALL columns (let showDetailModal filter hidden ones)
+                    showDetailModal(`${columnName}: ${label}`, groups[label].items);
                 }
             },
             plugins: {
@@ -904,6 +1065,9 @@ function renderGroupedChart(canvasId, data, columnName, chartType) {
             } : undefined
         }
     });
+    } catch (e) {
+        console.error(`[Dashboard] Error in renderGroupedChart(${canvasId}):`, e);
+    }
 }
 
 // Export for use

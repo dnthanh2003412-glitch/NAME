@@ -1,4 +1,8 @@
 import { Client } from '@notionhq/client';
+import { getDbInstance } from '../database/db.js';
+
+// Reuse singleton database manager
+const db = getDbInstance();
 
 /**
  * Projects Service
@@ -13,12 +17,50 @@ export class ProjectsService {
         // In-memory Cache
         this.cachedTree = null;
         this.lastCacheTime = 0;
-        this.CACHE_TTL = 1000 * 60 * 15; // 15 minutes
+        this.CACHE_TTL = 1000 * 60 * 60 * 2; // 2 hours (increased from 15 min)
         this.isRefreshing = false;
         this.refreshPromise = null; // To hold the promise of an ongoing refresh
 
-        // Start background refresh immediately
-        this.refreshCache().catch(console.error);
+        // Load cache from file on startup (instant load!)
+        this.loadCacheFromFile();
+
+        // Start background refresh if cache is stale
+        if (!this.cachedTree || (Date.now() - this.lastCacheTime > this.CACHE_TTL)) {
+            this.refreshCache().catch(console.error);
+        } else {
+            console.log('[Projects] Using fresh file cache, skipping Notion refresh');
+        }
+    }
+
+    /**
+     * Load cached tree from file (for instant startup)
+     */
+    loadCacheFromFile() {
+        try {
+            const savedTree = db.getConfig('projects_tree_cache');
+            const savedTime = db.getConfig('projects_tree_cache_time');
+            
+            if (savedTree && savedTime) {
+                this.cachedTree = savedTree;
+                this.lastCacheTime = savedTime;
+                console.log(`[Projects] Loaded ${savedTree.length} projects from file cache (age: ${Math.round((Date.now() - savedTime) / 60000)} min)`);
+            }
+        } catch (e) {
+            console.error('[Projects] Failed to load file cache:', e.message);
+        }
+    }
+
+    /**
+     * Save cache to file for persistence
+     */
+    saveCacheToFile() {
+        try {
+            db.setConfig('projects_tree_cache', this.cachedTree);
+            db.setConfig('projects_tree_cache_time', this.lastCacheTime);
+            console.log(`[Projects] Saved ${this.cachedTree?.length || 0} projects to file cache`);
+        } catch (e) {
+            console.error('[Projects] Failed to save file cache:', e.message);
+        }
     }
 
     async delay(ms) {
@@ -63,6 +105,7 @@ export class ProjectsService {
                 const priorityTree = await this.buildTreePhase(true); // true = priority only
                 this.cachedTree = priorityTree;
                 this.lastCacheTime = Date.now();
+                this.saveCacheToFile(); // Save to file for persistence
                 console.log(`[Projects] Phase 1 Complete: ${priorityTree.length} priority projects cached.`);
 
                 // PHASE 2: Everything else (Background)
@@ -72,6 +115,7 @@ export class ProjectsService {
                 this.buildTreePhase(false, priorityTree).then(fullTree => {
                     this.cachedTree = fullTree;
                     this.lastCacheTime = Date.now();
+                    this.saveCacheToFile(); // Save full tree to file
                     console.log(`[Projects] Phase 2 Complete: ${fullTree.length} total projects cached.`);
                 }).catch(e => console.error('Phase 2 Scan Error:', e));
 

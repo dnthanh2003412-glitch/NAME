@@ -38,8 +38,15 @@ export class PollingService {
 
         console.log(`[Poller] Starting with interval: ${intervalMs}ms (${cronExpression})`);
 
-        // Run immediately on start
-        this.poll();
+        // Delay first poll to let server start first (cache already available)
+        // Frontend can use cached data immediately
+        const firstPollDelay = 5000; // 5 seconds
+        console.log(`[Poller] 📦 Using cached data. First sync in ${firstPollDelay/1000}s...`);
+        
+        setTimeout(() => {
+            console.log('[Poller] 🔄 Starting background sync with Notion...');
+            this.poll();
+        }, firstPollDelay);
 
         // Schedule periodic polling
         this.cronJob = cron.schedule(cronExpression, () => {

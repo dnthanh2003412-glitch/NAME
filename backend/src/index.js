@@ -15,7 +15,7 @@ dotenv.config({ path: join(__dirname, '../.env') });
 import { setupRoutes } from './api/routes.js';
 import { RealtimeServer } from './websocket/server.js';
 import { PollingService } from './scheduler/poller.js';
-import { DatabaseManager } from './database/db.js';
+import { getDbInstance } from './database/db.js';
 
 /**
  * Main Application Entry Point
@@ -24,7 +24,7 @@ class NotionDashboardServer {
     constructor() {
         this.app = express();
         this.port = process.env.PORT || 3000;
-        this.db = new DatabaseManager();
+        this.db = getDbInstance(); // Use singleton
         this.accessToken = null; // Will be set via session
     }
 
@@ -74,7 +74,14 @@ class NotionDashboardServer {
         this.app.use(express.static(frontendPath));
         console.log('[Server] Serving frontend from:', frontendPath);
 
-        // Start polling immediately
+        // Show cache stats before starting
+        const cacheStats = this.db.getStats();
+        console.log(`[Server] 📦 Cache ready: ${cacheStats.databases} databases, ${cacheStats.totalRecords} records`);
+        if (cacheStats.lastRefresh) {
+            console.log(`[Server] 📅 Last sync: ${new Date(cacheStats.lastRefresh).toLocaleString()}`);
+        }
+
+        // Start polling (delayed - cache available immediately)
         this.poller.start(pollingInterval);
 
         // Graceful shutdown handling

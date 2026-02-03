@@ -13,24 +13,82 @@ class DashboardApp {
         this.selectedProjects = new Set();
         this.hiddenProjects = new Set();
         this.hiddenDatabases = new Set();
+        
+        // Whitelist from backend
+        this.whitelistProjects = new Set(); // Project IDs in whitelist
+        this.whitelistProjectNames = new Set(); // Project names in whitelist
 
         this.loadPersistedState();
 
         this.searchQuery = '';
-        this.isHiddenGroupOpen = true;
+        this.isHiddenGroupOpen = false; // Mặc định đóng mục "Dự án khác"
+        this.isHiddenProjectsOpen = false; // Mặc định đóng mục "Dự án đã ẩn"
         this.databaseCounts = {}; // Store record counts
         this.initialFetchDone = false;
     }
 
     async init() {
         console.log('[Dashboard] Initializing...');
+        
+        // Load whitelist first
+        await this.loadWhitelist();
+        
         this.setupEventListeners();
 
         // Initial Load
         await this.loadProjectsTree();
 
-        // Start Polling
+        // Start Polling & Health Check
         this.startPolling();
+        this.startHealthCheck();
+    }
+    
+    // Health check to update connection status
+    startHealthCheck() {
+        const updateStatus = async () => {
+            const statusEl = document.getElementById('connection-status');
+            const dotEl = statusEl?.querySelector('.status-dot');
+            const textEl = statusEl?.querySelector('.status-text');
+            
+            try {
+                const response = await fetch(`${API_BASE}/auth/status`, { 
+                    method: 'GET',
+                    signal: AbortSignal.timeout(5000) // 5s timeout
+                });
+                if (response.ok) {
+                    if (dotEl) dotEl.style.background = '#10b981';
+                    if (textEl) textEl.textContent = 'Connected';
+                } else {
+                    if (dotEl) dotEl.style.background = '#f59e0b';
+                    if (textEl) textEl.textContent = 'Limited';
+                }
+            } catch (e) {
+                if (dotEl) dotEl.style.background = '#ef4444';
+                if (textEl) textEl.textContent = 'Offline';
+            }
+        };
+        
+        // Check immediately and then every 30s
+        updateStatus();
+        setInterval(updateStatus, 30000);
+    }
+    
+    async loadWhitelist() {
+        try {
+            const response = await fetch(`${API_BASE}/api/whitelist`);
+            const data = await response.json();
+            if (data.success && data.projects) {
+                this.whitelistProjects.clear();
+                this.whitelistProjectNames.clear();
+                for (const proj of data.projects) {
+                    this.whitelistProjects.add(proj.id);
+                    this.whitelistProjectNames.add(proj.name);
+                }
+                console.log(`[Dashboard] Loaded whitelist: ${this.whitelistProjects.size} projects`);
+            }
+        } catch (error) {
+            console.error('[Dashboard] Error loading whitelist:', error);
+        }
     }
 
     loadPersistedState() {
@@ -148,11 +206,21 @@ class DashboardApp {
         const hasSelection = this.selectedDatabases.size > 0;
 
         if (generateBtn) {
-            generateBtn.disabled = !(hasSelection && reportType);
+            // raw-all doesn't require database selection - it auto-selects whitelist Task DBs
+            const isRawAll = reportType === 'raw-all';
+            generateBtn.disabled = !(reportType && (hasSelection || isRawAll));
+            
             // Update Selected Count Text
             const countSpan = document.getElementById('selected-count');
             if (countSpan) {
-                countSpan.textContent = hasSelection ? `Đã chọn ${this.selectedDatabases.size} database` : 'Chưa chọn dự án';
+                if (isRawAll) {
+                    const { taskDbIds, projectsInfo } = this.getWhitelistTaskDatabases();
+                    countSpan.textContent = `🌟 Auto: ${projectsInfo.length} dự án, ${taskDbIds.length} Task DBs`;
+                    countSpan.title = projectsInfo.map(p => `${p.name} (${p.taskCount})`).join('\n');
+                } else {
+                    countSpan.textContent = hasSelection ? `Đã chọn ${this.selectedDatabases.size} database` : 'Chưa chọn dự án';
+                    countSpan.title = '';
+                }
             }
         }
     }
@@ -171,6 +239,9 @@ class DashboardApp {
             case 'raw':
                 this.renderRawDataReport(container);
                 break;
+            case 'raw-all':
+                this.renderRawAllProjectsReport(container);
+                break;
             case 'sprint':
                 this.renderSprintReport(container); // Placeholder
                 break;
@@ -179,6 +250,171 @@ class DashboardApp {
                 break;
             default:
                 container.innerHTML = '<div class="error-state">Loại báo cáo chưa được hỗ trợ</div>';
+        }
+    }
+
+    /**
+     * Get all Task database IDs from visible whitelist projects
+     * @returns {Object} { taskDbIds: Array<string>, projectsInfo: Array<{name, taskCount}> }
+     */
+    getWhitelistTaskDatabases() {
+        const taskDbIds = [];
+        const projectsInfo = [];
+        
+        // Iterate through projectsHierarchy to find visible whitelist projects with Task databases
+        for (const project of this.projectsHierarchy) {
+            // Check if project is in whitelist
+            const isInWhitelist = this.whitelistProjects.has(project.id) || 
+                                  this.whitelistProjectNames.has(project.name);
+            
+            // Skip if not in whitelist or manually hidden
+            if (!isInWhitelist) continue;
+            if (this.hiddenProjects.has(project.name)) continue;
+            
+            // Get Task databases from this project
+            const databases = project.databases || [];
+            let projectTaskCount = 0;
+            
+            for (const db of databases) {
+                // Check if database is Task type and not hidden
+                if (db.type === 'tasks' && !this.hiddenDatabases.has(db.id)) {
+                    taskDbIds.push(db.id);
+                    projectTaskCount++;
+                }
+            }
+            
+            // Only add project to info if it has Task databases
+            if (projectTaskCount > 0) {
+                projectsInfo.push({
+                    name: project.name,
+                    taskCount: projectTaskCount
+                });
+            }
+        }
+        
+        console.log(`[Dashboard] Found ${taskDbIds.length} Task databases from ${projectsInfo.length} whitelist projects`);
+        return { taskDbIds, projectsInfo };
+    }
+
+    /**
+     * Render Raw report for ALL visible whitelist projects (Task databases only)
+     */
+    async renderRawAllProjectsReport(container) {
+        // Show loading state
+        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Task từ các dự án whitelist...</div>';
+
+        // Get all Task databases from visible whitelist projects
+        const { taskDbIds, projectsInfo } = this.getWhitelistTaskDatabases();
+        
+        if (taskDbIds.length === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không tìm thấy database Task nào trong các dự án whitelist đang hiển thị.<br><br>Hãy mở thêm dự án từ "Dự án khác" hoặc "Dự án đã ẩn" rồi bấm Tạo Báo Cáo lại.</div>';
+            return;
+        }
+
+        // Build project list HTML
+        const projectListHtml = projectsInfo.map(p => 
+            `<span style="background:#3b82f620;padding:2px 8px;border-radius:4px;margin:2px;display:inline-block;font-size:0.75rem;">${p.name} (${p.taskCount})</span>`
+        ).join('');
+
+        // Show info about which databases will be loaded
+        const loadingInfo = document.createElement('div');
+        loadingInfo.className = 'loading-info';
+        loadingInfo.style.cssText = 'padding:12px 20px;background:#1e3a5f;border-radius:8px;margin-bottom:16px;';
+        loadingInfo.innerHTML = `
+            <div style="color:#94a3b8;font-size:0.85rem;">
+                🌟 <strong>Raw All Projects (Whitelist)</strong> - ${projectsInfo.length} dự án, ${taskDbIds.length} Task DBs<br>
+                <div style="margin-top:8px;line-height:1.8;">${projectListHtml}</div>
+                <div style="margin-top:8px;color:#60a5fa;">⏳ Đang tải dữ liệu...</div>
+            </div>
+        `;
+        container.innerHTML = '';
+        container.appendChild(loadingInfo);
+
+        try {
+            // Fetch in PARALLEL (batches of 5 to avoid overwhelming server)
+            const allData = [];
+            const allColumns = new Set();
+            const BATCH_SIZE = 5;
+            let loadedCount = 0;
+            
+            // Progress update function
+            const updateProgress = () => {
+                const progressDiv = loadingInfo.querySelector('.progress-text');
+                if (progressDiv) {
+                    progressDiv.textContent = `⏳ Đang tải... ${loadedCount}/${taskDbIds.length} databases`;
+                }
+            };
+            
+            // Add progress element
+            loadingInfo.querySelector('div').innerHTML += `
+                <div class="progress-text" style="margin-top:8px;color:#60a5fa;">⏳ Đang tải... 0/${taskDbIds.length} databases</div>
+            `;
+            
+            // Process in batches
+            for (let i = 0; i < taskDbIds.length; i += BATCH_SIZE) {
+                const batch = taskDbIds.slice(i, i + BATCH_SIZE);
+                
+                // Fetch batch in parallel
+                const results = await Promise.all(
+                    batch.map(async (dbId) => {
+                        try {
+                            const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
+                            const response = await fetch(url);
+                            return await response.json();
+                        } catch (e) {
+                            console.error(`Error fetching ${dbId}:`, e);
+                            return { success: false };
+                        }
+                    })
+                );
+                
+                // Process results
+                results.forEach(result => {
+                    loadedCount++;
+                    if (result.success && result.data && result.data.length > 0) {
+                        const enrichedData = result.data.map(row => ({
+                            ...row,
+                            _source_db: result.database_name || 'Unknown'
+                        }));
+                        allData.push(...enrichedData);
+                        
+                        if (result.columns) {
+                            result.columns.forEach(col => allColumns.add(col));
+                        }
+                    }
+                });
+                
+                updateProgress();
+            }
+
+            // Update loading info
+            loadingInfo.querySelector('div').innerHTML = `
+                🌟 <strong>Raw All Projects (Whitelist)</strong> - ${projectsInfo.length} dự án, ${taskDbIds.length} Task DBs<br>
+                <div style="margin-top:8px;line-height:1.8;">${projectListHtml}</div>
+                <div style="margin-top:8px;color:#22c55e;">✅ Đã tải ${allData.length} records</div>
+            `;
+
+            if (allData.length === 0) {
+                container.innerHTML += '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu Task nào trong các dự án whitelist.</div>';
+                return;
+            }
+
+            // Add _source_db to columns if not present
+            allColumns.add('_source_db');
+            
+            // Render ONE combined table with all merged data
+            const combinedResult = {
+                database_name: `All Whitelist Tasks (${projectsInfo.length} dự án)`,
+                columns: Array.from(allColumns),
+                data: allData,
+                total_records: allData.length
+            };
+            
+            this.renderRawDatabaseTable(container, 'all-whitelist-tasks', combinedResult);
+
+        } catch (err) {
+            console.error('Error fetching raw all data:', err);
+            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
         }
     }
 
@@ -222,12 +458,62 @@ class DashboardApp {
         }
     }
 
+    /**
+     * Columns to hide/merge (duplicate or unnecessary)
+     * These will be auto-hidden from display
+     */
+    static COLUMNS_TO_HIDE = new Set([
+        'run n8n', 'p type', 'blocking', '[dev] total main', 'product status',
+        'block by', 'description', 'loai canh', 'utkt', 'tp giả định 2',
+        'task 2', 'task fix', 'task qc', 'loại cảnh', 'rollup', 
+        'point status (1)', 'crea', 'blocked by',
+        // Additional columns to hide
+        'product type', 'p type',  // Keep only PRODUCT TYPE
+        'product (1)', 'phân loại', '[harry] product',
+        'last edit time', 'lastedittime', 'last edited',  // Hide unless has data
+        'create time', 'createtime', 'created time'  // Hide unless has data
+    ].map(c => c.toLowerCase()));
+
+    /**
+     * Columns that should only show if they have actual data
+     */
+    static COLUMNS_SHOW_IF_HAS_DATA = new Set([
+        'last edit time', 'lastedittime', 'last edited', 'lastEditTime',
+        'create time', 'createtime', 'created time', 'createTime'
+    ].map(c => c.toLowerCase()));
+
+    /**
+     * Check if column should be hidden
+     */
+    shouldHideColumn(colName, data = []) {
+        const lowerCol = colName.toLowerCase();
+        
+        // Check if it's a "show if has data" column
+        if (DashboardApp.COLUMNS_SHOW_IF_HAS_DATA.has(lowerCol)) {
+            // Check if any row has actual data in this column
+            const hasData = data.some(row => {
+                const val = row[colName];
+                return val && val !== '-' && val !== '' && val !== null && val !== undefined;
+            });
+            return !hasData; // Hide if NO data
+        }
+        
+        return DashboardApp.COLUMNS_TO_HIDE.has(lowerCol);
+    }
+
     renderRawDatabaseTable(container, dbId, result) {
-        const { database_name, columns: originalColumns, data: originalData, total_records } = result;
+        let { database_name, columns: rawColumns, data: originalData, total_records } = result;
+        
+        // Filter out hidden/duplicate columns (pass data to check "show if has data" columns)
+        const originalColumns = rawColumns.filter(col => !this.shouldHideColumn(col, originalData));
+        
         console.log(`[Frontend] Render table for ${dbId}:`, {
             name: database_name,
             total_records_api: total_records,
             data_length: originalData.length,
+            columns_before_filter: rawColumns.length,
+            columns_after_filter: originalColumns.length,
+            hidden_columns: rawColumns.filter(c => this.shouldHideColumn(c, originalData)),
             first_record: originalData[0],
             last_record: originalData[originalData.length - 1]
         });
@@ -251,7 +537,16 @@ class DashboardApp {
         const dashboardArea = section.querySelector(`#dashboard-area-${dbId}`);
         const tableArea = section.querySelector(`#table-area-${dbId}`);
 
-        // Render Dashboard (Static, won't be re-rendered on table update)
+        // Dashboard render function - can be called with filtered data
+        const updateDashboard = (data, options = {}) => {
+            if (typeof renderRawDataDashboard === 'function' && data.length > 0) {
+                // Clear old dashboard before re-rendering
+                dashboardArea.innerHTML = '';
+                renderRawDataDashboard(data, dashboardArea, database_name, options);
+            }
+        };
+
+        // Initial Dashboard render with all data
         if (typeof renderRawDataDashboard === 'function' && originalData.length > 0) {
             if (dashboardArea.childNodes.length === 0) {
                 renderRawDataDashboard(originalData, dashboardArea, database_name);
@@ -438,6 +733,14 @@ class DashboardApp {
             }
 
             currentPage = 1;
+            
+            // Update dashboard with filtered data (sync table filters → dashboard)
+            updateDashboard(filteredData, {
+                startDate: startDateFilter,
+                endDate: endDateFilter,
+                assigneeFilter: assigneeTableFilter,
+                sprintFilter: sprintTableFilter
+            });
         };
 
         // Export to Excel (only visible columns)
@@ -692,13 +995,11 @@ class DashboardApp {
                 currentPage = 1;
                 applyFiltersAndSearch();
                 renderTable();
-                // Sync with dashboard
-                const dashAssigneeFilter = document.getElementById('raw-assignee-filter');
-                if (dashAssigneeFilter) dashAssigneeFilter.value = assigneeTableFilter;
-                document.getElementById('raw-apply-filter')?.click();
+                // Dashboard already updated via applyFiltersAndSearch
             });
             
             // Listen for dashboard filter changes (custom event)
+            // Dashboard already re-renders itself, we only need to update table
             document.addEventListener('dashboard-filter-change', (e) => {
                 if (e.detail) {
                     const { startDate, endDate, assigneeFilter, sprintFilter } = e.detail;
@@ -707,7 +1008,23 @@ class DashboardApp {
                     assigneeTableFilter = assigneeFilter || '';
                     sprintTableFilter = sprintFilter || '';
                     currentPage = 1;
-                    applyFiltersAndSearch();
+                    // Skip dashboard update since it triggered this event
+                    filteredData = originalData.filter(row => {
+                        if (assigneeTableFilter && assigneeCol && row[assigneeCol] !== assigneeTableFilter) return false;
+                        if (sprintTableFilter && sprintCol && row[sprintCol] !== sprintTableFilter) return false;
+                        if (dateCol && (startDateFilter || endDateFilter)) {
+                            let d = parseDate(row[dateCol]);
+                            if (!d && fallbackDateCol) d = parseDate(row[fallbackDateCol]);
+                            if (!d) return false;
+                            if (startDateFilter && d < new Date(startDateFilter)) return false;
+                            if (endDateFilter) {
+                                const end = new Date(endDateFilter);
+                                end.setHours(23, 59, 59, 999);
+                                if (d > end) return false;
+                            }
+                        }
+                        return true;
+                    });
                     renderTable();
                 }
             });
@@ -1802,20 +2119,10 @@ class DashboardApp {
         const query = this.searchQuery.toLowerCase();
         let mainHtml = '';
 
-        // Whitelist project keywords
-        // Whitelist project keywords - Pinned to top
-        const WHITELIST_KEYWORDS = [
-            'DeeDee_2025', 'DeeDee_2026', // Catch-all for new projects
-            'Disk Knight', 'SHAVUOT', 'NINJAGO', 'FC MOBILE',
-            'HARRY', 'MIRACULOUS', 'XANHSM',
-            'KNIGHTS', 'GENEVIEVE', 'Sunny Side',
-            'Đại Hiệp', 'UPZI', 'Mami'
-        ];
-
-        // 1. Filter & Group
-        const pinnedProjects = [];
-        const otherProjects = [];
-        const hiddenProjectsList = [];
+        // 1. Filter & Group based on whitelist from backend
+        const pinnedProjects = [];      // Projects in whitelist -> hiển thị mặc định
+        const otherProjects = [];        // Projects NOT in whitelist -> vào "Dự án khác" (mặc định đóng)
+        const hiddenProjectsList = [];   // Projects đã được user ẩn thủ công
 
         for (const project of this.projectsHierarchy) {
             // Search filter
@@ -1825,59 +2132,65 @@ class DashboardApp {
 
             if (!matchesSearch) continue;
 
-            const isPinned = WHITELIST_KEYWORDS.some(k => project.name.toLowerCase().includes(k.toLowerCase()));
+            // Check if project is in whitelist (by ID or name)
+            const isInWhitelist = this.whitelistProjects.has(project.id) || 
+                                  this.whitelistProjectNames.has(project.name);
 
-            if (isPinned) {
-                pinnedProjects.push(project);
-                continue; // Pinned projects are never hidden
-            }
-
-            // Hidden Check (Only effective for non-pinned)
-            const isHidden = this.hiddenProjects.has(project.name) && !query;
-
-            if (isHidden) {
-                hiddenProjectsList.push(project);
+            if (isInWhitelist) {
+                // Check if user manually hid this whitelisted project
+                const isManuallyHidden = this.hiddenProjects.has(project.name) && !query;
+                if (isManuallyHidden) {
+                    hiddenProjectsList.push(project);
+                } else {
+                    pinnedProjects.push(project);
+                }
                 continue;
             }
 
-            otherProjects.push(project);
-        }
-
-        // 2. Render Pinned Projects (Flat List)
-        let hasPinnedContent = false;
-        if (pinnedProjects.length > 0) {
-            hasPinnedContent = true;
-            mainHtml += `<div class="pinned-projects-header" style="padding: 8px 16px; font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">Projects</div>`;
-            mainHtml += this.renderProjectList(pinnedProjects);
-        }
-
-
-
-        // 3. Render Hidden Projects Section (If any)
-        if (hiddenProjectsList.length > 0) {
-            mainHtml += `
-                <div class="other-projects-header" onclick="app.toggleHiddenProjectsSection()" style="margin-top: 20px; border-top: 1px dashed #475569;">
-                    ${this.isHiddenProjectsOpen ? '▼' : '▶'} Dự án đã ẩn (${hiddenProjectsList.length})
-                </div>
-            `;
-            if (this.isHiddenProjectsOpen) {
-                mainHtml += `<div id="hidden-projects-list">${this.renderProjectList(hiddenProjectsList, true)}</div>`;
+            // Non-whitelist projects go to "Other" by default
+            // But if user manually showed them (removed from hiddenProjects), show in pinned
+            const isManuallyHidden = this.hiddenProjects.has(project.name) && !query;
+            
+            if (isManuallyHidden) {
+                hiddenProjectsList.push(project);
+            } else {
+                otherProjects.push(project);
             }
         }
 
-        // 4. Render Other Projects (Collapsed)
+        // 2. Render Pinned Projects (Whitelist - hiển thị mặc định)
+        let hasPinnedContent = false;
+        if (pinnedProjects.length > 0) {
+            hasPinnedContent = true;
+            mainHtml += `<div class="pinned-projects-header" style="padding: 8px 16px; font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">🌟 Dự án ưu tiên (${pinnedProjects.length})</div>`;
+            mainHtml += this.renderProjectList(pinnedProjects);
+        }
+
+        // 3. Render Other Projects (Non-whitelist - mặc định đóng)
         if (otherProjects.length > 0) {
             const style = this.isHiddenGroupOpen ? 'display: block;' : 'display: none;';
             const arrow = this.isHiddenGroupOpen ? '▼' : '▶';
 
             mainHtml += `
-                <div class="other-projects-header" onclick="app.toggleHiddenGroup()">
+                <div class="other-projects-header" onclick="app.toggleHiddenGroup()" style="margin-top: 16px; border-top: 1px dashed #475569;">
                     ${arrow} Dự án khác (${otherProjects.length})
                 </div>
                 <div id="other-projects-list" style="${style}">
                     ${this.renderProjectList(otherProjects)}
                 </div>
             `;
+        }
+
+        // 4. Render Hidden Projects Section (Đã ẩn thủ công)
+        if (hiddenProjectsList.length > 0) {
+            mainHtml += `
+                <div class="other-projects-header" onclick="app.toggleHiddenProjectsSection()" style="margin-top: 16px; border-top: 1px dashed #475569;">
+                    ${this.isHiddenProjectsOpen ? '▼' : '▶'} 🚫 Dự án đã ẩn (${hiddenProjectsList.length})
+                </div>
+            `;
+            if (this.isHiddenProjectsOpen) {
+                mainHtml += `<div id="hidden-projects-list">${this.renderProjectList(hiddenProjectsList, true)}</div>`;
+            }
         }
 
         if (!hasPinnedContent && otherProjects.length === 0 && hiddenProjectsList.length === 0) {

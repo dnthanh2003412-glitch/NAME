@@ -5,9 +5,12 @@ package-lock.json
 # Environment
 .env
 
-# Database
-*.json
-data/
+# Database cache (not package.json)
+backend/data/cache/
+backend/data/*.json
+!backend/package.json
+!frontend/package.json
+!package.json
 
 # Logs
 logs/

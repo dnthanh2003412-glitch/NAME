@@ -23,6 +23,7 @@ class DashboardApp {
         this.searchQuery = '';
         this.isHiddenGroupOpen = false; // Mặc định đóng mục "Dự án khác"
         this.isHiddenProjectsOpen = false; // Mặc định đóng mục "Dự án đã ẩn"
+        this.isHiddenDatabasesOpen = false; // Mặc định đóng mục "Database đã ẩn"
         this.databaseCounts = {}; // Store record counts
         this.initialFetchDone = false;
     }
@@ -198,6 +199,108 @@ class DashboardApp {
                 }
             });
         }
+
+        // ========== Sidebar Toolbar Buttons ==========
+        
+        // Select All Projects (chọn tất cả databases visible)
+        const selectAllBtn = document.getElementById('select-all-projects');
+        if (selectAllBtn) {
+            selectAllBtn.addEventListener('click', () => {
+                this.selectAllVisibleDatabases();
+            });
+        }
+
+        // Deselect All Projects (bỏ chọn tất cả)
+        const deselectAllBtn = document.getElementById('deselect-all-projects');
+        if (deselectAllBtn) {
+            deselectAllBtn.addEventListener('click', () => {
+                this.deselectAllDatabases();
+            });
+        }
+
+        // Toggle Hidden Items
+        const toggleHiddenBtn = document.getElementById('toggle-hidden-items');
+        if (toggleHiddenBtn) {
+            toggleHiddenBtn.addEventListener('click', () => {
+                this.isHiddenProjectsOpen = !this.isHiddenProjectsOpen;
+                toggleHiddenBtn.classList.toggle('active', this.isHiddenProjectsOpen);
+                this.renderProjectsTreeHierarchical();
+            });
+        }
+
+        // Save Sidebar Config
+        const saveConfigBtn = document.getElementById('save-sidebar-config');
+        if (saveConfigBtn) {
+            saveConfigBtn.addEventListener('click', () => {
+                this.savePersistedState();
+                // Show feedback
+                saveConfigBtn.style.background = '#22c55e';
+                setTimeout(() => {
+                    saveConfigBtn.style.background = '';
+                }, 1000);
+                console.log('[Dashboard] Sidebar config saved');
+            });
+        }
+
+        // Reset Sidebar Config
+        const resetConfigBtn = document.getElementById('reset-sidebar-config');
+        if (resetConfigBtn) {
+            resetConfigBtn.addEventListener('click', () => {
+                if (confirm('Bạn có chắc muốn đặt lại cấu hình sidebar?')) {
+                    this.selectedDatabases.clear();
+                    this.hiddenProjects.clear();
+                    this.hiddenDatabases.clear();
+                    localStorage.removeItem('dashNotion_selectedDatabases');
+                    localStorage.removeItem('dashNotion_hiddenProjects');
+                    localStorage.removeItem('dashNotion_hiddenDatabases');
+                    this.renderProjectsTreeHierarchical();
+                    this.updateGenerateButtonState();
+                    console.log('[Dashboard] Sidebar config reset');
+                }
+            });
+        }
+    }
+
+    // Select all visible databases (not hidden)
+    selectAllVisibleDatabases() {
+        let addedCount = 0;
+        for (const project of this.projectsHierarchy) {
+            // Skip hidden projects
+            if (this.hiddenProjects.has(project.name)) continue;
+            
+            // Check if project is in whitelist OR in "Other" group but visible
+            const isInWhitelist = this.whitelistProjects.has(project.id) || 
+                                  this.whitelistProjectNames.has(project.name);
+            
+            // Only select from visible projects (whitelist or isHiddenGroupOpen)
+            if (!isInWhitelist && !this.isHiddenGroupOpen) continue;
+            
+            const databases = project.databases || [];
+            for (const db of databases) {
+                // Skip hidden databases
+                if (this.hiddenDatabases.has(db.id)) continue;
+                
+                if (!this.selectedDatabases.has(db.id)) {
+                    this.selectedDatabases.add(db.id);
+                    addedCount++;
+                }
+            }
+        }
+        
+        this.savePersistedState();
+        this.renderProjectsTreeHierarchical();
+        this.updateGenerateButtonState();
+        console.log(`[Dashboard] Selected all visible databases: +${addedCount}, total: ${this.selectedDatabases.size}`);
+    }
+
+    // Deselect all databases
+    deselectAllDatabases() {
+        const count = this.selectedDatabases.size;
+        this.selectedDatabases.clear();
+        this.savePersistedState();
+        this.renderProjectsTreeHierarchical();
+        this.updateGenerateButtonState();
+        console.log(`[Dashboard] Deselected all databases: -${count}`);
     }
 
     updateGenerateButtonState() {
@@ -2193,7 +2296,35 @@ class DashboardApp {
             }
         }
 
-        if (!hasPinnedContent && otherProjects.length === 0 && hiddenProjectsList.length === 0) {
+        // 5. Render Hidden Databases Section (Database đã ẩn)
+        const hiddenDbsList = this.getHiddenDatabasesList();
+        if (hiddenDbsList.length > 0) {
+            mainHtml += `
+                <div class="other-projects-header" onclick="app.toggleHiddenDatabasesSection()" style="margin-top: 16px; border-top: 1px dashed #ef4444;">
+                    ${this.isHiddenDatabasesOpen ? '▼' : '▶'} 🙈 Database đã ẩn (${hiddenDbsList.length})
+                </div>
+            `;
+            if (this.isHiddenDatabasesOpen) {
+                mainHtml += `<div id="hidden-databases-list" style="padding: 8px 12px;">
+                    ${hiddenDbsList.map(db => `
+                        <div class="hidden-db-item" style="display:flex;align-items:center;justify-content:space-between;padding:8px 12px;margin:4px 0;background:#1e293b;border-radius:6px;border:1px solid #ef444440;">
+                            <div style="display:flex;align-items:center;gap:8px;flex:1;min-width:0;">
+                                <span style="font-size:0.85rem;">${this.getDatabaseIcon(db.type)}</span>
+                                <span style="color:#e2e8f0;font-size:0.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;" title="${this.escapeHtml(db.name)}">${this.escapeHtml(db.name)}</span>
+                                <span style="color:#64748b;font-size:0.7rem;">(${this.escapeHtml(db.projectName)})</span>
+                            </div>
+                            <button onclick="event.stopPropagation(); app.toggleDatabaseVisibility('${db.id}')" 
+                                    style="padding:4px 8px;background:#22c55e;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.7rem;white-space:nowrap;"
+                                    title="Hiện database">
+                                👁 Hiện
+                            </button>
+                        </div>
+                    `).join('')}
+                </div>`;
+            }
+        }
+
+        if (!hasPinnedContent && otherProjects.length === 0 && hiddenProjectsList.length === 0 && hiddenDbsList.length === 0) {
             mainHtml = '<div class="no-data" style="padding:20px; text-align:center; color:#64748b;">Không tìm thấy kết quả</div>';
         }
 
@@ -2299,6 +2430,30 @@ class DashboardApp {
     toggleHiddenProjectsSection() {
         this.isHiddenProjectsOpen = !this.isHiddenProjectsOpen;
         this.renderProjectsTreeHierarchical();
+    }
+
+    toggleHiddenDatabasesSection() {
+        this.isHiddenDatabasesOpen = !this.isHiddenDatabasesOpen;
+        this.renderProjectsTreeHierarchical();
+    }
+
+    // Lấy danh sách database đã ẩn với thông tin project
+    getHiddenDatabasesList() {
+        const result = [];
+        for (const project of this.projectsHierarchy) {
+            const databases = project.databases || [];
+            for (const db of databases) {
+                if (this.hiddenDatabases.has(db.id)) {
+                    result.push({
+                        id: db.id,
+                        name: db.name,
+                        type: db.type,
+                        projectName: project.name
+                    });
+                }
+            }
+        }
+        return result;
     }
 
     toggleHiddenGroup() {

@@ -62,118 +62,146 @@ export class DataFetcher {
 
     /**
      * Fetch data from all selected databases
+     * Priority databases are fetched first and saved immediately
      * @param {Array<string>} databaseIds - Array of database IDs to fetch
+     * @param {Function} onBatchComplete - Callback when a batch completes (for progressive loading)
      * @returns {Promise<Object>} Object with database data keyed by ID
      */
-    async fetchAllData(databaseIds) {
+    async fetchAllData(databaseIds, onBatchComplete = null) {
         // Sort databases by priority
         const sortedDatabaseIds = this.sortByPriority(databaseIds);
+        const prioritySet = new Set(this.priorityDatabases);
         
-        console.log(`[Fetcher] Starting to fetch data from ${sortedDatabaseIds.length} databases...`);
-        debugLog(`Fetching data from ${sortedDatabaseIds.length} databases`);
+        // Split into priority and normal
+        const priorityDbs = sortedDatabaseIds.filter(id => prioritySet.has(id));
+        const normalDbs = sortedDatabaseIds.filter(id => !prioritySet.has(id));
+        
+        console.log(`[Fetcher] Starting to fetch: ${priorityDbs.length} priority DBs first, then ${normalDbs.length} others...`);
 
         const results = {};
         const dbMetadata = {};
-        const prioritySet = new Set(this.priorityDatabases);
 
         // Helper sleep function
         const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
-        // First, fetch database metadata to get names (Sequential)
-        for (const dbId of sortedDatabaseIds) {
-            try {
-                const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
-                dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
-                await sleep(200);
-            } catch (error) {
-                console.error(`[Fetcher] Error getting database name for ${dbId}:`, error.message);
-                debugLog(`Error getting name for ${dbId}: ${error.message}`);
-                dbMetadata[dbId] = 'Unknown Database';
+        // === PHASE 1: Fetch PRIORITY databases first ===
+        if (priorityDbs.length > 0) {
+            console.log(`[Fetcher] 🌟 PHASE 1: Loading ${priorityDbs.length} priority databases...`);
+            
+            for (const dbId of priorityDbs) {
+                try {
+                    // Get metadata
+                    const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
+                    dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
+                    await sleep(150);
+                    
+                    // Fetch data
+                    const pages = await this.client.getAllPages(dbId);
+                    const databaseName = dbMetadata[dbId];
+                    const projectName = this.extractProjectName(databaseName);
+
+                    const transformed = pages.map(page => ({
+                        ...this.transformPage(page),
+                        database_name: databaseName,
+                        project_name: projectName,
+                        database_id: dbId
+                    }));
+
+                    results[dbId] = transformed;
+                    console.log(`[Fetcher] 🌟 Priority: ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
+                    
+                    // Save immediately to DB if available
+                    if (this.db && onBatchComplete) {
+                        this.db.upsertData(dbId, transformed);
+                        onBatchComplete(dbId, transformed.length);
+                    }
+                    
+                    await sleep(250);
+                } catch (error) {
+                    console.error(`[Fetcher] ❌ Priority DB ${dbId} failed:`, error.message);
+                    results[dbId] = [];
+                }
             }
+            
+            const priorityRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
+            console.log(`[Fetcher] ✅ PHASE 1 COMPLETE: ${priorityDbs.length} priority DBs, ${priorityRecords} records READY`);
         }
 
-        // Fetch data (Forced Full Sync)
-        let priorityCount = 0;
-        let normalCount = 0;
-        
-        for (const dbId of sortedDatabaseIds) {
-            const isPriority = prioritySet.has(dbId);
-            const icon = isPriority ? '🌟' : '📦';
+        // === PHASE 2: Fetch NORMAL databases in background ===
+        if (normalDbs.length > 0) {
+            console.log(`[Fetcher] 📦 PHASE 2: Loading ${normalDbs.length} remaining databases in background...`);
             
-            debugLog(`Processing database ${dbId} (${dbMetadata[dbId]})`);
-            try {
-                let filter = undefined;
-                let lastSync = null;
-
-                // Check for last sync time if DB manager is available
-                if (this.db) {
-                    lastSync = this.db.getLastSyncTime(dbId);
-                    if (lastSync) {
-                        // Use 24-hour safety buffer to be extremely safe against timezone/drift issues
-                        // This fetches recent active tasks without reloading the entire history
-                        const safetyBuffer = 24 * 60 * 60 * 1000;
-                        const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
-
-                        const msg = `${icon} Incremental sync for ${dbId} (Window: 24h, Since: ${safeTime})`;
-                        console.log(`[Fetcher] 🔄 ${msg}`);
-                        debugLog(msg);
-
-                        filter = {
-                            property: "Last edited time",
-                            date: {
-                                after: safeTime
+            let normalCount = 0;
+            for (const dbId of normalDbs) {
+                try {
+                    // Get metadata
+                    const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
+                    dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
+                    await sleep(150);
+                    
+                    // Try incremental sync first, fallback to full sync
+                    let pages = [];
+                    let usedIncremental = false;
+                    
+                    if (this.db) {
+                        const lastSync = this.db.getLastSyncTime(dbId);
+                        if (lastSync) {
+                            try {
+                                const safetyBuffer = 24 * 60 * 60 * 1000;
+                                const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
+                                const filter = {
+                                    property: "Last edited time",
+                                    date: { after: safeTime }
+                                };
+                                pages = await this.client.getAllPages(dbId, filter);
+                                usedIncremental = true;
+                            } catch (filterError) {
+                                // Filter failed (property not found), do full sync
+                                pages = await this.client.getAllPages(dbId);
                             }
-                        };
+                        } else {
+                            pages = await this.client.getAllPages(dbId);
+                        }
                     } else {
-                        const msg = `${icon} Full sync for ${dbId} (First run)`;
-                        console.log(`[Fetcher] ⬇️ ${msg}`);
-                        debugLog(msg);
+                        pages = await this.client.getAllPages(dbId);
                     }
-                } else {
-                    debugLog(`Warning: no DB manager available for ${dbId}`);
-                }
+                    
+                    const databaseName = dbMetadata[dbId];
+                    const projectName = this.extractProjectName(databaseName);
 
+                    const transformed = pages.map(page => ({
+                        ...this.transformPage(page),
+                        database_name: databaseName,
+                        project_name: projectName,
+                        database_id: dbId
+                    }));
 
-                const pages = await this.client.getAllPages(dbId, filter);
-                debugLog(`Fetched ${pages.length} pages for ${dbId}`);
-
-                // Logic check empty pages for incremental only applies when lastSync is set
-                // Since we forced lastSync = null via comment, this block is skipped or safe
-
-                const databaseName = dbMetadata[dbId];
-                const projectName = this.extractProjectName(databaseName);
-
-                const transformed = pages.map(page => ({
-                    ...this.transformPage(page),
-                    database_name: databaseName,
-                    project_name: projectName,
-                    database_id: dbId
-                }));
-
-                results[dbId] = transformed;
-
-                const priorityLabel = isPriority ? '🌟 PRIORITY' : '';
-                const successMsg = `Database ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records ${priorityLabel}`;
-                console.log(`[Fetcher] ✅ ${successMsg}`);
-                debugLog(successMsg);
-                
-                if (isPriority) {
-                    priorityCount++;
-                } else {
+                    results[dbId] = transformed;
                     normalCount++;
+                    
+                    // Save immediately to DB if available
+                    if (this.db && onBatchComplete) {
+                        this.db.upsertData(dbId, transformed);
+                        onBatchComplete(dbId, transformed.length);
+                    }
+                    
+                    // Log progress every 10 databases
+                    if (normalCount % 10 === 0) {
+                        console.log(`[Fetcher] 📦 Progress: ${normalCount}/${normalDbs.length} normal DBs loaded`);
+                    }
+                    
+                    await sleep(300);
+                } catch (error) {
+                    console.error(`[Fetcher] ❌ Normal DB ${dbId} failed:`, error.message);
+                    results[dbId] = [];
                 }
-
-                await sleep(350);
-            } catch (error) {
-                console.error(`[Fetcher] ❌ Failed to fetch database ${dbId}:`, error.message);
-                debugLog(`Failed to fetch ${dbId}: ${error.message}`);
-                results[dbId] = [];
             }
+            
+            console.log(`[Fetcher] ✅ PHASE 2 COMPLETE: ${normalCount} normal DBs loaded`);
         }
 
         const totalRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
-        console.log(`[Fetcher] ✅ Sync complete: ${totalRecords} total records (🌟 ${priorityCount} priority, 📦 ${normalCount} normal databases)`);
-        debugLog(`Total records fetched: ${totalRecords}`);
+        console.log(`[Fetcher] ✅ ALL SYNC COMPLETE: ${Object.keys(results).length} databases, ${totalRecords} total records`);
 
         return results;
     }

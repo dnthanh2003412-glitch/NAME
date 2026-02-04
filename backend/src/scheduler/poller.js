@@ -80,11 +80,25 @@ export class PollingService {
                 return;
             }
 
-            // Fetch data
+            // Fetch data with progressive callback
             const fetcher = new DataFetcher(accessToken, this.db);
-            const data = await fetcher.fetchAllData(selectedDatabases);
+            
+            // Callback when each database is loaded (for real-time updates)
+            const onBatchComplete = (dbId, recordCount) => {
+                if (this.wsServer) {
+                    this.wsServer.broadcastUpdate({
+                        type: 'progress',
+                        message: `Database loaded: ${dbId.substring(0, 8)}...`,
+                        database_id: dbId,
+                        records_count: recordCount
+                    });
+                }
+            };
+            
+            const data = await fetcher.fetchAllData(selectedDatabases, onBatchComplete);
 
-            // Save to database (Upsert)
+            // Save to database (Upsert) - already done in fetchAllData with callback
+            // But do it again for any that might have been missed
             for (const [dbId, records] of Object.entries(data)) {
                 this.db.upsertData(dbId, records);
             }
@@ -95,6 +109,7 @@ export class PollingService {
             // Notify WebSocket clients
             if (this.wsServer) {
                 this.wsServer.broadcastUpdate({
+                    type: 'complete',
                     message: 'Data updated',
                     records_count: totalRecords,
                     databases_count: selectedDatabases.length

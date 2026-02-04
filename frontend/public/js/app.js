@@ -351,6 +351,9 @@ class DashboardApp {
             case 'productivity':
                 this.renderProductivityReport(container); // Placeholder
                 break;
+            case 'burndown':
+                this.renderBurndownReport(container);
+                break;
             default:
                 container.innerHTML = '<div class="error-state">Loại báo cáo chưa được hỗ trợ</div>';
         }
@@ -517,6 +520,198 @@ class DashboardApp {
 
         } catch (err) {
             console.error('Error fetching raw all data:', err);
+            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
+        }
+    }
+
+    /**
+     * Render Burndown Chart Report
+     * Shows burndown charts for each selected database that has Sprint and "Ngày Làm" columns
+     */
+    async renderBurndownReport(container) {
+        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Burndown...</div>';
+
+        const dbIds = Array.from(this.selectedDatabases);
+        if (dbIds.length === 0) {
+            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Chưa chọn database nào.</div>';
+            return;
+        }
+
+        try {
+            let hasValidChart = false;
+            const warnings = [];
+            
+            container.innerHTML = ''; // Clear loading
+
+            for (const dbId of dbIds) {
+                const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
+                const response = await fetch(url);
+                const result = await response.json();
+
+                if (!result.success) {
+                    warnings.push({ dbName: dbId, reason: 'Không thể tải dữ liệu' });
+                    continue;
+                }
+
+                const { database_name, columns, data } = result;
+                
+                // Check if database has required columns
+                const findColumn = (...names) => {
+                    return columns.find(c => 
+                        names.some(n => c.toLowerCase().includes(n.toLowerCase()))
+                    );
+                };
+
+                const sprintCol = findColumn('Sprint');
+                const dateCol = findColumn('Ngày Làm', 'Ngay Lam', 'Done Date', 'DoneDate');
+                const statusCol = findColumn('Task Status', 'Status');
+                const pointCol = findColumn('Product Point', 'Point', 'Story Point', 'Points');
+
+                // Validation
+                if (!sprintCol) {
+                    warnings.push({ dbName: database_name, reason: 'Không có cột Sprint' });
+                    continue;
+                }
+                if (!dateCol) {
+                    warnings.push({ dbName: database_name, reason: 'Không có cột Ngày Làm' });
+                    continue;
+                }
+
+                // Group tasks by Sprint
+                const sprintGroups = new Map();
+                data.forEach(task => {
+                    const sprintValue = task[sprintCol];
+                    if (!sprintValue || sprintValue === '-') return;
+                    
+                    if (!sprintGroups.has(sprintValue)) {
+                        sprintGroups.set(sprintValue, []);
+                    }
+                    sprintGroups.get(sprintValue).push(task);
+                });
+
+                if (sprintGroups.size === 0) {
+                    warnings.push({ dbName: database_name, reason: 'Không có dữ liệu Sprint' });
+                    continue;
+                }
+
+                // Create section for this database
+                const dbSection = document.createElement('div');
+                dbSection.className = 'burndown-db-section';
+                dbSection.style.cssText = 'margin-bottom:24px;';
+                
+                dbSection.innerHTML = `
+                    <div style="background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155;">
+                        <div style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
+                            <h3 style="margin:0;color:#f1f5f9;font-size:1.1rem;">📊 ${this.escapeHtml(database_name)}</h3>
+                            <span style="color:#94a3b8;font-size:0.8rem;">${sprintGroups.size} Sprint(s) | ${data.length} tasks</span>
+                        </div>
+                        <div id="burndown-charts-${dbId}" style="padding:16px;"></div>
+                    </div>
+                `;
+                container.appendChild(dbSection);
+
+                const chartsContainer = dbSection.querySelector(`#burndown-charts-${dbId}`);
+
+                // Fetch Sprint metadata (dates) - need to find Sprints database
+                // For now, estimate sprint dates from task dates
+                for (const [sprintName, tasks] of sprintGroups) {
+                    // Estimate sprint date range from tasks
+                    let minDate = null, maxDate = null;
+                    tasks.forEach(task => {
+                        const dateValue = task[dateCol];
+                        if (!dateValue) return;
+                        
+                        let taskDate = null;
+                        if (typeof dateValue === 'object' && dateValue.start) {
+                            taskDate = new Date(dateValue.start);
+                        } else if (typeof dateValue === 'string') {
+                            taskDate = new Date(dateValue);
+                        }
+                        
+                        if (taskDate && !isNaN(taskDate.getTime())) {
+                            if (!minDate || taskDate < minDate) minDate = taskDate;
+                            if (!maxDate || taskDate > maxDate) maxDate = taskDate;
+                        }
+                    });
+
+                    // If no dates found, skip this sprint
+                    if (!minDate || !maxDate) {
+                        const skipMsg = document.createElement('div');
+                        skipMsg.style.cssText = 'padding:12px;margin:8px 0;background:#1e3a5f;border-radius:8px;color:#f59e0b;font-size:0.85rem;';
+                        skipMsg.innerHTML = `⚠️ Sprint "<strong>${this.escapeHtml(sprintName)}</strong>" - Không có dữ liệu ngày để tạo Burndown`;
+                        chartsContainer.appendChild(skipMsg);
+                        continue;
+                    }
+
+                    // Add some padding to date range
+                    minDate.setDate(minDate.getDate() - 1);
+                    maxDate.setDate(maxDate.getDate() + 1);
+
+                    // Create container for this sprint's chart
+                    const chartContainerId = `burndown-${dbId}-${this.hashString(sprintName)}`;
+                    const chartWrapper = document.createElement('div');
+                    chartWrapper.id = chartContainerId;
+                    chartWrapper.style.cssText = 'background:#0f172a;border-radius:8px;margin-bottom:16px;border:1px solid #334155;';
+                    chartsContainer.appendChild(chartWrapper);
+
+                    // Render burndown chart
+                    if (typeof window.renderBurndownChart === 'function') {
+                        window.renderBurndownChart(
+                            chartContainerId,
+                            {
+                                name: sprintName,
+                                startDate: minDate.toISOString(),
+                                endDate: maxDate.toISOString()
+                            },
+                            tasks,
+                            {
+                                pointField: pointCol || 'Product Point',
+                                dateField: dateCol,
+                                statusField: statusCol || 'Task Status'
+                            }
+                        );
+                        hasValidChart = true;
+                    }
+                }
+            }
+
+            // Show warnings if any
+            if (warnings.length > 0) {
+                const warningSection = document.createElement('div');
+                warningSection.style.cssText = 'background:#422006;border:1px solid #854d0e;border-radius:8px;padding:16px;margin-bottom:20px;';
+                warningSection.innerHTML = `
+                    <h4 style="margin:0 0 12px 0;color:#fbbf24;font-size:0.9rem;">⚠️ Cảnh báo - Một số database không hỗ trợ Burndown</h4>
+                    <ul style="margin:0;padding-left:20px;color:#fde68a;font-size:0.85rem;">
+                        ${warnings.map(w => `<li><strong>${this.escapeHtml(w.dbName)}</strong>: ${w.reason}</li>`).join('')}
+                    </ul>
+                    <p style="margin:12px 0 0 0;color:#d97706;font-size:0.8rem;">
+                        💡 Để hiển thị Burndown, database cần có cột <strong>Sprint</strong> và <strong>Ngày Làm</strong> (hoặc Done Date)
+                    </p>
+                `;
+                container.insertBefore(warningSection, container.firstChild);
+            }
+
+            // If no valid charts were rendered
+            if (!hasValidChart && warnings.length === dbIds.length) {
+                container.innerHTML = `
+                    <div style="padding:60px 40px;text-align:center;">
+                        <div style="font-size:3rem;margin-bottom:16px;">📉</div>
+                        <h3 style="color:#f1f5f9;margin:0 0 12px 0;">Không thể tạo Burndown Chart</h3>
+                        <p style="color:#94a3b8;margin:0 0 20px 0;">Các database đã chọn không có đủ dữ liệu cần thiết.</p>
+                        <div style="background:#1e293b;border-radius:8px;padding:20px;display:inline-block;text-align:left;">
+                            <p style="color:#60a5fa;margin:0 0 8px 0;font-weight:600;">Yêu cầu dữ liệu:</p>
+                            <ul style="color:#94a3b8;margin:0;padding-left:20px;">
+                                <li>Cột <strong>Sprint</strong> - để xác định sprint</li>
+                                <li>Cột <strong>Ngày Làm</strong> hoặc <strong>Done Date</strong> - để tính ngày hoàn thành</li>
+                                <li>Cột <strong>Task Status</strong> - để biết task đã Done chưa</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+
+        } catch (err) {
+            console.error('Error rendering burndown:', err);
             container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
         }
     }

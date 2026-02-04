@@ -50,7 +50,7 @@
   {
     "id": "2dfccb0e-ac88-8104-93cd-fa0fb4b39f46",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:09:00.000Z",
+    "last_edited_time": "2026-02-04T07:14:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -60,7 +60,7 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": "9",
-      "Note anim": "Comp làm màn led c4tron",
+      "Note anim": " ",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -81,7 +81,7 @@
   {
     "id": "2dfccb0e-ac88-8106-be15-deba215f2b05",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:40:00.000Z",
+    "last_edited_time": "2026-02-04T07:14:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
@@ -90,7 +90,7 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Comp làm màn led c4tron",
+      "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -108,13 +108,13 @@
   {
     "id": "2dfccb0e-ac88-8107-95e2-c4cb35d591eb",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:09:00.000Z",
+    "last_edited_time": "2026-02-04T08:00:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
         "Hiệu ứng quả cầu disco lấp lánh"
       ],
-      "FX": "",
+      "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "Reuse pose nhảy ",
@@ -215,15 +215,15 @@
   {
     "id": "2dfccb0e-ac88-811e-a1f4-c5b627b3c370",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:30:00.000Z",
+    "last_edited_time": "2026-02-04T07:50:00.000Z",
     "properties": {
       "Comp": [],
-      "FX": "Speed Line",
+      "FX": "Speed Line Gen",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Ván",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -239,13 +239,13 @@
   {
     "id": "2dfccb0e-ac88-8128-8944-ce5b36cb17bb",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:19:00.000Z",
+    "last_edited_time": "2026-02-04T08:00:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
         "Hiệu ứng quả cầu disco lấp lánh"
       ],
-      "FX": "fx bụi chuyển cảnh",
+      "FX": "Bụi chuyển cảnh",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "smear mnJack quay vòng",
@@ -316,7 +316,7 @@
   {
     "id": "2dfccb0e-ac88-812c-bdda-da0ec8070d0f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:16:00.000Z",
+    "last_edited_time": "2026-02-04T07:36:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -324,7 +324,7 @@
       "Combo": null,
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Dàn loa đổ",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -368,7 +368,7 @@
   {
     "id": "2dfccb0e-ac88-812d-8b06-d7d83f2a92af",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:13:00.000Z",
+    "last_edited_time": "2026-02-04T07:20:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -378,7 +378,7 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "Có thể reuse pose nhảy sc22",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -399,7 +399,7 @@
   {
     "id": "2dfccb0e-ac88-812e-b77b-eb428763974c",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:59:00.000Z",
+    "last_edited_time": "2026-02-04T08:01:00.000Z",
     "properties": {
       "Comp": [
         "Gem bug phát sáng",
@@ -408,7 +408,7 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Anim dùng cutter chuyển đổi BG",
+      "Note anim": "Anim dùng cutter mask chuyển đổi BG",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -455,12 +455,12 @@
   {
     "id": "2dfccb0e-ac88-8134-9938-e37fc69dc5e1",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:46:00.000Z",
+    "last_edited_time": "2026-02-04T07:58:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
       ],
-      "FX": "",
+      "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "Reuse mnJack nhảy sc 74",
@@ -482,7 +482,7 @@
   {
     "id": "2dfccb0e-ac88-8137-b6aa-cb8979d8a021",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:09:00.000Z",
+    "last_edited_time": "2026-02-04T07:15:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -492,7 +492,7 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": "9",
-      "Note anim": "",
+      "Note anim": "Reuse pose nhảy ",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -588,17 +588,17 @@
   {
     "id": "2dfccb0e-ac88-813e-8ce3-fa769bb930b7",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:09:00.000Z",
+    "last_edited_time": "2026-02-04T07:58:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
         "Hiệu ứng ánh sáng nhạc môi trường",
         "Hiệu ứng quả cầu disco lấp lánh"
       ],
-      "FX": "",
+      "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": "9",
-      "Note anim": "",
+      "Note anim": "Reuse pose nhảy ",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -619,15 +619,15 @@
   {
     "id": "2dfccb0e-ac88-8144-9703-debd1ba573e3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:21:00.000Z",
+    "last_edited_time": "2026-02-04T07:46:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Bụi xe đạp",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Xe đạp, Bánh xe đạp nhỏ",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -644,7 +644,7 @@
   {
     "id": "2dfccb0e-ac88-814d-ac14-e76c99cc7ad7",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T07:36:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -652,7 +652,7 @@
       "Combo": null,
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Loa",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -715,7 +715,7 @@
   {
     "id": "2dfccb0e-ac88-8156-99bb-e8a394c1e045",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:20:00.000Z",
+    "last_edited_time": "2026-02-04T07:36:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Bụi chuyển cảnh",
@@ -723,7 +723,7 @@
       "Combo": "4",
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Dàn loa đổ",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -791,17 +791,17 @@
   {
     "id": "2dfccb0e-ac88-815f-a9f1-f8d3d7d26e66",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:21:00.000Z",
+    "last_edited_time": "2026-02-04T08:09:00.000Z",
     "properties": {
       "Comp": [
         "Speedline"
       ],
-      "FX": "Shake line",
+      "FX": "Shake line lúc moose đi xe đạp",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Xe đạp, Bụi cây, Hoa",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -817,9 +817,11 @@
   {
     "id": "2dfccb0e-ac88-8160-a91c-fa54f4272f88",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:12:00.000Z",
+    "last_edited_time": "2026-02-04T07:17:00.000Z",
     "properties": {
-      "Comp": [],
+      "Comp": [
+        "Speedline"
+      ],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
@@ -841,15 +843,15 @@
   {
     "id": "2dfccb0e-ac88-8160-a955-f07965f3f1ad",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:43:00.000Z",
+    "last_edited_time": "2026-02-04T07:58:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
       ],
-      "FX": "",
+      "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Reuse pose nhảy cảnh trước",
+      "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -967,10 +969,10 @@
   {
     "id": "2dfccb0e-ac88-816e-bc4f-ee17c801eff6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:30:00.000Z",
+    "last_edited_time": "2026-02-04T07:50:00.000Z",
     "properties": {
       "Comp": [],
-      "FX": "Speed Line",
+      "FX": "Speed Line Gen",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
@@ -1016,7 +1018,7 @@
   {
     "id": "2dfccb0e-ac88-8175-bee9-d454255a754f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T07:36:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1024,7 +1026,7 @@
       "Combo": "4",
       "Note anim": "MnJack raccord cảnh trước",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Dàn loa đổ",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1065,13 +1067,13 @@
   {
     "id": "2dfccb0e-ac88-8177-b18b-df50eea14ea5",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-04T08:01:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": "1",
-      "Note anim": "Anim dùng cutter chuyển đổi BG",
+      "Note anim": "Anim dùng cutter mask chuyển đổi BG",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -1113,15 +1115,15 @@
   {
     "id": "2dfccb0e-ac88-817f-9fde-d91dcde18b95",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:12:00.000Z",
+    "last_edited_time": "2026-02-04T07:52:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
-      "Combo": null,
-      "Note anim": "",
+      "Combo": "10",
+      "Note anim": "reuse moose đội mũ sc 54",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Mũ và bảng hiệu của moose",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1214,15 +1216,15 @@
   {
     "id": "2dfccb0e-ac88-8182-a758-e37e9ba5301c",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:06:00.000Z",
+    "last_edited_time": "2026-02-04T07:53:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
-      "Combo": null,
-      "Note anim": "",
+      "Combo": "10",
+      "Note anim": "Anim tự gắn mũ theo design",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Mũ và cờ của Moose",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1238,16 +1240,16 @@
   {
     "id": "2dfccb0e-ac88-8182-ace4-f519cdc390f6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:28:00.000Z",
+    "last_edited_time": "2026-02-04T07:45:00.000Z",
     "properties": {
       "Comp": [
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
+      "Layout": "Cần LO trước",
       "Prop & mô tả prop": "",
       "Key": null,
       "IBW": null,
@@ -1288,13 +1290,13 @@
   {
     "id": "2dfccb0e-ac88-8186-8b78-ff387d2f51f3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:16:00.000Z",
+    "last_edited_time": "2026-02-04T07:12:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Reuse Moose nhảy ",
+      "Note anim": "Có thể reuse pose Moose nhảy sc25",
       "Layout": null,
       "Prop & mô tả prop": "",
       "Key": null,
@@ -1312,10 +1314,12 @@
   {
     "id": "2dfccb0e-ac88-8194-92f7-d2c4ec8fdd78",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:13:00.000Z",
+    "last_edited_time": "2026-02-04T07:11:00.000Z",
     "properties": {
-      "Comp": [],
-      "FX": "",
+      "Comp": [
+        "Hiệu ứng chuyển cảnh mờ chồng"
+      ],
+      "FX": "Nước bắn, nước loang",
       "Đã có prop": false,
       "Combo": "7",
       "Note anim": "",
@@ -1416,17 +1420,17 @@
   {
     "id": "2dfccb0e-ac88-819e-8f2f-f3ef0ef04cd6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:23:00.000Z",
+    "last_edited_time": "2026-02-04T07:46:00.000Z",
     "properties": {
       "Comp": [
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
       "FX": "Bụi xe đạp",
       "Đã có prop": false,
       "Combo": "6",
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Xe đạp",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1442,7 +1446,7 @@
   {
     "id": "2dfccb0e-ac88-81a4-b4bb-e4d65524f201",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:27:00.000Z",
+    "last_edited_time": "2026-02-04T07:42:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Tuyết",
@@ -1450,7 +1454,7 @@
       "Combo": null,
       "Note anim": "Mây trôi",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Ván trượt tuyết",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1568,15 +1572,15 @@
   {
     "id": "2dfccb0e-ac88-81c4-903c-cc1ba8a69a20",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:29:00.000Z",
+    "last_edited_time": "2026-02-04T07:51:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Ván",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -1592,18 +1596,18 @@
   {
     "id": "2dfccb0e-ac88-81c6-be40-e8e790b0acf3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:27:00.000Z",
+    "last_edited_time": "2026-02-04T07:45:00.000Z",
     "properties": {
       "Comp": [
         "Speedline",
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
       "FX": "Tuyết",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "Mây trôi",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Ván trượt tuyết",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -2010,9 +2014,11 @@
   {
     "id": "2dfccb0e-ac88-81fb-8d80-dd6c71505876",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T07:38:00.000Z",
     "properties": {
-      "Comp": [],
+      "Comp": [
+        "Hiệu ứng chuyển cảnh mờ chồng"
+      ],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
@@ -2024,9 +2030,9 @@
       "Nhân vật": [
         "Moose"
       ],
-      "Scene": "47"
+      "Scene": "47_A"
     },
-    "_title": "47",
+    "_title": "47_A",
     "database_name": "GP100_shotlist",
     "project_name": "GP100_shotlist",
     "database_id": "2dfccb0e-ac88-818d-8bd7-ff00778eb245"
@@ -2085,17 +2091,17 @@
   {
     "id": "2fdccb0e-ac88-8049-8d39-c06d8a2bd939",
     "created_time": "2026-02-04T03:49:00.000Z",
-    "last_edited_time": "2026-02-04T05:26:00.000Z",
+    "last_edited_time": "2026-02-04T07:43:00.000Z",
     "properties": {
       "Comp": [
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
-      "FX": "",
+      "FX": "Tuyết",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "Mây trôi",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Ván trượt tuyết",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -2112,10 +2118,10 @@
   {
     "id": "2fdccb0e-ac88-8052-b354-fbfc5721d29d",
     "created_time": "2026-02-04T04:04:00.000Z",
-    "last_edited_time": "2026-02-04T05:27:00.000Z",
+    "last_edited_time": "2026-02-04T07:11:00.000Z",
     "properties": {
       "Comp": [
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
       "FX": "",
       "Đã có prop": false,
@@ -2140,10 +2146,10 @@
   {
     "id": "2fdccb0e-ac88-807e-98bb-edb561e349a8",
     "created_time": "2026-02-04T03:45:00.000Z",
-    "last_edited_time": "2026-02-04T05:26:00.000Z",
+    "last_edited_time": "2026-02-04T07:11:00.000Z",
     "properties": {
       "Comp": [
-        "Hiệu ứng mờ chồng"
+        "Hiệu ứng chuyển cảnh mờ chồng"
       ],
       "FX": "",
       "Đã có prop": false,
@@ -2166,23 +2172,23 @@
   {
     "id": "2fdccb0e-ac88-8089-abe4-c460754d7a69",
     "created_time": "2026-02-04T03:26:00.000Z",
-    "last_edited_time": "2026-02-04T03:27:00.000Z",
+    "last_edited_time": "2026-02-04T07:46:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
-      "Layout": null,
-      "Prop & mô tả prop": "",
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Xe đạp",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
         "Moose Xe Đạp"
       ],
-      "Scene": "47_A"
+      "Scene": "47_B"
     },
-    "_title": "47_A",
+    "_title": "47_B",
     "database_name": "GP100_shotlist",
     "project_name": "GP100_shotlist",
     "database_id": "2dfccb0e-ac88-818d-8bd7-ff00778eb245"
@@ -2190,9 +2196,11 @@
   {
     "id": "2fdccb0e-ac88-8033-b9a4-c1ac5baf4f3a",
     "created_time": "2026-02-04T04:12:00.000Z",
-    "last_edited_time": "2026-02-04T04:13:00.000Z",
+    "last_edited_time": "2026-02-04T07:11:00.000Z",
     "properties": {
-      "Comp": [],
+      "Comp": [
+        "Hiệu ứng chuyển cảnh mờ chồng"
+      ],
       "FX": "",
       "Đã có prop": false,
       "Combo": "7",
@@ -2217,15 +2225,15 @@
   {
     "id": "2fdccb0e-ac88-80e9-83f0-d65b300177bb",
     "created_time": "2026-02-04T04:06:00.000Z",
-    "last_edited_time": "2026-02-04T05:30:00.000Z",
+    "last_edited_time": "2026-02-04T07:50:00.000Z",
     "properties": {
       "Comp": [],
-      "FX": "Speed Line",
+      "FX": "Speed Line Gen",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "Anim cutout con ong dựa vào design ",
       "Layout": null,
-      "Prop & mô tả prop": "",
+      "Prop & mô tả prop": "Ong góc 3/4",
       "Key": null,
       "IBW": null,
       "Nhân vật": [
@@ -2241,7 +2249,7 @@
   {
     "id": "2fdccb0e-ac88-8051-bd16-ed7130692600",
     "created_time": "2026-02-04T05:29:00.000Z",
-    "last_edited_time": "2026-02-04T05:29:00.000Z",
+    "last_edited_time": "2026-02-04T07:51:00.000Z",
     "properties": {
       "Comp": [
         "Speedline"

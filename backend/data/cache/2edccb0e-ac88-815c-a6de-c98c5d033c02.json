@@ -8856,8 +8856,8 @@
       "Product (1)": [
         "IBW 49"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "1/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "TP giả định": 1.68,
       "Trọng số TP": 0.3,
@@ -8877,7 +8877,7 @@
         "Sprint 1"
       ],
       "Product Status": [
-        "Need Fix"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -8901,8 +8901,8 @@
           "email": "trungdt@sangygroup.com"
         }
       ],
-      "TP thực tế": 2.63,
-      "Task fix": "1/4",
+      "TP thực tế": 2.21,
+      "Task fix": "2/5",
       "Required by": [
         {
           "type": "select",
@@ -12880,8 +12880,8 @@
       "Product (1)": [
         "IBW 49"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "1/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "TP giả định": 0.84,
       "Trọng số TP": 0.15,
@@ -12896,7 +12896,7 @@
       "Task type": "QC",
       "Sprint": null,
       "Product Status": [
-        "Need Fix"
+        "Pending Review"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -12920,8 +12920,8 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "TP thực tế": 1.31,
-      "Task fix": "1/4",
+      "TP thực tế": 1.11,
+      "Task fix": "2/5",
       "Required by": [
         {
           "type": "select",
@@ -18328,10 +18328,10 @@
       "Product (1)": [
         "IBW 49"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "1/5",
+      "Task QC": "2/5",
       "Run n8n": false,
-      "TP giả định": 8.75,
+      "TP giả định": 7.37,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -18349,7 +18349,7 @@
         "Sprint 1"
       ],
       "Product Status": [
-        "Need Fix"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -18373,8 +18373,8 @@
           "email": "mynth@sangygroup.com"
         }
       ],
-      "TP thực tế": 8.75,
-      "Task fix": "1/4",
+      "TP thực tế": 7.37,
+      "Task fix": "2/5",
       "Required by": [
         {
           "type": "select",
@@ -20000,8 +20000,8 @@
       "Product (1)": [
         "IBW 49"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "1/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "TP giả định": 0.84,
       "Trọng số TP": 0.15,
@@ -20016,7 +20016,7 @@
       "Task type": "QC",
       "Sprint": null,
       "Product Status": [
-        "Need Fix"
+        "Pending Review"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -20040,8 +20040,8 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "TP thực tế": 1.31,
-      "Task fix": "1/4",
+      "TP thực tế": 1.11,
+      "Task fix": "2/5",
       "Required by": [
         {
           "type": "select",
@@ -26975,6 +26975,79 @@
       "Sprint (1)": []
     },
     "_title": "FIX CLIENT IBW 04 ver2",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fdccb0e-ac88-8002-8952-c653cb1690d8",
+    "created_time": "2026-02-04T07:55:00.000Z",
+    "last_edited_time": "2026-02-04T07:55:00.000Z",
+    "properties": {
+      "NLTT": 0.125,
+      "Product ": [
+        "2efccb0e-ac88-80b4-93e7-cfed855d931e"
+      ],
+      "Product (1)": [
+        "IBW 49"
+      ],
+      "Task main": "1/5",
+      "Task QC": "2/5",
+      "Run n8n": false,
+      "TP giả định": 1.68,
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "IBW 49"
+      ],
+      "Done date": null,
+      "UTNL": [
+        1
+      ],
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 1.68,
+      "Assignee": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 2.21,
+      "Task fix": "2/5",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 49 ver5",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "IBW 49 ver5",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"

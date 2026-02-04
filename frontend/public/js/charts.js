@@ -200,3 +200,248 @@ window.renderProductivityChart = function (data) {
         }
     });
 };
+
+/**
+ * Burndown Chart Instance Tracker
+ */
+const burndownChartInstances = new Map();
+
+/**
+ * Render Burndown Chart for a Sprint
+ * @param {string} containerId - The ID of the container element
+ * @param {Object} sprintData - Sprint information { name, startDate, endDate }
+ * @param {Array} tasksData - Array of tasks with Done Date info
+ * @param {Object} options - { pointField, dateField, statusField }
+ */
+window.renderBurndownChart = function(containerId, sprintData, tasksData, options = {}) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error('[Burndown] Container not found:', containerId);
+        return;
+    }
+
+    // Destroy previous chart if exists
+    if (burndownChartInstances.has(containerId)) {
+        burndownChartInstances.get(containerId).destroy();
+        burndownChartInstances.delete(containerId);
+    }
+
+    const { name: sprintName, startDate, endDate } = sprintData;
+    const { 
+        pointField = 'Product Point',
+        dateField = 'Ngày Làm',
+        statusField = 'Task Status'
+    } = options;
+
+    // Parse sprint dates
+    const sprintStart = new Date(startDate);
+    const sprintEnd = new Date(endDate);
+    
+    if (isNaN(sprintStart.getTime()) || isNaN(sprintEnd.getTime())) {
+        container.innerHTML = `<div style="padding:20px;color:#f59e0b;text-align:center;">
+            ⚠️ Sprint "${sprintName}" không có ngày bắt đầu/kết thúc hợp lệ
+        </div>`;
+        return;
+    }
+
+    // Generate all dates in sprint range
+    const sprintDates = [];
+    const currentDate = new Date(sprintStart);
+    while (currentDate <= sprintEnd) {
+        sprintDates.push(new Date(currentDate));
+        currentDate.setDate(currentDate.getDate() + 1);
+    }
+
+    if (sprintDates.length === 0) {
+        container.innerHTML = `<div style="padding:20px;color:#ef4444;text-align:center;">
+            ❌ Sprint "${sprintName}" không có ngày hợp lệ
+        </div>`;
+        return;
+    }
+
+    // Calculate total points at sprint start
+    let totalPoints = 0;
+    tasksData.forEach(task => {
+        const points = parseFloat(task[pointField]) || 1; // Default 1 point per task if no points
+        totalPoints += points;
+    });
+
+    if (totalPoints === 0) {
+        totalPoints = tasksData.length; // Fallback to task count
+    }
+
+    // Calculate ideal burndown (straight line from total to 0)
+    const pointsPerDay = totalPoints / (sprintDates.length - 1 || 1);
+    const idealLine = sprintDates.map((_, idx) => Math.max(0, totalPoints - (pointsPerDay * idx)));
+
+    // Calculate actual burndown based on completion dates
+    const actualLine = [];
+    let remainingPoints = totalPoints;
+    
+    // Group completed tasks by date
+    const completedByDate = new Map();
+    tasksData.forEach(task => {
+        const status = task[statusField];
+        if (status && status.toLowerCase().includes('done')) {
+            let doneDate = null;
+            const dateValue = task[dateField];
+            
+            if (dateValue) {
+                // Handle different date formats
+                if (typeof dateValue === 'object' && dateValue.end) {
+                    doneDate = new Date(dateValue.end);
+                } else if (typeof dateValue === 'object' && dateValue.start) {
+                    doneDate = new Date(dateValue.start);
+                } else if (typeof dateValue === 'string') {
+                    doneDate = new Date(dateValue);
+                }
+            }
+
+            if (doneDate && !isNaN(doneDate.getTime())) {
+                const dateKey = doneDate.toISOString().split('T')[0];
+                const points = parseFloat(task[pointField]) || 1;
+                completedByDate.set(dateKey, (completedByDate.get(dateKey) || 0) + points);
+            }
+        }
+    });
+
+    // Build actual line
+    remainingPoints = totalPoints;
+    sprintDates.forEach(date => {
+        const dateKey = date.toISOString().split('T')[0];
+        const completedPoints = completedByDate.get(dateKey) || 0;
+        remainingPoints -= completedPoints;
+        actualLine.push(Math.max(0, remainingPoints));
+    });
+
+    // Format date labels
+    const dateLabels = sprintDates.map(d => {
+        const day = d.getDate();
+        const month = d.getMonth() + 1;
+        return `${day}/${month}`;
+    });
+
+    // Create canvas
+    const canvasId = `burndown-canvas-${containerId}`;
+    container.innerHTML = `
+        <div style="padding:16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">🔥 Burndown Chart - ${sprintName}</h4>
+                <div style="display:flex;gap:16px;font-size:0.8rem;">
+                    <span style="color:#60a5fa;">📊 Tổng: ${totalPoints.toFixed(1)} points</span>
+                    <span style="color:#4ade80;">✅ Còn lại: ${actualLine[actualLine.length-1]?.toFixed(1) || 0} points</span>
+                </div>
+            </div>
+            <canvas id="${canvasId}" style="max-height:300px;"></canvas>
+            <div style="margin-top:12px;display:flex;gap:20px;justify-content:center;font-size:0.75rem;color:#94a3b8;">
+                <span><span style="display:inline-block;width:20px;height:3px;background:#60a5fa;margin-right:6px;vertical-align:middle;"></span>Ideal</span>
+                <span><span style="display:inline-block;width:20px;height:3px;background:#f97316;margin-right:6px;vertical-align:middle;"></span>Actual</span>
+            </div>
+        </div>
+    `;
+
+    const ctx = document.getElementById(canvasId);
+    if (!ctx) return;
+
+    const chart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dateLabels,
+            datasets: [
+                {
+                    label: 'Ideal',
+                    data: idealLine,
+                    borderColor: '#60a5fa',
+                    backgroundColor: 'rgba(96, 165, 250, 0.1)',
+                    borderWidth: 2,
+                    borderDash: [5, 5],
+                    pointRadius: 0,
+                    tension: 0,
+                    fill: false
+                },
+                {
+                    label: 'Actual',
+                    data: actualLine,
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    borderWidth: 3,
+                    pointRadius: 4,
+                    pointBackgroundColor: '#f97316',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 1,
+                    tension: 0.1,
+                    fill: true
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: true,
+            aspectRatio: 2.5,
+            interaction: {
+                intersect: false,
+                mode: 'index'
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                    titleColor: '#f1f5f9',
+                    bodyColor: '#94a3b8',
+                    borderColor: '#334155',
+                    borderWidth: 1,
+                    padding: 12,
+                    displayColors: true,
+                    callbacks: {
+                        label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} points`;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: '#64748b',
+                        font: { family: 'Inter', size: 11 }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        color: 'rgba(255, 255, 255, 0.05)',
+                        drawBorder: false
+                    },
+                    ticks: {
+                        color: '#64748b',
+                        font: { family: 'Inter', size: 11 }
+                    }
+                }
+            }
+        }
+    });
+
+    burndownChartInstances.set(containerId, chart);
+    console.log(`[Burndown] Rendered chart for ${sprintName}:`, { 
+        totalPoints, 
+        daysInSprint: sprintDates.length,
+        tasksCount: tasksData.length,
+        completedDates: [...completedByDate.keys()]
+    });
+};
+
+/**
+ * Destroy a specific burndown chart
+ */
+window.destroyBurndownChart = function(containerId) {
+    if (burndownChartInstances.has(containerId)) {
+        burndownChartInstances.get(containerId).destroy();
+        burndownChartInstances.delete(containerId);
+    }
+};

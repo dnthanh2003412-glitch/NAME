@@ -1291,6 +1291,10 @@ body {
     background: linear-gradient(135deg, #ec4899 0%, #f472b6 100%);
 }
 
+.report-card-full.burndown {
+    background: linear-gradient(135deg, #f97316 0%, #fb923c 100%);
+}
+
 .report-card-header {
     display: flex;
     align-items: center;

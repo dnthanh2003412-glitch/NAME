@@ -220,7 +220,7 @@
                             <option value="productivity">📊 Báo cáo Năng suất</option>
                             <option value="raw">📋 Xuất Dữ liệu Thô</option>
                             <option value="raw-all">📋 Raw (All Projects - Whitelist)</option>
-                            <option value="report5" disabled>📑 Báo cáo 5 (Sắp có)</option>
+                            <option value="burndown">🔥 Burndown Chart</option>
                         </select>
                     </div>
                 </div>
@@ -360,6 +360,19 @@
                                     <li>Dashboard phân tích tổng quan</li>
                                 </ul>
                             </div>
+                            <div class="report-card-full burndown">
+                                <div class="report-card-header">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    <strong>Burndown Chart</strong>
+                                </div>
+                                <ul class="report-card-desc">
+                                    <li>Biểu đồ tiến độ Sprint</li>
+                                    <li>So sánh Ideal vs Actual</li>
+                                    <li>Theo dõi điểm còn lại</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -370,14 +383,14 @@
     <!-- Include Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 
-    <!-- App Scripts - v6 for cache busting -->
-    <script type="module" src="js/charts.js?v=20260203_v6"></script>
-    <script type="module" src="js/tables.js?v=20260203_v6"></script>
-    <script type="module" src="js/raw-table.js?v=20260203_v6"></script>
-    <script type="module" src="js/dashboard.js?v=20260203_v6"></script>
-    <script src="js/sidebar-resize.js?v=20260203_v6"></script>
-    <script type="module" src="js/setup.js?v=20260203_v6"></script>
-    <script type="module" src="js/app.js?v=20260203_v6"></script>
+    <!-- App Scripts - v7 for cache busting -->
+    <script type="module" src="js/charts.js?v=20260204_v7"></script>
+    <script type="module" src="js/tables.js?v=20260204_v7"></script>
+    <script type="module" src="js/raw-table.js?v=20260204_v7"></script>
+    <script type="module" src="js/dashboard.js?v=20260204_v7"></script>
+    <script src="js/sidebar-resize.js?v=20260204_v7"></script>
+    <script type="module" src="js/setup.js?v=20260204_v7"></script>
+    <script type="module" src="js/app.js?v=20260204_v7"></script>
     <script type="module" src="js/auth.js?v=20260203_v6"></script>
 </body>
 

@@ -138,7 +138,7 @@
   {
     "id": "2eaccb0e-ac88-8002-af6e-d5621d76b785",
     "created_time": "2026-01-16T07:10:00.000Z",
-    "last_edited_time": "2026-02-02T05:07:00.000Z",
+    "last_edited_time": "2026-02-04T08:39:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -157,7 +157,7 @@
       "DO": null,
       "Loại cảnh": "E",
       "Max": 0.75,
-      "Status": "Not started",
+      "Status": "Pending Review",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
@@ -171,7 +171,9 @@
       "Due Date": null,
       "Product type": "Cutout Key",
       "Total QC": 0,
-      "[Harry] Tasks": [],
+      "[Harry] Tasks": [
+        "2fdccb0e-ac88-8006-ad26-f1f3736bd0c4"
+      ],
       "Product": "CO KEY 12"
     },
     "_title": "CO KEY 12",
@@ -1299,7 +1301,9 @@
       "Due Date": null,
       "Product type": "Cutout Key",
       "Total QC": 0,
-      "[Harry] Tasks": [],
+      "[Harry] Tasks": [
+        "2fdccb0e-ac88-8064-b6c6-dc612d61d39f"
+      ],
       "Product": "CO KEY 16"
     },
     "_title": "CO KEY 16",

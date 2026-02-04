@@ -136037,7 +136037,7 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -136359,7 +136359,7 @@
   {
     "id": "2fdccb0e-ac88-805b-afd7-fa40e26a73ac",
     "created_time": "2026-02-04T02:57:00.000Z",
-    "last_edited_time": "2026-02-04T05:27:00.000Z",
+    "last_edited_time": "2026-02-04T08:02:00.000Z",
     "properties": {
       "Ngày Làm": {
         "start": "2026-02-04",
@@ -136372,7 +136372,7 @@
         "2d4ccb0e-ac88-80ec-a348-c7a52ed06fc0"
       ],
       "Task main": "1",
-      "Task QC": "0/1",
+      "Task QC": "1/2",
       "UTNL": [
         0.5
       ],
@@ -136387,7 +136387,7 @@
       "TP giả định": 6.83,
       "Trọng số TP": 1,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -136398,9 +136398,9 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "In progress"
+        "QC Approved"
       ],
-      "Task Status": "In progress",
+      "Task Status": "Done",
       "Episode": [
         "EP 05"
       ],
@@ -136416,8 +136416,8 @@
           "email": "phucnt@sangygroup.com"
         }
       ],
-      "TP thực tế": 14,
-      "Task fix": "0/1",
+      "TP thực tế": 12.17,
+      "Task fix": "0/2",
       "Created time": null,
       "Tasks": "IBW 370 ver1",
       "Sprint": []
@@ -136687,7 +136687,7 @@
       "Task type": "Fix",
       "Tiến độ": null,
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -136735,7 +136735,7 @@
         "2fdccb0e-ac88-8000-98de-e8085dbac5a2"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "1/3",
       "UTNL": [],
       "Required by": [
         "External"
@@ -136759,7 +136759,7 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "Need Fix"
+        "In progress"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -136778,7 +136778,7 @@
         }
       ],
       "TP thực tế": 0,
-      "Task fix": "0/2",
+      "Task fix": "1/3",
       "Created time": null,
       "Tasks": "FIX CLIENT KEY 080 ver1",
       "Sprint": []
@@ -136880,7 +136880,7 @@
         "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "3/6",
       "UTNL": [],
       "Required by": [
         "Internal"
@@ -136893,7 +136893,7 @@
       "TP giả định": 2.44,
       "Trọng số TP": 1,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -136906,7 +136906,7 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -136924,8 +136924,8 @@
           "email": "khoicm@sangygroup.com"
         }
       ],
-      "TP thực tế": 4.35,
-      "Task fix": "0/2",
+      "TP thực tế": 2.44,
+      "Task fix": "2/6",
       "Created time": null,
       "Tasks": "IBW 085 ver1",
       "Sprint": [
@@ -137266,7 +137266,7 @@
       "Task type": "QC",
       "Tiến độ": null,
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -138455,7 +138455,7 @@
         "2d4ccb0e-ac88-80a7-8420-cdcb83f5f511"
       ],
       "Task main": "1",
-      "Task QC": "0/1",
+      "Task QC": "1/2",
       "UTNL": [],
       "Required by": [
         "Internal"
@@ -138468,7 +138468,7 @@
       "TP giả định": 2.44,
       "Trọng số TP": 1,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -138481,7 +138481,7 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -138499,8 +138499,8 @@
           "email": "khoicm@sangygroup.com"
         }
       ],
-      "TP thực tế": 5,
-      "Task fix": "0/1",
+      "TP thực tế": 4.35,
+      "Task fix": "0/2",
       "Created time": null,
       "Tasks": "IBW 200 ver1",
       "Sprint": [
@@ -138531,7 +138531,7 @@
         "2fdccb0e-ac88-80b9-996f-c98f77ab56cf"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "2/4",
       "UTNL": [],
       "Required by": [
         "External"
@@ -138544,7 +138544,7 @@
       "TP giả định": 0,
       "Trọng số TP": 1,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -138557,7 +138557,7 @@
       "Task type": "Main",
       "Tiến độ": null,
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Task Status": "Done",
       "Episode": [
@@ -138576,7 +138576,7 @@
         }
       ],
       "TP thực tế": 0,
-      "Task fix": "0/2",
+      "Task fix": "1/4",
       "Created time": null,
       "Tasks": "FIX CLIENT KEY 130 ver1",
       "Sprint": [
@@ -138604,7 +138604,7 @@
         "2fdccb0e-ac88-8000-98de-e8085dbac5a2"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "1/3",
       "UTNL": [],
       "Required by": [
         "External"
@@ -138628,7 +138628,7 @@
       "Task type": "QC",
       "Tiến độ": null,
       "Product Status": [
-        "Need Fix"
+        "In progress"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -138647,7 +138647,7 @@
         }
       ],
       "TP thực tế": 0,
-      "Task fix": "0/2",
+      "Task fix": "1/3",
       "Created time": null,
       "Tasks": "FIX CLIENT KEY 080 ver2",
       "Sprint": []
@@ -138670,7 +138670,7 @@
         "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "3/6",
       "UTNL": [],
       "Required by": [
         "Internal"
@@ -138683,7 +138683,7 @@
       "TP giả định": 0.37,
       "Trọng số TP": 0.15,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -138696,7 +138696,7 @@
       "Task type": "QC",
       "Tiến độ": null,
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -138714,8 +138714,8 @@
           "email": "kietda@sangygroup.com"
         }
       ],
-      "TP thực tế": 0.65,
-      "Task fix": "0/2",
+      "TP thực tế": 0.37,
+      "Task fix": "2/6",
       "Created time": null,
       "Tasks": "IBW 085 ver2",
       "Sprint": [
@@ -138901,7 +138901,7 @@
       "Task type": "QC",
       "Tiến độ": null,
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Episode": [
@@ -139019,7 +139019,7 @@
         "2fdccb0e-ac88-80b9-996f-c98f77ab56cf"
       ],
       "Task main": "1",
-      "Task QC": "1/2",
+      "Task QC": "2/4",
       "UTNL": [],
       "Required by": [
         "External"
@@ -139032,7 +139032,7 @@
       "TP giả định": 0,
       "Trọng số TP": 0.15,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Status": "Not started",
       "Product Type": [
@@ -139041,6 +139041,1906 @@
       "Sprint (1)": [
         "Key Ep 5"
       ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 130 ver2",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "FIX CLIENT KEY 130 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-800a-8eef-d28a9ae6e75b",
+    "created_time": "2026-02-04T07:56:00.000Z",
+    "last_edited_time": "2026-02-04T07:56:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": "2026-02-04"
+      },
+      "Loại Cảnh": [
+        "F"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-8025-be38-f319eb8072a5"
+      ],
+      "Task main": "1",
+      "Task QC": "0/1",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 230"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.25,
+      "TP giả định": 0.49,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
+          "name": "Khôi Cao",
+          "email": "khoicm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 1,
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "IBW 230 ver1",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 230 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8028-a8e7-de16c3c1d752",
+    "created_time": "2026-02-04T07:04:00.000Z",
+    "last_edited_time": "2026-02-04T07:05:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": "2026-02-04"
+      },
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-800b-88e2-df9776b65d47"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 220"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.25,
+      "TP giả định": 2.44,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
+          "name": "Khôi Cao",
+          "email": "khoicm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 4.35,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 220 ver1",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 220 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-805d-8acd-d10606deb68c",
+    "created_time": "2026-02-04T07:18:00.000Z",
+    "last_edited_time": "2026-02-04T07:18:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": "2026-02-04"
+      },
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
+      ],
+      "Task main": "1",
+      "Task QC": "3/6",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 085"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.125,
+      "TP giả định": 0.73,
+      "Trọng số TP": 0.3,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.6,
+      "Assignee": [
+        {
+          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
+          "name": "Khôi Cao",
+          "email": "khoicm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.73,
+      "Task fix": "2/6",
+      "Created time": null,
+      "Tasks": "IBW 085 ver3",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 085 ver3",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8069-b5dd-d243f54962b5",
+    "created_time": "2026-02-04T07:27:00.000Z",
+    "last_edited_time": "2026-02-04T07:34:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": "2026-02-04"
+      },
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
+      ],
+      "Task main": "1",
+      "Task QC": "3/6",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 085"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.0625,
+      "TP giả định": 0.73,
+      "Trọng số TP": 0.3,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.6,
+      "Assignee": [
+        {
+          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
+          "name": "Khôi Cao",
+          "email": "khoicm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.73,
+      "Task fix": "2/6",
+      "Created time": null,
+      "Tasks": "IBW 085 ver5",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 085 ver5",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8082-9843-f19384dd4864",
+    "created_time": "2026-02-04T07:38:00.000Z",
+    "last_edited_time": "2026-02-04T07:38:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80de-b94a-ea92d5fcc34c"
+      ],
+      "Task main": "1",
+      "Task QC": "0/1",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 340"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 2.44,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Not started"
+      ],
+      "Task Status": "Not started",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 5,
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "IBW 340 ver1",
+      "Sprint": []
+    },
+    "_title": "IBW 340 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8082-aac6-ca1475dd1f9f",
+    "created_time": "2026-02-04T07:37:00.000Z",
+    "last_edited_time": "2026-02-04T07:37:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-80a0-8b1f-e3e834b69d1c"
+      ],
+      "Task main": "1",
+      "Task QC": "1/3",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 340"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/3",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 340 ver1",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 340 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80b5-b8ad-d67baa879d9f",
+    "created_time": "2026-02-04T07:08:00.000Z",
+    "last_edited_time": "2026-02-04T07:08:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": "2026-02-04"
+      },
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-808d-ba32-e8caea3cdce4"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 020"
+      ],
+      "Run n8n": false,
+      "NLTT": 0,
+      "TP giả định": 2.44,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
+          "name": "Khôi Cao",
+          "email": "khoicm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 4.35,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 020 ver1",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 020 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80bb-9803-e7095c4be861",
+    "created_time": "2026-02-04T07:38:00.000Z",
+    "last_edited_time": "2026-02-04T07:38:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "C"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80bc-aaba-deda6f68d606"
+      ],
+      "Task main": "1",
+      "Task QC": "0/1",
+      "UTNL": [
+        2
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 290"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 12.2,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Not started"
+      ],
+      "Task Status": "Not started",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        25
+      ],
+      "TP giả định 2": 10,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 25,
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "IBW 290 ver1",
+      "Sprint": []
+    },
+    "_title": "IBW 290 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80c7-9678-d46568f9f620",
+    "created_time": "2026-02-04T07:38:00.000Z",
+    "last_edited_time": "2026-02-04T07:38:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "D"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80e7-b195-fcc94e18df8b"
+      ],
+      "Task main": "1",
+      "Task QC": "0/1",
+      "UTNL": [
+        1.5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 300"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 6.83,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Not started"
+      ],
+      "Task Status": "Not started",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "TP giả định 2": 5.6,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 14,
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "IBW 300 ver1",
+      "Sprint": []
+    },
+    "_title": "IBW 300 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80ec-938b-ecaef052d043",
+    "created_time": "2026-02-04T06:54:00.000Z",
+    "last_edited_time": "2026-02-04T06:54:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": null
+      },
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8049-9244-e997f6006d59"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 090"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
+          "name": "Mai Hà",
+          "email": "maiht@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 090 ver1",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 090 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80fb-aebc-d7203dcd95ba",
+    "created_time": "2026-02-04T07:03:00.000Z",
+    "last_edited_time": "2026-02-04T07:03:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": null
+      },
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-80b9-996f-c98f77ab56cf"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 130"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.0625,
+      "TP giả định": 0,
+      "Trọng số TP": 0.3,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 130 ver3",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "FIX CLIENT KEY 130 ver3",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8134-afe9-cd65c0ec8a5c",
+    "created_time": "2026-02-04T07:12:00.000Z",
+    "last_edited_time": "2026-02-04T07:12:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8049-9244-e997f6006d59"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 090"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 090 ver2",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 090 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8150-97bf-c3273c1190b5",
+    "created_time": "2026-02-04T07:04:00.000Z",
+    "last_edited_time": "2026-02-04T07:04:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80a7-8420-cdcb83f5f511"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 200"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0.37,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.65,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 200 ver2",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 200 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-817a-9bb6-cfe55af5aed4",
+    "created_time": "2026-02-04T07:11:00.000Z",
+    "last_edited_time": "2026-02-04T07:11:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-80b9-996f-c98f77ab56cf"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 130"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 130 ver4",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "FIX CLIENT KEY 130 ver4",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-81a2-90a8-c8077daa0c5a",
+    "created_time": "2026-02-04T07:24:00.000Z",
+    "last_edited_time": "2026-02-04T07:24:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
+      ],
+      "Task main": "1",
+      "Task QC": "3/6",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 085"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0.37,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.37,
+      "Task fix": "2/6",
+      "Created time": null,
+      "Tasks": "IBW 085 ver4",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 085 ver4",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-81cf-857c-e268b2b6838f",
+    "created_time": "2026-02-04T07:41:00.000Z",
+    "last_edited_time": "2026-02-04T07:41:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80e4-8732-fa10ad1ea47b"
+      ],
+      "Task main": "1",
+      "Task QC": "3/6",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 085"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0.37,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.37,
+      "Task fix": "2/6",
+      "Created time": null,
+      "Tasks": "IBW 085 ver6",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 085 ver6",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-81da-bab3-d2f3d1f3f443",
+    "created_time": "2026-02-04T07:21:00.000Z",
+    "last_edited_time": "2026-02-04T07:21:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-808d-ba32-e8caea3cdce4"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 020"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0.37,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.65,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 020 ver2",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 020 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-81f4-84f2-eba80aeb7b7d",
+    "created_time": "2026-02-04T07:24:00.000Z",
+    "last_edited_time": "2026-02-04T07:24:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-800b-88e2-df9776b65d47"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 220"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0.37,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": [
+        "Key Ep 5"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.65,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 220 ver2",
+      "Sprint": [
+        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
+      ]
+    },
+    "_title": "IBW 220 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8002-8845-e5758a8f0ccf",
+    "created_time": "2026-02-04T08:01:00.000Z",
+    "last_edited_time": "2026-02-04T08:01:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8001-a685-c6c724ef8bed"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 170"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 170 ver1",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 170 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8007-a1ea-e2385b8c7818",
+    "created_time": "2026-02-04T08:05:00.000Z",
+    "last_edited_time": "2026-02-04T08:13:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-80a0-8b1f-e3e834b69d1c"
+      ],
+      "Task main": "1",
+      "Task QC": "1/3",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 340"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": null,
+      "Tiến độ": null,
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/3",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 340 ver2",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 340 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8032-bbf4-f8059934dc97",
+    "created_time": "2026-02-04T08:03:00.000Z",
+    "last_edited_time": "2026-02-04T08:03:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "E"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-8090-af6a-c133f824a7eb"
+      ],
+      "Task main": "1",
+      "Task QC": "0/1",
+      "UTNL": [
+        0.25
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 170"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 2.44,
+      "Trọng số TP": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Tiến độ": null,
+      "Product Status": [
+        "Not started"
+      ],
+      "Task Status": "Not started",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 5,
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "IBW 170 ver1",
+      "Sprint": []
+    },
+    "_title": "IBW 170 ver1",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-804e-8c9d-e11c77a402bf",
+    "created_time": "2026-02-04T08:05:00.000Z",
+    "last_edited_time": "2026-02-04T08:05:00.000Z",
+    "properties": {
+      "Ngày Làm": {
+        "start": "2026-02-04",
+        "end": null
+      },
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8049-9244-e997f6006d59"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 090"
+      ],
+      "Run n8n": false,
+      "NLTT": 0.25,
+      "TP giả định": 0,
+      "Trọng số TP": 0.3,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
+          "name": "Mai Hà",
+          "email": "maiht@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 090 ver3",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 090 ver3",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-80ab-a34f-c4772c34c046",
+    "created_time": "2026-02-04T08:03:00.000Z",
+    "last_edited_time": "2026-02-04T08:03:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8000-98de-e8085dbac5a2"
+      ],
+      "Task main": "1",
+      "Task QC": "1/3",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 080"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.3,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Tiến độ": null,
+      "Product Status": [
+        "In progress"
+      ],
+      "Task Status": "In progress",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/3",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 080 ver3",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 080 ver3",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-810b-a1de-ee94b5f21927",
+    "created_time": "2026-02-04T08:03:00.000Z",
+    "last_edited_time": "2026-02-04T08:03:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-80a0-8b1f-e3e834b69d1c"
+      ],
+      "Task main": "1",
+      "Task QC": "1/3",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 340"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/3",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 340 ver2",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 340 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-8165-b783-d8097efc4dc1",
+    "created_time": "2026-02-04T08:05:00.000Z",
+    "last_edited_time": "2026-02-04T08:05:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        "D"
+      ],
+      "Product ": [
+        "2d4ccb0e-ac88-80ec-a348-c7a52ed06fc0"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [
+        0.5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Product (1)": [
+        "IBW 370"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 1.02,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "TP giả định 2": 0.84,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 1.83,
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "IBW 370 ver2",
+      "Sprint": []
+    },
+    "_title": "IBW 370 ver2",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-819d-a1de-f8f47225ad48",
+    "created_time": "2026-02-04T08:10:00.000Z",
+    "last_edited_time": "2026-02-04T08:10:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8049-9244-e997f6006d59"
+      ],
+      "Task main": "1",
+      "Task QC": "2/4",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 090"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Tiến độ": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "EP 05"
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "1/4",
+      "Created time": null,
+      "Tasks": "FIX CLIENT KEY 090 ver4",
+      "Sprint": []
+    },
+    "_title": "FIX CLIENT KEY 090 ver4",
+    "database_name": "[Sunny Side Down] Tasks ",
+    "project_name": "[Sunny Side Down] Tasks",
+    "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"
+  },
+  {
+    "id": "2fdccb0e-ac88-81fb-92fe-f50dbf49ee24",
+    "created_time": "2026-02-04T08:05:00.000Z",
+    "last_edited_time": "2026-02-04T08:05:00.000Z",
+    "properties": {
+      "Ngày Làm": null,
+      "Loại Cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8001-a685-c6c724ef8bed"
+      ],
+      "Task main": "1",
+      "Task QC": "1/2",
+      "UTNL": [],
+      "Required by": [
+        "External"
+      ],
+      "Product (1)": [
+        "FIX CLIENT KEY 170"
+      ],
+      "Run n8n": false,
+      "NLTT": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Status": "Not started",
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Sprint (1)": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Tiến độ": null,
@@ -139066,12 +140966,10 @@
       "TP thực tế": 0,
       "Task fix": "0/2",
       "Created time": null,
-      "Tasks": "FIX CLIENT KEY 130 ver2",
-      "Sprint": [
-        "2fbccb0e-ac88-80a7-8b00-f18907fd37e9"
-      ]
+      "Tasks": "FIX CLIENT KEY 170 ver2",
+      "Sprint": []
     },
-    "_title": "FIX CLIENT KEY 130 ver2",
+    "_title": "FIX CLIENT KEY 170 ver2",
     "database_name": "[Sunny Side Down] Tasks ",
     "project_name": "[Sunny Side Down] Tasks",
     "database_id": "28eccb0e-ac88-8199-b67f-f15f83806b09"

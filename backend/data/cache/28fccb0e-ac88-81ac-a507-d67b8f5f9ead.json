@@ -485,9 +485,14 @@
         "end": "2026-02-12"
       },
       "Sprint ID": null,
-      "Tasks": [],
-      "Total tasks": 0,
-      "Completed tasks": null,
+      "Tasks": [
+        "2fdccb0e-ac88-802b-a9db-d1cda78ebbeb",
+        "2fdccb0e-ac88-8016-861b-d43939aa9052",
+        "2fdccb0e-ac88-80d3-9010-d096984b9a4d",
+        "2fdccb0e-ac88-801a-9391-c46cddf5a6bb"
+      ],
+      "Total tasks": 4,
+      "Completed tasks": 0.25,
       "Sprint status": "Current"
     },
     "_title": "Sprint 10",

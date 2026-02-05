@@ -27,14 +27,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": null,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 0,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "STB",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2daccb0e-ac88-80af-a5ab-ec4054258de8"
       ],
@@ -80,7 +80,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2e8ccb0e-ac88-819f-a985-d2d88639991e"
       ],
@@ -163,14 +163,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 0.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 5,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2fdccb0e-ac88-8006-ad26-f1f3736bd0c4"
       ],
@@ -285,14 +285,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 0.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 5,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f5ccb0e-ac88-801e-a6b5-d546e4bf23e3"
       ],
@@ -331,14 +331,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-80b3-ae7b-d15fd0b36554",
         "2f7ccb0e-ac88-8191-a278-ebcf6f07e305"
@@ -448,14 +448,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Background",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2eaccb0e-ac88-80ad-815e-c6574f23909b"
       ],
@@ -494,14 +494,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f6ccb0e-ac88-8021-9eb3-dada9a4c962d",
         "2f6ccb0e-ac88-811f-a724-fe0fff64ac15"
@@ -712,7 +712,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f4ccb0e-ac88-812e-9c58-eb7f35be8733"
       ],
@@ -758,7 +758,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2fcccb0e-ac88-818f-9c5a-f7b8fbdd11f0"
       ],
@@ -880,7 +880,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-81f1-bd5c-c5a3e2bb00c6"
       ],
@@ -926,7 +926,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-81dc-a9e8-f37fa0f54165"
       ],
@@ -1293,7 +1293,7 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 0.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 5,
       "Check task done": null,
@@ -1340,7 +1340,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2efccb0e-ac88-8103-ab6c-c197b8ab74b3"
       ],
@@ -1461,14 +1461,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 3.75,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 35,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2fbccb0e-ac88-80f8-b592-f5f01af8ae3c"
       ],
@@ -1530,7 +1530,7 @@
     "properties": {
       "Resource": null,
       "Task count ": 0,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "UTNL": null,
       "Required by": "Internal",
       "Task Create": null,
@@ -1551,14 +1551,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 4,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-80b0-a024-f7d476cc9d50",
         "2f4ccb0e-ac88-81da-a677-dbbdd3dc95e3",
@@ -1655,7 +1655,7 @@
     "properties": {
       "Resource": null,
       "Task count ": 0,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "UTNL": null,
       "Required by": "Internal",
       "Task Create": null,
@@ -1676,14 +1676,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 4,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8026-8a4f-e943ef7745b3",
         "2f1ccb0e-ac88-8057-b5e5-fc4131c69d00",
@@ -1770,7 +1770,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 3,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8194-adae-dc0835a4b72b",
         "2f1ccb0e-ac88-8164-8890-f2bd03d5d97c",
@@ -1862,7 +1862,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-819f-9b20-f82d0b3b8d04"
       ],
@@ -1945,14 +1945,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2fbccb0e-ac88-80e2-88f5-e8f372c78526",
         "2fcccb0e-ac88-81d6-9147-c28420b1ddda"
@@ -1992,14 +1992,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f6ccb0e-ac88-80e2-a27c-c668727d711e",
         "2f7ccb0e-ac88-81ae-91c8-f2bb700b1d37"
@@ -2033,14 +2033,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2e7ccb0e-ac88-80e0-b075-f1802d8d313a"
       ],
@@ -2249,14 +2249,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f6ccb0e-ac88-8051-89cf-e6dffec1454c",
         "2f6ccb0e-ac88-81a0-b848-f039b3a6fbf1"
@@ -2378,14 +2378,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f6ccb0e-ac88-8085-9067-dc1773a00318",
         "2f6ccb0e-ac88-81f8-9365-c8d095505513"
@@ -2476,7 +2476,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8183-b9d2-cc6a24a8c6de"
       ],
@@ -2522,7 +2522,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Background",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2eaccb0e-ac88-8199-a6b6-e6b3666026c4"
       ],
@@ -2540,7 +2540,7 @@
     "properties": {
       "Resource": null,
       "Task count ": 0,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "UTNL": null,
       "Required by": "Internal",
       "Task Create": null,
@@ -2561,14 +2561,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 4,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8136-b98c-c378c04dbd25",
         "2f1ccb0e-ac88-816f-962c-ed6a48772113",
@@ -2617,7 +2617,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8116-82c0-d25181df2ba4"
       ],
@@ -2656,7 +2656,7 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 3.75,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 35,
       "Check task done": null,
@@ -2666,7 +2666,7 @@
         "end": null
       },
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-80c8-874d-e76819bc45c1",
         "2f7ccb0e-ac88-81ef-a52d-cbe5d60f602d"
@@ -2725,7 +2725,7 @@
   {
     "id": "2eaccb0e-ac88-80a2-8878-f53dc345861e",
     "created_time": "2026-01-16T07:10:00.000Z",
-    "last_edited_time": "2026-01-29T08:35:00.000Z",
+    "last_edited_time": "2026-02-04T09:58:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -2744,21 +2744,23 @@
       "DO": null,
       "Loại cảnh": "D",
       "Max": 2,
-      "Status": "Not started",
+      "Status": "Pending Review",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 0,
-      "[Harry] Tasks": [],
+      "Total QC": 1,
+      "[Harry] Tasks": [
+        "2fdccb0e-ac88-80e2-bc8f-f54e5ba2aed4"
+      ],
       "Product": "CO IBW 8"
     },
     "_title": "CO IBW 8",
@@ -2839,7 +2841,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Layout",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8107-8d02-e149c35d6192",
         "2f1ccb0e-ac88-81ea-85e2-fc9d39245ae4"
@@ -2886,7 +2888,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8179-9b94-c0386cb8a943"
       ],
@@ -2976,7 +2978,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-811b-9047-cfc04018f875"
       ],
@@ -3218,7 +3220,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-81b8-b9c6-ffce898d2abe"
       ],
@@ -3264,7 +3266,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f4ccb0e-ac88-817a-a037-c4a14275cc1f"
       ],
@@ -3468,7 +3470,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f4ccb0e-ac88-8180-a06b-fd7a5722cf27"
       ],
@@ -3596,7 +3598,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8183-818f-c0291718d3fd"
       ],
@@ -3635,7 +3637,7 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 3.75,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 35,
       "Check task done": null,
@@ -3764,7 +3766,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "SP",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f1ccb0e-ac88-8193-9a73-c7e76c046331"
       ],
@@ -3955,14 +3957,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 2,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2fcccb0e-ac88-8045-8b39-fd9fdfb9bc4a",
         "2fdccb0e-ac88-80ad-be8c-de7e5f2a2bec"
@@ -4040,7 +4042,7 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 14,
       "Check task done": null,
@@ -4314,14 +4316,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f8ccb0e-ac88-800a-b231-f51e133a37f6",
         "2f8ccb0e-ac88-81ee-a3d8-c0408e0d71af"
@@ -4361,14 +4363,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-8009-a021-ef32e705b2f8",
         "2f7ccb0e-ac88-8147-9bc0-d89e38ede7e3"
@@ -4452,14 +4454,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 2.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 25,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-800e-8012-dc5335fd24b3",
         "2f8ccb0e-ac88-8153-8e3e-c58c976ca39d"
@@ -4499,14 +4501,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-80e0-bab2-fc3d5bf4a58c",
         "2f8ccb0e-ac88-8178-9819-fc59028103a0"
@@ -4546,14 +4548,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": 1,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 2,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-80eb-85c3-c942e93595b1",
         "2f8ccb0e-ac88-8187-9a6e-cbe03e8df641"
@@ -4600,7 +4602,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Key",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2fcccb0e-ac88-81c8-8676-f4cf92ea63ef"
       ],
@@ -4677,14 +4679,14 @@
       "Task count + 1": 1,
       "Episode": null,
       "Min": null,
-      "Total Main": 0,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Product point": 0,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "2f7ccb0e-ac88-80c0-95f8-c692e63a2158"
       ],
@@ -4735,6 +4737,100 @@
       "Product": "FIX_CLIENT CO KEY 14"
     },
     "_title": "FIX_CLIENT CO KEY 14",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "2fdccb0e-ac88-8077-884a-f8de698645fd",
+    "created_time": "2026-02-04T09:20:00.000Z",
+    "last_edited_time": "2026-02-04T09:21:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 0,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": "Internal",
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "DO": null,
+      "Loại cảnh": "F",
+      "Max": 0.25,
+      "Status": "QC Approved",
+      "Tasks ": [],
+      "Combo": null,
+      "Task count + 1": 1,
+      "Episode": null,
+      "Min": 0,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "Check task done": null,
+      "Số hình": null,
+      "Due Date": null,
+      "Product type": "Khác",
+      "Total QC": 2,
+      "[Harry] Tasks": [
+        "2fdccb0e-ac88-8160-8030-eb381e63fb19",
+        "2f7ccb0e-ac88-8060-baed-c385a1df8be3"
+      ],
+      "Product": "Quay"
+    },
+    "_title": "Quay",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "2fdccb0e-ac88-80f1-8d27-d2041f545da6",
+    "created_time": "2026-02-04T09:59:00.000Z",
+    "last_edited_time": "2026-02-04T10:00:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 0,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": "Internal",
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "DO": null,
+      "Loại cảnh": "F",
+      "Max": 0.25,
+      "Status": "QC Approved",
+      "Tasks ": [],
+      "Combo": null,
+      "Task count + 1": 1,
+      "Episode": null,
+      "Min": 0,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "Check task done": null,
+      "Số hình": null,
+      "Due Date": null,
+      "Product type": "Họp dự án",
+      "Total QC": 2,
+      "[Harry] Tasks": [
+        "2fdccb0e-ac88-8174-b4f0-e54d3d78fee8",
+        "2f7ccb0e-ac88-8002-930b-fff84b16147f"
+      ],
+      "Product": "Brief 2"
+    },
+    "_title": "Brief 2",
     "database_name": "[Harry] Product",
     "project_name": "[Harry]",
     "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"

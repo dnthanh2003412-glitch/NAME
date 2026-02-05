@@ -173,12 +173,11 @@ class DashboardApp {
                     const result = await response.json();
 
                     if (result.success) {
-                        // Refresh the UI
+                        // Refresh the UI - just reload project tree
                         await this.loadProjectsTree();
-                        if (this.selectedDatabases.size > 0) {
-                            await this.fetchSelectedDatabases(false);
-                        }
-                        // Also regenerate report if one is active
+                        
+                        // NOTE: Removed fetchSelectedDatabases - this was causing raw tables to appear
+                        // Only regenerate the active report if one exists
                         const reportType = document.getElementById('report-type-select')?.value;
                         if (reportType) {
                             this.generateReport();
@@ -321,8 +320,18 @@ class DashboardApp {
                     countSpan.textContent = `🌟 Auto: ${projectsInfo.length} dự án, ${taskDbIds.length} Task DBs`;
                     countSpan.title = projectsInfo.map(p => `${p.name} (${p.taskCount})`).join('\n');
                 } else {
-                    countSpan.textContent = hasSelection ? `Đã chọn ${this.selectedDatabases.size} database` : 'Chưa chọn dự án';
-                    countSpan.title = '';
+                    // Count projects from selected databases
+                    const selectedProjectNames = new Set();
+                    for (const dbId of this.selectedDatabases) {
+                        for (const proj of this.projectsHierarchy) {
+                            if (proj.databases?.some(db => db.id === dbId)) {
+                                selectedProjectNames.add(proj.name);
+                                break;
+                            }
+                        }
+                    }
+                    countSpan.textContent = hasSelection ? `Đã chọn ${selectedProjectNames.size} dự án` : 'Chưa chọn dự án';
+                    countSpan.title = Array.from(selectedProjectNames).join('\n');
                 }
             }
         }
@@ -335,15 +344,20 @@ class DashboardApp {
         const container = document.getElementById('report-container');
         if (!container) return;
 
-        // Clear Welcome Screen
+        // Generate unique report ID to cancel stale async operations
+        this._currentReportId = Date.now();
+        const reportId = this._currentReportId;
+
+        // Clear container completely before rendering new report
         container.innerHTML = '';
+        console.log(`[Dashboard] Generating report: ${reportType}, reportId: ${reportId}, container cleared`);
 
         switch (reportType) {
             case 'raw':
-                this.renderRawDataReport(container);
+                this.renderRawDataReport(container, reportId);
                 break;
             case 'raw-all':
-                this.renderRawAllProjectsReport(container);
+                this.renderRawAllProjectsReport(container, reportId);
                 break;
             case 'sprint':
                 this.renderSprintReport(container); // Placeholder
@@ -357,6 +371,34 @@ class DashboardApp {
             default:
                 container.innerHTML = '<div class="error-state">Loại báo cáo chưa được hỗ trợ</div>';
         }
+    }
+
+    /**
+     * Filter selected databases to only include Task databases
+     * @returns {Array<string>} Array of Task database IDs only
+     */
+    getSelectedTaskDatabases() {
+        const taskDbIds = [];
+        const selectedIds = Array.from(this.selectedDatabases);
+        
+        for (const dbId of selectedIds) {
+            // Find database info in projectsHierarchy
+            for (const project of this.projectsHierarchy) {
+                const db = (project.databases || []).find(d => d.id === dbId);
+                if (db) {
+                    // Check if it's a Task database (by type or name)
+                    if (db.type === 'tasks' || 
+                        db.name?.toLowerCase().includes('task') ||
+                        db.name?.includes('Task')) {
+                        taskDbIds.push(dbId);
+                    }
+                    break;
+                }
+            }
+        }
+        
+        console.log(`[Dashboard] Filtered ${selectedIds.length} selected → ${taskDbIds.length} Task databases`);
+        return taskDbIds;
     }
 
     /**
@@ -405,7 +447,7 @@ class DashboardApp {
     /**
      * Render Raw report for ALL visible whitelist projects (Task databases only)
      */
-    async renderRawAllProjectsReport(container) {
+    async renderRawAllProjectsReport(container, reportId) {
         // Show loading state
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Task từ các dự án whitelist...</div>';
 
@@ -445,6 +487,9 @@ class DashboardApp {
             
             // Progress update function
             const updateProgress = () => {
+                // Check if report is still current
+                if (reportId && this._currentReportId !== reportId) return;
+                
                 const progressDiv = loadingInfo.querySelector('.progress-text');
                 if (progressDiv) {
                     progressDiv.textContent = `⏳ Đang tải... ${loadedCount}/${taskDbIds.length} databases`;
@@ -458,6 +503,12 @@ class DashboardApp {
             
             // Process in batches
             for (let i = 0; i < taskDbIds.length; i += BATCH_SIZE) {
+                // Check if report is still current before each batch
+                if (reportId && this._currentReportId !== reportId) {
+                    console.log(`[Dashboard] Raw-All report ${reportId} cancelled`);
+                    return;
+                }
+                
                 const batch = taskDbIds.slice(i, i + BATCH_SIZE);
                 
                 // Fetch batch in parallel
@@ -500,6 +551,12 @@ class DashboardApp {
                 <div style="margin-top:8px;color:#22c55e;">✅ Đã tải ${allData.length} records</div>
             `;
 
+            // Final check if report is still current
+            if (reportId && this._currentReportId !== reportId) {
+                console.log(`[Dashboard] Raw-All report ${reportId} cancelled before render`);
+                return;
+            }
+
             if (allData.length === 0) {
                 container.innerHTML += '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu Task nào trong các dự án whitelist.</div>';
                 return;
@@ -526,14 +583,15 @@ class DashboardApp {
 
     /**
      * Render Burndown Chart Report
-     * Shows burndown charts for each selected database that has Sprint and "Ngày Làm" columns
+     * Shows burndown charts for each selected Task database that has Sprint and "Ngày Làm" columns
      */
     async renderBurndownReport(container) {
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Burndown...</div>';
 
-        const dbIds = Array.from(this.selectedDatabases);
+        // Only use Task databases for Burndown
+        const dbIds = this.getSelectedTaskDatabases();
         if (dbIds.length === 0) {
-            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Chưa chọn database nào.</div>';
+            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có database Task nào được chọn.<br><span style="font-size:0.85rem;">Burndown Chart chỉ áp dụng cho database Task.</span></div>';
             return;
         }
 
@@ -751,7 +809,7 @@ class DashboardApp {
         }
     }
 
-    async renderRawDataReport(container) {
+    async renderRawDataReport(container, reportId) {
         // Show loading state
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu thô...</div>';
 
@@ -764,10 +822,22 @@ class DashboardApp {
         try {
             // Fetch raw data for each database
             for (const dbId of dbIds) {
+                // Check if this report is still current (user may have switched)
+                if (reportId && this._currentReportId !== reportId) {
+                    console.log(`[Dashboard] Report ${reportId} cancelled, current is ${this._currentReportId}`);
+                    return;
+                }
+
                 // Use the raw API endpoint which returns flattened data with all Notion columns
                 const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
                 const response = await fetch(url);
                 const result = await response.json();
+
+                // Check again after async fetch
+                if (reportId && this._currentReportId !== reportId) {
+                    console.log(`[Dashboard] Report ${reportId} cancelled after fetch`);
+                    return;
+                }
 
                 if (result.success) {
                     // Remove loading if still present
@@ -1578,7 +1648,8 @@ class DashboardApp {
                         </button>
                     </div>
                 </div>
-                <div style="border-top:1px solid #334155;padding-top:12px;">
+                <!-- Database chips section hidden - user requested cleaner UI -->
+                <div id="prod-db-section" style="display:none;border-top:1px solid #334155;padding-top:12px;">
                     <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
                         <span style="color:#94a3b8;font-size:0.8rem;">📁 Database đã chọn:</span>
                         <span id="prod-db-count" style="color:#3b82f6;font-size:0.8rem;font-weight:500;"></span>
@@ -1626,8 +1697,7 @@ class DashboardApp {
                 btn.style.borderColor = '#3b82f6';
                 btn.style.color = '#fff';
                 
-                // Auto fetch report
-                fetchReport();
+                // NOTE: Removed auto-fetch - user must click "Cập nhật" button
             });
             
             // Hover effect
@@ -1751,8 +1821,17 @@ class DashboardApp {
 
             bodyContainer.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#94a3b8;">⏳ Đang tính toán dữ liệu...</div>';
 
-            // Lấy database IDs đã chọn từ frontend state
-            const selectedDbIds = Array.from(this.selectedDatabases);
+            // Lấy CHỈ Task database IDs (filter từ selectedDatabases)
+            const taskDbIds = this.getSelectedTaskDatabases();
+            
+            if (taskDbIds.length === 0) {
+                bodyContainer.innerHTML = `
+                    <div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">
+                        ⚠️ Không có database Task nào được chọn<br>
+                        <span style="font-size:0.85rem;color:#94a3b8;">Báo cáo năng suất chỉ lấy dữ liệu từ database Task</span>
+                    </div>`;
+                return;
+            }
 
             try {
                 const response = await fetch(`${API_BASE}/api/reports/productivity`, {
@@ -1761,7 +1840,7 @@ class DashboardApp {
                     body: JSON.stringify({ 
                         startDate: startDate, 
                         endDate: endDate, 
-                        databaseIds: selectedDbIds 
+                        databaseIds: taskDbIds 
                     })
                 });
                 const result = await response.json();
@@ -1876,8 +1955,9 @@ class DashboardApp {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ startDate, endDate, updates })
                 });
-                // After update, refresh report to recalculate formulas
-                fetchReport();
+                // NOTE: Do NOT call fetchReport() here
+                // User must click "Cập nhật" button to reload table
+                // Local recalculation is done by recalculateRow()
             } catch (err) {
                 console.error('Update Stats Error:', err);
                 alert('Không lưu được dữ liệu');
@@ -2047,8 +2127,13 @@ class DashboardApp {
                         'effortRatio'
                     ].includes(col.id)) {
                         // Percent for specific columns ONLY
-                        const percent = (parseFloat(val) || 0) * 100;
-                        cellContent = `<div class="num-cell">${percent.toFixed(1)}%</div>`;
+                        // If null, show "Chờ" (waiting for pointReq data)
+                        if (val === null || val === undefined) {
+                            cellContent = `<div class="num-cell" style="color:#64748b;font-style:italic;">Chờ</div>`;
+                        } else {
+                            const percent = (parseFloat(val) || 0) * 100;
+                            cellContent = `<div class="num-cell">${percent.toFixed(1)}%</div>`;
+                        }
                     } else if (typeof val === 'number') {
                         // Number (2 decimals for floats, 0 for integers?)
                         cellContent = `<div class="num-cell">${Number.isInteger(val) ? val : val.toFixed(2)}</div>`;
@@ -2400,12 +2485,8 @@ class DashboardApp {
         // Event Listeners
         refreshBtn.addEventListener('click', fetchReport);
 
-        stdDaysInput.addEventListener('change', async (e) => {
-            const val = parseFloat(e.target.value);
-            if (!isNaN(val)) {
-                await updateStats({ standard_days: val });
-            }
-        });
+        // NOTE: Removed auto-update on stdDaysInput change
+        // User must click "Cập nhật" to apply changes
 
         // Initial Load
         fetchReport();
@@ -2423,14 +2504,10 @@ class DashboardApp {
                 this.projectsHierarchy = data.projects || data.tree; // Expecting { projects: [...] }
                 this.renderProjectsTreeHierarchical();
 
-                // Auto-fetch if we have selections
-                if (this.selectedDatabases.size > 0 && !this.initialFetchDone) {
-                    this.initialFetchDone = true;
-                    // Provide feedback
-                    this.showLoading(`Restoring ${this.selectedDatabases.size} databases...`);
-                    // Use cache preference = true
-                    setTimeout(() => this.fetchSelectedDatabases(true), 500);
-                }
+                // NOTE: Removed auto-fetch on page load
+                // User must select a report type and click "Tạo Báo Cáo" to see data
+                // Just update the button state to reflect saved selections
+                this.updateGenerateButtonState();
             } else {
                 console.warn('API error:', data.error);
                 this.showError('Failed to load project tree.');

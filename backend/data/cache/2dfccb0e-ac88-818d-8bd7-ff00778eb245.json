@@ -2,7 +2,7 @@
   {
     "id": "2dfccb0e-ac88-8102-919b-cdc85ff231f4",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:18:00.000Z",
+    "last_edited_time": "2026-02-04T09:51:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -13,8 +13,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -50,7 +50,7 @@
   {
     "id": "2dfccb0e-ac88-8104-93cd-fa0fb4b39f46",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:14:00.000Z",
+    "last_edited_time": "2026-02-04T10:26:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -60,11 +60,11 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": "9",
-      "Note anim": " ",
+      "Note anim": " Reuse pose nhảy",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Moose",
         "C4ttron",
@@ -81,20 +81,21 @@
   {
     "id": "2dfccb0e-ac88-8106-be15-deba215f2b05",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:14:00.000Z",
+    "last_edited_time": "2026-02-04T10:24:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
-        "Hiệu ứng ánh sáng nhạc môi trường"
+        "Hiệu ứng ánh sáng nhạc môi trường",
+        "Reuse sc18"
       ],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
-      "Layout": null,
+      "Note anim": "Reuse sc18",
+      "Layout": "Reuse",
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "Omiited",
+      "IBW": "Omiited",
       "Nhân vật": [
         "C4ttron"
       ],
@@ -108,7 +109,7 @@
   {
     "id": "2dfccb0e-ac88-8107-95e2-c4cb35d591eb",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T08:00:00.000Z",
+    "last_edited_time": "2026-02-04T10:33:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -117,11 +118,11 @@
       "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Reuse pose nhảy ",
+      "Note anim": "1. Reuse pose nhảy các cảnh trước\n2. Dùng smear đổi pose đoạn cuối lúc cả đám nhảy đồng đều",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Moose",
         "Genevie",
@@ -140,7 +141,7 @@
   {
     "id": "2dfccb0e-ac88-810a-877e-d39181992251",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:15:00.000Z",
+    "last_edited_time": "2026-02-04T09:45:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -149,8 +150,8 @@
       "Note anim": "smear moose lúc chạy vào",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "Genevie",
@@ -188,7 +189,7 @@
   {
     "id": "2dfccb0e-ac88-8114-9c40-da55c12c9dc1",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:17:00.000Z",
+    "last_edited_time": "2026-02-04T10:20:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -197,8 +198,8 @@
       "Note anim": "Reuse Moose nhảy ",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Moose",
         "MidnightJack",
@@ -215,7 +216,7 @@
   {
     "id": "2dfccb0e-ac88-811e-a1f4-c5b627b3c370",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:50:00.000Z",
+    "last_edited_time": "2026-02-04T10:12:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Speed Line Gen",
@@ -224,8 +225,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Ván",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -239,7 +240,7 @@
   {
     "id": "2dfccb0e-ac88-8128-8944-ce5b36cb17bb",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T08:00:00.000Z",
+    "last_edited_time": "2026-02-04T09:52:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -251,8 +252,8 @@
       "Note anim": "smear mnJack quay vòng",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -266,7 +267,7 @@
   {
     "id": "2dfccb0e-ac88-8128-9fd2-dd5410b40c30",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:48:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -275,8 +276,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "Moose",
@@ -292,7 +293,7 @@
   {
     "id": "2dfccb0e-ac88-812a-a259-f535e22c4e65",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T02:09:00.000Z",
+    "last_edited_time": "2026-02-05T02:34:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -301,8 +302,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie"
       ],
@@ -316,17 +317,17 @@
   {
     "id": "2dfccb0e-ac88-812c-bdda-da0ec8070d0f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:36:00.000Z",
+    "last_edited_time": "2026-02-04T09:53:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
-      "Combo": null,
+      "Combo": "4",
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "Dàn loa đổ",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -340,7 +341,7 @@
   {
     "id": "2dfccb0e-ac88-812d-84e7-cb3b0d2a9d9b",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:32:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -349,8 +350,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "C4ttron",
         "MidnightJack",
@@ -368,7 +369,7 @@
   {
     "id": "2dfccb0e-ac88-812d-8b06-d7d83f2a92af",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:20:00.000Z",
+    "last_edited_time": "2026-02-04T09:38:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -381,8 +382,8 @@
       "Note anim": "Có thể reuse pose nhảy sc22",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie",
         "Moose",
@@ -399,7 +400,7 @@
   {
     "id": "2dfccb0e-ac88-812e-b77b-eb428763974c",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T08:01:00.000Z",
+    "last_edited_time": "2026-02-04T09:27:00.000Z",
     "properties": {
       "Comp": [
         "Gem bug phát sáng",
@@ -409,10 +410,10 @@
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "Anim dùng cutter mask chuyển đổi BG",
-      "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Kệ sách",
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "Gembugs đổi màu"
@@ -427,7 +428,7 @@
   {
     "id": "2dfccb0e-ac88-8130-ac1f-f9bdb2b22700",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-04T09:29:00.000Z",
     "properties": {
       "Comp": [
         "Gem bug phát sáng",
@@ -438,9 +439,9 @@
       "Combo": "1",
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Prop & mô tả prop": "Kệ sách",
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "Gembugs đổi màu"
@@ -455,7 +456,7 @@
   {
     "id": "2dfccb0e-ac88-8134-9938-e37fc69dc5e1",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:58:00.000Z",
+    "last_edited_time": "2026-02-04T10:31:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -463,11 +464,11 @@
       "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "Reuse mnJack nhảy sc 74",
+      "Note anim": "Reuse mnJack nhảy sc 71, 74",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "MidnightJack"
@@ -482,7 +483,7 @@
   {
     "id": "2dfccb0e-ac88-8137-b6aa-cb8979d8a021",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:15:00.000Z",
+    "last_edited_time": "2026-02-04T10:27:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -495,8 +496,8 @@
       "Note anim": "Reuse pose nhảy ",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Moose",
         "Genevie",
@@ -513,7 +514,7 @@
   {
     "id": "2dfccb0e-ac88-8138-909c-ee0474a445a4",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:18:00.000Z",
+    "last_edited_time": "2026-02-04T09:54:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -522,8 +523,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "MidnightJack"
@@ -538,7 +539,7 @@
   {
     "id": "2dfccb0e-ac88-8139-9fdf-ff30ebd16432",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:14:00.000Z",
+    "last_edited_time": "2026-02-04T10:18:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -547,8 +548,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack",
         "Genevie"
@@ -563,7 +564,7 @@
   {
     "id": "2dfccb0e-ac88-813e-8334-ea60ac52ad71",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:17:00.000Z",
+    "last_edited_time": "2026-02-04T10:20:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -572,8 +573,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie",
         "MidnightJack"
@@ -588,7 +589,7 @@
   {
     "id": "2dfccb0e-ac88-813e-8ce3-fa769bb930b7",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:58:00.000Z",
+    "last_edited_time": "2026-02-04T10:29:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
@@ -601,8 +602,8 @@
       "Note anim": "Reuse pose nhảy ",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie",
         "Moose",
@@ -619,7 +620,7 @@
   {
     "id": "2dfccb0e-ac88-8144-9703-debd1ba573e3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:46:00.000Z",
+    "last_edited_time": "2026-02-04T10:00:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Bụi xe đạp",
@@ -628,8 +629,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp, Bánh xe đạp nhỏ",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "Moose Xe Đạp"
@@ -644,7 +645,7 @@
   {
     "id": "2dfccb0e-ac88-814d-ac14-e76c99cc7ad7",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:36:00.000Z",
+    "last_edited_time": "2026-02-04T09:55:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -653,8 +654,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "Loa",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "C4ttron",
         "Moose",
@@ -715,7 +716,7 @@
   {
     "id": "2dfccb0e-ac88-8156-99bb-e8a394c1e045",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:36:00.000Z",
+    "last_edited_time": "2026-02-04T09:53:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Bụi chuyển cảnh",
@@ -724,8 +725,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "Dàn loa đổ",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack",
         "Genevie",
@@ -742,7 +743,7 @@
   {
     "id": "2dfccb0e-ac88-8157-af7f-d16609aa4636",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:09:00.000Z",
+    "last_edited_time": "2026-02-04T10:25:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -754,8 +755,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "F",
+      "IBW": "F",
       "Nhân vật": [],
       "Scene": "68"
     },
@@ -767,7 +768,7 @@
   {
     "id": "2dfccb0e-ac88-8159-b151-d7ae9ff86ce0",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:11:00.000Z",
+    "last_edited_time": "2026-02-04T10:13:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Nước bắn, nước loang",
@@ -776,8 +777,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -791,7 +792,7 @@
   {
     "id": "2dfccb0e-ac88-815f-a9f1-f8d3d7d26e66",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T08:09:00.000Z",
+    "last_edited_time": "2026-02-04T09:59:00.000Z",
     "properties": {
       "Comp": [
         "Speedline"
@@ -802,8 +803,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp, Bụi cây, Hoa",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "E",
       "Nhân vật": [
         "Moose Xe Đạp"
       ],
@@ -817,7 +818,7 @@
   {
     "id": "2dfccb0e-ac88-8160-a91c-fa54f4272f88",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:17:00.000Z",
+    "last_edited_time": "2026-02-05T02:37:00.000Z",
     "properties": {
       "Comp": [
         "Speedline"
@@ -827,9 +828,9 @@
       "Combo": null,
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Prop & mô tả prop": "Công tắc đèn",
+      "Key": "F",
+      "IBW": "F",
       "Nhân vật": [
         "Moose"
       ],
@@ -843,7 +844,7 @@
   {
     "id": "2dfccb0e-ac88-8160-a955-f07965f3f1ad",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:58:00.000Z",
+    "last_edited_time": "2026-02-04T10:28:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -851,11 +852,11 @@
       "FX": "Speed line lúc midnightJack xoay",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "Reuse pose nhảy",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack",
         "Genevie"
@@ -892,7 +893,7 @@
   {
     "id": "2dfccb0e-ac88-8167-8f97-d6639682cff9",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:47:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -901,8 +902,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "C4ttron",
@@ -941,7 +942,7 @@
   {
     "id": "2dfccb0e-ac88-816d-b19a-d3eb11ee9f44",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:13:00.000Z",
+    "last_edited_time": "2026-02-04T09:38:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
@@ -953,8 +954,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "C4ttron",
         "Genevie"
@@ -969,7 +970,7 @@
   {
     "id": "2dfccb0e-ac88-816e-bc4f-ee17c801eff6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:50:00.000Z",
+    "last_edited_time": "2026-02-04T10:12:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Speed Line Gen",
@@ -978,8 +979,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -993,7 +994,7 @@
   {
     "id": "2dfccb0e-ac88-8175-a296-f2ac5de6fa7f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:12:00.000Z",
+    "last_edited_time": "2026-02-04T09:37:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng quả cầu disco lấp lánh",
@@ -1005,8 +1006,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "F",
+      "IBW": "F",
       "Nhân vật": [],
       "Scene": "21"
     },
@@ -1018,7 +1019,7 @@
   {
     "id": "2dfccb0e-ac88-8175-bee9-d454255a754f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:36:00.000Z",
+    "last_edited_time": "2026-02-04T09:54:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1027,8 +1028,8 @@
       "Note anim": "MnJack raccord cảnh trước",
       "Layout": null,
       "Prop & mô tả prop": "Dàn loa đổ",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack",
         "Genevie",
@@ -1067,17 +1068,17 @@
   {
     "id": "2dfccb0e-ac88-8177-b18b-df50eea14ea5",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T08:01:00.000Z",
+    "last_edited_time": "2026-02-04T09:31:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": "1",
       "Note anim": "Anim dùng cutter mask chuyển đổi BG",
-      "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Layout": "Cần LO trước",
+      "Prop & mô tả prop": "Kệ sách",
+      "Key": "D",
+      "IBW": "D",
       "Nhân vật": [
         "Moose",
         "Genevie",
@@ -1115,7 +1116,7 @@
   {
     "id": "2dfccb0e-ac88-817f-9fde-d91dcde18b95",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:52:00.000Z",
+    "last_edited_time": "2026-02-04T10:13:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1124,8 +1125,8 @@
       "Note anim": "reuse moose đội mũ sc 54",
       "Layout": null,
       "Prop & mô tả prop": "Mũ và bảng hiệu của moose",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "F",
       "Nhân vật": [
         "Moose Đội Mũ"
       ],
@@ -1139,7 +1140,7 @@
   {
     "id": "2dfccb0e-ac88-8180-ab0f-fbd1958eb9e4",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:13:00.000Z",
+    "last_edited_time": "2026-02-04T09:38:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1150,8 +1151,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose"
       ],
@@ -1165,7 +1166,7 @@
   {
     "id": "2dfccb0e-ac88-8181-a33c-c1f309aa8fc8",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:18:00.000Z",
+    "last_edited_time": "2026-02-04T09:51:00.000Z",
     "properties": {
       "Comp": [
         "Speedline",
@@ -1177,8 +1178,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie"
       ],
@@ -1192,7 +1193,7 @@
   {
     "id": "2dfccb0e-ac88-8182-96a2-f4e893a9b26d",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:58:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1201,8 +1202,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Moose"
       ],
@@ -1216,7 +1217,7 @@
   {
     "id": "2dfccb0e-ac88-8182-a758-e37e9ba5301c",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:53:00.000Z",
+    "last_edited_time": "2026-02-05T02:34:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1225,8 +1226,8 @@
       "Note anim": "Anim tự gắn mũ theo design",
       "Layout": null,
       "Prop & mô tả prop": "Mũ và cờ của Moose",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Moose Đội Mũ"
       ],
@@ -1240,7 +1241,7 @@
   {
     "id": "2dfccb0e-ac88-8182-ace4-f519cdc390f6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:45:00.000Z",
+    "last_edited_time": "2026-02-04T10:08:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -1250,9 +1251,9 @@
       "Combo": null,
       "Note anim": "",
       "Layout": "Cần LO trước",
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Prop & mô tả prop": "Ván",
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -1266,7 +1267,7 @@
   {
     "id": "2dfccb0e-ac88-8185-8ef9-de702ce7796b",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T02:09:00.000Z",
+    "last_edited_time": "2026-02-04T09:33:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1275,8 +1276,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie"
       ],
@@ -1290,7 +1291,7 @@
   {
     "id": "2dfccb0e-ac88-8186-8b78-ff387d2f51f3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:12:00.000Z",
+    "last_edited_time": "2026-02-04T10:20:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1299,8 +1300,8 @@
       "Note anim": "Có thể reuse pose Moose nhảy sc25",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "D",
       "Nhân vật": [
         "Moose"
       ],
@@ -1314,7 +1315,7 @@
   {
     "id": "2dfccb0e-ac88-8194-92f7-d2c4ec8fdd78",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:11:00.000Z",
+    "last_edited_time": "2026-02-04T10:14:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -1325,8 +1326,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -1340,19 +1341,19 @@
   {
     "id": "2dfccb0e-ac88-8194-956c-d184df3a8ca0",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:41:00.000Z",
+    "last_edited_time": "2026-02-04T10:27:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
       ],
       "FX": "",
       "Đã có prop": false,
-      "Combo": null,
+      "Combo": "9",
       "Note anim": "Reuse mnJack nhảy cảnh trước",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1366,7 +1367,7 @@
   {
     "id": "2dfccb0e-ac88-8196-bac4-e1f75e46ac81",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:48:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1375,8 +1376,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "C4ttron",
         "Genevie",
@@ -1393,7 +1394,7 @@
   {
     "id": "2dfccb0e-ac88-819c-aaa3-eee87f7e3b94",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:14:00.000Z",
+    "last_edited_time": "2026-02-04T09:41:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1404,8 +1405,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "MidnightJack"
@@ -1420,7 +1421,7 @@
   {
     "id": "2dfccb0e-ac88-819e-8f2f-f3ef0ef04cd6",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:46:00.000Z",
+    "last_edited_time": "2026-02-04T10:01:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -1431,8 +1432,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Moose Xe Đạp"
       ],
@@ -1446,7 +1447,7 @@
   {
     "id": "2dfccb0e-ac88-81a4-b4bb-e4d65524f201",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:42:00.000Z",
+    "last_edited_time": "2026-02-04T10:03:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Tuyết",
@@ -1455,8 +1456,8 @@
       "Note anim": "Mây trôi",
       "Layout": null,
       "Prop & mô tả prop": "Ván trượt tuyết",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "C4ttron Trượt Tuyết",
         "Coral Trượt Tuyết"
@@ -1471,7 +1472,7 @@
   {
     "id": "2dfccb0e-ac88-81ae-9437-eafcf11d5f03",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:18:00.000Z",
+    "last_edited_time": "2026-02-04T10:21:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1480,8 +1481,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "MidnightJack",
         "Genevie",
@@ -1498,17 +1499,17 @@
   {
     "id": "2dfccb0e-ac88-81b0-b62d-e2e79d63f4e2",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:10:00.000Z",
+    "last_edited_time": "2026-02-04T09:22:00.000Z",
     "properties": {
       "Comp": [],
-      "FX": "",
+      "FX": "mồ hôi",
       "Đã có prop": false,
       "Combo": null,
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Prop & mô tả prop": "Dây trang trí, Ghế",
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1522,7 +1523,7 @@
   {
     "id": "2dfccb0e-ac88-81bc-87ff-c154e156b8ce",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:17:00.000Z",
+    "last_edited_time": "2026-02-04T10:21:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1531,8 +1532,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1546,7 +1547,7 @@
   {
     "id": "2dfccb0e-ac88-81c2-bde2-ef6ec3410ff2",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:43:00.000Z",
+    "last_edited_time": "2026-02-04T10:29:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1557,8 +1558,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1572,7 +1573,7 @@
   {
     "id": "2dfccb0e-ac88-81c4-903c-cc1ba8a69a20",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:51:00.000Z",
+    "last_edited_time": "2026-02-04T10:10:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1581,8 +1582,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Ván",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],
@@ -1596,7 +1597,7 @@
   {
     "id": "2dfccb0e-ac88-81c6-be40-e8e790b0acf3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:45:00.000Z",
+    "last_edited_time": "2026-02-04T10:05:00.000Z",
     "properties": {
       "Comp": [
         "Speedline",
@@ -1608,8 +1609,8 @@
       "Note anim": "Mây trôi",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Ván trượt tuyết",
-      "Key": null,
-      "IBW": null,
+      "Key": "B",
+      "IBW": "D",
       "Nhân vật": [
         "C4ttron Trượt Tuyết"
       ],
@@ -1623,7 +1624,7 @@
   {
     "id": "2dfccb0e-ac88-81cc-9bed-ff4b5409bbc4",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:26:00.000Z",
+    "last_edited_time": "2026-02-04T09:58:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1632,8 +1633,8 @@
       "Note anim": "raccord moose và BG với cảnh trước",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "Genevie",
@@ -1672,7 +1673,7 @@
   {
     "id": "2dfccb0e-ac88-81d0-80cd-d1ec57fc2cfa",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:10:00.000Z",
+    "last_edited_time": "2026-02-04T09:20:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1680,9 +1681,9 @@
       "Combo": null,
       "Note anim": "",
       "Layout": null,
-      "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Prop & mô tả prop": "Dàn loa, Dây trang trí, Ghế",
+      "Key": "C",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "C4ttron",
@@ -1700,7 +1701,7 @@
   {
     "id": "2dfccb0e-ac88-81dc-aa1e-f989a70402fd",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:15:00.000Z",
+    "last_edited_time": "2026-02-04T09:44:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -1710,11 +1711,11 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "chú ý raccord gen, mdJack cảnh trước",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose",
         "MidnightJack",
@@ -1731,7 +1732,7 @@
   {
     "id": "2dfccb0e-ac88-81e0-a82c-edf1d7a4d15e",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:13:00.000Z",
+    "last_edited_time": "2026-02-04T09:40:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
@@ -1744,8 +1745,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "C4ttron",
         "Moose",
@@ -1761,7 +1762,7 @@
   {
     "id": "2dfccb0e-ac88-81e1-85db-de842292c906",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T04:46:00.000Z",
+    "last_edited_time": "2026-02-04T10:30:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1772,8 +1773,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie"
       ],
@@ -1787,7 +1788,7 @@
   {
     "id": "2dfccb0e-ac88-81e5-9fda-c76989ab42b5",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:14:00.000Z",
+    "last_edited_time": "2026-02-04T09:41:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1798,8 +1799,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "MidnightJack"
@@ -1814,7 +1815,7 @@
   {
     "id": "2dfccb0e-ac88-81e8-8f19-e03881756301",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:14:00.000Z",
+    "last_edited_time": "2026-02-04T09:41:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường"
@@ -1825,8 +1826,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1840,7 +1841,7 @@
   {
     "id": "2dfccb0e-ac88-81e9-9f87-c1faf4fdc8d4",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T03:12:00.000Z",
+    "last_edited_time": "2026-02-04T09:46:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -1849,8 +1850,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "MidnightJack"
       ],
@@ -1886,17 +1887,17 @@
   {
     "id": "2dfccb0e-ac88-81ee-ad78-f2f937f6363f",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T02:07:00.000Z",
+    "last_edited_time": "2026-02-04T09:17:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "chú ý racord c4tron cảnh trước",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "C4ttron"
       ],
@@ -1910,7 +1911,7 @@
   {
     "id": "2dfccb0e-ac88-81f1-934e-f691d04f2e62",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:12:00.000Z",
+    "last_edited_time": "2026-02-04T09:37:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -1922,8 +1923,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie",
         "Moose",
@@ -1961,7 +1962,7 @@
   {
     "id": "2dfccb0e-ac88-81f7-8bc9-ebdbba743c89",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:18:00.000Z",
+    "last_edited_time": "2026-02-04T09:50:00.000Z",
     "properties": {
       "Comp": [
         "C4tron led âm nhạc",
@@ -1971,11 +1972,11 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "Reuse pose nhảy",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "C4ttron",
         "Moose",
@@ -2014,7 +2015,7 @@
   {
     "id": "2dfccb0e-ac88-81fb-8d80-dd6c71505876",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T07:38:00.000Z",
+    "last_edited_time": "2026-02-04T09:58:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -2025,8 +2026,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "E",
       "Nhân vật": [
         "Moose"
       ],
@@ -2040,10 +2041,11 @@
   {
     "id": "2dfccb0e-ac88-81fe-9044-ef1b0bcdb2eb",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T05:10:00.000Z",
+    "last_edited_time": "2026-02-04T09:35:00.000Z",
     "properties": {
       "Comp": [
-        "C4tron led âm nhạc"
+        "C4tron led âm nhạc",
+        "Speedline"
       ],
       "FX": "",
       "Đã có prop": false,
@@ -2051,8 +2053,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "E",
+      "IBW": "F",
       "Nhân vật": [
         "C4ttron"
       ],
@@ -2066,7 +2068,7 @@
   {
     "id": "2fdccb0e-ac88-8034-81dc-c73e244e362e",
     "created_time": "2026-02-04T03:09:00.000Z",
-    "last_edited_time": "2026-02-04T05:12:00.000Z",
+    "last_edited_time": "2026-02-04T09:37:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -2078,8 +2080,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "F",
+      "IBW": "F",
       "Nhân vật": [],
       "Scene": "20_A"
     },
@@ -2091,7 +2093,7 @@
   {
     "id": "2fdccb0e-ac88-8049-8d39-c06d8a2bd939",
     "created_time": "2026-02-04T03:49:00.000Z",
-    "last_edited_time": "2026-02-04T07:43:00.000Z",
+    "last_edited_time": "2026-02-04T10:02:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -2102,8 +2104,8 @@
       "Note anim": "Mây trôi",
       "Layout": null,
       "Prop & mô tả prop": "Ván trượt tuyết",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "D",
       "Nhân vật": [
         "C4ttron Trượt Tuyết",
         "MidnightJack"
@@ -2118,7 +2120,7 @@
   {
     "id": "2fdccb0e-ac88-8052-b354-fbfc5721d29d",
     "created_time": "2026-02-04T04:04:00.000Z",
-    "last_edited_time": "2026-02-04T07:11:00.000Z",
+    "last_edited_time": "2026-02-04T10:07:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -2129,8 +2131,8 @@
       "Note anim": "",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "D",
       "Nhân vật": [
         "Genevie",
         "MidnightJack",
@@ -2146,7 +2148,7 @@
   {
     "id": "2fdccb0e-ac88-807e-98bb-edb561e349a8",
     "created_time": "2026-02-04T03:45:00.000Z",
-    "last_edited_time": "2026-02-04T07:11:00.000Z",
+    "last_edited_time": "2026-02-04T10:01:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -2157,8 +2159,8 @@
       "Note anim": "vị trí và pose moose để giống sc trước để chuyển cảnh",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose Xe Đạp"
       ],
@@ -2172,7 +2174,7 @@
   {
     "id": "2fdccb0e-ac88-8089-abe4-c460754d7a69",
     "created_time": "2026-02-04T03:26:00.000Z",
-    "last_edited_time": "2026-02-04T07:46:00.000Z",
+    "last_edited_time": "2026-02-04T09:59:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
@@ -2181,8 +2183,8 @@
       "Note anim": "",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Moose Xe Đạp"
       ],
@@ -2196,7 +2198,7 @@
   {
     "id": "2fdccb0e-ac88-8033-b9a4-c1ac5baf4f3a",
     "created_time": "2026-02-04T04:12:00.000Z",
-    "last_edited_time": "2026-02-04T07:11:00.000Z",
+    "last_edited_time": "2026-02-04T10:19:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng chuyển cảnh mờ chồng"
@@ -2204,11 +2206,11 @@
       "FX": "",
       "Đã có prop": false,
       "Combo": "7",
-      "Note anim": "Vị trí và pose Gen đặt giống sc trước để chuyển cảnh",
+      "Note anim": "1. Vị trí và pose Gen đặt giống sc trước để chuyển cảnh\n2. reuse pose đứng sc 46",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": null,
-      "IBW": null,
+      "Key": "D",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie",
         "MidnightJack",
@@ -2225,7 +2227,7 @@
   {
     "id": "2fdccb0e-ac88-80e9-83f0-d65b300177bb",
     "created_time": "2026-02-04T04:06:00.000Z",
-    "last_edited_time": "2026-02-04T07:50:00.000Z",
+    "last_edited_time": "2026-02-04T10:12:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Speed Line Gen",
@@ -2234,8 +2236,8 @@
       "Note anim": "Anim cutout con ong dựa vào design ",
       "Layout": null,
       "Prop & mô tả prop": "Ong góc 3/4",
-      "Key": null,
-      "IBW": null,
+      "Key": "C",
+      "IBW": "E",
       "Nhân vật": [
         "Genevie Swim Suit"
       ],

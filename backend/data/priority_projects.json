@@ -1,164 +1,55 @@
 {
-  "description": "Các dự án được ưu tiên sync trước. Databases từ các project này sẽ được fetch đầu tiên.",
+  "description": "Whitelist dự án ưu tiên - chỉ gồm 10 dự án theo yêu cầu",
   "projects": [
     {
-      "name": "[DeeDee_2025_GEN] GENEVIEVE'S PLAYHOUSE",
-      "id": "28fccb0e-ac88-809d-9d36-e2584a27034a",
-      "databases": [
-        "28fccb0e-ac88-817b-8eb3-fb5a800ff922",
-        "28fccb0e-ac88-811f-a729-e28a2dfa12ca"
-      ]
-    },
-    {
-      "name": "[DeeDee_2025_IMM] Immortals",
-      "id": "27eccb0e-ac88-808c-9479-f2555968255a",
-      "databases": [
-        "27eccb0e-ac88-81f5-ab69-e6ada189ee6a",
-        "27eccb0e-ac88-8149-b126-c9e5b6789f73",
-        "27eccb0e-ac88-8170-9f22-c58a4e10278c"
-      ]
-    },
-    {
-      "name": "[DeeDee_2025_LEG] LEGO ZOOM",
-      "id": "286ccb0e-ac88-8041-871e-c02894caf61d",
-      "databases": [
-        "286ccb0e-ac88-8045-92d7-e7d6ca244832",
-        "286ccb0e-ac88-800c-a837-e30990f30251",
-        "286ccb0e-ac88-80c7-8913-f74c6a003304"
-      ]
+      "name": "[DeeDee_2025_SUN] Sunny Side Down",
+      "id": "28eccb0e-ac88-80fa-b380-d4c747d0671e",
+      "code": "SUN"
     },
     {
       "name": "[DeeDee_2025_MAM] Mami Fatale",
       "id": "27eccb0e-ac88-8079-9999-c0fb148af9a4",
-      "databases": [
-        "27eccb0e-ac88-80ee-980c-f34a19eb77f5",
-        "27eccb0e-ac88-80c5-aa69-e0986ca1a314",
-        "284ccb0e-ac88-80d5-b2aa-e2880c2cb765"
-      ]
+      "code": "MAM"
+    },
+    {
+      "name": "[DeeDee_2025_IMM] Immortals",
+      "id": "27eccb0e-ac88-808c-9479-f2555968255a",
+      "code": "IMM"
+    },
+    {
+      "name": "[DeeDee_2025_GEN] GENEVIEVE'S PLAYHOUSE",
+      "id": "28fccb0e-ac88-809d-9d36-e2584a27034a",
+      "code": "GEN"
     },
     {
       "name": "[DeeDee_2025_MIR] MIRACULOUS CHIBI TVC",
       "id": "2d3ccb0e-ac88-80de-9286-fbb50dde8a6d",
-      "databases": [
-        "2d3ccb0e-ac88-806d-b6e7-c2d054c71b42",
-        "2d3ccb0e-ac88-8008-b563-c5fe16d02d90",
-        "2d3ccb0e-ac88-80b2-b6c8-d737c9dff1ae",
-        "2d3ccb0e-ac88-81bd-b33d-dfd435a7401e",
-        "2d3ccb0e-ac88-81a0-840a-e39e21e7432b",
-        "2d3ccb0e-ac88-811f-8f1a-d909410009bb",
-        "2d3ccb0e-ac88-81d3-ac8f-d616f8681d40",
-        "2d3ccb0e-ac88-8107-be02-d58f52d5d1a1"
-      ]
-    },
-    {
-      "name": "[DeeDee_2025_SUN] Sunny Side Down",
-      "id": "28eccb0e-ac88-80fa-b380-d4c747d0671e",
-      "databases": [
-        "28eccb0e-ac88-8026-9827-da071c4d5e05",
-        "28eccb0e-ac88-8078-acb4-fa3ff5bc720d",
-        "28eccb0e-ac88-8022-a05b-db9d699cada4"
-      ]
+      "code": "MIR"
     },
     {
       "name": "[DeeDee_2025_XANH] XANHSM BUMPER ADS",
       "id": "2c5ccb0e-ac88-809b-b452-f82ee00b16c2",
-      "databases": [
-        "2c5ccb0e-ac88-8137-b5e9-ed670c15dabb",
-        "2c5ccb0e-ac88-8179-92dc-c07fd0731679",
-        "2c5ccb0e-ac88-816e-b061-fb25c4b95bde"
-      ]
+      "code": "XAN"
     },
     {
-      "name": "[DeeDee_2025] Mami Fatale -old",
-      "id": "241ccb0e-ac88-8063-a793-fad5eade2a7f",
-      "databases": [
-        "241ccb0e-ac88-800d-a34e-d7dcd65bb852",
-        "241ccb0e-ac88-8070-9397-ec9328777439",
-        "241ccb0e-ac88-8056-be72-d25aeed8b130"
-      ]
-    },
-    {
-      "name": "[DeeDee_2026_FCM] FC MOBILE",
-      "id": "2edccb0e-ac88-805c-824b-f31a17cadb68",
-      "databases": [
-        "2edccb0e-ac88-805f-b749-e8cbafe785ac",
-        "2edccb0e-ac88-8035-bd30-ff88a540bec7",
-        "2edccb0e-ac88-80d8-8776-deb099a5cb75"
-      ]
-    },
-    {
-      "name": "[DeeDee_2026_HAR] HARRY & THE MUTANT",
-      "id": "2d8ccb0e-ac88-80b0-8a33-fbb881e41e9b",
-      "databases": [
-        "2d8ccb0e-ac88-8136-92ce-f3b9d3af5cc7",
-        "2d8ccb0e-ac88-81fc-8f33-dddd58dcc66d",
-        "2d8ccb0e-ac88-8123-9918-e7cc132f48ff"
-      ]
+      "name": "[DeeDee_2025_GUI] KNIGHTS OF GUINEVERE TEST",
+      "id": "2c3ccb0e-ac88-801a-bc84-dbf6a1d4acc3",
+      "code": "GUI"
     },
     {
       "name": "[DeeDee_2026_LEG] NINJAGO LEGO ZOOM",
       "id": "2efccb0e-ac88-80a2-a55d-d1a58480c246",
-      "databases": [
-        "2efccb0e-ac88-81b7-90ea-efb522d5f72f",
-        "2efccb0e-ac88-814e-8a4b-d28f883e99b1",
-        "2efccb0e-ac88-81f6-be6c-ed31efa1af8d"
-      ]
+      "code": "LEG"
     },
     {
-      "name": "[DeeDee_2026_OTH4] SHAVUOT",
-      "id": "2f6ccb0e-ac88-80be-b04e-e793a2241089",
-      "databases": [
-        "2f6ccb0e-ac88-817c-9b4f-d9673c656c78",
-        "2f6ccb0e-ac88-810f-a083-dca02983994a",
-        "2f6ccb0e-ac88-813c-93aa-eabc385ec91e"
-      ]
+      "name": "[DeeDee_2026_HAR] HARRY & THE MUTANT",
+      "id": "2d8ccb0e-ac88-80b0-8a33-fbb881e41e9b",
+      "code": "HAR"
     },
     {
-      "name": "[DeeDee_2026_DK] Disk Knight",
-      "id": "2f6ccb0e-ac88-8065-948f-ea2f578a54f4",
-      "databases": []
+      "name": "[DeeDee_2026_FCM] FC MOBILE",
+      "id": "2edccb0e-ac88-805c-824b-f31a17cadb68",
+      "code": "FCM"
     }
-  ],
-  "priority_databases": [
-    "28fccb0e-ac88-817b-8eb3-fb5a800ff922",
-    "28fccb0e-ac88-811f-a729-e28a2dfa12ca",
-    "27eccb0e-ac88-81f5-ab69-e6ada189ee6a",
-    "27eccb0e-ac88-8149-b126-c9e5b6789f73",
-    "27eccb0e-ac88-8170-9f22-c58a4e10278c",
-    "286ccb0e-ac88-8045-92d7-e7d6ca244832",
-    "286ccb0e-ac88-800c-a837-e30990f30251",
-    "286ccb0e-ac88-80c7-8913-f74c6a003304",
-    "27eccb0e-ac88-80ee-980c-f34a19eb77f5",
-    "27eccb0e-ac88-80c5-aa69-e0986ca1a314",
-    "284ccb0e-ac88-80d5-b2aa-e2880c2cb765",
-    "2d3ccb0e-ac88-806d-b6e7-c2d054c71b42",
-    "2d3ccb0e-ac88-8008-b563-c5fe16d02d90",
-    "2d3ccb0e-ac88-80b2-b6c8-d737c9dff1ae",
-    "2d3ccb0e-ac88-81bd-b33d-dfd435a7401e",
-    "2d3ccb0e-ac88-81a0-840a-e39e21e7432b",
-    "2d3ccb0e-ac88-811f-8f1a-d909410009bb",
-    "2d3ccb0e-ac88-81d3-ac8f-d616f8681d40",
-    "2d3ccb0e-ac88-8107-be02-d58f52d5d1a1",
-    "28eccb0e-ac88-8026-9827-da071c4d5e05",
-    "28eccb0e-ac88-8078-acb4-fa3ff5bc720d",
-    "28eccb0e-ac88-8022-a05b-db9d699cada4",
-    "2c5ccb0e-ac88-8137-b5e9-ed670c15dabb",
-    "2c5ccb0e-ac88-8179-92dc-c07fd0731679",
-    "2c5ccb0e-ac88-816e-b061-fb25c4b95bde",
-    "241ccb0e-ac88-800d-a34e-d7dcd65bb852",
-    "241ccb0e-ac88-8070-9397-ec9328777439",
-    "241ccb0e-ac88-8056-be72-d25aeed8b130",
-    "2edccb0e-ac88-805f-b749-e8cbafe785ac",
-    "2edccb0e-ac88-8035-bd30-ff88a540bec7",
-    "2edccb0e-ac88-80d8-8776-deb099a5cb75",
-    "2d8ccb0e-ac88-8136-92ce-f3b9d3af5cc7",
-    "2d8ccb0e-ac88-81fc-8f33-dddd58dcc66d",
-    "2d8ccb0e-ac88-8123-9918-e7cc132f48ff",
-    "2efccb0e-ac88-81b7-90ea-efb522d5f72f",
-    "2efccb0e-ac88-814e-8a4b-d28f883e99b1",
-    "2efccb0e-ac88-81f6-be6c-ed31efa1af8d",
-    "2f6ccb0e-ac88-817c-9b4f-d9673c656c78",
-    "2f6ccb0e-ac88-810f-a083-dca02983994a",
-    "2f6ccb0e-ac88-813c-93aa-eabc385ec91e"
   ]
 }

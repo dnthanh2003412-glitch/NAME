@@ -154,20 +154,24 @@ export class ProductivityService {
         const effortTotal = effortConf + effortUnconf; // C9
         const pointTotal = pointConf + pointUnconf;    // C12
 
-        // Ratios
+        // Ratios - Productivity = Point / Effort
         const productivityConf = effortConf ? (pointConf / effortConf) : 0; // C13 (N)
         const productivityUnconf = effortUnconf ? (pointUnconf / effortUnconf) : 0; // C14 (O)
         const productivityTotal = effortTotal ? (pointTotal / effortTotal) : 0; // C15 (P)
 
-        // Q: Completion Productvity Confirmed = Col 10 / Col 7. Same as C13.
-        const completionProdConf = effortConf ? (pointConf / effortConf) : 0; // C16 (Q)
+        // Q: Completion Productivity Confirmed = Actual Productivity / Required Productivity (KPI)
+        // Formula: (pointConf / effortConf) / KPI = productivityConf / KPI
+        const completionProdConf = kpi ? (productivityConf / kpi) : null; // C16 (Q)
 
-        // R: Completion Productivity Total
-        // User req: "R = cột 12 / cột 11" (Point Total / Point Unconfirmed). 
-        const completionProdTotal = pointUnconf ? (pointTotal / pointUnconf) : 0; // C17 (R)
+        // R: Completion Productivity Total = Total Productivity / Required Productivity (KPI)
+        // Formula: (pointTotal / effortTotal) / KPI = productivityTotal / KPI
+        const completionProdTotal = kpi ? (productivityTotal / kpi) : null; // C17 (R)
 
-        const completionPointConf = pointReq ? (pointConf / pointReq) : 0; // C18 (S)
-        const completionPointTotal = pointReq ? (pointTotal / pointReq) : 0; // C19 (T)
+        // S: Completion Task Point Confirmed = Point Confirmed / Point Required
+        const completionPointConf = pointReq ? (pointConf / pointReq) : null; // C18 (S)
+        
+        // T: Completion Task Point Total = Point Total / Point Required  
+        const completionPointTotal = pointReq ? (pointTotal / pointReq) : null; // C19 (T)
 
         const effortRatio = (actualDays * 2) ? (effortTotal / (actualDays * 2)) : 0; // C20 (U) - Updated to use actualDays
 

@@ -11759,7 +11759,7 @@
   {
     "id": "2fbccb0e-ac88-8018-aadb-dadde10c0111",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T04:54:00.000Z",
+    "last_edited_time": "2026-02-05T04:40:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -11778,7 +11778,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -12077,7 +12077,7 @@
   {
     "id": "2fbccb0e-ac88-8034-b69e-ca64e937175f",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-05T04:40:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12096,7 +12096,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "In progress",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -12212,7 +12212,7 @@
   {
     "id": "2fbccb0e-ac88-803f-a484-da91ad157bd8",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12231,7 +12231,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -12349,7 +12349,7 @@
   {
     "id": "2fbccb0e-ac88-8049-bc02-e7222e802271",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:17:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12484,7 +12484,7 @@
   {
     "id": "2fbccb0e-ac88-804e-9a3e-d6ae902f7cc8",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:17:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12667,7 +12667,7 @@
   {
     "id": "2fbccb0e-ac88-8067-a307-d54630f3603e",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T08:30:00.000Z",
+    "last_edited_time": "2026-02-04T10:34:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12686,7 +12686,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -12757,7 +12757,7 @@
   {
     "id": "2fbccb0e-ac88-8071-b006-d1cf3f6cc349",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:35:00.000Z",
+    "last_edited_time": "2026-02-04T10:57:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12776,7 +12776,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13170,7 +13170,7 @@
   {
     "id": "2fbccb0e-ac88-809e-9be3-f331c4447f4f",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13189,7 +13189,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13260,7 +13260,7 @@
   {
     "id": "2fbccb0e-ac88-80a2-8985-db72498522ab",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T08:30:00.000Z",
+    "last_edited_time": "2026-02-04T10:34:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13279,7 +13279,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13305,7 +13305,7 @@
   {
     "id": "2fbccb0e-ac88-80a6-8fb8-c59a6ad6a8c5",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T04:57:00.000Z",
+    "last_edited_time": "2026-02-05T04:40:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13324,7 +13324,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "In progress",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13485,7 +13485,7 @@
   {
     "id": "2fbccb0e-ac88-80c6-acad-d7e6bed2d1c7",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T04:53:00.000Z",
+    "last_edited_time": "2026-02-05T04:31:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13504,7 +13504,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13620,7 +13620,7 @@
   {
     "id": "2fbccb0e-ac88-80d1-a7c5-ee2e7a95f3ee",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13639,7 +13639,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13665,7 +13665,7 @@
   {
     "id": "2fbccb0e-ac88-80d3-8f12-e58959951070",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:01:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13684,7 +13684,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -14028,7 +14028,7 @@
   {
     "id": "2fbccb0e-ac88-80f3-952a-f5376194b778",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-04T05:13:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -14047,7 +14047,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Omited",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -14073,7 +14073,7 @@
   {
     "id": "2fbccb0e-ac88-80fe-bc6f-e6fa6a62a3c0",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:17:00.000Z",
+    "last_edited_time": "2026-02-05T04:13:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,

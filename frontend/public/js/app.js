@@ -561,11 +561,22 @@ class DashboardApp {
                         names.some(n => c.toLowerCase().includes(n.toLowerCase()))
                     );
                 };
+                
+                // Find exact column (case-insensitive exact match)
+                const findExactColumn = (...names) => {
+                    return columns.find(c => 
+                        names.some(n => c.toLowerCase() === n.toLowerCase())
+                    );
+                };
 
                 const sprintCol = findColumn('Sprint');
-                const dateCol = findColumn('Ngày Làm', 'Ngay Lam', 'Done Date', 'DoneDate');
-                const statusCol = findColumn('Task Status', 'Status');
+                // Prioritize "Ngày Làm" (the date column used for burndown)
+                const dateCol = findExactColumn('Ngày Làm', 'Ngay Lam') || 
+                               findColumn('Ngày Làm', 'Ngay Lam');
+                const statusCol = findExactColumn('Task Status') || findColumn('Task Status', 'Status');
                 const pointCol = findColumn('Product Point', 'Point', 'Story Point', 'Points');
+                
+                console.log(`[Burndown] ${database_name} - Columns found:`, { sprintCol, dateCol, statusCol, pointCol });
 
                 // Validation
                 if (!sprintCol) {
@@ -573,7 +584,7 @@ class DashboardApp {
                     continue;
                 }
                 if (!dateCol) {
-                    warnings.push({ dbName: database_name, reason: 'Không có cột Ngày Làm' });
+                    warnings.push({ dbName: database_name, reason: 'Không có cột Ngày Làm / Done Date' });
                     continue;
                 }
 
@@ -615,17 +626,39 @@ class DashboardApp {
                 // Fetch Sprint metadata (dates) - need to find Sprints database
                 // For now, estimate sprint dates from task dates
                 for (const [sprintName, tasks] of sprintGroups) {
-                    // Estimate sprint date range from tasks
+                    // Estimate sprint date range from ALL tasks with dates
                     let minDate = null, maxDate = null;
+                    let doneTasksWithDates = 0;
+                    
                     tasks.forEach(task => {
-                        const dateValue = task[dateCol];
-                        if (!dateValue) return;
-                        
+                        // Try to get date from Done Date column
+                        let dateValue = task[dateCol];
                         let taskDate = null;
-                        if (typeof dateValue === 'object' && dateValue.start) {
-                            taskDate = new Date(dateValue.start);
-                        } else if (typeof dateValue === 'string') {
-                            taskDate = new Date(dateValue);
+                        
+                        if (dateValue) {
+                            if (typeof dateValue === 'object' && dateValue.start) {
+                                taskDate = new Date(dateValue.start);
+                            } else if (typeof dateValue === 'object' && dateValue.end) {
+                                taskDate = new Date(dateValue.end);
+                            } else if (typeof dateValue === 'string') {
+                                // Handle date range strings
+                                if (dateValue.includes('→')) {
+                                    const parts = dateValue.split('→');
+                                    taskDate = new Date(parts[0].trim());
+                                } else {
+                                    taskDate = new Date(dateValue);
+                                }
+                            }
+                        }
+                        
+                        // Also check if task is Done to count
+                        const status = task[statusCol];
+                        const isDone = status && (
+                            status.toLowerCase().includes('done') ||
+                            status.toLowerCase().includes('complete')
+                        );
+                        if (isDone && taskDate && !isNaN(taskDate.getTime())) {
+                            doneTasksWithDates++;
                         }
                         
                         if (taskDate && !isNaN(taskDate.getTime())) {
@@ -633,6 +666,8 @@ class DashboardApp {
                             if (!maxDate || taskDate > maxDate) maxDate = taskDate;
                         }
                     });
+                    
+                    console.log(`[Burndown] Sprint "${sprintName}": ${tasks.length} tasks, ${doneTasksWithDates} done with dates, date range: ${minDate?.toISOString().split('T')[0]} - ${maxDate?.toISOString().split('T')[0]}`);
 
                     // If no dates found, skip this sprint
                     if (!minDate || !maxDate) {

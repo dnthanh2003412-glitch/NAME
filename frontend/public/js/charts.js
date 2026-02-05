@@ -232,6 +232,17 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
         dateField = 'Ngày Làm',
         statusField = 'Task Status'
     } = options;
+    
+    // Debug: Log sample task data
+    if (tasksData.length > 0) {
+        const sampleTask = tasksData[0];
+        console.log(`[Burndown] ${sprintName} - Sample task:`, {
+            status: sampleTask[statusField],
+            dateValue: sampleTask[dateField],
+            points: sampleTask[pointField],
+            allKeys: Object.keys(sampleTask)
+        });
+    }
 
     // Parse sprint dates
     const sprintStart = new Date(startDate);
@@ -260,15 +271,23 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
     }
 
     // Calculate total points at sprint start
+    // Only count tasks that have "Ngày Làm" (date field)
     let totalPoints = 0;
+    let tasksWithDate = 0;
     tasksData.forEach(task => {
+        const dateValue = task[dateField];
+        if (!dateValue) return; // Skip tasks without date
+        
+        tasksWithDate++;
         const points = parseFloat(task[pointField]) || 1; // Default 1 point per task if no points
         totalPoints += points;
     });
 
     if (totalPoints === 0) {
-        totalPoints = tasksData.length; // Fallback to task count
+        totalPoints = tasksWithDate || tasksData.length; // Fallback to task count
     }
+    
+    console.log(`[Burndown] ${sprintName}: ${tasksWithDate}/${tasksData.length} tasks have dates, total ${totalPoints} points`);
 
     // Calculate ideal burndown (straight line from total to 0)
     const pointsPerDay = totalPoints / (sprintDates.length - 1 || 1);
@@ -278,13 +297,29 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
     const actualLine = [];
     let remainingPoints = totalPoints;
     
-    // Group completed tasks by date
+    // Group completed tasks by date (only Done/DoneQC status)
     const completedByDate = new Map();
+    let doneTasksCount = 0;
+    
     tasksData.forEach(task => {
         const status = task[statusField];
-        if (status && status.toLowerCase().includes('done')) {
+        // Only check for Done or DoneQC status
+        const isDone = status && (
+            status === 'Done' ||
+            status === 'DoneQC' ||
+            status.toLowerCase() === 'done' ||
+            status.toLowerCase() === 'doneqc'
+        );
+        
+        if (isDone) {
+            doneTasksCount++;
             let doneDate = null;
+            
+            // Use the dateField (Ngày Làm) - this is manually entered by producer
             const dateValue = task[dateField];
+            
+            // Skip if no date value (required for burndown)
+            if (!dateValue) return;
             
             if (dateValue) {
                 // Handle different date formats
@@ -293,7 +328,13 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
                 } else if (typeof dateValue === 'object' && dateValue.start) {
                     doneDate = new Date(dateValue.start);
                 } else if (typeof dateValue === 'string') {
+                    // Parse various string formats
                     doneDate = new Date(dateValue);
+                    // Handle date range strings like "2024-01-01 → 2024-01-05"
+                    if (isNaN(doneDate.getTime()) && dateValue.includes('→')) {
+                        const parts = dateValue.split('→');
+                        doneDate = new Date(parts[0].trim()); // Use start date of range
+                    }
                 }
             }
 
@@ -304,6 +345,8 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
             }
         }
     });
+    
+    console.log(`[Burndown] ${sprintName}: Found ${doneTasksCount} done tasks, completion dates:`, [...completedByDate.entries()]);
 
     // Build actual line
     remainingPoints = totalPoints;
@@ -428,11 +471,19 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
     });
 
     burndownChartInstances.set(containerId, chart);
+    
+    // Calculate points completed  
+    const totalCompleted = [...completedByDate.values()].reduce((sum, p) => sum + p, 0);
+    
     console.log(`[Burndown] Rendered chart for ${sprintName}:`, { 
         totalPoints, 
+        totalCompleted,
+        remainingPoints: actualLine[actualLine.length - 1],
         daysInSprint: sprintDates.length,
         tasksCount: tasksData.length,
-        completedDates: [...completedByDate.keys()]
+        doneTasksCount,
+        completedDates: [...completedByDate.entries()],
+        sprintRange: `${sprintDates[0]?.toISOString().split('T')[0]} to ${sprintDates[sprintDates.length-1]?.toISOString().split('T')[0]}`
     });
 };
 

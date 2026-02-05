@@ -37,6 +37,11 @@ export class DatabaseManager {
         
         // Legacy path for migration
         this.legacyPath = join(this.dataDir, 'cache.json');
+        
+        // In-memory lookup caches for fast relation/user resolution
+        this._lookupMapCache = null;
+        this._userMapCache = null;
+        this._lookupCacheBuiltAt = null;
 
         // Ensure directories exist
         if (!existsSync(this.dataDir)) {
@@ -58,6 +63,9 @@ export class DatabaseManager {
 
         // Auto-migrate from legacy format if exists
         this._migrateFromLegacy();
+        
+        // Pre-build lookup cache on startup
+        this._buildLookupCacheAsync();
 
         console.log(`[Database] ✅ Initialized (Split-file mode)`);
         console.log(`[Database]    Config: ${this.configPath}`);
@@ -268,6 +276,9 @@ export class DatabaseManager {
         const cacheFile = this._getCacheFilePath(databaseId);
         this._writeJson(cacheFile, records);
         this._updateSyncTime(databaseId);
+        
+        // Update lookup cache incrementally
+        this.updateLookupCacheIncremental(records);
 
         console.log(`[Database] ✅ Saved ${records.length} records for ${databaseId.substring(0, 8)}...`);
         debugLog(`Saved ${records.length} records for ${databaseId}`);
@@ -305,6 +316,9 @@ export class DatabaseManager {
         const mergedData = Array.from(existingMap.values());
         this._writeJson(cacheFile, mergedData);
         this._updateSyncTime(databaseId);
+        
+        // Update lookup cache incrementally
+        this.updateLookupCacheIncremental(newRecords);
 
         const msg = `[Database] 🔄 Upserted for ${databaseId.substring(0, 8)}... (New: ${newCount}, Updated: ${updateCount}, Total: ${mergedData.length})`;
         console.log(msg);
@@ -501,6 +515,185 @@ export class DatabaseManager {
      */
     close() {
         console.log('[Database] Closed');
+    }
+
+    // ==================== LOOKUP CACHE METHODS ====================
+
+    /**
+     * Build lookup caches asynchronously (on startup)
+     * @private
+     */
+    async _buildLookupCacheAsync() {
+        // Use setImmediate to not block constructor
+        setImmediate(() => {
+            try {
+                this.buildLookupCache();
+            } catch (error) {
+                console.error('[Database] Failed to build initial lookup cache:', error.message);
+            }
+        });
+    }
+
+    /**
+     * Build in-memory lookup maps from all cached data
+     * This is expensive but only done once (or after sync)
+     */
+    buildLookupCache() {
+        const startTime = Date.now();
+        console.log('[Database] 🔄 Building lookup cache...');
+        
+        const lookupMap = new Map();
+        const userMap = new Map();
+        
+        try {
+            const files = readdirSync(this.cacheDir);
+            let totalRecords = 0;
+            
+            for (const file of files) {
+                if (!file.endsWith('.json')) continue;
+                
+                const filePath = join(this.cacheDir, file);
+                const records = this._readJson(filePath, []);
+                
+                for (const record of records) {
+                    totalRecords++;
+                    
+                    // Build ID -> Title map
+                    let name = record._title;
+                    if (!name && record.properties) {
+                        name = record.properties['Name'] || 
+                               record.properties['Title'] || 
+                               record.properties['Tên'];
+                        if (!name) {
+                            const lowerProps = Object.keys(record.properties).reduce((acc, key) => {
+                                acc[key.toLowerCase()] = record.properties[key];
+                                return acc;
+                            }, {});
+                            name = lowerProps['name'] || lowerProps['title'] || 
+                                   lowerProps['task name'] || lowerProps['sprint name'] ||
+                                   lowerProps['product name'] || lowerProps['project name'] ||
+                                   lowerProps['subject'] || lowerProps['item'] ||
+                                   lowerProps['content'] || lowerProps['summary'] || lowerProps['work'];
+                        }
+                    }
+                    
+                    if (record.id) {
+                        const id = record.id.toLowerCase();
+                        if (name) {
+                            if (typeof name !== 'string') name = String(name);
+                            lookupMap.set(id, name);
+                        } else {
+                            lookupMap.set(id, `[Untitled: ${record.id}]`);
+                        }
+                    }
+                    
+                    // Build Email -> Name map
+                    if (record.properties) {
+                        Object.values(record.properties).forEach(val => {
+                            if (Array.isArray(val)) {
+                                val.forEach(item => {
+                                    if (item && typeof item === 'object') {
+                                        if (item.email && item.name && 
+                                            item.name !== item.email && item.name !== 'Unknown User') {
+                                            userMap.set(item.email.toLowerCase().trim(), item.name);
+                                        }
+                                        if (item.object === 'user' && item.name) {
+                                            userMap.set(item.name.toLowerCase(), item.name);
+                                        }
+                                    }
+                                });
+                            } else if (val && typeof val === 'object' && val.email && val.name) {
+                                if (val.name !== val.email && val.name !== 'Unknown User') {
+                                    userMap.set(val.email.toLowerCase().trim(), val.name);
+                                }
+                            }
+                        });
+                    }
+                }
+            }
+            
+            this._lookupMapCache = lookupMap;
+            this._userMapCache = userMap;
+            this._lookupCacheBuiltAt = Date.now();
+            
+            const elapsed = Date.now() - startTime;
+            console.log(`[Database] ✅ Lookup cache built: ${lookupMap.size} IDs, ${userMap.size} users from ${totalRecords} records (${elapsed}ms)`);
+        } catch (error) {
+            console.error('[Database] Error building lookup cache:', error.message);
+            debugLog(`Error building lookup cache: ${error.message}`);
+        }
+    }
+
+    /**
+     * Get cached lookup maps (ID -> Title)
+     * Rebuilds if cache is empty or stale
+     * @returns {{ lookupMap: Map, userMap: Map }}
+     */
+    getLookupMaps() {
+        // Rebuild if cache is empty
+        if (!this._lookupMapCache || !this._userMapCache) {
+            this.buildLookupCache();
+        }
+        
+        return {
+            lookupMap: this._lookupMapCache || new Map(),
+            userMap: this._userMapCache || new Map()
+        };
+    }
+
+    /**
+     * Invalidate lookup cache (call after data sync)
+     */
+    invalidateLookupCache() {
+        this._lookupMapCache = null;
+        this._userMapCache = null;
+        this._lookupCacheBuiltAt = null;
+        console.log('[Database] 🔄 Lookup cache invalidated');
+    }
+
+    /**
+     * Update lookup cache incrementally with new records
+     * More efficient than full rebuild for small updates
+     * @param {Array} records - New/updated records
+     */
+    updateLookupCacheIncremental(records) {
+        if (!this._lookupMapCache) {
+            this.buildLookupCache();
+            return;
+        }
+        
+        let added = 0;
+        for (const record of records) {
+            let name = record._title;
+            if (!name && record.properties) {
+                name = record.properties['Name'] || record.properties['Title'] || record.properties['Tên'];
+            }
+            
+            if (record.id && name) {
+                const id = record.id.toLowerCase();
+                if (typeof name !== 'string') name = String(name);
+                this._lookupMapCache.set(id, name);
+                added++;
+            }
+            
+            // Update user map
+            if (record.properties) {
+                Object.values(record.properties).forEach(val => {
+                    if (Array.isArray(val)) {
+                        val.forEach(item => {
+                            if (item && typeof item === 'object' && item.email && item.name &&
+                                item.name !== item.email && item.name !== 'Unknown User') {
+                                this._userMapCache.set(item.email.toLowerCase().trim(), item.name);
+                            }
+                        });
+                    }
+                });
+            }
+        }
+        
+        if (added > 0) {
+            debugLog(`Lookup cache updated incrementally: +${added} entries`);
+        }
     }
 }
 

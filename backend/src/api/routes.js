@@ -227,75 +227,8 @@ export function setupRoutes(app, db, poller) {
             const allDatabases = await getCachedDatabases();
             const dbInfo = allDatabases.find(d => d.id === id);
 
-            // --- Build Lookup Maps ---
-            const allData = db.getAllData(); // Get data from ALL databases
-            const lookupMap = new Map();
-            const globalUserMap = new Map(); // Map Email -> Name
-
-            Object.values(allData).flat().forEach(record => {
-                // 1. Build Relation Map (ID -> Title)
-                // Use explicit _title field from fetcher if available (Reliable!)
-                let name = record._title;
-
-                // Fallback to heuristic lookup if _title missing (legacy data)
-                if (!name && record.properties) {
-                    name = record.properties['Name'] || record.properties['Title'] || record.properties['Tên'];
-                    if (!name) { // Last resort deep search
-                        const lowerProps = Object.keys(record.properties).reduce((acc, key) => { acc[key.toLowerCase()] = record.properties[key]; return acc; }, {});
-                        name = lowerProps['name'] ||
-                            lowerProps['title'] ||
-                            lowerProps['task name'] ||
-                            lowerProps['sprint name'] ||
-                            lowerProps['product name'] ||
-                            lowerProps['project name'] ||
-                            lowerProps['subject'] ||
-                            lowerProps['item'] ||
-                            lowerProps['content'] ||
-                            lowerProps['summary'] ||
-                            lowerProps['work'];
-                    }
-                }
-
-                if (record.id) {
-                    const id = record.id.toLowerCase();
-                    if (name) {
-                        if (typeof name !== 'string') name = String(name);
-                        lookupMap.set(id, name);
-                    } else {
-                        // Add placeholder so we at least know the record exists
-                        lookupMap.set(id, `[Untitled: ${record.id}]`);
-                    }
-                }
-
-                // 2. Build User Map (Email -> Name)
-                if (record.properties) {
-                    Object.values(record.properties).forEach(val => {
-                        // Check for array of users (e.g. Owner, Person)
-                        if (Array.isArray(val)) {
-                            val.forEach(item => {
-                                if (item && typeof item === 'object') {
-                                    if (item.email && item.name) {
-                                        if (item.name !== item.email && item.name !== 'Unknown User') {
-                                            globalUserMap.set(item.email.toLowerCase().trim(), item.name);
-                                        }
-                                    }
-                                    // Also harvest users from "Created by" / "Last edited by"
-                                    if (item.object === 'user' && item.name) {
-                                        globalUserMap.set(item.name.toLowerCase(), item.name);
-                                    }
-                                }
-                            });
-                        }
-                        // Check for single user object
-                        else if (val && typeof val === 'object' && val.email && val.name) {
-                            if (val.name !== val.email && val.name !== 'Unknown User') {
-                                globalUserMap.set(val.email.toLowerCase().trim(), val.name);
-                            }
-                        }
-                    });
-                }
-            });
-            // --------------------------------------
+            // --- Use in-memory lookup cache (FAST!) ---
+            const { lookupMap, userMap: globalUserMap } = db.getLookupMaps();
 
             const columns = new Set();
             cachedData.forEach(record => {
@@ -419,9 +352,33 @@ export function setupRoutes(app, db, poller) {
         try {
             console.log('[API] Triggering manual refresh...');
             await poller.triggerPoll();
+            // Rebuild lookup cache after refresh
+            db.buildLookupCache();
             res.json({ success: true, message: 'Data refreshed successfully' });
         } catch (error) {
             console.error('[API] Refresh failed:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Rebuild lookup cache (for debugging / maintenance)
+    app.post('/api/cache/rebuild', (req, res) => {
+        try {
+            const startTime = Date.now();
+            db.buildLookupCache();
+            const elapsed = Date.now() - startTime;
+            const { lookupMap, userMap } = db.getLookupMaps();
+            res.json({ 
+                success: true, 
+                message: 'Lookup cache rebuilt',
+                stats: {
+                    lookupEntries: lookupMap.size,
+                    userEntries: userMap.size,
+                    elapsedMs: elapsed
+                }
+            });
+        } catch (error) {
+            console.error('[API] Cache rebuild failed:', error);
             res.status(500).json({ error: error.message });
         }
     });

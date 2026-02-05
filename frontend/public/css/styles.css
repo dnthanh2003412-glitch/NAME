@@ -1826,6 +1826,13 @@ tr:hover td {
 
 /* Mobile */
 @media (max-width: 768px) {
+    html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-y: auto;
+    }
+    
     .mobile-menu-toggle {
         display: flex;
         align-items: center;
@@ -1835,6 +1842,11 @@ tr:hover td {
     .dashboard {
         display: block;
         position: relative;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+        overflow-x: hidden;
+        overflow-y: visible;
     }
 
     .sidebar {
@@ -1849,6 +1861,8 @@ tr:hover td {
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         box-shadow: var(--shadow-lg);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .sidebar.open {
@@ -1862,8 +1876,11 @@ tr:hover td {
     .main-content {
         width: 100%;
         min-height: 100vh;
+        height: auto;
         padding: var(--spacing-sm);
         padding-bottom: 100px;
+        overflow: visible;
+        -webkit-overflow-scrolling: touch;
     }
 
     .report-control-bar {

@@ -150,8 +150,8 @@ export class DataFetcher {
                                 const safetyBuffer = 24 * 60 * 60 * 1000;
                                 const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
                                 const filter = {
-                                    property: "Last edited time",
-                                    date: { after: safeTime }
+                                    timestamp: "last_edited_time",
+                                    last_edited_time: { after: safeTime }
                                 };
                                 pages = await this.client.getAllPages(dbId, filter);
                                 usedIncremental = true;
@@ -310,7 +310,7 @@ export class DataFetcher {
             case 'checkbox':
                 return property.checkbox;
 
-t            case 'url':
+            case 'url':
                 return property.url;
 
             case 'email':

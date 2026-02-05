@@ -27051,5 +27051,285 @@
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2feccb0e-ac88-81aa-bb6f-dff6d80469fc",
+    "created_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2fbccb0e-ac88-80c9-b0c9-dba60ea095b9"
+      ],
+      "Product (1)": [
+        "Comp 15"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Comp"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Comp 15"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Comp 15 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Comp 15 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2feccb0e-ac88-81b4-a1fa-d58f50209e5a",
+    "created_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2fbccb0e-ac88-80b8-a7e3-e4191b377216"
+      ],
+      "Product (1)": [
+        "Comp 14"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Comp"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Comp 14"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Comp 14 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Comp 14 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2feccb0e-ac88-81b7-9048-f4a1c9fd6d20",
+    "created_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2fbccb0e-ac88-8081-b27a-e59dcc0f1660"
+      ],
+      "Product (1)": [
+        "Comp 49"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Comp"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Comp 49"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Comp 49 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Comp 49 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2feccb0e-ac88-81f5-81e0-d7bb5cc788ef",
+    "created_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2fbccb0e-ac88-804b-9129-d7944770a432"
+      ],
+      "Product (1)": [
+        "Comp 06"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Comp"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "Need Fix"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Comp 06"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Comp 06 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Comp 06 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   }
 ]

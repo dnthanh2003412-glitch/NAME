@@ -568,7 +568,6 @@
         "2f4ccb0e-ac88-8105-b5a3-e64a4e6c4cf7",
         "2f4ccb0e-ac88-819e-8b4c-e936a05353f4",
         "2f4ccb0e-ac88-812e-a9d1-eda041706d5a",
-        "2f4ccb0e-ac88-8189-a3ae-f62083bb22ba",
         "2f5ccb0e-ac88-8044-9471-f6d1652eb47a",
         "2f5ccb0e-ac88-8004-b9b0-d808a195a3ba",
         "2f6ccb0e-ac88-8099-805d-d89a92b79c84",
@@ -577,8 +576,8 @@
         "2f7ccb0e-ac88-8186-9ed5-cac472c9e465",
         "2f7ccb0e-ac88-804a-b572-f29235ab5c86"
       ],
-      "Total tasks": 25,
-      "Completed tasks": 0.92,
+      "Total tasks": 24,
+      "Completed tasks": 0.9583333333333334,
       "Sprint status": "Future"
     },
     "_title": "BG Ep 5",
@@ -650,9 +649,12 @@
         "2fdccb0e-ac88-80c6-902f-da872f7dc68b",
         "2fdccb0e-ac88-81fb-8629-c4748fe71bed",
         "2fdccb0e-ac88-80bb-bc87-ced138b8cb38",
-        "2fdccb0e-ac88-8109-9e0e-d791a2c917c4"
+        "2fdccb0e-ac88-8109-9e0e-d791a2c917c4",
+        "2feccb0e-ac88-80a9-90d0-c60898bcbde6",
+        "2feccb0e-ac88-81a0-964c-d6941b6a1457",
+        "2feccb0e-ac88-80a1-85b4-fae2252a1194"
       ],
-      "Total tasks": 6,
+      "Total tasks": 9,
       "Completed tasks": 1,
       "Sprint status": "Future"
     },

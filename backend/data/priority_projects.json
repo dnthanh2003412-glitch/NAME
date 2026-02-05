@@ -34,7 +34,39 @@
     {
       "name": "[DeeDee_2025_GUI] KNIGHTS OF GUINEVERE TEST",
       "id": "2c3ccb0e-ac88-801a-bc84-dbf6a1d4acc3",
-      "code": "GUI"
+      "code": "GUI",
+      "databases": [
+        {
+          "id": "2c3ccb0e-ac88-81f5-8548-fe0b0c2423a7",
+          "name": "[KNIGHTS OF GUINEVERE] Product ",
+          "type": "products"
+        },
+        {
+          "id": "2c3ccb0e-ac88-8175-995b-f4fd1d065d51",
+          "name": "[KNIGHTS OF GUINEVERE] Tasks ",
+          "type": "tasks"
+        },
+        {
+          "id": "2c3ccb0e-ac88-8105-ad23-f099fe486bf2",
+          "name": "[KNIGHTS OF GUINEVERE] Issuelog ",
+          "type": "issues"
+        },
+        {
+          "id": "2c3ccb0e-ac88-81d1-a5cf-ddf9962b6f19",
+          "name": "KNIGHTS OF GUINEVERE Sprints",
+          "type": "sprints"
+        },
+        {
+          "id": "2cbccb0e-ac88-8018-b63f-d5d12f6255f8",
+          "name": "[Knight] Báo cáo Review (Không xóa dữ liệu)",
+          "type": "reports"
+        },
+        {
+          "id": "2cbccb0e-ac88-8017-83d0-d4dc99715452",
+          "name": "[Knight] Báo cáo Realtime (Chỉ lấy dữ liệu mới nhất)",
+          "type": "reports"
+        }
+      ]
     },
     {
       "name": "[DeeDee_2026_LEG] NINJAGO LEGO ZOOM",

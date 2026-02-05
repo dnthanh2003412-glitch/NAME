@@ -4038,7 +4038,7 @@
       "Task main": "1/1",
       "Task QC": "1/1",
       "Run n8n": false,
-      "TP giả định": 0,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Sprint ": [
         "Sprint Key"
@@ -4071,15 +4071,12 @@
       ],
       "Done date": null,
       "Product Point": [
-        0
+        5
       ],
       "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
+        "E"
       ],
-      "TP giả định 2": 0,
+      "TP giả định 2": 2,
       "Assignee": [
         {
           "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
@@ -4087,7 +4084,7 @@
           "email": "kiendt@sangygroup.com"
         }
       ],
-      "TP thực tế": 0,
+      "TP thực tế": 4.35,
       "UTNL": [],
       "Point Status": [
         "Unconfirmed"
@@ -4570,10 +4567,10 @@
       "Product ": [
         "2f4ccb0e-ac88-8032-90b3-df985f42c6dd"
       ],
-      "Task main": "1/2",
-      "Task QC": "2/2",
+      "Task main": "1/3",
+      "Task QC": "3/3",
       "Run n8n": false,
-      "TP giả định": 10.77,
+      "TP giả định": 9.66,
       "Trọng số TP": 1,
       "Sprint ": [
         "Sprint Key"
@@ -4616,12 +4613,12 @@
           "email": "linhnt@sangygroup.com"
         }
       ],
-      "TP thực tế": 10.77,
+      "TP thực tế": 9.66,
       "UTNL": [],
       "Point Status": [
         "Confirmed"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Tasks": "FIX_CLIENT CO KEY 2 Ver 1",
       "Sprint (1)": [
@@ -4870,8 +4867,8 @@
       "Product ": [
         "2f4ccb0e-ac88-8032-90b3-df985f42c6dd"
       ],
-      "Task main": "1/2",
-      "Task QC": "2/2",
+      "Task main": "1/3",
+      "Task QC": "3/3",
       "Run n8n": false,
       "TP giả định": 0.84,
       "Trọng số TP": 0.15,
@@ -4916,12 +4913,12 @@
           "email": "hoanghh@sangygroup.com"
         }
       ],
-      "TP thực tế": 1.62,
+      "TP thực tế": 1.45,
       "UTNL": [],
       "Point Status": [
         "Confirmed"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Tasks": "FIX_CLIENT CO KEY 2 ver1",
       "Sprint (1)": [
@@ -5037,7 +5034,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Need Fix Client"
       ],
       "Required by": [
         "Internal"
@@ -5293,7 +5290,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Need Fix Client"
       ],
       "Required by": [
         "Internal"
@@ -5501,7 +5498,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Need Fix Client"
       ],
       "Required by": [
         "Internal"
@@ -5571,7 +5568,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Need Fix Client"
       ],
       "Required by": [
         "Internal"
@@ -5896,6 +5893,74 @@
       ]
     },
     "_title": "Brief 2 ver1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2feccb0e-ac88-81a0-be84-e68e38541798",
+    "created_time": "2026-02-05T06:39:00.000Z",
+    "last_edited_time": "2026-02-05T06:39:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "FIX_CLIENT CO KEY 2"
+      ],
+      "Product ": [
+        "2f4ccb0e-ac88-8032-90b3-df985f42c6dd"
+      ],
+      "Task main": "1/3",
+      "Task QC": "3/3",
+      "Run n8n": false,
+      "TP giả định": 0.84,
+      "Trọng số TP": 0.15,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Required by": [
+        "External"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 0.84,
+      "Assignee": [
+        {
+          "id": "2b47d5ac-bd39-4aad-8e95-23ea4ab9b925",
+          "name": "Hoàng Hà",
+          "email": "hoanghh@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 1.45,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Tasks": "FIX_CLIENT CO KEY 2 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "FIX_CLIENT CO KEY 2 ver1",
     "database_name": "[Harry] Tasks",
     "project_name": "[Harry] Tasks",
     "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"

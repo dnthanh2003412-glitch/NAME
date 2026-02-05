@@ -71,11 +71,11 @@ export class DataFetcher {
         // Sort databases by priority
         const sortedDatabaseIds = this.sortByPriority(databaseIds);
         const prioritySet = new Set(this.priorityDatabases);
-        
+
         // Split into priority and normal
         const priorityDbs = sortedDatabaseIds.filter(id => prioritySet.has(id));
         const normalDbs = sortedDatabaseIds.filter(id => !prioritySet.has(id));
-        
+
         console.log(`[Fetcher] Starting to fetch: ${priorityDbs.length} priority DBs first, then ${normalDbs.length} others...`);
 
         const results = {};
@@ -87,14 +87,14 @@ export class DataFetcher {
         // === PHASE 1: Fetch PRIORITY databases first ===
         if (priorityDbs.length > 0) {
             console.log(`[Fetcher] 🌟 PHASE 1: Loading ${priorityDbs.length} priority databases...`);
-            
+
             for (const dbId of priorityDbs) {
                 try {
                     // Get metadata
                     const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                     dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
                     await sleep(150);
-                    
+
                     // Fetch data
                     const pages = await this.client.getAllPages(dbId);
                     const databaseName = dbMetadata[dbId];
@@ -109,20 +109,20 @@ export class DataFetcher {
 
                     results[dbId] = transformed;
                     console.log(`[Fetcher] 🌟 Priority: ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
-                    
+
                     // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
                         this.db.upsertData(dbId, transformed);
                         onBatchComplete(dbId, transformed.length);
                     }
-                    
+
                     await sleep(250);
                 } catch (error) {
                     console.error(`[Fetcher] ❌ Priority DB ${dbId} failed:`, error.message);
                     results[dbId] = [];
                 }
             }
-            
+
             const priorityRecords = Object.values(results).reduce((sum, arr) => sum + arr.length, 0);
             console.log(`[Fetcher] ✅ PHASE 1 COMPLETE: ${priorityDbs.length} priority DBs, ${priorityRecords} records READY`);
         }
@@ -130,7 +130,7 @@ export class DataFetcher {
         // === PHASE 2: Fetch NORMAL databases in background ===
         if (normalDbs.length > 0) {
             console.log(`[Fetcher] 📦 PHASE 2: Loading ${normalDbs.length} remaining databases in background...`);
-            
+
             let normalCount = 0;
             for (const dbId of normalDbs) {
                 try {
@@ -138,11 +138,11 @@ export class DataFetcher {
                     const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                     dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
                     await sleep(150);
-                    
+
                     // Try incremental sync first, fallback to full sync
                     let pages = [];
                     let usedIncremental = false;
-                    
+
                     if (this.db) {
                         const lastSync = this.db.getLastSyncTime(dbId);
                         if (lastSync) {
@@ -165,7 +165,7 @@ export class DataFetcher {
                     } else {
                         pages = await this.client.getAllPages(dbId);
                     }
-                    
+
                     const databaseName = dbMetadata[dbId];
                     const projectName = this.extractProjectName(databaseName);
 
@@ -178,25 +178,25 @@ export class DataFetcher {
 
                     results[dbId] = transformed;
                     normalCount++;
-                    
+
                     // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
                         this.db.upsertData(dbId, transformed);
                         onBatchComplete(dbId, transformed.length);
                     }
-                    
+
                     // Log progress every 10 databases
                     if (normalCount % 10 === 0) {
                         console.log(`[Fetcher] 📦 Progress: ${normalCount}/${normalDbs.length} normal DBs loaded`);
                     }
-                    
+
                     await sleep(300);
                 } catch (error) {
                     console.error(`[Fetcher] ❌ Normal DB ${dbId} failed:`, error.message);
                     results[dbId] = [];
                 }
             }
-            
+
             console.log(`[Fetcher] ✅ PHASE 2 COMPLETE: ${normalCount} normal DBs loaded`);
         }
 
@@ -310,7 +310,7 @@ export class DataFetcher {
             case 'checkbox':
                 return property.checkbox;
 
-            case 'url':
+t            case 'url':
                 return property.url;
 
             case 'email':
@@ -368,10 +368,10 @@ export class DataFetcher {
             case 'array':
                 // Process array items to extract meaningful values
                 if (!rollup.array || rollup.array.length === 0) return null;
-                
+
                 return rollup.array.map(item => {
                     if (!item) return null;
-                    
+
                     // Title type (from relation title rollup)
                     if (item.type === 'title' && item.title) {
                         return item.title.map(t => t.plain_text || '').join('');
@@ -399,7 +399,7 @@ export class DataFetcher {
                     if (item.type === 'formula' && item.formula) {
                         return item.formula.string ?? item.formula.number ?? item.formula.boolean ?? null;
                     }
-                    
+
                     return item;
                 }).filter(v => v !== null);
             default:

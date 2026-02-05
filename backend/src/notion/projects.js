@@ -1,6 +1,14 @@
 import { Client } from '@notionhq/client';
 import { getDbInstance } from '../database/db.js';
 
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// Helper to get __dirname in ESM
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Reuse singleton database manager
 const db = getDbInstance();
 
@@ -32,6 +40,33 @@ export class ProjectsService {
         }
     }
 
+
+
+    /**
+     * Load whitelist project IDs from priority_projects.json
+     */
+    loadWhitelistIds() {
+        const ids = new Set();
+        try {
+            const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+            console.log('[Projects] Loading whitelist from:', priorityPath);
+            if (fs.existsSync(priorityPath)) {
+                const data = JSON.parse(fs.readFileSync(priorityPath, 'utf8'));
+                if (data.projects) {
+                    for (const proj of data.projects) {
+                        ids.add(proj.id);
+                    }
+                    console.log('[Projects] Loaded', ids.size, 'whitelist IDs');
+                }
+            } else {
+                console.warn('[Projects] Whitelist file not found at:', priorityPath);
+            }
+        } catch (e) {
+            console.warn('[Projects] Could not load whitelist IDs:', e.message);
+        }
+        return ids;
+    }
+
     /**
      * Load cached tree from file (for instant startup)
      */
@@ -39,7 +74,7 @@ export class ProjectsService {
         try {
             const savedTree = db.getConfig('projects_tree_cache');
             const savedTime = db.getConfig('projects_tree_cache_time');
-            
+
             if (savedTree && savedTime) {
                 this.cachedTree = savedTree;
                 this.lastCacheTime = savedTime;
@@ -144,9 +179,9 @@ export class ProjectsService {
         const PRIORITY_KEYWORDS = [
             'Disk Knight', 'SHAVUOT', 'NINJAGO', 'FC MOBILE',
             'HARRY', 'MIRACULOUS', 'XANHSM',
-            'KNIGHTS', 'GENEVIEVE', 'Sunny Side',
+            'KNIGHTS', 'GENEVIEVE', 'Sunny Side', 'GUINEVERE', 'GUI',
             'Đại Hiệp', 'UPZI', 'LEGO', 'Victory',
-            'Immortals', 'Mami', 'MAMI', 'GEN', 'HAR', 'LEG'
+            'Immortals', 'Mami', 'MAMI', 'GEN', 'HAR', 'LEG', 'SUN', 'IMM', 'FCM', 'MIR'
         ];
 
         const targetProjects = projects.filter(p => {
@@ -164,42 +199,61 @@ export class ProjectsService {
         // 3. Scan & Map
         const newResults = [];
 
+        // Load Whitelist Config for Hardcoded DBs
+        const whitelistConfig = new Map();
+        try {
+            const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+            if (fs.existsSync(priorityPath)) {
+                const data = JSON.parse(fs.readFileSync(priorityPath, 'utf8'));
+                data.projects?.forEach(p => {
+                    if (p.id && p.databases) whitelistConfig.set(p.id, p.databases);
+                });
+            }
+        } catch (e) { console.warn('[Projects] Failed to load whitelist config for mapping:', e.message); }
+
         for (const project of targetProjects) {
             const projectInfo = this.extractProjectInfo(project);
             let matchedDatabases = [];
 
-            // OPTIMIZATION:
-            // Phase 1 (Priority) -> Use Smart Mapping (FAST)
-            // Phase 2 (Background) -> Use Structure Scan (ACCURATE)
+            // STRATEGY 0: Hardcoded Whitelist (Fastest & Most Accurate)
+            if (whitelistConfig.has(project.id)) {
+                matchedDatabases = whitelistConfig.get(project.id);
+                console.log(`[Projects] Using ${matchedDatabases.length} hardcoded DBs for ${projectInfo.name}`);
+            } else {
+                // OPTIMIZATION:
+                // Phase 1 (Priority) -> Use Smart Mapping (FAST)
+                // Phase 2 (Background) -> Use Structure Scan (ACCURATE)
 
-            // HYBRID STRATEGY: Combine Speed (Smart Mapping) and Accuracy (Structure Scan)
+                // HYBRID STRATEGY: Combine Speed (Smart Mapping) and Accuracy (Structure Scan)
 
-            // 1. Try Smart Mapping first (Fast - no API calls)
-            matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
+                // 1. Try Smart Mapping first (Fast - no API calls)
+                matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
 
-            // 2. If Smart Mapping yields nothing, OR we are in full scan mode (Phase 2), perform Page Scan
-            // This ensures Priority projects (Phase 1) that fail name-matching still get scanned.
-            if (matchedDatabases.length === 0 || !priorityOnly) {
-                const pageDbIds = await this.scanPageForDatabases(project.id);
+                // 2. Perform Page Scan (Structure Scan)
+                // ALWAYS scan for whitelist/target projects to ensure we catch DBs in sub-pages that Smart Mapping might miss.
+                // (Previously we skipped this if Smart Mapping found something in Phase 1, causing missing DBs)
+                if (true) {
+                    const pageDbIds = await this.scanPageForDatabases(project.id);
 
-                if (pageDbIds.size > 0) {
-                    const scannedDbs = Array.from(pageDbIds)
-                        .map(id => {
-                            const db = dbMap.get(id);
-                            if (db) return { id: db.id, name: db.name, type: this.determineDatabaseType(db.name) };
-                            return null;
-                        })
-                        .filter(Boolean);
+                    if (pageDbIds.size > 0) {
+                        const scannedDbs = Array.from(pageDbIds)
+                            .map(id => {
+                                const db = dbMap.get(id);
+                                if (db) return { id: db.id, name: db.name, type: this.determineDatabaseType(db.name) };
+                                return null;
+                            })
+                            .filter(Boolean);
 
-                    // Merge scanned DBs, avoiding duplicates
-                    const existingIds = new Set(matchedDatabases.map(d => d.id));
-                    scannedDbs.forEach(d => {
-                        if (!existingIds.has(d.id)) matchedDatabases.push(d);
-                    });
+                        // Merge scanned DBs, avoiding duplicates
+                        const existingIds = new Set(matchedDatabases.map(d => d.id));
+                        scannedDbs.forEach(d => {
+                            if (!existingIds.has(d.id)) matchedDatabases.push(d);
+                        });
+                    }
+
+                    // Rate limiting for scan
+                    if (!priorityOnly) await this.delay(50);
                 }
-
-                // Rate limiting for scan
-                if (!priorityOnly) await this.delay(50);
             }
 
             newResults.push({
@@ -266,7 +320,7 @@ export class ProjectsService {
                     // 3. Containers (Toggle, Column, Synced Block) -> Recurse!
                     else if (block.has_children) {
                         // Only specific types usually contain DBs
-                        if (['toggle', 'column_list', 'column', 'synced_block'].includes(block.type)) {
+                        if (['toggle', 'column_list', 'column', 'synced_block', 'child_page'].includes(block.type)) {
                             const childIds = await this.scanPageForDatabases(block.id, depth + 1);
                             childIds.forEach(id => foundIds.add(id));
                         }
@@ -292,13 +346,26 @@ export class ProjectsService {
             return tree; // Return the full tree if no filter or 'all'
         }
 
+        // Load whitelist project IDs to always include them
+        const whitelistIds = this.loadWhitelistIds();
+
         return tree.filter(p => {
+            // Always include projects in whitelist, regardless of status
+            if (whitelistIds.has(p.id)) {
+                return true;
+            }
+
             if (statusFilter === 'active') {
                 return p.status !== 'Done';
             }
             return p.status === statusFilter;
         });
     }
+
+    /**
+     * Load whitelist project IDs from priority_projects.json
+     */
+
 
     /**
      * Get ALL visible databases utilizing Search API

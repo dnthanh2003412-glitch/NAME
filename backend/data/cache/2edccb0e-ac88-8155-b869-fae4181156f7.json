@@ -12394,9 +12394,9 @@
   {
     "id": "2fbccb0e-ac88-804b-9129-d7944770a432",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T08:31:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
     "properties": {
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Episode": null,
       "UTNL": null,
@@ -12410,14 +12410,16 @@
           "email": "hoatx@sangygroup.com"
         }
       ],
-      "Tasks": [],
+      "Tasks": [
+        "2feccb0e-ac88-81f5-81e0-d7bb5cc788ef"
+      ],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "DO": null,
       "Resource": null,
       "Combo": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Min": null,
       "Total Main": 0,
       "Point Status": "Unconfirmed",
@@ -12428,7 +12430,7 @@
       "Due Date": null,
       "Ghép BG": "Not started",
       "Product type": "Comp",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "Comp 06"
     },
     "_title": "Comp 06",
@@ -12939,9 +12941,9 @@
   {
     "id": "2fbccb0e-ac88-8081-b27a-e59dcc0f1660",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-02T08:03:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
     "properties": {
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Episode": null,
       "UTNL": null,
@@ -12955,14 +12957,16 @@
           "email": "hoatx@sangygroup.com"
         }
       ],
-      "Tasks": [],
+      "Tasks": [
+        "2feccb0e-ac88-81b7-9048-f4a1c9fd6d20"
+      ],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Not started",
+      "Status": "Need Fix",
       "DO": null,
       "Resource": null,
       "Combo": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Min": null,
       "Total Main": 0,
       "Point Status": "Unconfirmed",
@@ -12973,7 +12977,7 @@
       "Due Date": null,
       "Ghép BG": "Not started",
       "Product type": "Comp",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "Comp 49"
     },
     "_title": "Comp 49",
@@ -13395,9 +13399,9 @@
   {
     "id": "2fbccb0e-ac88-80b8-a7e3-e4191b377216",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:44:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
     "properties": {
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Episode": null,
       "UTNL": null,
@@ -13411,14 +13415,16 @@
           "email": "hoatx@sangygroup.com"
         }
       ],
-      "Tasks": [],
+      "Tasks": [
+        "2feccb0e-ac88-81b4-a1fa-d58f50209e5a"
+      ],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "DO": null,
       "Resource": null,
       "Combo": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Min": null,
       "Total Main": 0,
       "Point Status": "Unconfirmed",
@@ -13429,7 +13435,7 @@
       "Due Date": null,
       "Ghép BG": "Not started",
       "Product type": "Comp",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "Comp 14"
     },
     "_title": "Comp 14",
@@ -13530,9 +13536,9 @@
   {
     "id": "2fbccb0e-ac88-80c9-b0c9-dba60ea095b9",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T03:44:00.000Z",
+    "last_edited_time": "2026-02-05T07:38:00.000Z",
     "properties": {
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Episode": null,
       "UTNL": null,
@@ -13546,14 +13552,16 @@
           "email": "hoatx@sangygroup.com"
         }
       ],
-      "Tasks": [],
+      "Tasks": [
+        "2feccb0e-ac88-81aa-bb6f-dff6d80469fc"
+      ],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "DO": null,
       "Resource": null,
       "Combo": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Min": null,
       "Total Main": 0,
       "Point Status": "Unconfirmed",
@@ -13564,7 +13572,7 @@
       "Due Date": null,
       "Ghép BG": "Not started",
       "Product type": "Comp",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "Comp 15"
     },
     "_title": "Comp 15",

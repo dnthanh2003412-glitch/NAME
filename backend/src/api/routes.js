@@ -283,7 +283,7 @@ export function setupRoutes(app, db, poller) {
 
     // ============ PRODUCTIVITY REPORT ROUTES ============
     app.post('/api/reports/productivity', async (req, res) => {
-        const { startDate, endDate, databaseIds } = req.body; // YYYY-MM-DD format
+        const { startDate, endDate, databaseIds, standardDays } = req.body; // YYYY-MM-DD format
         
         if (!startDate || !endDate) {
             return res.status(400).json({ error: 'startDate and endDate are required' });
@@ -291,6 +291,12 @@ export function setupRoutes(app, db, poller) {
 
         try {
             const prodService = new ProductivityService(db);
+            
+            // If standardDays is provided, save it first
+            if (standardDays !== undefined && standardDays !== null) {
+                prodService.updateStats(startDate, endDate, { standard_days: standardDays });
+            }
+            
             // Ưu tiên dùng databaseIds từ request, fallback về config
             const selectedDatabases = databaseIds && databaseIds.length > 0
                 ? databaseIds

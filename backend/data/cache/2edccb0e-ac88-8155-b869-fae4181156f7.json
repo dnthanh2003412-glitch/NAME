@@ -12077,7 +12077,7 @@
   {
     "id": "2fbccb0e-ac88-8034-b69e-ca64e937175f",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-05T04:40:00.000Z",
+    "last_edited_time": "2026-02-05T05:01:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -12096,7 +12096,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,
@@ -13305,7 +13305,7 @@
   {
     "id": "2fbccb0e-ac88-80a6-8fb8-c59a6ad6a8c5",
     "created_time": "2026-02-02T07:53:00.000Z",
-    "last_edited_time": "2026-02-05T04:40:00.000Z",
+    "last_edited_time": "2026-02-05T05:01:00.000Z",
     "properties": {
       "Task count ": 0,
       "Total Fixed": 0,
@@ -13324,7 +13324,7 @@
       "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "DO": null,
       "Resource": null,
       "Combo": null,

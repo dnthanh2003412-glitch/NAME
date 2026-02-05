@@ -1834,13 +1834,17 @@ class DashboardApp {
             }
 
             try {
+                // Get standard days from input
+                const standardDays = parseFloat(stdDaysInput.value) || 23;
+                
                 const response = await fetch(`${API_BASE}/api/reports/productivity`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ 
                         startDate: startDate, 
                         endDate: endDate, 
-                        databaseIds: taskDbIds 
+                        databaseIds: taskDbIds,
+                        standardDays: standardDays
                     })
                 });
                 const result = await response.json();

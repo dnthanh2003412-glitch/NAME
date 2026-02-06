@@ -16483,7 +16483,7 @@
   {
     "id": "2d2ccb0e-ac88-809a-9cdf-fa673fc45d0d",
     "created_time": "2025-12-23T08:48:00.000Z",
-    "last_edited_time": "2026-02-04T11:24:00.000Z",
+    "last_edited_time": "2026-02-05T10:15:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 1,
@@ -16676,7 +16676,7 @@
   {
     "id": "2d2ccb0e-ac88-80ac-9d57-cc8d758b113c",
     "created_time": "2025-12-23T09:13:00.000Z",
-    "last_edited_time": "2026-02-05T08:21:00.000Z",
+    "last_edited_time": "2026-02-05T10:16:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 1,
@@ -16796,7 +16796,7 @@
       "Chỉnh Line": "Not started",
       "Min": 1,
       "Product point": 14,
-      "Check task done": "Not started",
+      "Check task done": "In progress",
       "Due Date": null,
       "Combo": null,
       "Product type": "Background",
@@ -17000,7 +17000,7 @@
   {
     "id": "2d2ccb0e-ac88-80c8-acb1-eb4d34b1b17e",
     "created_time": "2025-12-23T08:54:00.000Z",
-    "last_edited_time": "2026-02-04T11:00:00.000Z",
+    "last_edited_time": "2026-02-05T08:33:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 2,
@@ -17018,7 +17018,7 @@
       "Loại cảnh": "E",
       "UTNL": null,
       "Max": 0.75,
-      "Status": "Completed",
+      "Status": "Pending Review",
       "Tasks ": [
         "2fdccb0e-ac88-8027-9f52-faf9610950d1",
         "2fdccb0e-ac88-81f4-8e18-d7b5b562afa9"
@@ -17027,11 +17027,11 @@
       "Task Create": null,
       "Task count + 1": 3,
       "Total Main": 1,
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": "Not started,Done QC",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Background",
@@ -18346,10 +18346,10 @@
   {
     "id": "2d4ccb0e-ac88-8025-be38-f319eb8072a5",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T05:16:00.000Z",
+    "last_edited_time": "2026-02-05T09:21:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 5,
+      "Task count ": 6,
       "Total Fixed": 2,
       "Resource": null,
       "DO": null,
@@ -18364,27 +18364,28 @@
       "Loại cảnh": "F",
       "UTNL": null,
       "Max": 0.25,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "Tasks ": [
         "2fdccb0e-ac88-800a-8eef-d28a9ae6e75b",
         "2fdccb0e-ac88-81f0-b881-eb75080b08cb",
         "2fdccb0e-ac88-8038-bc1d-df4ae1d579ab",
         "2fdccb0e-ac88-812a-a561-d1adda40802e",
-        "2feccb0e-ac88-80c1-8068-f2a0969b6c7d"
+        "2feccb0e-ac88-80c1-8068-f2a0969b6c7d",
+        "2feccb0e-ac88-81b0-a33c-e940d5c1e5b1"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 6,
+      "Task count + 1": 7,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 0,
       "Product point": 1,
-      "Check task done": "Done,Done QC,Done,Done QC,Done",
+      "Check task done": "Done,Done QC,Done,Done QC,Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 2,
+      "Total QC": 3,
       "Product": "IBW 230",
       "Description": ""
     },
@@ -18921,10 +18922,10 @@
   {
     "id": "2d4ccb0e-ac88-803e-97f1-e64af250d919",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T05:16:00.000Z",
+    "last_edited_time": "2026-02-05T10:03:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -18939,17 +18940,19 @@
       "Loại cảnh": "D",
       "UTNL": 2,
       "Max": 2,
-      "Status": "Ready to start",
-      "Tasks ": [],
+      "Status": "In progress",
+      "Tasks ": [
+        "2feccb0e-ac88-8001-a43b-eb3cbee7bf99"
+      ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Total Main": 0,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "Not started",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
@@ -19287,10 +19290,10 @@
   {
     "id": "2d4ccb0e-ac88-804c-b513-eb68d09aa47d",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T03:04:00.000Z",
+    "last_edited_time": "2026-02-05T09:43:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 3,
+      "Task count ": 4,
       "Total Fixed": 1,
       "Resource": null,
       "DO": null,
@@ -19305,25 +19308,26 @@
       "Loại cảnh": "D",
       "UTNL": null,
       "Max": 2,
-      "Status": "Pending Review",
+      "Status": "Need QC Fix",
       "Tasks ": [
         "2fdccb0e-ac88-80c0-bfbe-c6f962b4d4d9",
         "2fdccb0e-ac88-81e1-9c9a-c0f9492f465b",
-        "2feccb0e-ac88-80e5-9837-f8d3376a909d"
+        "2feccb0e-ac88-80e5-9837-f8d3376a909d",
+        "2feccb0e-ac88-8193-ab74-d895656acc51"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 4,
+      "Task count + 1": 5,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 1,
       "Product point": 14,
-      "Check task done": "In progress,Done QC,In progress",
+      "Check task done": "In progress,Done QC,In progress,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "IBW 250",
       "Description": ""
     },
@@ -19807,10 +19811,10 @@
   {
     "id": "2d4ccb0e-ac88-8066-9c7e-d272a348e659",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T07:25:00.000Z",
+    "last_edited_time": "2026-02-05T08:56:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -19825,21 +19829,24 @@
       "Loại cảnh": "D",
       "UTNL": 1,
       "Max": 2,
-      "Status": "Ready to start",
-      "Tasks ": [],
+      "Status": "Need Fix",
+      "Tasks ": [
+        "2feccb0e-ac88-80d7-9303-ccdf90681d71",
+        "2feccb0e-ac88-8112-b0b4-ca8358c50690"
+      ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 3,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "IBW 010",
       "Description": ""
     },
@@ -21068,11 +21075,11 @@
   {
     "id": "2d4ccb0e-ac88-809d-ba17-f56375dc5403",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T07:41:00.000Z",
+    "last_edited_time": "2026-02-05T10:01:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
-      "Total Fixed": 0,
+      "Task count ": 3,
+      "Total Fixed": 1,
       "Resource": null,
       "DO": null,
       "Required by": "Internal",
@@ -21088,21 +21095,23 @@
       "Max": 2,
       "Status": "Pending Review",
       "Tasks ": [
-        "2feccb0e-ac88-80a1-85b4-fae2252a1194"
+        "2feccb0e-ac88-80a1-85b4-fae2252a1194",
+        "2feccb0e-ac88-8119-8db3-f4fa9cb197d6",
+        "2feccb0e-ac88-800b-8c7d-dbfad3887177"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 4,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 1,
       "Product point": 14,
-      "Check task done": "Done",
+      "Check task done": "Done,Done QC,Done",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "IBW 390",
       "Description": ""
     },
@@ -21325,10 +21334,10 @@
   {
     "id": "2d4ccb0e-ac88-80a8-b3ae-ccb0cc584013",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T07:46:00.000Z",
+    "last_edited_time": "2026-02-05T09:01:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -21343,23 +21352,24 @@
       "Loại cảnh": "C",
       "UTNL": 2.5,
       "Max": 3.5,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "Tasks ": [
-        "2fdccb0e-ac88-80e2-8a72-fb351e6939bb"
+        "2fdccb0e-ac88-80e2-8a72-fb351e6939bb",
+        "2feccb0e-ac88-81fb-96dd-dbe8ec87f663"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 2.25,
       "Product point": 25,
-      "Check task done": "Done",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "IBW 090",
       "Description": ""
     },
@@ -21809,10 +21819,10 @@
   {
     "id": "2d4ccb0e-ac88-80c5-af21-df226ecf10d5",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T04:55:00.000Z",
+    "last_edited_time": "2026-02-05T09:04:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -21827,23 +21837,24 @@
       "Loại cảnh": "C",
       "UTNL": 1.25,
       "Max": 3.5,
-      "Status": "In progress",
+      "Status": "Need Fix",
       "Tasks ": [
-        "2feccb0e-ac88-8000-a77b-fda66ff1580d"
+        "2feccb0e-ac88-8000-a77b-fda66ff1580d",
+        "2feccb0e-ac88-816e-9a98-d9da93ecde50"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 2.25,
       "Product point": 25,
-      "Check task done": "In progress",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "IBW 080",
       "Description": ""
     },
@@ -22238,10 +22249,10 @@
   {
     "id": "2d4ccb0e-ac88-80de-b94a-ea92d5fcc34c",
     "created_time": "2025-12-25T08:45:00.000Z",
-    "last_edited_time": "2026-02-05T04:34:00.000Z",
+    "last_edited_time": "2026-02-05T09:44:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -22256,23 +22267,24 @@
       "Loại cảnh": "E",
       "UTNL": null,
       "Max": 0.75,
-      "Status": "Pending Review",
+      "Status": "Need Fix",
       "Tasks ": [
-        "2fdccb0e-ac88-8082-9843-f19384dd4864"
+        "2fdccb0e-ac88-8082-9843-f19384dd4864",
+        "2feccb0e-ac88-81c2-bd62-f45ea8aaa8a2"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": "Done",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "IBW 340",
       "Description": ""
     },
@@ -22980,7 +22992,7 @@
     "last_edited_time": "2026-02-03T04:04:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -22996,16 +23008,18 @@
       "UTNL": null,
       "Max": 3.5,
       "Status": "Not started",
-      "Tasks ": [],
+      "Tasks ": [
+        "2feccb0e-ac88-8001-ade9-f2b22b68e647"
+      ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": 2.25,
       "Product point": 25,
-      "Check task done": null,
+      "Check task done": "In progress",
       "Due Date": null,
       "Combo": null,
       "Product type": "Inbetween",
@@ -29100,14 +29114,14 @@
   {
     "id": "2f8ccb0e-ac88-8008-8fe4-fb3fe883b6d7",
     "created_time": "2026-01-30T05:08:00.000Z",
-    "last_edited_time": "2026-02-05T04:13:00.000Z",
+    "last_edited_time": "2026-02-05T09:08:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -29147,19 +29161,19 @@
   {
     "id": "2f8ccb0e-ac88-800f-b737-e095904536f3",
     "created_time": "2026-01-30T05:00:00.000Z",
-    "last_edited_time": "2026-01-30T05:10:00.000Z",
+    "last_edited_time": "2026-02-05T09:10:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
-          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
-          "name": "Thanh Nguyễn ",
-          "email": "thanhnt@sangygroup.com"
+          "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
+          "name": "Nhi Quach",
+          "email": "nhiqty@sangygroup.com"
         }
       ],
       "Loại cảnh": null,
@@ -29191,19 +29205,19 @@
   {
     "id": "2f8ccb0e-ac88-801f-9f35-e5411af0edf3",
     "created_time": "2026-01-30T05:09:00.000Z",
-    "last_edited_time": "2026-01-30T05:10:00.000Z",
+    "last_edited_time": "2026-02-05T09:11:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
-          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
-          "name": "Thanh Nguyễn ",
-          "email": "thanhnt@sangygroup.com"
+          "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
+          "name": "Nhi Quach",
+          "email": "nhiqty@sangygroup.com"
         }
       ],
       "Loại cảnh": null,
@@ -29235,19 +29249,19 @@
   {
     "id": "2f8ccb0e-ac88-8041-8ef8-f9e16ed15628",
     "created_time": "2026-01-30T05:04:00.000Z",
-    "last_edited_time": "2026-02-02T06:55:00.000Z",
+    "last_edited_time": "2026-02-05T09:11:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
-          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
-          "name": "Thanh Nguyễn ",
-          "email": "thanhnt@sangygroup.com"
+          "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
+          "name": "Nhi Quach",
+          "email": "nhiqty@sangygroup.com"
         }
       ],
       "Loại cảnh": null,
@@ -29279,19 +29293,19 @@
   {
     "id": "2f8ccb0e-ac88-8046-845f-f07c32a47514",
     "created_time": "2026-01-30T05:01:00.000Z",
-    "last_edited_time": "2026-01-30T05:10:00.000Z",
+    "last_edited_time": "2026-02-05T09:11:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
-          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
-          "name": "Thanh Nguyễn ",
-          "email": "thanhnt@sangygroup.com"
+          "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
+          "name": "Nhi Quach",
+          "email": "nhiqty@sangygroup.com"
         }
       ],
       "Loại cảnh": null,
@@ -29323,14 +29337,14 @@
   {
     "id": "2f8ccb0e-ac88-804e-a759-cb0fb53085b6",
     "created_time": "2026-01-30T05:03:00.000Z",
-    "last_edited_time": "2026-02-05T03:22:00.000Z",
+    "last_edited_time": "2026-02-05T10:13:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -29341,17 +29355,19 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "In progress",
-      "Tasks ": [],
+      "Status": "Pending Review",
+      "Tasks ": [
+        "2feccb0e-ac88-8005-ad77-c5a0de2da108"
+      ],
       "Ưu tiên": "Ưu tiên",
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": null,
+      "Check task done": "Done",
       "Due Date": null,
       "Combo": null,
       "Product type": "Background",
@@ -29367,14 +29383,14 @@
   {
     "id": "2f8ccb0e-ac88-8058-b5ee-e763fbfb78c5",
     "created_time": "2026-01-30T05:07:00.000Z",
-    "last_edited_time": "2026-02-05T04:12:00.000Z",
+    "last_edited_time": "2026-02-05T10:17:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 2,
+      "Task count ": 3,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -29385,20 +29401,21 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Need Fix Client",
+      "Status": "In progress",
       "Tasks ": [
         "2fcccb0e-ac88-802b-b325-d3cb6e94c392",
-        "2fdccb0e-ac88-81e3-9b81-f001c92ccf76"
+        "2fdccb0e-ac88-81e3-9b81-f001c92ccf76",
+        "2feccb0e-ac88-8091-af55-ef85b9d52360"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 3,
-      "Total Main": 1,
+      "Task count + 1": 4,
+      "Total Main": 2,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": "Done,Done QC",
+      "Check task done": "Done,Done QC,In progress",
       "Due Date": null,
       "Combo": null,
       "Product type": "Background",
@@ -29414,14 +29431,14 @@
   {
     "id": "2f8ccb0e-ac88-80e5-b76e-f09ca5314d0f",
     "created_time": "2026-01-30T05:05:00.000Z",
-    "last_edited_time": "2026-02-04T11:06:00.000Z",
+    "last_edited_time": "2026-02-05T09:08:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -29461,14 +29478,14 @@
   {
     "id": "2f8ccb0e-ac88-80fb-991a-e7da9512d750",
     "created_time": "2026-01-30T05:06:00.000Z",
-    "last_edited_time": "2026-02-05T02:02:00.000Z",
+    "last_edited_time": "2026-02-05T09:08:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -29480,16 +29497,18 @@
       "UTNL": null,
       "Max": null,
       "Status": "Pending Review",
-      "Tasks ": [],
+      "Tasks ": [
+        "2feccb0e-ac88-80e9-8d05-d1a91ea13e05"
+      ],
       "Ưu tiên": "Ưu tiên",
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": null,
+      "Check task done": "Done",
       "Due Date": {
         "start": "2026-02-05",
         "end": null
@@ -29749,10 +29768,10 @@
   {
     "id": "2fdccb0e-ac88-8019-9b9f-f797d24330e6",
     "created_time": "2026-02-04T03:17:00.000Z",
-    "last_edited_time": "2026-02-04T07:57:00.000Z",
+    "last_edited_time": "2026-02-05T09:34:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -29767,23 +29786,24 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
+      "Status": "Need Fix",
       "Tasks ": [
-        "2fdccb0e-ac88-8016-b1d0-c43a30712b34"
+        "2fdccb0e-ac88-8016-b1d0-c43a30712b34",
+        "2feccb0e-ac88-8147-9802-e68b822fe925"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": "In progress",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Keyframe",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "FIX CLIENT KEY 260",
       "Description": ""
     },
@@ -29985,11 +30005,11 @@
   {
     "id": "2fdccb0e-ac88-8059-a48f-e9cdbbee9599",
     "created_time": "2026-02-04T03:17:00.000Z",
-    "last_edited_time": "2026-02-05T07:27:00.000Z",
+    "last_edited_time": "2026-02-05T09:55:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 3,
-      "Total Fixed": 1,
+      "Task count ": 5,
+      "Total Fixed": 2,
       "Resource": null,
       "DO": null,
       "Required by": "External",
@@ -30007,21 +30027,23 @@
       "Tasks ": [
         "2fdccb0e-ac88-801e-b336-f14c71eed99e",
         "2fdccb0e-ac88-8106-ab44-eeac151e3cb9",
-        "2feccb0e-ac88-805f-bb94-fc4d28b57917"
+        "2feccb0e-ac88-805f-bb94-fc4d28b57917",
+        "2feccb0e-ac88-8190-9c23-d0e795d4a690",
+        "2feccb0e-ac88-8085-a4ab-c0df9837d7b0"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 4,
+      "Task count + 1": 6,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": "Done,Done QC,Done",
+      "Check task done": "Done,Done QC,Done,Done QC,Done",
       "Due Date": null,
       "Combo": null,
       "Product type": "Keyframe",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "FIX CLIENT KEY 330",
       "Description": ""
     },
@@ -30494,14 +30516,14 @@
   {
     "id": "2feccb0e-ac88-803d-96fd-e28c1929885a",
     "created_time": "2026-02-05T04:11:00.000Z",
-    "last_edited_time": "2026-02-05T04:12:00.000Z",
+    "last_edited_time": "2026-02-05T09:08:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -30538,14 +30560,14 @@
   {
     "id": "2feccb0e-ac88-8079-9269-ce562ae89d58",
     "created_time": "2026-02-05T04:16:00.000Z",
-    "last_edited_time": "2026-02-05T04:18:00.000Z",
+    "last_edited_time": "2026-02-05T09:15:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -30556,7 +30578,7 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
+      "Status": "Ready to start",
       "Tasks ": [],
       "Ưu tiên": null,
       "Task Create": null,
@@ -30630,14 +30652,14 @@
   {
     "id": "2feccb0e-ac88-80c2-80e4-cff1c0ccf46c",
     "created_time": "2026-02-05T04:18:00.000Z",
-    "last_edited_time": "2026-02-05T04:18:00.000Z",
+    "last_edited_time": "2026-02-05T09:15:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "c2266065-7d98-480f-82f3-6308d5402577",
@@ -30648,7 +30670,7 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
+      "Status": "Ready to start",
       "Tasks ": [],
       "Ưu tiên": null,
       "Task Create": null,
@@ -30762,11 +30784,11 @@
   {
     "id": "2feccb0e-ac88-8022-b2bc-f56dc286f25e",
     "created_time": "2026-02-05T05:36:00.000Z",
-    "last_edited_time": "2026-02-05T07:30:00.000Z",
+    "last_edited_time": "2026-02-05T10:16:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 1,
-      "Total Fixed": 0,
+      "Task count ": 3,
+      "Total Fixed": 1,
       "Resource": null,
       "DO": null,
       "Required by": "External",
@@ -30780,23 +30802,25 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
+      "Status": "Pending Review",
       "Tasks ": [
-        "2feccb0e-ac88-800f-a6a5-fd167a203c30"
+        "2feccb0e-ac88-800f-a6a5-fd167a203c30",
+        "2feccb0e-ac88-81e9-b06b-f24ca1c4ae32",
+        "2feccb0e-ac88-805a-9dd4-e0c5f30588e1"
       ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 4,
       "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": "Not started",
+      "Check task done": "Done,Done QC,Not started",
       "Due Date": null,
       "Combo": null,
       "Product type": "Keyframe",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "FIX CLIENT KEY 350",
       "Description": ""
     },
@@ -30852,10 +30876,10 @@
   {
     "id": "2feccb0e-ac88-804f-8006-d5fcbb141ee4",
     "created_time": "2026-02-05T05:19:00.000Z",
-    "last_edited_time": "2026-02-05T05:23:00.000Z",
+    "last_edited_time": "2026-02-05T10:17:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -30870,17 +30894,19 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
-      "Tasks ": [],
+      "Status": "Pending Review",
+      "Tasks ": [
+        "2feccb0e-ac88-80c6-b7f3-e7a381ad8f17"
+      ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": null,
+      "Check task done": "In progress",
       "Due Date": null,
       "Combo": null,
       "Product type": "Keyframe",
@@ -30896,10 +30922,10 @@
   {
     "id": "2feccb0e-ac88-8088-b016-d71beff66218",
     "created_time": "2026-02-05T05:35:00.000Z",
-    "last_edited_time": "2026-02-05T06:55:00.000Z",
+    "last_edited_time": "2026-02-05T09:38:00.000Z",
     "properties": {
       "Episode ": "EP 05",
-      "Task count ": 0,
+      "Task count ": 2,
       "Total Fixed": 0,
       "Resource": null,
       "DO": null,
@@ -30914,21 +30940,24 @@
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,
-      "Status": "Not started",
-      "Tasks ": [],
+      "Status": "Need Fix",
+      "Tasks ": [
+        "2feccb0e-ac88-8038-8846-dc5dcded6daf",
+        "2feccb0e-ac88-8137-bf23-d9b9efc599a3"
+      ],
       "Ưu tiên": null,
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 3,
+      "Total Main": 1,
       "Point Status": "Unconfirmed",
       "Chỉnh Line": "Not started",
       "Min": null,
       "Product point": 0,
-      "Check task done": null,
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Combo": null,
       "Product type": "Keyframe",
-      "Total QC": 0,
+      "Total QC": 1,
       "Product": "FIX CLIENT KEY 300",
       "Description": ""
     },
@@ -31116,7 +31145,7 @@
   {
     "id": "2feccb0e-ac88-8045-a846-e1fcbb8322c4",
     "created_time": "2026-02-05T08:23:00.000Z",
-    "last_edited_time": "2026-02-05T08:23:00.000Z",
+    "last_edited_time": "2026-02-05T08:26:00.000Z",
     "properties": {
       "Episode ": "EP 05",
       "Task count ": 0,
@@ -31124,7 +31153,13 @@
       "Resource": null,
       "DO": null,
       "Required by": "External",
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "2bcd872b-594c-8101-80a8-00021cf301fa",
+          "name": "An Vu",
+          "email": "anvh@sangygroup.com"
+        }
+      ],
       "Loại cảnh": null,
       "UTNL": null,
       "Max": null,

@@ -13,7 +13,7 @@ class DashboardApp {
         this.selectedProjects = new Set();
         this.hiddenProjects = new Set();
         this.hiddenDatabases = new Set();
-        
+
         // Whitelist from backend
         this.whitelistProjects = new Set(); // Project IDs in whitelist
         this.whitelistProjectNames = new Set(); // Project names in whitelist
@@ -30,10 +30,10 @@ class DashboardApp {
 
     async init() {
         console.log('[Dashboard] Initializing...');
-        
+
         // Load whitelist first
         await this.loadWhitelist();
-        
+
         this.setupEventListeners();
 
         // Initial Load
@@ -43,37 +43,37 @@ class DashboardApp {
         this.startPolling();
         this.startHealthCheck();
     }
-    
+
     // Health check to update connection status
     startHealthCheck() {
         const updateStatus = async () => {
             const statusEl = document.getElementById('connection-status');
             const dotEl = statusEl?.querySelector('.status-dot');
             const textEl = statusEl?.querySelector('.status-text');
-            
+
             try {
-                const response = await fetch(`${API_BASE}/auth/status`, { 
+                const response = await fetch(`${API_BASE}/auth/status`, {
                     method: 'GET',
                     signal: AbortSignal.timeout(5000) // 5s timeout
                 });
                 if (response.ok) {
                     if (dotEl) dotEl.style.background = '#10b981';
-                    if (textEl) textEl.textContent = 'Connected';
+                    if (textEl) textEl.textContent = 'Đã kết nối';
                 } else {
                     if (dotEl) dotEl.style.background = '#f59e0b';
-                    if (textEl) textEl.textContent = 'Limited';
+                    if (textEl) textEl.textContent = 'Hạn chế';
                 }
             } catch (e) {
                 if (dotEl) dotEl.style.background = '#ef4444';
-                if (textEl) textEl.textContent = 'Offline';
+                if (textEl) textEl.textContent = 'Mất kết nối';
             }
         };
-        
+
         // Check immediately and then every 30s
         updateStatus();
         setInterval(updateStatus, 30000);
     }
-    
+
     async loadWhitelist() {
         try {
             const response = await fetch(`${API_BASE}/api/whitelist`);
@@ -126,12 +126,17 @@ class DashboardApp {
     }
 
     setupEventListeners() {
-        // Search
+        // Search with debounce
         const searchInput = document.getElementById('sidebar-search') || document.getElementById('project-search'); // Fallback
         if (searchInput) {
+            let searchTimeout = null;
             searchInput.addEventListener('input', (e) => {
                 this.searchQuery = e.target.value.trim();
-                this.renderProjectsTreeHierarchical();
+                // Debounce: wait 200ms before rendering to avoid excessive re-renders
+                if (searchTimeout) clearTimeout(searchTimeout);
+                searchTimeout = setTimeout(() => {
+                    this.renderProjectsTreeHierarchical();
+                }, 200);
             });
         }
 
@@ -175,7 +180,7 @@ class DashboardApp {
                     if (result.success) {
                         // Refresh the UI - just reload project tree
                         await this.loadProjectsTree();
-                        
+
                         // NOTE: Removed fetchSelectedDatabases - this was causing raw tables to appear
                         // Only regenerate the active report if one exists
                         const reportType = document.getElementById('report-type-select')?.value;
@@ -200,7 +205,7 @@ class DashboardApp {
         }
 
         // ========== Sidebar Toolbar Buttons ==========
-        
+
         // Select All Projects (chọn tất cả databases visible)
         const selectAllBtn = document.getElementById('select-all-projects');
         if (selectAllBtn) {
@@ -266,26 +271,26 @@ class DashboardApp {
         for (const project of this.projectsHierarchy) {
             // Skip hidden projects
             if (this.hiddenProjects.has(project.name)) continue;
-            
+
             // Check if project is in whitelist OR in "Other" group but visible
-            const isInWhitelist = this.whitelistProjects.has(project.id) || 
-                                  this.whitelistProjectNames.has(project.name);
-            
+            const isInWhitelist = this.whitelistProjects.has(project.id) ||
+                this.whitelistProjectNames.has(project.name);
+
             // Only select from visible projects (whitelist or isHiddenGroupOpen)
             if (!isInWhitelist && !this.isHiddenGroupOpen) continue;
-            
+
             const databases = project.databases || [];
             for (const db of databases) {
                 // Skip hidden databases
                 if (this.hiddenDatabases.has(db.id)) continue;
-                
+
                 if (!this.selectedDatabases.has(db.id)) {
                     this.selectedDatabases.add(db.id);
                     addedCount++;
                 }
             }
         }
-        
+
         this.savePersistedState();
         this.renderProjectsTreeHierarchical();
         this.updateGenerateButtonState();
@@ -311,7 +316,7 @@ class DashboardApp {
             // raw-all doesn't require database selection - it auto-selects whitelist Task DBs
             const isRawAll = reportType === 'raw-all';
             generateBtn.disabled = !(reportType && (hasSelection || isRawAll));
-            
+
             // Update Selected Count Text
             const countSpan = document.getElementById('selected-count');
             if (countSpan) {
@@ -380,14 +385,14 @@ class DashboardApp {
     getSelectedTaskDatabases() {
         const taskDbIds = [];
         const selectedIds = Array.from(this.selectedDatabases);
-        
+
         for (const dbId of selectedIds) {
             // Find database info in projectsHierarchy
             for (const project of this.projectsHierarchy) {
                 const db = (project.databases || []).find(d => d.id === dbId);
                 if (db) {
                     // Check if it's a Task database (by type or name)
-                    if (db.type === 'tasks' || 
+                    if (db.type === 'tasks' ||
                         db.name?.toLowerCase().includes('task') ||
                         db.name?.includes('Task')) {
                         taskDbIds.push(dbId);
@@ -396,7 +401,7 @@ class DashboardApp {
                 }
             }
         }
-        
+
         console.log(`[Dashboard] Filtered ${selectedIds.length} selected → ${taskDbIds.length} Task databases`);
         return taskDbIds;
     }
@@ -408,21 +413,21 @@ class DashboardApp {
     getWhitelistTaskDatabases() {
         const taskDbIds = [];
         const projectsInfo = [];
-        
+
         // Iterate through projectsHierarchy to find visible whitelist projects with Task databases
         for (const project of this.projectsHierarchy) {
             // Check if project is in whitelist
-            const isInWhitelist = this.whitelistProjects.has(project.id) || 
-                                  this.whitelistProjectNames.has(project.name);
-            
+            const isInWhitelist = this.whitelistProjects.has(project.id) ||
+                this.whitelistProjectNames.has(project.name);
+
             // Skip if not in whitelist or manually hidden
             if (!isInWhitelist) continue;
             if (this.hiddenProjects.has(project.name)) continue;
-            
+
             // Get Task databases from this project
             const databases = project.databases || [];
             let projectTaskCount = 0;
-            
+
             for (const db of databases) {
                 // Check if database is Task type and not hidden
                 if (db.type === 'tasks' && !this.hiddenDatabases.has(db.id)) {
@@ -430,7 +435,7 @@ class DashboardApp {
                     projectTaskCount++;
                 }
             }
-            
+
             // Only add project to info if it has Task databases
             if (projectTaskCount > 0) {
                 projectsInfo.push({
@@ -439,7 +444,7 @@ class DashboardApp {
                 });
             }
         }
-        
+
         console.log(`[Dashboard] Found ${taskDbIds.length} Task databases from ${projectsInfo.length} whitelist projects`);
         return { taskDbIds, projectsInfo };
     }
@@ -453,14 +458,14 @@ class DashboardApp {
 
         // Get all Task databases from visible whitelist projects
         const { taskDbIds, projectsInfo } = this.getWhitelistTaskDatabases();
-        
+
         if (taskDbIds.length === 0) {
             container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không tìm thấy database Task nào trong các dự án whitelist đang hiển thị.<br><br>Hãy mở thêm dự án từ "Dự án khác" hoặc "Dự án đã ẩn" rồi bấm Tạo Báo Cáo lại.</div>';
             return;
         }
 
         // Build project list HTML
-        const projectListHtml = projectsInfo.map(p => 
+        const projectListHtml = projectsInfo.map(p =>
             `<span style="background:#3b82f620;padding:2px 8px;border-radius:4px;margin:2px;display:inline-block;font-size:0.75rem;">${p.name} (${p.taskCount})</span>`
         ).join('');
 
@@ -484,23 +489,23 @@ class DashboardApp {
             const allColumns = new Set();
             const BATCH_SIZE = 5;
             let loadedCount = 0;
-            
+
             // Progress update function
             const updateProgress = () => {
                 // Check if report is still current
                 if (reportId && this._currentReportId !== reportId) return;
-                
+
                 const progressDiv = loadingInfo.querySelector('.progress-text');
                 if (progressDiv) {
                     progressDiv.textContent = `⏳ Đang tải... ${loadedCount}/${taskDbIds.length} databases`;
                 }
             };
-            
+
             // Add progress element
             loadingInfo.querySelector('div').innerHTML += `
                 <div class="progress-text" style="margin-top:8px;color:#60a5fa;">⏳ Đang tải... 0/${taskDbIds.length} databases</div>
             `;
-            
+
             // Process in batches
             for (let i = 0; i < taskDbIds.length; i += BATCH_SIZE) {
                 // Check if report is still current before each batch
@@ -508,9 +513,9 @@ class DashboardApp {
                     console.log(`[Dashboard] Raw-All report ${reportId} cancelled`);
                     return;
                 }
-                
+
                 const batch = taskDbIds.slice(i, i + BATCH_SIZE);
-                
+
                 // Fetch batch in parallel
                 const results = await Promise.all(
                     batch.map(async (dbId) => {
@@ -524,7 +529,7 @@ class DashboardApp {
                         }
                     })
                 );
-                
+
                 // Process results
                 results.forEach(result => {
                     loadedCount++;
@@ -534,13 +539,13 @@ class DashboardApp {
                             _source_db: result.database_name || 'Unknown'
                         }));
                         allData.push(...enrichedData);
-                        
+
                         if (result.columns) {
                             result.columns.forEach(col => allColumns.add(col));
                         }
                     }
                 });
-                
+
                 updateProgress();
             }
 
@@ -564,7 +569,7 @@ class DashboardApp {
 
             // Add _source_db to columns if not present
             allColumns.add('_source_db');
-            
+
             // Render ONE combined table with all merged data
             const combinedResult = {
                 database_name: `All Whitelist Tasks (${projectsInfo.length} dự án)`,
@@ -572,7 +577,7 @@ class DashboardApp {
                 data: allData,
                 total_records: allData.length
             };
-            
+
             this.renderRawDatabaseTable(container, 'all-whitelist-tasks', combinedResult);
 
         } catch (err) {
@@ -582,8 +587,14 @@ class DashboardApp {
     }
 
     /**
+     * Burndown view mode: 'sprint' or 'project'
+     */
+    burndownViewMode = 'sprint';
+
+    /**
      * Render Burndown Chart Report
      * Shows burndown charts for each selected Task database that has Sprint and "Ngày Làm" columns
+     * Supports two view modes: by Sprint or by Project
      */
     async renderBurndownReport(container) {
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Burndown...</div>';
@@ -598,8 +609,57 @@ class DashboardApp {
         try {
             let hasValidChart = false;
             const warnings = [];
-            
-            container.innerHTML = ''; // Clear loading
+
+            // Clear loading and add view mode selector
+            container.innerHTML = '';
+
+            console.log('[Burndown] NEW CODE v10 - Adding view mode toggle, current mode:', this.burndownViewMode);
+
+            // Add view mode toggle at the top
+            const viewModeSection = document.createElement('div');
+            viewModeSection.className = 'burndown-view-mode-section';
+            viewModeSection.style.cssText = 'margin-bottom:20px;padding:16px;background:#1e293b;border-radius:12px;border:1px solid #334155;display:flex;align-items:center;gap:16px;';
+            viewModeSection.innerHTML = `
+                <span style="color:#94a3b8;font-size:0.9rem;font-weight:500;">📊 Chế độ xem:</span>
+                <div style="display:flex;gap:8px;">
+                    <button id="burndown-view-sprint" class="burndown-view-btn ${this.burndownViewMode === 'sprint' ? 'active' : ''}" 
+                            style="padding:8px 16px;border-radius:8px;border:1px solid ${this.burndownViewMode === 'sprint' ? '#3b82f6' : '#475569'};
+                                   background:${this.burndownViewMode === 'sprint' ? '#3b82f620' : 'transparent'};
+                                   color:${this.burndownViewMode === 'sprint' ? '#60a5fa' : '#94a3b8'};
+                                   cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.2s;">
+                        🏃 Theo Sprint
+                    </button>
+                    <button id="burndown-view-project" class="burndown-view-btn ${this.burndownViewMode === 'project' ? 'active' : ''}"
+                            style="padding:8px 16px;border-radius:8px;border:1px solid ${this.burndownViewMode === 'project' ? '#3b82f6' : '#475569'};
+                                   background:${this.burndownViewMode === 'project' ? '#3b82f620' : 'transparent'};
+                                   color:${this.burndownViewMode === 'project' ? '#60a5fa' : '#94a3b8'};
+                                   cursor:pointer;font-size:0.85rem;font-weight:500;transition:all 0.2s;">
+                        📁 Theo Dự án
+                    </button>
+                </div>
+                <span style="color:#64748b;font-size:0.75rem;margin-left:auto;">
+                    ${this.burndownViewMode === 'sprint' ? 'Mỗi Sprint sẽ hiển thị một biểu đồ riêng' : 'Gộp tất cả task của dự án thành một biểu đồ'}
+                </span>
+            `;
+            container.appendChild(viewModeSection);
+
+            // Attach click handlers for view mode buttons
+            const sprintBtn = viewModeSection.querySelector('#burndown-view-sprint');
+            const projectBtn = viewModeSection.querySelector('#burndown-view-project');
+
+            sprintBtn.addEventListener('click', () => {
+                if (this.burndownViewMode !== 'sprint') {
+                    this.burndownViewMode = 'sprint';
+                    this.renderBurndownReport(container);
+                }
+            });
+
+            projectBtn.addEventListener('click', () => {
+                if (this.burndownViewMode !== 'project') {
+                    this.burndownViewMode = 'project';
+                    this.renderBurndownReport(container);
+                }
+            });
 
             for (const dbId of dbIds) {
                 const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
@@ -612,32 +672,32 @@ class DashboardApp {
                 }
 
                 const { database_name, columns, data } = result;
-                
+
                 // Check if database has required columns
                 const findColumn = (...names) => {
-                    return columns.find(c => 
+                    return columns.find(c =>
                         names.some(n => c.toLowerCase().includes(n.toLowerCase()))
                     );
                 };
-                
+
                 // Find exact column (case-insensitive exact match)
                 const findExactColumn = (...names) => {
-                    return columns.find(c => 
+                    return columns.find(c =>
                         names.some(n => c.toLowerCase() === n.toLowerCase())
                     );
                 };
 
                 const sprintCol = findColumn('Sprint');
                 // Prioritize "Ngày Làm" (the date column used for burndown)
-                const dateCol = findExactColumn('Ngày Làm', 'Ngay Lam') || 
-                               findColumn('Ngày Làm', 'Ngay Lam');
+                const dateCol = findExactColumn('Ngày Làm', 'Ngay Lam') ||
+                    findColumn('Ngày Làm', 'Ngay Lam');
                 const statusCol = findExactColumn('Task Status') || findColumn('Task Status', 'Status');
                 const pointCol = findColumn('Product Point', 'Point', 'Story Point', 'Points');
-                
+
                 console.log(`[Burndown] ${database_name} - Columns found:`, { sprintCol, dateCol, statusCol, pointCol });
 
-                // Validation
-                if (!sprintCol) {
+                // Validation - Sprint column only required for Sprint view mode
+                if (this.burndownViewMode === 'sprint' && !sprintCol) {
                     warnings.push({ dbName: database_name, reason: 'Không có cột Sprint' });
                     continue;
                 }
@@ -646,127 +706,136 @@ class DashboardApp {
                     continue;
                 }
 
-                // Group tasks by Sprint
-                const sprintGroups = new Map();
-                data.forEach(task => {
-                    const sprintValue = task[sprintCol];
-                    if (!sprintValue || sprintValue === '-') return;
-                    
-                    if (!sprintGroups.has(sprintValue)) {
-                        sprintGroups.set(sprintValue, []);
-                    }
-                    sprintGroups.get(sprintValue).push(task);
-                });
+                // Handle different view modes
+                if (this.burndownViewMode === 'project') {
+                    // PROJECT VIEW: All tasks as a single burndown
+                    hasValidChart = this.renderProjectBurndown(container, dbId, database_name, data, {
+                        dateCol, statusCol, pointCol
+                    }) || hasValidChart;
+                } else {
+                    // SPRINT VIEW: Group by Sprint (existing logic)
+                    // Group tasks by Sprint
+                    const sprintGroups = new Map();
+                    data.forEach(task => {
+                        const sprintValue = task[sprintCol];
+                        if (!sprintValue || sprintValue === '-') return;
 
-                if (sprintGroups.size === 0) {
-                    warnings.push({ dbName: database_name, reason: 'Không có dữ liệu Sprint' });
-                    continue;
-                }
-
-                // Create section for this database
-                const dbSection = document.createElement('div');
-                dbSection.className = 'burndown-db-section';
-                dbSection.style.cssText = 'margin-bottom:24px;';
-                
-                dbSection.innerHTML = `
-                    <div style="background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155;">
-                        <div style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
-                            <h3 style="margin:0;color:#f1f5f9;font-size:1.1rem;">📊 ${this.escapeHtml(database_name)}</h3>
-                            <span style="color:#94a3b8;font-size:0.8rem;">${sprintGroups.size} Sprint(s) | ${data.length} tasks</span>
-                        </div>
-                        <div id="burndown-charts-${dbId}" style="padding:16px;"></div>
-                    </div>
-                `;
-                container.appendChild(dbSection);
-
-                const chartsContainer = dbSection.querySelector(`#burndown-charts-${dbId}`);
-
-                // Fetch Sprint metadata (dates) - need to find Sprints database
-                // For now, estimate sprint dates from task dates
-                for (const [sprintName, tasks] of sprintGroups) {
-                    // Estimate sprint date range from ALL tasks with dates
-                    let minDate = null, maxDate = null;
-                    let doneTasksWithDates = 0;
-                    
-                    tasks.forEach(task => {
-                        // Try to get date from Done Date column
-                        let dateValue = task[dateCol];
-                        let taskDate = null;
-                        
-                        if (dateValue) {
-                            if (typeof dateValue === 'object' && dateValue.start) {
-                                taskDate = new Date(dateValue.start);
-                            } else if (typeof dateValue === 'object' && dateValue.end) {
-                                taskDate = new Date(dateValue.end);
-                            } else if (typeof dateValue === 'string') {
-                                // Handle date range strings
-                                if (dateValue.includes('→')) {
-                                    const parts = dateValue.split('→');
-                                    taskDate = new Date(parts[0].trim());
-                                } else {
-                                    taskDate = new Date(dateValue);
-                                }
-                            }
+                        if (!sprintGroups.has(sprintValue)) {
+                            sprintGroups.set(sprintValue, []);
                         }
-                        
-                        // Also check if task is Done to count
-                        const status = task[statusCol];
-                        const isDone = status && (
-                            status.toLowerCase().includes('done') ||
-                            status.toLowerCase().includes('complete')
-                        );
-                        if (isDone && taskDate && !isNaN(taskDate.getTime())) {
-                            doneTasksWithDates++;
-                        }
-                        
-                        if (taskDate && !isNaN(taskDate.getTime())) {
-                            if (!minDate || taskDate < minDate) minDate = taskDate;
-                            if (!maxDate || taskDate > maxDate) maxDate = taskDate;
-                        }
+                        sprintGroups.get(sprintValue).push(task);
                     });
-                    
-                    console.log(`[Burndown] Sprint "${sprintName}": ${tasks.length} tasks, ${doneTasksWithDates} done with dates, date range: ${minDate?.toISOString().split('T')[0]} - ${maxDate?.toISOString().split('T')[0]}`);
 
-                    // If no dates found, skip this sprint
-                    if (!minDate || !maxDate) {
-                        const skipMsg = document.createElement('div');
-                        skipMsg.style.cssText = 'padding:12px;margin:8px 0;background:#1e3a5f;border-radius:8px;color:#f59e0b;font-size:0.85rem;';
-                        skipMsg.innerHTML = `⚠️ Sprint "<strong>${this.escapeHtml(sprintName)}</strong>" - Không có dữ liệu ngày để tạo Burndown`;
-                        chartsContainer.appendChild(skipMsg);
+                    if (sprintGroups.size === 0) {
+                        warnings.push({ dbName: database_name, reason: 'Không có dữ liệu Sprint' });
                         continue;
                     }
 
-                    // Add some padding to date range
-                    minDate.setDate(minDate.getDate() - 1);
-                    maxDate.setDate(maxDate.getDate() + 1);
+                    // Create section for this database
+                    const dbSection = document.createElement('div');
+                    dbSection.className = 'burndown-db-section';
+                    dbSection.style.cssText = 'margin-bottom:24px;';
 
-                    // Create container for this sprint's chart
-                    const chartContainerId = `burndown-${dbId}-${this.hashString(sprintName)}`;
-                    const chartWrapper = document.createElement('div');
-                    chartWrapper.id = chartContainerId;
-                    chartWrapper.style.cssText = 'background:#0f172a;border-radius:8px;margin-bottom:16px;border:1px solid #334155;';
-                    chartsContainer.appendChild(chartWrapper);
+                    dbSection.innerHTML = `
+                        <div style="background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155;">
+                            <div style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
+                                <h3 style="margin:0;color:#f1f5f9;font-size:1.1rem;">📊 ${this.escapeHtml(database_name)}</h3>
+                                <span style="color:#94a3b8;font-size:0.8rem;">${sprintGroups.size} Sprint(s) | ${data.length} tasks</span>
+                            </div>
+                            <div id="burndown-charts-${dbId}" style="padding:16px;"></div>
+                        </div>
+                    `;
+                    container.appendChild(dbSection);
 
-                    // Render burndown chart
-                    if (typeof window.renderBurndownChart === 'function') {
-                        window.renderBurndownChart(
-                            chartContainerId,
-                            {
-                                name: sprintName,
-                                startDate: minDate.toISOString(),
-                                endDate: maxDate.toISOString()
-                            },
-                            tasks,
-                            {
-                                pointField: pointCol || 'Product Point',
-                                dateField: dateCol,
-                                statusField: statusCol || 'Task Status'
+                    const chartsContainer = dbSection.querySelector(`#burndown-charts-${dbId}`);
+
+                    // Fetch Sprint metadata (dates) - need to find Sprints database
+                    // For now, estimate sprint dates from task dates
+                    for (const [sprintName, tasks] of sprintGroups) {
+                        // Estimate sprint date range from ALL tasks with dates
+                        let minDate = null, maxDate = null;
+                        let doneTasksWithDates = 0;
+
+                        tasks.forEach(task => {
+                            // Try to get date from Done Date column
+                            let dateValue = task[dateCol];
+                            let taskDate = null;
+
+                            if (dateValue) {
+                                if (typeof dateValue === 'object' && dateValue.start) {
+                                    taskDate = new Date(dateValue.start);
+                                } else if (typeof dateValue === 'object' && dateValue.end) {
+                                    taskDate = new Date(dateValue.end);
+                                } else if (typeof dateValue === 'string') {
+                                    // Handle date range strings
+                                    if (dateValue.includes('→')) {
+                                        const parts = dateValue.split('→');
+                                        taskDate = new Date(parts[0].trim());
+                                    } else {
+                                        taskDate = new Date(dateValue);
+                                    }
+                                }
                             }
-                        );
-                        hasValidChart = true;
+
+                            // Also check if task is Done to count
+                            const status = task[statusCol];
+                            const isDone = status && (
+                                status.toLowerCase().includes('done') ||
+                                status.toLowerCase().includes('complete')
+                            );
+                            if (isDone && taskDate && !isNaN(taskDate.getTime())) {
+                                doneTasksWithDates++;
+                            }
+
+                            if (taskDate && !isNaN(taskDate.getTime())) {
+                                if (!minDate || taskDate < minDate) minDate = taskDate;
+                                if (!maxDate || taskDate > maxDate) maxDate = taskDate;
+                            }
+                        });
+
+                        console.log(`[Burndown] Sprint "${sprintName}": ${tasks.length} tasks, ${doneTasksWithDates} done with dates, date range: ${minDate?.toISOString().split('T')[0]} - ${maxDate?.toISOString().split('T')[0]}`);
+
+                        // If no dates found, skip this sprint
+                        if (!minDate || !maxDate) {
+                            const skipMsg = document.createElement('div');
+                            skipMsg.style.cssText = 'padding:12px;margin:8px 0;background:#1e3a5f;border-radius:8px;color:#f59e0b;font-size:0.85rem;';
+                            skipMsg.innerHTML = `⚠️ Sprint "<strong>${this.escapeHtml(sprintName)}</strong>" - Không có dữ liệu ngày để tạo Burndown`;
+                            chartsContainer.appendChild(skipMsg);
+                            continue;
+                        }
+
+                        // Add some padding to date range
+                        minDate.setDate(minDate.getDate() - 1);
+                        maxDate.setDate(maxDate.getDate() + 1);
+
+                        // Create container for this sprint's chart
+                        const chartContainerId = `burndown-${dbId}-${this.hashString(sprintName)}`;
+                        const chartWrapper = document.createElement('div');
+                        chartWrapper.id = chartContainerId;
+                        chartWrapper.style.cssText = 'background:#0f172a;border-radius:8px;margin-bottom:16px;border:1px solid #334155;';
+                        chartsContainer.appendChild(chartWrapper);
+
+                        // Render burndown chart
+                        if (typeof window.renderBurndownChart === 'function') {
+                            window.renderBurndownChart(
+                                chartContainerId,
+                                {
+                                    name: sprintName,
+                                    startDate: minDate.toISOString(),
+                                    endDate: maxDate.toISOString()
+                                },
+                                tasks,
+                                {
+                                    pointField: pointCol || 'Product Point',
+                                    dateField: dateCol,
+                                    statusField: statusCol || 'Task Status'
+                                }
+                            );
+                            hasValidChart = true;
+                        }
                     }
-                }
-            }
+                } // End of Sprint view block
+            } // End of database loop
 
             // Show warnings if any
             if (warnings.length > 0) {
@@ -778,35 +847,129 @@ class DashboardApp {
                         ${warnings.map(w => `<li><strong>${this.escapeHtml(w.dbName)}</strong>: ${w.reason}</li>`).join('')}
                     </ul>
                     <p style="margin:12px 0 0 0;color:#d97706;font-size:0.8rem;">
-                        💡 Để hiển thị Burndown, database cần có cột <strong>Sprint</strong> và <strong>Ngày Làm</strong> (hoặc Done Date)
+                        💡 Để hiển thị Burndown, database cần có cột <strong>${this.burndownViewMode === 'sprint' ? 'Sprint và ' : ''}</strong><strong>Ngày Làm</strong> (hoặc Done Date)
                     </p>
                 `;
-                container.insertBefore(warningSection, container.firstChild);
+                container.insertBefore(warningSection, viewModeSection.nextSibling);
             }
 
             // If no valid charts were rendered
             if (!hasValidChart && warnings.length === dbIds.length) {
-                container.innerHTML = `
-                    <div style="padding:60px 40px;text-align:center;">
-                        <div style="font-size:3rem;margin-bottom:16px;">📉</div>
-                        <h3 style="color:#f1f5f9;margin:0 0 12px 0;">Không thể tạo Burndown Chart</h3>
-                        <p style="color:#94a3b8;margin:0 0 20px 0;">Các database đã chọn không có đủ dữ liệu cần thiết.</p>
-                        <div style="background:#1e293b;border-radius:8px;padding:20px;display:inline-block;text-align:left;">
-                            <p style="color:#60a5fa;margin:0 0 8px 0;font-weight:600;">Yêu cầu dữ liệu:</p>
-                            <ul style="color:#94a3b8;margin:0;padding-left:20px;">
-                                <li>Cột <strong>Sprint</strong> - để xác định sprint</li>
-                                <li>Cột <strong>Ngày Làm</strong> hoặc <strong>Done Date</strong> - để tính ngày hoàn thành</li>
-                                <li>Cột <strong>Task Status</strong> - để biết task đã Done chưa</li>
-                            </ul>
-                        </div>
+                const errorContent = document.createElement('div');
+                errorContent.style.cssText = 'padding:60px 40px;text-align:center;';
+                errorContent.innerHTML = `
+                    <div style="font-size:3rem;margin-bottom:16px;">📉</div>
+                    <h3 style="color:#f1f5f9;margin:0 0 12px 0;">Không thể tạo Burndown Chart</h3>
+                    <p style="color:#94a3b8;margin:0 0 20px 0;">Các database đã chọn không có đủ dữ liệu cần thiết.</p>
+                    <div style="background:#1e293b;border-radius:8px;padding:20px;display:inline-block;text-align:left;">
+                        <p style="color:#60a5fa;margin:0 0 8px 0;font-weight:600;">Yêu cầu dữ liệu:</p>
+                        <ul style="color:#94a3b8;margin:0;padding-left:20px;">
+                            ${this.burndownViewMode === 'sprint' ? '<li>Cột <strong>Sprint</strong> - để xác định sprint</li>' : ''}
+                            <li>Cột <strong>Ngày Làm</strong> hoặc <strong>Done Date</strong> - để tính ngày hoàn thành</li>
+                            <li>Cột <strong>Task Status</strong> - để biết task đã Done chưa</li>
+                        </ul>
                     </div>
                 `;
+                container.appendChild(errorContent);
             }
 
         } catch (err) {
             console.error('Error rendering burndown:', err);
             container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
         }
+    }
+
+    /**
+     * Render a project-level burndown chart (all tasks from a single database)
+     * @param {HTMLElement} container - The container element
+     * @param {string} dbId - Database ID
+     * @param {string} dbName - Database name
+     * @param {Array} data - All tasks from the database
+     * @param {Object} columns - { dateCol, statusCol, pointCol }
+     * @returns {boolean} True if chart was rendered successfully
+     */
+    renderProjectBurndown(container, dbId, dbName, data, { dateCol, statusCol, pointCol }) {
+        // Estimate date range from ALL tasks with dates
+        let minDate = null, maxDate = null;
+        let tasksWithDates = 0;
+
+        data.forEach(task => {
+            let dateValue = task[dateCol];
+            let taskDate = null;
+
+            if (dateValue) {
+                if (typeof dateValue === 'object' && dateValue.start) {
+                    taskDate = new Date(dateValue.start);
+                } else if (typeof dateValue === 'object' && dateValue.end) {
+                    taskDate = new Date(dateValue.end);
+                } else if (typeof dateValue === 'string') {
+                    if (dateValue.includes('→')) {
+                        const parts = dateValue.split('→');
+                        taskDate = new Date(parts[0].trim());
+                    } else {
+                        taskDate = new Date(dateValue);
+                    }
+                }
+            }
+
+            if (taskDate && !isNaN(taskDate.getTime())) {
+                tasksWithDates++;
+                if (!minDate || taskDate < minDate) minDate = taskDate;
+                if (!maxDate || taskDate > maxDate) maxDate = taskDate;
+            }
+        });
+
+        console.log(`[Burndown Project] ${dbName}: ${data.length} tasks, ${tasksWithDates} with dates, range: ${minDate?.toISOString().split('T')[0]} - ${maxDate?.toISOString().split('T')[0]}`);
+
+        // If no dates found, show message
+        if (!minDate || !maxDate) {
+            const skipMsg = document.createElement('div');
+            skipMsg.style.cssText = 'padding:20px;margin:8px 0;background:#1e3a5f;border-radius:12px;color:#f59e0b;';
+            skipMsg.innerHTML = `⚠️ <strong>${this.escapeHtml(dbName)}</strong> - Không có dữ liệu ngày để tạo Burndown`;
+            container.appendChild(skipMsg);
+            return false;
+        }
+
+        // Add padding to date range
+        minDate.setDate(minDate.getDate() - 1);
+        maxDate.setDate(maxDate.getDate() + 1);
+
+        // Create section for this project
+        const dbSection = document.createElement('div');
+        dbSection.className = 'burndown-db-section';
+        dbSection.style.cssText = 'margin-bottom:24px;';
+
+        const chartContainerId = `burndown-project-${dbId}`;
+        dbSection.innerHTML = `
+            <div style="background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155;">
+                <div style="padding:16px 20px;border-bottom:1px solid #334155;display:flex;justify-content:space-between;align-items:center;">
+                    <h3 style="margin:0;color:#f1f5f9;font-size:1.1rem;">📁 ${this.escapeHtml(dbName)}</h3>
+                    <span style="color:#94a3b8;font-size:0.8rem;">${data.length} tasks tổng | ${tasksWithDates} có ngày</span>
+                </div>
+                <div id="${chartContainerId}" style="padding:16px;background:#0f172a;"></div>
+            </div>
+        `;
+        container.appendChild(dbSection);
+
+        // Render burndown chart
+        if (typeof window.renderBurndownChart === 'function') {
+            window.renderBurndownChart(
+                chartContainerId,
+                {
+                    name: `Dự án: ${dbName}`,
+                    startDate: minDate.toISOString(),
+                    endDate: maxDate.toISOString()
+                },
+                data,
+                {
+                    pointField: pointCol || 'Product Point',
+                    dateField: dateCol,
+                    statusField: statusCol || 'Task Status'
+                }
+            );
+            return true;
+        }
+        return false;
     }
 
     async renderRawDataReport(container, reportId) {
@@ -868,7 +1031,7 @@ class DashboardApp {
     static COLUMNS_TO_HIDE = new Set([
         'run n8n', 'p type', 'blocking', '[dev] total main', 'product status',
         'block by', 'description', 'loai canh', 'utkt', 'tp giả định 2',
-        'task 2', 'task fix', 'task qc', 'loại cảnh', 'rollup', 
+        'task 2', 'task fix', 'task qc', 'loại cảnh', 'rollup',
         'point status (1)', 'crea', 'blocked by',
         // Additional columns to hide
         'product type', 'p type',  // Keep only PRODUCT TYPE
@@ -890,7 +1053,7 @@ class DashboardApp {
      */
     shouldHideColumn(colName, data = []) {
         const lowerCol = colName.toLowerCase();
-        
+
         // Check if it's a "show if has data" column
         if (DashboardApp.COLUMNS_SHOW_IF_HAS_DATA.has(lowerCol)) {
             // Check if any row has actual data in this column
@@ -900,16 +1063,16 @@ class DashboardApp {
             });
             return !hasData; // Hide if NO data
         }
-        
+
         return DashboardApp.COLUMNS_TO_HIDE.has(lowerCol);
     }
 
     renderRawDatabaseTable(container, dbId, result) {
         let { database_name, columns: rawColumns, data: originalData, total_records } = result;
-        
+
         // Filter out hidden/duplicate columns (pass data to check "show if has data" columns)
         const originalColumns = rawColumns.filter(col => !this.shouldHideColumn(col, originalData));
-        
+
         console.log(`[Frontend] Render table for ${dbId}:`, {
             name: database_name,
             total_records_api: total_records,
@@ -1022,7 +1185,7 @@ class DashboardApp {
         const sprintCol = findCol('Sprint', 'SPRINT');
         const assignees = assigneeCol ? [...new Set(originalData.map(r => r[assigneeCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
         const sprints = sprintCol ? [...new Set(originalData.map(r => r[sprintCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
-        
+
         // Extract available months/years from date column
         const extractMonthsYears = () => {
             if (!dateCol) return { months: [], years: [] };
@@ -1035,25 +1198,25 @@ class DashboardApp {
                     yearsSet.add(d.getFullYear());
                 }
             });
-            return { months: [1,2,3,4,5,6,7,8,9,10,11,12], years: [...yearsSet].sort((a,b) => b-a) };
+            return { months: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], years: [...yearsSet].sort((a, b) => b - a) };
         };
         const { months, years } = extractMonthsYears();
-        
+
         let assigneeTableFilter = '';
         let startDateFilter = '';
         let endDateFilter = '';
         let sprintTableFilter = '';
-        
+
         // Find fallback date column (LastEditTime)
-        const fallbackDateCol = originalColumns.find(c => 
-            c.toLowerCase().includes('lastedittime') || 
-            c.toLowerCase().includes('last edit') || 
+        const fallbackDateCol = originalColumns.find(c =>
+            c.toLowerCase().includes('lastedittime') ||
+            c.toLowerCase().includes('last edit') ||
             c.toLowerCase().includes('updated')
         ) || '';
 
         // Get visible columns
         const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
-        
+
         // Parse date helper (supports multiple formats)
         const parseDate = (val) => {
             if (!val) return null;
@@ -1074,26 +1237,26 @@ class DashboardApp {
                 if (assigneeTableFilter && assigneeCol) {
                     if (row[assigneeCol] !== assigneeTableFilter) return false;
                 }
-                
+
                 // Sprint Filter
                 if (sprintTableFilter && sprintCol) {
                     if (row[sprintCol] !== sprintTableFilter) return false;
                 }
-                
+
                 // Date Range Filter (with fallback)
                 if (dateCol && (startDateFilter || endDateFilter)) {
                     // Try primary date column first
                     let dateStr = row[dateCol];
                     let d = parseDate(dateStr);
-                    
+
                     // Fallback to secondary date column
                     if (!d && fallbackDateCol) {
                         dateStr = row[fallbackDateCol];
                         d = parseDate(dateStr);
                     }
-                    
+
                     if (!d) return false;
-                    
+
                     if (startDateFilter) {
                         const start = new Date(startDateFilter);
                         if (d < start) return false;
@@ -1136,7 +1299,7 @@ class DashboardApp {
             }
 
             currentPage = 1;
-            
+
             // Update dashboard with filtered data (sync table filters → dashboard)
             updateDashboard(filteredData, {
                 startDate: startDateFilter,
@@ -1400,7 +1563,7 @@ class DashboardApp {
                 renderTable();
                 // Dashboard already updated via applyFiltersAndSearch
             });
-            
+
             // Listen for dashboard filter changes (custom event)
             // Dashboard already re-renders itself, we only need to update table
             document.addEventListener('dashboard-filter-change', (e) => {
@@ -1536,11 +1699,11 @@ class DashboardApp {
     async renderProductivityReport(container) {
         // 1. Setup Container & Toolbar
         const now = new Date();
-        
+
         // Calculate default date range (this month)
         const defaultStart = new Date(now.getFullYear(), now.getMonth(), 1);
         const defaultEnd = new Date(now.getFullYear(), now.getMonth() + 1, 0);
-        
+
         const formatDateForInput = (date) => {
             if (!date) return '';
             const y = date.getFullYear();
@@ -1548,7 +1711,7 @@ class DashboardApp {
             const d = String(date.getDate()).padStart(2, '0');
             return `${y}-${m}-${d}`;
         };
-        
+
         const formatDateDisplay = (date) => {
             if (!date) return '';
             return date.toLocaleDateString('vi-VN');
@@ -1592,7 +1755,7 @@ class DashboardApp {
                 end: new Date(now.getFullYear(), 11, 31)
             }
         });
-        
+
         const presets = getPresets();
         let activePreset = 'thisMonth';
 
@@ -1680,11 +1843,11 @@ class DashboardApp {
             btn.addEventListener('click', () => {
                 const presetKey = btn.dataset.preset;
                 const preset = presets[presetKey];
-                
+
                 startDateInput.value = preset.start ? formatDateForInput(preset.start) : '';
                 endDateInput.value = preset.end ? formatDateForInput(preset.end) : '';
                 activePreset = presetKey;
-                
+
                 // Update active state
                 container.querySelectorAll('.prod-preset-btn').forEach(b => {
                     b.classList.remove('active');
@@ -1696,10 +1859,10 @@ class DashboardApp {
                 btn.style.background = '#3b82f6';
                 btn.style.borderColor = '#3b82f6';
                 btn.style.color = '#fff';
-                
+
                 // NOTE: Removed auto-fetch - user must click "Cập nhật" button
             });
-            
+
             // Hover effect
             btn.addEventListener('mouseenter', () => {
                 if (!btn.classList.contains('active')) {
@@ -1714,7 +1877,7 @@ class DashboardApp {
                 }
             });
         });
-        
+
         // Manual date input clears preset highlight
         [startDateInput, endDateInput].forEach(input => {
             input.addEventListener('change', () => {
@@ -1811,7 +1974,7 @@ class DashboardApp {
         const fetchReport = async () => {
             const startDate = startDateInput.value;
             const endDate = endDateInput.value;
-            
+
             if (!startDate || !endDate) {
                 bodyContainer.innerHTML = '<div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">⚠️ Vui lòng chọn khoảng thời gian</div>';
                 return;
@@ -1823,7 +1986,7 @@ class DashboardApp {
 
             // Lấy CHỈ Task database IDs (filter từ selectedDatabases)
             const taskDbIds = this.getSelectedTaskDatabases();
-            
+
             if (taskDbIds.length === 0) {
                 bodyContainer.innerHTML = `
                     <div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">
@@ -1836,13 +1999,13 @@ class DashboardApp {
             try {
                 // Get standard days from input
                 const standardDays = parseFloat(stdDaysInput.value) || 23;
-                
+
                 const response = await fetch(`${API_BASE}/api/reports/productivity`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ 
-                        startDate: startDate, 
-                        endDate: endDate, 
+                    body: JSON.stringify({
+                        startDate: startDate,
+                        endDate: endDate,
                         databaseIds: taskDbIds,
                         standardDays: standardDays
                     })
@@ -1904,7 +2067,7 @@ class DashboardApp {
             // Remove existing dashboard/warning if any
             bodyContainer.querySelector('.prod-dashboard')?.remove();
             bodyContainer.querySelector('.unmapped-warning')?.remove();
-            
+
             // Render Productivity Dashboard (only once, with full data)
             if (typeof renderProductivityDashboard === 'function' && fullReportData.length > 0) {
                 renderProductivityDashboard(fullReportData, bodyContainer);
@@ -1924,7 +2087,7 @@ class DashboardApp {
                 </div>`;
                 bodyContainer.insertAdjacentHTML('afterbegin', warningHtml);
             }
-            
+
             dashboardRendered = true;
             warningRendered = true;
         };
@@ -2547,8 +2710,8 @@ class DashboardApp {
             if (!matchesSearch) continue;
 
             // Check if project is in whitelist (by ID or name)
-            const isInWhitelist = this.whitelistProjects.has(project.id) || 
-                                  this.whitelistProjectNames.has(project.name);
+            const isInWhitelist = this.whitelistProjects.has(project.id) ||
+                this.whitelistProjectNames.has(project.name);
 
             if (isInWhitelist) {
                 // Check if user manually hid this whitelisted project
@@ -2564,7 +2727,7 @@ class DashboardApp {
             // Non-whitelist projects go to "Other" by default
             // But if user manually showed them (removed from hiddenProjects), show in pinned
             const isManuallyHidden = this.hiddenProjects.has(project.name) && !query;
-            
+
             if (isManuallyHidden) {
                 hiddenProjectsList.push(project);
             } else {

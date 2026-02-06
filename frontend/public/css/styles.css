@@ -1826,13 +1826,15 @@ tr:hover td {
 
 /* Mobile */
 @media (max-width: 768px) {
-    html, body {
+
+    html,
+    body {
         overflow-x: hidden;
         overflow-y: auto;
         -webkit-overflow-scrolling: touch;
         overscroll-behavior-y: auto;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
         align-items: center;
@@ -1914,84 +1916,85 @@ tr:hover td {
     .feature-item {
         justify-content: center;
     }
-    
+
     /* New homepage responsive */
     .report-types-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .tips-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .report-type-card {
         flex-direction: column;
         text-align: center;
     }
-    
+
     .report-type-icon {
         margin: 0 auto;
     }
-    
+
     .report-features li {
         text-align: left;
     }
-    
+
     .section-title {
         font-size: 1rem;
         justify-content: center;
     }
-    
+
     /* Compact welcome responsive */
     .quick-start-compact {
         flex-direction: column;
         gap: 8px;
     }
-    
+
     .step-sep {
         transform: rotate(90deg);
     }
-    
+
     .report-types-compact {
         gap: 8px;
     }
-    
+
     .report-badge {
         font-size: 0.75rem;
         padding: 6px 10px;
     }
-    
+
     .tips-compact {
         flex-direction: column;
         gap: 6px;
     }
-    
+
     .tip-sep {
         display: none;
     }
-    
+
     /* Wide welcome responsive */
     .welcome-wide {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: var(--spacing-md);
     }
-    
+
     .report-badges-grid,
     .report-cards-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .tips-row {
         flex-direction: column;
         gap: 6px;
         text-align: center;
     }
-    
-    .tips-row span:contains('•') {
+
+    /* Separator hidden on mobile via class instead of :contains which is not valid CSS */
+    .tips-row .tip-separator {
         display: none;
     }
-    
+
     .hotkey-list {
         gap: 8px;
     }
@@ -2328,6 +2331,7 @@ option {
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -2410,6 +2414,7 @@ tr {
 
 /* Print styles */
 @media print {
+
     .sidebar,
     .mobile-menu-toggle,
     .mobile-overlay,
@@ -2418,22 +2423,23 @@ tr {
     .pagination-controls {
         display: none !important;
     }
-    
+
     .main-content {
         width: 100% !important;
         padding: 0 !important;
     }
-    
+
     body {
         background: white !important;
         color: black !important;
     }
-    
+
     table {
         border-collapse: collapse;
     }
-    
-    th, td {
+
+    th,
+    td {
         border: 1px solid #ddd !important;
         padding: 8px !important;
         background: white !important;
@@ -2506,21 +2512,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 /* Mobile responsive date range */
 @media (max-width: 768px) {
+
     .date-range-filter,
     .date-range-section {
         padding: 8px;
     }
-    
+
     .date-presets {
         gap: 4px;
     }
-    
+
     .preset-btn,
     .prod-preset-btn {
         padding: 3px 8px;
         font-size: 0.7rem;
     }
-    
+
     input[type="date"] {
         padding: 4px 8px;
         font-size: 0.8rem;

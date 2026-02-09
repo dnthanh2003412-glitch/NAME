@@ -2845,7 +2845,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Need Fix Client"
       ],
       "Required by": [
         "Internal"
@@ -3044,9 +3044,9 @@
   {
     "id": "2f6ccb0e-ac88-8064-8acd-d1a31ebfb9db",
     "created_time": "2026-01-28T09:23:00.000Z",
-    "last_edited_time": "2026-01-30T08:30:00.000Z",
+    "last_edited_time": "2026-02-06T05:31:00.000Z",
     "properties": {
-      "NLTT": null,
+      "NLTT": 7,
       "Product (1)": [
         "CO KEY 10"
       ],
@@ -3054,9 +3054,9 @@
         "2eaccb0e-ac88-80d0-9c07-e45ab3e4f749"
       ],
       "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task QC": "1/1",
       "Run n8n": false,
-      "TP giả định": 35,
+      "TP giả định": 30.43,
       "Trọng số TP": 1,
       "Sprint ": [
         "Sprint Key"
@@ -3067,17 +3067,17 @@
       "[Harry] Product": [],
       "Ngày làm": {
         "start": "2026-01-30",
-        "end": null
+        "end": "2026-02-06"
       },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "In progress"
+        "Pending Review"
       ],
       "Required by": [
         "Internal"
       ],
-      "Task Status": "In progress",
+      "Task Status": "Done",
       "Episode": [
         {
           "type": "select",
@@ -3099,7 +3099,7 @@
           "email": "kiendt@sangygroup.com"
         }
       ],
-      "TP thực tế": 35,
+      "TP thực tế": 30.43,
       "UTNL": [
         5
       ],
@@ -4132,7 +4132,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "QC Approved"
+        "Client Approved"
       ],
       "Required by": [
         "External"
@@ -4811,7 +4811,7 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
-        "QC Approved"
+        "Client Approved"
       ],
       "Required by": [
         "External"
@@ -5346,10 +5346,10 @@
       "Product ": [
         "2f7ccb0e-ac88-805d-80fe-d5252aa69239"
       ],
-      "Task main": "0/1",
-      "Task QC": "1/1",
+      "Task main": "1/2",
+      "Task QC": "2/2",
       "Run n8n": false,
-      "TP giả định": 0.5,
+      "TP giả định": 0.3,
       "Trọng số TP": 0.15,
       "Sprint ": null,
       "Product Type": [
@@ -5360,7 +5360,7 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
-        "Need Fix Client"
+        "Pending Review"
       ],
       "Required by": [
         "External"
@@ -5387,12 +5387,12 @@
           "email": "hoanghh@sangygroup.com"
         }
       ],
-      "TP thực tế": 5,
+      "TP thực tế": 0.58,
       "UTNL": [],
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Tasks": "FIX_CLIENT CO KEY 07 ver1",
       "Sprint (1)": []
@@ -5622,10 +5622,10 @@
       "Product ": [
         "2eaccb0e-ac88-8048-abf0-e6ef63e39842"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/2",
+      "Task QC": "1/2",
       "Run n8n": false,
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Sprint ": null,
       "Product Type": [
@@ -5636,7 +5636,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Not started"
+        "Pending Review"
       ],
       "Required by": [
         "Internal"
@@ -5663,12 +5663,14 @@
           "email": "hungnn@sangygroup.com"
         }
       ],
-      "TP thực tế": 5,
-      "UTNL": [],
+      "TP thực tế": 2.33,
+      "UTNL": [
+        1
+      ],
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Tasks": "CO KEY 16 Ver 1",
       "Sprint (1)": []
@@ -5690,10 +5692,10 @@
       "Product ": [
         "2eaccb0e-ac88-80a2-8878-f53dc345861e"
       ],
-      "Task main": "1/1",
-      "Task QC": "1/1",
+      "Task main": "1/2",
+      "Task QC": "2/2",
       "Run n8n": false,
-      "TP giả định": 12.17,
+      "TP giả định": 10.77,
       "Trọng số TP": 1,
       "Sprint ": [
         "Sprint Key"
@@ -5709,7 +5711,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Product Status": [
-        "Pending Review"
+        "Client Approved"
       ],
       "Required by": [
         "Internal"
@@ -5736,12 +5738,12 @@
           "email": "linhnt@sangygroup.com"
         }
       ],
-      "TP thực tế": 12.17,
+      "TP thực tế": 10.77,
       "UTNL": [],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Tasks": "CO IBW 8 Ver 1",
       "Sprint (1)": [
@@ -6201,7 +6203,7 @@
       "[Dev] Total main": 0,
       "Task type": null,
       "Product Status": [
-        "In progress"
+        "Pending Review"
       ],
       "Required by": [
         "External"
@@ -8090,6 +8092,942 @@
       "Sprint (1)": []
     },
     "_title": "LO 9 ver1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-8035-ad8b-df6b85436a5d",
+    "created_time": "2026-02-06T02:14:00.000Z",
+    "last_edited_time": "2026-02-06T05:19:00.000Z",
+    "properties": {
+      "NLTT": 1,
+      "Product (1)": [
+        "CO KEY 16"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-8048-abf0-e6ef63e39842"
+      ],
+      "Task main": "2/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Sprint ": [
+        "Sprint Key"
+      ],
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 2.33,
+      "UTNL": [
+        1
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO KEY 16 Ver 1",
+      "Sprint (1)": [
+        "2f0ccb0e-ac88-8045-80ea-cbc3539619a4"
+      ]
+    },
+    "_title": "CO KEY 16 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-8069-93ee-e95402aafb03",
+    "created_time": "2026-02-06T03:50:00.000Z",
+    "last_edited_time": "2026-02-06T03:51:00.000Z",
+    "properties": {
+      "NLTT": 2,
+      "Product (1)": [
+        "CO KEY 11"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-80c9-bf25-e69665f29aed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 12.17,
+      "Trọng số TP": 1,
+      "Sprint ": [
+        "Sprint Key"
+      ],
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": {
+        "start": "2026-02-05",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 5.6,
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 12.17,
+      "UTNL": [],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "CO KEY 11 Ver 1",
+      "Sprint (1)": [
+        "2f0ccb0e-ac88-8045-80ea-cbc3539619a4"
+      ]
+    },
+    "_title": "CO KEY 11 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-8027-bf12-e5e167f8f544",
+    "created_time": "2026-02-06T07:37:00.000Z",
+    "last_edited_time": "2026-02-06T07:38:00.000Z",
+    "properties": {
+      "NLTT": 0.75,
+      "Product (1)": [
+        "FIX_CLIENT CO KEY 09"
+      ],
+      "Product ": [
+        "2feccb0e-ac88-80d9-9429-de2b80433ac0"
+      ],
+      "Task main": "1/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "FIX_CLIENT CO KEY 09 Ver 1",
+      "Sprint (1)": []
+    },
+    "_title": "FIX_CLIENT CO KEY 09 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-80cf-8ba0-f819a37f5642",
+    "created_time": "2026-02-06T07:54:00.000Z",
+    "last_edited_time": "2026-02-06T08:50:00.000Z",
+    "properties": {
+      "NLTT": 0.5,
+      "Product (1)": [
+        "FIX_CLIENT CO KEY 12"
+      ],
+      "Product ": [
+        "2feccb0e-ac88-801d-94b8-e1575ad88ee9"
+      ],
+      "Task main": "1/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "FIX_CLIENT CO KEY 12 Ver 1",
+      "Sprint (1)": []
+    },
+    "_title": "FIX_CLIENT CO KEY 12 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-8039-a7bc-f332db22dfd6",
+    "created_time": "2026-02-06T08:55:00.000Z",
+    "last_edited_time": "2026-02-06T08:55:00.000Z",
+    "properties": {
+      "NLTT": 0.5,
+      "Product (1)": [
+        "FIX_CLIENT CO KEY 07"
+      ],
+      "Product ": [
+        "2f7ccb0e-ac88-805d-80fe-d5252aa69239"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 3.85,
+      "Trọng số TP": 1,
+      "Sprint ": [
+        "Sprint Key"
+      ],
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Required by": [
+        "External"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 3.85,
+      "UTNL": [],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "FIX_CLIENT CO KEY 07 Ver 1",
+      "Sprint (1)": [
+        "2f0ccb0e-ac88-8045-80ea-cbc3539619a4"
+      ]
+    },
+    "_title": "FIX_CLIENT CO KEY 07 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "2ffccb0e-ac88-80b8-bc57-dfef00f0f036",
+    "created_time": "2026-02-06T08:50:00.000Z",
+    "last_edited_time": "2026-02-06T08:58:00.000Z",
+    "properties": {
+      "NLTT": 1.5,
+      "Product (1)": [
+        "FIX_CLIENT CO KEY 14"
+      ],
+      "Product ": [
+        "2fdccb0e-ac88-8089-9502-c0ad06d0cf28"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Ready to start"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "UTNL": [],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "FIX_CLIENT CO KEY 14 Ver 1",
+      "Sprint (1)": []
+    },
+    "_title": "FIX_CLIENT CO KEY 14 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-80bb-b00d-fdfca7623dfc",
+    "created_time": "2026-02-09T06:58:00.000Z",
+    "last_edited_time": "2026-02-09T06:58:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 9"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-801d-9c22-c55015aa2a80"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 10.77,
+      "Trọng số TP": 1,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 5.6,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 10.77,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO IBW 9 Ver 1",
+      "Sprint (1)": []
+    },
+    "_title": "CO IBW 9 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-80d0-99cf-fb1d33dedad2",
+    "created_time": "2026-02-09T06:58:00.000Z",
+    "last_edited_time": "2026-02-09T06:59:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 12"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-8078-8aa9-ee5a8ac1ee1b"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 3.85,
+      "Trọng số TP": 1,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 3.85,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO IBW 12 Ver 1",
+      "Sprint (1)": []
+    },
+    "_title": "CO IBW 12 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-80e8-8395-d7cdca4619b1",
+    "created_time": "2026-02-09T06:56:00.000Z",
+    "last_edited_time": "2026-02-09T06:56:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 7"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-8070-92c1-f8b7d363c890"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "TP giả định": 5,
+      "Trọng số TP": 1,
+      "Sprint ": [
+        "Sprint Key"
+      ],
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": {
+        "start": "2026-02-09",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Need Fix Client"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 5,
+      "UTNL": [],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "CO IBW 7 Ver 1",
+      "Sprint (1)": [
+        "2f0ccb0e-ac88-8045-80ea-cbc3539619a4"
+      ]
+    },
+    "_title": "CO IBW 7 Ver 1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-8126-8dd4-e5a9c0f94eb7",
+    "created_time": "2026-02-09T06:54:00.000Z",
+    "last_edited_time": "2026-02-09T06:54:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 12"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-8078-8aa9-ee5a8ac1ee1b"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "2b47d5ac-bd39-4aad-8e95-23ea4ab9b925",
+          "name": "Hoàng Hà",
+          "email": "hoanghh@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.58,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO IBW 12 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "CO IBW 12 ver1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-8165-a9b2-dddbb492e3a1",
+    "created_time": "2026-02-09T06:48:00.000Z",
+    "last_edited_time": "2026-02-09T06:48:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 8"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-80a2-8878-f53dc345861e"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 0.84,
+      "Trọng số TP": 0.15,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 0.84,
+      "Assignee": [
+        {
+          "id": "2b47d5ac-bd39-4aad-8e95-23ea4ab9b925",
+          "name": "Hoàng Hà",
+          "email": "hoanghh@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 1.62,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO IBW 8 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "CO IBW 8 ver1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-81ce-8ca9-fb42c2965aae",
+    "created_time": "2026-02-09T06:54:00.000Z",
+    "last_edited_time": "2026-02-09T06:54:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product (1)": [
+        "CO IBW 9"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-801d-9c22-c55015aa2a80"
+      ],
+      "Task main": "1/2",
+      "Task QC": "2/2",
+      "Run n8n": false,
+      "TP giả định": 0.84,
+      "Trọng số TP": 0.15,
+      "Sprint ": null,
+      "Product Type": [
+        "Cutout Ibw"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Loại cảnh": [
+        "D"
+      ],
+      "TP giả định 2": 0.84,
+      "Assignee": [
+        {
+          "id": "2b47d5ac-bd39-4aad-8e95-23ea4ab9b925",
+          "name": "Hoàng Hà",
+          "email": "hoanghh@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 1.62,
+      "UTNL": [],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Tasks": "CO IBW 9 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "CO IBW 9 ver1",
+    "database_name": "[Harry] Tasks",
+    "project_name": "[Harry] Tasks",
+    "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"
+  },
+  {
+    "id": "302ccb0e-ac88-80a1-b8fe-fa7db1cc49bf",
+    "created_time": "2026-02-09T08:16:00.000Z",
+    "last_edited_time": "2026-02-09T08:17:00.000Z",
+    "properties": {
+      "NLTT": 2.5,
+      "Product (1)": [
+        "CO KEY 13"
+      ],
+      "Product ": [
+        "2eaccb0e-ac88-8043-95f0-c1e49720fb45"
+      ],
+      "Task main": "1/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 21.74,
+      "Trọng số TP": 1,
+      "Sprint ": [
+        "Sprint Key"
+      ],
+      "Product Type": [
+        "Cutout Key"
+      ],
+      "[Harry] Product": [],
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": "2026-02-09"
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        25
+      ],
+      "Loại cảnh": [
+        "C"
+      ],
+      "TP giả định 2": 10,
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 21.74,
+      "UTNL": [],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Tasks": "CO KEY 13 Ver 1",
+      "Sprint (1)": [
+        "2f0ccb0e-ac88-8045-80ea-cbc3539619a4"
+      ]
+    },
+    "_title": "CO KEY 13 Ver 1",
     "database_name": "[Harry] Tasks",
     "project_name": "[Harry] Tasks",
     "database_id": "2d8ccb0e-ac88-8182-bd6c-c197ae37266c"

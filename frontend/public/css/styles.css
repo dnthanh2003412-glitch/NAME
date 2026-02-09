@@ -2533,3 +2533,22 @@ input[type="date"]::-webkit-calendar-picker-indicator {
         font-size: 0.8rem;
     }
 }
+
+/* ============================================
+   APP FOOTER
+   ============================================ */
+.app-footer {
+    margin-top: 32px;
+    padding: 24px 0;
+    text-align: center;
+    border-top: 1px solid var(--glass-border);
+    background: rgba(15, 23, 42, 0.3);
+    width: 100%;
+}
+
+.app-footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.85rem;
+    margin: 0;
+    font-weight: 500;
+}

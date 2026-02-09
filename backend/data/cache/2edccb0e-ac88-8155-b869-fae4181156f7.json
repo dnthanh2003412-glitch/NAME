@@ -3134,7 +3134,7 @@
     "created_time": "2026-01-21T02:32:00.000Z",
     "last_edited_time": "2026-01-29T04:39:00.000Z",
     "properties": {
-      "Task count ": 1,
+      "Task count ": 0,
       "Total Fixed": 0,
       "Episode": null,
       "UTNL": null,
@@ -3151,16 +3151,14 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "Tasks": [
-        "2f7ccb0e-ac88-81c9-a26a-e7df1589023e"
-      ],
+      "Tasks": [],
       "Loại cảnh": null,
       "Max": null,
       "Status": "QC Approved",
       "DO": null,
       "Resource": null,
       "Combo": null,
-      "Task count + 1": 2,
+      "Task count + 1": 1,
       "Min": null,
       "Total Main": 0,
       "Point Status": "Confirmed",
@@ -3171,7 +3169,7 @@
       "Due Date": null,
       "Ghép BG": "Not started",
       "Product type": null,
-      "Total QC": 1,
+      "Total QC": 0,
       "Product": "Chuẩn bị brief Animation "
     },
     "_title": "Chuẩn bị brief Animation ",

@@ -24,7 +24,7 @@
       "Product Type": [
         "Background"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-24",
         "end": null
       },
@@ -94,7 +94,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-23",
         "end": null
       },
@@ -164,7 +164,7 @@
       "Product Type": [
         "Layout"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
@@ -231,7 +231,7 @@
       "Product Type": [
         "Layout"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-23",
         "end": null
       },
@@ -301,7 +301,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-24",
         "end": null
       },
@@ -365,7 +365,7 @@
       ],
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-23",
         "end": "2025-12-24"
       },
@@ -425,7 +425,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-26",
         "end": null
       },
@@ -489,7 +489,7 @@
       ],
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-26",
         "end": null
       },
@@ -543,7 +543,7 @@
       ],
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -603,7 +603,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-29",
         "end": null
       },
@@ -673,7 +673,7 @@
       "Product Type": [
         "Background"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
@@ -736,7 +736,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
@@ -799,7 +799,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-29",
         "end": null
       },
@@ -865,7 +865,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-29",
         "end": null
       },
@@ -925,7 +925,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -972,7 +972,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -1019,7 +1019,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -1066,7 +1066,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -1113,7 +1113,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": {
+      "Ngày làm": {
         "start": "2025-12-30",
         "end": null
       },
@@ -1169,7 +1169,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1232,7 +1232,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1293,7 +1293,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1354,7 +1354,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
@@ -1417,7 +1417,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1480,7 +1480,7 @@
       "Product Type": [
         "Animation"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1537,7 +1537,7 @@
       "Sprint": null,
       "Trọng số TP": 0.15,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": null,
@@ -1590,7 +1590,7 @@
       "Product Type": [
         "Background"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1653,7 +1653,7 @@
       "Product Type": [
         "Background"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1716,7 +1716,7 @@
       "Product Type": [
         "Layout"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1779,7 +1779,7 @@
       "Product Type": [
         "Layout"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1840,7 +1840,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
@@ -1895,7 +1895,7 @@
       "Product Type": [
         "SP"
       ],
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status": [
@@ -1952,7 +1952,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": null,
+      "Ngày làm": null,
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": null,
@@ -1999,7 +1999,7 @@
       "Sprint": null,
       "Trọng số TP": 1,
       "Product Type": null,
-      "Done Date": {
+      "Ngày làm": {
         "start": "2026-01-20",
         "end": null
       },
@@ -2049,7 +2049,7 @@
       "Sprint": null,
       "Trọng số TP": 0,
       "Product Type": null,
-      "Done Date": {
+      "Ngày làm": {
         "start": "2026-01-20",
         "end": null
       },

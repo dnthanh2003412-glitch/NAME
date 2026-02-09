@@ -349,7 +349,10 @@ export function renderRawDataTable(data, container) {
             )
         ].join('\n');
 
-        downloadFile(csv, `${database_name.replace(/[^a-z0-9]/gi, '_')}.csv`, 'text/csv');
+        // Add date to filename
+        const today = new Date();
+        const dateStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        downloadFile(csv, `${database_name.replace(/[^a-z0-9]/gi, '_')}_${dateStr}.csv`, 'text/csv');
     });
 
     // Export Excel (simple HTML table based)
@@ -368,7 +371,10 @@ export function renderRawDataTable(data, container) {
             </body>
             </html>
         `;
-        downloadFile(html, `${database_name.replace(/[^a-z0-9]/gi, '_')}.xls`, 'application/vnd.ms-excel');
+        // Add date to filename
+        const today = new Date();
+        const dateStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+        downloadFile(html, `${database_name.replace(/[^a-z0-9]/gi, '_')}_${dateStr}.xls`, 'application/vnd.ms-excel');
     });
 
     // Initial render

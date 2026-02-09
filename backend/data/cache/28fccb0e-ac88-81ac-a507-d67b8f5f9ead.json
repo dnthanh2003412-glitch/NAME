@@ -379,9 +379,10 @@
         "2dfccb0e-ac88-80a6-a9d4-f4b3390fe068",
         "2dfccb0e-ac88-80db-9017-f8ece111c705",
         "2dfccb0e-ac88-807d-8675-e55861b7f05d",
-        "2dfccb0e-ac88-8028-bfde-d9d922fa2f90"
+        "2dfccb0e-ac88-8028-bfde-d9d922fa2f90",
+        "2dfccb0e-ac88-8008-8ad6-ea49d0586763"
       ],
-      "Total tasks": 24,
+      "Total tasks": 25,
       "Completed tasks": 1,
       "Sprint status": "Past"
     },
@@ -464,8 +465,8 @@
         "2f1ccb0e-ac88-8011-a24e-dd27c0972c23",
         "2efccb0e-ac88-80e6-a9fa-c7871dcd6971"
       ],
-      "Total tasks": 27,
-      "Completed tasks": 0.9629629629629629,
+      "Total tasks": 26,
+      "Completed tasks": 1,
       "Sprint status": "Next"
     },
     "_title": "Sprint 9.2",
@@ -496,7 +497,6 @@
         "2fdccb0e-ac88-8062-a364-f72d1cbd9a14",
         "2fdccb0e-ac88-804a-9543-e29c094a7fab",
         "2fcccb0e-ac88-8088-b740-ee14beaa7795",
-        "2feccb0e-ac88-8008-baea-e5acee472b59",
         "2feccb0e-ac88-80ae-9e77-d868d541bcbb",
         "2feccb0e-ac88-80e6-a525-fe00dc46d18d",
         "2feccb0e-ac88-80ab-9c01-cbb73753fad3",
@@ -513,8 +513,8 @@
         "2feccb0e-ac88-8067-b179-f8eeb4f37ffa",
         "2feccb0e-ac88-80f0-ace1-f3eb7c910d7d"
       ],
-      "Total tasks": 25,
-      "Completed tasks": 0.44,
+      "Total tasks": 24,
+      "Completed tasks": 0.5833333333333334,
       "Sprint status": "Current"
     },
     "_title": "Sprint 10",

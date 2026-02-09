@@ -74,13 +74,132 @@ export function setupRoutes(app, db, poller) {
     app.get('/api/whitelist', (req, res) => {
         try {
             const priorityData = loadPriorityProjects();
-            res.json({ 
-                success: true, 
+            res.json({
+                success: true,
                 projects: priorityData.projects || [],
                 priority_databases: priorityData.priority_databases || []
             });
         } catch (error) {
             console.error('[API] Error loading whitelist:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Pin/Unpin a project to/from the whitelist
+    app.post('/api/whitelist/pin', async (req, res) => {
+        const { projectId, projectName, action } = req.body; // action: 'pin' or 'unpin'
+
+        if (!projectId || !action) {
+            return res.status(400).json({ error: 'projectId and action are required' });
+        }
+
+        try {
+            const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+            const priorityData = loadPriorityProjects();
+
+            if (action === 'pin') {
+                // Check if already pinned
+                const alreadyPinned = priorityData.projects.some(p => p.id === projectId);
+                if (alreadyPinned) {
+                    return res.json({ success: true, message: 'Project already pinned', alreadyPinned: true });
+                }
+
+                // Get project info from active_project_structure.json
+                const structurePath = path.join(__dirname, '..', '..', 'data', 'active_project_structure.json');
+                let projectInfo = null;
+
+                if (fs.existsSync(structurePath)) {
+                    const structureData = JSON.parse(fs.readFileSync(structurePath, 'utf8'));
+                    projectInfo = structureData.find(p => p.id === projectId);
+                }
+
+                if (!projectInfo) {
+                    // Create minimal project info if not found in structure
+                    projectInfo = {
+                        name: projectName || 'Unknown Project',
+                        id: projectId,
+                        databases: []
+                    };
+                }
+
+                // Extract project code from name (e.g., "[DeeDee_2025_SUN] Sunny Side Down" -> "SUN")
+                const codeMatch = projectInfo.name.match(/\[.*?_(\w+)\]/);
+                const code = codeMatch ? codeMatch[1] : projectInfo.name.slice(0, 5).toUpperCase();
+
+                // Prepare databases with type detection
+                const databases = (projectInfo.databases || []).map(db => {
+                    let type = 'other';
+                    const dbName = (db.title || db.name || '').toLowerCase();
+                    if (dbName.includes('task')) type = 'tasks';
+                    else if (dbName.includes('product')) type = 'products';
+                    else if (dbName.includes('sprint')) type = 'sprints';
+                    else if (dbName.includes('report') || dbName.includes('báo cáo')) type = 'reports';
+                    else if (dbName.includes('issue')) type = 'issues';
+
+                    return {
+                        id: db.id,
+                        name: db.title || db.name || 'Unknown',
+                        type: type
+                    };
+                });
+
+                // Add to projects array
+                const newProject = {
+                    name: projectInfo.name,
+                    id: projectId,
+                    code: code,
+                    databases: databases
+                };
+                priorityData.projects.push(newProject);
+
+                // Add database IDs to priority_databases array
+                databases.forEach(db => {
+                    if (!priorityData.priority_databases.includes(db.id)) {
+                        priorityData.priority_databases.push(db.id);
+                    }
+                });
+
+                // Update description
+                priorityData.description = `Whitelist dự án ưu tiên - gồm ${priorityData.projects.length} dự án`;
+
+                console.log(`[API] ✅ Pinned project: ${projectInfo.name}`);
+            } else if (action === 'unpin') {
+                // Find and remove project
+                const projectIndex = priorityData.projects.findIndex(p => p.id === projectId);
+                if (projectIndex === -1) {
+                    return res.json({ success: true, message: 'Project not in whitelist', notFound: true });
+                }
+
+                const removedProject = priorityData.projects[projectIndex];
+
+                // Remove database IDs from priority_databases
+                const dbIdsToRemove = (removedProject.databases || []).map(db => db.id);
+                priorityData.priority_databases = priorityData.priority_databases.filter(
+                    dbId => !dbIdsToRemove.includes(dbId)
+                );
+
+                // Remove project from array
+                priorityData.projects.splice(projectIndex, 1);
+
+                // Update description
+                priorityData.description = `Whitelist dự án ưu tiên - gồm ${priorityData.projects.length} dự án`;
+
+                console.log(`[API] ✅ Unpinned project: ${removedProject.name}`);
+            } else {
+                return res.status(400).json({ error: 'Invalid action. Use "pin" or "unpin"' });
+            }
+
+            // Save updated priority_projects.json
+            fs.writeFileSync(priorityPath, JSON.stringify(priorityData, null, 2), 'utf8');
+
+            res.json({
+                success: true,
+                action: action,
+                projectCount: priorityData.projects.length,
+                databaseCount: priorityData.priority_databases.length
+            });
+        } catch (error) {
+            console.error('[API] Error updating whitelist:', error);
             res.status(500).json({ error: error.message });
         }
     });
@@ -218,7 +337,26 @@ export function setupRoutes(app, db, poller) {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         const { id } = req.params;
         try {
-            const cachedData = db.getData(id);
+            let cachedData = db.getData(id);
+
+            // If missing or empty, auto-fetch from Notion
+            if (!cachedData || cachedData.length === 0) {
+                console.log(`[API] Raw data missing for ${id}, fetching from Notion...`);
+                try {
+                    const fetcher = new DataFetcher(notionToken);
+                    const result = await fetcher.fetchAllData([id]);
+                    cachedData = result[id] || [];
+
+                    if (cachedData.length > 0) {
+                        db.saveData(id, cachedData);
+                        console.log(`[API] Fetched and cached ${cachedData.length} records for ${id}`);
+                    }
+                } catch (fetchError) {
+                    console.error(`[API] Failed to auto-fetch data for ${id}:`, fetchError);
+                    // Fallthrough to error response below if still empty
+                }
+            }
+
             if (!cachedData || cachedData.length === 0) {
                 return res.json({ success: false, error: 'No data available for this database.' });
             }
@@ -284,19 +422,19 @@ export function setupRoutes(app, db, poller) {
     // ============ PRODUCTIVITY REPORT ROUTES ============
     app.post('/api/reports/productivity', async (req, res) => {
         const { startDate, endDate, databaseIds, standardDays } = req.body; // YYYY-MM-DD format
-        
+
         if (!startDate || !endDate) {
             return res.status(400).json({ error: 'startDate and endDate are required' });
         }
 
         try {
             const prodService = new ProductivityService(db);
-            
+
             // If standardDays is provided, save it first
             if (standardDays !== undefined && standardDays !== null) {
                 prodService.updateStats(startDate, endDate, { standard_days: standardDays });
             }
-            
+
             // Ưu tiên dùng databaseIds từ request, fallback về config
             const selectedDatabases = databaseIds && databaseIds.length > 0
                 ? databaseIds
@@ -374,8 +512,8 @@ export function setupRoutes(app, db, poller) {
             db.buildLookupCache();
             const elapsed = Date.now() - startTime;
             const { lookupMap, userMap } = db.getLookupMaps();
-            res.json({ 
-                success: true, 
+            res.json({
+                success: true,
                 message: 'Lookup cache rebuilt',
                 stats: {
                     lookupEntries: lookupMap.size,
@@ -428,7 +566,7 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
         // Map over items and format recursively
         const formatted = value.map(v => formatValue(v, lookupMap, globalUserMap))
             .filter(v => v !== ''); // Filter empty strings
-        
+
         // Dedupe to avoid "D, D, D, D, D" display issues
         const unique = [...new Set(formatted)];
         return unique.join(', ');

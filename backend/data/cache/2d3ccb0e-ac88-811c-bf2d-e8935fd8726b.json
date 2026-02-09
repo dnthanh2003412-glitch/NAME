@@ -33997,7 +33997,7 @@
   {
     "id": "2e9ccb0e-ac88-8085-a0bc-f3706ec22276",
     "created_time": "2026-01-15T07:38:00.000Z",
-    "last_edited_time": "2026-01-19T09:16:00.000Z",
+    "last_edited_time": "2026-02-06T06:53:00.000Z",
     "properties": {
       "Product (1)": [
         "KEY 3"
@@ -34054,7 +34054,10 @@
       ],
       "NLTT": 0.125,
       "TP thực tế": 0.94,
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-02-04",
+        "end": null
+      },
       "Loại cảnh": [
         "E"
       ],
@@ -37419,7 +37422,7 @@
         "FIX_CLIENT KEY 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -37438,10 +37441,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -37499,7 +37502,7 @@
         "FIX_CLIENT KEY 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -37518,10 +37521,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -41261,7 +41264,7 @@
         "FIX_CLIENT KEY 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -41280,10 +41283,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -42365,7 +42368,7 @@
         "FIX_CLIENT KEY 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -42384,10 +42387,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -49376,13 +49379,13 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 8.75,
+      "TP giả định": 5.38,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -49396,7 +49399,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "On Hold"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -49424,7 +49427,7 @@
         }
       ],
       "NLTT": 0.5,
-      "TP thực tế": 8.75,
+      "TP thực tế": 5.38,
       "Ngày làm": {
         "start": "2026-01-23",
         "end": null
@@ -49432,7 +49435,7 @@
       "Loại cảnh": [
         "D"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 28 ver1",
@@ -49992,15 +49995,15 @@
         "IBW 32"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -50011,10 +50014,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -50042,7 +50045,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": null
@@ -50050,7 +50053,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 32 ver1",
@@ -50152,15 +50155,15 @@
         "IBW 16"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -50171,10 +50174,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -50202,7 +50205,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": null
@@ -50210,7 +50213,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 16 ver1",
@@ -50312,7 +50315,7 @@
         "FIX_CLIENT KEY 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -50331,10 +50334,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -50392,15 +50395,15 @@
         "IBW 21"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.0625
       ],
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -50411,10 +50414,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -50442,7 +50445,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": null
@@ -50450,7 +50453,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 21 ver1",
@@ -50708,15 +50711,15 @@
         "IBW 9"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -50727,10 +50730,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -50758,7 +50761,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": null
@@ -50766,7 +50769,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 9 ver1",
@@ -51199,7 +51202,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -51810,15 +51813,15 @@
         "IBW 29"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -51829,10 +51832,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -51860,7 +51863,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": null
@@ -51868,7 +51871,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 29 ver1",
@@ -53901,10 +53904,10 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
@@ -53920,10 +53923,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -53951,12 +53954,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.25,
+      "TP thực tế": 0.23,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 29 ver2",
@@ -56158,13 +56161,13 @@
         "IBW 40"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [],
-      "TP giả định": 2.04,
+      "TP giả định": 1.92,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -56175,10 +56178,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -56206,7 +56209,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 2.04,
+      "TP thực tế": 1.92,
       "Ngày làm": {
         "start": "2026-01-23",
         "end": null
@@ -56214,7 +56217,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 40 ver1",
@@ -56396,15 +56399,15 @@
         "IBW 5"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 2.33,
+      "TP giả định": 2.17,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -56415,10 +56418,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -56446,7 +56449,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 2.33,
+      "TP thực tế": 2.17,
       "Ngày làm": {
         "start": "2026-01-23",
         "end": null
@@ -56454,7 +56457,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 5 ver1",
@@ -56556,15 +56559,15 @@
         "IBW 52"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 1,
+      "TP giả định": 0.47,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -56575,10 +56578,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -56606,7 +56609,7 @@
         }
       ],
       "NLTT": 0.17424,
-      "TP thực tế": 1,
+      "TP thực tế": 0.47,
       "Ngày làm": {
         "start": "2026-01-23",
         "end": null
@@ -56614,7 +56617,7 @@
       "Loại cảnh": [
         "F"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 52 ver1",
@@ -56786,15 +56789,15 @@
         "IBW 7"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 2.33,
+      "TP giả định": 2.17,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -56805,10 +56808,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -56836,7 +56839,7 @@
         }
       ],
       "NLTT": 0.75,
-      "TP thực tế": 2.33,
+      "TP thực tế": 2.17,
       "Ngày làm": {
         "start": "2026-01-22",
         "end": "2026-01-23"
@@ -56844,7 +56847,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 7 ver1",
@@ -58220,10 +58223,10 @@
         "IBW 40"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [],
       "TP giả định": 0.21,
@@ -58237,10 +58240,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -58268,7 +58271,7 @@
         }
       ],
       "NLTT": 0.0227272727272727,
-      "TP thực tế": 0.31,
+      "TP thực tế": 0.29,
       "Ngày làm": {
         "start": "2026-01-23",
         "end": null
@@ -58276,7 +58279,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 40 ver2",
@@ -58462,8 +58465,8 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "1/4",
       "Run n8n": false,
       "UTNL": [
         0.25
@@ -58482,7 +58485,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -58518,7 +58521,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/3",
+      "Task fix": "1/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 45 ver1",
@@ -58769,10 +58772,10 @@
         "IBW 40"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [],
       "TP giả định": 0.43,
@@ -58786,10 +58789,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -58817,7 +58820,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 0.61,
+      "TP thực tế": 0.58,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -58825,7 +58828,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 40 ver3",
@@ -59537,15 +59540,15 @@
         "IBW 34"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -59556,10 +59559,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -59587,7 +59590,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -59595,7 +59598,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 34 ver1",
@@ -60164,15 +60167,15 @@
         "IBW 47"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.0625
       ],
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -60183,10 +60186,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -60214,7 +60217,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -60222,7 +60225,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 47 ver1",
@@ -61294,15 +61297,15 @@
         "IBW 20"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.625
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -61313,10 +61316,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -61344,7 +61347,7 @@
         }
       ],
       "NLTT": 0.5,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -61352,7 +61355,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 20 ver1",
@@ -61911,15 +61914,15 @@
         "IBW 36"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/2",
-      "Task QC": "0/2",
+      "Task main": "1/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -61930,10 +61933,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -61961,7 +61964,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -61969,7 +61972,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 36 ver1",
@@ -62062,15 +62065,15 @@
         "IBW 50"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.375
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -62081,10 +62084,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -62112,7 +62115,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-01-26",
         "end": null
@@ -62120,7 +62123,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 50 ver1",
@@ -65456,7 +65459,7 @@
         "Confirmed"
       ],
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -65840,8 +65843,8 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "1/4",
       "Run n8n": false,
       "UTNL": [
         0.25
@@ -65860,7 +65863,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -65896,7 +65899,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/3",
+      "Task fix": "1/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 45 ver3",
@@ -65920,13 +65923,13 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 1.68,
+      "TP giả định": 1.2,
       "Trọng số TP": 0.3,
       "Product Type": [
         "Inbetween"
@@ -65940,7 +65943,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "On Hold"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -65968,7 +65971,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 2.63,
+      "TP thực tế": 1.62,
       "Ngày làm": {
         "start": "2026-01-27",
         "end": null
@@ -65976,7 +65979,7 @@
       "Loại cảnh": [
         "D"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 28 ver3",
@@ -65998,15 +66001,15 @@
         "IBW 58"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 1,
+      "TP giả định": 0.87,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -66017,10 +66020,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -66048,7 +66051,7 @@
         }
       ],
       "NLTT": 0.5,
-      "TP thực tế": 1,
+      "TP thực tế": 0.87,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": "2026-01-28"
@@ -66056,7 +66059,7 @@
       "Loại cảnh": [
         "F"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 58 ver1",
@@ -66783,7 +66786,7 @@
         "Confirmed"
       ],
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -67107,8 +67110,8 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "1/4",
       "Run n8n": false,
       "UTNL": [
         0.25
@@ -67120,83 +67123,6 @@
       ],
       "Product": [
         "2d3ccb0e-ac88-804e-bf7c-f7b48b72b7a0"
-      ],
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Point Status (1)": [
-        "Unconfirmed"
-      ],
-      "Product Status": [
-        "Anim Approved"
-      ],
-      "Task Status": "Done QC",
-      "Sprint (1)": [
-        "Sprint IBW"
-      ],
-      "Episode": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Done date": null,
-      "Product Point": [
-        5
-      ],
-      "Required by": [
-        "Internal"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
-          "name": " Vân Trần",
-          "email": "vanttt@sangygroup.com"
-        }
-      ],
-      "NLTT": null,
-      "TP thực tế": 0.52,
-      "Ngày làm": null,
-      "Loại cảnh": [
-        "E"
-      ],
-      "Task fix": "1/3",
-      "Created time": null,
-      "Status": "Not started",
-      "Tasks": "IBW 45 ver2",
-      "Sprint": [
-        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
-      ]
-    },
-    "_title": "IBW 45 ver2",
-    "database_name": "[CHIBI] Tasks ",
-    "project_name": "[CHIBI] Tasks",
-    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
-  },
-  {
-    "id": "2f5ccb0e-ac88-81a5-b1da-f7b181782ed9",
-    "created_time": "2026-01-27T03:55:00.000Z",
-    "last_edited_time": "2026-01-27T03:55:00.000Z",
-    "properties": {
-      "Product (1)": [
-        "IBW 7"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
-      "Run n8n": false,
-      "UTNL": [
-        0.75
-      ],
-      "TP giả định": 0.21,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Product": [
-        "2d3ccb0e-ac88-807f-b6e6-c3eb3607987b"
       ],
       "[Dev] Total main": 0,
       "Task type": "QC",
@@ -67232,12 +67158,89 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.35,
+      "TP thực tế": 0.52,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/3",
+      "Task fix": "1/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 45 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 45 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2f5ccb0e-ac88-81a5-b1da-f7b181782ed9",
+    "created_time": "2026-01-27T03:55:00.000Z",
+    "last_edited_time": "2026-01-27T03:55:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 7"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-807f-b6e6-c3eb3607987b"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0.33,
+      "Ngày làm": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 7 ver2",
@@ -67655,13 +67658,13 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 0.84,
+      "TP giả định": 0.6,
       "Trọng số TP": 0.15,
       "Product Type": [
         "Inbetween"
@@ -67675,7 +67678,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "On Hold"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -67703,12 +67706,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 1.31,
+      "TP thực tế": 0.81,
       "Ngày làm": null,
       "Loại cảnh": [
         "D"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 28 ver2",
@@ -67892,10 +67895,10 @@
         "IBW 5"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.25
@@ -67911,10 +67914,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -67942,12 +67945,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.35,
+      "TP thực tế": 0.33,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 5 ver2",
@@ -68206,15 +68209,15 @@
         "IBW 8"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -68225,10 +68228,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -68256,7 +68259,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": null
@@ -68264,7 +68267,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 8 ver1",
@@ -68286,15 +68289,15 @@
         "IBW 17 "
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -68305,10 +68308,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -68336,7 +68339,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": null
@@ -68344,7 +68347,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 17  ver1",
@@ -68453,15 +68456,15 @@
         "IBW 55"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 3.45,
+      "TP giả định": 3.13,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -68472,10 +68475,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -68503,7 +68506,7 @@
         }
       ],
       "NLTT": 0.375,
-      "TP thực tế": 3.45,
+      "TP thực tế": 3.13,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": null
@@ -68511,7 +68514,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/3",
+      "Task fix": "1/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 55 ver1",
@@ -69008,15 +69011,15 @@
         "IBW 4"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.04,
+      "TP giả định": 1.92,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -69027,10 +69030,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -69058,7 +69061,7 @@
         }
       ],
       "NLTT": 0.375,
-      "TP thực tế": 2.04,
+      "TP thực tế": 1.92,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": null
@@ -69066,7 +69069,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 4 ver1",
@@ -69088,15 +69091,15 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 1.64,
+      "TP giả định": 1.56,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -69107,10 +69110,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -69138,7 +69141,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 1.64,
+      "TP thực tế": 1.56,
       "Ngày làm": {
         "start": "2026-01-28",
         "end": null
@@ -69146,7 +69149,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver1",
@@ -70949,7 +70952,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Pending Review"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -72835,15 +72838,15 @@
         "IBW 6"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 4.35,
+      "TP giả định": 2.17,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -72854,10 +72857,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -72885,7 +72888,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 4.35,
+      "TP thực tế": 2.17,
       "Ngày làm": {
         "start": "2026-01-29",
         "end": null
@@ -72893,7 +72896,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 6 ver1",
@@ -72937,7 +72940,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Pending Review"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73017,7 +73020,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73415,7 +73418,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73473,15 +73476,15 @@
         "IBW 51"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.375
       ],
-      "TP giả định": 5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -73492,10 +73495,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73523,7 +73526,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-01-29",
         "end": null
@@ -73531,7 +73534,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 51 ver1",
@@ -73834,15 +73837,15 @@
         "IBW 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -73853,10 +73856,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Not started"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73884,7 +73887,7 @@
         }
       ],
       "NLTT": 0.375,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-01-29",
         "end": null
@@ -73892,7 +73895,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 44 ver1",
@@ -73914,15 +73917,15 @@
         "IBW 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -73933,10 +73936,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Not started"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -73964,7 +73967,7 @@
         }
       ],
       "NLTT": 0.375,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-01-29",
         "end": null
@@ -73972,7 +73975,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 42 ver1",
@@ -74136,7 +74139,7 @@
         "FIX_CLIENT KEY 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -74155,10 +74158,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -74216,10 +74219,10 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
@@ -74235,10 +74238,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -74266,7 +74269,7 @@
         }
       ],
       "NLTT": 0,
-      "TP thực tế": 0.49,
+      "TP thực tế": 0.47,
       "Ngày làm": {
         "start": "2026-01-30",
         "end": null
@@ -74274,7 +74277,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver3",
@@ -74316,7 +74319,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -74618,10 +74621,10 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
@@ -74637,10 +74640,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -74668,12 +74671,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.25,
+      "TP thực tế": 0.23,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver4",
@@ -74717,7 +74720,7 @@
         "Confirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -74932,7 +74935,7 @@
         "Confirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Client Approved"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -74990,7 +74993,7 @@
         "FIX_CLIENT KEY 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -75009,10 +75012,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75122,10 +75125,10 @@
         "IBW 4"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.5
@@ -75141,10 +75144,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75172,12 +75175,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.31,
+      "TP thực tế": 0.29,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 4 ver2",
@@ -75279,15 +75282,15 @@
         "IBW 6"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 0.3,
+      "TP giả định": 0.21,
       "Trọng số TP": 0.15,
       "Product Type": [
         "Inbetween"
@@ -75298,10 +75301,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75329,12 +75332,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.65,
+      "TP thực tế": 0.33,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 6 ver2",
@@ -75358,13 +75361,13 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 0.84,
+      "TP giả định": 0.6,
       "Trọng số TP": 0.15,
       "Product Type": [
         "Inbetween"
@@ -75378,7 +75381,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "On Hold"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75406,12 +75409,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 1.31,
+      "TP thực tế": 0.81,
       "Ngày làm": null,
       "Loại cảnh": [
         "D"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 28 ver4",
@@ -75433,10 +75436,10 @@
         "IBW 55"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.5
@@ -75452,10 +75455,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75483,12 +75486,12 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.52,
+      "TP thực tế": 0.47,
       "Ngày làm": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/3",
+      "Task fix": "1/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 55 ver2",
@@ -75670,10 +75673,10 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
@@ -75689,10 +75692,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -75720,7 +75723,7 @@
         }
       ],
       "NLTT": 0.025,
-      "TP thực tế": 0.25,
+      "TP thực tế": 0.23,
       "Ngày làm": {
         "start": "2026-01-30",
         "end": null
@@ -75728,7 +75731,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver2",
@@ -75952,7 +75955,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -76065,7 +76068,7 @@
         "FIX_CLIENT KEY 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -76084,10 +76087,10 @@
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -76274,10 +76277,10 @@
         "IBW 55"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/3",
-      "Task QC": "1/3",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.5
@@ -76293,10 +76296,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -76324,7 +76327,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 1.03,
+      "TP thực tế": 0.94,
       "Ngày làm": {
         "start": "2026-02-02",
         "end": "2026-02-04"
@@ -76332,7 +76335,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/3",
+      "Task fix": "1/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 55 ver3",
@@ -76354,7 +76357,7 @@
         "FIX_CLIENT KEY 44"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -76373,10 +76376,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -76594,7 +76597,7 @@
         "FIX_CLIENT KEY 42"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task main": "1/5",
       "Task QC": "2/5",
@@ -76613,10 +76616,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Anim Approved"
+        "Client Approved"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -76668,16 +76671,16 @@
   {
     "id": "2fbccb0e-ac88-80c7-891d-fdbf2f6b3c11",
     "created_time": "2026-02-02T01:54:00.000Z",
-    "last_edited_time": "2026-02-02T01:56:00.000Z",
+    "last_edited_time": "2026-02-06T06:53:00.000Z",
     "properties": {
       "Product (1)": [
         "IBW 4"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.5
@@ -76693,10 +76696,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -76724,12 +76727,15 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.61,
-      "Ngày làm": null,
+      "TP thực tế": 0.58,
+      "Ngày làm": {
+        "start": "2026-02-05",
+        "end": null
+      },
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 4 ver3",
@@ -77126,10 +77132,10 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
@@ -77145,10 +77151,10 @@
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -77176,7 +77182,7 @@
         }
       ],
       "NLTT": 0.3125,
-      "TP thực tế": 0.49,
+      "TP thực tế": 0.47,
       "Ngày làm": {
         "start": "2026-02-03",
         "end": "2026-02-04"
@@ -77184,7 +77190,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver5",
@@ -77995,7 +78001,7 @@
   {
     "id": "2fdccb0e-ac88-80fb-954c-c43e97cff21a",
     "created_time": "2026-02-04T02:40:00.000Z",
-    "last_edited_time": "2026-02-04T09:32:00.000Z",
+    "last_edited_time": "2026-02-06T06:53:00.000Z",
     "properties": {
       "Product (1)": [
         "IBW 37"
@@ -78052,7 +78058,10 @@
       ],
       "NLTT": null,
       "TP thực tế": 2.33,
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-02-04",
+        "end": null
+      },
       "Loại cảnh": [
         "E"
       ],
@@ -78418,7 +78427,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -78578,7 +78587,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -81484,7 +81493,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -81642,7 +81651,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -81860,15 +81869,15 @@
         "IBW 30"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -81879,10 +81888,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -81910,7 +81919,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -81918,7 +81927,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 30 ver1",
@@ -81940,15 +81949,15 @@
         "IBW 9"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.25
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -81959,10 +81968,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -81990,7 +81999,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -81998,7 +82007,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 9 ver1 thay bg",
@@ -82020,15 +82029,15 @@
         "IBW 4"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.04,
+      "TP giả định": 1.92,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82039,10 +82048,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82070,7 +82079,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 2.04,
+      "TP thực tế": 1.92,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -82078,7 +82087,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 4 ver5 thay BG",
@@ -82100,15 +82109,15 @@
         "IBW 57"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.125
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82119,10 +82128,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82150,7 +82159,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -82158,7 +82167,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 57 ver1",
@@ -82647,15 +82656,15 @@
         "IBW 32"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82666,10 +82675,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82697,7 +82706,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -82705,7 +82714,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 32 ver1 thay BG",
@@ -82727,15 +82736,15 @@
         "IBW 34"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82746,10 +82755,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82777,7 +82786,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -82785,7 +82794,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 34 ver1 thay BG",
@@ -82807,10 +82816,10 @@
         "IBW 36"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/2",
-      "Task QC": "0/2",
+      "Task main": "1/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.5
@@ -82826,10 +82835,10 @@
       "[Dev] Total main": 0,
       "Task type": null,
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82865,7 +82874,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 36 ver1 thay BG",
@@ -82887,15 +82896,15 @@
         "IBW 19"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/7",
-      "Task QC": "3/7",
+      "Task main": "2/8",
+      "Task QC": "4/8",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 1.64,
+      "TP giả định": 1.56,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82906,10 +82915,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -82937,7 +82946,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 1.64,
+      "TP thực tế": 1.56,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -82945,7 +82954,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "2/7",
+      "Task fix": "2/8",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 19 ver1 thay BG",
@@ -82967,15 +82976,15 @@
         "IBW 29"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -82986,10 +82995,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -83017,7 +83026,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -83025,7 +83034,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 29 ver1 thay BG",
@@ -83047,13 +83056,13 @@
         "IBW 40"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/4",
-      "Task QC": "1/4",
+      "Task main": "2/5",
+      "Task QC": "2/5",
       "Run n8n": false,
       "UTNL": [],
-      "TP giả định": 2.04,
+      "TP giả định": 1.92,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -83064,10 +83073,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -83095,7 +83104,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 2.04,
+      "TP thực tế": 1.92,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -83103,7 +83112,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "1/4",
+      "Task fix": "1/5",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 40 ver1 thay BG",
@@ -83281,15 +83290,15 @@
         "IBW 17 "
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -83300,10 +83309,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -83331,7 +83340,7 @@
         }
       ],
       "NLTT": 0.0625,
-      "TP thực tế": 2.5,
+      "TP thực tế": 2.33,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -83339,7 +83348,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/2",
+      "Task fix": "0/3",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 17  ver1 thay BG",
@@ -83701,7 +83710,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -83917,15 +83926,15 @@
         "IBW 7"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "2/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 2.33,
+      "TP giả định": 2.17,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -83936,10 +83945,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -83967,7 +83976,7 @@
         }
       ],
       "NLTT": 0.25,
-      "TP thực tế": 2.33,
+      "TP thực tế": 2.17,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -83975,7 +83984,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 7 ver1  thay BG",
@@ -84019,7 +84028,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "Completed"
+        "Need Fix Client"
       ],
       "Task Status": "Done QC",
       "Sprint (1)": [
@@ -84071,7 +84080,7 @@
   {
     "id": "2feccb0e-ac88-8055-9084-c47bda32802e",
     "created_time": "2026-02-05T08:50:00.000Z",
-    "last_edited_time": "2026-02-05T08:50:00.000Z",
+    "last_edited_time": "2026-02-06T07:29:00.000Z",
     "properties": {
       "Product (1)": [
         "FIX_CLIENT KEY 58 remake"
@@ -84128,7 +84137,10 @@
       ],
       "NLTT": null,
       "TP thực tế": 1.82,
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-02-05",
+        "end": null
+      },
       "Loại cảnh": [
         "E"
       ],
@@ -84154,15 +84166,15 @@
         "IBW 20"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "2/2",
-      "Task QC": "0/2",
+      "Task main": "2/3",
+      "Task QC": "1/3",
       "Run n8n": false,
       "UTNL": [
         0.625
       ],
-      "TP giả định": 2.5,
+      "TP giả định": 2.33,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -84173,90 +84185,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
-      ],
-      "Task Status": "Done",
-      "Sprint (1)": [
-        "Sprint IBW"
-      ],
-      "Episode": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Done date": null,
-      "Product Point": [
-        5
-      ],
-      "Required by": [
-        "Internal"
-      ],
-      "TP giả định 2": 2,
-      "Assignee": [
-        {
-          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
-          "name": " Vân Trần",
-          "email": "vanttt@sangygroup.com"
-        }
-      ],
-      "NLTT": 0.125,
-      "TP thực tế": 2.5,
-      "Ngày làm": {
-        "start": "2026-02-05",
-        "end": null
-      },
-      "Loại cảnh": [
-        "E"
-      ],
-      "Task fix": "0/2",
-      "Created time": null,
-      "Status": "Not started",
-      "Tasks": "IBW 20 ver1 thay bg",
-      "Sprint": [
-        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
-      ]
-    },
-    "_title": "IBW 20 ver1 thay bg",
-    "database_name": "[CHIBI] Tasks ",
-    "project_name": "[CHIBI] Tasks",
-    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
-  },
-  {
-    "id": "2feccb0e-ac88-80c8-9cae-d8760ab5eec1",
-    "created_time": "2026-02-05T08:58:00.000Z",
-    "last_edited_time": "2026-02-05T08:59:00.000Z",
-    "properties": {
-      "Product (1)": [
-        "IBW 5"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
-      "Run n8n": false,
-      "UTNL": [
-        0.25
-      ],
-      "TP giả định": 2.33,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Product": [
-        "2d3ccb0e-ac88-80ed-ab67-c1a46c65be36"
-      ],
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Point Status (1)": [
-        "Unconfirmed"
-      ],
-      "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -84293,6 +84225,86 @@
         "E"
       ],
       "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 20 ver1 thay bg",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 20 ver1 thay bg",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2feccb0e-ac88-80c8-9cae-d8760ab5eec1",
+    "created_time": "2026-02-05T08:58:00.000Z",
+    "last_edited_time": "2026-02-05T08:59:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 5"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 2.17,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80ed-ab67-c1a46c65be36"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.125,
+      "TP thực tế": 2.17,
+      "Ngày làm": {
+        "start": "2026-02-05",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 5 ver1 thay bg",
@@ -84545,13 +84557,15 @@
         "IBW 43"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
-      "UTNL": [],
-      "TP giả định": 5,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -84562,10 +84576,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -84593,7 +84607,7 @@
         }
       ],
       "NLTT": 0.125,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -84601,7 +84615,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 43 ver1",
@@ -84623,15 +84637,15 @@
         "IBW 46"
       ],
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
-      "Task main": "1/1",
-      "Task QC": "0/1",
+      "Task main": "1/2",
+      "Task QC": "1/2",
       "Run n8n": false,
       "UTNL": [
         0.75
       ],
-      "TP giả định": 5,
+      "TP giả định": 4.35,
       "Trọng số TP": 1,
       "Product Type": [
         "Inbetween"
@@ -84642,10 +84656,10 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status (1)": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Product Status": [
-        "Pending Review"
+        "Completed"
       ],
       "Task Status": "Done",
       "Sprint (1)": [
@@ -84673,7 +84687,7 @@
         }
       ],
       "NLTT": 0.375,
-      "TP thực tế": 5,
+      "TP thực tế": 4.35,
       "Ngày làm": {
         "start": "2026-02-05",
         "end": null
@@ -84681,7 +84695,7 @@
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "0/2",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "IBW 46 ver1",
@@ -84690,6 +84704,3717 @@
       ]
     },
     "_title": "IBW 46 ver1",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8014-9815-d9acafb785b8",
+    "created_time": "2026-02-06T02:38:00.000Z",
+    "last_edited_time": "2026-02-06T07:24:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 8"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80fc-92e1-d7f5d9fdddfb"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 2.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 8 ver2 Thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 8 ver2 Thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-805a-997a-f1a0bb9bc2c8",
+    "created_time": "2026-02-06T02:35:00.000Z",
+    "last_edited_time": "2026-02-06T06:53:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 6"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 2.17,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-806e-866b-d5a380417afd"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 2.17,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 6 ver3 Thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 6 ver3 Thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8060-8538-ea7a0fee2b7c",
+    "created_time": "2026-02-06T03:18:00.000Z",
+    "last_edited_time": "2026-02-06T06:52:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 51"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.375
+      ],
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80c2-bdb4-eb2603301891"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 2.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 51 ver3 Thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 51 ver3 Thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-80a1-b10d-c65e6bd03158",
+    "created_time": "2026-02-06T02:36:00.000Z",
+    "last_edited_time": "2026-02-06T06:53:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 52"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.47,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8047-9d96-dfcab00654b1"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0.47,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 52 ver2 Thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 52 ver2 Thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-800c-b121-c4c774ba756c",
+    "created_time": "2026-02-06T07:23:00.000Z",
+    "last_edited_time": "2026-02-06T07:32:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 48"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 4.35,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80a9-97be-c6a1b5d17f3b"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 4.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 48 ver1",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 48 ver1",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8016-9a50-f21c20671887",
+    "created_time": "2026-02-06T07:31:00.000Z",
+    "last_edited_time": "2026-02-06T07:46:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 16"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80c3-9972-ed896cf242f0"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.0625,
+      "TP thực tế": 2.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 16 ver1 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 16 ver1 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8043-ad08-caf92cfc44f1",
+    "created_time": "2026-02-06T07:45:00.000Z",
+    "last_edited_time": "2026-02-06T07:45:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 47"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-806c-b679-f88d0db3eb57"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.0625,
+      "TP thực tế": 2.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 47 ver1 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 47 ver1 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8055-8bde-e93b5b7a4721",
+    "created_time": "2026-02-06T07:22:00.000Z",
+    "last_edited_time": "2026-02-06T07:29:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 53"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 0.87,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80bf-b79b-e8f1fe13476c"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0.87,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 53 ver1",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 53 ver1",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8059-b6b4-dc940d99274a",
+    "created_time": "2026-02-06T07:40:00.000Z",
+    "last_edited_time": "2026-02-06T07:46:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 41"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 4.35,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8065-b5a8-d469fdfab9ef"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.0625,
+      "TP thực tế": 4.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 41 ver1 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 41 ver1 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8096-96f4-e4bba79cd9e8",
+    "created_time": "2026-02-06T07:55:00.000Z",
+    "last_edited_time": "2026-02-06T08:03:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 21"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 2.33,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8050-a098-c1487efc44f6"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.0625,
+      "TP thực tế": 2.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 21 ver1 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 21 ver1 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-80b9-9e4f-c5c9c86d0227",
+    "created_time": "2026-02-06T07:21:00.000Z",
+    "last_edited_time": "2026-02-06T07:29:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 28"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "2/5",
+      "Task QC": "2/5",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 5.38,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8098-9bf5-e83b4bdc185a"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "On Hold"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 5.6,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 5.38,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/5",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 28 ver5 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 28 ver5 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-80fc-98e4-d88c2db95e36",
+    "created_time": "2026-02-06T07:19:00.000Z",
+    "last_edited_time": "2026-02-06T07:20:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 8B"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.125
+      ],
+      "TP giả định": 0.87,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2f0ccb0e-ac88-80b0-bdeb-c342ccc62445"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.125,
+      "TP thực tế": 0.87,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 8B ver1 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 8B ver1 thay BG",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8199-bd15-f6fa98bb8e12",
+    "created_time": "2026-02-06T09:19:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 5"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80ed-ab67-c1a46c65be36"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 5 ver4",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 5 ver4",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81dc-bc4a-f13276566d57",
+    "created_time": "2026-02-06T09:19:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 4"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/5",
+      "Task QC": "2/5",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80ea-a63b-d0ff43a61a0c"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.29,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/5",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 4 ver5",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 4 ver5",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8030-933e-d913b8ec2556",
+    "created_time": "2026-02-06T10:54:00.000Z",
+    "last_edited_time": "2026-02-06T10:54:00.000Z",
+    "properties": {
+      "Product (1)": null,
+      "Point Status": null,
+      "Task main": null,
+      "Task QC": null,
+      "Run n8n": false,
+      "UTNL": null,
+      "TP giả định": 0,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "Product": [],
+      "[Dev] Total main": 0,
+      "Task type": null,
+      "Point Status (1)": null,
+      "Product Status": null,
+      "Task Status": "Not started",
+      "Sprint (1)": null,
+      "Episode": null,
+      "Done date": null,
+      "Product Point": null,
+      "Required by": null,
+      "TP giả định 2": 0,
+      "Assignee": [],
+      "NLTT": null,
+      "TP thực tế": 0,
+      "Ngày làm": null,
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "",
+      "Sprint": []
+    },
+    "_title": "",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-810d-970a-e7d13beb1914",
+    "created_time": "2026-02-06T10:34:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 58"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-804c-a06c-e600f35a03ca"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.13,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 58 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 58 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8115-8e39-e89efaf1327a",
+    "created_time": "2026-02-06T10:24:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 47"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-806c-b679-f88d0db3eb57"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 47 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 47 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8115-b797-c016625892e5",
+    "created_time": "2026-02-06T10:23:00.000Z",
+    "last_edited_time": "2026-02-06T10:23:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 46"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8072-915d-f722e5564353"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0.65,
+      "Ngày làm": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 46 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 46 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-811c-a755-cf3181f49b82",
+    "created_time": "2026-02-06T10:32:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 57"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.125
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80a2-9cd3-f669828b40ba"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 57 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 57 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8120-85c7-f95be20eac1e",
+    "created_time": "2026-02-06T09:26:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 16"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80c3-9972-ed896cf242f0"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 16 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 16 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-812e-9e63-f1bbb7f456cf",
+    "created_time": "2026-02-06T10:24:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 50"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.375
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8053-b1b8-f15fec091805"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 50 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 50 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-812f-ad0f-de07d6083836",
+    "created_time": "2026-02-06T10:22:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 42"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80f3-9e92-c6dca6450bb7"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 42 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 42 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8144-8d04-c87a3cb5fb14",
+    "created_time": "2026-02-06T10:43:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 43"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80fa-a01d-f8059efaa90b"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 43 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 43 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8145-8d71-fedcdb6199fc",
+    "created_time": "2026-02-06T10:31:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 53"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80bf-b79b-e8f1fe13476c"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.13,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 53 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 53 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8154-a827-cdba5ff56dcf",
+    "created_time": "2026-02-06T09:25:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 8"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80fc-92e1-d7f5d9fdddfb"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 8 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 8 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-815d-a02b-d149bc84adeb",
+    "created_time": "2026-02-06T09:31:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 29"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-808d-b033-e53a57633b01"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 29 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 29 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8160-a147-c08c190745b2",
+    "created_time": "2026-02-06T09:25:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 8B"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.125
+      ],
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2f0ccb0e-ac88-80b0-bdeb-c342ccc62445"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.13,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 8B ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 8B ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-816a-aa72-f3cf1722ca7e",
+    "created_time": "2026-02-06T10:24:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 48"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80a9-97be-c6a1b5d17f3b"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 48 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 48 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8171-97e4-ceb19d436268",
+    "created_time": "2026-02-06T10:25:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 51"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.375
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80c2-bdb4-eb2603301891"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 51 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 51 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8185-a5b6-c13cb80c8cb9",
+    "created_time": "2026-02-06T10:23:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 44"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80a6-bd77-df65d2b29be0"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 44 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 44 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-818f-af11-cae06aaa74d8",
+    "created_time": "2026-02-06T10:20:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 34"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8083-a72f-dfbd89802f84"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 34 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 34 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8191-b255-e5460701e968",
+    "created_time": "2026-02-06T09:27:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 17 "
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-805f-b151-ec12774f5ebd"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 17  ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 17  ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-8192-bef1-e68de6222d0f",
+    "created_time": "2026-02-06T10:20:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 36"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80e3-ad23-fa466c9121a7"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 36 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 36 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81a8-a563-f17d557c0ccf",
+    "created_time": "2026-02-06T09:28:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 20"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.625
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8076-9eb2-fb66b696327a"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 20 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 20 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81aa-8d28-c085adf104c5",
+    "created_time": "2026-02-06T10:22:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 41"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8065-b5a8-d469fdfab9ef"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 41 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 41 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81ae-8710-e277d13eac3b",
+    "created_time": "2026-02-06T09:23:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 6"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-806e-866b-d5a380417afd"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 6 ver4",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 6 ver4",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81b7-ab2c-c5936048dd36",
+    "created_time": "2026-02-06T09:24:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 7"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-807f-b6e6-c3eb3607987b"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.33,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 7 ver4",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 7 ver4",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81b9-9c6c-fc605d62d51c",
+    "created_time": "2026-02-06T10:25:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 52"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.04,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8047-9d96-dfcab00654b1"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.07,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 52 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 52 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81c8-a28e-fc4e46540857",
+    "created_time": "2026-02-06T10:20:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 32"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80f1-b518-cca31e204516"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 32 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 32 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81cf-b3f7-e0feda66af4e",
+    "created_time": "2026-02-06T09:28:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 19"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/8",
+      "Task QC": "4/8",
+      "Run n8n": false,
+      "UTNL": [
+        0
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-806e-8783-ffef06b04db2"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.23,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "2/8",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 19 ver8",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 19 ver8",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81d0-8e2a-f8f1df2a65e6",
+    "created_time": "2026-02-06T09:26:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 9"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8089-bc96-f6f06a1f31d3"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 9 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 9 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81d4-a8a7-df208464a071",
+    "created_time": "2026-02-06T10:40:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 55"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-804b-a481-f6e64c303d90"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.47,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 55 ver4",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 55 ver4",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81e3-b9ac-eab5e954a516",
+    "created_time": "2026-02-06T10:38:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 30"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80f8-9bf0-d804477cf602"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.65,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 30 ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 30 ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81ed-bc1d-eecf1a4bce88",
+    "created_time": "2026-02-06T10:21:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 40"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/5",
+      "Task QC": "2/5",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8067-8ceb-e57a1a37b17d"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.29,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/5",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 40 ver5",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 40 ver5",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "2ffccb0e-ac88-81f2-8cd4-e77562df2120",
+    "created_time": "2026-02-06T09:29:00.000Z",
+    "last_edited_time": "2026-02-06T12:02:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 21"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "2/3",
+      "Task QC": "1/3",
+      "Run n8n": false,
+      "UTNL": [
+        0.0625
+      ],
+      "TP giả định": 0.21,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-8050-a098-c1487efc44f6"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.009765625,
+      "TP thực tế": 0.35,
+      "Ngày làm": {
+        "start": "2026-02-06",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/3",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 21 ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 21 ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "302ccb0e-ac88-8073-a7c1-cbcdc1eaf168",
+    "created_time": "2026-02-09T03:42:00.000Z",
+    "last_edited_time": "2026-02-09T03:42:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 56"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [
+        0.5
+      ],
+      "TP giả định": 14,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-80bf-ae5c-c60b0d621264"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        14
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 5.6,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 14,
+      "Ngày làm": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 56 ver1",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 56 ver1",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "302ccb0e-ac88-800e-8b5b-d358835713a9",
+    "created_time": "2026-02-09T08:10:00.000Z",
+    "last_edited_time": "2026-02-09T08:10:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "IBW 45"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/4",
+      "Task QC": "1/4",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0,
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Product": [
+        "2d3ccb0e-ac88-804e-bf7c-f7b48b72b7a0"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": null,
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Not started",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0,
+      "Ngày làm": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/4",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "IBW 45 thay BG",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "IBW 45 thay BG",
     "database_name": "[CHIBI] Tasks ",
     "project_name": "[CHIBI] Tasks",
     "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"

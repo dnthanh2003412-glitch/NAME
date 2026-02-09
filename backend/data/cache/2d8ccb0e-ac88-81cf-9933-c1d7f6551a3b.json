@@ -13,19 +13,16 @@
       },
       "Sprint ID": null,
       "Tasks": [
-        "2f1ccb0e-ac88-8107-8d02-e149c35d6192",
         "2f1ccb0e-ac88-81ea-85e2-fc9d39245ae4",
         "2f1ccb0e-ac88-816f-962c-ed6a48772113",
         "2f1ccb0e-ac88-8136-b98c-c378c04dbd25",
         "2efccb0e-ac88-8103-ab6c-c197b8ab74b3",
         "2f1ccb0e-ac88-8164-8890-f2bd03d5d97c",
-        "2f1ccb0e-ac88-8194-adae-dc0835a4b72b",
         "2f1ccb0e-ac88-809c-b19f-c3ef1a78916a",
         "2e7ccb0e-ac88-80e0-b075-f1802d8d313a",
-        "2e8ccb0e-ac88-819f-a985-d2d88639991e",
         "2f7ccb0e-ac88-80a6-82c5-ebbfde88f49d"
       ],
-      "Total tasks": 11,
+      "Total tasks": 8,
       "Completed tasks": 1,
       "Sprint status": "Future"
     },
@@ -70,7 +67,7 @@
         "2f7ccb0e-ac88-80b3-ae7b-d15fd0b36554"
       ],
       "Total tasks": 20,
-      "Completed tasks": 0.95,
+      "Completed tasks": 1,
       "Sprint status": "Current"
     },
     "_title": "Sprint Key",

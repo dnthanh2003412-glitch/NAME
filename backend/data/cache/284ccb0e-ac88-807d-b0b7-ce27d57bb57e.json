@@ -373,10 +373,14 @@
         "2feccb0e-ac88-80ba-a7bd-d8f078ed25dc",
         "2feccb0e-ac88-81a1-977f-c4590871ac9a",
         "2feccb0e-ac88-8011-8265-ecf0ae9131c4",
-        "2feccb0e-ac88-8014-9a28-ce27c4c7337f"
+        "2feccb0e-ac88-8014-9a28-ce27c4c7337f",
+        "2feccb0e-ac88-805e-a67d-fa1828d61a96",
+        "2feccb0e-ac88-80ce-a58f-d8bf586106ba",
+        "2ffccb0e-ac88-80ca-8f3c-d012ddbab254",
+        "2ffccb0e-ac88-804a-ae6e-d896547681ab"
       ],
-      "Total tasks": 21,
-      "Completed tasks": 0.8095238095238095,
+      "Total tasks": 25,
+      "Completed tasks": 0.8,
       "Sprint status": "Future"
     },
     "_title": "Sprint Key Ep12",

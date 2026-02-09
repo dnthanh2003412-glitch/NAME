@@ -224,7 +224,7 @@
       "Task Create": null,
       "Task count + 1": 5,
       "UTNL": null,
-      "Total Main": 1,
+      "Total Main": 2,
       "Min": 2.25,
       "Point Status": "Unconfirmed",
       "Product point": 25,
@@ -33952,7 +33952,7 @@
   {
     "id": "2a8ccb0e-ac88-8078-a99a-c347d124d531",
     "created_time": "2025-11-11T06:50:00.000Z",
-    "last_edited_time": "2026-01-07T04:12:00.000Z",
+    "last_edited_time": "2026-02-05T09:50:00.000Z",
     "properties": {
       "Resource": null,
       "Episode": null,
@@ -33989,7 +33989,7 @@
       "Loại cảnh": null,
       "UTKT (1)": null,
       "Số hình": 5,
-      "Status": "Pending Review",
+      "Status": "Completed",
       "Combo": null,
       "Tasks ": [
         "2e0ccb0e-ac88-800c-90a3-cd2de22b220b"
@@ -45560,7 +45560,7 @@
       "Task Create": null,
       "Task count + 1": 3,
       "UTNL": null,
-      "Total Main": 0,
+      "Total Main": 2,
       "Min": null,
       "Point Status": "Unconfirmed",
       "Product point": 0,
@@ -45731,6 +45731,458 @@
       "Description": ""
     },
     "_title": "",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-801c-8db5-e6cffbcb1203",
+    "created_time": "2026-02-05T09:41:00.000Z",
+    "last_edited_time": "2026-02-05T09:47:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 0.25,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+              "name": "Huy Đỗ",
+              "avatar_url": null,
+              "type": "person",
+              "person": {
+                "email": "huydq@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "F",
+      "UTKT (1)": "0-0.125",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2e0ccb0e-ac88-80ae-8f93-c2524eece6cb"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Check task done": "Done",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Họp dự án",
+      "Total QC": 0,
+      "Product": "Workshop Blender",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "Workshop Blender",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-808e-a47a-c9ec37ac6404",
+    "created_time": "2026-02-05T09:39:00.000Z",
+    "last_edited_time": "2026-02-05T09:47:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 0.25,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+              "name": "Hưng Nguyễn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/c6b3f47d-5ee6-46bb-b375-9e9732591e68/image_2024-05-11_233503991.png",
+              "type": "person",
+              "person": {
+                "email": "hungnn@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "F",
+      "UTKT (1)": "0-0.125",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2e7ccb0e-ac88-80eb-ac1a-c15e360f7306"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Check task done": "Done",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC bất tử",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "QC bất tử",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-808f-ba36-c1a9ce2c9a60",
+    "created_time": "2026-02-05T09:39:00.000Z",
+    "last_edited_time": "2026-02-05T09:47:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 2,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+              "name": "Hưng Nguyễn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/c6b3f47d-5ee6-46bb-b375-9e9732591e68/image_2024-05-11_233503991.png",
+              "type": "person",
+              "person": {
+                "email": "hungnn@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "D",
+      "UTKT (1)": "1-2",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2e7ccb0e-ac88-80a2-9592-c5e7c4417213"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 1,
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "Check task done": "Done",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "DO sau QC",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "DO sau QC",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-80b1-b701-e2854b033224",
+    "created_time": "2026-02-05T09:50:00.000Z",
+    "last_edited_time": "2026-02-05T09:50:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": null,
+      "Task count ": 0,
+      "🔄 Sprints": [],
+      "Rollup": null,
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [],
+      "Loại cảnh": null,
+      "UTKT (1)": null,
+      "Số hình": null,
+      "Status": "Not started",
+      "Combo": null,
+      "Tasks ": [],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 1,
+      "UTNL": null,
+      "Total Main": 0,
+      "Min": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "Check task done": null,
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": null,
+      "Total QC": 0,
+      "Product": "IBW 084",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "IBW 084",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-80dc-884a-d99ce49f160a",
+    "created_time": "2026-02-05T09:32:00.000Z",
+    "last_edited_time": "2026-02-05T09:47:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 0.25,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+              "name": "Linh Nguyễn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/67026670-50cc-41f6-a1e9-9b534048a93b/4786534.gif",
+              "type": "person",
+              "person": {
+                "email": "linhnt@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "F",
+      "UTKT (1)": "0-0.125",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2edccb0e-ac88-807a-b214-d2d9960d83fb"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Check task done": "Done",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Khác",
+      "Total QC": 0,
+      "Product": "Cài TB dùng thử",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "Cài TB dùng thử",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-80ed-a9a1-df7612591da7",
+    "created_time": "2026-02-05T09:40:00.000Z",
+    "last_edited_time": "2026-02-05T09:50:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 2,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+              "name": "Hưng Nguyễn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/c6b3f47d-5ee6-46bb-b375-9e9732591e68/image_2024-05-11_233503991.png",
+              "type": "person",
+              "person": {
+                "email": "hungnn@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "D",
+      "UTKT (1)": "1-2",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2e6ccb0e-ac88-8011-a513-f9caf1428f68"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 1,
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "Check task done": "Done",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "DO 81 83 104",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "DO 81 83 104",
+    "database_name": "[Immortals] Product ",
+    "project_name": "[Immortals]",
+    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
+  },
+  {
+    "id": "2feccb0e-ac88-80f6-9c56-de654f306417",
+    "created_time": "2026-02-05T09:40:00.000Z",
+    "last_edited_time": "2026-02-05T09:47:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Episode": null,
+      "Max": 0.25,
+      "Task count ": 1,
+      "🔄 Sprints": [],
+      "Rollup": [
+        {
+          "type": "people",
+          "people": [
+            {
+              "object": "user",
+              "id": "7e49beb2-4766-4be4-9756-d0f7d10744ad",
+              "name": "Khanh Nguyễn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/58f95797-4956-4dd6-b854-acac455bb222/5dc9260e5e68ec428ac12493ee05dc16.gif",
+              "type": "person",
+              "person": {
+                "email": "khanhntm@sangygroup.com"
+              }
+            }
+          ]
+        }
+      ],
+      "Total Fixed": 0,
+      "UTKT CU": 0,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "7e49beb2-4766-4be4-9756-d0f7d10744ad",
+          "name": "Khanh Nguyễn",
+          "email": "khanhntm@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "F",
+      "UTKT (1)": "0-0.125",
+      "Số hình": null,
+      "Status": "Completed",
+      "Combo": null,
+      "Tasks ": [
+        "2e6ccb0e-ac88-808c-b13c-c59a1e94b116"
+      ],
+      "DO": null,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "UTNL": null,
+      "Total Main": 1,
+      "Min": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Check task done": "Not started",
+      "Ưu tiên": null,
+      "UTKT IBW": null,
+      "Due Date": null,
+      "Product type": "Họp dự án",
+      "Total QC": 0,
+      "Product": "họp AWO",
+      "Tags": [],
+      "Description": ""
+    },
+    "_title": "họp AWO",
     "database_name": "[Immortals] Product ",
     "project_name": "[Immortals]",
     "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"

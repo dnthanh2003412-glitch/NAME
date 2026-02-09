@@ -1,5 +1,5 @@
 {
-  "description": "Whitelist dự án ưu tiên - chỉ gồm 10 dự án theo yêu cầu",
+  "description": "Whitelist dự án ưu tiên - gồm 11 dự án",
   "projects": [
     {
       "name": "[DeeDee_2025_SUN] Sunny Side Down",
@@ -355,6 +355,28 @@
           "type": "other"
         }
       ]
+    },
+    {
+      "name": "[DeeDee_2026_OTH4] SHAVUOT",
+      "id": "2f6ccb0e-ac88-80be-b04e-e793a2241089",
+      "code": "OTH4",
+      "databases": [
+        {
+          "id": "2f6ccb0e-ac88-80ee-820b-fda54d75d7cf",
+          "name": "[OTH] Product",
+          "type": "products"
+        },
+        {
+          "id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943",
+          "name": "[OTH] Tasks",
+          "type": "tasks"
+        },
+        {
+          "id": "2f6ccb0e-ac88-80b2-90ce-d27c8a0fc008",
+          "name": "[OTH] Sprints",
+          "type": "sprints"
+        }
+      ]
     }
   ],
   "priority_databases": [
@@ -414,6 +436,9 @@
     "2edccb0e-ac88-815c-9879-c6b90d3bbb10",
     "2edccb0e-ac88-814c-91e8-de4d7e2bd8ca",
     "2edccb0e-ac88-81d2-927e-d0fdf7f9e440",
-    "2efccb0e-ac88-80f2-a2e2-f9bdeabd279a"
+    "2efccb0e-ac88-80f2-a2e2-f9bdeabd279a",
+    "2f6ccb0e-ac88-80ee-820b-fda54d75d7cf",
+    "2f6ccb0e-ac88-803a-a0b0-edccc8397943",
+    "2f6ccb0e-ac88-80b2-90ce-d27c8a0fc008"
   ]
 }

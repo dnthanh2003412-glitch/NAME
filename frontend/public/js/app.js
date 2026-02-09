@@ -81,14 +81,17 @@ class DashboardApp {
             if (data.success && data.projects) {
                 this.whitelistProjects.clear();
                 this.whitelistProjectNames.clear();
+                // Store full whitelist data for direct rendering
+                this.whitelistProjectsData = data.projects || [];
                 for (const proj of data.projects) {
                     this.whitelistProjects.add(proj.id);
                     this.whitelistProjectNames.add(proj.name);
                 }
-                console.log(`[Dashboard] Loaded whitelist: ${this.whitelistProjects.size} projects`);
+                console.log(`[Dashboard] Loaded whitelist: ${this.whitelistProjects.size} projects with databases`);
             }
         } catch (error) {
             console.error('[Dashboard] Error loading whitelist:', error);
+            this.whitelistProjectsData = [];
         }
     }
 
@@ -265,36 +268,43 @@ class DashboardApp {
         }
     }
 
-    // Select all visible databases (not hidden)
+    // Select all visible databases - ONLY from WHITELIST (filter projectsHierarchy by whitelist IDs)
     selectAllVisibleDatabases() {
+        // CLEAR existing selections first
+        this.selectedDatabases.clear();
+
+        // Get whitelist IDs set for filtering (match by ID ONLY)
+        const whitelistIds = new Set(this.whitelistProjects);
+        console.log(`[SelectAll] Whitelist has ${whitelistIds.size} project IDs`);
+
         let addedCount = 0;
-        for (const project of this.projectsHierarchy) {
+        let matchedProjects = [];
+
+        // Filter projectsHierarchy by whitelist ID
+        for (const proj of this.projectsHierarchy) {
+            // Only include if ID matches whitelist
+            if (!whitelistIds.has(proj.id)) continue;
+
             // Skip hidden projects
-            if (this.hiddenProjects.has(project.name)) continue;
+            if (this.hiddenProjects.has(proj.name)) continue;
 
-            // Check if project is in whitelist OR in "Other" group but visible
-            const isInWhitelist = this.whitelistProjects.has(project.id) ||
-                this.whitelistProjectNames.has(project.name);
-
-            // Only select from visible projects (whitelist or isHiddenGroupOpen)
-            if (!isInWhitelist && !this.isHiddenGroupOpen) continue;
-
-            const databases = project.databases || [];
+            matchedProjects.push(proj.name);
+            const databases = proj.databases || [];
             for (const db of databases) {
                 // Skip hidden databases
                 if (this.hiddenDatabases.has(db.id)) continue;
 
-                if (!this.selectedDatabases.has(db.id)) {
-                    this.selectedDatabases.add(db.id);
-                    addedCount++;
-                }
+                this.selectedDatabases.add(db.id);
+                addedCount++;
             }
         }
 
         this.savePersistedState();
         this.renderProjectsTreeHierarchical();
         this.updateGenerateButtonState();
-        console.log(`[Dashboard] Selected all visible databases: +${addedCount}, total: ${this.selectedDatabases.size}`);
+
+        console.log(`[SelectAll] Matched ${matchedProjects.length} projects:`, matchedProjects);
+        console.log(`[SelectAll] Selected ${addedCount} databases total`);
     }
 
     // Deselect all databases
@@ -325,16 +335,25 @@ class DashboardApp {
                     countSpan.textContent = `🌟 Auto: ${projectsInfo.length} dự án, ${taskDbIds.length} Task DBs`;
                     countSpan.title = projectsInfo.map(p => `${p.name} (${p.taskCount})`).join('\n');
                 } else {
-                    // Count projects from selected databases
+                    // Count projects from projectsHierarchy (filter by whitelist ID if needed)
                     const selectedProjectNames = new Set();
+                    const whitelistIds = new Set(this.whitelistProjects);
+
                     for (const dbId of this.selectedDatabases) {
                         for (const proj of this.projectsHierarchy) {
                             if (proj.databases?.some(db => db.id === dbId)) {
-                                selectedProjectNames.add(proj.name);
+                                // Only count if in whitelist (since Select All only selects whitelist)
+                                if (whitelistIds.has(proj.id)) {
+                                    selectedProjectNames.add(proj.name);
+                                } else {
+                                    // For "other" projects that user manually selected
+                                    selectedProjectNames.add(proj.name);
+                                }
                                 break;
                             }
                         }
                     }
+
                     countSpan.textContent = hasSelection ? `Đã chọn ${selectedProjectNames.size} dự án` : 'Chưa chọn dự án';
                     countSpan.title = Array.from(selectedProjectNames).join('\n');
                 }
@@ -1330,7 +1349,18 @@ class DashboardApp {
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = `${database_name.replace(/[^a-z0-9]/gi, '_')}.xls`;
+            // Generate export filename
+            const today = new Date();
+            const dateStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+            let exportFileName;
+            if (dbId === 'all-whitelist-tasks') {
+                // Multi-project raw-all report
+                exportFileName = `BaoCao_All_Whitelist_Tasks_${dateStr}.xls`;
+            } else {
+                // Single database export - use database name + date
+                exportFileName = `${database_name.replace(/[^a-z0-9]/gi, '_')}_${dateStr}.xls`;
+            }
+            a.download = exportFileName;
             a.click();
             URL.revokeObjectURL(url);
         };
@@ -2696,38 +2726,42 @@ class DashboardApp {
         const query = this.searchQuery.toLowerCase();
         let mainHtml = '';
 
-        // 1. Filter & Group based on whitelist from backend
-        const pinnedProjects = [];      // Projects in whitelist -> hiển thị mặc định
-        const otherProjects = [];        // Projects NOT in whitelist -> vào "Dự án khác" (mặc định đóng)
-        const hiddenProjectsList = [];   // Projects đã được user ẩn thủ công
+        // 1. Get whitelist IDs set for filtering (match by ID ONLY)
+        const whitelistIds = new Set(this.whitelistProjects);
+
+        // Filter projectsHierarchy to get pinned projects (by ID only)
+        const pinnedProjects = [];
+        for (const proj of this.projectsHierarchy) {
+            // Only include if ID matches whitelist
+            if (!whitelistIds.has(proj.id)) continue;
+
+            // Search filter
+            const matchesSearch = !query ||
+                proj.name.toLowerCase().includes(query) ||
+                (proj.databases && proj.databases.some(db => db.name.toLowerCase().includes(query)));
+            if (!matchesSearch) continue;
+
+            // Check if user manually hid this project
+            if (this.hiddenProjects.has(proj.name) && !query) continue;
+
+            pinnedProjects.push(proj);
+        }
+
+        // 2. Other projects = projectsHierarchy MINUS whitelist (by ID only)
+        const otherProjects = [];
+        const hiddenProjectsList = [];
 
         for (const project of this.projectsHierarchy) {
+            // Skip if in whitelist (we handle whitelist separately)
+            if (whitelistIds.has(project.id)) continue;
+
             // Search filter
             const matchesSearch = !query ||
                 project.name.toLowerCase().includes(query) ||
                 (project.databases && project.databases.some(db => db.name.toLowerCase().includes(query)));
-
             if (!matchesSearch) continue;
 
-            // Check if project is in whitelist (by ID or name)
-            const isInWhitelist = this.whitelistProjects.has(project.id) ||
-                this.whitelistProjectNames.has(project.name);
-
-            if (isInWhitelist) {
-                // Check if user manually hid this whitelisted project
-                const isManuallyHidden = this.hiddenProjects.has(project.name) && !query;
-                if (isManuallyHidden) {
-                    hiddenProjectsList.push(project);
-                } else {
-                    pinnedProjects.push(project);
-                }
-                continue;
-            }
-
-            // Non-whitelist projects go to "Other" by default
-            // But if user manually showed them (removed from hiddenProjects), show in pinned
             const isManuallyHidden = this.hiddenProjects.has(project.name) && !query;
-
             if (isManuallyHidden) {
                 hiddenProjectsList.push(project);
             } else {
@@ -2735,15 +2769,15 @@ class DashboardApp {
             }
         }
 
-        // 2. Render Pinned Projects (Whitelist - hiển thị mặc định)
+        // 3. Render Pinned Projects (DIRECTLY from whitelist JSON)
         let hasPinnedContent = false;
         if (pinnedProjects.length > 0) {
             hasPinnedContent = true;
             mainHtml += `<div class="pinned-projects-header" style="padding: 8px 16px; font-size: 0.75rem; color: #94a3b8; font-weight: 600; text-transform: uppercase;">🌟 Dự án ưu tiên (${pinnedProjects.length})</div>`;
-            mainHtml += this.renderProjectList(pinnedProjects);
+            mainHtml += this.renderProjectList(pinnedProjects, false, true); // isPinnedSection = true
         }
 
-        // 3. Render Other Projects (Non-whitelist - mặc định đóng)
+        // 4. Render Other Projects (Non-whitelist - mặc định đóng)
         if (otherProjects.length > 0) {
             const style = this.isHiddenGroupOpen ? 'display: block;' : 'display: none;';
             const arrow = this.isHiddenGroupOpen ? '▼' : '▶';
@@ -2753,12 +2787,12 @@ class DashboardApp {
                     ${arrow} Dự án khác (${otherProjects.length})
                 </div>
                 <div id="other-projects-list" style="${style}">
-                    ${this.renderProjectList(otherProjects)}
+                    ${this.renderProjectList(otherProjects, false, false)} 
                 </div>
             `;
         }
 
-        // 4. Render Hidden Projects Section (Đã ẩn thủ công)
+        // 5. Render Hidden Projects Section (Đã ẩn thủ công)
         if (hiddenProjectsList.length > 0) {
             mainHtml += `
                 <div class="other-projects-header" onclick="app.toggleHiddenProjectsSection()" style="margin-top: 16px; border-top: 1px dashed #475569;">
@@ -2808,7 +2842,7 @@ class DashboardApp {
         if (scrollPos > 0) treeContainer.scrollTop = scrollPos;
     }
 
-    renderProjectList(projects, isHiddenSection = false) {
+    renderProjectList(projects, isHiddenSection = false, isPinnedSection = false) {
         let html = '';
         for (const project of projects) {
             const safeProjectName = this.escapeHtml(project.name);
@@ -2841,8 +2875,15 @@ class DashboardApp {
             // Visibility Icon
             const eyeIcon = isHiddenSection ? 'strikethrough-eye' : 'eye'; // Simplified icon logic
             const eyeTitle = isHiddenSection ? 'Hiện dự án' : 'Ẩn dự án';
-            const eyeAction = `event.stopPropagation(); app.toggleProjectVisibility('${safeProjectName.replace(/'/g, "\\'")}')`;
+            const eyeAction = `event.stopPropagation(); app.toggleProjectVisibility('${safeProjectName.replace(/'/g, "\\\\'")}')`;
             // Note: toggleProjectVisibility logic handles boolean toggle.
+
+            // Pin/Unpin Button
+            const pinAction = isPinnedSection
+                ? `event.stopPropagation(); app.unpinProject('${project.id}', '${safeProjectName.replace(/'/g, "\\\\'")}')`
+                : `event.stopPropagation(); app.pinProject('${project.id}', '${safeProjectName.replace(/'/g, "\\\\'")}')`;
+            const pinTitle = isPinnedSection ? 'Bỏ ghim khỏi whitelist' : 'Ghim vào whitelist';
+            const pinIcon = isPinnedSection ? '📌❌' : '📌';
 
             html += `
                 <div class="project-group">
@@ -2852,6 +2893,12 @@ class DashboardApp {
                             ${safeProjectName}
                             ${statusBadge}
                             ${projectCountLabel}
+                        </div>
+                        
+                        <!-- Pin/Unpin Button -->
+                        <div class="pin-toggle" onclick="${pinAction}" title="${pinTitle}" 
+                             style="cursor:pointer;font-size:0.75rem;margin-right:4px;padding:2px 4px;border-radius:4px;background:${isPinnedSection ? '#fbbf2420' : '#3b82f620'};border:1px solid ${isPinnedSection ? '#fbbf2440' : '#3b82f640'};">
+                            ${pinIcon}
                         </div>
                         
                         <!-- Toggle Project Visibility -->
@@ -3019,6 +3066,103 @@ class DashboardApp {
         this.savePersistedState();
         this.renderProjectsTreeHierarchical();
     }
+
+    // Pin a project to the whitelist (persisted to backend)
+    async pinProject(projectId, projectName) {
+        try {
+            const response = await fetch('/api/whitelist/pin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ projectId, projectName, action: 'pin' })
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                // Reload whitelist from backend
+                await this.loadWhitelistProjects();
+                this.renderProjectsTreeHierarchical();
+                console.log(`[App] ✅ Pinned project: ${projectName}`);
+                this.showToast(`📌 Đã ghim "${projectName}" vào whitelist`);
+            } else {
+                console.error('[App] Pin failed:', result.error);
+                this.showToast(`❌ Lỗi: ${result.error}`, 'error');
+            }
+        } catch (error) {
+            console.error('[App] Pin error:', error);
+            this.showToast(`❌ Lỗi kết nối: ${error.message}`, 'error');
+        }
+    }
+
+    // Unpin a project from the whitelist (persisted to backend)
+    async unpinProject(projectId, projectName) {
+        try {
+            const response = await fetch('/api/whitelist/pin', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ projectId, projectName, action: 'unpin' })
+            });
+            const result = await response.json();
+
+            if (result.success) {
+                // Reload whitelist from backend
+                await this.loadWhitelistProjects();
+                this.renderProjectsTreeHierarchical();
+                console.log(`[App] ✅ Unpinned project: ${projectName}`);
+                this.showToast(`📌❌ Đã bỏ ghim "${projectName}" khỏi whitelist`);
+            } else {
+                console.error('[App] Unpin failed:', result.error);
+                this.showToast(`❌ Lỗi: ${result.error}`, 'error');
+            }
+        } catch (error) {
+            console.error('[App] Unpin error:', error);
+            this.showToast(`❌ Lỗi kết nối: ${error.message}`, 'error');
+        }
+    }
+
+    // Simple toast notification
+    showToast(message, type = 'success') {
+        // Check if toast container exists
+        let toastContainer = document.getElementById('toast-container');
+        if (!toastContainer) {
+            toastContainer = document.createElement('div');
+            toastContainer.id = 'toast-container';
+            toastContainer.style.cssText = 'position:fixed;top:20px;right:20px;z-index:9999;display:flex;flex-direction:column;gap:8px;';
+            document.body.appendChild(toastContainer);
+        }
+
+        const toast = document.createElement('div');
+        toast.style.cssText = `padding:12px 20px;border-radius:8px;color:#fff;font-size:0.9rem;box-shadow:0 4px 12px rgba(0,0,0,0.3);animation:slideIn 0.3s ease;background:${type === 'error' ? '#ef4444' : '#22c55e'};`;
+        toast.textContent = message;
+        toastContainer.appendChild(toast);
+
+        // Auto remove after 3s
+        setTimeout(() => {
+            toast.style.opacity = '0';
+            toast.style.transform = 'translateX(100%)';
+            toast.style.transition = 'all 0.3s ease';
+            setTimeout(() => toast.remove(), 300);
+        }, 3000);
+    }
+
+    // Load whitelist projects from backend
+    async loadWhitelistProjects() {
+        try {
+            const response = await fetch('/api/whitelist');
+            const data = await response.json();
+            if (data.success) {
+                this.whitelistProjects = new Set();
+                this.whitelistProjectNames = new Set();
+                (data.projects || []).forEach(proj => {
+                    this.whitelistProjects.add(proj.id);
+                    this.whitelistProjectNames.add(proj.name);
+                });
+                console.log(`[App] Loaded ${this.whitelistProjects.size} whitelist projects`);
+            }
+        } catch (error) {
+            console.error('[App] Error loading whitelist:', error);
+        }
+    }
+
 
     toggleDatabaseVisibility(dbId) {
         if (this.hiddenDatabases.has(dbId)) {

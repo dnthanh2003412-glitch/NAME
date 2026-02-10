@@ -14,7 +14,7 @@ export class ProductivityService {
     async generateReport(startDate, endDate, databaseIds) {
         const stats = this.getStats(startDate, endDate); // Helper to get Manual Inputs
         const reportData = [];
-        
+
         // Parse date range
         const start = startDate ? new Date(startDate) : null;
         const end = endDate ? new Date(endDate) : null;
@@ -30,38 +30,96 @@ export class ProductivityService {
         }
 
         // 2. Filter by Date Range and Status
+        console.log(`[Productivity] Processing ${allTasks.length} total tasks from ${databaseIds.length} DBs.`);
+
+        // Debug Counters
+        let countStatusReject = 0;
+        let countDateMissing = 0;
+        let countDateRangeReject = 0;
+        let countAssigneeMissing = 0;
+        let countAccepted = 0;
+        let missingDateSamples = [];
+        let projectsSet = new Set();
+
         const relevantTasks = allTasks.filter(task => {
             const status = this.getPropertyValue(task, 'Task Status') || this.getPropertyValue(task, 'Status');
-            // Use robust date parsing
+            const statusLower = String(status).toLowerCase();
+            const isDone = statusLower === 'done' || statusLower === 'done qc' || statusLower === 'done others';
+
+            // Check Status
+            if (!isDone) {
+                countStatusReject++;
+                return false;
+            }
+
+            // Parse Date
             const doneDate = this.parseDate(task);
 
-            // Check Status = Done
-            if (String(status).toLowerCase() !== 'done') return false;
+            // Check Date Missing
+            if (!doneDate) {
+                countDateMissing++;
+                // DEBUG: Analyze why date is missing for Done tasks
+                if (missingDateSamples.length < 5) {
+                    const propKeys = Object.keys(task.properties).join(', ');
+                    missingDateSamples.push({
+                        name: this.getPropertyValue(task, 'Name'),
+                        project: task.database_name,
+                        props: propKeys
+                    });
+                    console.log(`[DEBUG_DATE_MISSING] Task: "${this.getPropertyValue(task, 'Name')}" | Project: ${task.database_name} | Props: ${propKeys}`);
+                }
+                return false;
+            }
 
             // Check Date Range
-            if (!doneDate) return false;
-            
-            // doneDate is a Date object now
-            if (start && doneDate < start) return false;
-            if (end && doneDate > end) return false;
+            let inRange = false;
+            if ((!start || doneDate >= start) && (!end || doneDate <= end)) {
+                inRange = true;
+            }
 
+            if (!inRange) {
+                countDateRangeReject++;
+                return false;
+            }
+
+            // Check Assignee
+            const assignees = this.getAssignees(task);
+            if (assignees.length === 0) {
+                countAssigneeMissing++;
+                // Still keep it? No, grouping will put it in undefined?
+                // The logic below groups by assignee. If empty, it's lost?
+                // Actually loop 3 iterates assignees. If empty, task is ignored.
+            }
+
+            countAccepted++;
+            projectsSet.add(task.database_name);
             return true;
         });
+
+        console.log(`[Productivity] Filter Stats:`);
+        console.log(`- Total Accepted: ${countAccepted}`);
+        console.log(`- Rejected (Status != Done): ${countStatusReject}`);
+        console.log(`- Rejected (Date Missing/Invalid): ${countDateMissing}`);
+        console.log(`- Rejected (Date Out of Range): ${countDateRangeReject}`);
+        console.log(`- Missing Assignee (Potential Loss): ${countAssigneeMissing} (Included in Accepted but might be lost in grouping)`);
+
+        console.log(`[Productivity] Metrics calculated. Relevant Tasks: ${relevantTasks.length}`);
 
         // 3. Group by Assignee
         const grouped = {};
         for (const task of relevantTasks) {
             const assignees = this.getAssignees(task);
+
             for (const person of assignees) {
                 if (!grouped[person]) grouped[person] = [];
                 grouped[person].push(task);
             }
         }
 
-        // 4. Build Rows per Assignee - use ACTUAL assignees from data
-        // Also include preset list for any that haven't appeared
+        // 4. Build Rows per Assignee
         const assigneesFromData = Object.keys(grouped);
         const presetPersonnel = Object.keys(SENIORITY_MAPPING);
+        // reportData is already declared at top
 
         // Combine: data assignees first, then any preset not in data
         const allPersonnel = [...assigneesFromData];
@@ -76,12 +134,13 @@ export class ProductivityService {
             let seniority = SENIORITY_MAPPING[personName];
             if (!seniority) {
                 // Try case-insensitive/partial match
-                const lowerName = personName.toLowerCase();
-                const match = presetPersonnel.find(p =>
-                    p.toLowerCase() === lowerName ||
-                    p.toLowerCase().includes(lowerName) ||
-                    lowerName.includes(p.toLowerCase())
-                );
+                const knownNames = Object.keys(SENIORITY_MAPPING);
+                const normalizedRaw = this.removeAccents(personName.toLowerCase());
+
+                const match = knownNames.find(known => {
+                    const normalizedKnown = this.removeAccents(known.toLowerCase());
+                    return normalizedRaw.includes(normalizedKnown) || normalizedKnown.includes(normalizedRaw);
+                });
                 seniority = match ? SENIORITY_MAPPING[match] : 'Chưa xác định';
             }
 
@@ -107,8 +166,8 @@ export class ProductivityService {
         }
 
         const validData = reportData.filter(r => r.seniority !== 'Chưa xác định');
-        
-        // For unknown users, just return name and task count (no task details)
+
+        // For unknown users, just return name and task count
         const unknownUsers = reportData
             .filter(r => r.seniority === 'Chưa xác định')
             .map(r => ({
@@ -116,7 +175,18 @@ export class ProductivityService {
                 taskCount: r.taskCount
             }));
 
-        return { validData, unknownUsers };
+        const filterStats = {
+            totalProcessed: allTasks.length,
+            totalAccepted: countAccepted,
+            rejectedStatus: countStatusReject,
+            rejectedDateMissing: countDateMissing,
+            rejectedDateRange: countDateRangeReject,
+            missingAssignee: countAssigneeMissing,
+            missingDateSamples: missingDateSamples || [],
+            projects: Array.from(projectsSet)
+        };
+
+        return { validData, unknownUsers, filterStats };
     }
 
     calculateMetrics(tasks, kpi, standardDays, actualDays) {
@@ -129,12 +199,8 @@ export class ProductivityService {
         let pointUnconf = 0;  // C11
 
         for (const task of tasks) {
-            // Filter: Only "Product Type" == "Chuyên môn" counts for points/effort
-            const pType = this.getPropertyValue(task, 'Product Type', 'PRODUCT TYPE', 'product type');
-            const classification = PRODUCT_TYPE_MAPPING[pType];
-
-            if (classification !== 'Chuyên môn') continue;
-
+            // All products count, no Product Type filter
+            // Only separate by Point Status: Confirmed vs Unconfirmed
             const pointStatus = this.getPropertyValue(task, 'Point Status', 'POINT STATUS', 'point status');
 
             // Task points - try multiple property names
@@ -145,7 +211,8 @@ export class ProductivityService {
             if (String(pointStatus).toLowerCase() === 'confirmed') {
                 effortConf += effortVal;
                 pointConf += pointVal;
-            } else if (String(pointStatus).toLowerCase() === 'unconfirmed') {
+            } else {
+                // All other statuses (including Unconfirmed, empty, etc.) go to Unconfirmed bucket
                 effortUnconf += effortVal;
                 pointUnconf += pointVal;
             }
@@ -169,7 +236,7 @@ export class ProductivityService {
 
         // S: Completion Task Point Confirmed = Point Confirmed / Point Required
         const completionPointConf = pointReq ? (pointConf / pointReq) : null; // C18 (S)
-        
+
         // T: Completion Task Point Total = Point Total / Point Required  
         const completionPointTotal = pointReq ? (pointTotal / pointReq) : null; // C19 (T)
 
@@ -234,12 +301,12 @@ export class ProductivityService {
         // Handle array with nested objects (common in Notion rollups/formulas/relations)
         if (Array.isArray(value)) {
             if (value.length === 0) return null;
-            
+
             // Check if it's an array of relation objects (have 'id' property)
             // Relations look like: [{id: "xxx-xxx"}, {id: "yyy-yyy"}]
             if (value[0] && typeof value[0] === 'object') {
                 const first = value[0];
-                
+
                 // Formula wrapper
                 if (first.type === 'formula' && first.formula) {
                     const f = first.formula;
@@ -267,7 +334,7 @@ export class ProductivityService {
                     return value;
                 }
             }
-            
+
             // Array of primitives
             if (typeof value[0] !== 'object') {
                 return value.join(', ');
@@ -285,12 +352,12 @@ export class ProductivityService {
         if (typeof value === 'string') return value || '-';
         if (typeof value === 'number') return String(value);
         if (typeof value === 'boolean') return value ? 'Yes' : 'No';
-        
+
         // Handle date object
         if (value instanceof Date) {
             return value.toLocaleDateString('vi-VN');
         }
-        
+
         // Handle object with start/end (date range)
         if (typeof value === 'object' && !Array.isArray(value) && (value.start || value.end)) {
             const dateStr = value.end || value.start;
@@ -300,17 +367,17 @@ export class ProductivityService {
             }
             return '-';
         }
-        
+
         // Handle array (relations, rollups, multi-select)
         if (Array.isArray(value)) {
             if (value.length === 0) return '-';
-            
+
             // Check if it's an array of UUIDs (relation IDs) - these can't be resolved to names
             const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
             if (typeof value[0] === 'string' && uuidRegex.test(value[0])) {
                 return '-'; // Can't display relation IDs, need rollup for names
             }
-            
+
             // Check what type of array items we have
             const results = value.map(item => {
                 if (item === null || item === undefined) return '';
@@ -320,7 +387,7 @@ export class ProductivityService {
                     return item;
                 }
                 if (typeof item === 'number') return String(item);
-                
+
                 // Object with various possible structures
                 if (typeof item === 'object') {
                     // Has name (select, multi-select, status)
@@ -341,15 +408,15 @@ export class ProductivityService {
                 }
                 return '';
             }).filter(v => v !== null && v !== '');
-            
+
             return results.length > 0 ? results.join(', ') : '-';
         }
-        
+
         // Handle object with name property (select, status)
         if (typeof value === 'object' && value.name) {
             return value.name;
         }
-        
+
         // Handle object with title property
         if (typeof value === 'object' && value.title) {
             if (Array.isArray(value.title)) {
@@ -357,12 +424,12 @@ export class ProductivityService {
             }
             return String(value.title);
         }
-        
+
         // Handle object with plain_text
         if (typeof value === 'object' && value.plain_text !== undefined) {
             return value.plain_text || '-';
         }
-        
+
         // Fallback for unknown objects
         if (typeof value === 'object') {
             // Try to extract any meaningful string
@@ -372,7 +439,7 @@ export class ProductivityService {
                 return '-';
             }
         }
-        
+
         return '-';
     }
 
@@ -384,41 +451,70 @@ export class ProductivityService {
         const props = task.properties;
         if (!props) return null;
 
-        // Find date column - prioritize DoneDate
+        // Find date column - prioritize NGÀY LÀM
+        // If NGÀY LÀM column exists, we use it (even if empty), we DO NOT fallback to DoneDate
+        // This ensures strict filtering as requested.
         let dateValue = null;
-        const dateKeys = ['DoneDate', 'Done Date', 'DONE DATE', 'Ngày làm', 'Ngay lam', 'NGÀY LÀM', 'ngày làm', 'Work Date'];
 
-        for (const key of dateKeys) {
-            if (props[key] !== null && props[key] !== undefined) {
-                dateValue = props[key];
-                break;
+        // 1. Try NGÀY LÀM first
+        const ngayLamKeys = ['NGÀY LÀM', 'Ngày làm', 'Ngay lam', 'ngày làm'];
+        const foundNgayLamKey = ngayLamKeys.find(k => props.hasOwnProperty(k));
+
+        if (foundNgayLamKey) {
+            // Column exists - take its value (valid or empty)
+            dateValue = props[foundNgayLamKey];
+        } else {
+            // 2. Fallback to DoneDate/Work Date only if NGÀY LÀM column is missing entirely
+            const doneDateKeys = ['DoneDate', 'Done Date', 'DONE DATE', 'Work Date', 'Date', 'Ngày', 'Time', 'Created time', 'Thời gian tạo'];
+            for (const key of doneDateKeys) {
+                if (props.hasOwnProperty(key)) {
+                    dateValue = props[key];
+                    break;
+                }
             }
         }
 
-        // Also try case-insensitive search
-        if (!dateValue) {
-            const matchingKey = Object.keys(props).find(k =>
-                k.toLowerCase() === 'donedate' ||
-                k.toLowerCase() === 'done date' ||
-                k.toLowerCase().includes('ngày') ||
-                k.toLowerCase().includes('ngay') ||
-                k.toLowerCase() === 'work date'
-            );
-            if (matchingKey) {
-                dateValue = props[matchingKey];
-            }
+        // 3. Last Resort: Use System Created Time (Stable) or Last Edited Time
+        // Prioritize Created Time to avoid bulk-edit false positives in "This Month"
+        if (!dateValue && (task.created_time || task.last_edited_time)) {
+            return new Date(task.created_time || task.last_edited_time);
         }
 
+        // Check if value is truly empty/invalid
+        if (dateValue === null || dateValue === undefined || dateValue === '') return null;
+        if (Array.isArray(dateValue) && dateValue.length === 0) return null;
+
+        // NEW: Unpack Formula/Rollup/RichText objects to get the inner string/date
+        if (typeof dateValue === 'object') {
+            if (dateValue.type === 'formula') {
+                const f = dateValue.formula;
+                dateValue = f.string || f.date || f.number || null;
+            } else if (dateValue.type === 'rollup') {
+                // Rollup array logic - take last value? or first?
+                // Usually date rollups are arrays. Take max?
+                // For now, simplify: if array, take last.
+                if (Array.isArray(dateValue.rollup?.array)) {
+                    const arr = dateValue.rollup.array;
+                    // Recursive extract if needed, but assuming primitive or date obj
+                    const last = arr[arr.length - 1];
+                    dateValue = last?.start || last?.formula?.string || last;
+                }
+            } else if (dateValue.type === 'rich_text' || dateValue.type === 'title') {
+                dateValue = dateValue[0]?.plain_text || null;
+            }
+        }
+        // Re-check emptiness after unpacking
         if (!dateValue) return null;
+
 
         // Handle object format: {start: "2025-01-15", end: "2025-01-20"}
         // Use END date as completion date, fallback to start
         if (typeof dateValue === 'object') {
-            const dateStr = dateValue.end || dateValue.start;
-            if (dateStr) {
+            // Check for start/end keys (Notion Date Object)
+            if (dateValue.start) {
+                const dateStr = dateValue.end || dateValue.start;
                 return new Date(dateStr);
             }
-            return null;
         }
 
         // Handle string format
@@ -436,6 +532,13 @@ export class ProductivityService {
         if (!rawDate) return null;
         rawDate = rawDate.trim();
 
+        // Handle Range string "Date1 -> Date2" (common in Notion formula output)
+        if (rawDate.includes('->')) {
+            const parts = rawDate.split('->');
+            // Use End Date (last part)
+            rawDate = parts[parts.length - 1].trim();
+        }
+
         // ISO Date (YYYY-MM-DD)
         if (/^\d{4}-\d{2}-\d{2}/.test(rawDate)) {
             return new Date(rawDate);
@@ -449,6 +552,10 @@ export class ProductivityService {
             const year = parseInt(ddmmyyyy[3]);
             return new Date(year, month, day);
         }
+
+        // Handle "January 5, 2026" (Month DD, YYYY)
+        // JS Date constructor handles this well, but let's be explicit if needed.
+        // new Date("January 5, 2026") works.
 
         // Fallback: Let JS Date constructor try
         const fallback = new Date(rawDate);
@@ -464,7 +571,18 @@ export class ProductivityService {
 
     getAssignees(task) {
         // Try Assignee first, then Owner as fallback
-        let assignees = task.properties?.['Assignee'] || task.properties?.['Owner'] || task.properties?.['assignee'] || task.properties?.['owner'];
+        // Add Vietnamese support 'Người thực hiện', 'Nhân sự'
+        const props = task.properties || {};
+        const keys = ['Assignee', 'Owner', 'assignee', 'owner', 'Người thực hiện', 'Người xử lý', 'Nhân sự', 'Person'];
+
+        let assignees = null;
+        for (const key of keys) {
+            if (props[key]) {
+                assignees = props[key];
+                break;
+            }
+        }
+
         if (!assignees) return [];
 
         // Data is already transformed to array of {id, name, email}
@@ -474,11 +592,33 @@ export class ProductivityService {
                 if (!rawName) return '';
 
                 // Resolve alias: Notion short name → full name
-                // If found in alias mapping, use full name; otherwise keep original
-                return NAME_ALIAS_MAPPING[rawName] || rawName;
+                const fullAlias = NAME_ALIAS_MAPPING[rawName];
+                if (fullAlias) return fullAlias;
+
+                // Fuzzy match against SENIORITY_MAPPING keys (Canonical Names)
+                // e.g. "Nguyễn Thị Hòa (Deedee)" -> "Nguyễn Thị Hòa"
+                // e.g. "Nguyễn Thị Hòa" -> "Nguyễn Thị Hòa"
+                // Fuzzy match against SENIORITY_MAPPING keys (Canonical Names)
+                // e.g. "Nguyễn Thị Hòa (Deedee)" -> "Nguyễn Thị Hòa"
+                // e.g. "Nguyễn Thị Hòa" -> "Nguyễn Thị Hòa"
+                const knownNames = Object.keys(SENIORITY_MAPPING);
+                const normalizedRaw = this.removeAccents(rawName.toLowerCase());
+
+                const matchedName = knownNames.find(known => {
+                    const normalizedKnown = this.removeAccents(known.toLowerCase());
+                    // Check if raw name contains the known full name (e.g. "Nguyen Thi Hoa (Team Lead)" contains "Nguyen Thi Hoa")
+                    // Or if known full name contains raw name (careful with short names, but useful for clean data)
+                    return normalizedRaw.includes(normalizedKnown);
+                });
+
+                return matchedName || rawName;
             }).filter(n => n);
         }
         return [];
+    }
+
+    removeAccents(str) {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     }
 
     // Stats Management for Inputs

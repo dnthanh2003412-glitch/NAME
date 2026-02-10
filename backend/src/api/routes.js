@@ -336,12 +336,14 @@ export function setupRoutes(app, db, poller) {
     app.get('/api/database/:id/raw', async (req, res) => {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         const { id } = req.params;
+        const forceRefresh = req.query.refresh === 'true';
         try {
-            let cachedData = db.getData(id);
+            let cachedData = null;
+            if (!forceRefresh) cachedData = db.getData(id);
 
-            // If missing or empty, auto-fetch from Notion
-            if (!cachedData || cachedData.length === 0) {
-                console.log(`[API] Raw data missing for ${id}, fetching from Notion...`);
+            // If missing, empty, or forced refresh -> fetch from Notion
+            if (!cachedData || cachedData.length === 0 || forceRefresh) {
+                console.log(`[API] Raw data fetching for ${id} (Force: ${forceRefresh})...`);
                 try {
                     const fetcher = new DataFetcher(notionToken);
                     const result = await fetcher.fetchAllData([id]);
@@ -352,7 +354,11 @@ export function setupRoutes(app, db, poller) {
                         console.log(`[API] Fetched and cached ${cachedData.length} records for ${id}`);
                     }
                 } catch (fetchError) {
-                    console.error(`[API] Failed to auto-fetch data for ${id}:`, fetchError);
+                    console.error(`[API] Failed to fetch data for ${id}:`, fetchError);
+                    // If force refresh failed, try to fallback to existing cache if available
+                    if (forceRefresh) {
+                        cachedData = db.getData(id);
+                    }
                     // Fallthrough to error response below if still empty
                 }
             }
@@ -444,7 +450,7 @@ export function setupRoutes(app, db, poller) {
                 return res.json({ success: true, columns: PROD_COLUMNS, data: [], error: 'No projects selected' });
             }
 
-            const { validData, unknownUsers } = await prodService.generateReport(startDate, endDate, selectedDatabases);
+            const { validData, unknownUsers, filterStats } = await prodService.generateReport(startDate, endDate, selectedDatabases);
             const stats = prodService.getStats(startDate, endDate);
 
             res.json({
@@ -452,6 +458,7 @@ export function setupRoutes(app, db, poller) {
                 columns: PROD_COLUMNS,
                 data: validData,
                 unknownUsers,
+                filterStats,
                 stats,
                 meta: { startDate, endDate }
             });

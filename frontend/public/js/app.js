@@ -1,5 +1,5 @@
 // app.js - Final Dash Notion V3 (Refined)
-import { renderProductivityDashboard, renderRawDataDashboard } from './dashboard.js';
+// Uses window globals from dashboard.js
 
 const API_BASE = window.location.origin;
 
@@ -266,6 +266,14 @@ class DashboardApp {
                 }
             });
         }
+
+        // Listen for raw data refresh requests (from raw-table.js)
+        document.addEventListener('request-raw-refresh', (e) => {
+            const { databaseId } = e.detail;
+            if (databaseId) {
+                this.refreshSingleDatabase(databaseId);
+            }
+        });
     }
 
     // Select all visible databases - ONLY from WHITELIST (filter projectsHierarchy by whitelist IDs)
@@ -991,6 +999,62 @@ class DashboardApp {
         return false;
     }
 
+    /**
+     * Force refresh a single database's raw data
+     * @param {string} dbId - Database ID
+     */
+    async refreshSingleDatabase(dbId) {
+        console.log(`[Dashboard] Force refreshing database ${dbId}...`);
+
+        const section = document.getElementById(`db-section-${dbId}`);
+        const container = document.getElementById('report-container');
+
+        if (section) {
+            // Show loading in the table area
+            const tableArea = section.querySelector(`#table-area-${dbId}`);
+            if (tableArea) {
+                tableArea.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải lại dữ liệu từ Notion (Force Refresh)...</div>';
+            }
+
+            // Also update dashboard area to indicate loading
+            const dashboardArea = section.querySelector(`#dashboard-area-${dbId}`);
+            if (dashboardArea) {
+                dashboardArea.innerHTML = '';
+            }
+        }
+
+        try {
+            // Force refresh with parameter
+            const url = `${API_BASE}/api/database/${dbId}/raw?refresh=true&_t=${Date.now()}`;
+            const response = await fetch(url);
+            const result = await response.json();
+
+            if (result.success) {
+                console.log(`[Dashboard] Refreshed ${dbId} successfully.`);
+                // Re-render the specific table
+                this.renderRawDatabaseTable(container, dbId, result);
+
+                // Show success toast/notification if possible, or just console log
+            } else {
+                console.error(`[Dashboard] Failed to refresh ${dbId}:`, result.error);
+                if (section) {
+                    const tableArea = section.querySelector(`#table-area-${dbId}`);
+                    if (tableArea) {
+                        tableArea.innerHTML = `<div class="error-msg" style="color:#ef4444;padding:20px;text-align:center;background:#1e293b;border-radius:8px;">❌ Lỗi khi làm mới: ${result.error}</div>`;
+                    }
+                }
+            }
+        } catch (err) {
+            console.error(`[Dashboard] Error refreshing ${dbId}:`, err);
+            if (section) {
+                const tableArea = section.querySelector(`#table-area-${dbId}`);
+                if (tableArea) {
+                    tableArea.innerHTML = `<div class="error-msg" style="color:#ef4444;padding:20px;text-align:center;background:#1e293b;border-radius:8px;">❌ Lỗi kết nối: ${err.message}</div>`;
+                }
+            }
+        }
+    }
+
     async renderRawDataReport(container, reportId) {
         // Show loading state
         container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu thô...</div>';
@@ -1122,19 +1186,37 @@ class DashboardApp {
         const dashboardArea = section.querySelector(`#dashboard-area-${dbId}`);
         const tableArea = section.querySelector(`#table-area-${dbId}`);
 
-        // Dashboard render function - can be called with filtered data
+        // Dashboard render function - defined here to access table state
         const updateDashboard = (data, options = {}) => {
-            if (typeof renderRawDataDashboard === 'function' && data.length > 0) {
+            if (typeof window.renderRawDataDashboard === 'function' && data.length > 0) {
                 // Clear old dashboard before re-rendering
                 dashboardArea.innerHTML = '';
-                renderRawDataDashboard(data, dashboardArea, database_name, options);
+                window.renderRawDataDashboard(data, dashboardArea, database_name, options);
             }
         };
 
-        // Initial Dashboard render with all data
-        if (typeof renderRawDataDashboard === 'function' && originalData.length > 0) {
+        // Handler for Dashboard Filter Changes (Sync Dashboard -> Table)
+        const handleDashboardFilterChange = ({ startDate, endDate, activePreset }) => {
+            console.log('[App] Dashboard filter changed:', { startDate, endDate });
+
+            // Update local filter state
+            startDateFilter = startDate;
+            endDateFilter = endDate;
+
+            // Update custom date inputs if they exist (though dashboard uses its own)
+            // We just need to ensure applyFiltersAndSearch uses the new values.
+
+            // Re-apply filters to table
+            applyFiltersAndSearch();
+            renderTable();
+        };
+
+        // Initial Dashboard render with all data AND sync callback
+        if (typeof window.renderRawDataDashboard === 'function' && originalData.length > 0) {
             if (dashboardArea.childNodes.length === 0) {
-                renderRawDataDashboard(originalData, dashboardArea, database_name);
+                window.renderRawDataDashboard(originalData, dashboardArea, database_name, {
+                    onFilterChange: handleDashboardFilterChange
+                });
             }
         }
 
@@ -1194,13 +1276,36 @@ class DashboardApp {
         let showColumnPicker = false;
 
         // Assignee filter setup
+        // Normalize string for Vietnamese comparison
+        const normalizeStr = (str) => {
+            return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+        };
+
         const findCol = (...names) => {
-            let found = originalColumns.find(c => names.some(n => c.toLowerCase() === n.toLowerCase()));
-            if (found) return found;
-            return originalColumns.find(c => names.some(n => c.toLowerCase().includes(n.toLowerCase())));
+            // Iterate names (priority list) first!
+            for (const name of names) {
+                const normName = normalizeStr(name);
+
+                // 1. Exact match
+                let found = originalColumns.find(c => c.toLowerCase() === name.toLowerCase());
+                if (found) return found;
+
+                // 2. Normalized match (ignore accents)
+                found = originalColumns.find(c => normalizeStr(c) === normName);
+                if (found) return found;
+            }
+
+            // 3. Partial match (Low priority)
+            for (const name of names) {
+                const found = originalColumns.find(c => c.toLowerCase().includes(name.toLowerCase()));
+                if (found) return found;
+            }
+            return undefined;
         };
         const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
-        const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE', 'NGÀY LÀM', 'Ngày làm', 'Date', 'Created', 'Updated');
+        // Prioritize "NGÀY LÀM" as requested
+        const dateCol = findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
+        console.log('[RawTable] findCol dateCol result:', dateCol);
         const sprintCol = findCol('Sprint', 'SPRINT');
         const assignees = assigneeCol ? [...new Set(originalData.map(r => r[assigneeCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
         const sprints = sprintCol ? [...new Set(originalData.map(r => r[sprintCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
@@ -1226,24 +1331,32 @@ class DashboardApp {
         let endDateFilter = '';
         let sprintTableFilter = '';
 
-        // Find fallback date column (LastEditTime)
+        // Find fallback date column (LastEditTime, Created)
         const fallbackDateCol = originalColumns.find(c =>
             c.toLowerCase().includes('lastedittime') ||
             c.toLowerCase().includes('last edit') ||
-            c.toLowerCase().includes('updated')
+            c.toLowerCase().includes('updated') ||
+            c.toLowerCase().includes('created')
         ) || '';
 
         // Get visible columns
         const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
 
-        // Parse date helper (supports multiple formats)
+        // Parse date helper (supports multiple formats including arrow ranges)
         const parseDate = (val) => {
             if (!val) return null;
             if (val instanceof Date && !isNaN(val)) return val;
-            const str = String(val).trim();
+            let str = String(val).trim();
+
+            // Handle arrow format: "2025-01-08 → 2025-01-09" - extract first date
+            if (str.includes('→')) {
+                str = str.split('→')[0].trim();
+            }
+
             // Try DD/MM/YYYY
             const dmy = str.match(/^(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})$/);
             if (dmy) return new Date(parseInt(dmy[3]), parseInt(dmy[2]) - 1, parseInt(dmy[1]));
+
             // Try YYYY-MM-DD or other ISO formats
             const d = new Date(str);
             return isNaN(d.getTime()) ? null : d;
@@ -1268,12 +1381,11 @@ class DashboardApp {
                     let dateStr = row[dateCol];
                     let d = parseDate(dateStr);
 
-                    // Fallback to secondary date column
-                    if (!d && fallbackDateCol) {
-                        dateStr = row[fallbackDateCol];
-                        d = parseDate(dateStr);
-                    }
+                    // Fallback logic MOVED: Only use fallback info if dateCol was NOT found globally.
+                    // If dateCol exists (e.g. NGÀY LÀM), we MUST use it. 
+                    // If row has empty NGÀY LÀM, it effectively has NO date.
 
+                    // STRICT FILTER: If filtering by date, tasks MUST have a valid date
                     if (!d) return false;
 
                     if (startDateFilter) {
@@ -1599,11 +1711,17 @@ class DashboardApp {
             document.addEventListener('dashboard-filter-change', (e) => {
                 if (e.detail) {
                     const { startDate, endDate, assigneeFilter, sprintFilter } = e.detail;
+                    console.log('[RawTable] dashboard-filter-change:', { startDate, endDate, assigneeFilter, sprintFilter, dateCol });
+
                     startDateFilter = startDate || '';
                     endDateFilter = endDate || '';
                     assigneeTableFilter = assigneeFilter || '';
                     sprintTableFilter = sprintFilter || '';
                     currentPage = 1;
+
+                    // Reset debug flag for new filter operation
+                    window._dateDebugLogged = false;
+
                     // Skip dashboard update since it triggered this event
                     filteredData = originalData.filter(row => {
                         if (assigneeTableFilter && assigneeCol && row[assigneeCol] !== assigneeTableFilter) return false;
@@ -1611,16 +1729,19 @@ class DashboardApp {
                         if (dateCol && (startDateFilter || endDateFilter)) {
                             let d = parseDate(row[dateCol]);
                             if (!d && fallbackDateCol) d = parseDate(row[fallbackDateCol]);
-                            if (!d) return false;
-                            if (startDateFilter && d < new Date(startDateFilter)) return false;
-                            if (endDateFilter) {
-                                const end = new Date(endDateFilter);
-                                end.setHours(23, 59, 59, 999);
-                                if (d > end) return false;
+                            // Include tasks without dates, only filter if date exists
+                            if (d) {
+                                if (startDateFilter && d < new Date(startDateFilter)) return false;
+                                if (endDateFilter) {
+                                    const end = new Date(endDateFilter);
+                                    end.setHours(23, 59, 59, 999);
+                                    if (d > end) return false;
+                                }
                             }
                         }
                         return true;
                     });
+                    console.log('[RawTable] After filter:', { originalCount: originalData.length, filteredCount: filteredData.length });
                     renderTable();
                 }
             });
@@ -2043,6 +2164,31 @@ class DashboardApp {
                 const result = await response.json();
 
                 if (result.success) {
+                    // DEBUG: Show Filter Stats
+                    if (result.filterStats) {
+                        console.log("=== PRODUCTIVITY REPORT DEBUG ===");
+                        console.log("Total Processed:", result.filterStats.totalProcessed);
+                        console.log("Total Accepted:", result.filterStats.totalAccepted);
+                        console.log("Rejected (Status):", result.filterStats.rejectedStatus);
+                        console.log("Rejected (Date Missing):", result.filterStats.rejectedDateMissing);
+                        console.log("Rejected (Date Range):", result.filterStats.rejectedDateRange);
+                        console.log("Missing Assignee:", result.filterStats.missingAssignee);
+                        console.log("=================================");
+
+                        let sampleMsg = "";
+                        if (result.filterStats.missingDateSamples && result.filterStats.missingDateSamples.length > 0) {
+                            sampleMsg = "\n\n[MẪU TASK MẤT NGÀY]: (Xem tên cột bên dưới có cột Ngày ko?)\n" +
+                                result.filterStats.missingDateSamples.map(s => `- "${s.name}" (${s.project})\n  Cột có sẵn: ${s.props}`).join('\n\n');
+                        }
+
+                        // alert(`[DEBUG REPORT]\nProcessed: ${result.filterStats.totalProcessed}\nAccepted: ${result.filterStats.totalAccepted}\nRejected (Status): ${result.filterStats.rejectedStatus}\nRejected (Date): ${result.filterStats.rejectedDateMissing + result.filterStats.rejectedDateRange}\nMissing Assignee: ${result.filterStats.missingAssignee}${sampleMsg}\n\nXem thêm chi tiết ở Console (F12).`);
+
+                        // alert(`[DEBUG REPORT]\nProcessed: ${result.filterStats.totalProcessed}...`);
+
+                        // Store stats for persistent rendering
+                        currentFilterStats = result.filterStats;
+                    }
+
                     // Update Standard Days Input
                     if (result.stats?.standard_days) {
                         stdDaysInput.value = result.stats.standard_days;
@@ -2069,6 +2215,32 @@ class DashboardApp {
             }
         };
 
+        const renderReportSummary = (stats, container) => {
+            // Remove existing summary
+            container.querySelector('.report-summary')?.remove();
+
+            const projects = stats.projects || [];
+            const div = document.createElement('div');
+            div.className = 'report-summary alert alert-success d-flex align-items-center mb-4 shadow-sm';
+            div.style.borderLeft = '5px solid #198754'; // Bootstrap success color
+            div.innerHTML = `
+                <i class="bi bi-check-circle-fill fs-2 me-3 text-success"></i>
+                <div>
+                    <h5 class="alert-heading mb-1 fw-bold">Đã tổng hợp dữ liệu thành công!</h5>
+                    <div class="mb-1">
+                        <span class="badge bg-success me-2">Tổng: ${stats.totalProcessed.toLocaleString()}</span>
+                        <span class="badge bg-primary">Hợp lệ: ${stats.totalAccepted.toLocaleString()}</span>
+                    </div>
+                    <div class="small text-muted mt-1">
+                        <i class="bi bi-database me-1"></i> Dữ liệu từ <strong>${projects.length}</strong> dự án: ${projects.join(', ')}
+                    </div>
+                </div>
+            `;
+            // Insert at top of container (but check if Dashboard renders first?)
+            // We want it visible. Prepend is good.
+            container.prepend(div);
+        };
+
         const populateUserFilter = (data) => {
             const currentVal = userFilter.value;
             userFilter.innerHTML = '<option value="">Tất cả</option>';
@@ -2089,18 +2261,26 @@ class DashboardApp {
         };
 
         let currentUnknownUsers = []; // State for unmapped users warnings
+        let currentFilterStats = null; // State for report summary
         let dashboardRendered = false; // Flag to prevent re-rendering dashboard
         let warningRendered = false; // Flag to prevent re-rendering warning
 
         // Render dashboard and warning ONCE (separate from table)
         const renderDashboardAndWarning = () => {
             // Remove existing dashboard/warning if any
+            // Remove existing dashboard/warning/summary if any
             bodyContainer.querySelector('.prod-dashboard')?.remove();
             bodyContainer.querySelector('.unmapped-warning')?.remove();
+            bodyContainer.querySelector('.report-summary')?.remove();
+
+            // Render Report Summary (Success State)
+            if (currentFilterStats) {
+                renderReportSummary(currentFilterStats, bodyContainer);
+            }
 
             // Render Productivity Dashboard (only once, with full data)
-            if (typeof renderProductivityDashboard === 'function' && fullReportData.length > 0) {
-                renderProductivityDashboard(fullReportData, bodyContainer);
+            if (typeof window.renderProductivityDashboard === 'function' && fullReportData.length > 0) {
+                window.renderProductivityDashboard(fullReportData, bodyContainer);
             }
 
             // Show Warning for Unmapped Users - simple list without task details
@@ -3019,10 +3199,26 @@ class DashboardApp {
                 const result = await response.json();
 
                 if (result.success) {
-                    // Update Count
-                    this.updateDatabaseCounts(dbId, result.data.length);
-                    // Render Table (Simplified for this snippet)
-                    this.renderDatabaseData(dbId, result.data, result.meta);
+                    // DEBUG: Show Filter Stats
+                    if (result.filterStats) {
+                        console.log("=== PRODUCTIVITY REPORT DEBUG ===");
+                        console.log("Total Processed:", result.filterStats.totalProcessed);
+                        console.log("Total Accepted:", result.filterStats.totalAccepted);
+                        console.log("Rejected (Status):", result.filterStats.rejectedStatus);
+                        console.log("Rejected (Date Missing):", result.filterStats.rejectedDateMissing);
+                        console.log("Rejected (Date Range):", result.filterStats.rejectedDateRange);
+                        console.log("=================================");
+
+                        // Show small toast/notify if accepted count is low (optional, but good for user)
+                        // alert(`Debug: Processed ${result.filterStats.totalProcessed} tasks. Accepted: ${result.filterStats.totalAccepted}. Check Console for details.`);
+                    }
+
+                    // Render Dashboard
+                    if (window.renderProductivityDashboard) {
+                        this.updateDatabaseCounts(dbId, result.data.length);
+                        // Render Table (Simplified for this snippet)
+                        this.renderDatabaseData(dbId, result.data, result.meta);
+                    }
                 } else {
                     console.error(`Failed to fetch ${dbId}`);
                 }

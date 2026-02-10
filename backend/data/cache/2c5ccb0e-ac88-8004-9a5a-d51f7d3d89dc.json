@@ -39,7 +39,7 @@
   {
     "id": "2cdccb0e-ac88-8022-a28b-f107a4b926ec",
     "created_time": "2025-12-18T03:55:00.000Z",
-    "last_edited_time": "2025-12-18T04:00:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 02",
@@ -52,11 +52,11 @@
       "Owner": [],
       "Loại cảnh": "D",
       "Max": 2,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 1,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Combo": null,
@@ -76,7 +76,7 @@
   {
     "id": "2cdccb0e-ac88-8024-9265-c438179a8154",
     "created_time": "2025-12-18T03:48:00.000Z",
-    "last_edited_time": "2026-01-04T19:43:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -89,11 +89,11 @@
       "Owner": [],
       "Loại cảnh": "B",
       "Max": 5,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 3.75,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 35,
       "Check task done": null,
       "Combo": null,
@@ -113,7 +113,7 @@
   {
     "id": "2cdccb0e-ac88-8037-aae3-d49972532a00",
     "created_time": "2025-12-18T03:13:00.000Z",
-    "last_edited_time": "2026-01-07T09:26:00.000Z",
+    "last_edited_time": "2026-02-09T09:09:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 02",
@@ -308,7 +308,8 @@
       "Required by": null,
       "Tasks": [
         "2d2ccb0e-ac88-80c4-aa7e-e7d9e653f7f1",
-        "2deccb0e-ac88-809a-a3a2-cdf10c19512a"
+        "2deccb0e-ac88-809a-a3a2-cdf10c19512a",
+        "2e1ccb0e-ac88-8040-b760-d5ad2f864fef"
       ],
       "Owner": [
         {
@@ -325,14 +326,14 @@
       "Total Main": 1,
       "Point Status": "Confirmed",
       "Product point": 14,
-      "Check task done": "Done,Done QC",
+      "Check task done": "Done,Done QC,Done QC",
       "Combo": null,
       "Ưu tiên": null,
       "Số hình": null,
       "Due Date": null,
       "DO": null,
       "Product type": "SP",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "SP 01"
     },
     "_title": "SP 01",
@@ -343,7 +344,7 @@
   {
     "id": "2cdccb0e-ac88-8060-8674-c6bf14069684",
     "created_time": "2025-12-18T03:16:00.000Z",
-    "last_edited_time": "2025-12-31T05:04:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -362,11 +363,11 @@
       ],
       "Loại cảnh": "E",
       "Max": 0.75,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 0.25,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 5,
       "Check task done": null,
       "Combo": null,
@@ -524,7 +525,7 @@
   {
     "id": "2cdccb0e-ac88-8088-b621-ea0c45c8e7b6",
     "created_time": "2025-12-18T03:16:00.000Z",
-    "last_edited_time": "2025-12-31T05:04:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -543,11 +544,11 @@
       ],
       "Loại cảnh": "C",
       "Max": 3.5,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 2.25,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "Check task done": null,
       "Combo": null,
@@ -567,7 +568,7 @@
   {
     "id": "2cdccb0e-ac88-80a7-9744-d29e1b9f2a6d",
     "created_time": "2025-12-18T03:54:00.000Z",
-    "last_edited_time": "2025-12-18T04:00:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 02",
@@ -580,11 +581,11 @@
       "Owner": [],
       "Loại cảnh": "D",
       "Max": 2,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 1,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": null,
       "Combo": null,
@@ -604,7 +605,7 @@
   {
     "id": "2cdccb0e-ac88-80b8-a0b5-c063d7803e87",
     "created_time": "2025-12-18T03:13:00.000Z",
-    "last_edited_time": "2026-01-04T19:57:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -625,11 +626,11 @@
       ],
       "Loại cảnh": "D",
       "Max": 2,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 1,
       "Total Main": 1,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 14,
       "Check task done": "Done",
       "Combo": null,
@@ -738,7 +739,7 @@
   {
     "id": "2cdccb0e-ac88-80e3-9e7a-e35f85862cfa",
     "created_time": "2025-12-18T03:48:00.000Z",
-    "last_edited_time": "2026-01-04T19:43:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -751,11 +752,11 @@
       "Owner": [],
       "Loại cảnh": "C",
       "Max": 3.5,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 2.25,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "Check task done": null,
       "Combo": null,
@@ -775,7 +776,7 @@
   {
     "id": "2cdccb0e-ac88-80e9-a0ff-ef4b6eb4916b",
     "created_time": "2025-12-18T03:55:00.000Z",
-    "last_edited_time": "2025-12-18T04:00:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 02",
@@ -788,11 +789,11 @@
       "Owner": [],
       "Loại cảnh": "C",
       "Max": 3.5,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 2.25,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "Check task done": null,
       "Combo": null,
@@ -849,7 +850,7 @@
   {
     "id": "2cdccb0e-ac88-80ef-992f-c7f5f395f247",
     "created_time": "2025-12-18T03:16:00.000Z",
-    "last_edited_time": "2026-01-04T19:57:00.000Z",
+    "last_edited_time": "2026-02-09T09:08:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 03",
@@ -871,11 +872,11 @@
       ],
       "Loại cảnh": "E",
       "Max": 0.75,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 0.25,
       "Total Main": 1,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 5,
       "Check task done": "Done,Done QC",
       "Combo": null,
@@ -895,7 +896,7 @@
   {
     "id": "2cdccb0e-ac88-80f0-bf88-c103a1d6c54e",
     "created_time": "2025-12-18T03:56:00.000Z",
-    "last_edited_time": "2025-12-18T04:00:00.000Z",
+    "last_edited_time": "2026-02-09T09:11:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 02",
@@ -908,11 +909,11 @@
       "Owner": [],
       "Loại cảnh": "C",
       "Max": 3.5,
-      "Status": "Not started",
+      "Status": "QC Approved",
       "Task count + 1": 1,
       "Min": 2.25,
       "Total Main": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "Check task done": null,
       "Combo": null,
@@ -975,7 +976,7 @@
   {
     "id": "2d5ccb0e-ac88-801e-9be8-f36b2d7f5d23",
     "created_time": "2025-12-26T02:36:00.000Z",
-    "last_edited_time": "2025-12-31T05:04:00.000Z",
+    "last_edited_time": "2026-02-09T09:19:00.000Z",
     "properties": {
       "Create Task": null,
       "Episode": "EP 01",
@@ -992,14 +993,14 @@
           "email": "hoant@sangygroup.com"
         }
       ],
-      "Loại cảnh": null,
-      "Max": null,
+      "Loại cảnh": "E",
+      "Max": 0.75,
       "Status": "QC Approved",
       "Task count + 1": 1,
-      "Min": null,
+      "Min": 0.25,
       "Total Main": null,
       "Point Status": "Confirmed",
-      "Product point": 0,
+      "Product point": 5,
       "Check task done": null,
       "Combo": null,
       "Ưu tiên": null,
@@ -1230,6 +1231,276 @@
       "Product": "Cut-out fb client nhiều lần"
     },
     "_title": "Cut-out fb client nhiều lần",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-807a-b4db-e91f3e207b0e",
+    "created_time": "2026-02-09T09:10:00.000Z",
+    "last_edited_time": "2026-02-09T09:12:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2daccb0e-ac88-80d9-8f1b-f3914eb56b8f"
+      ],
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "E",
+      "Max": 0.75,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 0.25,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Background",
+      "Total QC": 0,
+      "Product": "text v3"
+    },
+    "_title": "text v3",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-8090-96e4-f971cfc352bb",
+    "created_time": "2026-02-09T09:18:00.000Z",
+    "last_edited_time": "2026-02-09T09:18:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2daccb0e-ac88-800f-8d7f-dbc42f9207aa"
+      ],
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "D",
+      "Max": 2,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 1,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Background",
+      "Total QC": 0,
+      "Product": "BG 02 fb client ver2"
+    },
+    "_title": "BG 02 fb client ver2",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-80a4-abb5-c79d6c447dc9",
+    "created_time": "2026-02-09T09:12:00.000Z",
+    "last_edited_time": "2026-02-09T09:13:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2daccb0e-ac88-804f-ad41-f51be4491bb8"
+      ],
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "D",
+      "Max": 2,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 1,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Background",
+      "Total QC": 0,
+      "Product": "Tô màu nhân vật Clip 2, 3"
+    },
+    "_title": "Tô màu nhân vật Clip 2, 3",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-80a8-b113-df24a9cee0e2",
+    "created_time": "2026-02-09T09:17:00.000Z",
+    "last_edited_time": "2026-02-09T09:17:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2e6ccb0e-ac88-80a7-bcac-cbd2655b2cda"
+      ],
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "C",
+      "Max": 3.5,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 2.25,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Animation",
+      "Total QC": 0,
+      "Product": "sửa fb anim nhiều lần"
+    },
+    "_title": "sửa fb anim nhiều lần",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-80e8-a548-f28699207e22",
+    "created_time": "2026-02-09T09:20:00.000Z",
+    "last_edited_time": "2026-02-09T09:20:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2d5ccb0e-ac88-8043-8d4b-f37a4a2cb1cd"
+      ],
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "D",
+      "Max": 2,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 1,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Background",
+      "Total QC": 0,
+      "Product": "BG 01 fb client"
+    },
+    "_title": "BG 01 fb client",
+    "database_name": "[XANHSM] Product",
+    "project_name": "[XANHSM]",
+    "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"
+  },
+  {
+    "id": "302ccb0e-ac88-80f1-b2ab-e0fecf4cf86e",
+    "created_time": "2026-02-09T09:15:00.000Z",
+    "last_edited_time": "2026-02-09T09:16:00.000Z",
+    "properties": {
+      "Create Task": null,
+      "Episode": null,
+      "Task count ": null,
+      "Total Fixed": 0,
+      "Resource": null,
+      "UTNL": null,
+      "Required by": null,
+      "Tasks": [
+        "2daccb0e-ac88-804b-bbcb-c4ac40315501"
+      ],
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": "E",
+      "Max": 0.75,
+      "Status": "QC Approved",
+      "Task count + 1": 1,
+      "Min": 0.25,
+      "Total Main": 1,
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "Check task done": "Done",
+      "Combo": null,
+      "Ưu tiên": null,
+      "Số hình": null,
+      "Due Date": null,
+      "DO": null,
+      "Product type": "Background",
+      "Total QC": 0,
+      "Product": "Text v2"
+    },
+    "_title": "Text v2",
     "database_name": "[XANHSM] Product",
     "project_name": "[XANHSM]",
     "database_id": "2c5ccb0e-ac88-8004-9a5a-d51f7d3d89dc"

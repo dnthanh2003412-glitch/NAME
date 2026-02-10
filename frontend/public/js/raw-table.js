@@ -1,12 +1,12 @@
 // raw-table.js - Enhanced with Pagination, Search, Filter, Sort, Column Visibility, Export
-import { renderRawDataDashboard } from './dashboard.js';
+// Uses window globals from dashboard.js: window.renderRawDataDashboard, window.filterByDateRange
 
-console.log('[raw-table] Loaded, renderRawDataDashboard:', typeof renderRawDataDashboard);
+console.log('[raw-table] Loaded, renderRawDataDashboard:', typeof window.renderRawDataDashboard);
 
 /**
  * Render raw data table with full features
  */
-export function renderRawDataTable(data, container) {
+function renderRawDataTable(data, container) {
     if (!data || !data.success) {
         container.innerHTML = `
             <div class="error-message">
@@ -27,6 +27,15 @@ export function renderRawDataTable(data, container) {
     let pageSize = 10;
     let hiddenColumns = new Set(JSON.parse(localStorage.getItem(storageKey) || '[]'));
 
+    // Filter state
+    let dashFilters = {
+        startDate: '',
+        endDate: '',
+        assigneeFilter: '',
+        sprintFilter: '',
+        activePreset: ''
+    };
+
     // Get visible columns
     const getVisibleColumns = () => columns.filter(col => !hiddenColumns.has(col));
 
@@ -34,9 +43,12 @@ export function renderRawDataTable(data, container) {
     const wrapper = document.createElement('div');
     wrapper.className = 'raw-data-view';
     wrapper.innerHTML = `
-        <div class="raw-data-header">
-            <h3>📊 ${database_name}</h3>
-            <p class="data-info">${total_records} records • ${columns.length} columns</p>
+        <div class="raw-data-header" style="display:flex;justify-content:space-between;align-items:center;">
+            <div>
+                <h3>📊 ${database_name}</h3>
+                <p class="data-info">${total_records} records • ${columns.length} columns</p>
+            </div>
+            <button id="force-refresh-btn" class="btn-small btn-primary-small" style="background:#eab308;color:black;">🔄 Cập nhật từ Notion</button>
         </div>
         
         <!-- Column Visibility Toggle -->
@@ -270,28 +282,86 @@ export function renderRawDataTable(data, container) {
         renderTable();
     };
 
-    // Handle search
-    const handleSearch = () => {
-        const query = document.getElementById('raw-search').value.toLowerCase();
-        const filterCol = document.getElementById('filter-column').value;
+    // Centralized filter application
+    const applyAllFilters = () => {
+        const query = document.getElementById('raw-search')?.value.toLowerCase() || '';
+        const filterCol = document.getElementById('filter-column')?.value;
 
-        filteredRows = rows.filter(row => {
-            if (filterCol) {
-                const value = String(row[filterCol] || '').toLowerCase();
-                return value.includes(query);
-            } else {
-                return columns.some(col => {
-                    const value = String(row[col] || '').toLowerCase();
+        // 1. Start with all rows
+        let result = rows;
+
+        // 2. Apply dashboard filters
+        const { startDate, endDate, assigneeFilter, sprintFilter } = dashFilters;
+
+        const findCol = (...names) => findColumnName(columns, ...names);
+        const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
+        const sprintCol = findCol('Sprint', 'SPRINT');
+        const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE');
+        const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'NGÀY LÀM', 'Ngày làm', 'Updated');
+
+        if (assigneeFilter && assigneeCol) {
+            result = result.filter(r => r[assigneeCol] === assigneeFilter);
+        }
+        if (sprintFilter && sprintCol) {
+            result = result.filter(r => r[sprintCol] === sprintFilter);
+        }
+        if (dateCol && (startDate || endDate)) {
+            result = window.filterByDateRange(result, dateCol, fallbackDateCol, startDate, endDate);
+        }
+
+        // 3. Apply search query
+        if (query) {
+            result = result.filter(row => {
+                if (filterCol) {
+                    const value = String(row[filterCol] || '').toLowerCase();
                     return value.includes(query);
-                });
-            }
-        });
+                } else {
+                    return columns.some(col => {
+                        const value = String(row[col] || '').toLowerCase();
+                        return value.includes(query);
+                    });
+                }
+            });
+        }
 
+        filteredRows = result;
         currentPage = 1;
         renderTable();
     };
 
+    // Handle search input
+    const handleSearch = () => {
+        applyAllFilters();
+    };
+
+    // Clean up previous listener to prevent leaks/duplicates
+    if (document.rawTableFilterHandler) {
+        document.removeEventListener('dashboard-filter-change', document.rawTableFilterHandler);
+    }
+
+    // Create new handler
+    document.rawTableFilterHandler = (e) => {
+        console.log('[raw-table] Filter changed:', e.detail);
+        dashFilters = { ...dashFilters, ...e.detail };
+        applyAllFilters();
+    };
+
+    // Attach listener
+    document.addEventListener('dashboard-filter-change', document.rawTableFilterHandler);
+
     // Event listeners
+    document.getElementById('force-refresh-btn')?.addEventListener('click', () => {
+        const btn = document.getElementById('force-refresh-btn');
+        btn.disabled = true;
+        btn.textContent = '⏳ Đang tải...';
+
+        // Dispatch event to app.js to handle refresh
+        const event = new CustomEvent('request-raw-refresh', {
+            detail: { databaseId: data.database_id }
+        });
+        document.dispatchEvent(event);
+    });
+
     document.getElementById('raw-search').addEventListener('input', handleSearch);
     document.getElementById('filter-column').addEventListener('change', handleSearch);
 

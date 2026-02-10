@@ -182,10 +182,12 @@
         "2e1ccb0e-ac88-8056-b2e8-ee74f18eeb80",
         "2e1ccb0e-ac88-80eb-8d00-d2de83005b73",
         "2e1ccb0e-ac88-8026-876c-c58b6ab18aff",
-        "2d8ccb0e-ac88-8056-92f4-e09c24f2a555"
+        "2d8ccb0e-ac88-8056-92f4-e09c24f2a555",
+        "2caccb0e-ac88-80f6-88b0-ea435deb7fb2",
+        "2d8ccb0e-ac88-8006-9a3c-ed27ab553e20"
       ],
-      "Total tasks": 23,
-      "Completed tasks": 0.9565217391304348,
+      "Total tasks": 25,
+      "Completed tasks": 0.96,
       "Sprint status": "Current"
     },
     "_title": "Sprint 4",

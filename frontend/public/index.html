@@ -21,15 +21,19 @@
 </head>
 
 <body>
-    <!-- App Scripts - v9 for cache busting -->
-    <script type="module" src="js/charts.js?v=20260205_v9"></script>
-    <script type="module" src="js/tables.js?v=20260205_v9"></script>
-    <script type="module" src="js/raw-table.js?v=20260209_v12"></script>
-    <script type="module" src="js/dashboard.js?v=20260205_v9"></script>
-    <script src="js/sidebar-resize.js?v=20260205_v9"></script>
-    <script type="module" src="js/setup.js?v=20260205_v9"></script>
-    <script type="module" src="js/app.js?v=20260209_v20"></script>
-    <script type="module" src="js/auth.js?v=20260205_v9"></script>
+    <!-- Include Chart.js (must load before app scripts) -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- App Scripts - v16 for filter sync (2026-02-10) -->
+    <script src="js/sidebar-resize.js?v=20260210_v16"></script>
+    <script type="module" src="js/charts.js?v=20260210_v16"></script>
+    <script type="module" src="js/tables.js?v=20260210_v16"></script>
+    <!-- Custom Filter Scripts -->
+    <script type="module" src="js/dashboard.js?v=20260210_v19"></script>
+    <script type="module" src="js/raw-table.js?v=20260210_v19"></script>
+    <script type="module" src="js/setup.js?v=20260210_v19"></script>
+    <script type="module" src="js/app.js?v=20260210_v19"></script>
+    <script type="module" src="js/auth.js?v=20260210_v19"></script>
     <!-- Loading Screen -->
     <div id="loading" class="loading-screen">
         <div class="loading-content">
@@ -411,18 +415,6 @@
         </main>
     </div>
 
-    <!-- Include Chart.js -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-
-    <!-- App Scripts - v9 for cache busting -->
-    <script type="module" src="js/charts.js?v=20260205_v9"></script>
-    <script type="module" src="js/tables.js?v=20260205_v9"></script>
-    <script type="module" src="js/raw-table.js?v=20260209_v12"></script>
-    <script type="module" src="js/dashboard.js?v=20260205_v9"></script>
-    <script src="js/sidebar-resize.js?v=20260205_v9"></script>
-    <script type="module" src="js/setup.js?v=20260205_v9"></script>
-    <script type="module" src="js/app.js?v=20260209_v20"></script>
-    <script type="module" src="js/auth.js?v=20260205_v9"></script>
 </body>
 
 </html>

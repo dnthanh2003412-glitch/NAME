@@ -82,27 +82,46 @@ const CHART_COLORS = {
 
 /**
  * Parse date from Vietnamese format or common formats
+ * Supports arrow format: "2025-01-08 → 2025-01-09"
  */
 function parseDate(dateStr) {
     if (!dateStr || dateStr === '-' || dateStr === '') return null;
 
+    // Handle object parsing (Notion Date property)
+    if (typeof dateStr === 'object') {
+        if (dateStr.start) return new Date(dateStr.start);
+        if (dateStr.end) return new Date(dateStr.end);
+        return null;
+    }
+
+    let str = String(dateStr).trim();
+
+    // Handle arrow format: "2025-01-08 → 2025-01-09" - extract first date
+    if (str.includes('→')) {
+        str = str.split('→')[0].trim();
+    }
+
     // Try DD/MM/YYYY or DD-MM-YYYY
-    const match1 = dateStr.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
+    const match1 = str.match(/(\d{1,2})[\/\-](\d{1,2})[\/\-](\d{4})/);
     if (match1) {
         return new Date(parseInt(match1[3]), parseInt(match1[2]) - 1, parseInt(match1[1]));
     }
 
     // Try YYYY-MM-DD
-    const match2 = dateStr.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
+    const match2 = str.match(/(\d{4})[\/\-](\d{1,2})[\/\-](\d{1,2})/);
     if (match2) {
         return new Date(parseInt(match2[1]), parseInt(match2[2]) - 1, parseInt(match2[3]));
     }
 
     // Try MM-YYYY or Tháng MM/YYYY
-    const match3 = dateStr.match(/(\d{1,2})[\/\-](\d{4})/);
+    const match3 = str.match(/(\d{1,2})[\/\-](\d{4})/);
     if (match3) {
         return new Date(parseInt(match3[2]), parseInt(match3[1]) - 1, 1);
     }
+
+    // Last resort: Try standard Date constructor (handles ISO, English formats etc.)
+    const d = new Date(str);
+    if (!isNaN(d.getTime())) return d;
 
     return null;
 }
@@ -160,27 +179,44 @@ function filterByMonthYear(data, dateColName, month, year) {
  */
 function filterByDateRange(data, primaryDateCol, fallbackDateCol, startDate, endDate) {
     if (!startDate && !endDate) return data;
-    
+
     const start = startDate ? new Date(startDate) : null;
     const end = endDate ? new Date(endDate) : null;
-    
+
     // Set end date to end of day
     if (end) {
         end.setHours(23, 59, 59, 999);
     }
-    
+
+    // Initialize debug counter if not present
+    if (typeof window._debugFilterCount === 'undefined') {
+        window._debugFilterCount = 0;
+    }
+
     return data.filter(row => {
         // Try primary date column first, then fallback
         let dateVal = row[primaryDateCol];
-        let parsed = parseDate(dateVal);
-        
-        if (!parsed && fallbackDateCol) {
-            dateVal = row[fallbackDateCol];
+        let parsed = null;
+        if (typeof dateVal === 'object' && dateVal !== null) {
+            parsed = parseDate(dateVal); // It handles objects now
+        } else {
             parsed = parseDate(dateVal);
         }
-        
+
+        // REMOVED PER-ROW FALLBACK:
+        // If primary date column exists (e.g. NGÀY LÀM), we use it exclusively.
+        // We do NOT fallback to "Created Time" specific to this row, because it confuses the user.
+
+        // Log first few failures or successes for debugging
+        if (window._debugFilterCount < 5) {
+            console.log(`[FilterDebug] Row: ${row[primaryDateCol]} -> Parsed: ${parsed}, In Range: ${parsed >= start && parsed <= end}`);
+            window._debugFilterCount++;
+        }
+
+        // STRICT FILTER: If date range is set (start/end), tasks MUST have a valid date within range.
+        // Tasks with empty/invalid dates are excluded.
         if (!parsed) return false;
-        
+
         if (start && parsed < start) return false;
         if (end && parsed > end) return false;
         return true;
@@ -193,7 +229,7 @@ function filterByDateRange(data, primaryDateCol, fallbackDateCol, startDate, end
 function getDateRangePresets() {
     const now = new Date();
     const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    
+
     return {
         'thisMonth': {
             label: 'Tháng này',
@@ -388,7 +424,7 @@ function createModal() {
     modal.addEventListener('click', (e) => {
         if (e.target === modal) modal.classList.remove('show');
     });
-    
+
     // Close modal when clicking X button
     document.getElementById('modal-close-btn').addEventListener('click', () => {
         modal.classList.remove('show');
@@ -424,14 +460,14 @@ function showDetailModal(title, data, columns) {
         // Get ALL columns from data, filter out hidden ones
         const allCols = columns || Object.keys(data[0]);
         const visibleCols = getVisibleColumns(allCols);
-        
+
         // Prioritize important columns first
         const priorityCols = ['TASKS', 'Tasks', 'Task Name', 'Name', 'ASSIGNEE', 'Assignee', 'PRODUCT TYPE', 'Sprint', 'POINT STATUS', 'DoneDate'];
         const sortedCols = [
             ...priorityCols.filter(c => visibleCols.includes(c)),
             ...visibleCols.filter(c => !priorityCols.includes(c))
         ];
-        
+
         body.innerHTML = `
             <div style="margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
                 <span style="color:#94a3b8;font-size:0.85rem;">📊 ${data.length} mục | ${sortedCols.length} cột</span>
@@ -444,10 +480,10 @@ function showDetailModal(title, data, columns) {
                     <tbody>
                         ${data.slice(0, 100).map(row => `
                             <tr>${sortedCols.map(c => {
-                                const val = row[c] || '-';
-                                const displayVal = String(val).length > 50 ? String(val).substring(0, 50) + '...' : val;
-                                return `<td style="white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis;" title="${String(val).replace(/"/g, '&quot;')}">${displayVal}</td>`;
-                            }).join('')}</tr>
+            const val = row[c] || '-';
+            const displayVal = String(val).length > 50 ? String(val).substring(0, 50) + '...' : val;
+            return `<td style="white-space:nowrap;max-width:300px;overflow:hidden;text-overflow:ellipsis;" title="${String(val).replace(/"/g, '&quot;')}">${displayVal}</td>`;
+        }).join('')}</tr>
                         `).join('')}
                     </tbody>
                 </table>
@@ -491,35 +527,70 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     const { sprintFilter = '', assigneeFilter = '', startDate = '', endDate = '', activePreset = 'all' } = options;
 
     // Detect available columns
-    const sampleRow = data[0];
-    const columns = Object.keys(sampleRow);
+    // Detect available columns from ALL rows to ensure we don't miss sparse columns
+    // Use a Set to collect all unique keys efficiently
+    const allKeys = new Set();
+    data.forEach(row => Object.keys(row).forEach(k => allKeys.add(k)));
+    const columns = Array.from(allKeys);
 
-    // Find column names - exact match first, then partial
+    // Normalize string for Vietnamese comparison (remove accents, lowercase)
+    const normalizeStr = (str) => {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    };
+
+    // Find column names - robust matching with strict priority
     const findCol = (...names) => {
-        let found = columns.find(c => names.some(n => c.toLowerCase() === n.toLowerCase()));
-        if (found) return found;
-        return columns.find(c => names.some(n => c.toLowerCase().includes(n.toLowerCase())));
+        // Iterate names (priority list) first!
+        for (const name of names) {
+            const normName = normalizeStr(name);
+
+            // 1. Exact match (case insensitive)
+            let found = columns.find(c => c.toLowerCase() === name.toLowerCase());
+            if (found) return found;
+
+            // 2. Normalized match (ignore accents)
+            found = columns.find(c => normalizeStr(c) === normName);
+            if (found) return found;
+        }
+
+        // 3. Partial match (Low priority - only if exact not found)
+        for (const name of names) {
+            const found = columns.find(c => c.toLowerCase().includes(name.toLowerCase()));
+            if (found) return found;
+        }
+
+        return undefined;
     };
 
     const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
-    const productCol = findCol('PRODUCT TYPE', 'Product Type', 'Loại sản phẩm');
-    const sprintCol = findCol('Sprint', 'SPRINT');
-    const pointStatusCol = findCol('POINT STATUS', 'Point Status', 'Trạng thái điểm');
-    const sceneTypeCol = findCol('LOẠI CẢNH', 'Loại cảnh', 'Scene Type', 'Scene');
-    const taskTypeCol = findCol('TASK TYPE', 'Task Type', 'Loại task');
-    const dateCol = findCol('DoneDate', 'Done Date', 'DONE DATE');
-    const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'NGÀY LÀM', 'Ngày làm', 'Updated');
+
+    // Prioritize "NGÀY LÀM" (normalized to 'ngay lam') 
+    const dateCol = findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
+    const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'Updated', 'Created');
+
+    console.log('[Dashboard] Columns analysis:', {
+        totalCols: columns.length,
+        allColumnNames: columns, // Log all names to help debug
+        dateCol,
+        fallbackDateCol
+    });
+
+    const productCol = findCol('Product', 'PRODUCT', 'Sản phẩm', 'Dự án con', 'PRODUCT TYPE', 'Product Type', 'Loại sản phẩm');
+    const sprintCol = findCol('Sprint', 'SPRINT', 'Đợt');
+    const pointStatusCol = findCol('Point Status', 'POINT STATUS', 'Status Point', 'Trạng thái điểm');
+    const sceneTypeCol = findCol('Scene Type', 'LOẠI CẢNH', 'Loại cảnh', 'Scene');
+    const taskTypeCol = findCol('Task Type', 'TASK TYPE', 'Loại Task', 'Type');
 
     // Get filter options
     const sprints = getUniqueValues(data, sprintCol);
     const assignees = getUniqueValues(data, assigneeCol);
     const presets = getDateRangePresets();
-    
+
     // Get current date range values
     let currentStartDate = startDate;
     let currentEndDate = endDate;
     let currentPreset = activePreset;
-    
+
     // If no dates set, use default preset (this month)
     if (!currentStartDate && !currentEndDate && activePreset && presets[activePreset]) {
         const preset = presets[activePreset];
@@ -537,6 +608,40 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     }
     if (dateCol && (currentStartDate || currentEndDate)) {
         filteredData = filterByDateRange(filteredData, dateCol, fallbackDateCol, currentStartDate, currentEndDate);
+    }
+
+    // Check for "No Data in Range" warning
+    let rangeWarning = '';
+    if (filteredData.length === 0 && data.length > 0 && (currentStartDate || currentEndDate)) { // Check even if dateCol is missing to warn
+        if (!dateCol) {
+            rangeWarning = `<div style="padding:12px;margin-bottom:16px;background:#451a03;border:1px solid #ef4444;border-radius:8px;color:#fca5a5;font-size:0.9rem;">
+                 ⚠️ <strong>Lỗi cấu hình:</strong> Không tìm thấy cột ngày (Done Date / Ngày làm).<br>
+                 Hệ thống không thể lọc theo thời gian. Vui lòng kiểm tra lại tên cột trong Notion.
+             </div>`;
+        } else {
+            // Calculate actual data range
+            let minDate = null, maxDate = null;
+            data.forEach(r => {
+                const d = parseDate(r[dateCol]);
+                if (d) {
+                    if (!minDate || d < minDate) minDate = d;
+                    if (!maxDate || d > maxDate) maxDate = d;
+                }
+            });
+
+            if (minDate && maxDate) {
+                rangeWarning = `<div style="padding:12px;margin-bottom:16px;background:#451a03;border:1px solid #f97316;border-radius:8px;color:#fdba74;font-size:0.9rem;display:flex;align-items:center;gap:12px;">
+                     <span style="font-size:1.5rem;">⚠️</span>
+                     <div>
+                        <strong>Không có dữ liệu trong khoảng thời gian đã chọn.</strong><br>
+                        <span style="opacity:0.9;font-size:0.85rem;">
+                            Dữ liệu thực tế có từ: <strong>${formatDateDisplay(minDate)}</strong> đến <strong>${formatDateDisplay(maxDate)}</strong><br>
+                            (Cột ngày được dùng: <code>${dateCol}</code>)
+                        </span>
+                     </div>
+                 </div>`;
+            }
+        }
     }
 
     // Build charts list
@@ -560,8 +665,8 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     // Format display dates
     const displayStartDate = currentStartDate ? formatDateDisplay(new Date(currentStartDate)) : '';
     const displayEndDate = currentEndDate ? formatDateDisplay(new Date(currentEndDate)) : '';
-    const dateRangeText = displayStartDate && displayEndDate 
-        ? `${displayStartDate} → ${displayEndDate}` 
+    const dateRangeText = displayStartDate && displayEndDate
+        ? `${displayStartDate} → ${displayEndDate}`
         : (displayStartDate ? `Từ ${displayStartDate}` : (displayEndDate ? `Đến ${displayEndDate}` : 'Tất cả'));
 
     // Create dashboard container with filter bar
@@ -572,6 +677,8 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         <div class="dash-filter-bar">
             <h3 style="margin:0;color:#e2e8f0;font-size:1rem;">📊 Dashboard: ${databaseName || 'Raw Data'}</h3>
         </div>
+        
+        ${rangeWarning}
         
         <!-- Date Range Filter Section -->
         <div class="date-range-filter" style="margin-bottom:16px;padding:12px;background:#1e293b;border-radius:8px;border:1px solid #334155;">
@@ -643,10 +750,10 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         btn.addEventListener('click', () => {
             const presetKey = btn.dataset.preset;
             const preset = presets[presetKey];
-            
+
             document.getElementById('raw-start-date').value = preset.start ? formatDateForInput(preset.start) : '';
             document.getElementById('raw-end-date').value = preset.end ? formatDateForInput(preset.end) : '';
-            
+
             // Update active state
             dashDiv.querySelectorAll('.preset-btn').forEach(b => {
                 b.classList.remove('active');
@@ -658,11 +765,11 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             btn.style.background = '#3b82f6';
             btn.style.borderColor = '#3b82f6';
             btn.style.color = '#fff';
-            
+
             // Auto apply filter
             triggerFilterUpdate(presetKey);
         });
-        
+
         // Hover effect
         btn.addEventListener('mouseenter', () => {
             if (!btn.classList.contains('active')) {
@@ -704,8 +811,8 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         const newEndDate = document.getElementById('raw-end-date')?.value || '';
         const newAssignee = document.getElementById('raw-assignee-filter')?.value || '';
         const newSprint = document.getElementById('raw-sprint-filter')?.value || '';
-        
-        // Dispatch event to sync with table
+
+        // Dispatch event to sync with table (Legacy support)
         document.dispatchEvent(new CustomEvent('dashboard-filter-change', {
             detail: {
                 startDate: newStartDate,
@@ -715,8 +822,21 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
                 activePreset: presetKey
             }
         }));
-        
+
+        // Call callback if provided (New sync mechanism)
+        if (typeof options.onFilterChange === 'function') {
+            options.onFilterChange({
+                startDate: newStartDate,
+                endDate: newEndDate,
+                assigneeFilter: newAssignee,
+                sprintFilter: newSprint,
+                activePreset: presetKey
+            });
+        }
+
+        // Re-render dashboard with new filters, PRESERVING options (callbacks)
         renderRawDataDashboard(data, container, databaseName, {
+            ...options, // Preserve callbacks like onFilterChange
             startDate: newStartDate,
             endDate: newEndDate,
             assigneeFilter: newAssignee,
@@ -727,7 +847,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
 
     // Attach filter events
     document.getElementById('raw-apply-filter')?.addEventListener('click', () => triggerFilterUpdate());
-    
+
     // Date input change - auto update preset buttons
     ['raw-start-date', 'raw-end-date'].forEach(id => {
         document.getElementById(id)?.addEventListener('change', () => {
@@ -936,16 +1056,16 @@ const NORMALIZE_COLUMNS = new Set([
  */
 function normalizeChartValue(val, columnName) {
     if (!val || val === '' || val === '-') return 'Không xác định';
-    
+
     const lowerCol = columnName.toLowerCase();
     let cleanVal = String(val).trim();
-    
+
     // If there's a comma (shouldn't happen for single-select, but handle rollups)
     // Take only the FIRST value
     if (cleanVal.includes(',')) {
         cleanVal = cleanVal.split(',')[0].trim();
     }
-    
+
     // Point Status normalization - only 3 valid values
     if (lowerCol.includes('point') && lowerCol.includes('status')) {
         const lowerVal = cleanVal.toLowerCase();
@@ -957,7 +1077,7 @@ function normalizeChartValue(val, columnName) {
         }
         return 'Không xác định';
     }
-    
+
     // Loại cảnh normalization - only S, A, B, C, D, E, F
     if (lowerCol.includes('loại cảnh') || lowerCol.includes('loai canh') || lowerCol.includes('scene')) {
         const upperVal = cleanVal.toUpperCase();
@@ -966,7 +1086,7 @@ function normalizeChartValue(val, columnName) {
         }
         return 'Không xác định';
     }
-    
+
     return cleanVal;
 }
 
@@ -991,86 +1111,86 @@ function renderGroupedChart(canvasId, data, columnName, chartType) {
         if (!ctx) return;
 
         const lowerColName = columnName.toLowerCase();
-        const shouldNormalize = NORMALIZE_COLUMNS.has(lowerColName) || 
-                                lowerColName.includes('loại cảnh') || 
-                                lowerColName.includes('point status');
+        const shouldNormalize = NORMALIZE_COLUMNS.has(lowerColName) ||
+            lowerColName.includes('loại cảnh') ||
+            lowerColName.includes('point status');
 
         const groups = {};
         data.forEach(row => {
             let val = row[columnName];
-            
+
             // Normalize if needed
             if (shouldNormalize) {
                 val = normalizeChartValue(val, columnName);
             } else {
                 val = val || 'Không xác định';
             }
-            
+
             if (!groups[val]) groups[val] = { count: 0, items: [] };
             groups[val].count++;
             groups[val].items.push(row);
-    });
+        });
 
-    let labels = Object.keys(groups).sort((a, b) => groups[b].count - groups[a].count);
-    if (labels.length > 10) {
-        const others = labels.slice(10);
-        const othersCount = others.reduce((sum, l) => sum + groups[l].count, 0);
-        const othersItems = others.flatMap(l => groups[l].items);
-        labels = labels.slice(0, 10);
-        labels.push('Khác');
-        groups['Khác'] = { count: othersCount, items: othersItems };
-    }
-
-    const colors = labels.map((_, i) => CHART_COLORS.primary[i % CHART_COLORS.primary.length]);
-
-    chartInstances[canvasId] = new Chart(ctx, {
-        type: chartType,
-        data: {
-            labels: labels,
-            datasets: [{
-                data: labels.map(l => groups[l].count),
-                backgroundColor: colors,
-                borderColor: chartType === 'bar' ? colors : '#1e293b',
-                borderWidth: chartType === 'bar' ? 0 : 2,
-                borderRadius: chartType === 'bar' ? 4 : 0
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            onClick: (e, elements) => {
-                if (elements.length > 0) {
-                    const idx = elements[0].index;
-                    const label = labels[idx];
-                    // Show ALL columns (let showDetailModal filter hidden ones)
-                    showDetailModal(`${columnName}: ${label}`, groups[label].items);
-                }
-            },
-            plugins: {
-                legend: {
-                    display: chartType !== 'bar',
-                    position: 'bottom',
-                    labels: { color: '#94a3b8', font: { size: 10 }, boxWidth: 12 }
-                },
-                tooltip: {
-                    backgroundColor: '#0f172a',
-                    titleColor: '#e2e8f0',
-                    bodyColor: '#94a3b8',
-                    callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} task` }
-                }
-            },
-            scales: chartType === 'bar' ? {
-                x: { ticks: { color: '#94a3b8', maxRotation: 45 }, grid: { display: false } },
-                y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' }, beginAtZero: true }
-            } : undefined
+        let labels = Object.keys(groups).sort((a, b) => groups[b].count - groups[a].count);
+        if (labels.length > 10) {
+            const others = labels.slice(10);
+            const othersCount = others.reduce((sum, l) => sum + groups[l].count, 0);
+            const othersItems = others.flatMap(l => groups[l].items);
+            labels = labels.slice(0, 10);
+            labels.push('Khác');
+            groups['Khác'] = { count: othersCount, items: othersItems };
         }
-    });
+
+        const colors = labels.map((_, i) => CHART_COLORS.primary[i % CHART_COLORS.primary.length]);
+
+        chartInstances[canvasId] = new Chart(ctx, {
+            type: chartType,
+            data: {
+                labels: labels,
+                datasets: [{
+                    data: labels.map(l => groups[l].count),
+                    backgroundColor: colors,
+                    borderColor: chartType === 'bar' ? colors : '#1e293b',
+                    borderWidth: chartType === 'bar' ? 0 : 2,
+                    borderRadius: chartType === 'bar' ? 4 : 0
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                onClick: (e, elements) => {
+                    if (elements.length > 0) {
+                        const idx = elements[0].index;
+                        const label = labels[idx];
+                        // Show ALL columns (let showDetailModal filter hidden ones)
+                        showDetailModal(`${columnName}: ${label}`, groups[label].items);
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: chartType !== 'bar',
+                        position: 'bottom',
+                        labels: { color: '#94a3b8', font: { size: 10 }, boxWidth: 12 }
+                    },
+                    tooltip: {
+                        backgroundColor: '#0f172a',
+                        titleColor: '#e2e8f0',
+                        bodyColor: '#94a3b8',
+                        callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} task` }
+                    }
+                },
+                scales: chartType === 'bar' ? {
+                    x: { ticks: { color: '#94a3b8', maxRotation: 45 }, grid: { display: false } },
+                    y: { ticks: { color: '#94a3b8' }, grid: { color: '#334155' }, beginAtZero: true }
+                } : undefined
+            }
+        });
     } catch (e) {
         console.error(`[Dashboard] Error in renderGroupedChart(${canvasId}):`, e);
     }
 }
 
-// Export for use
+// Export for use (window globals for all consumers)
 window.renderProductivityDashboard = renderProductivityDashboard;
 window.renderRawDataDashboard = renderRawDataDashboard;
 window.showDetailModal = showDetailModal;

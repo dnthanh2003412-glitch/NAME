@@ -108,9 +108,22 @@ class AuthManager {
         // Use 'window.app' to match the variable name used in HTML onclick handlers
         if (window.app) {
             window.app.init();
-        } else {
-            window.app = new DashboardApp();
+        } else if (window.DashboardApp) {
+            window.app = new window.DashboardApp();
             window.app.init();
+        } else {
+            // app.js module hasn't loaded yet, wait for it
+            console.log('[Auth] Waiting for DashboardApp to load...');
+            const waitForApp = setInterval(() => {
+                if (window.DashboardApp) {
+                    clearInterval(waitForApp);
+                    window.app = new window.DashboardApp();
+                    window.app.init();
+                    console.log('[Auth] ✅ DashboardApp loaded and initialized');
+                }
+            }, 100);
+            // Timeout after 10s
+            setTimeout(() => clearInterval(waitForApp), 10000);
         }
     }
 

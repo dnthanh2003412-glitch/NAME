@@ -148,10 +148,10 @@
       "Product (1)": [
         "Rig Captain Boy"
       ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
-      "TP giả định": 14.29,
+      "TP giả định": 15.63,
       "Trọng số TP": 1,
       "Product Type": [
         "Rig"
@@ -186,8 +186,8 @@
           "email": "mynth@sangygroup.com"
         }
       ],
-      "TP thực tế": 14.29,
-      "Task fix": "1/5",
+      "TP thực tế": 15.63,
+      "Task fix": "1/4",
       "Required by": [
         "Internal"
       ],
@@ -9604,8 +9604,8 @@
       "Product (1)": [
         "Rig Captain Boy"
       ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "TP giả định": 1.5,
       "Trọng số TP": 0.15,
@@ -9642,8 +9642,8 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "TP thực tế": 2.14,
-      "Task fix": "1/5",
+      "TP thực tế": 2.34,
+      "Task fix": "1/4",
       "Required by": [
         "Internal"
       ],
@@ -9966,8 +9966,8 @@
       "Product (1)": [
         "Rig Captain Boy"
       ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "TP giả định": 1.5,
       "Trọng số TP": 0.15,
@@ -10004,8 +10004,8 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "TP thực tế": 2.14,
-      "Task fix": "1/5",
+      "TP thực tế": 2.34,
+      "Task fix": "1/4",
       "Required by": [
         "Internal"
       ],
@@ -10478,8 +10478,8 @@
       "Product (1)": [
         "Rig Captain Boy"
       ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
+      "Task main": "1/4",
+      "Task QC": "2/4",
       "Run n8n": false,
       "TP giả định": 3,
       "Trọng số TP": 0.3,
@@ -10516,8 +10516,8 @@
           "email": "mynth@sangygroup.com"
         }
       ],
-      "TP thực tế": 4.29,
-      "Task fix": "1/5",
+      "TP thực tế": 4.69,
+      "Task fix": "1/4",
       "Required by": [
         "Internal"
       ],

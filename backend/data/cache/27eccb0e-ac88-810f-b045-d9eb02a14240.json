@@ -4248,7 +4248,13 @@
           "people": [
             {
               "object": "user",
-              "id": "787eac37-7158-4071-b8e3-504598737fa4"
+              "id": "787eac37-7158-4071-b8e3-504598737fa4",
+              "name": "Minh Ngô  ",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/0351390c-2bb3-448c-80c6-affbf1e8bca1/Screenshot_2024-11-27_095738.png",
+              "type": "person",
+              "person": {
+                "email": "minhnndt@sangygroup.com"
+              }
             }
           ]
         },
@@ -5059,7 +5065,13 @@
           "people": [
             {
               "object": "user",
-              "id": "787eac37-7158-4071-b8e3-504598737fa4"
+              "id": "787eac37-7158-4071-b8e3-504598737fa4",
+              "name": "Minh Ngô  ",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/0351390c-2bb3-448c-80c6-affbf1e8bca1/Screenshot_2024-11-27_095738.png",
+              "type": "person",
+              "person": {
+                "email": "minhnndt@sangygroup.com"
+              }
             }
           ]
         },
@@ -10424,7 +10436,13 @@
           "people": [
             {
               "object": "user",
-              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e"
+              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+              "name": "Kiệt Đoàn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/7c911ef9-56c3-4655-93b0-48d48a7a85ac/FNEYN8AU4UM7Q2TEXH97Y98RCQ774QJ3.jpg",
+              "type": "person",
+              "person": {
+                "email": "kietda@sangygroup.com"
+              }
             }
           ]
         }
@@ -10584,7 +10602,13 @@
           "people": [
             {
               "object": "user",
-              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e"
+              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+              "name": "Kiệt Đoàn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/7c911ef9-56c3-4655-93b0-48d48a7a85ac/FNEYN8AU4UM7Q2TEXH97Y98RCQ774QJ3.jpg",
+              "type": "person",
+              "person": {
+                "email": "kietda@sangygroup.com"
+              }
             }
           ]
         }
@@ -10732,7 +10756,13 @@
           "people": [
             {
               "object": "user",
-              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e"
+              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+              "name": "Kiệt Đoàn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/7c911ef9-56c3-4655-93b0-48d48a7a85ac/FNEYN8AU4UM7Q2TEXH97Y98RCQ774QJ3.jpg",
+              "type": "person",
+              "person": {
+                "email": "kietda@sangygroup.com"
+              }
             }
           ]
         }
@@ -10810,7 +10840,13 @@
           "people": [
             {
               "object": "user",
-              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e"
+              "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+              "name": "Kiệt Đoàn",
+              "avatar_url": "https://s3-us-west-2.amazonaws.com/public.notion-static.com/7c911ef9-56c3-4655-93b0-48d48a7a85ac/FNEYN8AU4UM7Q2TEXH97Y98RCQ774QJ3.jpg",
+              "type": "person",
+              "person": {
+                "email": "kietda@sangygroup.com"
+              }
             }
           ]
         }

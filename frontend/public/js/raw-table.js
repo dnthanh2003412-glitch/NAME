@@ -3,6 +3,23 @@
 
 console.log('[raw-table] Loaded, renderRawDataDashboard:', typeof window.renderRawDataDashboard);
 
+// Helper: Find column name from list (case-insensitive, accent-insensitive)
+function findColumnName(columns, ...names) {
+    const normalizeStr = (str) => str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    for (const name of names) {
+        const normName = normalizeStr(name);
+        let found = columns.find(c => c.toLowerCase() === name.toLowerCase());
+        if (found) return found;
+        found = columns.find(c => normalizeStr(c) === normName);
+        if (found) return found;
+    }
+    for (const name of names) {
+        const found = columns.find(c => c.toLowerCase().includes(name.toLowerCase()));
+        if (found) return found;
+    }
+    return undefined;
+}
+
 /**
  * Render raw data table with full features
  */
@@ -128,12 +145,12 @@ function renderRawDataTable(data, container) {
 
     // Render Raw Data Dashboard (charts) - insert after header div
     console.log('[raw-table] Attempting to render dashboard:', {
-        hasFn: typeof renderRawDataDashboard === 'function',
+        hasFn: typeof window.renderRawDataDashboard === 'function',
         rowCount: rows.length,
         dbName: database_name
     });
 
-    if (typeof renderRawDataDashboard === 'function' && rows.length > 0) {
+    if (typeof window.renderRawDataDashboard === 'function' && rows.length > 0) {
         console.log('[raw-table] Calling renderRawDataDashboard with', rows.length, 'rows');
         const headerDiv = wrapper.querySelector('.raw-data-header');
         const dashContainer = document.createElement('div');
@@ -145,7 +162,7 @@ function renderRawDataTable(data, container) {
             wrapper.insertBefore(dashContainer, wrapper.children[1] || null);
         }
         try {
-            renderRawDataDashboard(rows, dashContainer, database_name);
+            window.renderRawDataDashboard(rows, dashContainer, database_name);
             console.log('[raw-table] Dashboard rendered successfully');
         } catch (err) {
             console.error('[raw-table] Dashboard error:', err);
@@ -414,7 +431,7 @@ function renderRawDataTable(data, container) {
             ...filteredRows.map(row =>
                 visibleCols.map(col => {
                     const val = row[col] || '';
-                    return `"${String(val).replace(/"/g, '""')}"`;
+                    return `"${String(val).replace(/"/g, '""').replace(/\n/g, ' ').replace(/\r/g, '')}"`;
                 }).join(',')
             )
         ].join('\n');

@@ -2304,6 +2304,7 @@ class DashboardApp {
 
         // Only render table (for pagination/filter changes)
         const applyFilterAndRender = (renderDashToo = false) => {
+            console.log('[applyFilterAndRender] renderDashToo:', renderDashToo, 'dashboardRendered:', dashboardRendered);
             const filterVal = userFilter.value;
             let filteredData = fullReportData;
 
@@ -2311,10 +2312,13 @@ class DashboardApp {
                 filteredData = fullReportData.filter(r => r.fullName === filterVal);
             }
 
+            console.log('[applyFilterAndRender] filteredData:', filteredData.length, 'rows');
             renderTable(filteredData, reportColumns, currentDateRange);
 
-            // Only render dashboard/warning on initial load or when explicitly requested
-            if (renderDashToo || !dashboardRendered) {
+            // Re-render dashboard if it's missing from the DOM (e.g. after fetchReport cleared container)
+            const dashboardExists = bodyContainer.querySelector('.prod-dashboard');
+            if (!dashboardExists || renderDashToo) {
+                console.log('[applyFilterAndRender] Rendering dashboard/warning (dashboardExists:', !!dashboardExists, ')');
                 renderDashboardAndWarning();
             }
         };
@@ -2342,8 +2346,24 @@ class DashboardApp {
         };
 
         const renderTable = (data, columns, dateRange) => {
+            console.log('[renderTable] Called with', data?.length, 'rows,', columns?.length, 'columns');
+
+            // Clear any loading/error states left over from fetchReport
+            bodyContainer.querySelectorAll('.loading-state, .error-state').forEach(el => el.remove());
+
+            // Use a dedicated wrapper so we don't destroy dashboard/warning/summary
+            let tableWrapper = bodyContainer.querySelector('.prod-table-wrapper');
+            if (!tableWrapper) {
+                tableWrapper = document.createElement('div');
+                tableWrapper.className = 'prod-table-wrapper';
+                bodyContainer.appendChild(tableWrapper);
+                console.log('[renderTable] Created new tableWrapper');
+            } else {
+                console.log('[renderTable] Reusing existing tableWrapper');
+            }
+
             if (!data || data.length === 0) {
-                bodyContainer.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu cho khoảng thời gian này.</div>';
+                tableWrapper.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu cho khoảng thời gian này.</div>';
                 return;
             }
 
@@ -2537,7 +2557,7 @@ class DashboardApp {
                 `;
             }
 
-            bodyContainer.innerHTML = html;
+            tableWrapper.innerHTML = html;
 
             // Shift + Scroll for horizontal scrolling
             const prodScrollContainer = document.getElementById('prod-scroll-container');

@@ -903,7 +903,10 @@ export function renderProductivityDashboard(data, container, options = {}) {
         }
         seniorityGroups[sen].count++;
         seniorityGroups[sen].productivityTotal += parseFloat(row.productivityTotal) || 0;
-        seniorityGroups[sen].completionTotal += parseFloat(row.completionPointTotal) || 0;
+        // Use completionProdTotal (productivity vs KPI) instead of completionPointTotal (requires actualDays)
+        // completionPointTotal is null when actualDays=0 (not manually entered)
+        const completionVal = parseFloat(row.completionProdTotal) || parseFloat(row.completionPointTotal) || 0;
+        seniorityGroups[sen].completionTotal += completionVal;
         seniorityGroups[sen].items.push(row);
     });
 

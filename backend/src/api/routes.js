@@ -498,7 +498,7 @@ export function setupRoutes(app, db, poller) {
     // ============ SYSTEM ROUTES ============
     app.post('/api/refresh', async (req, res) => {
         if (!poller) {
-            return res.status(503).json({ error: 'Pooling service not available' });
+            return res.status(503).json({ error: 'Polling service not available' });
         }
         try {
             console.log('[API] Triggering manual refresh...');

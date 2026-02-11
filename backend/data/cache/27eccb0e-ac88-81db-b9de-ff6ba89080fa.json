@@ -45484,7 +45484,7 @@
   {
     "id": "2f8ccb0e-ac88-800b-8afb-c1b6ee90f09d",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T04:00:00.000Z",
+    "last_edited_time": "2026-02-10T09:01:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
@@ -45502,7 +45502,7 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "On Hold",
+      "Status": "Not started",
       "Text": "",
       "Tasks ": [],
       "Task Create": null,
@@ -45531,10 +45531,10 @@
   {
     "id": "2f8ccb0e-ac88-800b-a16f-e108dbbe656d",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-09T07:13:00.000Z",
+    "last_edited_time": "2026-02-10T09:13:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -45549,17 +45549,19 @@
       "AD NOTE": "",
       "Loại cảnh": "E",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-80da-8e5e-ccce56f54687"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -45707,7 +45709,7 @@
   {
     "id": "2f8ccb0e-ac88-800e-b926-e16fabb3c58b",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:13:00.000Z",
+    "last_edited_time": "2026-02-10T11:37:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 1,
@@ -45725,7 +45727,7 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
       "Tasks ": [
         "302ccb0e-ac88-80c6-a556-e2414e0021b1"
@@ -46397,20 +46399,14 @@
   {
     "id": "2f8ccb0e-ac88-801a-bf16-f48e3b00ceb0",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:22:00.000Z",
+    "last_edited_time": "2026-02-11T03:24:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
       "Loại cảnh": "F",
@@ -46485,10 +46481,10 @@
   {
     "id": "2f8ccb0e-ac88-801c-9b57-de9060176ead",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:50:00.000Z",
+    "last_edited_time": "2026-02-11T04:03:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -46503,17 +46499,19 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "Pending Review",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "304ccb0e-ac88-80ae-87c4-e48e6aa773f5"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 2,
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "Done",
       "UTNL": 1,
       "Take count": [],
       "Resource": null,
@@ -46663,20 +46661,14 @@
   {
     "id": "2f8ccb0e-ac88-801d-ab34-ea5800ff83f6",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:14:00.000Z",
+    "last_edited_time": "2026-02-11T03:21:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
       "Loại cảnh": "E",
@@ -46692,7 +46684,7 @@
       "Min": 0.5,
       "Product point": 5,
       "Check task done": null,
-      "UTNL": 0.5,
+      "UTNL": null,
       "Take count": [],
       "Resource": null,
       "Due Date": null,
@@ -47499,10 +47491,10 @@
   {
     "id": "2f8ccb0e-ac88-8032-8e8a-f0da921b5098",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T03:02:00.000Z",
+    "last_edited_time": "2026-02-10T08:14:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -47519,15 +47511,17 @@
       "Combo": null,
       "Status": "Not started",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-8021-a0d8-fa3e276505d7"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -47815,10 +47809,10 @@
   {
     "id": "2f8ccb0e-ac88-8039-a60a-f47e449ea784",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-10T03:49:00.000Z",
+    "last_edited_time": "2026-02-10T11:36:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 2,
+      "Task count ": 3,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -47833,20 +47827,21 @@
       "AD NOTE": "",
       "Loại cảnh": "C",
       "Combo": null,
-      "Status": "Need Fix",
+      "Status": "Pending Review",
       "Text": "",
       "Tasks ": [
         "2fdccb0e-ac88-80cc-934f-ff34e5394c38",
-        "303ccb0e-ac88-81ce-87bd-fbef9b4fd6f5"
+        "303ccb0e-ac88-81ce-87bd-fbef9b4fd6f5",
+        "303ccb0e-ac88-80c3-8598-e8ad70db124b"
       ],
       "Task Create": null,
-      "Task count + 1": 3,
-      "Total Main": 0,
+      "Task count + 1": 4,
+      "Total Main": 2,
       "Max": 3.5,
       "Point Status": "Unconfirmed",
       "Min": 2.25,
       "Product point": 25,
-      "Check task done": "Done,Done QC",
+      "Check task done": "Done,Done QC,Done",
       "UTNL": 3.25,
       "Take count": [],
       "Resource": null,
@@ -48298,10 +48293,10 @@
   {
     "id": "2f8ccb0e-ac88-8044-9b25-dba4cb6e4f35",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:53:00.000Z",
+    "last_edited_time": "2026-02-10T04:27:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -48316,17 +48311,19 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "On Hold",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-8047-a0a2-e122cc4b4e7b"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 2,
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 1,
       "Take count": [],
       "Resource": null,
@@ -48924,7 +48921,7 @@
   {
     "id": "2f8ccb0e-ac88-804f-84d9-ed6e4bc3496d",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:20:00.000Z",
+    "last_edited_time": "2026-02-10T11:37:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 1,
@@ -48942,7 +48939,7 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
       "Tasks ": [
         "302ccb0e-ac88-8098-827c-df8ecb4d580b"
@@ -49017,7 +49014,7 @@
     "last_edited_time": "2026-02-04T03:02:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -49034,15 +49031,17 @@
       "Combo": null,
       "Status": "Not started",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-803d-a58b-e734803c4104"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 2,
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 1.5,
       "Take count": [],
       "Resource": null,
@@ -49234,7 +49233,7 @@
     "last_edited_time": "2026-02-04T04:00:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -49251,15 +49250,17 @@
       "Combo": null,
       "Status": "On Hold",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-8001-a1af-d78aac8ec91e"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 2,
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 1,
       "Take count": [],
       "Resource": null,
@@ -49448,7 +49449,7 @@
   {
     "id": "2f8ccb0e-ac88-805c-b259-eadf43b86913",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:14:00.000Z",
+    "last_edited_time": "2026-02-10T11:37:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
@@ -49747,7 +49748,7 @@
   {
     "id": "2f8ccb0e-ac88-8063-86f8-fc02df09bac6",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-09T10:12:00.000Z",
+    "last_edited_time": "2026-02-10T04:27:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 1,
@@ -49765,7 +49766,7 @@
       "AD NOTE": "",
       "Loại cảnh": "C",
       "Combo": null,
-      "Status": "In progress",
+      "Status": "On Hold",
       "Text": "",
       "Tasks ": [
         "302ccb0e-ac88-80a0-a7f3-c9861790bdde"
@@ -50288,10 +50289,10 @@
   {
     "id": "2f8ccb0e-ac88-8076-b4d0-d9ae9df7eaf8",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-03T07:48:00.000Z",
+    "last_edited_time": "2026-02-11T03:20:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -50304,20 +50305,22 @@
       ],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
-      "Loại cảnh": "F",
+      "Loại cảnh": "E",
       "Combo": null,
       "Status": "Not started",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-80b7-afbe-eaefb3b1dfd9"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
-      "Max": 0.25,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": 0.75,
       "Point Status": "Unconfirmed",
-      "Min": 0,
-      "Product point": 1,
-      "Check task done": null,
-      "UTNL": 0.25,
+      "Min": 0.5,
+      "Product point": 5,
+      "Check task done": "In progress",
+      "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
       "Due Date": null,
@@ -51197,7 +51200,7 @@
     "last_edited_time": "2026-02-03T07:48:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -51214,15 +51217,17 @@
       "Combo": null,
       "Status": "Not started",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-80cf-ae2e-faf7f52c74ba"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -51553,7 +51558,7 @@
   {
     "id": "2f8ccb0e-ac88-809a-9266-d646569f28e6",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-09T09:23:00.000Z",
+    "last_edited_time": "2026-02-10T11:26:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 1,
@@ -51571,7 +51576,7 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "Text": "",
       "Tasks ": [
         "302ccb0e-ac88-80f2-aba7-caa774b86b7f"
@@ -51583,7 +51588,7 @@
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": "Not started",
+      "Check task done": "Done",
       "UTNL": 1.75,
       "Take count": [],
       "Resource": null,
@@ -52081,7 +52086,7 @@
     "last_edited_time": "2026-02-10T03:48:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -52098,15 +52103,17 @@
       "Combo": null,
       "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-8011-8a21-deaf29594160"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -52345,10 +52352,10 @@
   {
     "id": "2f8ccb0e-ac88-80b8-b5e2-c9b3ac9b4f58",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:53:00.000Z",
+    "last_edited_time": "2026-02-10T04:27:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -52363,17 +52370,19 @@
       "AD NOTE": "",
       "Loại cảnh": "E",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "On Hold",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-801e-9c62-cb64b7d5df2a"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.25,
       "Take count": [],
       "Resource": null,
@@ -53081,10 +53090,10 @@
   {
     "id": "2f8ccb0e-ac88-80c6-a982-e8dd2f03745c",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:40:00.000Z",
+    "last_edited_time": "2026-02-10T09:40:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -53099,17 +53108,19 @@
       "AD NOTE": "",
       "Loại cảnh": "E",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "Pending Review",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-80c6-93c9-d9d38399acfd"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "Done",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -53169,20 +53180,14 @@
   {
     "id": "2f8ccb0e-ac88-80c8-a1fb-f9b528b3e753",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:21:00.000Z",
+    "last_edited_time": "2026-02-11T03:21:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
       "Loại cảnh": "E",
@@ -53198,7 +53203,7 @@
       "Min": 0.5,
       "Product point": 5,
       "Check task done": null,
-      "UTNL": 0.25,
+      "UTNL": 0,
       "Take count": [],
       "Resource": null,
       "Due Date": null,
@@ -53380,10 +53385,10 @@
   {
     "id": "2f8ccb0e-ac88-80cf-92a6-dc55faa1123c",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-09T07:13:00.000Z",
+    "last_edited_time": "2026-02-10T10:29:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -53398,17 +53403,19 @@
       "AD NOTE": "",
       "Loại cảnh": "E",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-8073-b246-d0921ef9533e"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -53600,10 +53607,10 @@
   {
     "id": "2f8ccb0e-ac88-80d5-a239-c117498d19b4",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:44:00.000Z",
+    "last_edited_time": "2026-02-10T09:18:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -53618,17 +53625,19 @@
       "AD NOTE": "",
       "Loại cảnh": "B",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-803b-b94b-da4127a8f3c4"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 5,
       "Point Status": "Unconfirmed",
       "Min": 3.75,
       "Product point": 35,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 2,
       "Take count": [],
       "Resource": null,
@@ -54660,10 +54669,10 @@
   {
     "id": "2f8ccb0e-ac88-80ec-9351-c3dea7fa5927",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T04:00:00.000Z",
+    "last_edited_time": "2026-02-11T04:04:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -54678,17 +54687,19 @@
       "AD NOTE": "",
       "Loại cảnh": "D",
       "Combo": null,
-      "Status": "On Hold",
+      "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "304ccb0e-ac88-80ff-900c-d7565c35605d"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
-      "Total Main": 0,
+      "Task count + 1": 2,
+      "Total Main": 1,
       "Max": 2,
       "Point Status": "Unconfirmed",
       "Min": 1,
       "Product point": 14,
-      "Check task done": null,
+      "Check task done": "In progress",
       "UTNL": 1,
       "Take count": [],
       "Resource": null,
@@ -54877,20 +54888,14 @@
   {
     "id": "2f8ccb0e-ac88-80ef-849f-e799f17e4675",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-04T02:23:00.000Z",
+    "last_edited_time": "2026-02-11T03:24:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
       "Loại cảnh": "F",
@@ -55138,20 +55143,14 @@
   {
     "id": "2f8ccb0e-ac88-80f3-911e-e07c7ab74f1f",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-06T02:56:00.000Z",
+    "last_edited_time": "2026-02-11T03:24:00.000Z",
     "properties": {
       "Episode": "EP 12",
       "Task count ": 0,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "DIRECTOR NOTE": "",
       "AD NOTE": "",
       "Loại cảnh": "E",
@@ -55442,10 +55441,10 @@
   {
     "id": "2f8ccb0e-ac88-80fb-bc4b-eda06ad42dbf",
     "created_time": "2026-01-30T03:00:00.000Z",
-    "last_edited_time": "2026-02-09T07:13:00.000Z",
+    "last_edited_time": "2026-02-10T09:26:00.000Z",
     "properties": {
       "Episode": "EP 12",
-      "Task count ": 0,
+      "Task count ": 1,
       "Total Fixed": 0,
       "DO": null,
       "Required by": null,
@@ -55460,17 +55459,19 @@
       "AD NOTE": "",
       "Loại cảnh": "E",
       "Combo": null,
-      "Status": "Not started",
+      "Status": "In progress",
       "Text": "",
-      "Tasks ": [],
+      "Tasks ": [
+        "303ccb0e-ac88-807c-a3fb-fe5aec2b8f78"
+      ],
       "Task Create": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Total Main": 0,
       "Max": 0.75,
       "Point Status": "Unconfirmed",
       "Min": 0.5,
       "Product point": 5,
-      "Check task done": null,
+      "Check task done": "Not started",
       "UTNL": 0.5,
       "Take count": [],
       "Resource": null,
@@ -56689,6 +56690,315 @@
       "Tags": []
     },
     "_title": "Khảo sát phản hồi AD FCmobile",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "303ccb0e-ac88-804c-a8c7-e8ee879f6a2b",
+    "created_time": "2026-02-10T10:41:00.000Z",
+    "last_edited_time": "2026-02-10T10:41:00.000Z",
+    "properties": {
+      "Episode": "EP 12",
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Not started",
+      "Text": "",
+      "Tasks ": [
+        "303ccb0e-ac88-8118-9e15-ea7965500e7f"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": null,
+      "Product type": "Lead",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "QC mami",
+      "Tags": []
+    },
+    "_title": "QC mami",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "304ccb0e-ac88-806d-aaff-e7f6feca6237",
+    "created_time": "2026-02-11T03:20:00.000Z",
+    "last_edited_time": "2026-02-11T03:20:00.000Z",
+    "properties": {
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Completed",
+      "Text": "",
+      "Tasks ": [
+        "304ccb0e-ac88-81ee-9c9d-ec1d81e94e2b"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": {
+        "start": "2026-02-11T10:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Họp dự án",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "Họp dự án",
+      "Tags": []
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "304ccb0e-ac88-80a1-902d-da471ce858f6",
+    "created_time": "2026-02-11T03:20:00.000Z",
+    "last_edited_time": "2026-02-11T03:20:00.000Z",
+    "properties": {
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Completed",
+      "Text": "",
+      "Tasks ": [
+        "304ccb0e-ac88-81b9-8e7f-dc56b854df2a"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": {
+        "start": "2026-02-11T10:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Họp dự án",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "Họp dự án",
+      "Tags": []
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "304ccb0e-ac88-80b0-b273-faa9c48615a2",
+    "created_time": "2026-02-11T03:20:00.000Z",
+    "last_edited_time": "2026-02-11T03:20:00.000Z",
+    "properties": {
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Completed",
+      "Text": "",
+      "Tasks ": [
+        "304ccb0e-ac88-81a8-903d-e4fef5ebccfa"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": {
+        "start": "2026-02-11T10:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Họp dự án",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "Họp dự án",
+      "Tags": []
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "304ccb0e-ac88-80eb-9447-f25d8e294a23",
+    "created_time": "2026-02-11T03:20:00.000Z",
+    "last_edited_time": "2026-02-11T03:20:00.000Z",
+    "properties": {
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Completed",
+      "Text": "",
+      "Tasks ": [
+        "304ccb0e-ac88-8188-8c6c-d62e16035e04"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": {
+        "start": "2026-02-11T10:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Họp dự án",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "Họp dự án",
+      "Tags": []
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Mami] Product ",
+    "project_name": "[Mami]",
+    "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"
+  },
+  {
+    "id": "304ccb0e-ac88-80f7-840d-f9ee1a59e8a2",
+    "created_time": "2026-02-11T03:41:00.000Z",
+    "last_edited_time": "2026-02-11T03:41:00.000Z",
+    "properties": {
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "DO": null,
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
+      "DIRECTOR NOTE": "",
+      "AD NOTE": "",
+      "Loại cảnh": null,
+      "Combo": null,
+      "Status": "Completed",
+      "Text": "",
+      "Tasks ": [
+        "304ccb0e-ac88-8184-a0af-c4edbbd564b4"
+      ],
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Max": null,
+      "Point Status": "Unconfirmed",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "UTNL": null,
+      "Take count": [],
+      "Resource": null,
+      "Due Date": {
+        "start": "2026-02-11T10:41:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Phát sinh chuyên môn",
+      "Ưu tiên": null,
+      "Total QC": 0,
+      "Product": "Phát sinh chuyên môn",
+      "Tags": []
+    },
+    "_title": "Phát sinh chuyên môn",
     "database_name": "[Mami] Product ",
     "project_name": "[Mami]",
     "database_id": "27eccb0e-ac88-81db-b9de-ff6ba89080fa"

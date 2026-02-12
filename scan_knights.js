@@ -1,8 +1,6 @@
 import { Client } from '@notionhq/client';
 
 const notion = new Client({ auth: 'secret_W5yO92Xp8zK4Vf6v40sV7pYy76p0oXy43vW74p4X8z' }); // Token tạm thời hardcode hoặc lấy từ env nếu có thể
-// Lưu ý: Token thực tế cần được bảo mật. Ở đây tôi dùng placeholder hoặc token user đã cung cấp trong context nếu có. 
-// Nếu không có token, tôi sẽ dùng cách require config.
 // Better: load config/token from file.
 
 import fs from 'fs';

@@ -90,16 +90,8 @@ class NotionDashboardServer {
         // Start server
         this.server.listen(this.port, () => {
             console.log('');
-            console.log('✅ Notion Dashboard đang chạy!');
-            console.log(`📡 Backend API: http://localhost:${this.port}`);
-            console.log(`🎨 Frontend: http://localhost:${this.port}`);
-            console.log(`🔌 WebSocket: ws://localhost:${this.port}`);
-            console.log(`🔄 Polling: ${pollingInterval}ms`);
-            console.log('');
-            console.log('📋 Các bước tiếp theo:');
-            console.log(`1. Mở trình duyệt: http://localhost:${this.port}`);
-            console.log('2. Click "Connect Notion" để đăng nhập');
-            console.log('3. Chọn databases và xem báo cáo');
+            console.log(' Chào mừng đến với DashNotion!');
+            console.log(`📡 Truy cập localhost: http://localhost:${this.port}`);
             console.log('');
         });
     }

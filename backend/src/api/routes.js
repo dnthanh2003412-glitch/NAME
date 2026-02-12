@@ -8,6 +8,7 @@ import { ProjectsService } from '../notion/projects.js';
 import { DatabaseManager } from '../database/db.js';
 import { reportRegistry } from '../reports/index.js';
 import { ProductivityService } from '../reports/productivity.js';
+import { SyncService } from '../notion/sync.js';
 import { COLUMNS as PROD_COLUMNS } from '../constants.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -55,7 +56,8 @@ export function setupRoutes(app, db, poller) {
     app.get('/auth/status', (req, res) => {
         res.json({
             authenticated: !!notionToken,
-            configured: !!notionToken
+            configured: !!notionToken,
+            isAdmin: process.env.ADMIN_MODE === 'true' // Admin mode check
         });
     });
 
@@ -481,6 +483,211 @@ export function setupRoutes(app, db, poller) {
         }
     });
 
+    // ============ SYNC MONITOR ROUTES (Admin Only) ============
+    // Middleware: Require admin mode
+    const requireAdmin = (req, res, next) => {
+        if (process.env.ADMIN_MODE !== 'true') {
+            return res.status(403).json({ error: 'Access denied. Admin only.' });
+        }
+        next();
+    };
+
+    // Get sync overview
+    app.get('/api/sync/overview', requireAdmin, async (req, res) => {
+        try {
+            const syncService = new SyncService(new (await import('@notionhq/client')).Client({ auth: notionToken }), db);
+            const overview = await syncService.getOverview();
+            res.json({ success: true, data: overview });
+        } catch (error) {
+            console.error('[API] Sync overview error:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Check sync for specific database
+    app.post('/api/sync/check', requireAdmin, async (req, res) => {
+        const { database_id } = req.body;
+        if (!database_id) {
+            return res.status(400).json({ error: 'database_id is required' });
+        }
+
+        try {
+            const syncService = new SyncService(new (await import('@notionhq/client')).Client({ auth: notionToken }), db);
+            const result = await syncService.checkDatabase(database_id);
+
+            // Persist notion count for future reference
+            db.setNotionCount(database_id, result.notion_count);
+
+            // Get database name
+            const dbInfo = await (new (await import('@notionhq/client')).Client({ auth: notionToken })).databases.retrieve({ database_id });
+            const dbName = dbInfo.title?.[0]?.plain_text || 'Unknown';
+
+            res.json({
+                success: true,
+                data: {
+                    ...result,
+                    database_name: dbName
+                }
+            });
+        } catch (error) {
+            console.error(`[API] Sync check error for ${database_id}:`, error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // ============ SSE-BASED SYNC ALL ============
+    // In-memory job storage
+    const syncJobs = new Map();
+
+    // Start sync job
+    app.post('/api/sync/start', requireAdmin, async (req, res) => {
+        try {
+            const { resume = false, max_age_minutes = 10 } = req.body;
+            const jobId = Date.now().toString();
+            console.log(`[API] Starting sync job ${jobId} (resume: ${resume}, max_age: ${max_age_minutes}min)`);
+
+            syncJobs.set(jobId, {
+                progress: 0,
+                total: 0,
+                status: 'starting',
+                results: [],
+                synced_databases: [],
+                current_db: null,
+                resume_mode: resume,
+                max_age_minutes: max_age_minutes
+            });
+
+            // Start sync asynchronously (don't await)
+            startSyncJob(jobId, db, notionToken, syncJobs).catch(err => {
+                console.error(`[API] Sync job ${jobId} failed:`, err);
+                const job = syncJobs.get(jobId);
+                if (job) {
+                    job.status = 'error';
+                    job.error = err.message;
+                }
+            });
+
+            res.json({ success: true, job_id: jobId });
+        } catch (error) {
+            console.error('[API] Error starting sync job:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // Start single database sync
+    app.post('/api/sync/single', requireAdmin, async (req, res) => {
+        try {
+            const { database_id } = req.body;
+            if (!database_id) return res.status(400).json({ error: 'database_id is required' });
+
+            const jobId = Date.now().toString();
+            console.log(`[API] Starting single sync job ${jobId} for ${database_id}`);
+
+            syncJobs.set(jobId, {
+                progress: 0,
+                total: 1,
+                status: 'starting',
+                results: [],
+                synced_databases: [],
+                current_db: null,
+                resume_mode: false,
+                single_mode: true, // Flag for UI
+                target_db: database_id
+            });
+
+            // Start sync asynchronously with targetDatabaseId
+            startSyncJob(jobId, db, notionToken, syncJobs, database_id).catch(err => {
+                console.error(`[API] Single sync job ${jobId} failed:`, err);
+                const job = syncJobs.get(jobId);
+                if (job) {
+                    job.status = 'error';
+                    job.error = err.message;
+                }
+            });
+
+            res.json({ success: true, job_id: jobId });
+        } catch (error) {
+            console.error('[API] Error starting single sync job:', error);
+            res.status(500).json({ error: error.message });
+        }
+    });
+
+    // SSE stream for sync progress
+    app.get('/api/sync/stream/:jobId', requireAdmin, (req, res) => {
+        const { jobId } = req.params;
+        const job = syncJobs.get(jobId);
+
+        if (!job) {
+            return res.status(404).json({ error: 'Job not found' });
+        }
+
+        console.log(`[API] SSE stream opened for job ${jobId}`);
+
+        // SSE headers
+        res.setHeader('Content-Type', 'text/event-stream');
+        res.setHeader('Cache-Control', 'no-cache');
+        res.setHeader('Connection', 'keep-alive');
+        res.setHeader('X-Accel-Buffering', 'no'); // Disable nginx buffering
+
+        // Send initial state
+        res.write(`data: ${JSON.stringify(job)}\n\n`);
+
+        // Poll for updates every 500ms
+        const interval = setInterval(() => {
+            const currentJob = syncJobs.get(jobId);
+
+            if (!currentJob) {
+                clearInterval(interval);
+                res.end();
+                return;
+            }
+
+            if (currentJob.status === 'running') {
+                // Send progress update
+                res.write(`data: ${JSON.stringify({
+                    progress: currentJob.progress,
+                    total: currentJob.total,
+                    current_db: currentJob.current_db,
+                    synced_databases: currentJob.synced_databases || []
+                })}\n\n`);
+            } else if (currentJob.status === 'complete' || currentJob.status === 'error') {
+                res.write(`event: ${currentJob.status}\ndata: ${JSON.stringify(currentJob)}\n\n`);
+                clearInterval(interval);
+
+                // Clean up job after 5 seconds
+                setTimeout(() => {
+                    syncJobs.delete(jobId);
+                    console.log(`[API] Cleaned up job ${jobId}`);
+                }, 5000);
+
+                res.end();
+            }
+        }, 500);
+
+        // Clean up on client disconnect
+        req.on('close', () => {
+            console.log(`[API] SSE stream closed for job ${jobId}`);
+            clearInterval(interval);
+        });
+    });
+
+    // Abort sync job
+    app.post('/api/sync/abort/:jobId', requireAdmin, (req, res) => {
+        const { jobId } = req.params;
+        const job = syncJobs.get(jobId);
+
+        if (!job) {
+            return res.status(404).json({ error: 'Job not found' });
+        }
+
+        job.status = 'cancelled';
+        job.cancelled = true;
+
+        console.log(`[API] 🛑 Sync job ${jobId} cancelled by user`);
+
+        res.json({ success: true, message: 'Sync cancelled' });
+    });
+
     // ============ STATUS ROUTES ============
     app.get('/api/status', (req, res) => {
         const lastUpdate = db.getLastUpdate();
@@ -700,3 +907,95 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
 
     return strVal;
 }
+
+// ============ SSE SYNC JOB HANDLER ============
+
+async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseId = null) {
+    const job = syncJobsMap.get(jobId);
+    if (!job) {
+        console.error(`[SyncJob] Job ${jobId} not found`);
+        return;
+    }
+
+    try {
+        let databaseIds = [];
+
+        if (targetDatabaseId) {
+            // Single database sync mode
+            databaseIds = [targetDatabaseId];
+            console.log(`[SyncJob ${jobId}] Target specific database: ${targetDatabaseId}`);
+        } else {
+            // Sync all databases
+            const stats = db.getStats();
+            databaseIds = stats.cacheFiles.map(f => f.id);
+        }
+
+        // Filter out recently synced databases if resume mode
+        if (job.resume_mode) {
+            const cutoffTime = Date.now() - (job.max_age_minutes * 60 * 1000);
+            const originalCount = databaseIds.length;
+
+            databaseIds = databaseIds.filter(dbId => {
+                const lastSync = db.getLastSyncTime(dbId);
+                if (!lastSync) return true; // Never synced, include
+
+                const syncTime = new Date(lastSync).getTime();
+                const ageMinutes = Math.round((Date.now() - syncTime) / 60000);
+                const shouldSync = syncTime < cutoffTime;
+
+                if (!shouldSync) {
+                    console.log(`[SyncJob ${jobId}] ⏭️  Skipping ${dbId.substring(0, 8)} (synced ${ageMinutes}min ago)`);
+                }
+
+                return shouldSync;
+            });
+
+            const skippedCount = originalCount - databaseIds.length;
+            console.log(`[SyncJob ${jobId}] Resume mode: ${databaseIds.length} databases to sync, ${skippedCount} skipped (synced < ${job.max_age_minutes}min ago)`);
+        }
+
+        job.total = databaseIds.length;
+        job.status = 'running';
+
+        console.log(`[SyncJob ${jobId}] Starting sync for ${databaseIds.length} databases`);
+
+        const { DataFetcher } = await import('../notion/fetcher.js');
+        const fetcher = new DataFetcher(notionToken, db);
+
+        let synced = 0;
+        const onBatchComplete = (dbId, recordCount) => {
+            // Check if cancelled
+            if (job.cancelled) {
+                throw new Error('Sync cancelled by user');
+            }
+
+            synced++;
+            job.progress = synced;
+            job.current_db = dbId.substring(0, 8);
+
+            // Track synced database with details
+            job.synced_databases.push({
+                id: dbId,
+                short_id: dbId.substring(0, 8),
+                records: recordCount,
+                timestamp: new Date().toISOString()
+            });
+
+            job.results.push({ dbId, recordCount });
+            console.log(`[SyncJob ${jobId}] ${synced}/${databaseIds.length} - ${dbId.substring(0, 8)}: ${recordCount} records`);
+        };
+
+        await fetcher.fetchAllData(databaseIds, onBatchComplete);
+
+        job.total_records = job.results.reduce((sum, r) => sum + r.recordCount, 0);
+        job.status = 'complete';
+
+        console.log(`[SyncJob ${jobId}] ✅ Complete: ${synced} databases, ${job.total_records} records`);
+
+    } catch (error) {
+        console.error(`[SyncJob ${jobId}] ❌ Error:`, error);
+        job.status = 'error';
+        job.error = error.message;
+    }
+}
+

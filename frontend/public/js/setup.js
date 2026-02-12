@@ -237,7 +237,7 @@ class SetupWizard {
         console.log('[Setup] Saving databases...', Array.from(this.selectedDatabases));
 
         if (this.selectedDatabases.size === 0) {
-            alert('Vui lòng chọn ít nhất một database');
+            Modal.showAlert('Vui lòng chọn ít nhất một database', 'warning');
             return;
         }
 
@@ -265,13 +265,13 @@ class SetupWizard {
                 // Redirect to dashboard with setup complete flag
                 window.location.href = '/?setup=complete';
             } else {
-                alert('Lỗi khi lưu databases: ' + data.error);
+                Modal.showAlert('Lỗi khi lưu databases: ' + data.error, 'error');
                 saveBtn.disabled = false;
                 saveBtn.textContent = 'Save & Continue';
             }
         } catch (error) {
             console.error('[Setup] Error saving databases:', error);
-            alert('Lỗi khi lưu databases. Vui lòng thử lại.');
+            Modal.showAlert('Lỗi khi lưu databases. Vui lòng thử lại.', 'error');
             saveBtn.disabled = false;
             saveBtn.textContent = 'Save & Continue';
         }

@@ -29,15 +29,15 @@ export class DatabaseManager {
         // Data directory
         const defaultDataDir = join(__dirname, '..', '..', 'data');
         this.dataDir = dataDir || process.env.DATA_DIR || defaultDataDir;
-        
+
         // File paths
         this.configPath = join(this.dataDir, 'config.json');
         this.metadataPath = join(this.dataDir, 'metadata.json');
         this.cacheDir = join(this.dataDir, 'cache');
-        
+
         // Legacy path for migration
         this.legacyPath = join(this.dataDir, 'cache.json');
-        
+
         // In-memory lookup caches for fast relation/user resolution
         this._lookupMapCache = null;
         this._userMapCache = null;
@@ -63,7 +63,7 @@ export class DatabaseManager {
 
         // Auto-migrate from legacy format if exists
         this._migrateFromLegacy();
-        
+
         // Pre-build lookup cache on startup
         this._buildLookupCacheAsync();
 
@@ -133,7 +133,7 @@ export class DatabaseManager {
 
         try {
             console.log('[Database] 🔄 Migrating from legacy format...');
-            
+
             const legacyData = this._readJson(this.legacyPath, null);
             if (!legacyData) {
                 console.log('[Database] Legacy file empty or invalid, skipping migration');
@@ -258,6 +258,62 @@ export class DatabaseManager {
     }
 
     /**
+     * Set Notion count for a database (persists across reloads)
+     * @param {string} databaseId 
+     * @param {number} count 
+     */
+    setNotionCount(databaseId, count) {
+        try {
+            const metadata = this._readJson(this.metadataPath, {});
+            if (!metadata.notion_counts) metadata.notion_counts = {};
+
+            // Normalize ID to ensure consistency
+            // const normalizedId = databaseId.toLowerCase(); 
+            // Keeping raw ID for now but valid point to check later
+
+            metadata.notion_counts[databaseId] = count;
+            this._writeJson(this.metadataPath, metadata);
+            console.log(`[Database] 💾 Saved Notion count for ${databaseId.substring(0, 8)}: ${count}`);
+        } catch (e) {
+            console.error(`[Database] ❌ Failed to save Notion count: ${e.message}`);
+        }
+    }
+
+    /**
+     * Set Database Name (persists across reloads)
+     * @param {string} databaseId 
+     * @param {string} name 
+     */
+    setDatabaseName(databaseId, name) {
+        const metadata = this._readJson(this.metadataPath, {});
+        if (!metadata.database_names) metadata.database_names = {};
+        metadata.database_names[databaseId] = name;
+        this._writeJson(this.metadataPath, metadata);
+    }
+
+    /**
+     * Get stored Database Name
+     * @param {string} databaseId 
+     * @returns {string|null}
+     */
+    getDatabaseName(databaseId) {
+        const metadata = this._readJson(this.metadataPath, {});
+        return metadata.database_names?.[databaseId] || null;
+    }
+
+    /**
+     * Get stored Notion count for a database
+     * @param {string} databaseId 
+     * @returns {number|null}
+     */
+    getNotionCount(databaseId) {
+        const metadata = this._readJson(this.metadataPath, {});
+        const count = metadata.notion_counts?.[databaseId];
+        // console.log(`[Database] 📖 Read Notion count for ${databaseId.substring(0, 8)}: ${count}`);
+        return count !== undefined ? count : null;
+    }
+
+    /**
      * Get last update timestamp
      * @returns {string}
      */
@@ -276,7 +332,7 @@ export class DatabaseManager {
         const cacheFile = this._getCacheFilePath(databaseId);
         this._writeJson(cacheFile, records);
         this._updateSyncTime(databaseId);
-        
+
         // Update lookup cache incrementally
         this.updateLookupCacheIncremental(records);
 
@@ -292,7 +348,19 @@ export class DatabaseManager {
     upsertData(databaseId, newRecords) {
         if (!newRecords || newRecords.length === 0) {
             debugLog(`Upsert skipped for ${databaseId}: No new records`);
-            return;
+
+            // Still need to return total count for UI
+            const cacheFile = this._getCacheFilePath(databaseId);
+            const existingData = this._readJson(cacheFile, []);
+
+            // IMPORTANT: Update sync time because we just confirmed data is up-to-date
+            this._updateSyncTime(databaseId);
+
+            return {
+                total: existingData.length,
+                new: 0,
+                updated: 0
+            };
         }
 
         const cacheFile = this._getCacheFilePath(databaseId);
@@ -312,17 +380,23 @@ export class DatabaseManager {
             existingMap.set(record.id, record);
         });
 
-        // Convert back to array and save
+        // Convert back to absolute array and save
         const mergedData = Array.from(existingMap.values());
         this._writeJson(cacheFile, mergedData);
         this._updateSyncTime(databaseId);
-        
+
         // Update lookup cache incrementally
         this.updateLookupCacheIncremental(newRecords);
 
         const msg = `[Database] 🔄 Upserted for ${databaseId.substring(0, 8)}... (New: ${newCount}, Updated: ${updateCount}, Total: ${mergedData.length})`;
         console.log(msg);
         debugLog(msg);
+
+        return {
+            total: mergedData.length,
+            new: newCount,
+            updated: updateCount
+        };
     }
 
     /**
@@ -341,7 +415,7 @@ export class DatabaseManager {
      */
     getAllData() {
         const allData = {};
-        
+
         try {
             const files = readdirSync(this.cacheDir);
             for (const file of files) {
@@ -368,11 +442,11 @@ export class DatabaseManager {
     getSelectedData() {
         const selectedDbs = this.getConfig('selected_databases') || [];
         const data = {};
-        
+
         for (const dbId of selectedDbs) {
             data[dbId] = this.getData(dbId);
         }
-        
+
         return data;
     }
 
@@ -406,7 +480,7 @@ export class DatabaseManager {
     }
 
     // ==================== COMPATIBILITY METHODS ====================
-    
+
     /**
      * Legacy compatibility: Read entire "database"
      * Returns combined structure for backward compatibility
@@ -541,42 +615,42 @@ export class DatabaseManager {
     buildLookupCache() {
         const startTime = Date.now();
         console.log('[Database] 🔄 Building lookup cache...');
-        
+
         const lookupMap = new Map();
         const userMap = new Map();
-        
+
         try {
             const files = readdirSync(this.cacheDir);
             let totalRecords = 0;
-            
+
             for (const file of files) {
                 if (!file.endsWith('.json')) continue;
-                
+
                 const filePath = join(this.cacheDir, file);
                 const records = this._readJson(filePath, []);
-                
+
                 for (const record of records) {
                     totalRecords++;
-                    
+
                     // Build ID -> Title map
                     let name = record._title;
                     if (!name && record.properties) {
-                        name = record.properties['Name'] || 
-                               record.properties['Title'] || 
-                               record.properties['Tên'];
+                        name = record.properties['Name'] ||
+                            record.properties['Title'] ||
+                            record.properties['Tên'];
                         if (!name) {
                             const lowerProps = Object.keys(record.properties).reduce((acc, key) => {
                                 acc[key.toLowerCase()] = record.properties[key];
                                 return acc;
                             }, {});
-                            name = lowerProps['name'] || lowerProps['title'] || 
-                                   lowerProps['task name'] || lowerProps['sprint name'] ||
-                                   lowerProps['product name'] || lowerProps['project name'] ||
-                                   lowerProps['subject'] || lowerProps['item'] ||
-                                   lowerProps['content'] || lowerProps['summary'] || lowerProps['work'];
+                            name = lowerProps['name'] || lowerProps['title'] ||
+                                lowerProps['task name'] || lowerProps['sprint name'] ||
+                                lowerProps['product name'] || lowerProps['project name'] ||
+                                lowerProps['subject'] || lowerProps['item'] ||
+                                lowerProps['content'] || lowerProps['summary'] || lowerProps['work'];
                         }
                     }
-                    
+
                     if (record.id) {
                         const id = record.id.toLowerCase();
                         if (name) {
@@ -586,14 +660,14 @@ export class DatabaseManager {
                             lookupMap.set(id, `[Untitled: ${record.id}]`);
                         }
                     }
-                    
+
                     // Build Email -> Name map
                     if (record.properties) {
                         Object.values(record.properties).forEach(val => {
                             if (Array.isArray(val)) {
                                 val.forEach(item => {
                                     if (item && typeof item === 'object') {
-                                        if (item.email && item.name && 
+                                        if (item.email && item.name &&
                                             item.name !== item.email && item.name !== 'Unknown User') {
                                             userMap.set(item.email.toLowerCase().trim(), item.name);
                                         }
@@ -611,11 +685,11 @@ export class DatabaseManager {
                     }
                 }
             }
-            
+
             this._lookupMapCache = lookupMap;
             this._userMapCache = userMap;
             this._lookupCacheBuiltAt = Date.now();
-            
+
             const elapsed = Date.now() - startTime;
             console.log(`[Database] ✅ Lookup cache built: ${lookupMap.size} IDs, ${userMap.size} users from ${totalRecords} records (${elapsed}ms)`);
         } catch (error) {
@@ -634,7 +708,7 @@ export class DatabaseManager {
         if (!this._lookupMapCache || !this._userMapCache) {
             this.buildLookupCache();
         }
-        
+
         return {
             lookupMap: this._lookupMapCache || new Map(),
             userMap: this._userMapCache || new Map()
@@ -661,21 +735,21 @@ export class DatabaseManager {
             this.buildLookupCache();
             return;
         }
-        
+
         let added = 0;
         for (const record of records) {
             let name = record._title;
             if (!name && record.properties) {
                 name = record.properties['Name'] || record.properties['Title'] || record.properties['Tên'];
             }
-            
+
             if (record.id && name) {
                 const id = record.id.toLowerCase();
                 if (typeof name !== 'string') name = String(name);
                 this._lookupMapCache.set(id, name);
                 added++;
             }
-            
+
             // Update user map
             if (record.properties) {
                 Object.values(record.properties).forEach(val => {
@@ -690,7 +764,7 @@ export class DatabaseManager {
                 });
             }
         }
-        
+
         if (added > 0) {
             debugLog(`Lookup cache updated incrementally: +${added} entries`);
         }

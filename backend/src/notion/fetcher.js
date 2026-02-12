@@ -68,13 +68,26 @@ export class DataFetcher {
      * @returns {Promise<Object>} Object with database data keyed by ID
      */
     async fetchAllData(databaseIds, onBatchComplete = null) {
+        // Deduplicate IDs first
+        const uniqueIds = [...new Set(databaseIds)];
+
         // Sort databases by priority
-        const sortedDatabaseIds = this.sortByPriority(databaseIds);
+        const sortedDatabaseIds = this.sortByPriority(uniqueIds);
         const prioritySet = new Set(this.priorityDatabases);
 
         // Split into priority and normal
-        const priorityDbs = sortedDatabaseIds.filter(id => prioritySet.has(id));
-        const normalDbs = sortedDatabaseIds.filter(id => !prioritySet.has(id));
+        // Split into priority and normal
+        // Ensure NO overlapping by strictly filtering
+        const priorityDbs = [];
+        const normalDbs = [];
+
+        for (const id of sortedDatabaseIds) {
+            if (prioritySet.has(id)) {
+                priorityDbs.push(id);
+            } else {
+                normalDbs.push(id);
+            }
+        }
 
         console.log(`[Fetcher] Starting to fetch: ${priorityDbs.length} priority DBs first, then ${normalDbs.length} others...`);
 
@@ -111,9 +124,13 @@ export class DataFetcher {
                     console.log(`[Fetcher] 🌟 Priority: ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
 
                     // Save immediately to DB if available
+                    // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
-                        this.db.upsertData(dbId, transformed);
-                        onBatchComplete(dbId, transformed.length);
+                        const stats = this.db.upsertData(dbId, transformed);
+                        // Use TOTAL count (from DB), not just fetched count
+                        // This fixes issue where incremental sync returns 0 but DB has data
+                        const totalCount = stats ? stats.total : transformed.length;
+                        onBatchComplete(dbId, totalCount);
                     }
 
                     await sleep(250);
@@ -180,9 +197,12 @@ export class DataFetcher {
                     normalCount++;
 
                     // Save immediately to DB if available
+                    // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
-                        this.db.upsertData(dbId, transformed);
-                        onBatchComplete(dbId, transformed.length);
+                        const stats = this.db.upsertData(dbId, transformed);
+                        // Use TOTAL count (from DB), not just fetched count
+                        const totalCount = stats ? stats.total : transformed.length;
+                        onBatchComplete(dbId, totalCount);
                     }
 
                     // Log progress every 10 databases

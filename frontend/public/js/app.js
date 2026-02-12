@@ -18,6 +18,9 @@ class DashboardApp {
         this.whitelistProjects = new Set(); // Project IDs in whitelist
         this.whitelistProjectNames = new Set(); // Project names in whitelist
 
+        // Admin mode
+        this.isAdmin = false;
+
         this.loadPersistedState();
 
         this.searchQuery = '';
@@ -31,6 +34,17 @@ class DashboardApp {
     async init() {
         console.log('[Dashboard] Initializing...');
 
+        // Check admin status first
+        try {
+            const authResponse = await fetch(`${API_BASE}/auth/status`);
+            const authData = await authResponse.json();
+            this.isAdmin = authData.isAdmin || false;
+            console.log(`[Dashboard] Admin mode: ${this.isAdmin}`);
+        } catch (error) {
+            console.error('[Dashboard] Failed to check admin status:', error);
+            this.isAdmin = false;
+        }
+
         // Load whitelist first
         await this.loadWhitelist();
 
@@ -39,9 +53,69 @@ class DashboardApp {
         // Initial Load
         await this.loadProjectsTree();
 
+        // Inject admin UI if admin
+        if (this.isAdmin) {
+            this.injectAdminUI();
+        }
+
         // Start Polling & Health Check
         this.startPolling();
         this.startHealthCheck();
+    }
+
+    /**
+     * Inject Admin-only UI elements dynamically
+     */
+    injectAdminUI() {
+        console.log('[Dashboard] Injecting Admin UI...');
+
+        // Add Sync Monitor option to dropdown
+        const select = document.getElementById('report-type-select');
+        if (select && !document.querySelector('option[value="sync-monitor"]')) {
+            const option = document.createElement('option');
+            option.value = 'sync-monitor';
+            option.textContent = '🔄 Sync Monitor (Admin)';
+            select.appendChild(option);
+        }
+
+        // Add Sync Monitor card to welcome screen
+        const cardsGrid = document.querySelector('.report-cards-grid');
+        if (cardsGrid && !document.querySelector('.report-card-full.sync-monitor')) {
+            const card = document.createElement('div');
+            card.className = 'report-card-full sync-monitor';
+            card.style.cursor = 'pointer';
+            card.innerHTML = `
+                <div class="report-card-header">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <strong>Sync Monitor</strong>
+                </div>
+                <ul class="report-card-desc">
+                    <li>Kiểm tra đồng bộ dữ liệu</li>
+                    <li>So sánh Local vs Notion</li>
+                    <li>Phát hiện sai lệch</li>
+                </ul>
+            `;
+
+            // Add click handler to auto-select and generate
+            card.addEventListener('click', () => {
+                const selectEl = document.getElementById('report-type-select');
+                if (selectEl) {
+                    selectEl.value = 'sync-monitor';
+                    selectEl.dispatchEvent(new Event('change'));
+                }
+                // Auto-click generate button
+                setTimeout(() => {
+                    const generateBtn = document.getElementById('generate-report-btn');
+                    if (generateBtn && !generateBtn.disabled) {
+                        generateBtn.click();
+                    }
+                }, 100);
+            });
+
+            cardsGrid.appendChild(card);
+        }
     }
 
     // Health check to update connection status
@@ -253,17 +327,21 @@ class DashboardApp {
         const resetConfigBtn = document.getElementById('reset-sidebar-config');
         if (resetConfigBtn) {
             resetConfigBtn.addEventListener('click', () => {
-                if (confirm('Bạn có chắc muốn đặt lại cấu hình sidebar?')) {
-                    this.selectedDatabases.clear();
-                    this.hiddenProjects.clear();
-                    this.hiddenDatabases.clear();
-                    localStorage.removeItem('dashNotion_selectedDatabases');
-                    localStorage.removeItem('dashNotion_hiddenProjects');
-                    localStorage.removeItem('dashNotion_hiddenDatabases');
-                    this.renderProjectsTreeHierarchical();
-                    this.updateGenerateButtonState();
-                    console.log('[Dashboard] Sidebar config reset');
-                }
+                Modal.showConfirm(
+                    'Bạn có chắc muốn đặt lại cấu hình sidebar?',
+                    () => {
+                        this.selectedDatabases.clear();
+                        this.hiddenProjects.clear();
+                        this.hiddenDatabases.clear();
+                        localStorage.removeItem('dashNotion_selectedDatabases');
+                        localStorage.removeItem('dashNotion_hiddenProjects');
+                        localStorage.removeItem('dashNotion_hiddenDatabases');
+                        this.renderProjectsTreeHierarchical();
+                        this.updateGenerateButtonState();
+                        console.log('[Dashboard] Sidebar config reset');
+                        Modal.showAlert('Cấu hình sidebar đã được đặt lại!', 'success');
+                    }
+                );
             });
         }
 
@@ -399,6 +477,13 @@ class DashboardApp {
                 break;
             case 'burndown':
                 this.renderBurndownReport(container);
+                break;
+            case 'sync-monitor':
+                if (!this.isAdmin) {
+                    container.innerHTML = '<div class="error-state">Tính năng chỉ dành cho Admin.</div>';
+                    return;
+                }
+                this.renderSyncMonitor(container);
                 break;
             default:
                 container.innerHTML = '<div class="error-state">Loại báo cáo chưa được hỗ trợ</div>';
@@ -2341,7 +2426,7 @@ class DashboardApp {
                 // Local recalculation is done by recalculateRow()
             } catch (err) {
                 console.error('Update Stats Error:', err);
-                alert('Không lưu được dữ liệu');
+                Modal.showAlert('Không lưu được dữ liệu', 'error');
             }
         };
 
@@ -3574,7 +3659,7 @@ class DashboardApp {
     }
 
     showError(msg) {
-        alert(msg); // Simple alert for now
+        Modal.showAlert(msg, 'error');
     }
 
     escapeHtml(text) {
@@ -3626,6 +3711,608 @@ class DashboardApp {
         setInterval(() => {
             // Optional: check for updates
         }, 60000);
+    }
+
+    /**
+     * Render Sync Monitor page (Admin only)
+     */
+    async renderSyncMonitor(container) {
+        container.innerHTML = `
+            <div class="sync-monitor" style="padding:20px;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+                    <h3 style="margin:0;color:#f1f5f9;">Sync Monitor - Kiểm tra Đồng Bộ</h3>
+                    <div style="display:flex;gap:12px;">
+                        <button id="sync-all-btn" style="padding:8px 16px;background:#10b981;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:500;">🔄 Sync All</button>
+                        <button id="sync-resume-btn" style="display:none;padding:8px 16px;background:#f59e0b;color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:500;" title="Resume sync - skip databases synced recently">▶️ Resume Sync</button>
+                        <button id="sync-refresh-all" style="padding:8px 16px;background:#3b82f6;color:#fff;border:none;border-radius:4px;cursor:pointer;">Làm Mới</button>
+                    </div>
+                </div>
+                
+                <div id="sync-progress" style="display:none;background:#1e293b;border-radius:8px;padding:16px;margin-bottom:16px;border:1px solid #334155;">
+                    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+                        <span style="color:#94a3b8;font-size:0.9rem;">Syncing databases...</span>
+                        <span id="sync-progress-text" style="color:#f1f5f9;font-weight:500;">0/0</span>
+                    </div>
+                    <div style="background:#0f172a;height:8px;border-radius:4px;overflow:hidden;">
+                        <div id="sync-progress-bar" style="background:#10b981;height:100%;width:0%;transition:width 0.3s ease;"></div>
+                    </div>
+                </div>
+                
+                <div style="background:#1e293b;border-radius:12px;overflow:hidden;border:1px solid #334155;">
+                    <table style="width:100%;border-collapse:collapse;">
+                        <thead style="background:#0f172a;">
+                            <tr>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Database</th>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Local Count</th>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Notion Count</th>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Last Sync</th>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Status</th>
+                                <th style="padding:12px 16px;text-align:left;color:#94a3b8;font-weight:500;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="sync-table-body">
+                            <tr><td colspan="6" style="padding:24px;text-align:center;color:#64748b;">Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="mismatch-details" style="display:none;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);background:#1e293b;border:1px solid #334155;padding:24px;border-radius:12px;box-shadow:0 10px 25px rgba(0,0,0,0.3);width:80%;max-width:900px;max-height:80vh;overflow-y:auto;z-index:1000;">
+                    <button onclick="document.getElementById('mismatch-details').style.display='none'" style="position:absolute;top:12px;right:12px;background:none;border:none;font-size:24px;cursor:pointer;color:#94a3b8;">×</button>
+                    <h4 id="mismatch-title" style="margin:0 0 16px 0;color:#f1f5f9;"></h4>
+                    <div id="mismatch-content"></div>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('sync-refresh-all').addEventListener('click', () => this.loadSyncOverview());
+        document.getElementById('sync-all-btn').addEventListener('click', () => this.syncAllDatabases(false)); // Normal mode
+        document.getElementById('sync-resume-btn').addEventListener('click', () => this.syncAllDatabases(true)); // Resume mode
+        await this.loadSyncOverview();
+    }
+
+    async loadSyncOverview() {
+        const tbody = document.getElementById('sync-table-body');
+        tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;text-align:center;color:#64748b;">Loading...</td></tr>';
+
+        try {
+            this.showLoading();
+            const response = await fetch(`${API_BASE}/api/sync/overview`);
+            const result = await response.json();
+
+            if (!result.success) throw new Error(result.error);
+
+            // Check for recently synced databases (< 10 min)
+            const maxAgeMs = 10 * 60 * 1000;
+            const recentSyncs = result.data.filter(db => {
+                if (!db.last_sync) return false;
+                const syncTime = new Date(db.last_sync).getTime();
+                const age = Date.now() - syncTime;
+                return age < maxAgeMs;
+            });
+
+            // Show resume button if some (but not all) databases are recently synced
+            const resumeBtn = document.getElementById('sync-resume-btn');
+            if (resumeBtn) {
+                if (recentSyncs.length > 0 && recentSyncs.length < result.data.length) {
+                    resumeBtn.style.display = 'inline-block';
+                    resumeBtn.title = `${recentSyncs.length} databases đã sync gần đây. Resume sẽ bỏ qua chúng.`;
+                } else {
+                    resumeBtn.style.display = 'none';
+                }
+            }
+
+            this.renderSyncTable(result.data);
+        } catch (error) {
+            tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#ef4444;">Error: ${error.message}</td></tr>`;
+        }
+    }
+
+    renderSyncTable(data) {
+        const tbody = document.getElementById('sync-table-body');
+        tbody.innerHTML = '';
+
+        if (!data || data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="padding:24px;text-align:center;color:#64748b;">No databases found</td></tr>';
+            return;
+        }
+
+        data.forEach(db => {
+            const tr = document.createElement('tr');
+            tr.id = `sync-row-${db.id}`;
+            tr.style.borderBottom = '1px solid #334155';
+
+            const lastSync = db.last_sync ? new Date(db.last_sync).toLocaleString('vi-VN') : 'Never';
+
+            tr.innerHTML = `
+                <td style="padding:12px 16px;color:#e2e8f0;">
+                    <div style="font-weight:500;">${this.escapeHtml(db.name)}</div>
+                    <div style="font-size:0.75rem;color:#64748b;">${this.escapeHtml(db.id.slice(0, 12))}</div>
+                </td>
+                <td style="padding:12px 16px;color:#e2e8f0;">${db.local_count}</td>
+                <td style="padding:12px 16px;color:#e2e8f0;" class="notion-count">${db.notion_count !== null ? db.notion_count : '-'}</td>
+                <td style="padding:12px 16px;color:#94a3b8;font-size:0.85rem;">${lastSync}</td>
+                <td style="padding:12px 16px;"><span class="sync-status-badge" style="padding:4px 8px;border-radius:4px;font-size:0.75rem;background:#475569;color:#94a3b8;">Unknown</span></td>
+                <td style="padding:12px 16px;">
+                    <div style="display:flex;gap:8px;">
+                        <button class="btn-check-sync" onclick="window.app.checkDatabaseSync('${db.id}')" style="padding:4px 12px;font-size:0.85rem;background:#3b82f6;color:#fff;border:none;border-radius:4px;cursor:pointer;">Check</button>
+                        <button class="btn-sync-single" onclick="window.app.syncSingleDatabase('${db.id}')" style="padding:4px 12px;font-size:0.85rem;background:#f59e0b;color:#fff;border:none;border-radius:4px;cursor:pointer;">Sync</button>
+                    </div>
+                </td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    async syncSingleDatabase(databaseId) {
+        const row = document.getElementById(`sync-row-${databaseId}`);
+        if (!row) return;
+
+        const btn = row.querySelector('.btn-sync-single');
+        const statusBadge = row.querySelector('.sync-status-badge');
+
+        btn.disabled = true;
+        btn.textContent = 'Syncing...';
+        btn.style.opacity = '0.7';
+
+        try {
+            // Start sync job for single DB
+            const response = await fetch(`${API_BASE}/api/sync/single`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ database_id: databaseId })
+            });
+
+            const result = await response.json();
+            if (!result.success) throw new Error(result.error);
+
+            // Note: Single sync also uses SSE stream, but we might just poll status or wait
+            // For simplicity, we'll listen to the global SSE or just reload overview after a delay
+            // But since global SSE might be busy, let's just show a notification that it started
+
+            Modal.showAlert('⏳ Đang đồng bộ database này...\nVui lòng đợi trong giây lát.', 'info', 3000);
+
+            // Start polling (simple version)
+            // Just show success notification, NO auto reload
+            setTimeout(() => {
+                // this.loadSyncOverview(); // DISABLED by user request
+                Modal.showAlert('✅ Đã gửi lệnh đồng bộ!\nReload trang (F5) khi cần kiểm tra.', 'success', 5000);
+            }, 2000);
+
+        } catch (error) {
+            console.error(error);
+            Modal.showAlert(`Sync failed: ${error.message}`, 'error');
+            btn.textContent = 'Sync';
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    }
+
+    async checkDatabaseSync(databaseId) {
+        const row = document.getElementById(`sync-row-${databaseId}`);
+        if (!row) return;
+
+        const btn = row.querySelector('.btn-check-sync');
+        const statusBadge = row.querySelector('.sync-status-badge');
+        const notionCountCell = row.querySelector('.notion-count');
+
+        btn.disabled = true;
+        btn.textContent = 'Checking...';
+        statusBadge.textContent = 'Checking...';
+        statusBadge.style.background = '#475569';
+
+        try {
+            const response = await fetch(`${API_BASE}/api/sync/check`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ database_id: databaseId })
+            });
+
+            const result = await response.json();
+            if (!result.success) throw new Error(result.error);
+
+            const { local_count, notion_count, diff_count, mismatches } = result.data;
+
+            notionCountCell.textContent = notion_count;
+            row.cells[1].textContent = local_count;
+
+            if (diff_count === 0) {
+                statusBadge.textContent = 'Synced ✓';
+                statusBadge.style.background = '#10b981';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'Re-check';
+
+                // Show success notification
+                Modal.showAlert(
+                    `✅ ${result.data.database_name || 'Database'} đã sync xong!\n\n` +
+                    `📊 Local: ${local_count} records\n` +
+                    `📊 Notion: ${notion_count} records\n` +
+                    `✓ Dữ liệu đã đồng bộ hoàn toàn!`,
+                    'success',
+                    5000
+                );
+            } else {
+                statusBadge.textContent = `Diff: ${diff_count}`;
+                statusBadge.style.background = '#ef4444';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'View Diff';
+                btn.onclick = () => this.showMismatchDetails(databaseId, result.data);
+            }
+
+        } catch (error) {
+            console.error(error);
+            statusBadge.textContent = 'Error';
+            statusBadge.style.background = '#ef4444';
+            Modal.showAlert(`Check failed: ${error.message}`, 'error');
+            btn.textContent = 'Retry';
+        } finally {
+            btn.disabled = false;
+        }
+    }
+
+    showMismatchDetails(databaseId, data) {
+        const modal = document.getElementById('mismatch-details');
+        const title = document.getElementById('mismatch-title');
+        const content = document.getElementById('mismatch-content');
+
+        title.textContent = `Mismatch Details: ${data.diff_count} issues`;
+
+        let html = '<table style="width:100%;border-collapse:collapse;"><thead><tr>';
+        html += '<th style="padding:8px;text-align:left;color:#94a3b8;border-bottom:1px solid #334155;">Page ID</th>';
+        html += '<th style="padding:8px;text-align:left;color:#94a3b8;border-bottom:1px solid #334155;">Type</th>';
+        html += '<th style="padding:8px;text-align:left;color:#94a3b8;border-bottom:1px solid #334155;">Local Updated</th>';
+        html += '<th style="padding:8px;text-align:left;color:#94a3b8;border-bottom:1px solid #334155;">Notion Updated</th>';
+        html += '<th style="padding:8px;text-align:left;color:#94a3b8;border-bottom:1px solid #334155;">Action</th>';
+        html += '</tr></thead><tbody>';
+
+        data.mismatches.forEach(m => {
+            const localTime = m.local_updated ? new Date(m.local_updated).toLocaleString() : '-';
+            const notionTime = m.notion_updated ? new Date(m.notion_updated).toLocaleString() : '-';
+
+            let actionHtml = '';
+            if (m.url) {
+                actionHtml = `<a href="${m.url}" target="_blank" style="color:#3b82f6;">Open →</a>`;
+            }
+
+            html += `<tr style="border-bottom:1px solid #334155;">`;
+            html += `<td style="padding:8px;color:#e2e8f0;font-family:monospace;font-size:0.75rem;">${this.escapeHtml(m.id.slice(0, 8))}...</td>`;
+            html += `<td style="padding:8px;"><span style="padding:2px 6px;border-radius:4px;font-size:0.75rem;background:#fbbf2420;color:#fbbf24;">${m.type}</span></td>`;
+            html += `<td style="padding:8px;color:#94a3b8;font-size:0.85rem;">${localTime}</td>`;
+            html += `<td style="padding:8px;color:#94a3b8;font-size:0.85rem;">${notionTime}</td>`;
+            html += `<td style="padding:8px;">${actionHtml}</td>`;
+            html += '</tr>';
+        });
+
+        html += '</tbody></table>';
+        content.innerHTML = html;
+        modal.style.display = 'block';
+    }
+
+    // Request notification permission on first load
+    async requestNotificationPermission() {
+        if ('Notification' in window && Notification.permission === 'default') {
+            await Notification.requestPermission();
+        }
+    }
+
+    // Play success sound using Web Audio API
+    playSuccessSound() {
+        try {
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+
+            oscillator.frequency.value = 800; // Hz
+            oscillator.type = 'sine';
+
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        } catch (error) {
+            console.log('[Sound] Blocked or unsupported:', error);
+        }
+    }
+
+    // Format duration in human-readable format
+    formatDuration(ms) {
+        const seconds = Math.floor(ms / 1000);
+        if (seconds < 60) return `${seconds}s`;
+
+        const minutes = Math.floor(seconds / 60);
+        const secs = seconds % 60;
+        return `${minutes}m ${secs}s`;
+    }
+
+    async syncAllDatabases(resumeMode = false) {
+        const btn = document.getElementById('sync-all-btn');
+        const progressDiv = document.getElementById('sync-progress');
+        const progressBar = document.getElementById('sync-progress-bar');
+        const progressText = document.getElementById('sync-progress-text');
+
+        if (!btn || !progressDiv) return;
+
+        // Request notification permission
+        this.requestNotificationPermission();
+
+        Modal.showConfirm(
+            'Bạn có chắc muốn đồng bộ TẤT CẢ databases? Quá trình này có thể mất vài phút.',
+            async () => {
+                let currentJobId = null;
+                let syncStartTime = Date.now();
+                let eventSource = null;
+
+                // Create/get progress elements
+                let progressPercent = document.getElementById('sync-progress-percent');
+                let progressEta = document.getElementById('sync-progress-eta');
+                let syncedList = document.getElementById('sync-completed-list');
+                let syncedItems = document.getElementById('sync-completed-items');
+                let cancelBtn = document.getElementById('sync-cancel-btn');
+
+                if (!progressPercent) {
+                    progressPercent = document.createElement('div');
+                    progressPercent.id = 'sync-progress-percent';
+                    progressPercent.style.cssText = 'font-size: 24px; font-weight: bold; color: #10b981; margin-top: 8px;';
+                    progressDiv.appendChild(progressPercent);
+                }
+
+                if (!progressEta) {
+                    progressEta = document.createElement('div');
+                    progressEta.id = 'sync-progress-eta';
+                    progressEta.style.cssText = 'font-size: 14px; color: #6b7280; margin-top: 4px;';
+                    progressDiv.appendChild(progressEta);
+                }
+
+                // Create synced list if not exists
+                if (!syncedList) {
+                    syncedList = document.createElement('div');
+                    syncedList.id = 'sync-completed-list';
+                    syncedList.style.cssText = 'margin-top: 16px; padding: 12px; background: rgba(16, 185, 129, 0.1); border-radius: 6px; display: none;';
+                    syncedList.innerHTML = '<h4 style="margin: 0 0 8px 0; font-size: 14px; color: #10b981;">✅ Đã sync xong:</h4><div id="sync-completed-items" style="max-height: 150px; overflow-y: auto; font-size: 12px;"></div>';
+                    progressDiv.appendChild(syncedList);
+                    syncedItems = document.getElementById('sync-completed-items');
+                }
+
+                if (!cancelBtn) {
+                    cancelBtn = document.createElement('button');
+                    cancelBtn.id = 'sync-cancel-btn';
+                    cancelBtn.textContent = '❌ Hủy Sync';
+                    cancelBtn.style.cssText = 'margin-top: 12px; padding: 8px 16px; background: #ef4444; color: white; border: none; border-radius: 4px; cursor: pointer; font-size: 14px;';
+                    cancelBtn.addEventListener('click', async () => {
+                        if (!currentJobId) return;
+
+                        Modal.showConfirm('Bạn có chắc muốn hủy sync?', async () => {
+                            try {
+                                cancelBtn.disabled = true;
+                                cancelBtn.textContent = 'Đang hủy...';
+
+                                await fetch(`${API_BASE}/api/sync/abort/${currentJobId}`, {
+                                    method: 'POST'
+                                });
+
+                                if (eventSource) eventSource.close();
+
+                                Modal.showAlert('⚠️ Đã hủy sync', 'warning');
+
+                                progressDiv.style.display = 'none';
+                                btn.disabled = false;
+                                btn.textContent = '🔄 Sync All';
+                                btn.style.background = '#10b981';
+                            } catch (error) {
+                                console.error('[Cancel] Error:', error);
+                                cancelBtn.disabled = false;
+                                cancelBtn.textContent = '❌ Hủy Sync';
+                            }
+                        });
+                    });
+                    progressDiv.appendChild(cancelBtn);
+                }
+
+                // Show UI
+                btn.disabled = true;
+                btn.textContent = '⏳ Đang sync...';
+                btn.style.background = '#6b7280';
+                progressDiv.style.display = 'block';
+                progressText.textContent = 'Đang khởi động...';
+                progressBar.style.width = '0%';
+                progressPercent.textContent = '0%';
+                progressEta.textContent = 'Đang tính toán...';
+                cancelBtn.disabled = false;
+                cancelBtn.textContent = '❌ Hủy Sync';
+
+                try {
+                    // Start sync job
+                    const startResponse = await fetch(`${API_BASE}/api/sync/start`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            resume: resumeMode,
+                            max_age_minutes: 10
+                        })
+                    });
+
+                    const { job_id } = await startResponse.json();
+                    currentJobId = job_id;
+                    syncStartTime = Date.now();
+                    console.log(`[SyncAll] Job started: ${job_id}`);
+
+                    // Open SSE stream
+                    eventSource = new EventSource(`${API_BASE}/api/sync/stream/${job_id}`);
+
+                    eventSource.onmessage = (event) => {
+                        const data = JSON.parse(event.data);
+
+                        if (data.total > 0) {
+                            const percent = Math.round((data.progress / data.total) * 100);
+                            progressBar.style.width = `${percent}%`;
+                            progressText.textContent = `${data.progress}/${data.total}`;
+                            progressPercent.textContent = `${percent}%`;
+
+                            if (data.current_db) {
+                                progressText.textContent += ` (${data.current_db}...)`;
+                            }
+
+                            // Calculate ETA
+                            if (data.progress > 0) {
+                                const elapsed = Date.now() - syncStartTime;
+                                const avgTimePerDB = elapsed / data.progress;
+                                const remaining = data.total - data.progress;
+                                const eta = avgTimePerDB * remaining;
+
+                                progressEta.textContent = `~${this.formatDuration(eta)} còn lại`;
+                            }
+
+                            // Update synced list
+                            if (data.synced_databases && data.synced_databases.length > 0) {
+                                syncedItems.innerHTML = data.synced_databases
+                                    .map(db => `<div style="padding: 2px 0; color: #10b981;">✓ ${db.short_id} (${db.records} records)</div>`)
+                                    .join('');
+                                syncedList.style.display = 'block';
+                            }
+                        }
+                    };
+
+                    eventSource.addEventListener('complete', (event) => {
+                        const data = JSON.parse(event.data);
+                        eventSource.close();
+
+                        const duration = this.formatDuration(Date.now() - syncStartTime);
+
+                        // Play success sound
+                        this.playSuccessSound();
+
+                        // Browser notification
+                        if (Notification.permission === 'granted') {
+                            new Notification('✅ Sync hoàn tất!', {
+                                body: `Đã đồng bộ ${data.progress} databases, ${data.total_records} records trong ${duration}`,
+                                icon: '/favicon.ico',
+                                requireInteraction: true
+                            });
+                        }
+
+                        // Build detailed summary
+                        let summary = `🎉 SYNC HOÀN TẤT!\n\n`;
+                        summary += `━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                        summary += `✅ Databases đã sync: ${data.progress}\n`;
+                        summary += `📊 Tổng records: ${data.total_records}\n`;
+                        summary += `⏱️ Thời gian: ${duration}\n`;
+
+                        if (data.synced_databases && data.synced_databases.length > 0) {
+                            summary += `\n📋 Chi tiết:\n`;
+                            const topDbs = data.synced_databases.slice(0, 5);
+                            topDbs.forEach(db => {
+                                summary += `  • ${db.short_id}: ${db.records} records\n`;
+                            });
+                            if (data.synced_databases.length > 5) {
+                                summary += `  ... và ${data.synced_databases.length - 5} databases khác\n`;
+                            }
+                        }
+
+                        summary += `\n━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                        summary += `Dữ liệu đã được cập nhật!\nCột "Last Sync" đã update.`;
+
+                        // Enhanced modal with longer display time (15s)
+                        Modal.showAlert(summary, 'success', 15000);
+
+                        progressDiv.style.display = 'none';
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync All (Done)';
+                        btn.style.background = '#10b981';
+                        // this.loadSyncOverview(); // DISABLED by user request
+                    });
+
+                    eventSource.addEventListener('cancelled', (event) => {
+                        eventSource.close();
+                        Modal.showAlert('⚠️ Sync đã bị hủy', 'warning');
+
+                        progressDiv.style.display = 'none';
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync All';
+                        btn.style.background = '#10b981';
+                    });
+
+                    eventSource.addEventListener('error', (event) => {
+                        console.error('[SyncAll] ❌ SSE Error Event:', event);
+                        eventSource.close();
+
+                        let errorMsg = 'Lỗi kết nối SSE';
+                        try {
+                            if (event.data) {
+                                const data = JSON.parse(event.data);
+                                errorMsg = data.error || errorMsg;
+                            }
+                        } catch (e) {
+                            console.error('[SyncAll] Could not parse error event data');
+                        }
+
+                        console.error('[SyncAll] Final error message:', errorMsg);
+
+                        Modal.showAlert(
+                            `❌ SYNC BỊ DISCONNECT!\n\n` +
+                            `Lỗi: ${errorMsg}\n\n` +
+                            `Có thể do:\n` +
+                            `- Kết nối mạng bị mất\n` +
+                            `- Backend restart\n` +
+                            `- Timeout quá lâu\n\n` +
+                            `Hãy kiểm tra backend console và thử lại.`,
+                            'error',
+                            15000
+                        );
+
+                        progressDiv.style.display = 'none';
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync All';
+                        btn.style.background = '#10b981';
+
+                        // Reload overview để xem đã sync được bao nhiêu
+                        this.loadSyncOverview();
+                    });
+
+                    eventSource.onerror = (err) => {
+                        console.error('[SyncAll] ❌ EventSource onerror:', err);
+                        console.error('[SyncAll] EventSource readyState:', eventSource.readyState);
+                        eventSource.close();
+
+                        Modal.showAlert(
+                            `❌ MẤT KẾT NỐI SERVER!\n\n` +
+                            `SSE connection bị đóng đột ngột.\n\n` +
+                            `Nguyên nhân có thể:\n` +
+                            `- Backend bị crash hoặc restart\n` +
+                            `- Network timeout\n` +
+                            `- Browser throttle connection\n\n` +
+                            `Check backend console logs.\n` +
+                            `Một số database có thể đã được sync.\n\n` +
+                            `Reload trang và thử lại!`,
+                            'error',
+                            20000
+                        );
+
+                        progressDiv.style.display = 'none';
+                        btn.disabled = false;
+                        btn.textContent = '🔄 Sync All';
+                        btn.style.background = '#10b981';
+                    };
+
+                } catch (error) {
+                    console.error('[SyncAll] Error:', error);
+                    Modal.showAlert(
+                        `❌ LỖI KHỞI ĐỘNG!\n\n` +
+                        `${error.message}\n` +
+                        `Hãy thử lại sau.`,
+                        'error',
+                        10000
+                    );
+
+                    progressDiv.style.display = 'none';
+                    btn.disabled = false;
+                    btn.textContent = '🔄 Sync All';
+                    btn.style.background = '#10b981';
+                }
+            }
+        );
     }
 }
 

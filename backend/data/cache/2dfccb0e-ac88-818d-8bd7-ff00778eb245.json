@@ -50,7 +50,7 @@
   {
     "id": "2dfccb0e-ac88-8104-93cd-fa0fb4b39f46",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T10:26:00.000Z",
+    "last_edited_time": "2026-02-11T08:01:00.000Z",
     "properties": {
       "Comp": [
         "Hiệu ứng ánh sáng nhạc môi trường",
@@ -63,7 +63,7 @@
       "Note anim": " Reuse pose nhảy",
       "Layout": null,
       "Prop & mô tả prop": "",
-      "Key": "C",
+      "Key": "B",
       "IBW": "D",
       "Nhân vật": [
         "Moose",
@@ -620,13 +620,13 @@
   {
     "id": "2dfccb0e-ac88-8144-9703-debd1ba573e3",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T10:00:00.000Z",
+    "last_edited_time": "2026-02-12T03:34:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "Bụi xe đạp",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "cut-out pedal lúc đạp xe",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp, Bánh xe đạp nhỏ",
       "Key": "D",
@@ -792,7 +792,7 @@
   {
     "id": "2dfccb0e-ac88-815f-a9f1-f8d3d7d26e66",
     "created_time": "2026-01-05T03:51:00.000Z",
-    "last_edited_time": "2026-02-04T09:59:00.000Z",
+    "last_edited_time": "2026-02-12T03:34:00.000Z",
     "properties": {
       "Comp": [
         "Speedline"
@@ -800,7 +800,7 @@
       "FX": "Shake line lúc moose đi xe đạp",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "cut-out pedal lúc đạp xe",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp, Bụi cây, Hoa",
       "Key": "C",
@@ -2174,13 +2174,13 @@
   {
     "id": "2fdccb0e-ac88-8089-abe4-c460754d7a69",
     "created_time": "2026-02-04T03:26:00.000Z",
-    "last_edited_time": "2026-02-04T09:59:00.000Z",
+    "last_edited_time": "2026-02-12T03:34:00.000Z",
     "properties": {
       "Comp": [],
       "FX": "",
       "Đã có prop": false,
       "Combo": null,
-      "Note anim": "",
+      "Note anim": "cut-out pedal lúc đạp xe",
       "Layout": "Cần LO trước",
       "Prop & mô tả prop": "Xe đạp",
       "Key": "D",

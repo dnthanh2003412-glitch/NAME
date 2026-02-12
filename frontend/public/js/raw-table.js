@@ -411,7 +411,7 @@ function renderRawDataTable(data, container) {
 
     document.getElementById('save-col-config').addEventListener('click', () => {
         localStorage.setItem(storageKey, JSON.stringify([...hiddenColumns]));
-        alert('✅ Column configuration saved!');
+        Modal.showAlert('✅ Column configuration saved!', 'success');
     });
 
     document.getElementById('reset-col-config').addEventListener('click', () => {
@@ -420,7 +420,7 @@ function renderRawDataTable(data, container) {
         document.querySelectorAll('#column-toggles input').forEach(cb => cb.checked = true);
         renderHeaders();
         renderTable();
-        alert('✅ Configuration reset!');
+        Modal.showAlert('✅ Configuration reset!', 'success');
     });
 
     // Export CSV

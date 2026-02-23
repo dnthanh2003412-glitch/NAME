@@ -144,15 +144,14 @@ export class ProjectsService {
                 console.log(`[Projects] Phase 1 Complete: ${priorityTree.length} priority projects cached.`);
 
                 // PHASE 2: Everything else (Background)
-                // We keep the first promise unresolved until Phase 2?? No, resolve now so UI gets data.
-                // But we need to trigger Phase 2 without blocking.
+                // Resolve now so UI gets data immediately, then scan remaining projects.
 
                 this.buildTreePhase(false, priorityTree).then(fullTree => {
                     this.cachedTree = fullTree;
                     this.lastCacheTime = Date.now();
                     this.saveCacheToFile(); // Save full tree to file
-                    console.log(`[Projects] Phase 2 Complete: ${fullTree.length} total projects cached.`);
-                }).catch(e => console.error('Phase 2 Scan Error:', e));
+                    console.log(`[Projects] ✅ Phase 2 Complete: ${fullTree.length} total projects cached.`);
+                }).catch(e => console.error('[Projects] ❌ Phase 2 Scan Error:', e));
 
             } catch (e) {
                 console.error('[Projects] Cache refresh failed:', e);
@@ -194,7 +193,7 @@ export class ProjectsService {
             return !alreadyScanned;
         });
 
-        console.log(`[Projects] Phase target: ${targetProjects.length} projects to scan.`);
+        console.log(`[Projects] Phase target: ${targetProjects.length} projects to scan (PriorityOnly: ${priorityOnly}).`);
 
         // 3. Scan & Map
         const newResults = [];
@@ -211,29 +210,32 @@ export class ProjectsService {
             }
         } catch (e) { console.warn('[Projects] Failed to load whitelist config for mapping:', e.message); }
 
-        for (const project of targetProjects) {
+        for (let idx = 0; idx < targetProjects.length; idx++) {
+            const project = targetProjects[idx];
             const projectInfo = this.extractProjectInfo(project);
             let matchedDatabases = [];
+
+            // Progress log for tracking on Render
+            console.log(`[Projects] Progress: ${idx + 1}/${targetProjects.length} project scanned — "${projectInfo.name}"`);
 
             // STRATEGY 0: Hardcoded Whitelist (Fastest & Most Accurate)
             if (whitelistConfig.has(project.id)) {
                 matchedDatabases = whitelistConfig.get(project.id);
                 console.log(`[Projects] Using ${matchedDatabases.length} hardcoded DBs for ${projectInfo.name}`);
             } else {
-                // OPTIMIZATION:
-                // Phase 1 (Priority) -> Use Smart Mapping (FAST)
-                // Phase 2 (Background) -> Use Structure Scan (ACCURATE)
-
                 // HYBRID STRATEGY: Combine Speed (Smart Mapping) and Accuracy (Structure Scan)
 
                 // 1. Try Smart Mapping first (Fast - no API calls)
                 matchedDatabases = this.findMatchingDatabases(projectInfo, allDatabases);
 
-                // 2. Perform Page Scan (Structure Scan)
-                // ALWAYS scan for whitelist/target projects to ensure we catch DBs in sub-pages that Smart Mapping might miss.
-                // (Previously we skipped this if Smart Mapping found something in Phase 1, causing missing DBs)
-                if (true) {
-                    const pageDbIds = await this.scanPageForDatabases(project.id);
+                // 2. Perform Page Scan (Structure Scan) with timeout protection
+                // Wrap in a timeout to prevent any single project from blocking Phase 2
+                try {
+                    const SCAN_TIMEOUT_MS = 15000; // 15 seconds max per project scan
+                    const pageDbIds = await Promise.race([
+                        this.scanPageForDatabases(project.id),
+                        new Promise((_, reject) => setTimeout(() => reject(new Error('Scan timeout')), SCAN_TIMEOUT_MS))
+                    ]);
 
                     if (pageDbIds.size > 0) {
                         const scannedDbs = Array.from(pageDbIds)
@@ -250,10 +252,12 @@ export class ProjectsService {
                             if (!existingIds.has(d.id)) matchedDatabases.push(d);
                         });
                     }
-
-                    // Rate limiting for scan
-                    if (!priorityOnly) await this.delay(50);
+                } catch (scanErr) {
+                    console.warn(`[Projects] ⏱️ Scan skipped for "${projectInfo.name}": ${scanErr.message}`);
                 }
+
+                // Rate limiting for scan
+                if (!priorityOnly) await this.delay(50);
             }
 
             newResults.push({

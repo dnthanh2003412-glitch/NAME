@@ -524,11 +524,14 @@ function destroyChart(id) {
 export function renderRawDataDashboard(data, container, databaseName, options = {}) {
     if (!data || data.length === 0) return;
 
+    // Generate unique instance ID for this dashboard to prevent DOM ID collisions
+    if (!renderRawDataDashboard._counter) renderRawDataDashboard._counter = 0;
+    const uid = options._uid || (++renderRawDataDashboard._counter);
+    options._uid = uid; // Persist for re-renders (filter updates)
+
     const { sprintFilter = '', assigneeFilter = '', startDate = '', endDate = '', activePreset = 'all' } = options;
 
-    // Detect available columns
     // Detect available columns from ALL rows to ensure we don't miss sparse columns
-    // Use a Set to collect all unique keys efficiently
     const allKeys = new Set();
     data.forEach(row => Object.keys(row).forEach(k => allKeys.add(k)));
     const columns = Array.from(allKeys);
@@ -540,37 +543,27 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
 
     // Find column names - robust matching with strict priority
     const findCol = (...names) => {
-        // Iterate names (priority list) first!
         for (const name of names) {
             const normName = normalizeStr(name);
-
-            // 1. Exact match (case insensitive)
             let found = columns.find(c => c.toLowerCase() === name.toLowerCase());
             if (found) return found;
-
-            // 2. Normalized match (ignore accents)
             found = columns.find(c => normalizeStr(c) === normName);
             if (found) return found;
         }
-
-        // 3. Partial match (Low priority - only if exact not found)
         for (const name of names) {
             const found = columns.find(c => c.toLowerCase().includes(name.toLowerCase()));
             if (found) return found;
         }
-
         return undefined;
     };
 
     const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
-
-    // Prioritize "NGÀY LÀM" (normalized to 'ngay lam') 
     const dateCol = findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
     const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'Updated', 'Created');
 
     console.log('[Dashboard] Columns analysis:', {
         totalCols: columns.length,
-        allColumnNames: columns, // Log all names to help debug
+        allColumnNames: columns,
         dateCol,
         fallbackDateCol
     });
@@ -591,7 +584,6 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     let currentEndDate = endDate;
     let currentPreset = activePreset;
 
-    // If no dates set, use default preset (this month)
     if (!currentStartDate && !currentEndDate && activePreset && presets[activePreset]) {
         const preset = presets[activePreset];
         currentStartDate = preset.start ? formatDateForInput(preset.start) : '';
@@ -612,14 +604,13 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
 
     // Check for "No Data in Range" warning
     let rangeWarning = '';
-    if (filteredData.length === 0 && data.length > 0 && (currentStartDate || currentEndDate)) { // Check even if dateCol is missing to warn
+    if (filteredData.length === 0 && data.length > 0 && (currentStartDate || currentEndDate)) {
         if (!dateCol) {
             rangeWarning = `<div style="padding:12px;margin-bottom:16px;background:#451a03;border:1px solid #ef4444;border-radius:8px;color:#fca5a5;font-size:0.9rem;">
                  ⚠️ <strong>Lỗi cấu hình:</strong> Không tìm thấy cột ngày (Done Date / Ngày làm).<br>
                  Hệ thống không thể lọc theo thời gian. Vui lòng kiểm tra lại tên cột trong Notion.
              </div>`;
         } else {
-            // Calculate actual data range
             let minDate = null, maxDate = null;
             data.forEach(r => {
                 const d = parseDate(r[dateCol]);
@@ -644,14 +635,14 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         }
     }
 
-    // Build charts list
+    // Build charts list — IDs include uid for uniqueness
     const charts = [];
-    if (assigneeCol) charts.push({ id: 'chart-raw-assignee', title: '👤 Theo Assignee', col: assigneeCol, type: 'bar' });
-    if (productCol) charts.push({ id: 'chart-raw-product', title: '📦 Theo Product Type', col: productCol, type: 'doughnut' });
-    if (sprintCol && sprints.length > 0) charts.push({ id: 'chart-raw-sprint', title: '🏃 Theo Sprint', col: sprintCol, type: 'bar' });
-    if (pointStatusCol) charts.push({ id: 'chart-raw-pointstatus', title: '✅ Theo Point Status', col: pointStatusCol, type: 'pie' });
-    if (sceneTypeCol) charts.push({ id: 'chart-raw-scenetype', title: '🎬 Theo Loại cảnh', col: sceneTypeCol, type: 'doughnut' });
-    if (taskTypeCol) charts.push({ id: 'chart-raw-tasktype', title: '📋 Theo Task Type', col: taskTypeCol, type: 'bar' });
+    if (assigneeCol) charts.push({ id: `chart-raw-assignee-${uid}`, title: '👤 Theo Assignee', col: assigneeCol, type: 'bar' });
+    if (productCol) charts.push({ id: `chart-raw-product-${uid}`, title: '📦 Theo Product Type', col: productCol, type: 'doughnut' });
+    if (sprintCol && sprints.length > 0) charts.push({ id: `chart-raw-sprint-${uid}`, title: '🏃 Theo Sprint', col: sprintCol, type: 'bar' });
+    if (pointStatusCol) charts.push({ id: `chart-raw-pointstatus-${uid}`, title: '✅ Theo Point Status', col: pointStatusCol, type: 'pie' });
+    if (sceneTypeCol) charts.push({ id: `chart-raw-scenetype-${uid}`, title: '🎬 Theo Loại cảnh', col: sceneTypeCol, type: 'doughnut' });
+    if (taskTypeCol) charts.push({ id: `chart-raw-tasktype-${uid}`, title: '📋 Theo Task Type', col: taskTypeCol, type: 'bar' });
 
     if (charts.length === 0) {
         console.log('[Dashboard] No chartable columns found in raw data');
@@ -669,7 +660,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         ? `${displayStartDate} → ${displayEndDate}`
         : (displayStartDate ? `Từ ${displayStartDate}` : (displayEndDate ? `Đến ${displayEndDate}` : 'Tất cả'));
 
-    // Create dashboard container with filter bar
+    // Create dashboard container with filter bar — all IDs include uid
     const dashDiv = document.createElement('div');
     dashDiv.className = 'raw-dashboard';
     dashDiv.style.cssText = 'margin-bottom:20px;padding:16px;background:#0f172a;border-radius:12px;border:1px solid #334155;';
@@ -698,16 +689,16 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
                 <div style="display:flex;align-items:center;gap:8px;">
                     <label style="color:#94a3b8;font-size:0.8rem;">Từ ngày:</label>
-                    <input type="date" id="raw-start-date" value="${currentStartDate}" 
+                    <input type="date" id="raw-start-date-${uid}" value="${currentStartDate}" 
                         style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:#e2e8f0;font-size:0.85rem;">
                 </div>
                 <span style="color:#64748b;">→</span>
                 <div style="display:flex;align-items:center;gap:8px;">
                     <label style="color:#94a3b8;font-size:0.8rem;">Đến ngày:</label>
-                    <input type="date" id="raw-end-date" value="${currentEndDate}" 
+                    <input type="date" id="raw-end-date-${uid}" value="${currentEndDate}" 
                         style="padding:6px 10px;border-radius:6px;border:1px solid #475569;background:#0f172a;color:#e2e8f0;font-size:0.85rem;">
                 </div>
-                <button id="raw-clear-dates" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;border:1px solid #ef4444;
+                <button id="raw-clear-dates-${uid}" style="padding:6px 12px;font-size:0.8rem;border-radius:6px;border:1px solid #ef4444;
                     background:transparent;color:#ef4444;cursor:pointer;transition:all 0.2s;">✕ Xóa</button>
             </div>
         </div>
@@ -716,7 +707,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         <div class="dash-filter-bar" style="margin-bottom:12px;">
             ${assigneeCol ? `
                 <label>Nhân sự:</label>
-                <select id="raw-assignee-filter" style="min-width:150px;">
+                <select id="raw-assignee-filter-${uid}" style="min-width:150px;">
                     <option value="">Tất cả</option>
                     ${assignees.map(a => `<option value="${a}" ${assigneeFilter === a ? 'selected' : ''}>${a}</option>`).join('')}
                 </select>
@@ -724,13 +715,13 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             
             ${sprintCol && sprints.length > 0 ? `
                 <label style="margin-left:16px;">Sprint:</label>
-                <select id="raw-sprint-filter" style="min-width:120px;">
+                <select id="raw-sprint-filter-${uid}" style="min-width:120px;">
                     <option value="">Tất cả Sprint</option>
                     ${sprints.map(s => `<option value="${s}" ${sprintFilter === s ? 'selected' : ''}>${s}</option>`).join('')}
                 </select>
             ` : ''}
             
-            <button id="raw-apply-filter" class="dash-filter-btn">🔄 Cập nhật</button>
+            <button id="raw-apply-filter-${uid}" class="dash-filter-btn">🔄 Cập nhật</button>
         </div>
         
         <p style="margin:0 0 12px 0;color:#64748b;font-size:0.8rem;">
@@ -739,7 +730,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             ${sprintFilter ? ` | ${sprintFilter}` : ''}
             ${assigneeFilter ? ` | ${assigneeFilter}` : ''}
         </p>
-        <div id="raw-charts-container" style="display:flex;flex-wrap:wrap;gap:16px;">
+        <div id="raw-charts-container-${uid}" style="display:flex;flex-wrap:wrap;gap:16px;">
             ${charts.map(c => createChartCard(c.id, c.title, charts.length <= 3 ? '32%' : '48%')).join('')}
         </div>
     `;
@@ -751,8 +742,8 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
             const presetKey = btn.dataset.preset;
             const preset = presets[presetKey];
 
-            document.getElementById('raw-start-date').value = preset.start ? formatDateForInput(preset.start) : '';
-            document.getElementById('raw-end-date').value = preset.end ? formatDateForInput(preset.end) : '';
+            dashDiv.querySelector(`#raw-start-date-${uid}`).value = preset.start ? formatDateForInput(preset.start) : '';
+            dashDiv.querySelector(`#raw-end-date-${uid}`).value = preset.end ? formatDateForInput(preset.end) : '';
 
             // Update active state
             dashDiv.querySelectorAll('.preset-btn').forEach(b => {
@@ -785,10 +776,10 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         });
     });
 
-    // Clear dates button
-    document.getElementById('raw-clear-dates')?.addEventListener('click', () => {
-        document.getElementById('raw-start-date').value = '';
-        document.getElementById('raw-end-date').value = '';
+    // Clear dates button — scoped to dashDiv
+    dashDiv.querySelector(`#raw-clear-dates-${uid}`)?.addEventListener('click', () => {
+        dashDiv.querySelector(`#raw-start-date-${uid}`).value = '';
+        dashDiv.querySelector(`#raw-end-date-${uid}`).value = '';
         dashDiv.querySelectorAll('.preset-btn').forEach(b => {
             b.classList.remove('active');
             b.style.background = 'transparent';
@@ -805,12 +796,12 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         triggerFilterUpdate('all');
     });
 
-    // Helper function to trigger filter update
+    // Helper function to trigger filter update — reads from uid-scoped elements
     function triggerFilterUpdate(presetKey = '') {
-        const newStartDate = document.getElementById('raw-start-date')?.value || '';
-        const newEndDate = document.getElementById('raw-end-date')?.value || '';
-        const newAssignee = document.getElementById('raw-assignee-filter')?.value || '';
-        const newSprint = document.getElementById('raw-sprint-filter')?.value || '';
+        const newStartDate = dashDiv.querySelector(`#raw-start-date-${uid}`)?.value || '';
+        const newEndDate = dashDiv.querySelector(`#raw-end-date-${uid}`)?.value || '';
+        const newAssignee = dashDiv.querySelector(`#raw-assignee-filter-${uid}`)?.value || '';
+        const newSprint = dashDiv.querySelector(`#raw-sprint-filter-${uid}`)?.value || '';
 
         // Dispatch event to sync with table (Legacy support)
         document.dispatchEvent(new CustomEvent('dashboard-filter-change', {
@@ -837,6 +828,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         // Re-render dashboard with new filters, PRESERVING options (callbacks)
         renderRawDataDashboard(data, container, databaseName, {
             ...options, // Preserve callbacks like onFilterChange
+            _uid: uid, // Preserve the same uid for re-renders!
             startDate: newStartDate,
             endDate: newEndDate,
             assigneeFilter: newAssignee,
@@ -845,13 +837,12 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         });
     }
 
-    // Attach filter events
-    document.getElementById('raw-apply-filter')?.addEventListener('click', () => triggerFilterUpdate());
+    // Attach filter events — scoped to dashDiv
+    dashDiv.querySelector(`#raw-apply-filter-${uid}`)?.addEventListener('click', () => triggerFilterUpdate());
 
     // Date input change - auto update preset buttons
-    ['raw-start-date', 'raw-end-date'].forEach(id => {
-        document.getElementById(id)?.addEventListener('change', () => {
-            // Clear preset active state when manually changing dates
+    [`raw-start-date-${uid}`, `raw-end-date-${uid}`].forEach(elId => {
+        dashDiv.querySelector(`#${elId}`)?.addEventListener('change', () => {
             dashDiv.querySelectorAll('.preset-btn').forEach(b => {
                 b.classList.remove('active');
                 b.style.background = 'transparent';

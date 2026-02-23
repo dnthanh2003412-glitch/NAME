@@ -33,8 +33,19 @@ function renderRawDataTable(data, container) {
         return;
     }
 
-    const { database_name, columns, data: rows, total_records } = data;
+    const { database_name, columns, data: rows, total_records, synced_at, from_cache } = data;
     const storageKey = `rawTable_${database_name.replace(/\s/g, '_')}_hiddenCols`;
+
+    // Format sync time for display
+    const formatSyncTime = (isoString) => {
+        if (!isoString) return 'Không rõ';
+        const d = new Date(isoString);
+        const pad = n => String(n).padStart(2, '0');
+        return `${pad(d.getHours())}:${pad(d.getMinutes())} ${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
+    };
+    const syncTimeStr = formatSyncTime(synced_at);
+    const sourceLabel = from_cache ? '📦 từ dữ liệu đã lưu trước đó' : '🟢 Từ Notion trực tiếp';
+    const sourceColor = from_cache ? '#f59e0b' : '#22c55e';
 
     // State
     let filteredRows = [...rows];
@@ -64,6 +75,10 @@ function renderRawDataTable(data, container) {
             <div>
                 <h3>📊 ${database_name}</h3>
                 <p class="data-info">${total_records} records • ${columns.length} columns</p>
+                <p id="sync-time-note" style="font-size: 0.75rem; margin: 4px 0 0 0; color: rgba(255,255,255,0.5);">
+                    🕐 Dữ liệu lấy lúc: <strong style="color: rgba(255,255,255,0.8);">${syncTimeStr}</strong> 
+                    • <span style="color: ${sourceColor};">${sourceLabel}</span>
+                </p>
             </div>
             <button id="force-refresh-btn" class="btn-small btn-primary-small" style="background:#eab308;color:black;">🔄 Cập nhật từ Notion</button>
         </div>
@@ -344,6 +359,27 @@ function renderRawDataTable(data, container) {
         filteredRows = result;
         currentPage = 1;
         renderTable();
+
+        // 4. Re-render dashboard charts with filtered data (Issue 2: sync dash & table)
+        const dashContainer = document.getElementById('raw-dashboard-container');
+        if (dashContainer && typeof window.renderRawDataDashboard === 'function') {
+            try {
+                window.renderRawDataDashboard(filteredRows, dashContainer, database_name, {
+                    startDate,
+                    endDate,
+                    assigneeFilter,
+                    sprintFilter,
+                    activePreset: dashFilters.activePreset || 'all',
+                    onFilterChange: (newFilters) => {
+                        dashFilters = { ...dashFilters, ...newFilters };
+                        applyAllFilters();
+                    }
+                });
+                console.log('[raw-table] Dashboard re-rendered with', filteredRows.length, 'filtered rows');
+            } catch (err) {
+                console.error('[raw-table] Dashboard re-render error:', err);
+            }
+        }
     };
 
     // Handle search input

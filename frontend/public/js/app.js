@@ -460,6 +460,21 @@ class DashboardApp {
 
         // Clear container completely before rendering new report
         container.innerHTML = '';
+
+        // Update report title based on type
+        const titleEl = document.getElementById('report-title');
+        const reportNames = {
+            'raw': '📋 Xuất Dữ liệu Thô',
+            'raw-all': '📋 Raw (All Projects)',
+            'sprint': '📈 Báo cáo Sprint',
+            'productivity': '📊 Báo cáo Năng suất',
+            'burndown': '🔥 Burndown Chart',
+            'sync-monitor': '🔄 Sync Monitor'
+        };
+        if (titleEl) {
+            titleEl.innerHTML = `${reportNames[reportType] || reportType} <span style="font-size:0.7em;color:rgba(255,255,255,0.4);font-weight:normal;">— Đang tải...</span>`;
+        }
+
         console.log(`[Dashboard] Generating report: ${reportType}, reportId: ${reportId}, container cleared`);
 
         switch (reportType) {
@@ -1150,6 +1165,14 @@ class DashboardApp {
             return;
         }
 
+        // Helper: format ISO time to Vietnamese display
+        const formatSyncTime = (isoString) => {
+            if (!isoString) return 'Không rõ';
+            const d = new Date(isoString);
+            const pad = n => String(n).padStart(2, '0');
+            return `${pad(d.getHours())}:${pad(d.getMinutes())} ngày ${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
+        };
+
         try {
             // Fetch raw data for each database
             for (const dbId of dbIds) {
@@ -1174,6 +1197,17 @@ class DashboardApp {
                     // Remove loading if still present
                     const loadingEl = container.querySelector('.loading-state');
                     if (loadingEl) loadingEl.remove();
+
+                    // Update report title with sync time note
+                    const titleEl = document.getElementById('report-title');
+                    if (titleEl) {
+                        const syncTime = formatSyncTime(result.synced_at);
+                        const fromCache = result.from_cache;
+                        const sourceIcon = fromCache ? '📦' : '🟢';
+                        const sourceText = fromCache ? 'từ dữ liệu đã lưu trước đó' : 'Từ Notion trực tiếp';
+                        const sourceColor = fromCache ? '#f59e0b' : '#22c55e';
+                        titleEl.innerHTML = `📋 Xuất Dữ liệu Thô <span style="font-size:0.65em;font-weight:normal;color:rgba(255,255,255,0.5);"> — 🕐 Dữ liệu lấy lúc <strong style="color:rgba(255,255,255,0.8);">${syncTime}</strong> • <span style="color:${sourceColor};">${sourceIcon} ${sourceText}</span></span>`;
+                    }
 
                     // Render the raw data table with all columns
                     this.renderRawDatabaseTable(container, dbId, result);

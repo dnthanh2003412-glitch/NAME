@@ -65,9 +65,11 @@ export class DataFetcher {
      * Priority databases are fetched first and saved immediately
      * @param {Array<string>} databaseIds - Array of database IDs to fetch
      * @param {Function} onBatchComplete - Callback when a batch completes (for progressive loading)
+     * @param {Object} options - Additional options
+     * @param {boolean} options.fullSync - Force full sync (no incremental), always true for single-DB fetches
      * @returns {Promise<Object>} Object with database data keyed by ID
      */
-    async fetchAllData(databaseIds, onBatchComplete = null) {
+    async fetchAllData(databaseIds, onBatchComplete = null, options = {}) {
         // Deduplicate IDs first
         const uniqueIds = [...new Set(databaseIds)];
 
@@ -124,12 +126,17 @@ export class DataFetcher {
                     console.log(`[Fetcher] 🌟 Priority: ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
 
                     // Save immediately to DB if available
-                    // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
-                        const stats = this.db.upsertData(dbId, transformed);
-                        // Use TOTAL count (from DB), not just fetched count
-                        // This fixes issue where incremental sync returns 0 but DB has data
-                        const totalCount = stats ? stats.total : transformed.length;
+                        let totalCount;
+                        if (options.fullSync) {
+                            // Full sync: OVERWRITE cache to remove deleted records
+                            this.db.saveData(dbId, transformed);
+                            totalCount = transformed.length;
+                        } else {
+                            // Incremental: merge into existing cache
+                            const stats = this.db.upsertData(dbId, transformed);
+                            totalCount = stats ? stats.total : transformed.length;
+                        }
                         onBatchComplete(dbId, totalCount);
                     }
 
@@ -156,11 +163,11 @@ export class DataFetcher {
                     dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
                     await sleep(150);
 
-                    // Try incremental sync first, fallback to full sync
+                    // Try incremental sync first ONLY if not fullSync mode, fallback to full sync
                     let pages = [];
                     let usedIncremental = false;
 
-                    if (this.db) {
+                    if (this.db && !options.fullSync) {
                         const lastSync = this.db.getLastSyncTime(dbId);
                         if (lastSync) {
                             try {
@@ -180,6 +187,7 @@ export class DataFetcher {
                             pages = await this.client.getAllPages(dbId);
                         }
                     } else {
+                        // fullSync mode or no DB: always fetch ALL records
                         pages = await this.client.getAllPages(dbId);
                     }
 
@@ -197,11 +205,17 @@ export class DataFetcher {
                     normalCount++;
 
                     // Save immediately to DB if available
-                    // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
-                        const stats = this.db.upsertData(dbId, transformed);
-                        // Use TOTAL count (from DB), not just fetched count
-                        const totalCount = stats ? stats.total : transformed.length;
+                        let totalCount;
+                        if (options.fullSync || !usedIncremental) {
+                            // Full sync or first-time fetch: OVERWRITE cache
+                            this.db.saveData(dbId, transformed);
+                            totalCount = transformed.length;
+                        } else {
+                            // Incremental: merge into existing cache
+                            const stats = this.db.upsertData(dbId, transformed);
+                            totalCount = stats ? stats.total : transformed.length;
+                        }
                         onBatchComplete(dbId, totalCount);
                     }
 

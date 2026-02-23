@@ -339,29 +339,62 @@ export function setupRoutes(app, db, poller) {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         const { id } = req.params;
         const forceRefresh = req.query.refresh === 'true';
+        const CACHE_MAX_AGE_MS = 10 * 60 * 1000; // 10 minutes — cache is considered fresh within this window
         try {
             let cachedData = null;
-            if (!forceRefresh) cachedData = db.getData(id);
+            let fromCache = false;
 
-            // If missing, empty, or forced refresh -> fetch from Notion
-            if (!cachedData || cachedData.length === 0 || forceRefresh) {
-                console.log(`[API] Raw data fetching for ${id} (Force: ${forceRefresh})...`);
+            // Smart cache strategy:
+            // 1. If forceRefresh → always fetch fresh
+            // 2. If cache exists and is < CACHE_MAX_AGE → use cache (fast!)
+            // 3. If cache is old or missing → fetch fresh from Notion (realtime)
+            if (!forceRefresh) {
+                const lastSync = db.getLastSyncTime(id);
+                if (lastSync) {
+                    const cacheAge = Date.now() - new Date(lastSync).getTime();
+                    if (cacheAge < CACHE_MAX_AGE_MS) {
+                        cachedData = db.getData(id);
+                        if (cachedData && cachedData.length > 0) {
+                            fromCache = true;
+                            const ageMin = Math.round(cacheAge / 60000);
+                            console.log(`[API] Serving ${cachedData.length} cached records for ${id} (synced ${ageMin}min ago, fresh)`);
+                        }
+                    } else {
+                        const ageMin = Math.round((Date.now() - new Date(lastSync).getTime()) / 60000);
+                        console.log(`[API] Cache stale for ${id} (${ageMin}min old > ${CACHE_MAX_AGE_MS / 60000}min), fetching fresh...`);
+                    }
+                }
+            }
+
+            // Fetch fresh from Notion if no cached data or not cache-first
+            if (!cachedData || cachedData.length === 0) {
+                console.log(`[API] Raw data fetching FRESH from Notion for ${id} (Force: ${forceRefresh})...`);
                 try {
                     const fetcher = new DataFetcher(notionToken);
-                    const result = await fetcher.fetchAllData([id]);
-                    cachedData = result[id] || [];
+                    const result = await fetcher.fetchAllData([id], null, { fullSync: true });
+                    const freshData = result[id] || [];
 
-                    if (cachedData.length > 0) {
-                        db.saveData(id, cachedData);
-                        console.log(`[API] Fetched and cached ${cachedData.length} records for ${id}`);
+                    if (freshData.length > 0) {
+                        // Use saveData (OVERWRITE) — not upsertData — to ensure deleted records are removed
+                        db.saveData(id, freshData);
+                        cachedData = freshData;
+                        fromCache = false;
+                        console.log(`[API] ✅ Fetched and saved ${freshData.length} records for ${id}`);
+                    } else {
+                        // Notion returned 0 records — might be empty DB or error
+                        // Try fallback to cache if available
+                        console.warn(`[API] ⚠️ Notion returned 0 records for ${id}, falling back to cache`);
+                        cachedData = db.getData(id);
+                        fromCache = true;
                     }
                 } catch (fetchError) {
-                    console.error(`[API] Failed to fetch data for ${id}:`, fetchError);
-                    // If force refresh failed, try to fallback to existing cache if available
-                    if (forceRefresh) {
-                        cachedData = db.getData(id);
+                    console.error(`[API] ❌ Failed to fetch from Notion for ${id}:`, fetchError.message);
+                    // Fallback to cache
+                    cachedData = db.getData(id);
+                    fromCache = true;
+                    if (cachedData && cachedData.length > 0) {
+                        console.log(`[API] Using fallback cache: ${cachedData.length} records`);
                     }
-                    // Fallthrough to error response below if still empty
                 }
             }
 
@@ -392,13 +425,19 @@ export function setupRoutes(app, db, poller) {
                 });
                 return row;
             });
+
+            // Resolve any remaining UUIDs (relation/rollup IDs from unsynced databases)
+            await resolveUnresolvedIds(formattedData, lookupMap, notionToken, db);
+
             res.json({
                 success: true,
                 database_id: id,
                 database_name: dbInfo?.name || 'Unknown Database',
                 columns: Array.from(columns),
                 data: formattedData,
-                total_records: formattedData.length
+                total_records: formattedData.length,
+                from_cache: fromCache,
+                synced_at: fromCache ? (db.getLastSyncTime(id) || new Date().toISOString()) : new Date().toISOString()
             });
         } catch (error) {
             console.error(`[API] Error getting raw data:`, error);
@@ -765,6 +804,103 @@ function extractProjectName(databaseName) {
     }
     return projectName.replace(/[-_\s]+$/, '').trim() || databaseName;
 }
+/**
+ * Resolve any remaining UUIDs in formatted data by fetching page titles from Notion API.
+ * This handles relation/rollup IDs that are not in the lookupMap (e.g., pages from unsynced databases).
+ * @param {Array} formattedData - Array of formatted row objects
+ * @param {Map} lookupMap - The existing lookup map (will be updated with new resolutions)
+ * @param {string} notionToken - Notion API token
+ * @param {Object} dbManager - DatabaseManager instance to persist resolved names
+ * @returns {Promise<Array>} Updated formattedData with IDs replaced by names
+ */
+async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbManager = null) {
+    const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+    const unresolvedIds = new Set();
+
+    // Scan all values for remaining UUIDs
+    for (const row of formattedData) {
+        for (const val of Object.values(row)) {
+            if (typeof val === 'string' && val.length > 0) {
+                // Check each comma-separated part (relations can be "id1, id2")
+                const parts = val.split(', ');
+                for (const part of parts) {
+                    const trimmed = part.trim();
+                    if (uuidRegex.test(trimmed) && !lookupMap.has(trimmed.toLowerCase())) {
+                        unresolvedIds.add(trimmed.toLowerCase());
+                    }
+                }
+            }
+        }
+    }
+
+    if (unresolvedIds.size === 0) return formattedData;
+
+    console.log(`[API] 🔍 Found ${unresolvedIds.size} unresolved relation IDs, fetching from Notion...`);
+
+    // Limit to 50 to avoid API overload
+    const idsToResolve = Array.from(unresolvedIds).slice(0, 50);
+    const { Client } = await import('@notionhq/client');
+    const notion = new Client({ auth: notionToken });
+    const resolvedMap = new Map();
+
+    for (const id of idsToResolve) {
+        try {
+            const page = await notion.pages.retrieve({ page_id: id });
+            // Extract title from page properties
+            let title = '';
+            for (const [, prop] of Object.entries(page.properties || {})) {
+                if (prop.type === 'title' && prop.title) {
+                    title = prop.title.map(t => t.plain_text).join('');
+                    break;
+                }
+            }
+            if (title) {
+                resolvedMap.set(id, title);
+                lookupMap.set(id, title); // Update in-memory cache for future requests
+            } else {
+                // Page exists but has no title — use "Untitled"
+                resolvedMap.set(id, '[Untitled]');
+                lookupMap.set(id, '[Untitled]');
+            }
+        } catch (err) {
+            // Page may have been deleted or no access
+            console.warn(`[API] ⚠️ Could not resolve page ${id.substring(0, 8)}...: ${err.message}`);
+        }
+        // Rate limiting: 100ms between requests
+        await new Promise(r => setTimeout(r, 100));
+    }
+
+    if (resolvedMap.size > 0) {
+        console.log(`[API] ✅ Resolved ${resolvedMap.size}/${idsToResolve.length} relation IDs to names`);
+
+        // Replace UUIDs in formatted data with resolved names
+        for (const row of formattedData) {
+            for (const [col, val] of Object.entries(row)) {
+                if (typeof val === 'string' && val.length > 0) {
+                    const parts = val.split(', ');
+                    let changed = false;
+                    const newParts = parts.map(part => {
+                        const trimmed = part.trim().toLowerCase();
+                        if (resolvedMap.has(trimmed)) {
+                            changed = true;
+                            return resolvedMap.get(trimmed);
+                        }
+                        return part;
+                    });
+                    if (changed) {
+                        row[col] = [...new Set(newParts)].join(', '); // Dedupe
+                    }
+                }
+            }
+        }
+    }
+
+    if (unresolvedIds.size > 50) {
+        console.warn(`[API] ⚠️ ${unresolvedIds.size - 50} IDs skipped (limit 50 per request)`);
+    }
+
+    return formattedData;
+}
 
 /**
  * Helper: Format Notion property value for display (Enhanced Recursive with Lookup)
@@ -882,13 +1018,27 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
     // 4. Primitives (String, Number, Boolean)
     const strVal = String(value);
 
-    // UUID regex check to avoid false positives on normal text
+    // UUID regex check — supports both dashed (standard) and dashless (Notion relation) formats
     const isUUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(strVal);
+    const isDashlessUUID = !isUUID && /^[0-9a-f]{32}$/i.test(strVal);
 
     if (isUUID) {
         const id = strVal.toLowerCase();
         if (lookupMap.has(id)) {
             return lookupMap.get(id);
+        }
+    }
+
+    // Handle dashless UUIDs: normalize to dashed format (8-4-4-4-12) and try lookup
+    if (isDashlessUUID) {
+        const raw = strVal.toLowerCase();
+        const dashed = `${raw.slice(0, 8)}-${raw.slice(8, 12)}-${raw.slice(12, 16)}-${raw.slice(16, 20)}-${raw.slice(20)}`;
+        if (lookupMap.has(dashed)) {
+            return lookupMap.get(dashed);
+        }
+        // Also try raw dashless in case lookupMap has it that way
+        if (lookupMap.has(raw)) {
+            return lookupMap.get(raw);
         }
     }
 
@@ -984,8 +1134,10 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
             job.results.push({ dbId, recordCount });
             console.log(`[SyncJob ${jobId}] ${synced}/${databaseIds.length} - ${dbId.substring(0, 8)}: ${recordCount} records`);
         };
-
-        await fetcher.fetchAllData(databaseIds, onBatchComplete);
+        // When targeting a single DB, use fullSync to ensure 100% accuracy (including deleted records removal)
+        // When syncing all DBs (batch), use incremental for performance
+        const syncOptions = targetDatabaseId ? { fullSync: true } : {};
+        await fetcher.fetchAllData(databaseIds, onBatchComplete, syncOptions);
 
         job.total_records = job.results.reduce((sum, r) => sum + r.recordCount, 0);
         job.status = 'complete';

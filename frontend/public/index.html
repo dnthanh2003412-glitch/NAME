@@ -17,7 +17,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css?v=20260206_v11">
+    <link rel="stylesheet" href="css/styles.css?v=20260224_v12">
 </head>
 
 <body>
@@ -147,7 +147,7 @@
                 </div>
                 <div id="connection-status" class="status-indicator">
                     <span class="status-dot"></span>
-                    <span class="status-text">Đã kết nối</span>
+                    <span class="status-text" aria-live="polite">Đã kết nối</span>
                 </div>
             </div>
 
@@ -314,16 +314,46 @@
                                 Phím tắt
                             </h4>
                             <div class="hotkey-grid">
-                                <div class="hotkey-item"><kbd>ESC</kbd> Đóng popup</div>
-                                <div class="hotkey-item"><kbd>Enter</kbd> Xác nhận</div>
-                                <div class="hotkey-item"><kbd>Ctrl+F</kbd> Tìm kiếm</div>
-                                <div class="hotkey-item"><kbd>Ctrl+D</kbd> Copy dòng xuống</div>
-                                <div class="hotkey-item"><kbd>Ctrl+S</kbd> Lưu / Xuất file</div>
-                                <div class="hotkey-item"><kbd>Ctrl+A</kbd> Chọn tất cả</div>
-                                <div class="hotkey-item"><kbd>←</kbd> <kbd>→</kbd> Chuyển trang</div>
-                                <div class="hotkey-item"><kbd>↑</kbd> <kbd>↓</kbd> Di chuyển dòng</div>
-                                <div class="hotkey-item"><kbd>Home</kbd> Trang đầu</div>
-                                <div class="hotkey-item"><kbd>End</kbd> Trang cuối</div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>ESC</kbd></span>
+                                    <span class="hotkey-desc">Đóng popup/modal</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>F</kbd></span>
+                                    <span class="hotkey-desc">Focus ô tìm kiếm sidebar</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>Enter</kbd></span>
+                                    <span class="hotkey-desc">Tạo báo cáo ngay</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>Shift</kbd><span class="hotkey-sep">+</span><kbd>R</kbd></span>
+                                    <span class="hotkey-desc">Làm mới dữ liệu</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>Shift</kbd><span class="hotkey-sep">+</span><kbd>A</kbd></span>
+                                    <span class="hotkey-desc">Chọn tất cả dự án hiển thị</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>Shift</kbd><span class="hotkey-sep">+</span><kbd>X</kbd></span>
+                                    <span class="hotkey-desc">Bỏ chọn tất cả</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>Shift</kbd><span class="hotkey-sep">+</span><kbd>H</kbd></span>
+                                    <span class="hotkey-desc">Ẩn/Hiện mục đã ẩn</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>S</kbd></span>
+                                    <span class="hotkey-desc">Lưu cấu hình sidebar</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Alt</kbd><span class="hotkey-sep">+</span><kbd>1..5</kbd></span>
+                                    <span class="hotkey-desc">Chọn nhanh loại báo cáo</span>
+                                </div>
+                                <div class="hotkey-item">
+                                    <span class="hotkey-keys"><kbd>Ctrl</kbd><span class="hotkey-sep">/</span><kbd>Cmd</kbd><span class="hotkey-sep">+</span><kbd>D</kbd></span>
+                                    <span class="hotkey-desc">Fill down (bảng Năng suất)</span>
+                                </div>
                             </div>
                         </div>
                     </div>

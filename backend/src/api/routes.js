@@ -10,6 +10,8 @@ import { reportRegistry } from '../reports/index.js';
 import { ProductivityService } from '../reports/productivity.js';
 import { SyncService } from '../notion/sync.js';
 import { COLUMNS as PROD_COLUMNS } from '../constants.js';
+import { buildFreshnessContract } from '../utils/freshness.js';
+import { loadSyncJobs, persistSyncJobs } from '../utils/sync-job-store.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,6 +22,90 @@ const router = express.Router();
 let databasesCache = null;
 let databasesCacheTime = 0;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const RAW_FORMAT_CACHE_TTL_MS = parseInt(process.env.RAW_FORMAT_CACHE_TTL_MS || '120000', 10);
+const RAW_RELATION_RESOLVE_MAX_ROWS = parseInt(process.env.RAW_RELATION_RESOLVE_MAX_ROWS || '400', 10);
+const FULL_SYNC_CHECKPOINT_MS = parseInt(process.env.FULL_SYNC_CHECKPOINT_MS || `${6 * 60 * 60 * 1000}`, 10);
+const rawFormatCache = new Map();
+
+function getRawFormatCacheKey(databaseId, syncTime, options = {}) {
+    return [
+        databaseId,
+        syncTime || 'no-sync-time',
+        options.search || '',
+        options.sortBy || '',
+        options.sortDir || 'asc',
+        options.page || 1,
+        options.limit || 0,
+        options.resolveRelations ? 'resolve' : 'noresolve'
+    ].join('::');
+}
+
+function pruneRawFormatCache() {
+    const now = Date.now();
+    for (const [key, entry] of rawFormatCache.entries()) {
+        if ((now - entry.createdAt) > RAW_FORMAT_CACHE_TTL_MS) {
+            rawFormatCache.delete(key);
+        }
+    }
+}
+
+function parsePaginationParams(query) {
+    const page = Math.max(1, parseInt(query.page, 10) || 1);
+    const limitRaw = parseInt(query.limit, 10);
+    const limit = Number.isFinite(limitRaw) && limitRaw > 0 ? Math.min(limitRaw, 1000) : null;
+    const sortBy = typeof query.sort_by === 'string' ? query.sort_by : null;
+    const sortDir = query.sort_dir === 'desc' ? 'desc' : 'asc';
+    const search = typeof query.search === 'string' ? query.search.trim().toLowerCase() : '';
+    const resolveRelations = query.resolve_relations !== 'false';
+    return { page, limit, sortBy, sortDir, search, resolveRelations };
+}
+
+function applyRawFiltersAndPagination(rows, columns, options) {
+    let filtered = rows;
+
+    if (options.search) {
+        filtered = rows.filter(row =>
+            columns.some(col => String(row[col] ?? '').toLowerCase().includes(options.search))
+        );
+    }
+
+    if (options.sortBy && columns.includes(options.sortBy)) {
+        filtered = [...filtered].sort((a, b) => {
+            const av = String(a[options.sortBy] ?? '');
+            const bv = String(b[options.sortBy] ?? '');
+            const cmp = av.localeCompare(bv, undefined, { numeric: true, sensitivity: 'base' });
+            return options.sortDir === 'desc' ? -cmp : cmp;
+        });
+    }
+
+    const totalFiltered = filtered.length;
+    if (!options.limit) {
+        return {
+            data: filtered,
+            pagination: {
+                page: 1,
+                limit: null,
+                total_filtered: totalFiltered,
+                total_pages: 1
+            }
+        };
+    }
+
+    const totalPages = Math.max(1, Math.ceil(totalFiltered / options.limit));
+    const page = Math.min(options.page, totalPages);
+    const offset = (page - 1) * options.limit;
+    const pageData = filtered.slice(offset, offset + options.limit);
+
+    return {
+        data: pageData,
+        pagination: {
+            page,
+            limit: options.limit,
+            total_filtered: totalFiltered,
+            total_pages: totalPages
+        }
+    };
+}
 
 // Load priority projects whitelist
 function loadPriorityProjects() {
@@ -37,7 +123,27 @@ function loadPriorityProjects() {
 
 export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
-    const globalProjectsService = notionToken ? new ProjectsService(notionToken) : null;
+    let globalProjectsService = null;
+    const rawWarmupInFlight = new Set();
+    const syncJobsPath = path.join(__dirname, '..', '..', 'data', 'sync_jobs.json');
+    const syncJobs = loadSyncJobs(syncJobsPath);
+    const saveSyncJobs = () => persistSyncJobs(syncJobsPath, syncJobs);
+    const relationNameCache = new Map(Object.entries(db.getMetadata('relation_name_cache') || {}));
+    const persistRelationNameCache = () => {
+        const toSave = {};
+        relationNameCache.forEach((value, key) => {
+            toSave[key] = value;
+        });
+        db.setMetadata('relation_name_cache', toSave);
+    };
+
+    const getProjectsService = () => {
+        if (!notionToken) return null;
+        if (!globalProjectsService) {
+            globalProjectsService = new ProjectsService(notionToken);
+        }
+        return globalProjectsService;
+    };
 
     // Helper: Get databases with cache
     const getCachedDatabases = async () => {
@@ -52,11 +158,71 @@ export function setupRoutes(app, db, poller) {
         return databasesCache;
     };
 
+    const scheduleBackgroundCacheWarmup = (reason = 'manual') => {
+        if (!poller || typeof poller.triggerPoll !== 'function') {
+            return false;
+        }
+
+        setTimeout(async () => {
+            try {
+                console.log(`[API] Background cache warmup started (${reason})`);
+                await poller.triggerPoll();
+                db.buildLookupCache();
+                console.log(`[API] Background cache warmup completed (${reason})`);
+            } catch (error) {
+                console.warn(`[API] Background cache warmup failed (${reason}):`, error.message);
+            }
+        }, 50);
+
+        return true;
+    };
+
+    const scheduleRawDatabaseWarmup = (databaseId, reason = 'raw_checkpoint_due') => {
+        if (!databaseId || rawWarmupInFlight.has(databaseId)) {
+            return false;
+        }
+        if (!notionToken) {
+            return false;
+        }
+
+        rawWarmupInFlight.add(databaseId);
+        setTimeout(async () => {
+            try {
+                console.log(`[API] Background raw warmup started for ${databaseId} (${reason})`);
+                const fetcher = new DataFetcher(notionToken, db);
+                const result = await fetcher.fetchAllData([databaseId], null, {
+                    fullSync: true,
+                    fullSyncCheckpointMs: FULL_SYNC_CHECKPOINT_MS,
+                    failOnDatabaseError: false
+                });
+                const rows = Array.isArray(result?.[databaseId]) ? result[databaseId] : null;
+                if (rows) {
+                    db.saveData(databaseId, rows);
+                    rawFormatCache.clear();
+                    console.log(`[API] Background raw warmup completed for ${databaseId}: ${rows.length} rows`);
+                }
+            } catch (error) {
+                console.warn(`[API] Background raw warmup failed for ${databaseId}:`, error.message);
+            } finally {
+                rawWarmupInFlight.delete(databaseId);
+            }
+        }, 30);
+
+        return true;
+    };
+
     // ============ AUTH ROUTES ============
     app.get('/auth/status', (req, res) => {
+        const configured = !!notionToken;
+        const sessionAuthenticated = !!req.session?.configured;
         res.json({
-            authenticated: !!notionToken,
-            configured: !!notionToken,
+            authenticated: configured, // Backward compatible for current UI
+            configured,
+            session_authenticated: sessionAuthenticated,
+            auth_state: {
+                token_configured: configured,
+                session_authenticated: sessionAuthenticated
+            },
             isAdmin: process.env.ADMIN_MODE === 'true' // Admin mode check
         });
     });
@@ -64,7 +230,7 @@ export function setupRoutes(app, db, poller) {
     app.post('/auth/setup', (req, res) => {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         req.session.configured = true;
-        res.json({ success: true });
+        res.json({ success: true, session_authenticated: true });
     });
 
     app.post('/auth/logout', (req, res) => {
@@ -193,12 +359,22 @@ export function setupRoutes(app, db, poller) {
 
             // Save updated priority_projects.json
             fs.writeFileSync(priorityPath, JSON.stringify(priorityData, null, 2), 'utf8');
+            rawFormatCache.clear();
+
+            if (globalProjectsService && typeof globalProjectsService.refreshCache === 'function') {
+                globalProjectsService.refreshCache().catch((error) => {
+                    console.warn('[API] Projects cache refresh after whitelist update failed:', error.message);
+                });
+            }
+
+            const warmupScheduled = scheduleBackgroundCacheWarmup(`whitelist_${action}`);
 
             res.json({
                 success: true,
                 action: action,
                 projectCount: priorityData.projects.length,
-                databaseCount: priorityData.priority_databases.length
+                databaseCount: priorityData.priority_databases.length,
+                warmup_scheduled: warmupScheduled
             });
         } catch (error) {
             console.error('[API] Error updating whitelist:', error);
@@ -228,6 +404,7 @@ export function setupRoutes(app, db, poller) {
         try {
             db.setConfig('selected_databases', database_ids);
             db.setConfig('access_token', notionToken);
+            req.session.configured = true;
             console.log(`[API] ✅ Saved ${database_ids.length} selected databases`);
             res.json({ success: true, count: database_ids.length });
         } catch (error) {
@@ -273,13 +450,14 @@ export function setupRoutes(app, db, poller) {
     // Get hierarchical project tree from [Chung]Dự án
     app.get('/api/projects/tree', async (req, res) => {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
-        if (!globalProjectsService) return res.status(500).json({ error: 'Service not initialized' });
+        const projectsService = getProjectsService();
+        if (!projectsService) return res.status(500).json({ error: 'Service not initialized' });
 
         const statusFilter = req.query.status || 'all';
 
         try {
             // Use Singleton's internal cache mechanism
-            const projects = await globalProjectsService.getProjectsTree({ statusFilter });
+            const projects = await projectsService.getProjectsTree({ statusFilter });
             res.json({ success: true, projects, cached: true });
         } catch (error) {
             console.error('[API] Error fetching projects tree:', error);
@@ -339,108 +517,195 @@ export function setupRoutes(app, db, poller) {
         if (!notionToken) return res.status(401).json({ error: 'No Notion token configured' });
         const { id } = req.params;
         const forceRefresh = req.query.refresh === 'true';
-        const CACHE_MAX_AGE_MS = 10 * 60 * 1000; // 10 minutes — cache is considered fresh within this window
+        const queryOptions = parsePaginationParams(req.query);
+
         try {
-            let cachedData = null;
-            let fromCache = false;
-
-            // Smart cache strategy:
-            // 1. If forceRefresh → always fetch fresh
-            // 2. If cache exists and is < CACHE_MAX_AGE → use cache (fast!)
-            // 3. If cache is old or missing → fetch fresh from Notion (realtime)
-            if (!forceRefresh) {
-                const lastSync = db.getLastSyncTime(id);
-                if (lastSync) {
-                    const cacheAge = Date.now() - new Date(lastSync).getTime();
-                    if (cacheAge < CACHE_MAX_AGE_MS) {
-                        cachedData = db.getData(id);
-                        if (cachedData && cachedData.length > 0) {
-                            fromCache = true;
-                            const ageMin = Math.round(cacheAge / 60000);
-                            console.log(`[API] Serving ${cachedData.length} cached records for ${id} (synced ${ageMin}min ago, fresh)`);
-                        }
-                    } else {
-                        const ageMin = Math.round((Date.now() - new Date(lastSync).getTime()) / 60000);
-                        console.log(`[API] Cache stale for ${id} (${ageMin}min old > ${CACHE_MAX_AGE_MS / 60000}min), fetching fresh...`);
-                    }
-                }
-            }
-
-            // Fetch fresh from Notion if no cached data or not cache-first
-            if (!cachedData || cachedData.length === 0) {
-                console.log(`[API] Raw data fetching FRESH from Notion for ${id} (Force: ${forceRefresh})...`);
-                try {
-                    const fetcher = new DataFetcher(notionToken);
-                    const result = await fetcher.fetchAllData([id], null, { fullSync: true });
-                    const freshData = result[id] || [];
-
-                    if (freshData.length > 0) {
-                        // Use saveData (OVERWRITE) — not upsertData — to ensure deleted records are removed
-                        db.saveData(id, freshData);
-                        cachedData = freshData;
-                        fromCache = false;
-                        console.log(`[API] ✅ Fetched and saved ${freshData.length} records for ${id}`);
-                    } else {
-                        // Notion returned 0 records — might be empty DB or error
-                        // Try fallback to cache if available
-                        console.warn(`[API] ⚠️ Notion returned 0 records for ${id}, falling back to cache`);
-                        cachedData = db.getData(id);
-                        fromCache = true;
-                    }
-                } catch (fetchError) {
-                    console.error(`[API] ❌ Failed to fetch from Notion for ${id}:`, fetchError.message);
-                    // Fallback to cache
-                    cachedData = db.getData(id);
-                    fromCache = true;
-                    if (cachedData && cachedData.length > 0) {
-                        console.log(`[API] Using fallback cache: ${cachedData.length} records`);
-                    }
-                }
-            }
-
-            if (!cachedData || cachedData.length === 0) {
-                return res.json({ success: false, error: 'No data available for this database.' });
-            }
-
-            // Use cached databases to get name (fast!)
-            const allDatabases = await getCachedDatabases();
-            const dbInfo = allDatabases.find(d => d.id === id);
-
-            // --- Use in-memory lookup cache (FAST!) ---
+            const cachedData = db.getData(id);
+            const hasCache = Array.isArray(cachedData);
             const { lookupMap, userMap: globalUserMap } = db.getLookupMaps();
+            let databaseName = db.getDatabaseName(id) || null;
 
-            const columns = new Set();
-            cachedData.forEach(record => {
-                if (record.properties) Object.keys(record.properties).forEach(key => columns.add(key));
-            });
-
-            console.log(`[API] Columns for ${id}:`, Array.from(columns));
-
-            const formattedData = cachedData.map(record => {
-                const row = {};
-                columns.forEach(col => {
-                    const originalVal = record.properties?.[col];
-                    const val = formatValue(originalVal, lookupMap, globalUserMap);
-                    row[col] = val;
+            const formatRows = async (records, syncedAt) => {
+                const columns = new Set();
+                records.forEach(record => {
+                    if (record.properties) Object.keys(record.properties).forEach(key => columns.add(key));
                 });
-                return row;
-            });
+                const columnsArr = Array.from(columns);
 
-            // Resolve any remaining UUIDs (relation/rollup IDs from unsynced databases)
-            await resolveUnresolvedIds(formattedData, lookupMap, notionToken, db);
+                const cacheKey = getRawFormatCacheKey(id, syncedAt, queryOptions);
+                const cachedFormat = rawFormatCache.get(cacheKey);
+                if (cachedFormat && (Date.now() - cachedFormat.createdAt) <= RAW_FORMAT_CACHE_TTL_MS) {
+                    return cachedFormat.payload;
+                }
 
-            res.json({
-                success: true,
-                database_id: id,
-                database_name: dbInfo?.name || 'Unknown Database',
-                columns: Array.from(columns),
-                data: formattedData,
-                total_records: formattedData.length,
-                from_cache: fromCache,
-                synced_at: fromCache ? (db.getLastSyncTime(id) || new Date().toISOString()) : new Date().toISOString()
+                const formattedRows = records.map(record => {
+                    const row = {};
+                    columnsArr.forEach(col => {
+                        row[col] = formatValue(record.properties?.[col], lookupMap, globalUserMap);
+                    });
+                    return row;
+                });
+
+                let resolvedRows = formattedRows;
+                const shouldResolveRelations = queryOptions.resolveRelations && records.length <= RAW_RELATION_RESOLVE_MAX_ROWS;
+                if (shouldResolveRelations) {
+                    resolvedRows = await resolveUnresolvedIds(
+                        formattedRows,
+                        lookupMap,
+                        notionToken,
+                        db,
+                        relationNameCache
+                    );
+                    // Persist relation resolution cache lazily after successful enrichment
+                    persistRelationNameCache();
+                } else if (queryOptions.resolveRelations && records.length > RAW_RELATION_RESOLVE_MAX_ROWS) {
+                    console.log(`[API] Skip relation resolution for ${id}: ${records.length} rows > ${RAW_RELATION_RESOLVE_MAX_ROWS}`);
+                }
+
+                const paged = applyRawFiltersAndPagination(resolvedRows, columnsArr, queryOptions);
+                const payload = {
+                    columns: columnsArr,
+                    data: paged.data,
+                    total_records: resolvedRows.length,
+                    total_filtered: paged.pagination.total_filtered,
+                    pagination: paged.pagination
+                };
+
+                rawFormatCache.set(cacheKey, {
+                    createdAt: Date.now(),
+                    payload
+                });
+                pruneRawFormatCache();
+
+                return payload;
+            };
+
+            const respondFromRecords = async (records, freshness, extra = {}) => {
+                const syncedAt = freshness.synced_at || db.getLastSyncTime(id) || db.getLastUpdate();
+                const payload = await formatRows(records, syncedAt);
+
+                return res.json({
+                    success: true,
+                    database_id: id,
+                    database_name: databaseName || 'Unknown Database',
+                    ...payload,
+                    from_cache: freshness.data_source !== 'notion_api',
+                    data_source: freshness.data_source,
+                    stale_reason: freshness.stale_reason,
+                    synced_at: freshness.synced_at,
+                    freshness,
+                    ...extra
+                });
+            };
+
+            const checkpointDueForRaw = db.isFullSyncDue(id, FULL_SYNC_CHECKPOINT_MS);
+            if (!forceRefresh && hasCache && cachedData.length > 0) {
+                if (checkpointDueForRaw) {
+                    const refreshScheduled = scheduleRawDatabaseWarmup(id, 'checkpoint_due');
+                    console.log(
+                        `[API] Returning cached data for ${id} (checkpoint due; background refresh ${refreshScheduled ? 'scheduled' : 'already running'})`
+                    );
+                    const freshness = buildFreshnessContract({
+                        freshness_status: 'cached',
+                        data_source: 'local_cache',
+                        synced_at: db.getLastSyncTime(id) || db.getLastUpdate(),
+                        stale_reason: refreshScheduled
+                            ? 'checkpoint_due_background_refresh_scheduled'
+                            : 'checkpoint_due_refresh_in_progress'
+                    });
+                    return await respondFromRecords(cachedData, freshness, {
+                        checkpoint_due: true,
+                        refresh_scheduled: refreshScheduled
+                    });
+                }
+
+                console.log(`[API] Returning cached data for database ${id}`);
+                const freshness = buildFreshnessContract({
+                    freshness_status: 'cached',
+                    data_source: 'local_cache',
+                    synced_at: db.getLastSyncTime(id) || db.getLastUpdate()
+                });
+                return await respondFromRecords(cachedData, freshness);
+            }
+
+            console.log(`[API] Fetching fresh data for database ${id}...`);
+            const fetcher = new DataFetcher(notionToken, db);
+            const result = await fetcher.fetchAllData([id], null, {
+                fullSync: true,
+                fullSyncCheckpointMs: FULL_SYNC_CHECKPOINT_MS,
+                failOnDatabaseError: true
             });
+            const data = result[id] || [];
+
+            db.saveData(id, data);
+            databaseName = db.getDatabaseName(id) || databaseName;
+
+            const freshness = buildFreshnessContract({
+                freshness_status: data.length === 0 ? 'fresh_empty' : 'fresh',
+                data_source: 'notion_api',
+                synced_at: db.getLastSyncTime(id) || db.getLastUpdate()
+            });
+            return await respondFromRecords(data, freshness, { empty: data.length === 0 });
         } catch (error) {
-            console.error(`[API] Error getting raw data:`, error);
+            const fallbackData = db.getData(id);
+            if (Array.isArray(fallbackData)) {
+                console.warn(`[API] Fresh fetch failed for ${id}, serving fallback cache:`, error.message);
+                const freshness = buildFreshnessContract({
+                    freshness_status: 'fetch_failed_fallback_cache',
+                    data_source: 'local_cache_fallback',
+                    synced_at: db.getLastSyncTime(id) || db.getLastUpdate(),
+                    stale_reason: error.message
+                });
+
+                const { lookupMap, userMap: globalUserMap } = db.getLookupMaps();
+                const columns = new Set();
+                fallbackData.forEach(record => {
+                    if (record.properties) Object.keys(record.properties).forEach(key => columns.add(key));
+                });
+                const columnsArr = Array.from(columns);
+                const formattedRows = fallbackData.map(record => {
+                    const row = {};
+                    columnsArr.forEach(col => {
+                        row[col] = formatValue(record.properties?.[col], lookupMap, globalUserMap);
+                    });
+                    return row;
+                });
+
+                let resolvedRows = formattedRows;
+                const shouldResolveRelations = queryOptions.resolveRelations && fallbackData.length <= RAW_RELATION_RESOLVE_MAX_ROWS;
+                if (shouldResolveRelations) {
+                    resolvedRows = await resolveUnresolvedIds(
+                        formattedRows,
+                        lookupMap,
+                        notionToken,
+                        db,
+                        relationNameCache
+                    );
+                    persistRelationNameCache();
+                } else if (queryOptions.resolveRelations && fallbackData.length > RAW_RELATION_RESOLVE_MAX_ROWS) {
+                    console.log(`[API] Skip relation resolution for fallback ${id}: ${fallbackData.length} rows > ${RAW_RELATION_RESOLVE_MAX_ROWS}`);
+                }
+
+                const paged = applyRawFiltersAndPagination(resolvedRows, columnsArr, queryOptions);
+
+                return res.status(200).json({
+                    success: true,
+                    database_id: id,
+                    database_name: db.getDatabaseName(id) || 'Unknown Database',
+                    columns: columnsArr,
+                    data: paged.data,
+                    total_records: resolvedRows.length,
+                    total_filtered: paged.pagination.total_filtered,
+                    pagination: paged.pagination,
+                    from_cache: true,
+                    data_source: freshness.data_source,
+                    stale_reason: freshness.stale_reason,
+                    synced_at: freshness.synced_at,
+                    freshness
+                });
+            }
+
+            console.error(`[API] Error fetching database ${id}:`, error);
             res.status(500).json({ error: error.message });
         }
     });
@@ -459,6 +724,18 @@ export function setupRoutes(app, db, poller) {
                 return res.json({ success: false, error: 'No data available.' });
             }
             const result = await reportRegistry.generateReport(reportName, rawData);
+
+            // Add freshness contract
+            const lastUpdate = db.getLastUpdate();
+            result.freshness = buildFreshnessContract({
+                freshness_status: 'cached',
+                data_source: 'local_cache',
+                synced_at: lastUpdate
+            });
+            result.data_source = result.freshness.data_source;
+            result.stale_reason = result.freshness.stale_reason;
+            result.synced_at = result.freshness.synced_at;
+
             res.json(result);
         } catch (error) {
             console.error(`[API] Error generating report ${reportName}:`, error);
@@ -501,7 +778,15 @@ export function setupRoutes(app, db, poller) {
                 unknownUsers,
                 filterStats,
                 stats,
-                meta: { startDate, endDate }
+                meta: { startDate, endDate },
+                freshness: buildFreshnessContract({
+                    freshness_status: 'cached',
+                    data_source: 'local_cache',
+                    synced_at: db.getLastUpdate()
+                }),
+                data_source: 'local_cache',
+                stale_reason: null,
+                synced_at: db.getLastUpdate()
             });
         } catch (error) {
             console.error('[API] Productivity Report Error:', error);
@@ -535,7 +820,11 @@ export function setupRoutes(app, db, poller) {
     app.get('/api/sync/overview', requireAdmin, async (req, res) => {
         try {
             const syncService = new SyncService(new (await import('@notionhq/client')).Client({ auth: notionToken }), db);
-            const overview = await syncService.getOverview();
+            const selectedDatabases = db.getConfig('selected_databases') || [];
+            const priorityData = loadPriorityProjects();
+            const priorityDatabases = Array.isArray(priorityData.priority_databases) ? priorityData.priority_databases : [];
+            const targetDatabases = [...new Set([...priorityDatabases, ...selectedDatabases])];
+            const overview = await syncService.getOverview(targetDatabases);
             res.json({ success: true, data: overview });
         } catch (error) {
             console.error('[API] Sync overview error:', error);
@@ -553,6 +842,19 @@ export function setupRoutes(app, db, poller) {
         try {
             const syncService = new SyncService(new (await import('@notionhq/client')).Client({ auth: notionToken }), db);
             const result = await syncService.checkDatabase(database_id);
+            const mismatchThreshold = parseInt(process.env.SYNC_MISMATCH_THRESHOLD || '0', 10);
+            const mismatchMeta = db.getMetadata('mismatch_tracker') || {};
+            const prev = mismatchMeta[database_id] || { consecutive_over_threshold: 0 };
+            const overThreshold = result.diff_count > mismatchThreshold;
+            const consecutive = overThreshold ? (prev.consecutive_over_threshold || 0) + 1 : 0;
+            mismatchMeta[database_id] = {
+                last_checked_at: new Date().toISOString(),
+                diff_count: result.diff_count,
+                threshold: mismatchThreshold,
+                over_threshold: overThreshold,
+                consecutive_over_threshold: consecutive
+            };
+            db.setMetadata('mismatch_tracker', mismatchMeta);
 
             // Persist notion count for future reference
             db.setNotionCount(database_id, result.notion_count);
@@ -565,7 +867,8 @@ export function setupRoutes(app, db, poller) {
                 success: true,
                 data: {
                     ...result,
-                    database_name: dbName
+                    database_name: dbName,
+                    mismatch_tracker: mismatchMeta[database_id]
                 }
             });
         } catch (error) {
@@ -574,9 +877,64 @@ export function setupRoutes(app, db, poller) {
         }
     });
 
+    // Sync correctness summary (pass/fail criteria)
+    app.get('/api/sync/correctness', requireAdmin, (req, res) => {
+        try {
+            const audit = db.getMetadata('sync_audit') || {};
+            const fullSyncTimes = db.getMetadata('full_sync_times') || {};
+            const mismatchTracker = db.getMetadata('mismatch_tracker') || {};
+            const selectedDatabases = db.getConfig('selected_databases') || [];
+            const priorityData = loadPriorityProjects();
+            const priorityDatabases = Array.isArray(priorityData.priority_databases) ? priorityData.priority_databases : [];
+            const targetDatabases = [...new Set([...priorityDatabases, ...selectedDatabases])];
+            const targetDbSet = new Set(targetDatabases);
+            const checkpointMs = FULL_SYNC_CHECKPOINT_MS;
+            const mismatchConsecutiveLimit = parseInt(process.env.SYNC_MISMATCH_CONSECUTIVE_LIMIT || '2', 10);
+            const staleCheckpointDbs = targetDatabases
+                .filter((dbId) => db.isFullSyncDue(dbId, checkpointMs));
+
+            const excessiveGrowth = Object.entries(audit)
+                .filter(([dbId, info]) =>
+                    targetDbSet.has(dbId) &&
+                    Number(info.deleted || 0) === 0 &&
+                    Number(info.new || 0) > 0 &&
+                    info.mode === 'incremental_upsert'
+                )
+                .map(([dbId]) => dbId);
+
+            const mismatchOverThreshold = Object.entries(mismatchTracker)
+                .filter(([dbId, info]) =>
+                    targetDbSet.has(dbId) &&
+                    Number(info.consecutive_over_threshold || 0) >= mismatchConsecutiveLimit
+                )
+                .map(([dbId]) => dbId);
+
+            const pass = staleCheckpointDbs.length === 0 && mismatchOverThreshold.length === 0;
+
+            res.json({
+                success: true,
+                pass,
+                criteria: {
+                    full_sync_checkpoint_ms: checkpointMs,
+                    mismatch_consecutive_limit: mismatchConsecutiveLimit,
+                    target_databases_count: targetDatabases.length,
+                    stale_checkpoint_count: staleCheckpointDbs.length,
+                    suspicious_growth_count: excessiveGrowth.length,
+                    mismatch_over_threshold_count: mismatchOverThreshold.length
+                },
+                stale_checkpoint_databases: staleCheckpointDbs,
+                suspicious_growth_databases: excessiveGrowth,
+                mismatch_over_threshold_databases: mismatchOverThreshold
+            });
+        } catch (error) {
+            res.status(500).json({ error: error.message });
+        }
+    });
+
     // ============ SSE-BASED SYNC ALL ============
-    // In-memory job storage
-    const syncJobs = new Map();
+    // Persisted job storage (recovered on restart)
+    pruneFinishedJobs(syncJobs, 10 * 60 * 1000);
+    saveSyncJobs();
 
     // Start sync job
     app.post('/api/sync/start', requireAdmin, async (req, res) => {
@@ -593,16 +951,21 @@ export function setupRoutes(app, db, poller) {
                 synced_databases: [],
                 current_db: null,
                 resume_mode: resume,
-                max_age_minutes: max_age_minutes
+                max_age_minutes: max_age_minutes,
+                timeout_ms: parseInt(process.env.SYNC_JOB_TIMEOUT_MS || `${30 * 60 * 1000}`, 10),
+                retry_limit: parseInt(process.env.SYNC_JOB_RETRY_LIMIT || '1', 10),
+                created_at: new Date().toISOString()
             });
+            saveSyncJobs();
 
             // Start sync asynchronously (don't await)
-            startSyncJob(jobId, db, notionToken, syncJobs).catch(err => {
+            startSyncJob(jobId, db, notionToken, syncJobs, null, saveSyncJobs).catch(err => {
                 console.error(`[API] Sync job ${jobId} failed:`, err);
                 const job = syncJobs.get(jobId);
                 if (job) {
                     job.status = 'error';
                     job.error = err.message;
+                    saveSyncJobs();
                 }
             });
 
@@ -631,16 +994,21 @@ export function setupRoutes(app, db, poller) {
                 current_db: null,
                 resume_mode: false,
                 single_mode: true, // Flag for UI
-                target_db: database_id
+                target_db: database_id,
+                timeout_ms: parseInt(process.env.SYNC_JOB_TIMEOUT_MS || `${30 * 60 * 1000}`, 10),
+                retry_limit: parseInt(process.env.SYNC_JOB_RETRY_LIMIT || '1', 10),
+                created_at: new Date().toISOString()
             });
+            saveSyncJobs();
 
             // Start sync asynchronously with targetDatabaseId
-            startSyncJob(jobId, db, notionToken, syncJobs, database_id).catch(err => {
+            startSyncJob(jobId, db, notionToken, syncJobs, database_id, saveSyncJobs).catch(err => {
                 console.error(`[API] Single sync job ${jobId} failed:`, err);
                 const job = syncJobs.get(jobId);
                 if (job) {
                     job.status = 'error';
                     job.error = err.message;
+                    saveSyncJobs();
                 }
             });
 
@@ -681,7 +1049,7 @@ export function setupRoutes(app, db, poller) {
                 return;
             }
 
-            if (currentJob.status === 'running') {
+            if (currentJob.status === 'running' || currentJob.status === 'retrying') {
                 // Send progress update
                 res.write(`data: ${JSON.stringify({
                     progress: currentJob.progress,
@@ -689,7 +1057,7 @@ export function setupRoutes(app, db, poller) {
                     current_db: currentJob.current_db,
                     synced_databases: currentJob.synced_databases || []
                 })}\n\n`);
-            } else if (currentJob.status === 'complete' || currentJob.status === 'error') {
+            } else if (currentJob.status === 'complete' || currentJob.status === 'error' || currentJob.status === 'cancelled') {
                 res.write(`event: ${currentJob.status}\ndata: ${JSON.stringify(currentJob)}\n\n`);
                 clearInterval(interval);
 
@@ -697,6 +1065,7 @@ export function setupRoutes(app, db, poller) {
                 setTimeout(() => {
                     syncJobs.delete(jobId);
                     console.log(`[API] Cleaned up job ${jobId}`);
+                    saveSyncJobs();
                 }, 5000);
 
                 res.end();
@@ -721,6 +1090,7 @@ export function setupRoutes(app, db, poller) {
 
         job.status = 'cancelled';
         job.cancelled = true;
+        saveSyncJobs();
 
         console.log(`[API] 🛑 Sync job ${jobId} cancelled by user`);
 
@@ -731,13 +1101,17 @@ export function setupRoutes(app, db, poller) {
     app.get('/api/status', (req, res) => {
         const lastUpdate = db.getLastUpdate();
         const selectedDatabases = db.getConfig('selected_databases') || [];
+        const configured = !!notionToken;
+        const sessionAuthenticated = !!req.session?.configured;
         res.json({
             success: true,
             status: 'running',
             last_update: lastUpdate,
             databases_count: selectedDatabases.length,
-            authenticated: !!notionToken,
-            configured: !!notionToken
+            authenticated: configured,
+            configured,
+            session_authenticated: sessionAuthenticated,
+            effective_polling_interval_ms: poller?.effectiveIntervalMs || null
         });
     });
 
@@ -813,15 +1187,18 @@ function extractProjectName(databaseName) {
  * @param {Object} dbManager - DatabaseManager instance to persist resolved names
  * @returns {Promise<Array>} Updated formattedData with IDs replaced by names
  */
-async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbManager = null) {
+/**
+ * Resolve any remaining UUIDs in formatted data by fetching page titles from Notion API.
+ * Optimized with batching and shared client.
+ */
+async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbManager = null, relationCache = new Map()) {
     const uuidRegex = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
     const unresolvedIds = new Set();
 
-    // Scan all values for remaining UUIDs
+    // 1. Collect unique unresolved IDs
     for (const row of formattedData) {
         for (const val of Object.values(row)) {
             if (typeof val === 'string' && val.length > 0) {
-                // Check each comma-separated part (relations can be "id1, id2")
                 const parts = val.split(', ');
                 for (const part of parts) {
                     const trimmed = part.trim();
@@ -835,45 +1212,74 @@ async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbMan
 
     if (unresolvedIds.size === 0) return formattedData;
 
-    console.log(`[API] 🔍 Found ${unresolvedIds.size} unresolved relation IDs, fetching from Notion...`);
-
-    // Limit to 50 to avoid API overload
-    const idsToResolve = Array.from(unresolvedIds).slice(0, 50);
-    const { Client } = await import('@notionhq/client');
-    const notion = new Client({ auth: notionToken });
     const resolvedMap = new Map();
 
-    for (const id of idsToResolve) {
-        try {
-            const page = await notion.pages.retrieve({ page_id: id });
-            // Extract title from page properties
-            let title = '';
-            for (const [, prop] of Object.entries(page.properties || {})) {
-                if (prop.type === 'title' && prop.title) {
-                    title = prop.title.map(t => t.plain_text).join('');
-                    break;
-                }
-            }
-            if (title) {
-                resolvedMap.set(id, title);
-                lookupMap.set(id, title); // Update in-memory cache for future requests
-            } else {
-                // Page exists but has no title — use "Untitled"
-                resolvedMap.set(id, '[Untitled]');
-                lookupMap.set(id, '[Untitled]');
-            }
-        } catch (err) {
-            // Page may have been deleted or no access
-            console.warn(`[API] ⚠️ Could not resolve page ${id.substring(0, 8)}...: ${err.message}`);
+    // 1.5 Reuse persisted cache first to avoid extra Notion API calls
+    for (const id of unresolvedIds) {
+        const cachedName = relationCache.get(id) || relationCache.get(id.toLowerCase());
+        if (cachedName) {
+            resolvedMap.set(id, cachedName);
+            lookupMap.set(id, cachedName);
         }
-        // Rate limiting: 100ms between requests
-        await new Promise(r => setTimeout(r, 100));
     }
 
-    if (resolvedMap.size > 0) {
-        console.log(`[API] ✅ Resolved ${resolvedMap.size}/${idsToResolve.length} relation IDs to names`);
+    const remainingIds = Array.from(unresolvedIds).filter(id => !resolvedMap.has(id));
+    if (remainingIds.length === 0) {
+        // Apply cached resolutions and return
+        for (const row of formattedData) {
+            for (const [col, val] of Object.entries(row)) {
+                if (typeof val !== 'string' || val.length === 0) continue;
+                const parts = val.split(', ');
+                const newParts = parts.map(part => {
+                    const key = part.trim().toLowerCase();
+                    return resolvedMap.get(key) || part;
+                });
+                row[col] = [...new Set(newParts)].join(', ');
+            }
+        }
+        return formattedData;
+    }
 
-        // Replace UUIDs in formatted data with resolved names
+    // 2. Resolve in parallel with concurrency limit (e.g., 5 at a time to respect rate limits)
+    console.log(`[API] 🔍 Resolving ${remainingIds.length}/${unresolvedIds.size} relation IDs (batch+cache)...`);
+
+    // Use a shared Client if possible (cached at module level)
+    const { Client } = await import('@notionhq/client');
+    const notion = new Client({ auth: notionToken });
+
+    const idsToResolve = remainingIds.slice(0, 50); // Hard limit per request for safety
+
+    // Simple concurrency pool
+    const CONCURRENCY = 5;
+    for (let i = 0; i < idsToResolve.length; i += CONCURRENCY) {
+        const batch = idsToResolve.slice(i, i + CONCURRENCY);
+        await Promise.all(batch.map(async (id) => {
+            try {
+                const page = await notion.pages.retrieve({ page_id: id });
+                let title = '';
+                for (const [, prop] of Object.entries(page.properties || {})) {
+                    if (prop.type === 'title' && prop.title) {
+                        title = prop.title.map(t => t.plain_text).join('');
+                        break;
+                    }
+                }
+                const finalTitle = title || '[Untitled]';
+                resolvedMap.set(id, finalTitle);
+                lookupMap.set(id, finalTitle);
+                relationCache.set(id, finalTitle);
+            } catch (err) {
+                console.warn(`[API] ⚠️ Failed to resolve ${id.substring(0, 8)}: ${err.message}`);
+                // Don't add to lookupMap so we can retry later or leave as ID
+            }
+        }));
+        // Small delay between batches to stay under rate limits
+        if (i + CONCURRENCY < idsToResolve.length) {
+            await new Promise(r => setTimeout(r, 200));
+        }
+    }
+
+    // 3. Apply resolutions to data
+    if (resolvedMap.size > 0) {
         for (const row of formattedData) {
             for (const [col, val] of Object.entries(row)) {
                 if (typeof val === 'string' && val.length > 0) {
@@ -888,15 +1294,21 @@ async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbMan
                         return part;
                     });
                     if (changed) {
-                        row[col] = [...new Set(newParts)].join(', '); // Dedupe
+                        row[col] = [...new Set(newParts)].join(', ');
                     }
                 }
             }
         }
+        console.log(`[API] ✅ Resolved ${resolvedMap.size} IDs`);
     }
 
-    if (unresolvedIds.size > 50) {
-        console.warn(`[API] ⚠️ ${unresolvedIds.size - 50} IDs skipped (limit 50 per request)`);
+    if (dbManager && resolvedMap.size > 0) {
+        const existing = dbManager.getMetadata('relation_name_cache') || {};
+        const next = { ...existing };
+        resolvedMap.forEach((name, id) => {
+            next[id] = name;
+        });
+        dbManager.setMetadata('relation_name_cache', next);
     }
 
     return formattedData;
@@ -1060,7 +1472,18 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
 
 // ============ SSE SYNC JOB HANDLER ============
 
-async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseId = null) {
+function pruneFinishedJobs(syncJobsMap, maxAgeMs = 10 * 60 * 1000) {
+    const now = Date.now();
+    for (const [jobId, job] of syncJobsMap.entries()) {
+        if (!['complete', 'error', 'cancelled'].includes(job.status)) continue;
+        const finishedAt = job.finished_at ? new Date(job.finished_at).getTime() : now;
+        if ((now - finishedAt) > maxAgeMs) {
+            syncJobsMap.delete(jobId);
+        }
+    }
+}
+
+async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseId = null, persist = () => { }) {
     const job = syncJobsMap.get(jobId);
     if (!job) {
         console.error(`[SyncJob] Job ${jobId} not found`);
@@ -1068,6 +1491,27 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
     }
 
     try {
+        job.attempt = (job.attempt || 0) + 1;
+        job.started_at = new Date().toISOString();
+
+        const startedAtMs = Date.now();
+        const shouldCancel = () => {
+            const latestJob = syncJobsMap.get(jobId);
+            if (!latestJob) return true;
+            if (latestJob.cancelled || latestJob.status === 'cancelled') return true;
+
+            if (latestJob.timeout_ms && latestJob.timeout_ms > 0) {
+                if ((Date.now() - startedAtMs) > latestJob.timeout_ms) {
+                    latestJob.status = 'error';
+                    latestJob.error = `Sync job timed out after ${Math.round(latestJob.timeout_ms / 1000)}s`;
+                    latestJob.finished_at = new Date().toISOString();
+                    persist();
+                    return true;
+                }
+            }
+            return false;
+        };
+
         let databaseIds = [];
 
         if (targetDatabaseId) {
@@ -1106,6 +1550,7 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
 
         job.total = databaseIds.length;
         job.status = 'running';
+        persist();
 
         console.log(`[SyncJob ${jobId}] Starting sync for ${databaseIds.length} databases`);
 
@@ -1113,9 +1558,9 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
         const fetcher = new DataFetcher(notionToken, db);
 
         let synced = 0;
-        const onBatchComplete = (dbId, recordCount) => {
+        const onBatchComplete = (dbId, recordCount, syncMeta = {}) => {
             // Check if cancelled
-            if (job.cancelled) {
+            if (shouldCancel()) {
                 throw new Error('Sync cancelled by user');
             }
 
@@ -1128,26 +1573,54 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
                 id: dbId,
                 short_id: dbId.substring(0, 8),
                 records: recordCount,
+                sync_mode: syncMeta.mode || 'unknown',
                 timestamp: new Date().toISOString()
             });
 
-            job.results.push({ dbId, recordCount });
+            job.results.push({ dbId, recordCount, ...syncMeta });
             console.log(`[SyncJob ${jobId}] ${synced}/${databaseIds.length} - ${dbId.substring(0, 8)}: ${recordCount} records`);
+            persist();
         };
         // When targeting a single DB, use fullSync to ensure 100% accuracy (including deleted records removal)
         // When syncing all DBs (batch), use incremental for performance
-        const syncOptions = targetDatabaseId ? { fullSync: true } : {};
+        const syncOptions = targetDatabaseId
+            ? { fullSync: true, shouldCancel, fullSyncCheckpointMs: FULL_SYNC_CHECKPOINT_MS }
+            : { shouldCancel, fullSyncCheckpointMs: FULL_SYNC_CHECKPOINT_MS };
         await fetcher.fetchAllData(databaseIds, onBatchComplete, syncOptions);
+
+        if (shouldCancel()) {
+            throw new Error('Sync cancelled by user');
+        }
 
         job.total_records = job.results.reduce((sum, r) => sum + r.recordCount, 0);
         job.status = 'complete';
+        job.finished_at = new Date().toISOString();
+        persist();
 
         console.log(`[SyncJob ${jobId}] ✅ Complete: ${synced} databases, ${job.total_records} records`);
 
     } catch (error) {
         console.error(`[SyncJob ${jobId}] ❌ Error:`, error);
+        if (job.cancelled) {
+            job.status = 'cancelled';
+            job.error = null;
+            job.finished_at = new Date().toISOString();
+            persist();
+            return;
+        }
+
+        const retryLimit = Number(job.retry_limit || 0);
+        if (job.attempt <= retryLimit) {
+            job.status = 'retrying';
+            job.error = error.message;
+            persist();
+            return startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseId, persist);
+        }
+
         job.status = 'error';
         job.error = error.message;
+        job.finished_at = new Date().toISOString();
+        persist();
     }
 }
 

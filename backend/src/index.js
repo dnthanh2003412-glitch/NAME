@@ -5,6 +5,8 @@ import express from 'express';
 import cors from 'cors';
 import session from 'express-session';
 import { createServer } from 'http';
+import crypto from 'crypto';
+import compression from 'compression';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -38,13 +40,23 @@ class NotionDashboardServer {
         this.server = createServer(this.app);
 
         // Setup middleware FIRST
+        const corsOrigin = process.env.CORS_ORIGIN || `http://localhost:${this.port}`;
         this.app.use(cors({
-            origin: true,
+            origin: corsOrigin,
             credentials: true
         }));
 
+        // Generate secure session secret if default placeholder is still in use
+        let sessionSecret = process.env.SESSION_SECRET;
+        const isDefaultSecret = !sessionSecret || sessionSecret.includes('change-this');
+        if (isDefaultSecret) {
+            sessionSecret = crypto.randomBytes(64).toString('hex');
+            console.warn('[Server] ⚠️ SESSION_SECRET is using default placeholder! Generated random secret for this session.');
+            console.warn('[Server] ⚠️ Set a strong SESSION_SECRET in .env for production.');
+        }
+
         this.app.use(session({
-            secret: process.env.SESSION_SECRET,
+            secret: sessionSecret,
             resave: false,
             saveUninitialized: false,
             cookie: {
@@ -52,6 +64,9 @@ class NotionDashboardServer {
                 maxAge: 24 * 60 * 60 * 1000
             }
         }));
+
+        // Gzip/Brotli compression for all responses
+        this.app.use(compression());
 
         this.app.use(express.json());
 

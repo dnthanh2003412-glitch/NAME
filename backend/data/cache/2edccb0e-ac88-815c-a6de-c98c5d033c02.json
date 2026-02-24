@@ -2966,6 +2966,73 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2f7ccb0e-ac88-802f-82a8-e9c1e8418df7",
+    "created_time": "2026-01-29T11:03:00.000Z",
+    "last_edited_time": "2026-01-29T11:04:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-8019-9dab-d4bbc137e3d5"
+      ],
+      "Product (1)": [
+        "IBW 44"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 21.88,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Sprint": null,
+      "Product Status": [
+        "Client Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "IBW 44"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        35
+      ],
+      "Loại cảnh": [
+        "B"
+      ],
+      "TP giả định 2": 14,
+      "Assignee": [
+        {
+          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
+          "name": "Kiệt Đoàn",
+          "email": "kietda@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 21.88,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 44 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 44 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2f7ccb0e-ac88-8036-b3aa-db70427727d5",
     "created_time": "2026-01-29T06:47:00.000Z",
     "last_edited_time": "2026-01-29T11:03:00.000Z",
@@ -3109,6 +3176,55 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2f7ccb0e-ac88-8053-b6c3-c56e43f400e0",
+    "created_time": "2026-01-29T10:14:00.000Z",
+    "last_edited_time": "2026-01-29T10:14:00.000Z",
+    "properties": {
+      "NLTT": 0.25,
+      "Product ": [],
+      "Product (1)": null,
+      "Task main": null,
+      "Task QC": null,
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "Point Status": null,
+      "Ngày làm": {
+        "start": "2026-01-29",
+        "end": null
+      },
+      "[Dev] Total main": 0,
+      "Task type": null,
+      "Sprint": null,
+      "Product Status": null,
+      "Task Status": "Done",
+      "Episode": null,
+      "Done date": null,
+      "UTNL": null,
+      "Product Point": null,
+      "Loại cảnh": null,
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": null,
+      "Required by": null,
+      "Created time": null,
+      "Tasks": "QC mami",
+      "Sprint (1)": []
+    },
+    "_title": "QC mami",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2f7ccb0e-ac88-8061-81d4-e237c4b35f43",
     "created_time": "2026-01-29T04:29:00.000Z",
     "last_edited_time": "2026-01-29T04:30:00.000Z",
@@ -3171,484 +3287,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 15 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-80e6-8a9b-cce60f15e76f",
-    "created_time": "2026-01-29T03:40:00.000Z",
-    "last_edited_time": "2026-01-29T06:46:00.000Z",
-    "properties": {
-      "NLTT": 0.25,
-      "Product ": [
-        "2efccb0e-ac88-806e-af8b-df9ad7c4d445"
-      ],
-      "Product (1)": [
-        "Key 24"
-      ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
-      "Run n8n": false,
-      "TP giả định": 4.35,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Keyframe"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-01-29",
-        "end": null
-      },
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Sprint": [
-        "Sprint 1"
-      ],
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "Key 24"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 2,
-      "Assignee": [
-        {
-          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
-          "name": "Bảo Anh",
-          "email": "anhdtb@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 4.35,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Key 24 ver1",
-      "Sprint (1)": [
-        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
-      ]
-    },
-    "_title": "Key 24 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-8176-a4e3-d2a1581fcea3",
-    "created_time": "2026-01-29T04:39:00.000Z",
-    "last_edited_time": "2026-01-29T04:39:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80ea-b54a-c2910065605e"
-      ],
-      "Product (1)": [
-        "Chuẩn bị shotlist mô tả các cảnh"
-      ],
-      "Task main": "0/1",
-      "Task QC": "1/1",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Chuẩn bị shotlist mô tả các cảnh"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "800e396f-b978-41ef-8557-655d376d2603",
-          "name": "Minh Anh Nguyen Pham",
-          "email": "anhnpm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/1",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Chuẩn bị shotlist mô tả các cảnh ver1",
-      "Sprint (1)": []
-    },
-    "_title": "Chuẩn bị shotlist mô tả các cảnh ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-8182-9b43-ed082e1c0146",
-    "created_time": "2026-01-29T04:38:00.000Z",
-    "last_edited_time": "2026-01-29T04:38:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2f1ccb0e-ac88-8054-ac0b-e181ff1d5c11"
-      ],
-      "Product (1)": [
-        "Rig Main 2"
-      ],
-      "Task main": "0/1",
-      "Task QC": "1/1",
-      "Run n8n": false,
-      "TP giả định": 2.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Rig"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Rig Main 2"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        25
-      ],
-      "Loại cảnh": [
-        "C"
-      ],
-      "TP giả định 2": 1.5,
-      "Assignee": [
-        {
-          "id": "800e396f-b978-41ef-8557-655d376d2603",
-          "name": "Minh Anh Nguyen Pham",
-          "email": "anhnpm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 25,
-      "Task fix": "0/1",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Rig Main 2 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "Rig Main 2 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-81a7-9d56-f1f139e8815b",
-    "created_time": "2026-01-29T04:39:00.000Z",
-    "last_edited_time": "2026-01-29T04:39:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80e5-8893-e7f1ac997ad4"
-      ],
-      "Product (1)": [
-        "Scan SP"
-      ],
-      "Task main": "0/1",
-      "Task QC": "1/1",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Scan SP"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "800e396f-b978-41ef-8557-655d376d2603",
-          "name": "Minh Anh Nguyen Pham",
-          "email": "anhnpm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/1",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Scan SP ver1",
-      "Sprint (1)": []
-    },
-    "_title": "Scan SP ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-81c9-a26a-e7df1589023e",
-    "created_time": "2026-01-29T04:39:00.000Z",
-    "last_edited_time": "2026-01-29T04:39:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8063-ab2c-ddb6859f4f81"
-      ],
-      "Product (1)": [
-        "Chuẩn bị brief Animation "
-      ],
-      "Task main": "0/1",
-      "Task QC": "1/1",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Chuẩn bị brief Animation "
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "800e396f-b978-41ef-8557-655d376d2603",
-          "name": "Minh Anh Nguyen Pham",
-          "email": "anhnpm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/1",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Chuẩn bị brief Animation  ver1",
-      "Sprint (1)": []
-    },
-    "_title": "Chuẩn bị brief Animation  ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-802f-82a8-e9c1e8418df7",
-    "created_time": "2026-01-29T11:03:00.000Z",
-    "last_edited_time": "2026-01-29T11:04:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8019-9dab-d4bbc137e3d5"
-      ],
-      "Product (1)": [
-        "IBW 44"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 21.88,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "IBW 44"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        35
-      ],
-      "Loại cảnh": [
-        "B"
-      ],
-      "TP giả định 2": 14,
-      "Assignee": [
-        {
-          "id": "ccd85462-3a79-4e0f-a885-c92afa63697e",
-          "name": "Kiệt Đoàn",
-          "email": "kietda@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 21.88,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 44 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 44 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f7ccb0e-ac88-8053-b6c3-c56e43f400e0",
-    "created_time": "2026-01-29T10:14:00.000Z",
-    "last_edited_time": "2026-01-29T10:14:00.000Z",
-    "properties": {
-      "NLTT": 0.25,
-      "Product ": [],
-      "Product (1)": null,
-      "Task main": null,
-      "Task QC": null,
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0,
-      "Product Type": null,
-      "Point Status": null,
-      "Ngày làm": {
-        "start": "2026-01-29",
-        "end": null
-      },
-      "[Dev] Total main": 0,
-      "Task type": null,
-      "Sprint": null,
-      "Product Status": null,
-      "Task Status": "Done",
-      "Episode": null,
-      "Done date": null,
-      "UTNL": null,
-      "Product Point": null,
-      "Loại cảnh": null,
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
-          "name": "Trung Đỗ",
-          "email": "trungdt@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": null,
-      "Required by": null,
-      "Created time": null,
-      "Tasks": "QC mami",
-      "Sprint (1)": []
-    },
-    "_title": "QC mami",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -3747,6 +3385,82 @@
       "Sprint (1)": []
     },
     "_title": "QC FC",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2f7ccb0e-ac88-80e6-8a9b-cce60f15e76f",
+    "created_time": "2026-01-29T03:40:00.000Z",
+    "last_edited_time": "2026-01-29T06:46:00.000Z",
+    "properties": {
+      "NLTT": 0.25,
+      "Product ": [
+        "2efccb0e-ac88-806e-af8b-df9ad7c4d445"
+      ],
+      "Product (1)": [
+        "Key 24"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "TP giả định": 4.35,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": {
+        "start": "2026-01-29",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "Key 24"
+      ],
+      "Done date": null,
+      "UTNL": [
+        0.25
+      ],
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 4.35,
+      "Task fix": "0/2",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Key 24 ver1",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "Key 24 ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -4167,73 +3881,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2f7ccb0e-ac88-814c-986c-fff1a0e49617",
-    "created_time": "2026-01-29T13:51:00.000Z",
-    "last_edited_time": "2026-01-29T13:51:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80df-a8b9-e70c8beeadd0"
-      ],
-      "Product (1)": [
-        "IBW 15"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 2.1,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 15"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        35
-      ],
-      "Loại cảnh": [
-        "B"
-      ],
-      "TP giả định 2": 2.1,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 3,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 15 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 15 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2f7ccb0e-ac88-815f-b6b2-f22867c1afab",
     "created_time": "2026-01-29T13:24:00.000Z",
     "last_edited_time": "2026-01-29T13:24:00.000Z",
@@ -4367,6 +4014,146 @@
       "Sprint (1)": []
     },
     "_title": "Key 03 QC1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2f7ccb0e-ac88-8176-a4e3-d2a1581fcea3",
+    "created_time": "2026-01-29T04:39:00.000Z",
+    "last_edited_time": "2026-01-29T04:39:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-80ea-b54a-c2910065605e"
+      ],
+      "Product (1)": [
+        "Chuẩn bị shotlist mô tả các cảnh"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Chuẩn bị shotlist mô tả các cảnh"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Chuẩn bị shotlist mô tả các cảnh ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Chuẩn bị shotlist mô tả các cảnh ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2f7ccb0e-ac88-8182-9b43-ed082e1c0146",
+    "created_time": "2026-01-29T04:38:00.000Z",
+    "last_edited_time": "2026-01-29T04:38:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2f1ccb0e-ac88-8054-ac0b-e181ff1d5c11"
+      ],
+      "Product (1)": [
+        "Rig Main 2"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 2.5,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Rig"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Rig Main 2"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        25
+      ],
+      "Loại cảnh": [
+        "C"
+      ],
+      "TP giả định 2": 1.5,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 25,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Rig Main 2 ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Rig Main 2 ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -4712,6 +4499,79 @@
       "Sprint (1)": []
     },
     "_title": "Key 14 QC1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2f7ccb0e-ac88-81a7-9d56-f1f139e8815b",
+    "created_time": "2026-01-29T04:39:00.000Z",
+    "last_edited_time": "2026-01-29T04:39:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-80e5-8893-e7f1ac997ad4"
+      ],
+      "Product (1)": [
+        "Scan SP"
+      ],
+      "Task main": "0/1",
+      "Task QC": "1/1",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "Scan SP"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "Scan SP ver1",
+      "Sprint (1)": []
+    },
+    "_title": "Scan SP ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -8995,78 +8855,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2f9ccb0e-ac88-800c-858d-e63b8ae20787",
-    "created_time": "2026-01-31T05:43:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-800b-902d-fd2e74671461"
-      ],
-      "Product (1)": [
-        "IBW 29"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-01-31",
-        "end": null
-      },
-      "[Dev] Total main": 0,
-      "Task type": null,
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Not started",
-      "Episode": [
-        "IBW 29"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
-          "name": "Trung Đỗ",
-          "email": "trungdt@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 29 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 29 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2f9ccb0e-ac88-8012-8f6b-e31b4c54ca6c",
     "created_time": "2026-01-31T05:43:00.000Z",
     "last_edited_time": "2026-01-31T10:22:00.000Z",
@@ -11018,73 +10806,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2f9ccb0e-ac88-8102-86dc-e2a6fdda595e",
-    "created_time": "2026-01-31T11:24:00.000Z",
-    "last_edited_time": "2026-01-31T11:24:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-801c-a51c-da82fa270141"
-      ],
-      "Product (1)": [
-        "IBW 41"
-      ],
-      "Task main": "0/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 3.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Pending Review"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 41"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        35
-      ],
-      "Loại cảnh": [
-        "B"
-      ],
-      "TP giả định 2": 2.1,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 8.75,
-      "Task fix": "1/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 41 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 41 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2f9ccb0e-ac88-810b-a320-ee21108e7e37",
     "created_time": "2026-01-31T04:09:00.000Z",
     "last_edited_time": "2026-01-31T04:09:00.000Z",
@@ -11635,75 +11356,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2f9ccb0e-ac88-812b-bcb3-fb231052f281",
-    "created_time": "2026-01-31T04:30:00.000Z",
-    "last_edited_time": "2026-01-31T04:30:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-807a-ab2b-cc760c06811f"
-      ],
-      "Product (1)": [
-        "IBW 04"
-      ],
-      "Task main": "1/5",
-      "Task QC": "4/5",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 04"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.125
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "800e396f-b978-41ef-8557-655d376d2603",
-          "name": "Minh Anh Nguyen Pham",
-          "email": "anhnpm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.31,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 04 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 04 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2f9ccb0e-ac88-812e-bda3-ff1cf3ac561c",
     "created_time": "2026-01-31T09:23:00.000Z",
     "last_edited_time": "2026-01-31T09:23:00.000Z",
@@ -12045,75 +11697,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2f9ccb0e-ac88-8145-b004-fc9461c1c872",
-    "created_time": "2026-01-31T11:36:00.000Z",
-    "last_edited_time": "2026-01-31T11:36:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80c9-8cae-e22b42de7046"
-      ],
-      "Product (1)": [
-        "Key 40"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Keyframe"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Key 40"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.75
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.58,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Key 40 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "Key 40 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2f9ccb0e-ac88-814a-bdb1-f269a18d6017",
     "created_time": "2026-01-31T11:14:00.000Z",
     "last_edited_time": "2026-02-02T02:53:00.000Z",
@@ -12178,73 +11761,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 14 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2f9ccb0e-ac88-8152-b353-c26a7b631142",
-    "created_time": "2026-01-31T10:25:00.000Z",
-    "last_edited_time": "2026-01-31T10:25:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80cb-ae48-ff4a2826d7c5"
-      ],
-      "Product (1)": [
-        "IBW 47"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 47"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 47 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 47 ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -19031,420 +18547,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-8123-88c3-c2dfd2549e66",
-    "created_time": "2026-02-02T05:05:00.000Z",
-    "last_edited_time": "2026-02-02T05:05:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8093-a33f-fef103c3f541"
-      ],
-      "Product (1)": [
-        "IBW 06"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 06"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.52,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 06 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 06 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8128-945c-ec8de3ea8dbd",
-    "created_time": "2026-02-02T02:28:00.000Z",
-    "last_edited_time": "2026-02-02T02:28:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8077-829d-f96672628edb"
-      ],
-      "Product (1)": [
-        "IBW 16"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 16"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.58,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 16 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 16 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-812b-874d-ddf60e701910",
-    "created_time": "2026-02-02T05:42:00.000Z",
-    "last_edited_time": "2026-02-02T05:42:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-800b-902d-fd2e74671461"
-      ],
-      "Product (1)": [
-        "IBW 29"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 29"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 29 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 29 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-812b-9e07-f210af7882ff",
-    "created_time": "2026-02-02T02:19:00.000Z",
-    "last_edited_time": "2026-02-02T02:19:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-807a-ab2b-cc760c06811f"
-      ],
-      "Product (1)": [
-        "IBW 04"
-      ],
-      "Task main": "1/5",
-      "Task QC": "4/5",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 04"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.125
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.31,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 04 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 04 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-812d-9f0b-ebd5c510441e",
-    "created_time": "2026-02-02T05:34:00.000Z",
-    "last_edited_time": "2026-02-02T05:34:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-800e-8364-dd4b1bc7368c"
-      ],
-      "Product (1)": [
-        "IBW 26"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 26"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 26 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 26 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-812f-bc7e-cfcb04b1c1b7",
-    "created_time": "2026-02-02T05:19:00.000Z",
-    "last_edited_time": "2026-02-02T05:19:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8032-98c6-e7c0bc70dc8d"
-      ],
-      "Product (1)": [
-        "IBW 17"
-      ],
-      "Task main": "1/7",
-      "Task QC": "4/7",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 17"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.07,
-      "Task fix": "2/7",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 17 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 17 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-8134-9514-fbca64d46eef",
     "created_time": "2026-02-02T05:03:00.000Z",
     "last_edited_time": "2026-02-02T05:03:00.000Z",
@@ -19507,75 +18609,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 05 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8135-9690-e297f0b771af",
-    "created_time": "2026-02-02T02:04:00.000Z",
-    "last_edited_time": "2026-02-02T02:04:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80c2-9cfd-d4ef49f31bd0"
-      ],
-      "Product (1)": [
-        "Key 49"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 1.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Keyframe"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Key 49"
-      ],
-      "Done date": null,
-      "UTNL": [
-        4
-      ],
-      "Product Point": [
-        25
-      ],
-      "Loại cảnh": [
-        "C"
-      ],
-      "TP giả định 2": 1.5,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 2.88,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Key 49 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "Key 49 ver3",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -19645,209 +18678,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 11 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-813b-a07e-f76faf0041c4",
-    "created_time": "2026-02-02T05:09:00.000Z",
-    "last_edited_time": "2026-02-02T05:09:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-806f-a75c-c5ee156bd7d5"
-      ],
-      "Product (1)": [
-        "IBW 10"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 10"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 10 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 10 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8141-96f9-cdee51a918c3",
-    "created_time": "2026-02-02T05:42:00.000Z",
-    "last_edited_time": "2026-02-02T05:42:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8021-a469-c8796eec7121"
-      ],
-      "Product (1)": [
-        "IBW 28"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 28"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 28 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 28 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8143-9c22-f3ee0e324c53",
-    "created_time": "2026-02-02T04:59:00.000Z",
-    "last_edited_time": "2026-02-02T04:59:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80d9-893e-d8a91f569ddb"
-      ],
-      "Product (1)": [
-        "IBW 01"
-      ],
-      "Task main": "1/7",
-      "Task QC": "4/7",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 01"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.34,
-      "Task fix": "2/7",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 01 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 01 ver5",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -20058,75 +18888,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-8149-9ab3-da6e05a5c3b6",
-    "created_time": "2026-02-02T05:39:00.000Z",
-    "last_edited_time": "2026-02-02T05:39:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80b4-93e7-cfed855d931e"
-      ],
-      "Product (1)": [
-        "IBW 49"
-      ],
-      "Task main": "1/6",
-      "Task QC": "4/6",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 49"
-      ],
-      "Done date": null,
-      "UTNL": [
-        1
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.11,
-      "Task fix": "1/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 49 ver6",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 49 ver6",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-814a-8d8c-f743c37fac9c",
     "created_time": "2026-02-02T05:20:00.000Z",
     "last_edited_time": "2026-02-02T05:20:00.000Z",
@@ -20191,140 +18952,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 19 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-814e-b1cf-c6b08285f65c",
-    "created_time": "2026-02-02T05:05:00.000Z",
-    "last_edited_time": "2026-02-02T05:05:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-804c-ae8d-d1e10fffe264"
-      ],
-      "Product (1)": [
-        "IBW 07"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 07"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 07 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 07 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8151-b595-cd303e2b6b6b",
-    "created_time": "2026-02-02T05:43:00.000Z",
-    "last_edited_time": "2026-02-02T05:43:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80b8-8c3c-d4dddeff81c5"
-      ],
-      "Product (1)": [
-        "IBW 31"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 31"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 31 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 31 ver3",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -20740,273 +19367,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-8175-88b6-d1029d4ed25a",
-    "created_time": "2026-02-02T05:11:00.000Z",
-    "last_edited_time": "2026-02-02T05:11:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8025-b287-fdccc65d8c70"
-      ],
-      "Product (1)": [
-        "IBW 12"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 12"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 12 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 12 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8181-885b-e6eddf165c3c",
-    "created_time": "2026-02-02T03:11:00.000Z",
-    "last_edited_time": "2026-02-02T03:11:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2eeccb0e-ac88-8093-94d0-f4fc4a89575b"
-      ],
-      "Product (1)": [
-        "Rig Captain Boy"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 1.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Rig"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Rig Captain Boy"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        25
-      ],
-      "Loại cảnh": [
-        "C"
-      ],
-      "TP giả định 2": 1.5,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 2.14,
-      "Task fix": "1/5",
-      "Required by": [
-        "Internal"
-      ],
-      "Created time": null,
-      "Tasks": "Rig Captain Boy ver5",
-      "Sprint (1)": []
-    },
-    "_title": "Rig Captain Boy ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8185-a6fa-c03379ca3662",
-    "created_time": "2026-02-02T05:39:00.000Z",
-    "last_edited_time": "2026-02-02T05:39:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8084-a4e7-cd635061952e"
-      ],
-      "Product (1)": [
-        "IBW 48"
-      ],
-      "Task main": "0/2",
-      "Task QC": "2/2",
-      "Run n8n": false,
-      "TP giả định": 0.1,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 48"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.5,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 48 ver2",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 48 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8187-b177-dcc7fd20ae80",
-    "created_time": "2026-02-02T05:13:00.000Z",
-    "last_edited_time": "2026-02-02T05:13:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80dc-893c-ecc04021ad48"
-      ],
-      "Product (1)": [
-        "IBW 13"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 13"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 13 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 13 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-818a-ae32-f0869cdeb19c",
     "created_time": "2026-02-02T05:29:00.000Z",
     "last_edited_time": "2026-02-02T05:29:00.000Z",
@@ -21069,73 +19429,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 25 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-818a-ae8c-c002ccbcd710",
-    "created_time": "2026-02-02T05:24:00.000Z",
-    "last_edited_time": "2026-02-02T05:24:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8002-9f2d-d3969c88842e"
-      ],
-      "Product (1)": [
-        "IBW 24"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 24"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 24 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 24 ver3",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -21210,142 +19503,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-8198-a6ef-f0e0d80223ef",
-    "created_time": "2026-02-02T05:44:00.000Z",
-    "last_edited_time": "2026-02-02T05:44:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8018-8912-cf09ca2f3f07"
-      ],
-      "Product (1)": [
-        "IBW 34"
-      ],
-      "Task main": "1/6",
-      "Task QC": "4/6",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 34"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.08,
-      "Task fix": "1/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 34 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 34 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-8198-bab2-f355f3480e9c",
-    "created_time": "2026-02-02T04:55:00.000Z",
-    "last_edited_time": "2026-02-02T04:55:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8085-a4ba-f7c51c41a877"
-      ],
-      "Product (1)": [
-        "IBW 09"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 09"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
-          "name": "Bảo Anh",
-          "email": "anhdtb@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 09 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 09 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-819a-ac35-cd2e9242dd93",
     "created_time": "2026-02-02T03:46:00.000Z",
     "last_edited_time": "2026-02-02T03:46:00.000Z",
@@ -21408,75 +19565,6 @@
       "Sprint (1)": []
     },
     "_title": "Key 25 QC1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81a3-820e-c9725489cd50",
-    "created_time": "2026-02-02T05:21:00.000Z",
-    "last_edited_time": "2026-02-02T05:21:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8057-ac71-f9c01442d139"
-      ],
-      "Product (1)": [
-        "IBW 20"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 20"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.5
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.45,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 20 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 20 ver3",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -21551,75 +19639,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-81a8-a0f2-e7adb89d0880",
-    "created_time": "2026-02-02T02:04:00.000Z",
-    "last_edited_time": "2026-02-02T02:04:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80c0-be3b-e929979df23d"
-      ],
-      "Product (1)": [
-        "Key 46"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 1.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Keyframe"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "Key 46"
-      ],
-      "Done date": null,
-      "UTNL": [
-        2.25
-      ],
-      "Product Point": [
-        25
-      ],
-      "Loại cảnh": [
-        "C"
-      ],
-      "TP giả định 2": 1.5,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 2.88,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "Key 46 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "Key 46 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-81a8-b045-d8f70e247b33",
     "created_time": "2026-02-02T02:57:00.000Z",
     "last_edited_time": "2026-02-02T02:58:00.000Z",
@@ -21689,142 +19708,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-81bb-b913-c6de8f8b87fd",
-    "created_time": "2026-02-02T05:59:00.000Z",
-    "last_edited_time": "2026-02-02T05:59:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-801c-a51c-da82fa270141"
-      ],
-      "Product (1)": [
-        "IBW 41"
-      ],
-      "Task main": "0/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 3.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Pending Review"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 41"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        35
-      ],
-      "Loại cảnh": [
-        "B"
-      ],
-      "TP giả định 2": 2.1,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 8.75,
-      "Task fix": "1/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 41 ver2",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 41 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81c1-814e-eef607b8a926",
-    "created_time": "2026-02-02T01:56:00.000Z",
-    "last_edited_time": "2026-02-02T01:56:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8084-a4e7-cd635061952e"
-      ],
-      "Product (1)": [
-        "IBW 48"
-      ],
-      "Task main": "0/2",
-      "Task QC": "2/2",
-      "Run n8n": false,
-      "TP giả định": 0.1,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 48"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.5,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 48 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 48 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-81c6-8b28-cf285a8e2c16",
     "created_time": "2026-02-02T01:57:00.000Z",
     "last_edited_time": "2026-02-02T01:57:00.000Z",
@@ -21887,75 +19770,6 @@
       "Sprint (1)": []
     },
     "_title": "IBW 27 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81c8-b1a4-c7bd133c09ec",
-    "created_time": "2026-02-02T02:19:00.000Z",
-    "last_edited_time": "2026-02-02T02:19:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80ea-b72f-e9a952ca5e72"
-      ],
-      "Product (1)": [
-        "IBW 46"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 46"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 46 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 46 ver3",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -22351,211 +20165,6 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
-    "id": "2fbccb0e-ac88-81e1-a6bf-fe443f325cc1",
-    "created_time": "2026-02-02T05:00:00.000Z",
-    "last_edited_time": "2026-02-02T05:00:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-807a-ab2b-cc760c06811f"
-      ],
-      "Product (1)": [
-        "IBW 04"
-      ],
-      "Task main": "1/5",
-      "Task QC": "4/5",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 04"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.125
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.31,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 04 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 04 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81e2-9564-c7d7df37e57e",
-    "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80fd-a521-c62cc079407b"
-      ],
-      "Product (1)": [
-        "IBW 25"
-      ],
-      "Task main": "0/2",
-      "Task QC": "2/2",
-      "Run n8n": false,
-      "TP giả định": 0.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 25"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 2.5,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 25 ver1",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 25 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81eb-b9e9-f69337002451",
-    "created_time": "2026-02-02T02:19:00.000Z",
-    "last_edited_time": "2026-02-02T02:19:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8076-b137-d06a73afe092"
-      ],
-      "Product (1)": [
-        "IBW 02"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix Client"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 02"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.125
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 02 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 02 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
     "id": "2fbccb0e-ac88-81ed-8b58-f8ed6cb06505",
     "created_time": "2026-02-02T02:09:00.000Z",
     "last_edited_time": "2026-02-02T03:31:00.000Z",
@@ -22620,75 +20229,6 @@
       "Sprint (1)": []
     },
     "_title": "Key 07 QC2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81ee-963c-cf0f2b5a5bb5",
-    "created_time": "2026-02-02T02:19:00.000Z",
-    "last_edited_time": "2026-02-02T02:19:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80b4-93e7-cfed855d931e"
-      ],
-      "Product (1)": [
-        "IBW 49"
-      ],
-      "Task main": "1/6",
-      "Task QC": "4/6",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Unconfirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Need Fix"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 49"
-      ],
-      "Done date": null,
-      "UTNL": [
-        1
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.11,
-      "Task fix": "1/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 49 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 49 ver5",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -22827,1586 +20367,6 @@
       "Sprint (1)": []
     },
     "_title": "SP 02 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fbccb0e-ac88-81fd-8b79-ff71c4b24580",
-    "created_time": "2026-02-02T04:57:00.000Z",
-    "last_edited_time": "2026-02-02T04:57:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-804f-a36c-da47feae36e8"
-      ],
-      "Product (1)": [
-        "IBW 27"
-      ],
-      "Task main": "1/3",
-      "Task QC": "2/3",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "Client Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 27"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
-          "name": "Bảo Anh",
-          "email": "anhdtb@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.12,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 27 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 27 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8010-bf5d-fbaeff6d35a5",
-    "created_time": "2026-02-03T01:37:00.000Z",
-    "last_edited_time": "2026-02-03T01:38:00.000Z",
-    "properties": {
-      "NLTT": 0.125,
-      "Product ": [],
-      "Product (1)": null,
-      "Task main": null,
-      "Task QC": null,
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 0,
-      "Product Type": null,
-      "Point Status": null,
-      "Ngày làm": {
-        "start": "2026-02-02",
-        "end": null
-      },
-      "[Dev] Total main": 0,
-      "Task type": null,
-      "Sprint": null,
-      "Product Status": null,
-      "Task Status": "Not started",
-      "Episode": null,
-      "Done date": null,
-      "UTNL": null,
-      "Product Point": null,
-      "Loại cảnh": null,
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
-          "name": "Trung Đỗ",
-          "email": "trungdt@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": null,
-      "Required by": null,
-      "Created time": null,
-      "Tasks": "Export FCmobile+thay smartphone sc49,22",
-      "Sprint (1)": []
-    },
-    "_title": "Export FCmobile+thay smartphone sc49,22",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8043-8a45-e72abd28b1be",
-    "created_time": "2026-02-03T04:14:00.000Z",
-    "last_edited_time": "2026-02-03T04:15:00.000Z",
-    "properties": {
-      "NLTT": 0.125,
-      "Product ": [
-        "2efccb0e-ac88-80d0-8739-f8b201ba2982"
-      ],
-      "Product (1)": [
-        "IBW 05"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.6,
-      "Trọng số TP": 0.3,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-02-03",
-        "end": null
-      },
-      "[Dev] Total main": 0,
-      "Task type": "Fix",
-      "Sprint": [
-        "Sprint 1"
-      ],
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "IBW 05"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.6,
-      "Assignee": [
-        {
-          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
-          "name": "My Nguyễn",
-          "email": "mynth@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.94,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 05 ver4",
-      "Sprint (1)": [
-        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
-      ]
-    },
-    "_title": "IBW 05 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8053-a387-d1781cd59f9b",
-    "created_time": "2026-02-03T02:23:00.000Z",
-    "last_edited_time": "2026-02-03T07:44:00.000Z",
-    "properties": {
-      "NLTT": 0.25,
-      "Product ": [
-        "2fbccb0e-ac88-808a-a3ea-d62dd6696928"
-      ],
-      "Product (1)": [
-        "FIX CLIENT IBW 04"
-      ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-02-03",
-        "end": null
-      },
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Sprint": [
-        "Sprint 1"
-      ],
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "FIX CLIENT IBW 04"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
-          "name": "My Nguyễn",
-          "email": "mynth@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "FIX CLIENT IBW 04 ver1",
-      "Sprint (1)": [
-        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
-      ]
-    },
-    "_title": "FIX CLIENT IBW 04 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-806d-b666-c394ff194314",
-    "created_time": "2026-02-03T04:09:00.000Z",
-    "last_edited_time": "2026-02-03T04:09:00.000Z",
-    "properties": {
-      "NLTT": 0.125,
-      "Product ": [
-        "2fbccb0e-ac88-804f-be70-e8a79452a499"
-      ],
-      "Product (1)": [
-        "FIX CLIENT IBW 22"
-      ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-02-03",
-        "end": null
-      },
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Sprint": [
-        "Sprint 1"
-      ],
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "FIX CLIENT IBW 22"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
-          "name": "My Nguyễn",
-          "email": "mynth@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "FIX CLIENT IBW 22 ver1",
-      "Sprint (1)": [
-        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
-      ]
-    },
-    "_title": "FIX CLIENT IBW 22 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-80c3-ad77-f7d4cf957913",
-    "created_time": "2026-02-03T03:46:00.000Z",
-    "last_edited_time": "2026-02-03T03:46:00.000Z",
-    "properties": {
-      "NLTT": 0.25,
-      "Product ": [
-        "2fbccb0e-ac88-8032-84ae-fc8a5307a299"
-      ],
-      "Product (1)": [
-        "FIX CLIENT IBW 26"
-      ],
-      "Task main": "1/2",
-      "Task QC": "1/2",
-      "Run n8n": false,
-      "TP giả định": 0,
-      "Trọng số TP": 1,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": {
-        "start": "2026-02-03",
-        "end": null
-      },
-      "[Dev] Total main": 1,
-      "Task type": "Main",
-      "Sprint": [
-        "Sprint 1"
-      ],
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done",
-      "Episode": [
-        "FIX CLIENT IBW 26"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        0
-      ],
-      "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
-          "name": "My Nguyễn",
-          "email": "mynth@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0,
-      "Task fix": "0/2",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "FIX CLIENT IBW 26 ver1",
-      "Sprint (1)": [
-        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
-      ]
-    },
-    "_title": "FIX CLIENT IBW 26 ver1",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8110-a265-fae20ced54aa",
-    "created_time": "2026-02-03T03:25:00.000Z",
-    "last_edited_time": "2026-02-03T03:25:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80b8-8c3c-d4dddeff81c5"
-      ],
-      "Product (1)": [
-        "IBW 31"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 31"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 31 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 31 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8136-89fb-d86d7e2bd789",
-    "created_time": "2026-02-03T03:07:00.000Z",
-    "last_edited_time": "2026-02-03T03:07:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-800b-902d-fd2e74671461"
-      ],
-      "Product (1)": [
-        "IBW 29"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 29"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 29 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 29 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8147-9389-eeb2090ac1b0",
-    "created_time": "2026-02-03T02:55:00.000Z",
-    "last_edited_time": "2026-02-03T02:55:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8018-8912-cf09ca2f3f07"
-      ],
-      "Product (1)": [
-        "IBW 34"
-      ],
-      "Task main": "1/6",
-      "Task QC": "4/6",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 34"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.08,
-      "Task fix": "1/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 34 ver6",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 34 ver6",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8162-aeb4-ce7e8f48aa59",
-    "created_time": "2026-02-03T02:52:00.000Z",
-    "last_edited_time": "2026-02-03T02:52:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80a5-9c07-d6b78678563a"
-      ],
-      "Product (1)": [
-        "IBW 08"
-      ],
-      "Task main": "0/3",
-      "Task QC": "3/3",
-      "Run n8n": false,
-      "TP giả định": 0.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 08"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.67,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 08 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 08 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8165-a848-ed16c9fa1c4d",
-    "created_time": "2026-02-03T02:52:00.000Z",
-    "last_edited_time": "2026-02-03T02:52:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-804c-ae8d-d1e10fffe264"
-      ],
-      "Product (1)": [
-        "IBW 07"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 07"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 07 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 07 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8170-b0a4-f59c5e0d4d5b",
-    "created_time": "2026-02-03T02:54:00.000Z",
-    "last_edited_time": "2026-02-03T02:54:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8032-98c6-e7c0bc70dc8d"
-      ],
-      "Product (1)": [
-        "IBW 17"
-      ],
-      "Task main": "1/6",
-      "Task QC": "3/6",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 17"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.07,
-      "Task fix": "2/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 17 ver7",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 17 ver7",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-817a-b621-cc71d6b2c3bf",
-    "created_time": "2026-02-03T02:53:00.000Z",
-    "last_edited_time": "2026-02-03T02:53:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80dc-893c-ecc04021ad48"
-      ],
-      "Product (1)": [
-        "IBW 13"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 13"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 13 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 13 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-8183-bac2-ee12d82ee1da",
-    "created_time": "2026-02-03T04:22:00.000Z",
-    "last_edited_time": "2026-02-03T04:22:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-809f-96a3-c3db9d42561b"
-      ],
-      "Product (1)": [
-        "IBW 40"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 40"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 40 ver2",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 40 ver2",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-818d-bd05-d70c53700f64",
-    "created_time": "2026-02-03T02:55:00.000Z",
-    "last_edited_time": "2026-02-03T02:55:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8002-9f2d-d3969c88842e"
-      ],
-      "Product (1)": [
-        "IBW 24"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 24"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 24 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 24 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81a2-8059-f734730e4f82",
-    "created_time": "2026-02-03T02:52:00.000Z",
-    "last_edited_time": "2026-02-03T02:52:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-808d-b6c3-e9746a0e94f1"
-      ],
-      "Product (1)": [
-        "IBW 11"
-      ],
-      "Task main": "0/3",
-      "Task QC": "3/3",
-      "Run n8n": false,
-      "TP giả định": 0.5,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 11"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.67,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 11 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 11 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81a5-9fbf-c969acc060fc",
-    "created_time": "2026-02-03T02:54:00.000Z",
-    "last_edited_time": "2026-02-03T02:54:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80a4-95ca-c65950f5ab8d"
-      ],
-      "Product (1)": [
-        "IBW 19"
-      ],
-      "Task main": "1/5",
-      "Task QC": "3/5",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 19"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.5
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.2,
-      "Task fix": "1/5",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 19 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 19 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81c5-b272-da5438d0c30a",
-    "created_time": "2026-02-03T02:51:00.000Z",
-    "last_edited_time": "2026-02-03T02:51:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8093-a33f-fef103c3f541"
-      ],
-      "Product (1)": [
-        "IBW 06"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 06"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.52,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 06 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 06 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81d3-a419-e8c90984ca26",
-    "created_time": "2026-02-03T02:52:00.000Z",
-    "last_edited_time": "2026-02-03T02:52:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-806f-a75c-c5ee156bd7d5"
-      ],
-      "Product (1)": [
-        "IBW 10"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 10"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.1,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 10 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 10 ver4",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81da-a4cc-c4fed3d89e15",
-    "created_time": "2026-02-03T02:50:00.000Z",
-    "last_edited_time": "2026-02-03T02:50:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-80d9-893e-d8a91f569ddb"
-      ],
-      "Product (1)": [
-        "IBW 01"
-      ],
-      "Task main": "1/6",
-      "Task QC": "3/6",
-      "Run n8n": false,
-      "TP giả định": 0.3,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 01"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        5
-      ],
-      "Loại cảnh": [
-        "E"
-      ],
-      "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.37,
-      "Task fix": "2/6",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 01 ver7",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 01 ver7",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81f1-95bd-ece7d9cff273",
-    "created_time": "2026-02-03T02:53:00.000Z",
-    "last_edited_time": "2026-02-03T02:53:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8025-b287-fdccc65d8c70"
-      ],
-      "Product (1)": [
-        "IBW 12"
-      ],
-      "Task main": "1/4",
-      "Task QC": "2/4",
-      "Run n8n": false,
-      "TP giả định": 0.06,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 12"
-      ],
-      "Done date": null,
-      "UTNL": [],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.09,
-      "Task fix": "1/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 12 ver5",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 12 ver5",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81ff-8952-c1e9d8bc2b9d",
-    "created_time": "2026-02-03T04:22:00.000Z",
-    "last_edited_time": "2026-02-03T04:22:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-809f-96a3-c3db9d42561b"
-      ],
-      "Product (1)": [
-        "IBW 40"
-      ],
-      "Task main": "0/3",
-      "Task QC": "3/3",
-      "Run n8n": false,
-      "TP giả định": 0.1,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 40"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.25
-      ],
-      "Product Point": [
-        1
-      ],
-      "Loại cảnh": [
-        "F"
-      ],
-      "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 0.33,
-      "Task fix": "0/3",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 40 ver3",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 40 ver3",
-    "database_name": "[FCM] Tasks",
-    "project_name": "[FCM] Tasks",
-    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
-  },
-  {
-    "id": "2fcccb0e-ac88-81f8-9d6d-d0a0332b7b24",
-    "created_time": "2026-02-03T05:08:00.000Z",
-    "last_edited_time": "2026-02-03T05:08:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Product ": [
-        "2efccb0e-ac88-8057-ac71-f9c01442d139"
-      ],
-      "Product (1)": [
-        "IBW 20"
-      ],
-      "Task main": "1/4",
-      "Task QC": "3/4",
-      "Run n8n": false,
-      "TP giả định": 0.84,
-      "Trọng số TP": 0.15,
-      "Product Type": [
-        "Inbetween"
-      ],
-      "Point Status": [
-        "Confirmed"
-      ],
-      "Ngày làm": null,
-      "[Dev] Total main": 0,
-      "Task type": "QC",
-      "Sprint": null,
-      "Product Status": [
-        "QC Approved"
-      ],
-      "Task Status": "Done QC",
-      "Episode": [
-        "IBW 20"
-      ],
-      "Done date": null,
-      "UTNL": [
-        0.5
-      ],
-      "Product Point": [
-        14
-      ],
-      "Loại cảnh": [
-        "D"
-      ],
-      "TP giả định 2": 0.84,
-      "Assignee": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
-      "TP thực tế": 1.45,
-      "Task fix": "0/4",
-      "Required by": [
-        {
-          "type": "select",
-          "select": null
-        }
-      ],
-      "Created time": null,
-      "Tasks": "IBW 20 ver4",
-      "Sprint (1)": []
-    },
-    "_title": "IBW 20 ver4",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -24686,6 +20646,55 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2fcccb0e-ac88-8010-bf5d-fbaeff6d35a5",
+    "created_time": "2026-02-03T01:37:00.000Z",
+    "last_edited_time": "2026-02-03T01:38:00.000Z",
+    "properties": {
+      "NLTT": 0.125,
+      "Product ": [],
+      "Product (1)": null,
+      "Task main": null,
+      "Task QC": null,
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "Point Status": null,
+      "Ngày làm": {
+        "start": "2026-02-02",
+        "end": null
+      },
+      "[Dev] Total main": 0,
+      "Task type": null,
+      "Sprint": null,
+      "Product Status": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Done date": null,
+      "UTNL": null,
+      "Product Point": null,
+      "Loại cảnh": null,
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": null,
+      "Required by": null,
+      "Created time": null,
+      "Tasks": "Export FCmobile+thay smartphone sc49,22",
+      "Sprint (1)": []
+    },
+    "_title": "Export FCmobile+thay smartphone sc49,22",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2fcccb0e-ac88-8034-aea4-c963358b62aa",
     "created_time": "2026-02-03T07:35:00.000Z",
     "last_edited_time": "2026-02-03T07:44:00.000Z",
@@ -24807,6 +20816,80 @@
       "Sprint (1)": []
     },
     "_title": "Trống task và trrao đổi feedback cùng chị Thi",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-8043-8a45-e72abd28b1be",
+    "created_time": "2026-02-03T04:14:00.000Z",
+    "last_edited_time": "2026-02-03T04:15:00.000Z",
+    "properties": {
+      "NLTT": 0.125,
+      "Product ": [
+        "2efccb0e-ac88-80d0-8739-f8b201ba2982"
+      ],
+      "Product (1)": [
+        "IBW 05"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.6,
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": {
+        "start": "2026-02-03",
+        "end": null
+      },
+      "[Dev] Total main": 0,
+      "Task type": "Fix",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "IBW 05"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 0.6,
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.94,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 05 ver4",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "IBW 05 ver4",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -24953,6 +21036,83 @@
       "Sprint (1)": []
     },
     "_title": "IBW 40 ver3",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-8053-a387-d1781cd59f9b",
+    "created_time": "2026-02-03T02:23:00.000Z",
+    "last_edited_time": "2026-02-03T07:44:00.000Z",
+    "properties": {
+      "NLTT": 0.25,
+      "Product ": [
+        "2fbccb0e-ac88-808a-a3ea-d62dd6696928"
+      ],
+      "Product (1)": [
+        "FIX CLIENT IBW 04"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": {
+        "start": "2026-02-03",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "FIX CLIENT IBW 04"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/2",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "FIX CLIENT IBW 04 ver1",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "FIX CLIENT IBW 04 ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -25372,6 +21532,83 @@
       "Sprint (1)": []
     },
     "_title": "IBW 45 ver4",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-806d-b666-c394ff194314",
+    "created_time": "2026-02-03T04:09:00.000Z",
+    "last_edited_time": "2026-02-03T04:09:00.000Z",
+    "properties": {
+      "NLTT": 0.125,
+      "Product ": [
+        "2fbccb0e-ac88-804f-be70-e8a79452a499"
+      ],
+      "Product (1)": [
+        "FIX CLIENT IBW 22"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": {
+        "start": "2026-02-03",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "FIX CLIENT IBW 22"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/2",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "FIX CLIENT IBW 22 ver1",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "FIX CLIENT IBW 22 ver1",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -25866,6 +22103,83 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2fcccb0e-ac88-80c3-ad77-f7d4cf957913",
+    "created_time": "2026-02-03T03:46:00.000Z",
+    "last_edited_time": "2026-02-03T03:46:00.000Z",
+    "properties": {
+      "NLTT": 0.25,
+      "Product ": [
+        "2fbccb0e-ac88-8032-84ae-fc8a5307a299"
+      ],
+      "Product (1)": [
+        "FIX CLIENT IBW 26"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": {
+        "start": "2026-02-03",
+        "end": null
+      },
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Sprint": [
+        "Sprint 1"
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done",
+      "Episode": [
+        "FIX CLIENT IBW 26"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        0
+      ],
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0,
+      "Task fix": "0/2",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "FIX CLIENT IBW 26 ver1",
+      "Sprint (1)": [
+        "2f1ccb0e-ac88-801f-b2b6-df7d5228d8dd"
+      ]
+    },
+    "_title": "FIX CLIENT IBW 26 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2fcccb0e-ac88-80d9-a548-feb4ac26dc90",
     "created_time": "2026-02-03T09:53:00.000Z",
     "last_edited_time": "2026-02-03T09:53:00.000Z",
@@ -26284,6 +22598,73 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2fcccb0e-ac88-8110-a265-fae20ced54aa",
+    "created_time": "2026-02-03T03:25:00.000Z",
+    "last_edited_time": "2026-02-03T03:25:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-80b8-8c3c-d4dddeff81c5"
+      ],
+      "Product (1)": [
+        "IBW 31"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 31"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.09,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 31 ver5",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 31 ver5",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2fcccb0e-ac88-8129-9582-fa149084cc9e",
     "created_time": "2026-02-03T07:06:00.000Z",
     "last_edited_time": "2026-02-03T07:06:00.000Z",
@@ -26494,6 +22875,75 @@
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
   },
   {
+    "id": "2fcccb0e-ac88-8170-b0a4-f59c5e0d4d5b",
+    "created_time": "2026-02-03T02:54:00.000Z",
+    "last_edited_time": "2026-02-03T02:54:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-8032-98c6-e7c0bc70dc8d"
+      ],
+      "Product (1)": [
+        "IBW 17"
+      ],
+      "Task main": "1/6",
+      "Task QC": "3/6",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 17"
+      ],
+      "Done date": null,
+      "UTNL": [
+        0.25
+      ],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.07,
+      "Task fix": "2/6",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 17 ver7",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 17 ver7",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
     "id": "2fcccb0e-ac88-8176-8e4e-d358462fb701",
     "created_time": "2026-02-03T07:07:00.000Z",
     "last_edited_time": "2026-02-03T07:07:00.000Z",
@@ -26559,6 +23009,209 @@
       "Sprint (1)": []
     },
     "_title": "FIX CLIENT IBW 15 ver1",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-817a-b621-cc71d6b2c3bf",
+    "created_time": "2026-02-03T02:53:00.000Z",
+    "last_edited_time": "2026-02-03T02:53:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-80dc-893c-ecc04021ad48"
+      ],
+      "Product (1)": [
+        "IBW 13"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 13"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.09,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 13 ver5",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 13 ver5",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-8183-bac2-ee12d82ee1da",
+    "created_time": "2026-02-03T04:22:00.000Z",
+    "last_edited_time": "2026-02-03T04:22:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-809f-96a3-c3db9d42561b"
+      ],
+      "Product (1)": [
+        "IBW 40"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 40"
+      ],
+      "Done date": null,
+      "UTNL": [
+        0.25
+      ],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.09,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 40 ver2",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 40 ver2",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-818d-bd05-d70c53700f64",
+    "created_time": "2026-02-03T02:55:00.000Z",
+    "last_edited_time": "2026-02-03T02:55:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-8002-9f2d-d3969c88842e"
+      ],
+      "Product (1)": [
+        "IBW 24"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 24"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.09,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 24 ver5",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 24 ver5",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
@@ -26835,6 +23488,140 @@
       "Sprint (1)": []
     },
     "_title": "FIX CLIENT IBW 47 ver2",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-81da-a4cc-c4fed3d89e15",
+    "created_time": "2026-02-03T02:50:00.000Z",
+    "last_edited_time": "2026-02-03T02:50:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-80d9-893e-d8a91f569ddb"
+      ],
+      "Product (1)": [
+        "IBW 01"
+      ],
+      "Task main": "1/6",
+      "Task QC": "3/6",
+      "Run n8n": false,
+      "TP giả định": 0.3,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 01"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        5
+      ],
+      "Loại cảnh": [
+        "E"
+      ],
+      "TP giả định 2": 0.3,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.37,
+      "Task fix": "2/6",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 01 ver7",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 01 ver7",
+    "database_name": "[FCM] Tasks",
+    "project_name": "[FCM] Tasks",
+    "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"
+  },
+  {
+    "id": "2fcccb0e-ac88-81f1-95bd-ece7d9cff273",
+    "created_time": "2026-02-03T02:53:00.000Z",
+    "last_edited_time": "2026-02-03T02:53:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Product ": [
+        "2efccb0e-ac88-8025-b287-fdccc65d8c70"
+      ],
+      "Product (1)": [
+        "IBW 12"
+      ],
+      "Task main": "1/4",
+      "Task QC": "2/4",
+      "Run n8n": false,
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Ngày làm": null,
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Sprint": null,
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Task Status": "Done QC",
+      "Episode": [
+        "IBW 12"
+      ],
+      "Done date": null,
+      "UTNL": [],
+      "Product Point": [
+        1
+      ],
+      "Loại cảnh": [
+        "F"
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "TP thực tế": 0.09,
+      "Task fix": "1/4",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Created time": null,
+      "Tasks": "IBW 12 ver5",
+      "Sprint (1)": []
+    },
+    "_title": "IBW 12 ver5",
     "database_name": "[FCM] Tasks",
     "project_name": "[FCM] Tasks",
     "database_id": "2edccb0e-ac88-815c-a6de-c98c5d033c02"

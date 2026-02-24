@@ -1,0 +1,8 @@
+{
+  "executed_at": "2026-02-24T05:16:25.506Z",
+  "cold_ms": 333,
+  "hot_ms": 11,
+  "total_records": 6000,
+  "total_filtered": 6000,
+  "page_size": 200
+}

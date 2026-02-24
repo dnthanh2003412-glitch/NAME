@@ -1,4 +1,3 @@
-// raw-table.js - Enhanced with Pagination, Search, Filter, Sort, Column Visibility, Export
 // Uses window globals from dashboard.js: window.renderRawDataDashboard, window.filterByDateRange
 
 console.log('[raw-table] Loaded, renderRawDataDashboard:', typeof window.renderRawDataDashboard);
@@ -33,19 +32,8 @@ function renderRawDataTable(data, container) {
         return;
     }
 
-    const { database_name, columns, data: rows, total_records, synced_at, from_cache } = data;
+    const { database_name, columns, data: rows, total_records } = data;
     const storageKey = `rawTable_${database_name.replace(/\s/g, '_')}_hiddenCols`;
-
-    // Format sync time for display
-    const formatSyncTime = (isoString) => {
-        if (!isoString) return 'Không rõ';
-        const d = new Date(isoString);
-        const pad = n => String(n).padStart(2, '0');
-        return `${pad(d.getHours())}:${pad(d.getMinutes())} ${pad(d.getDate())}/${pad(d.getMonth() + 1)}/${d.getFullYear()}`;
-    };
-    const syncTimeStr = formatSyncTime(synced_at);
-    const sourceLabel = from_cache ? '📦 từ dữ liệu đã lưu trước đó' : '🟢 Từ Notion trực tiếp';
-    const sourceColor = from_cache ? '#f59e0b' : '#22c55e';
 
     // State
     let filteredRows = [...rows];
@@ -70,15 +58,12 @@ function renderRawDataTable(data, container) {
     // Create UI
     const wrapper = document.createElement('div');
     wrapper.className = 'raw-data-view';
+
     wrapper.innerHTML = `
         <div class="raw-data-header" style="display:flex;justify-content:space-between;align-items:center;">
             <div>
-                <h3>📊 ${database_name}</h3>
+                <h3 style="display:flex;align-items:center;gap:12px;">📊 ${database_name}</h3>
                 <p class="data-info">${total_records} records • ${columns.length} columns</p>
-                <p id="sync-time-note" style="font-size: 0.75rem; margin: 4px 0 0 0; color: rgba(255,255,255,0.5);">
-                    🕐 Dữ liệu lấy lúc: <strong style="color: rgba(255,255,255,0.8);">${syncTimeStr}</strong> 
-                    • <span style="color: ${sourceColor};">${sourceLabel}</span>
-                </p>
             </div>
             <button id="force-refresh-btn" class="btn-small btn-primary-small" style="background:#eab308;color:black;">🔄 Cập nhật từ Notion</button>
         </div>

@@ -1,4 +1,10 @@
-// app.js - Final Dash Notion V3 (Refined)
+import { wsClient } from './websocket-client.js';
+
+// Global app state
+window.app = {
+    initialized: false
+};
+
 // Uses window globals from dashboard.js
 
 const API_BASE = window.location.origin;
@@ -29,6 +35,13 @@ class DashboardApp {
         this.isHiddenDatabasesOpen = false; // Mặc định đóng mục "Database đã ẩn"
         this.databaseCounts = {}; // Store record counts
         this.initialFetchDone = false;
+        this.wsInitialized = false;
+        this.syncRefreshTimer = null;
+        this.syncToastTimeout = null;
+        this.latestSyncEvent = null;
+        this.wsClient = wsClient;
+        this.hotkeysInitialized = false;
+        this.globalHotkeyHandler = null;
     }
 
     async init() {
@@ -49,6 +62,7 @@ class DashboardApp {
         await this.loadWhitelist();
 
         this.setupEventListeners();
+        this.setupRealtimeSync();
 
         // Initial Load
         await this.loadProjectsTree();
@@ -146,6 +160,125 @@ class DashboardApp {
         // Check immediately and then every 30s
         updateStatus();
         setInterval(updateStatus, 30000);
+    }
+
+    setupRealtimeSync() {
+        if (this.wsInitialized) return;
+        this.wsInitialized = true;
+        const socketClient = this.wsClient || wsClient;
+        if (!socketClient || typeof socketClient.addListener !== 'function') {
+            return;
+        }
+
+        const getToast = () => {
+            let toast = document.getElementById('sync-progress-toast');
+            if (!toast) {
+                toast = document.createElement('div');
+                toast.id = 'sync-progress-toast';
+                toast.setAttribute('role', 'status');
+                toast.setAttribute('aria-live', 'polite');
+                toast.style.cssText = 'position:fixed;right:20px;bottom:20px;z-index:9999;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.35);padding:12px 14px;min-width:260px;max-width:360px;display:none;';
+                toast.innerHTML = `
+                    <div id="sync-toast-message" style="font-size:0.88rem;margin-bottom:8px;">Đang đồng bộ...</div>
+                    <div style="height:6px;background:#1e293b;border-radius:999px;overflow:hidden;">
+                        <div id="sync-toast-progress" style="height:100%;width:0%;background:#22c55e;transition:width 0.2s ease;"></div>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+            }
+
+            return {
+                toast,
+                message: toast.querySelector('#sync-toast-message'),
+                progress: toast.querySelector('#sync-toast-progress')
+            };
+        };
+
+        const setConnectionStatus = (type) => {
+            const statusEl = document.getElementById('connection-status');
+            const dotEl = statusEl?.querySelector('.status-dot');
+            const textEl = statusEl?.querySelector('.status-text');
+            if (!dotEl || !textEl) return;
+
+            if (type === 'connected') {
+                dotEl.style.background = '#10b981';
+                textEl.textContent = 'Realtime OK';
+            } else if (type === 'disconnected') {
+                dotEl.style.background = '#f59e0b';
+                textEl.textContent = 'Mất realtime...';
+            } else if (type === 'failed') {
+                dotEl.style.background = '#ef4444';
+                textEl.textContent = 'Realtime lỗi';
+            }
+        };
+
+        socketClient.addListener((data) => {
+            this.latestSyncEvent = data;
+            const { toast, message, progress } = getToast();
+
+            if (data.type === 'connection') {
+                setConnectionStatus(data.status);
+                return;
+            }
+
+            if (data.type === 'progress') {
+                toast.style.display = 'block';
+                const knownName = data.database_id ? this.databaseNames.get(data.database_id) : null;
+                const dbLabel = data.database_name || knownName || (data.database_id ? String(data.database_id).slice(0, 8) + '...' : '');
+                const dbPart = dbLabel ? ` • ${dbLabel}` : '';
+                message.textContent = data.message || `Đang đồng bộ${dbPart}`;
+                progress.style.background = '#22c55e';
+                const pct = typeof data.progress === 'number'
+                    ? Math.max(0, Math.min(100, data.progress))
+                    : 45;
+                progress.style.width = `${pct}%`;
+                return;
+            }
+
+            if (data.type === 'complete') {
+                toast.style.display = 'block';
+                message.textContent = `✅ Đồng bộ hoàn tất (${data.databases_count || '-'} DBs)`;
+                progress.style.background = '#22c55e';
+                progress.style.width = '100%';
+                this.scheduleActiveReportRefresh();
+
+                if (this.syncToastTimeout) clearTimeout(this.syncToastTimeout);
+                this.syncToastTimeout = setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 3000);
+                return;
+            }
+
+            if (data.type === 'error') {
+                toast.style.display = 'block';
+                message.textContent = `❌ Sync lỗi: ${data.error || data.message || 'Unknown error'}`;
+                progress.style.background = '#ef4444';
+                progress.style.width = '100%';
+                if (this.syncToastTimeout) clearTimeout(this.syncToastTimeout);
+                this.syncToastTimeout = setTimeout(() => {
+                    toast.style.display = 'none';
+                }, 6000);
+            }
+        });
+
+        if (typeof socketClient.connect === 'function') {
+            socketClient.connect();
+        }
+    }
+
+    scheduleActiveReportRefresh() {
+        if (this.syncRefreshTimer) {
+            clearTimeout(this.syncRefreshTimer);
+        }
+        this.syncRefreshTimer = setTimeout(() => {
+            this.refreshActiveReport();
+        }, 900);
+    }
+
+    refreshActiveReport() {
+        const reportType = document.getElementById('report-type-select')?.value;
+        if (!reportType) return;
+        this.generateReport();
     }
 
     async loadWhitelist() {
@@ -352,6 +485,148 @@ class DashboardApp {
                 this.refreshSingleDatabase(databaseId);
             }
         });
+
+        // Global keyboard shortcuts
+        this.setupGlobalHotkeys();
+    }
+
+    setupGlobalHotkeys() {
+        if (this.globalHotkeyHandler) {
+            document.removeEventListener('keydown', this.globalHotkeyHandler, true);
+        }
+
+        this.globalHotkeyHandler = (event) => this.handleGlobalHotkey(event);
+        document.addEventListener('keydown', this.globalHotkeyHandler, true);
+        this.hotkeysInitialized = true;
+    }
+
+    isEditableTarget(target) {
+        if (!target || typeof target.closest !== 'function') return false;
+        return !!target.closest('input, textarea, select, [contenteditable="true"], [contenteditable=""]');
+    }
+
+    focusSidebarSearch() {
+        const searchInput = document.getElementById('sidebar-search') || document.getElementById('project-search');
+        if (!searchInput) return false;
+        searchInput.focus();
+        const value = searchInput.value || '';
+        searchInput.setSelectionRange(value.length, value.length);
+        return true;
+    }
+
+    quickSelectReportType(reportType) {
+        const select = document.getElementById('report-type-select');
+        if (!select) return false;
+
+        const option = Array.from(select.options || []).find((opt) => opt.value === reportType);
+        if (!option) return false;
+
+        select.value = reportType;
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        return true;
+    }
+
+    triggerGenerateReport() {
+        const generateBtn = document.getElementById('generate-report-btn');
+        if (!generateBtn || generateBtn.disabled) return false;
+        generateBtn.click();
+        return true;
+    }
+
+    triggerRefreshData() {
+        const refreshBtn = document.getElementById('refresh-btn');
+        if (!refreshBtn || refreshBtn.disabled) return false;
+        refreshBtn.click();
+        return true;
+    }
+
+    triggerSaveSidebarConfig() {
+        const saveBtn = document.getElementById('save-sidebar-config');
+        if (!saveBtn) return false;
+        saveBtn.click();
+        return true;
+    }
+
+    toggleHiddenItems() {
+        const hiddenBtn = document.getElementById('toggle-hidden-items');
+        if (!hiddenBtn) return false;
+        hiddenBtn.click();
+        return true;
+    }
+
+    handleGlobalHotkey(e) {
+        const key = String(e.key || '').toLowerCase();
+        const isMod = e.ctrlKey || e.metaKey;
+        const isEditable = this.isEditableTarget(e.target);
+
+        // Ctrl/Cmd + F => focus sidebar search
+        if (isMod && !e.shiftKey && !e.altKey && key === 'f') {
+            e.preventDefault();
+            this.focusSidebarSearch();
+            return;
+        }
+
+        // Do not apply most global shortcuts while typing in inputs
+        if (isEditable) return;
+
+        // Ctrl/Cmd + Enter => generate report
+        if (isMod && !e.shiftKey && !e.altKey && e.key === 'Enter') {
+            e.preventDefault();
+            this.triggerGenerateReport();
+            return;
+        }
+
+        // Ctrl/Cmd + Shift + R => refresh data
+        if (isMod && e.shiftKey && !e.altKey && key === 'r') {
+            e.preventDefault();
+            this.triggerRefreshData();
+            return;
+        }
+
+        // Ctrl/Cmd + Shift + A => select all visible projects
+        if (isMod && e.shiftKey && !e.altKey && key === 'a') {
+            e.preventDefault();
+            this.selectAllVisibleDatabases();
+            return;
+        }
+
+        // Ctrl/Cmd + Shift + X => deselect all
+        if (isMod && e.shiftKey && !e.altKey && key === 'x') {
+            e.preventDefault();
+            this.deselectAllDatabases();
+            return;
+        }
+
+        // Ctrl/Cmd + Shift + H => toggle hidden section
+        if (isMod && e.shiftKey && !e.altKey && key === 'h') {
+            e.preventDefault();
+            this.toggleHiddenItems();
+            return;
+        }
+
+        // Ctrl/Cmd + S => save sidebar config
+        if (isMod && !e.shiftKey && !e.altKey && key === 's') {
+            e.preventDefault();
+            this.triggerSaveSidebarConfig();
+            return;
+        }
+
+        // Alt + 1..5 => quick select report type
+        if (!isMod && e.altKey) {
+            const quickReportMap = {
+                '1': 'sprint',
+                '2': 'productivity',
+                '3': 'raw',
+                '4': 'raw-all',
+                '5': 'burndown'
+            };
+
+            const reportType = quickReportMap[key];
+            if (reportType) {
+                e.preventDefault();
+                this.quickSelectReportType(reportType);
+            }
+        }
     }
 
     // Select all visible databases - ONLY from WHITELIST (filter projectsHierarchy by whitelist IDs)
@@ -581,13 +856,18 @@ class DashboardApp {
      */
     async renderRawAllProjectsReport(container, reportId) {
         // Show loading state
-        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Task từ các dự án whitelist...</div>';
+        this.renderState(container, 'loading', 'Đang tải dữ liệu Task từ các dự án whitelist...');
 
         // Get all Task databases from visible whitelist projects
         const { taskDbIds, projectsInfo } = this.getWhitelistTaskDatabases();
 
         if (taskDbIds.length === 0) {
-            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không tìm thấy database Task nào trong các dự án whitelist đang hiển thị.<br><br>Hãy mở thêm dự án từ "Dự án khác" hoặc "Dự án đã ẩn" rồi bấm Tạo Báo Cáo lại.</div>';
+            this.renderState(
+                container,
+                'empty',
+                'Không tìm thấy database Task nào trong các dự án whitelist đang hiển thị.',
+                'Hãy mở thêm dự án từ "Dự án khác" hoặc "Dự án đã ẩn" rồi bấm Tạo Báo Cáo lại.'
+            );
             return;
         }
 
@@ -614,6 +894,8 @@ class DashboardApp {
             // Fetch in PARALLEL (batches of 5 to avoid overwhelming server)
             const allData = [];
             const allColumns = new Set();
+            const freshnessStats = { fresh: 0, cached: 0, stale: 0, fresh_empty: 0, fetch_failed_fallback_cache: 0 };
+            let latestSyncAt = null;
             const BATCH_SIZE = 5;
             let loadedCount = 0;
 
@@ -660,6 +942,17 @@ class DashboardApp {
                 // Process results
                 results.forEach(result => {
                     loadedCount++;
+                    const freshnessStatus = result.freshness?.freshness_status || (result.from_cache ? 'cached' : 'fresh');
+                    if (freshnessStats[freshnessStatus] !== undefined) {
+                        freshnessStats[freshnessStatus] += 1;
+                    }
+                    if (result.synced_at) {
+                        const ts = new Date(result.synced_at).getTime();
+                        if (!Number.isNaN(ts) && (!latestSyncAt || ts > latestSyncAt)) {
+                            latestSyncAt = ts;
+                        }
+                    }
+
                     if (result.success && result.data && result.data.length > 0) {
                         const enrichedData = result.data.map(row => ({
                             ...row,
@@ -690,7 +983,9 @@ class DashboardApp {
             }
 
             if (allData.length === 0) {
-                container.innerHTML += '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu Task nào trong các dự án whitelist.</div>';
+                const emptyDiv = document.createElement('div');
+                this.renderState(emptyDiv, 'empty', 'Không có dữ liệu Task nào trong các dự án whitelist.');
+                container.appendChild(emptyDiv.firstElementChild);
                 return;
             }
 
@@ -702,14 +997,31 @@ class DashboardApp {
                 database_name: `All Whitelist Tasks (${projectsInfo.length} dự án)`,
                 columns: Array.from(allColumns),
                 data: allData,
-                total_records: allData.length
+                total_records: allData.length,
+                freshness: {
+                    freshness_status: freshnessStats.fetch_failed_fallback_cache > 0
+                        ? 'fetch_failed_fallback_cache'
+                        : (freshnessStats.cached > 0 ? 'cached' : 'fresh'),
+                    data_source: freshnessStats.fetch_failed_fallback_cache > 0 ? 'mixed_fallback' : 'mixed',
+                    stale_reason: freshnessStats.fetch_failed_fallback_cache > 0 ? 'Một số DB fallback cache do lỗi fetch' : null,
+                    synced_at: latestSyncAt ? new Date(latestSyncAt).toISOString() : null
+                },
+                synced_at: latestSyncAt ? new Date(latestSyncAt).toISOString() : null
             };
 
             this.renderRawDatabaseTable(container, 'all-whitelist-tasks', combinedResult);
+            const titleEl = document.getElementById('report-title');
+            if (titleEl) {
+                const freshCount = freshnessStats.fresh + freshnessStats.fresh_empty;
+                const cachedCount = freshnessStats.cached;
+                const staleCount = freshnessStats.fetch_failed_fallback_cache;
+                const syncText = latestSyncAt ? new Date(latestSyncAt).toLocaleString('vi-VN') : 'Không rõ';
+                titleEl.innerHTML = `📋 Raw (All Projects) <span style="font-size:0.68em;color:rgba(255,255,255,0.58);font-weight:normal;">— Fresh:${freshCount} • Cached:${cachedCount} • Stale:${staleCount} • ${syncText}</span>`;
+            }
 
         } catch (err) {
             console.error('Error fetching raw all data:', err);
-            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
+            this.renderState(container, 'error', `Lỗi: ${err.message}`);
         }
     }
 
@@ -724,18 +1036,25 @@ class DashboardApp {
      * Supports two view modes: by Sprint or by Project
      */
     async renderBurndownReport(container) {
-        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu Burndown...</div>';
+        this.renderState(container, 'loading', 'Đang tải dữ liệu Burndown...');
 
         // Only use Task databases for Burndown
         const dbIds = this.getSelectedTaskDatabases();
         if (dbIds.length === 0) {
-            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có database Task nào được chọn.<br><span style="font-size:0.85rem;">Burndown Chart chỉ áp dụng cho database Task.</span></div>';
+            this.renderState(
+                container,
+                'empty',
+                'Không có database Task nào được chọn.',
+                'Burndown Chart chỉ áp dụng cho database Task.'
+            );
             return;
         }
 
         try {
             let hasValidChart = false;
             const warnings = [];
+            const freshnessStats = { fresh: 0, cached: 0, stale: 0, fresh_empty: 0, fetch_failed_fallback_cache: 0 };
+            let latestSyncAt = null;
 
             // Clear loading and add view mode selector
             container.innerHTML = '';
@@ -792,6 +1111,16 @@ class DashboardApp {
                 const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
                 const response = await fetch(url);
                 const result = await response.json();
+                const freshnessStatus = result.freshness?.freshness_status || (result.from_cache ? 'cached' : 'fresh');
+                if (freshnessStats[freshnessStatus] !== undefined) {
+                    freshnessStats[freshnessStatus] += 1;
+                }
+                if (result.synced_at) {
+                    const ts = new Date(result.synced_at).getTime();
+                    if (!Number.isNaN(ts) && (!latestSyncAt || ts > latestSyncAt)) {
+                        latestSyncAt = ts;
+                    }
+                }
 
                 if (!result.success) {
                     warnings.push({ dbName: dbId, reason: 'Không thể tải dữ liệu' });
@@ -1000,9 +1329,18 @@ class DashboardApp {
                 container.appendChild(errorContent);
             }
 
+            const titleEl = document.getElementById('report-title');
+            if (titleEl) {
+                const freshCount = freshnessStats.fresh + freshnessStats.fresh_empty;
+                const cachedCount = freshnessStats.cached;
+                const staleCount = freshnessStats.fetch_failed_fallback_cache;
+                const syncText = latestSyncAt ? new Date(latestSyncAt).toLocaleString('vi-VN') : 'Không rõ';
+                titleEl.innerHTML = `🔥 Burndown Chart <span style="font-size:0.68em;color:rgba(255,255,255,0.58);font-weight:normal;">— Fresh:${freshCount} • Cached:${cachedCount} • Stale:${staleCount} • ${syncText}</span>`;
+            }
+
         } catch (err) {
             console.error('Error rendering burndown:', err);
-            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
+            this.renderState(container, 'error', `Lỗi: ${err.message}`);
         }
     }
 
@@ -1157,11 +1495,11 @@ class DashboardApp {
 
     async renderRawDataReport(container, reportId) {
         // Show loading state
-        container.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#64748b;">Đang tải dữ liệu thô...</div>';
+        this.renderState(container, 'loading', 'Đang tải dữ liệu thô...');
 
         const dbIds = Array.from(this.selectedDatabases);
         if (dbIds.length === 0) {
-            container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Chưa chọn database nào.</div>';
+            this.renderState(container, 'empty', 'Chưa chọn database nào.');
             return;
         }
 
@@ -1185,7 +1523,7 @@ class DashboardApp {
                 // Use the raw API endpoint which returns flattened data with all Notion columns
                 const url = `${API_BASE}/api/database/${dbId}/raw?_t=${Date.now()}`;
                 const response = await fetch(url);
-                const result = await response.json();
+                const result = await this.parseJsonResponse(response, `Tải dữ liệu ${dbId.slice(0, 8)}`);
 
                 // Check again after async fetch
                 if (reportId && this._currentReportId !== reportId) {
@@ -1201,11 +1539,27 @@ class DashboardApp {
                     // Update report title with sync time note
                     const titleEl = document.getElementById('report-title');
                     if (titleEl) {
-                        const syncTime = formatSyncTime(result.synced_at);
-                        const fromCache = result.from_cache;
-                        const sourceIcon = fromCache ? '📦' : '🟢';
-                        const sourceText = fromCache ? 'từ dữ liệu đã lưu trước đó' : 'Từ Notion trực tiếp';
-                        const sourceColor = fromCache ? '#f59e0b' : '#22c55e';
+                        const freshness = result.freshness || {};
+                        const freshnessStatus = freshness.freshness_status || (result.from_cache ? 'cached' : 'fresh');
+                        const syncTime = formatSyncTime(result.synced_at || freshness.synced_at);
+                        let sourceIcon = '🟢';
+                        let sourceText = 'Fresh from Notion';
+                        let sourceColor = '#22c55e';
+
+                        if (freshnessStatus === 'cached') {
+                            sourceIcon = '📦';
+                            sourceText = 'Cached data';
+                            sourceColor = '#f59e0b';
+                        } else if (freshnessStatus === 'fetch_failed_fallback_cache') {
+                            sourceIcon = '⚠️';
+                            sourceText = `Stale fallback${result.stale_reason ? ` (${result.stale_reason})` : ''}`;
+                            sourceColor = '#f97316';
+                        } else if (freshnessStatus === 'fresh_empty') {
+                            sourceIcon = '📭';
+                            sourceText = 'Fresh empty from Notion';
+                            sourceColor = '#60a5fa';
+                        }
+
                         titleEl.innerHTML = `📋 Xuất Dữ liệu Thô <span style="font-size:0.65em;font-weight:normal;color:rgba(255,255,255,0.5);"> — 🕐 Dữ liệu lấy lúc <strong style="color:rgba(255,255,255,0.8);">${syncTime}</strong> • <span style="color:${sourceColor};">${sourceIcon} ${sourceText}</span></span>`;
                     }
 
@@ -1218,11 +1572,11 @@ class DashboardApp {
 
             // If no data was rendered, show message
             if (container.children.length === 0) {
-                container.innerHTML = '<div class="empty-state" style="padding:40px;text-align:center;color:#64748b;">Không có dữ liệu nào được tải.</div>';
+                this.renderState(container, 'empty', 'Không có dữ liệu nào được tải.');
             }
         } catch (err) {
             console.error('Error fetching raw data:', err);
-            container.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi: ${err.message}</div>`;
+            this.renderState(container, 'error', `Lỗi: ${err.message}`);
         }
     }
 
@@ -1271,6 +1625,17 @@ class DashboardApp {
 
     renderRawDatabaseTable(container, dbId, result) {
         let { database_name, columns: rawColumns, data: originalData, total_records } = result;
+        const freshness = result.freshness || {};
+        const freshnessStatus = freshness.freshness_status || (result.from_cache ? 'cached' : 'fresh');
+        const freshnessMeta = {
+            fresh: { text: 'Fresh from Notion', color: '#22c55e' },
+            fresh_empty: { text: 'Fresh empty', color: '#60a5fa' },
+            cached: { text: 'Cached', color: '#f59e0b' },
+            fetch_failed_fallback_cache: { text: 'Stale fallback', color: '#f97316' }
+        };
+        const freshnessView = freshnessMeta[freshnessStatus] || freshnessMeta.cached;
+        const syncAtText = result.synced_at ? new Date(result.synced_at).toLocaleString('vi-VN') : 'Không rõ';
+        const staleReasonText = result.stale_reason ? ` • ${result.stale_reason}` : '';
 
         // Filter out hidden/duplicate columns (pass data to check "show if has data" columns)
         const originalColumns = rawColumns.filter(col => !this.shouldHideColumn(col, originalData));
@@ -1651,6 +2016,11 @@ class DashboardApp {
                             <span style="background:#4ade80;color:#000;padding:4px 10px;border-radius:20px;font-size:0.8rem;font-weight:600;">${filteredData.length}/${total_records}</span>
                             <button id="exportBtn-${dbId}" style="padding:6px 12px;background:#22c55e;border:none;border-radius:4px;color:#fff;cursor:pointer;font-size:0.8rem;font-weight:500;">📥 Export</button>
                         </div>
+                    </div>
+
+                    <div style="padding:10px 20px;border-bottom:1px solid #334155;background:#111827;color:#cbd5e1;font-size:0.8rem;">
+                        <span style="display:inline-block;background:${freshnessView.color};color:#0b1220;padding:2px 8px;border-radius:999px;font-weight:700;margin-right:8px;">${freshnessView.text}</span>
+                        <span>Synced: ${syncAtText}${staleReasonText}</span>
                     </div>
                     
                     <!-- Toolbar -->
@@ -2246,23 +2616,24 @@ class DashboardApp {
             const endDate = endDateInput.value;
 
             if (!startDate || !endDate) {
-                bodyContainer.innerHTML = '<div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">⚠️ Vui lòng chọn khoảng thời gian</div>';
+                this.renderState(bodyContainer, 'warning', '⚠️ Vui lòng chọn khoảng thời gian');
                 return;
             }
 
             currentDateRange = `${formatDateDisplay(new Date(startDate))} → ${formatDateDisplay(new Date(endDate))}`;
 
-            bodyContainer.innerHTML = '<div class="loading-state" style="padding:40px;text-align:center;color:#94a3b8;">⏳ Đang tính toán dữ liệu...</div>';
+            this.renderState(bodyContainer, 'loading', '⏳ Đang tính toán dữ liệu...');
 
             // Lấy CHỈ Task database IDs (filter từ selectedDatabases)
             const taskDbIds = this.getSelectedTaskDatabases();
 
             if (taskDbIds.length === 0) {
-                bodyContainer.innerHTML = `
-                    <div class="error-state" style="padding:40px;text-align:center;color:#f59e0b;">
-                        ⚠️ Không có database Task nào được chọn<br>
-                        <span style="font-size:0.85rem;color:#94a3b8;">Báo cáo năng suất chỉ lấy dữ liệu từ database Task</span>
-                    </div>`;
+                this.renderState(
+                    bodyContainer,
+                    'warning',
+                    '⚠️ Không có database Task nào được chọn',
+                    'Báo cáo năng suất chỉ lấy dữ liệu từ database Task'
+                );
                 return;
             }
 
@@ -2283,6 +2654,14 @@ class DashboardApp {
                 const result = await response.json();
 
                 if (result.success) {
+                    const titleEl = document.getElementById('report-title');
+                    if (titleEl && result.freshness) {
+                        const freshnessStatus = result.freshness.freshness_status || 'cached';
+                        const sourceText = freshnessStatus === 'cached' ? 'Cached' : freshnessStatus;
+                        const syncText = result.synced_at ? new Date(result.synced_at).toLocaleString('vi-VN') : 'Không rõ';
+                        titleEl.innerHTML = `📊 Báo cáo Năng suất <span style="font-size:0.7em;color:rgba(255,255,255,0.55);font-weight:normal;">— ${sourceText} • ${syncText}</span>`;
+                    }
+
                     // DEBUG: Show Filter Stats
                     if (result.filterStats) {
                         console.log("=== PRODUCTIVITY REPORT DEBUG ===");
@@ -2326,11 +2705,11 @@ class DashboardApp {
                     warningRendered = false;
                     applyFilterAndRender(true);
                 } else {
-                    bodyContainer.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">${result.error || 'Lỗi không xác định'}</div>`;
+                    this.renderState(bodyContainer, 'error', result.error || 'Lỗi không xác định');
                 }
             } catch (err) {
                 console.error('Fetch Report Error:', err);
-                bodyContainer.innerHTML = `<div class="error-state" style="padding:40px;text-align:center;color:#ef4444;">Lỗi kết nối: ${err.message}</div>`;
+                this.renderState(bodyContainer, 'error', `Lỗi kết nối: ${err.message}`);
             }
         };
 
@@ -3696,6 +4075,43 @@ class DashboardApp {
         Modal.showAlert(msg, 'error');
     }
 
+    async parseJsonResponse(response, context = 'Request') {
+        const rawText = await response.text();
+        let data = null;
+
+        if (rawText && rawText.trim().length > 0) {
+            try {
+                data = JSON.parse(rawText);
+            } catch (_) {
+                throw new Error(`${context}: server trả về dữ liệu không hợp lệ (HTTP ${response.status})`);
+            }
+        }
+
+        if (!response.ok) {
+            const apiError = data?.error || response.statusText || 'Unknown error';
+            throw new Error(`${context}: ${apiError} (HTTP ${response.status})`);
+        }
+
+        if (!data) {
+            throw new Error(`${context}: server trả về rỗng (HTTP ${response.status})`);
+        }
+
+        return data;
+    }
+
+    renderState(container, type, message, subMessage = '') {
+        if (!container) return;
+        const colorMap = {
+            loading: '#94a3b8',
+            empty: '#64748b',
+            error: '#ef4444',
+            warning: '#f59e0b'
+        };
+        const color = colorMap[type] || '#94a3b8';
+        const sub = subMessage ? `<br><span style="font-size:0.85rem;color:${type === 'error' ? '#fca5a5' : '#94a3b8'};">${subMessage}</span>` : '';
+        container.innerHTML = `<div class="${type}-state" role="status" aria-live="polite" style="padding:40px;text-align:center;color:${color};">${message}${sub}</div>`;
+    }
+
     escapeHtml(text) {
         if (text === null || text === undefined) return '';
         if (typeof text !== 'string') text = String(text);
@@ -3811,9 +4227,8 @@ class DashboardApp {
         try {
             this.showLoading();
             const response = await fetch(`${API_BASE}/api/sync/overview`);
-            const result = await response.json();
-
-            if (!result.success) throw new Error(result.error);
+            const result = await this.parseJsonResponse(response, 'Sync overview');
+            if (!result.success) throw new Error(result.error || 'Sync overview failed');
 
             // Check for recently synced databases (< 10 min)
             const maxAgeMs = 10 * 60 * 1000;
@@ -3838,6 +4253,8 @@ class DashboardApp {
             this.renderSyncTable(result.data);
         } catch (error) {
             tbody.innerHTML = `<tr><td colspan="6" style="padding:24px;text-align:center;color:#ef4444;">Error: ${error.message}</td></tr>`;
+        } finally {
+            this.hideLoading();
         }
     }
 
@@ -3885,8 +4302,11 @@ class DashboardApp {
         const statusBadge = row.querySelector('.sync-status-badge');
 
         btn.disabled = true;
-        btn.textContent = 'Syncing...';
+        btn.textContent = 'Starting...';
         btn.style.opacity = '0.7';
+        statusBadge.textContent = 'Starting...';
+        statusBadge.style.background = '#475569';
+        statusBadge.style.color = '#e2e8f0';
 
         try {
             // Start sync job for single DB
@@ -3896,21 +4316,84 @@ class DashboardApp {
                 body: JSON.stringify({ database_id: databaseId })
             });
 
-            const result = await response.json();
-            if (!result.success) throw new Error(result.error);
+            const result = await this.parseJsonResponse(response, 'Sync single');
+            if (!response.ok || !result.success || !result.job_id) {
+                throw new Error(result.error || 'Không thể khởi động sync job');
+            }
 
-            // Note: Single sync also uses SSE stream, but we might just poll status or wait
-            // For simplicity, we'll listen to the global SSE or just reload overview after a delay
-            // But since global SSE might be busy, let's just show a notification that it started
+            const { job_id } = result;
+            btn.textContent = 'Syncing...';
+            statusBadge.textContent = 'Syncing...';
+            statusBadge.style.background = '#f59e0b';
+            statusBadge.style.color = '#fff';
 
-            Modal.showAlert('⏳ Đang đồng bộ database này...\nVui lòng đợi trong giây lát.', 'info', 3000);
+            const eventSource = new EventSource(`${API_BASE}/api/sync/stream/${job_id}`);
 
-            // Start polling (simple version)
-            // Just show success notification, NO auto reload
-            setTimeout(() => {
-                // this.loadSyncOverview(); // DISABLED by user request
-                Modal.showAlert('✅ Đã gửi lệnh đồng bộ!\nReload trang (F5) khi cần kiểm tra.', 'success', 5000);
-            }, 2000);
+            eventSource.onmessage = (event) => {
+                const data = JSON.parse(event.data);
+                if (typeof data.progress === 'number' && typeof data.total === 'number' && data.total > 0) {
+                    btn.textContent = `${data.progress}/${data.total}`;
+                }
+            };
+
+            eventSource.addEventListener('complete', async (event) => {
+                eventSource.close();
+                const data = JSON.parse(event.data);
+                statusBadge.textContent = 'Synced ✓';
+                statusBadge.style.background = '#10b981';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'Sync';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+
+                Modal.showAlert(
+                    `✅ Đồng bộ xong database\n\nRecords: ${data.total_records ?? '-'}\nDatabases: ${data.progress ?? 1}`,
+                    'success',
+                    5000
+                );
+
+                await this.loadSyncOverview();
+            });
+
+            eventSource.addEventListener('cancelled', () => {
+                eventSource.close();
+                statusBadge.textContent = 'Cancelled';
+                statusBadge.style.background = '#f59e0b';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'Sync';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            });
+
+            eventSource.addEventListener('error', (event) => {
+                eventSource.close();
+                let errorMsg = 'Sync failed';
+                try {
+                    if (event?.data) {
+                        const payload = JSON.parse(event.data);
+                        errorMsg = payload.error || errorMsg;
+                    }
+                } catch (_) {
+                    // Keep default message
+                }
+                statusBadge.textContent = 'Error';
+                statusBadge.style.background = '#ef4444';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'Sync';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+                Modal.showAlert(`Sync failed: ${errorMsg}`, 'error');
+            });
+
+            eventSource.onerror = () => {
+                eventSource.close();
+                statusBadge.textContent = 'Error';
+                statusBadge.style.background = '#ef4444';
+                statusBadge.style.color = '#fff';
+                btn.textContent = 'Sync';
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            };
 
         } catch (error) {
             console.error(error);
@@ -3941,7 +4424,7 @@ class DashboardApp {
                 body: JSON.stringify({ database_id: databaseId })
             });
 
-            const result = await response.json();
+            const result = await this.parseJsonResponse(response, 'Sync check');
             if (!result.success) throw new Error(result.error);
 
             const { local_count, notion_count, diff_count, mismatches } = result.data;
@@ -4168,7 +4651,11 @@ class DashboardApp {
                         })
                     });
 
-                    const { job_id } = await startResponse.json();
+                    const startPayload = await this.parseJsonResponse(startResponse, 'Sync start');
+                    if (!startResponse.ok || !startPayload.success || !startPayload.job_id) {
+                        throw new Error(startPayload.error || 'Không thể khởi động sync job');
+                    }
+                    const { job_id } = startPayload;
                     currentJobId = job_id;
                     syncStartTime = Date.now();
                     console.log(`[SyncAll] Job started: ${job_id}`);
@@ -4255,7 +4742,7 @@ class DashboardApp {
                         btn.disabled = false;
                         btn.textContent = '🔄 Sync All (Done)';
                         btn.style.background = '#10b981';
-                        // this.loadSyncOverview(); // DISABLED by user request
+                        this.loadSyncOverview();
                     });
 
                     eventSource.addEventListener('cancelled', (event) => {

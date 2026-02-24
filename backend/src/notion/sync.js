@@ -12,35 +12,25 @@ export class SyncService {
     /**
      * Get sync overview for all databases
      */
-    async getOverview() {
+    async getOverview(databaseIds = null) {
         const overview = [];
 
         try {
             // Get stats for all databases
             const allStats = this.db.getStats();
+            const allCachedIds = allStats.cacheFiles.map(file => file.id);
+            const targetIds = Array.isArray(databaseIds) && databaseIds.length > 0
+                ? [...new Set(databaseIds.filter(id => typeof id === 'string' && id.trim().length > 0))]
+                : allCachedIds;
 
-            // Loop through each cached database file
-            for (const fileStats of allStats.cacheFiles) {
-                const dbId = fileStats.id;
+            // Loop through target databases (selected + priority by caller, fallback all cached)
+            for (const dbId of targetIds) {
                 const data = this.db.getData(dbId);
                 const lastSync = this.db.getLastSyncTime(dbId);
 
-                // Try to get database name from Cache first, then Notion
+                // Keep overview lightweight and reliable: use cached names only.
+                // Notion calls for every row can make Sync Monitor appear broken/slow.
                 let dbName = this.db.getDatabaseName(dbId) || 'Database ' + dbId.substring(0, 8);
-
-                // Only fetch from Notion if we don't have a cached name (or it's the default fallback)
-                if (!this.db.getDatabaseName(dbId)) {
-                    try {
-                        const dbInfo = await this.notion.databases.retrieve({ database_id: dbId });
-                        if (dbInfo?.title && dbInfo.title.length > 0) {
-                            dbName = dbInfo.title[0]?.plain_text || dbName;
-                            // Cache the name for future use
-                            this.db.setDatabaseName(dbId, dbName);
-                        }
-                    } catch (error) {
-                        console.warn(`[SyncService] Could not fetch name for ${dbId.substring(0, 8)}:`, error.message);
-                    }
-                }
 
                 const nc = this.db.getNotionCount(dbId);
 

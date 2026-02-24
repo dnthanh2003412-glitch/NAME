@@ -21495,7 +21495,7 @@
   {
     "id": "2e3ccb0e-ac88-807d-8e0b-d03948e59008",
     "created_time": "2026-01-09T08:49:00.000Z",
-    "last_edited_time": "2026-02-10T10:33:00.000Z",
+    "last_edited_time": "2026-02-24T02:16:00.000Z",
     "properties": {
       "Product ": [
         "27eccb0e-ac88-80cb-815f-f70e237909d2"
@@ -21533,10 +21533,10 @@
       "UTKT": [
         9
       ],
-      "NLTT": 10.7625,
+      "NLTT": 12.5125,
       "Ngày làm": {
         "start": "2026-01-09",
-        "end": "2026-02-05"
+        "end": "2026-02-24"
       },
       "[Dev] Total main": 1,
       "Task type": "Main",

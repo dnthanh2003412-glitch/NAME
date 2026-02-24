@@ -1,124 +1,169 @@
-import cron from 'node-cron';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { DataFetcher } from '../notion/fetcher.js';
-import { DatabaseManager } from '../database/db.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 /**
  * Polling Service
- * Periodically fetches data from Notion
+ * Periodically fetches data from Notion.
  */
 export class PollingService {
     constructor(db, wsServer, getAccessToken) {
         this.db = db;
         this.wsServer = wsServer;
-        this.getAccessToken = getAccessToken; // Function to get current access token
+        this.getAccessToken = getAccessToken;
         this.isRunning = false;
-        this.cronJob = null;
+        this.isPolling = false;
+        this.pollTimer = null;
+        this.firstPollTimer = null;
+        this.effectiveIntervalMs = null;
+    }
+
+    normalizeInterval(intervalMs) {
+        const parsed = Number(intervalMs);
+        if (!Number.isFinite(parsed) || parsed <= 0) {
+            return 300000;
+        }
+
+        const minMs = 5000;
+        const maxMs = 24 * 60 * 60 * 1000;
+        return Math.max(minMs, Math.min(maxMs, parsed));
+    }
+
+    loadPriorityDatabases() {
+        try {
+            const priorityPath = path.join(__dirname, '..', '..', 'data', 'priority_projects.json');
+            if (!fs.existsSync(priorityPath)) return [];
+
+            const data = JSON.parse(fs.readFileSync(priorityPath, 'utf8'));
+            if (!Array.isArray(data.priority_databases)) return [];
+            return data.priority_databases.filter((id) => typeof id === 'string' && id.trim().length > 0);
+        } catch (error) {
+            console.warn('[Poller] Could not load whitelist priority databases:', error.message);
+            return [];
+        }
+    }
+
+    mergeTargetDatabases(selectedDatabases = [], priorityDatabases = []) {
+        const selected = Array.isArray(selectedDatabases) ? selectedDatabases : [];
+        const priority = Array.isArray(priorityDatabases) ? priorityDatabases : [];
+        return [...new Set([...priority, ...selected].filter((id) => typeof id === 'string' && id.trim().length > 0))];
+    }
+
+    getTargetDatabaseIds() {
+        const selectedDatabases = this.db.getConfig('selected_databases') || [];
+        const priorityDatabases = this.loadPriorityDatabases();
+        const targetDatabases = this.mergeTargetDatabases(selectedDatabases, priorityDatabases);
+
+        return {
+            targetDatabases,
+            selectedDatabases: Array.isArray(selectedDatabases) ? selectedDatabases : [],
+            priorityDatabases
+        };
     }
 
     /**
-     * Start polling service
-     * @param {number} intervalMs - Polling interval in milliseconds (default: 2 minutes)
+     * Start polling service.
+     * @param {number} intervalMs - Polling interval in milliseconds.
      */
-    start(intervalMs = 600000) { // Changed from 120000 (2min) to 600000 (10min)
+    start(intervalMs = 600000) {
         if (this.isRunning) {
             console.log('[Poller] Already running');
             return;
         }
 
-        // Convert milliseconds to cron expression
-        const intervalSeconds = Math.floor(intervalMs / 1000);
-        let cronExpression;
+        this.effectiveIntervalMs = this.normalizeInterval(intervalMs);
+        console.log(`[Poller] Starting with interval: requested=${intervalMs}ms, effective=${this.effectiveIntervalMs}ms`);
 
-        if (intervalSeconds >= 60) {
-            const minutes = Math.floor(intervalSeconds / 60);
-            cronExpression = `*/${minutes} * * * *`; // Every N minutes
-        } else {
-            cronExpression = `*/${intervalSeconds} * * * * *`; // Every N seconds
-        }
+        const firstPollDelay = 5000;
+        console.log(`[Poller] Using cached data first. Background sync starts in ${firstPollDelay / 1000}s`);
 
-        console.log(`[Poller] Starting with interval: ${intervalMs}ms (${cronExpression})`);
-
-        // Delay first poll to let server start first (cache already available)
-        // Frontend can use cached data immediately
-        const firstPollDelay = 5000; // 5 seconds
-        console.log(`[Poller] 📦 Using cached data. First sync in ${firstPollDelay/1000}s...`);
-        
-        setTimeout(() => {
-            console.log('[Poller] 🔄 Starting background sync with Notion...');
+        this.firstPollTimer = setTimeout(() => {
+            console.log('[Poller] Starting background sync with Notion...');
             this.poll();
         }, firstPollDelay);
 
-        // Schedule periodic polling
-        this.cronJob = cron.schedule(cronExpression, () => {
+        this.pollTimer = setInterval(() => {
             this.poll();
-        });
+        }, this.effectiveIntervalMs);
 
         this.isRunning = true;
-        console.log('[Poller] ✅ Service started');
+        console.log('[Poller] Service started');
     }
 
     /**
-     * Perform a single poll operation
+     * Perform a single poll operation.
+     * Protected by a concurrency guard, so only one poll runs at a time.
      */
     async poll() {
+        if (this.isPolling) {
+            console.log('[Poller] Poll already in progress, skipping');
+            return;
+        }
+        this.isPolling = true;
+
         try {
-            console.log('[Poller] Starting data fetch...');
+            console.log('[Poller] Starting data fetch');
 
-            // Get access token (from session or other source)
             const accessToken = this.getAccessToken();
-
             if (!accessToken) {
                 console.log('[Poller] No access token available, skipping poll');
                 return;
             }
 
-            // Get selected databases
-            const selectedDatabases = this.db.getConfig('selected_databases');
-
-            if (!selectedDatabases || selectedDatabases.length === 0) {
-                console.log('[Poller] No databases selected, skipping poll');
+            const { targetDatabases, selectedDatabases, priorityDatabases } = this.getTargetDatabaseIds();
+            if (targetDatabases.length === 0) {
+                console.log('[Poller] No selected or whitelisted databases, skipping poll');
                 return;
             }
 
-            // Fetch data with progressive callback
+            console.log(
+                `[Poller] Poll target: ${targetDatabases.length} databases (${priorityDatabases.length} whitelist priority, ${selectedDatabases.length} selected)`
+            );
+
             const fetcher = new DataFetcher(accessToken, this.db);
-            
-            // Callback when each database is loaded (for real-time updates)
-            const onBatchComplete = (dbId, recordCount) => {
-                if (this.wsServer) {
-                    this.wsServer.broadcastUpdate({
-                        type: 'progress',
-                        message: `Database loaded: ${dbId.substring(0, 8)}...`,
-                        database_id: dbId,
-                        records_count: recordCount
-                    });
-                }
+
+            const onBatchComplete = (dbId, recordCount, syncMeta = {}) => {
+                if (!this.wsServer) return;
+                const savedName = typeof this.db.getDatabaseName === 'function'
+                    ? this.db.getDatabaseName(dbId)
+                    : null;
+                const databaseName = syncMeta.database_name || savedName || `${String(dbId).slice(0, 8)}...`;
+                this.wsServer.broadcastUpdate({
+                    type: 'progress',
+                    message: `Database loaded: ${databaseName}`,
+                    database_id: dbId,
+                    database_name: databaseName,
+                    records_count: recordCount,
+                    sync_mode: syncMeta.mode || 'unknown',
+                    effective_interval_ms: this.effectiveIntervalMs
+                });
             };
-            
-            const data = await fetcher.fetchAllData(selectedDatabases, onBatchComplete);
 
-            // Save to database (Upsert) - already done in fetchAllData with callback
-            // But do it again for any that might have been missed
-            for (const [dbId, records] of Object.entries(data)) {
-                this.db.upsertData(dbId, records);
-            }
+            const data = await fetcher.fetchAllData(targetDatabases, onBatchComplete, {
+                fullSyncCheckpointMs: parseInt(process.env.FULL_SYNC_CHECKPOINT_MS, 10) || undefined
+            });
 
-            const totalRecords = Object.values(data).reduce((sum, arr) => sum + arr.length, 0);
-            console.log(`[Poller] ✅ Fetch completed: ${totalRecords} total records`);
+            const totalRecords = Object.values(data).reduce((sum, rows) => sum + rows.length, 0);
+            console.log(`[Poller] Fetch completed: ${totalRecords} total records`);
 
-            // Notify WebSocket clients
             if (this.wsServer) {
                 this.wsServer.broadcastUpdate({
                     type: 'complete',
                     message: 'Data updated',
                     records_count: totalRecords,
-                    databases_count: selectedDatabases.length
+                    databases_count: targetDatabases.length,
+                    selected_databases_count: selectedDatabases.length,
+                    priority_databases_count: priorityDatabases.length,
+                    effective_interval_ms: this.effectiveIntervalMs
                 });
             }
         } catch (error) {
-            console.error('[Poller] ❌ Error during poll:', error);
+            console.error('[Poller] Error during poll:', error);
 
-            // Notify clients about error
             if (this.wsServer) {
                 this.wsServer.broadcastUpdate({
                     type: 'error',
@@ -126,16 +171,22 @@ export class PollingService {
                     error: error.message
                 });
             }
+        } finally {
+            this.isPolling = false;
         }
     }
 
     /**
-     * Stop polling service
+     * Stop polling service.
      */
     stop() {
-        if (this.cronJob) {
-            this.cronJob.stop();
-            this.cronJob = null;
+        if (this.pollTimer) {
+            clearInterval(this.pollTimer);
+            this.pollTimer = null;
+        }
+        if (this.firstPollTimer) {
+            clearTimeout(this.firstPollTimer);
+            this.firstPollTimer = null;
         }
 
         this.isRunning = false;
@@ -143,7 +194,7 @@ export class PollingService {
     }
 
     /**
-     * Manually trigger a poll
+     * Manually trigger a poll.
      */
     async triggerPoll() {
         console.log('[Poller] Manual poll triggered');

@@ -690,9 +690,13 @@
       "Sprint name": "BG Ep 6",
       "Dates": null,
       "Sprint ID": null,
-      "Tasks": [],
-      "Total tasks": 0,
-      "Completed tasks": null,
+      "Tasks": [
+        "306ccb0e-ac88-801e-a0d0-f57381bdfd83",
+        "310ccb0e-ac88-8070-bc66-cce931f0809f",
+        "310ccb0e-ac88-80f7-8b68-fd1b2e9fe67d"
+      ],
+      "Total tasks": 3,
+      "Completed tasks": 0,
       "Sprint status": "Future"
     },
     "_title": "BG Ep 6",

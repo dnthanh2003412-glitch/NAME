@@ -67,9 +67,22 @@ export class DataFetcher {
      * @param {Function} onBatchComplete - Callback when a batch completes (for progressive loading)
      * @param {Object} options - Additional options
      * @param {boolean} options.fullSync - Force full sync (no incremental), always true for single-DB fetches
+     * @param {number} options.fullSyncCheckpointMs - Time-based checkpoint for periodic full sync
+     * @param {Function} options.shouldCancel - Optional callback that returns true when sync should abort
      * @returns {Promise<Object>} Object with database data keyed by ID
      */
     async fetchAllData(databaseIds, onBatchComplete = null, options = {}) {
+        const fullSyncCheckpointMs = Number(options.fullSyncCheckpointMs) > 0
+            ? Number(options.fullSyncCheckpointMs)
+            : (parseInt(process.env.FULL_SYNC_CHECKPOINT_MS, 10) || 6 * 60 * 60 * 1000);
+        const shouldCancel = typeof options.shouldCancel === 'function' ? options.shouldCancel : () => false;
+
+        const ensureNotCancelled = () => {
+            if (shouldCancel()) {
+                throw new Error('Sync cancelled by user');
+            }
+        };
+
         // Deduplicate IDs first
         const uniqueIds = [...new Set(databaseIds)];
 
@@ -105,13 +118,50 @@ export class DataFetcher {
 
             for (const dbId of priorityDbs) {
                 try {
+                    ensureNotCancelled();
+
                     // Get metadata
                     const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                     dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
                     await sleep(150);
 
+                    ensureNotCancelled();
+
                     // Fetch data
-                    const pages = await this.client.getAllPages(dbId);
+                    // Priority DBs also follow incremental + periodic full-sync checkpoint
+                    // to avoid stale/ghost records staying in cache.
+                    let pages = [];
+                    let usedIncremental = false;
+                    let usedCheckpointFullSync = false;
+
+                    if (this.db && !options.fullSync) {
+                        const lastSync = this.db.getLastSyncTime(dbId);
+                        const checkpointDue = this.db.isFullSyncDue(dbId, fullSyncCheckpointMs);
+
+                        if (checkpointDue) {
+                            usedCheckpointFullSync = true;
+                            pages = await this.client.getAllPages(dbId);
+                        } else if (lastSync) {
+                            try {
+                                const safetyBuffer = 24 * 60 * 60 * 1000;
+                                const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
+                                const filter = {
+                                    timestamp: "last_edited_time",
+                                    last_edited_time: { after: safeTime }
+                                };
+                                pages = await this.client.getAllPages(dbId, filter);
+                                usedIncremental = true;
+                            } catch (filterError) {
+                                // Filter unsupported/fails => fallback to full sync
+                                pages = await this.client.getAllPages(dbId);
+                            }
+                        } else {
+                            pages = await this.client.getAllPages(dbId);
+                        }
+                    } else {
+                        // fullSync mode or no DB manager: always fetch ALL records
+                        pages = await this.client.getAllPages(dbId);
+                    }
                     const databaseName = dbMetadata[dbId];
                     const projectName = this.extractProjectName(databaseName);
 
@@ -121,28 +171,41 @@ export class DataFetcher {
                         project_name: projectName,
                         database_id: dbId
                     }));
+                    if (this.db && typeof this.db.setDatabaseName === 'function' && databaseName) {
+                        this.db.setDatabaseName(dbId, databaseName);
+                    }
 
                     results[dbId] = transformed;
                     console.log(`[Fetcher] 🌟 Priority: ${dbId.substring(0, 8)}... (${databaseName}): ${transformed.length} records`);
 
                     // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
+                        ensureNotCancelled();
                         let totalCount;
-                        if (options.fullSync) {
-                            // Full sync: OVERWRITE cache to remove deleted records
+                        let syncMeta = { mode: 'full_sync', new: transformed.length, updated: 0, deleted: 0 };
+                        if (options.fullSync || !usedIncremental) {
+                            // Full sync or checkpoint: OVERWRITE cache to remove deleted records
+                            const prevCount = this.db.getData(dbId)?.length || 0;
                             this.db.saveData(dbId, transformed);
                             totalCount = transformed.length;
+                            syncMeta.mode = usedCheckpointFullSync ? 'full_sync_checkpoint' : 'full_sync';
+                            syncMeta.deleted = Math.max(0, prevCount - transformed.length);
                         } else {
                             // Incremental: merge into existing cache
                             const stats = this.db.upsertData(dbId, transformed);
                             totalCount = stats ? stats.total : transformed.length;
+                            if (stats) syncMeta = { mode: 'incremental_upsert', ...stats, deleted: 0 };
                         }
-                        onBatchComplete(dbId, totalCount);
+                        syncMeta.database_name = databaseName;
+                        onBatchComplete(dbId, totalCount, syncMeta);
                     }
 
                     await sleep(250);
                 } catch (error) {
                     console.error(`[Fetcher] ❌ Priority DB ${dbId} failed:`, error.message);
+                    if (options.failOnDatabaseError) {
+                        throw error;
+                    }
                     results[dbId] = [];
                 }
             }
@@ -158,6 +221,8 @@ export class DataFetcher {
             let normalCount = 0;
             for (const dbId of normalDbs) {
                 try {
+                    ensureNotCancelled();
+
                     // Get metadata
                     const dbInfo = await this.client.notion.databases.retrieve({ database_id: dbId });
                     dbMetadata[dbId] = this.extractDatabaseName(dbInfo);
@@ -166,10 +231,15 @@ export class DataFetcher {
                     // Try incremental sync first ONLY if not fullSync mode, fallback to full sync
                     let pages = [];
                     let usedIncremental = false;
+                    let usedCheckpointFullSync = false;
 
                     if (this.db && !options.fullSync) {
                         const lastSync = this.db.getLastSyncTime(dbId);
-                        if (lastSync) {
+                        const checkpointDue = this.db.isFullSyncDue(dbId, fullSyncCheckpointMs);
+                        if (checkpointDue) {
+                            usedCheckpointFullSync = true;
+                            pages = await this.client.getAllPages(dbId);
+                        } else if (lastSync) {
                             try {
                                 const safetyBuffer = 24 * 60 * 60 * 1000;
                                 const safeTime = new Date(new Date(lastSync).getTime() - safetyBuffer).toISOString();
@@ -200,23 +270,33 @@ export class DataFetcher {
                         project_name: projectName,
                         database_id: dbId
                     }));
+                    if (this.db && typeof this.db.setDatabaseName === 'function' && databaseName) {
+                        this.db.setDatabaseName(dbId, databaseName);
+                    }
 
                     results[dbId] = transformed;
                     normalCount++;
 
                     // Save immediately to DB if available
                     if (this.db && onBatchComplete) {
+                        ensureNotCancelled();
                         let totalCount;
+                        let syncMeta = { mode: 'full_sync', new: transformed.length, updated: 0, deleted: 0 };
                         if (options.fullSync || !usedIncremental) {
                             // Full sync or first-time fetch: OVERWRITE cache
+                            const prevCount = this.db.getData(dbId)?.length || 0;
                             this.db.saveData(dbId, transformed);
                             totalCount = transformed.length;
+                            syncMeta.mode = usedCheckpointFullSync ? 'full_sync_checkpoint' : 'full_sync';
+                            syncMeta.deleted = Math.max(0, prevCount - transformed.length);
                         } else {
                             // Incremental: merge into existing cache
                             const stats = this.db.upsertData(dbId, transformed);
                             totalCount = stats ? stats.total : transformed.length;
+                            if (stats) syncMeta = { mode: 'incremental_upsert', ...stats, deleted: 0 };
                         }
-                        onBatchComplete(dbId, totalCount);
+                        syncMeta.database_name = databaseName;
+                        onBatchComplete(dbId, totalCount, syncMeta);
                     }
 
                     // Log progress every 10 databases
@@ -227,6 +307,9 @@ export class DataFetcher {
                     await sleep(300);
                 } catch (error) {
                     console.error(`[Fetcher] ❌ Normal DB ${dbId} failed:`, error.message);
+                    if (options.failOnDatabaseError) {
+                        throw error;
+                    }
                     results[dbId] = [];
                 }
             }

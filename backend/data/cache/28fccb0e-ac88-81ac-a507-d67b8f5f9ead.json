@@ -529,7 +529,7 @@
         "303ccb0e-ac88-805c-865b-ebce3766c2c8",
         "304ccb0e-ac88-80c0-b67e-cf6755f3387b"
       ],
-      "Total tasks": 26,
+      "Total tasks": 27,
       "Completed tasks": 1,
       "Sprint status": "Current"
     },
@@ -572,10 +572,14 @@
         "305ccb0e-ac88-81f5-8912-ff54182d74d3",
         "305ccb0e-ac88-8171-b49d-ece406eae411",
         "305ccb0e-ac88-81e1-aab3-ea83e62dc3b4",
-        "305ccb0e-ac88-81b3-b8c5-d79972c72929"
+        "305ccb0e-ac88-81b3-b8c5-d79972c72929",
+        "310ccb0e-ac88-808d-8902-d247d4edd41a",
+        "310ccb0e-ac88-811c-85ac-c4d8a907b2e6",
+        "310ccb0e-ac88-80bf-b55a-d0f2849f28db",
+        "311ccb0e-ac88-8095-b8bc-d868c61babb1"
       ],
-      "Total tasks": 21,
-      "Completed tasks": 0.47619047619047616,
+      "Total tasks": 27,
+      "Completed tasks": 0.5925925925925926,
       "Sprint status": "Future"
     },
     "_title": "Sprint 11",
@@ -597,10 +601,22 @@
       },
       "Sprint ID": null,
       "Tasks": [
-        "305ccb0e-ac88-80d2-956f-fbd39556eb82"
+        "305ccb0e-ac88-80d2-956f-fbd39556eb82",
+        "310ccb0e-ac88-80cb-84dc-f159e2aab030",
+        "310ccb0e-ac88-803c-b9c9-fd24899ff58c",
+        "310ccb0e-ac88-8064-8149-fdf655a65c10",
+        "310ccb0e-ac88-803c-b1f2-c8fec0ebdb62",
+        "310ccb0e-ac88-80d7-b142-f5fa93479628",
+        "310ccb0e-ac88-811c-85ac-c4d8a907b2e6",
+        "310ccb0e-ac88-80bf-b55a-d0f2849f28db",
+        "310ccb0e-ac88-808d-8902-d247d4edd41a",
+        "311ccb0e-ac88-8035-a419-f88f8a23c635",
+        "311ccb0e-ac88-80d8-9140-d96061ad0214",
+        "311ccb0e-ac88-8095-b8bc-d868c61babb1",
+        "311ccb0e-ac88-8019-a3fc-d248d4ac732c"
       ],
-      "Total tasks": 1,
-      "Completed tasks": 0,
+      "Total tasks": 13,
+      "Completed tasks": 0.9230769230769231,
       "Sprint status": "Future"
     },
     "_title": "Sprint 12",

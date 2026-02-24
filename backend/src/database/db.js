@@ -76,6 +76,7 @@ export class DatabaseManager {
 
     /**
      * Read JSON file safely
+     * On parse error, backs up the corrupted file for debugging
      */
     _readJson(filePath, defaultValue = {}) {
         try {
@@ -85,21 +86,36 @@ export class DatabaseManager {
             const content = readFileSync(filePath, 'utf8');
             return JSON.parse(content);
         } catch (error) {
-            console.error(`[Database] Error reading ${filePath}:`, error.message);
+            console.error(`[Database] ❌ Error reading ${filePath}:`, error.message);
             debugLog(`Error reading ${filePath}: ${error.message}`);
+            // Backup corrupted file for post-mortem debugging
+            try {
+                const backupPath = filePath + '.corrupted.' + Date.now();
+                if (existsSync(filePath)) {
+                    renameSync(filePath, backupPath);
+                    console.error(`[Database] 💾 Corrupted file backed up to: ${backupPath}`);
+                }
+            } catch (backupErr) {
+                console.error(`[Database] Failed to backup corrupted file:`, backupErr.message);
+            }
             return defaultValue;
         }
     }
 
     /**
-     * Write JSON file safely
+     * Write JSON file safely using atomic write (temp file + rename)
+     * Prevents data corruption if process crashes mid-write
      */
     _writeJson(filePath, data) {
+        const tmpPath = filePath + '.tmp';
         try {
-            writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf8');
+            writeFileSync(tmpPath, JSON.stringify(data, null, 2), 'utf8');
+            renameSync(tmpPath, filePath);
         } catch (error) {
             console.error(`[Database] Error writing ${filePath}:`, error.message);
             debugLog(`Error writing ${filePath}: ${error.message}`);
+            // Clean up temp file if rename failed
+            try { if (existsSync(tmpPath)) unlinkSync(tmpPath); } catch (_) { }
         }
     }
 
@@ -258,6 +274,56 @@ export class DatabaseManager {
     }
 
     /**
+     * Update full-sync checkpoint time for a database
+     * @param {string} databaseId
+     */
+    _updateFullSyncTime(databaseId) {
+        const metadata = this._readJson(this.metadataPath, {});
+        if (!metadata.full_sync_times) metadata.full_sync_times = {};
+        metadata.full_sync_times[databaseId] = new Date().toISOString();
+        this._writeJson(this.metadataPath, metadata);
+    }
+
+    /**
+     * Get last full-sync checkpoint time for a database
+     * @param {string} databaseId
+     * @returns {string|null}
+     */
+    getLastFullSyncTime(databaseId) {
+        const metadata = this._readJson(this.metadataPath, {});
+        return metadata.full_sync_times?.[databaseId] || null;
+    }
+
+    /**
+     * Check whether a database is due for full-sync checkpoint
+     * @param {string} databaseId
+     * @param {number} checkpointMs
+     * @returns {boolean}
+     */
+    isFullSyncDue(databaseId, checkpointMs = 6 * 60 * 60 * 1000) {
+        const lastFullSync = this.getLastFullSyncTime(databaseId);
+        if (!lastFullSync) return true;
+        const ts = new Date(lastFullSync).getTime();
+        if (Number.isNaN(ts)) return true;
+        return (Date.now() - ts) >= checkpointMs;
+    }
+
+    /**
+     * Persist latest sync audit per database for quick diagnostics
+     * @param {string} databaseId
+     * @param {Object} audit
+     */
+    _recordSyncAudit(databaseId, audit) {
+        const metadata = this._readJson(this.metadataPath, {});
+        if (!metadata.sync_audit) metadata.sync_audit = {};
+        metadata.sync_audit[databaseId] = {
+            ...audit,
+            updated_at: new Date().toISOString()
+        };
+        this._writeJson(this.metadataPath, metadata);
+    }
+
+    /**
      * Set Notion count for a database (persists across reloads)
      * @param {string} databaseId 
      * @param {number} count 
@@ -330,11 +396,22 @@ export class DatabaseManager {
      */
     saveData(databaseId, records) {
         const cacheFile = this._getCacheFilePath(databaseId);
+        const existingData = this._readJson(cacheFile, []);
         this._writeJson(cacheFile, records);
         this._updateSyncTime(databaseId);
+        this._updateFullSyncTime(databaseId);
 
         // Update lookup cache incrementally
         this.updateLookupCacheIncremental(records);
+
+        const deletedCount = Math.max(0, existingData.length - records.length);
+        this._recordSyncAudit(databaseId, {
+            mode: 'full_sync',
+            total: records.length,
+            new: records.length,
+            updated: 0,
+            deleted: deletedCount
+        });
 
         console.log(`[Database] ✅ Saved ${records.length} records for ${databaseId.substring(0, 8)}...`);
         debugLog(`Saved ${records.length} records for ${databaseId}`);
@@ -359,7 +436,8 @@ export class DatabaseManager {
             return {
                 total: existingData.length,
                 new: 0,
-                updated: 0
+                updated: 0,
+                deleted: 0
             };
         }
 
@@ -387,6 +465,13 @@ export class DatabaseManager {
 
         // Update lookup cache incrementally
         this.updateLookupCacheIncremental(newRecords);
+        this._recordSyncAudit(databaseId, {
+            mode: 'incremental_upsert',
+            total: mergedData.length,
+            new: newCount,
+            updated: updateCount,
+            deleted: 0
+        });
 
         const msg = `[Database] 🔄 Upserted for ${databaseId.substring(0, 8)}... (New: ${newCount}, Updated: ${updateCount}, Total: ${mergedData.length})`;
         console.log(msg);
@@ -395,7 +480,8 @@ export class DatabaseManager {
         return {
             total: mergedData.length,
             new: newCount,
-            updated: updateCount
+            updated: updateCount,
+            deleted: 0
         };
     }
 

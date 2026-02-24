@@ -121,8 +121,191 @@ function loadPriorityProjects() {
     return { projects: [], priority_databases: [] };
 }
 
+function normalizeQuery(text = '') {
+    return String(text)
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '');
+}
+
+function extractFirstText(value) {
+    if (value === null || value === undefined) return '';
+    if (typeof value === 'string') return value.trim();
+    if (typeof value === 'number' || typeof value === 'boolean') return String(value);
+    if (Array.isArray(value)) {
+        const parts = value.map(extractFirstText).filter(Boolean);
+        return parts.join(', ');
+    }
+    if (typeof value === 'object') {
+        if (Array.isArray(value.people)) {
+            const names = value.people
+                .map(person => person?.name || person?.person?.email || '')
+                .filter(Boolean);
+            if (names.length > 0) return names.join(', ');
+        }
+        if (Array.isArray(value.relation)) {
+            const rel = value.relation
+                .map(item => item?.id || '')
+                .filter(Boolean);
+            if (rel.length > 0) return rel.join(', ');
+        }
+        if (value.type && value[value.type] !== undefined) {
+            return extractFirstText(value[value.type]);
+        }
+        if (value.person && value.person.email) return String(value.person.email).trim();
+        if (value.name) return String(value.name).trim();
+        if (value.plain_text) return String(value.plain_text).trim();
+        if (value.title && Array.isArray(value.title)) {
+            return value.title.map(v => v?.plain_text || v?.text?.content || '').filter(Boolean).join('');
+        }
+        if (value.rich_text && Array.isArray(value.rich_text)) {
+            return value.rich_text.map(v => v?.plain_text || v?.text?.content || '').filter(Boolean).join('');
+        }
+    }
+    return '';
+}
+
+function extractAssigneeName(record) {
+    if (!record || typeof record !== 'object') return '';
+    const candidates = [
+        'Assignee', 'Assignees', 'assigned_to',
+        'Người phụ trách', 'Nguoi phu trach', 'Nhân sự', 'Nhan su',
+        'Owner', 'People', 'Person', 'Người thực hiện', 'Nguoi thuc hien'
+    ];
+    for (const key of candidates) {
+        if (record[key] !== undefined) {
+            const value = extractFirstText(record[key]);
+            if (value) return value;
+        }
+    }
+
+    const props = (record.properties && typeof record.properties === 'object') ? record.properties : null;
+    if (props) {
+        for (const key of candidates) {
+            if (props[key] !== undefined) {
+                const value = extractFirstText(props[key]);
+                if (value) return value;
+            }
+        }
+        for (const [key, value] of Object.entries(props)) {
+            const normalizedKey = normalizeQuery(key);
+            if (
+                normalizedKey.includes('assignee') ||
+                normalizedKey.includes('owner') ||
+                normalizedKey.includes('nguoi') ||
+                normalizedKey.includes('nhan su') ||
+                normalizedKey.includes('phu trach')
+            ) {
+                const text = extractFirstText(value);
+                if (text) return text;
+            }
+        }
+    }
+
+    for (const [key, value] of Object.entries(record)) {
+        const normalizedKey = normalizeQuery(key);
+        if (normalizedKey.includes('assignee') || normalizedKey.includes('nguoi') || normalizedKey.includes('nhan su')) {
+            const text = extractFirstText(value);
+            if (text) return text;
+        }
+    }
+    return '';
+}
+
+function extractAssigneeNames(record) {
+    const raw = extractAssigneeName(record);
+    if (!raw) return [];
+    return raw
+        .split(',')
+        .map(item => item.trim())
+        .filter(name =>
+            name &&
+            name.toLowerCase() !== 'unknown user' &&
+            name.toLowerCase() !== 'unknown'
+        );
+}
+
+function buildSmartCacheReply(userMessage, context, db) {
+    const q = normalizeQuery(userMessage);
+    if (!q) return null;
+
+    const selectedFromContext = Array.isArray(context?.selected_database_ids) ? context.selected_database_ids : [];
+    const selectedFromConfig = Array.isArray(db.getConfig('selected_databases')) ? db.getConfig('selected_databases') : [];
+    const selectedIds = selectedFromContext.length > 0 ? selectedFromContext : selectedFromConfig;
+    if (selectedIds.length === 0) return null;
+
+    const rows = [];
+    const dbNameMap = new Map();
+    selectedIds.forEach(dbId => {
+        const data = db.getData(dbId);
+        if (Array.isArray(data) && data.length > 0) {
+            const first = data[0];
+            const dbName = first?.database_name || first?.project_name || dbId;
+            dbNameMap.set(dbId, dbName);
+            rows.push(...data);
+        } else {
+            dbNameMap.set(dbId, dbId);
+        }
+    });
+    if (rows.length === 0) return null;
+
+    const askTopAssignee =
+        (q.includes('ai') && q.includes('nhieu') && q.includes('task')) ||
+        q.includes('top assignee') ||
+        q.includes('top nguoi');
+    const askTotalTask = q.includes('bao nhieu task') || q.includes('tong task') || q.includes('so task');
+    const askSyncTime = q.includes('sync luc nao') || q.includes('last sync') || q.includes('dong bo luc nao');
+
+    if (askTopAssignee) {
+        const byAssignee = new Map();
+        rows.forEach(row => {
+            const names = extractAssigneeNames(row);
+            if (names.length === 0) return;
+            names.forEach(name => {
+                byAssignee.set(name, (byAssignee.get(name) || 0) + 1);
+            });
+        });
+        const top = [...byAssignee.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+        if (top.length === 0) {
+            return 'Chua xac dinh duoc nguoi phu trach trong dung scope du an dang generate. Vui long kiem tra cot Assignee/Owner trong cac database da chon.';
+        }
+        const [topName, topCount] = top[0];
+        const leaderboard = top.map(([name, count], i) => `${i + 1}. ${name}: ${count} task`).join('\n');
+        return `Nguoi co nhieu task nhat hien tai: ${topName} (${topCount} task).\nTop 5:\n${leaderboard}`;
+    }
+
+    if (askTotalTask) {
+        return `Tong task hien co trong cache cua cac database da chon: ${rows.length}.`;
+    }
+
+    if (askSyncTime) {
+        const syncLines = selectedIds.slice(0, 5).map(dbId => {
+            const syncAt = db.getLastSyncTime(dbId) || db.getLastUpdate() || 'khong ro';
+            const dbName = dbNameMap.get(dbId) || dbId;
+            return `- ${dbName}: ${syncAt}`;
+        });
+        return `Thoi gian dong bo gan nhat (toi da 5 database theo scope hien tai):\n${syncLines.join('\n')}`;
+    }
+
+    return null;
+}
+
 export function setupRoutes(app, db, poller) {
     const notionToken = process.env.NOTION_ACCESS_TOKEN || process.env.NOTION_TOKEN;
+    const getChatRuntimeConfig = () => {
+        const chatApiKey = process.env.AI_API_KEY || process.env.OPENAI_API_KEY || process.env.AL_API_KEY || '';
+        const chatProvider = (process.env.AI_PROVIDER || (chatApiKey.startsWith('AIza') ? 'gemini' : 'openai')).toLowerCase();
+        const defaultBase = chatProvider === 'gemini'
+            ? 'https://generativelanguage.googleapis.com/v1beta'
+            : 'https://api.openai.com/v1';
+        return {
+            chatbotEnabled: process.env.CHATBOT_ENABLED !== 'false',
+            chatApiKey,
+            chatProvider,
+            chatBaseUrl: (process.env.AI_BASE_URL || defaultBase).replace(/\/$/, ''),
+            chatModel: process.env.AI_MODEL || (chatProvider === 'gemini' ? 'gemini-1.5-flash' : 'gpt-4o-mini')
+        };
+    };
     let globalProjectsService = null;
     const rawWarmupInFlight = new Set();
     const syncJobsPath = path.join(__dirname, '..', '..', 'data', 'sync_jobs.json');
@@ -236,6 +419,239 @@ export function setupRoutes(app, db, poller) {
     app.post('/auth/logout', (req, res) => {
         req.session.destroy();
         res.json({ success: true });
+    });
+
+    // ============ CHATBOT ROUTES ============
+    app.get('/api/chat/config', (req, res) => {
+        const { chatbotEnabled, chatProvider, chatModel, chatApiKey } = getChatRuntimeConfig();
+        res.json({
+            success: true,
+            enabled: chatbotEnabled,
+            provider: chatProvider,
+            model: chatModel,
+            provider_ready: Boolean(chatApiKey)
+        });
+    });
+
+    app.post('/api/chat', async (req, res) => {
+        const { chatbotEnabled, chatApiKey, chatProvider, chatBaseUrl, chatModel } = getChatRuntimeConfig();
+        const userMessage = typeof req.body?.message === 'string' ? req.body.message.trim() : '';
+        const context = (req.body?.context && typeof req.body.context === 'object') ? req.body.context : {};
+        const history = Array.isArray(req.body?.history) ? req.body.history : [];
+
+        if (!chatbotEnabled) {
+            return res.status(403).json({
+                success: false,
+                error: 'Chatbot đang tắt (CHATBOT_ENABLED=false).'
+            });
+        }
+
+        if (!userMessage) {
+            return res.status(400).json({
+                success: false,
+                error: 'message là bắt buộc.'
+            });
+        }
+
+        const safeHistory = history
+            .filter(item => item && (item.role === 'user' || item.role === 'assistant') && typeof item.content === 'string')
+            .slice(-8)
+            .map(item => ({
+                role: item.role,
+                content: item.content.trim().slice(0, 3000)
+            }));
+
+        const selectedCount = context.selected_count || 'Chưa rõ';
+        const reportType = context.report_type || 'chưa chọn';
+        const pageTitle = context.page_title || 'Dashboard';
+        const syncSource = context.sync_source || 'không rõ';
+
+        const systemPrompt = [
+            'Bạn là trợ lý cho dashboard Notion.',
+            'Trả lời ngắn gọn, rõ ràng, bằng tiếng Việt.',
+            'Nếu thiếu dữ liệu thì nêu rõ thiếu gì, không bịa.',
+            'Ưu tiên hướng dẫn thao tác trực tiếp trên dashboard.'
+        ].join(' ');
+
+        const contextPrompt = `Ngữ cảnh hiện tại: page="${pageTitle}", report="${reportType}", selected="${selectedCount}", sync="${syncSource}".`;
+
+        const smartReply = buildSmartCacheReply(userMessage, context, db);
+        if (smartReply) {
+            return res.json({
+                success: true,
+                reply: smartReply
+            });
+        }
+
+        if (!chatApiKey) {
+            return res.json({
+                success: true,
+                reply: `Preview mode: bạn hỏi "${userMessage}". Hiện chưa cấu hình AI_API_KEY/OPENAI_API_KEY nên bot đang chạy fallback. ${contextPrompt}`
+            });
+        }
+
+        try {
+            const useGemini = chatProvider === 'gemini' || chatApiKey.startsWith('AIza');
+            if (useGemini) {
+                const historyText = safeHistory
+                    .map(item => `${item.role === 'assistant' ? 'Assistant' : 'User'}: ${item.content}`)
+                    .join('\n');
+                const geminiBaseUrl = chatBaseUrl || 'https://generativelanguage.googleapis.com/v1beta';
+                const requestedGeminiModel = String(chatModel || '').replace(/^models\//, '') || 'gemini-2.5-flash';
+                const buildGeminiUrl = (modelName) =>
+                    `${geminiBaseUrl}/models/${encodeURIComponent(String(modelName).replace(/^models\//, ''))}:generateContent?key=${encodeURIComponent(chatApiKey)}`;
+                let geminiUrl = buildGeminiUrl(requestedGeminiModel);
+                const geminiPrompt = [
+                    systemPrompt,
+                    contextPrompt,
+                    historyText,
+                    `User: ${userMessage}`
+                ].filter(Boolean).join('\n\n');
+
+                let geminiResponse = await fetch(geminiUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        contents: [
+                            {
+                                parts: [{ text: geminiPrompt }]
+                            }
+                        ],
+                        generationConfig: {
+                            temperature: 0.3,
+                            maxOutputTokens: 500
+                        }
+                    }),
+                    signal: AbortSignal.timeout(25000)
+                });
+
+                let geminiPayload = await geminiResponse.json();
+                if (!geminiResponse.ok && geminiResponse.status === 404) {
+                    try {
+                        const listResponse = await fetch(`${geminiBaseUrl}/models?key=${encodeURIComponent(chatApiKey)}`, {
+                            signal: AbortSignal.timeout(10000)
+                        });
+                        const listPayload = await listResponse.json();
+                        const models = Array.isArray(listPayload?.models) ? listPayload.models : [];
+                        const candidates = models.filter(model =>
+                            Array.isArray(model?.supportedGenerationMethods) &&
+                            model.supportedGenerationMethods.includes('generateContent')
+                        );
+                        const preferred = candidates.find(model => String(model?.baseModelId || '').startsWith('gemini-2.5-flash'))
+                            || candidates.find(model => String(model?.baseModelId || '').includes('flash'))
+                            || candidates[0];
+                        const fallbackModel = preferred?.baseModelId || String(preferred?.name || '').replace(/^models\//, '');
+                        if (fallbackModel) {
+                            geminiUrl = buildGeminiUrl(fallbackModel);
+                            geminiResponse = await fetch(geminiUrl, {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json'
+                                },
+                                body: JSON.stringify({
+                                    contents: [
+                                        {
+                                            parts: [{ text: geminiPrompt }]
+                                        }
+                                    ],
+                                    generationConfig: {
+                                        temperature: 0.3,
+                                        maxOutputTokens: 500
+                                    }
+                                }),
+                                signal: AbortSignal.timeout(25000)
+                            });
+                            geminiPayload = await geminiResponse.json();
+                            if (geminiResponse.ok) {
+                                const geminiReply = geminiPayload?.candidates?.[0]?.content?.parts
+                                    ?.map(part => part?.text || '')
+                                    .join('')
+                                    .trim();
+                                if (geminiReply) {
+                                    return res.json({
+                                        success: true,
+                                        reply: geminiReply
+                                    });
+                                }
+                            }
+                        }
+                    } catch {
+                        // Keep original 404 error flow below.
+                    }
+                }
+                if (!geminiResponse.ok) {
+                    return res.status(geminiResponse.status).json({
+                        success: false,
+                        error: geminiPayload?.error?.message || geminiPayload?.error || 'Gemini request failed.'
+                    });
+                }
+
+                const geminiReply = geminiPayload?.candidates?.[0]?.content?.parts
+                    ?.map(part => part?.text || '')
+                    .join('')
+                    .trim();
+
+                if (!geminiReply) {
+                    return res.status(502).json({
+                        success: false,
+                        error: 'Gemini returned empty content.'
+                    });
+                }
+
+                return res.json({
+                    success: true,
+                    reply: geminiReply
+                });
+            }
+
+            const response = await fetch(`${chatBaseUrl}/chat/completions`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${chatApiKey}`
+                },
+                body: JSON.stringify({
+                    model: chatModel,
+                    temperature: 0.3,
+                    max_tokens: 500,
+                    messages: [
+                        { role: 'system', content: systemPrompt },
+                        { role: 'system', content: contextPrompt },
+                        ...safeHistory,
+                        { role: 'user', content: userMessage }
+                    ]
+                }),
+                signal: AbortSignal.timeout(25000)
+            });
+
+            const payload = await response.json();
+            if (!response.ok) {
+                return res.status(response.status).json({
+                    success: false,
+                    error: payload?.error?.message || payload?.error || 'AI provider request failed.'
+                });
+            }
+
+            const reply = payload?.choices?.[0]?.message?.content;
+            if (!reply || typeof reply !== 'string') {
+                return res.status(502).json({
+                    success: false,
+                    error: 'AI provider trả về dữ liệu không hợp lệ.'
+                });
+            }
+
+            return res.json({
+                success: true,
+                reply: reply.trim()
+            });
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                error: `Chat request failed: ${error.message}`
+            });
+        }
     });
 
     // ============ WHITELIST / PRIORITY ROUTES ============
@@ -1623,4 +2039,5 @@ async function startSyncJob(jobId, db, notionToken, syncJobsMap, targetDatabaseI
         persist();
     }
 }
+
 

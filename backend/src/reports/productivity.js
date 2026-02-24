@@ -22,10 +22,15 @@ export class ProductivityService {
             end.setHours(23, 59, 59, 999);
         }
 
-        // 1. Collect all data
+        // 1. Collect all data (Productivity report should use Task databases only)
         let allTasks = [];
         for (const dbId of databaseIds) {
             const data = this.db.getData(dbId);
+            if (!Array.isArray(data) || data.length === 0) continue;
+            const dbName = String(data[0]?.database_name || '').toLowerCase();
+            if (!dbName.includes('task')) {
+                continue;
+            }
             allTasks = allTasks.concat(data);
         }
 
@@ -41,16 +46,11 @@ export class ProductivityService {
         let missingDateSamples = [];
         let projectsSet = new Set();
 
+        const tasksInRangeAllStatuses = [];
         const relevantTasks = allTasks.filter(task => {
             const status = this.getPropertyValue(task, 'Task Status') || this.getPropertyValue(task, 'Status');
             const statusLower = String(status).toLowerCase();
             const isDone = statusLower === 'done' || statusLower === 'done qc' || statusLower === 'done others';
-
-            // Check Status
-            if (!isDone) {
-                countStatusReject++;
-                return false;
-            }
 
             // Parse Date
             const doneDate = this.parseDate(task);
@@ -82,6 +82,15 @@ export class ProductivityService {
                 return false;
             }
 
+            // Track all tasks in date range regardless of status (for task count parity with Notion views)
+            tasksInRangeAllStatuses.push(task);
+
+            // Keep productivity metrics based on completed tasks only
+            if (!isDone) {
+                countStatusReject++;
+                return false;
+            }
+
             // Check Assignee
             const assignees = this.getAssignees(task);
             if (assignees.length === 0) {
@@ -105,7 +114,7 @@ export class ProductivityService {
 
         console.log(`[Productivity] Metrics calculated. Relevant Tasks: ${relevantTasks.length}`);
 
-        // 3. Group by Assignee
+        // 3. Group by Assignee (done tasks for productivity metrics)
         const grouped = {};
         for (const task of relevantTasks) {
             const assignees = this.getAssignees(task);
@@ -116,8 +125,24 @@ export class ProductivityService {
             }
         }
 
+        // Group all in-range tasks for task count shown on report
+        const groupedAllInRange = {};
+        const projectsByPerson = {};
+        for (const task of tasksInRangeAllStatuses) {
+            const assignees = this.getAssignees(task);
+            const projectName = this.getProjectName(task);
+            for (const person of assignees) {
+                if (!groupedAllInRange[person]) groupedAllInRange[person] = [];
+                groupedAllInRange[person].push(task);
+                if (!projectsByPerson[person]) projectsByPerson[person] = new Set();
+                if (projectName) {
+                    projectsByPerson[person].add(projectName);
+                }
+            }
+        }
+
         // 4. Build Rows per Assignee
-        const assigneesFromData = Object.keys(grouped);
+        const assigneesFromData = [...new Set([...Object.keys(grouped), ...Object.keys(groupedAllInRange)])];
         const presetPersonnel = Object.keys(SENIORITY_MAPPING);
         // reportData is already declared at top
 
@@ -145,14 +170,15 @@ export class ProductivityService {
             }
 
             const kpi = KPI_MAPPING[seniority] || 0;
-            const tasks = grouped[personName] || [];
+            const tasksDone = grouped[personName] || [];
+            const tasksAllInRange = groupedAllInRange[personName] || [];
 
             // Manual Inputs
             const standardDays = stats.standard_days || 0;
             const actualDays = stats.actual_days?.[personName] || 0;
 
             // Calculate Metrics
-            const metrics = this.calculateMetrics(tasks, kpi, standardDays, actualDays);
+            const metrics = this.calculateMetrics(tasksDone, kpi, standardDays, actualDays);
 
             reportData.push({
                 fullName: personName,
@@ -160,7 +186,13 @@ export class ProductivityService {
                 productivityReq: kpi,
                 standardDays,
                 actualDays,
-                taskCount: tasks.length,  // Total tasks for this person
+                // Align "Tổng task" with productivity scope (completed tasks in selected range)
+                taskCount: tasksDone.length,
+                taskCountDone: tasksDone.length,
+                taskCountAllStatuses: tasksAllInRange.length,
+                projects: projectsByPerson[personName]
+                    ? [...projectsByPerson[personName]].sort((a, b) => a.localeCompare(b, 'vi')).join(', ')
+                    : '',
                 ...metrics
             });
         }
@@ -177,6 +209,7 @@ export class ProductivityService {
 
         const filterStats = {
             totalProcessed: allTasks.length,
+            totalInRangeAllStatuses: tasksInRangeAllStatuses.length,
             totalAccepted: countAccepted,
             rejectedStatus: countStatusReject,
             rejectedDateMissing: countDateMissing,
@@ -187,6 +220,28 @@ export class ProductivityService {
         };
 
         return { validData, unknownUsers, filterStats };
+    }
+
+    getProjectName(task) {
+        const normalizeProjectName = (input) => {
+            const raw = String(input || '').trim();
+            if (!raw) return '';
+            const bracketMatch = raw.match(/^\[(.*?)\]/);
+            if (bracketMatch?.[1]) {
+                return bracketMatch[1].trim();
+            }
+            return raw.replace(/\s*tasks?\s*$/i, '').trim();
+        };
+
+        const direct = task?.project_name;
+        if (direct && String(direct).trim()) {
+            const normalized = normalizeProjectName(direct);
+            if (normalized) return normalized;
+        }
+
+        const dbName = String(task?.database_name || '').trim();
+        if (!dbName) return '';
+        return normalizeProjectName(dbName);
     }
 
     calculateMetrics(tasks, kpi, standardDays, actualDays) {
@@ -451,77 +506,76 @@ export class ProductivityService {
         const props = task.properties;
         if (!props) return null;
 
-        // Find date column - prioritize NGÀY LÀM
-        // If NGÀY LÀM column exists, we use it (even if empty), we DO NOT fallback to DoneDate
-        // This ensures strict filtering as requested.
-        let dateValue = null;
+        const normalizeKey = (key) => this.removeAccents(String(key || '').toLowerCase())
+            .replace(/[^a-z0-9]+/g, ' ')
+            .trim();
 
-        // 1. Try NGÀY LÀM first
-        const ngayLamKeys = ['NGÀY LÀM', 'Ngày làm', 'Ngay lam', 'ngày làm'];
-        const foundNgayLamKey = ngayLamKeys.find(k => props.hasOwnProperty(k));
+        const extractDate = (rawValue) => {
+            let dateValue = rawValue;
 
-        if (foundNgayLamKey) {
-            // Column exists - take its value (valid or empty)
-            dateValue = props[foundNgayLamKey];
-        } else {
-            // 2. Fallback to DoneDate/Work Date only if NGÀY LÀM column is missing entirely
-            const doneDateKeys = ['DoneDate', 'Done Date', 'DONE DATE', 'Work Date', 'Date', 'Ngày', 'Time', 'Created time', 'Thời gian tạo'];
-            for (const key of doneDateKeys) {
-                if (props.hasOwnProperty(key)) {
-                    dateValue = props[key];
-                    break;
+            if (dateValue === null || dateValue === undefined || dateValue === '') return null;
+            if (Array.isArray(dateValue) && dateValue.length === 0) return null;
+
+            if (typeof dateValue === 'object') {
+                if (dateValue.type === 'formula') {
+                    const f = dateValue.formula || {};
+                    dateValue = f.string || f.date || f.number || null;
+                } else if (dateValue.type === 'rollup') {
+                    if (Array.isArray(dateValue.rollup?.array)) {
+                        const arr = dateValue.rollup.array;
+                        const last = arr[arr.length - 1];
+                        dateValue = last?.start || last?.formula?.string || last || null;
+                    } else {
+                        dateValue = null;
+                    }
+                } else if (dateValue.type === 'date' && dateValue.date) {
+                    dateValue = dateValue.date;
+                } else if (Array.isArray(dateValue.rich_text)) {
+                    dateValue = dateValue.rich_text[0]?.plain_text || null;
+                } else if (Array.isArray(dateValue.title)) {
+                    dateValue = dateValue.title[0]?.plain_text || null;
                 }
             }
-        }
 
-        // 3. Last Resort: Use System Created Time (Stable) or Last Edited Time
-        // Prioritize Created Time to avoid bulk-edit false positives in "This Month"
-        if (!dateValue && (task.created_time || task.last_edited_time)) {
-            return new Date(task.created_time || task.last_edited_time);
-        }
+            if (!dateValue) return null;
 
-        // Check if value is truly empty/invalid
-        if (dateValue === null || dateValue === undefined || dateValue === '') return null;
-        if (Array.isArray(dateValue) && dateValue.length === 0) return null;
-
-        // NEW: Unpack Formula/Rollup/RichText objects to get the inner string/date
-        if (typeof dateValue === 'object') {
-            if (dateValue.type === 'formula') {
-                const f = dateValue.formula;
-                dateValue = f.string || f.date || f.number || null;
-            } else if (dateValue.type === 'rollup') {
-                // Rollup array logic - take last value? or first?
-                // Usually date rollups are arrays. Take max?
-                // For now, simplify: if array, take last.
-                if (Array.isArray(dateValue.rollup?.array)) {
-                    const arr = dateValue.rollup.array;
-                    // Recursive extract if needed, but assuming primitive or date obj
-                    const last = arr[arr.length - 1];
-                    dateValue = last?.start || last?.formula?.string || last;
-                }
-            } else if (dateValue.type === 'rich_text' || dateValue.type === 'title') {
-                dateValue = dateValue[0]?.plain_text || null;
-            }
-        }
-        // Re-check emptiness after unpacking
-        if (!dateValue) return null;
-
-
-        // Handle object format: {start: "2025-01-15", end: "2025-01-20"}
-        // Use END date as completion date, fallback to start
-        if (typeof dateValue === 'object') {
-            // Check for start/end keys (Notion Date Object)
-            if (dateValue.start) {
+            if (typeof dateValue === 'object' && dateValue.start) {
                 const dateStr = dateValue.end || dateValue.start;
-                return new Date(dateStr);
+                const parsed = new Date(dateStr);
+                return Number.isNaN(parsed.getTime()) ? null : parsed;
             }
+
+            if (typeof dateValue === 'string') {
+                return this.parseStringDate(dateValue);
+            }
+
+            return null;
+        };
+
+        const entries = Object.entries(props);
+        const ngayLamKeys = new Set(['ngay lam']);
+        const doneDateKeys = new Set([
+            'done date',
+            'donedate',
+            'work date',
+            'date',
+            'ngay',
+            'time',
+            'thoi gian tao'
+        ]);
+
+        const ngayLamEntry = entries.find(([key]) => ngayLamKeys.has(normalizeKey(key)));
+        if (ngayLamEntry) {
+            // Strict mode: if "Ngay lam" exists but empty/invalid, skip this task.
+            return extractDate(ngayLamEntry[1]);
         }
 
-        // Handle string format
-        if (typeof dateValue === 'string') {
-            return this.parseStringDate(dateValue);
+        const doneDateEntry = entries.find(([key]) => doneDateKeys.has(normalizeKey(key)));
+        if (doneDateEntry) {
+            return extractDate(doneDateEntry[1]);
         }
 
+        // Do not fallback to created_time/last_edited_time for productivity parity with Notion date filters.
         return null;
     }
 

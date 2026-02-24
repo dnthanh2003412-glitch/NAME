@@ -13644,7 +13644,7 @@
   {
     "id": "2e1ccb0e-ac88-808f-b9de-f6edd80ddc0f",
     "created_time": "2026-01-07T03:54:00.000Z",
-    "last_edited_time": "2026-01-07T03:55:00.000Z",
+    "last_edited_time": "2026-02-24T09:05:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -13663,7 +13663,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "In progress",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19389,7 +19389,7 @@
   {
     "id": "2fdccb0e-ac88-8009-afee-cfbeebae4ea0",
     "created_time": "2026-02-04T10:30:00.000Z",
-    "last_edited_time": "2026-02-04T10:38:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19405,7 +19405,7 @@
       "Owner": [],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19481,7 +19481,7 @@
   {
     "id": "2fdccb0e-ac88-8020-8ddf-fb21ef4bb133",
     "created_time": "2026-02-04T09:00:00.000Z",
-    "last_edited_time": "2026-02-04T09:01:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19503,7 +19503,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19627,7 +19627,7 @@
   {
     "id": "2fdccb0e-ac88-8063-86e4-f855c57e0e5d",
     "created_time": "2026-02-04T10:29:00.000Z",
-    "last_edited_time": "2026-02-04T10:38:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19643,7 +19643,7 @@
       "Owner": [],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19717,7 +19717,7 @@
   {
     "id": "2fdccb0e-ac88-8094-a4de-e651e32ef962",
     "created_time": "2026-02-04T10:31:00.000Z",
-    "last_edited_time": "2026-02-04T10:38:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19733,7 +19733,7 @@
       "Owner": [],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19807,7 +19807,7 @@
   {
     "id": "2fdccb0e-ac88-80ab-bf29-cea71f0dde3c",
     "created_time": "2026-02-04T09:04:00.000Z",
-    "last_edited_time": "2026-02-04T09:05:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19829,7 +19829,7 @@
       ],
       "Loại cảnh            ": "E",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19855,7 +19855,7 @@
   {
     "id": "2fdccb0e-ac88-80b9-a51f-c35183bbd17b",
     "created_time": "2026-02-04T08:27:00.000Z",
-    "last_edited_time": "2026-02-04T08:28:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19877,7 +19877,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -19903,19 +19903,16 @@
   {
     "id": "2fdccb0e-ac88-80be-8963-cd0cc8b02c8c",
     "created_time": "2026-02-04T09:35:00.000Z",
-    "last_edited_time": "2026-02-04T09:36:00.000Z",
+    "last_edited_time": "2026-02-24T09:17:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 4,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "2e3ccb0e-ac88-80e7-bc2f-d00887026c4a",
-        "2fdccb0e-ac88-811b-a38b-ced1a64a5428",
-        "2fdccb0e-ac88-811f-874e-e8b5cffdf40d",
-        "2fdccb0e-ac88-813c-ae40-ea68326b175b"
+        "2e3ccb0e-ac88-80e7-bc2f-d00887026c4a"
       ],
       "Required by": null,
       "Owner": [
@@ -19927,22 +19924,22 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 5,
+      "Task count + 1": 2,
       "Xe 3D": null,
       "Max": null,
-      "Total Main": 3,
+      "Total Main": 1,
       "Resource": null,
       "Point Status": "Unconfirmed",
       "Product point": 0,
       "Min": null,
-      "Check task done": "Done,Done QC,Done others,Done others",
+      "Check task done": "Done",
       "Due Date": null,
       "Product type": "Lead",
-      "Total QC": 1,
+      "Total QC": 0,
       "Product": "QC"
     },
     "_title": "QC",
@@ -19953,7 +19950,7 @@
   {
     "id": "2fdccb0e-ac88-80bf-9741-d0c2d77c3f91",
     "created_time": "2026-02-04T08:37:00.000Z",
-    "last_edited_time": "2026-02-04T08:39:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -19975,7 +19972,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20001,7 +19998,7 @@
   {
     "id": "2fdccb0e-ac88-80c2-a338-c447b969bae6",
     "created_time": "2026-02-04T09:38:00.000Z",
-    "last_edited_time": "2026-02-04T09:38:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20023,7 +20020,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20049,7 +20046,7 @@
   {
     "id": "2fdccb0e-ac88-80cf-8d70-e8654207ca5c",
     "created_time": "2026-02-04T09:38:00.000Z",
-    "last_edited_time": "2026-02-04T09:40:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20071,7 +20068,7 @@
       ],
       "Loại cảnh            ": "E",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20187,7 +20184,7 @@
   {
     "id": "2fdccb0e-ac88-80ec-a554-eb82a326f65b",
     "created_time": "2026-02-04T09:32:00.000Z",
-    "last_edited_time": "2026-02-04T09:33:00.000Z",
+    "last_edited_time": "2026-02-24T09:08:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20199,7 +20196,7 @@
         "2e3ccb0e-ac88-80f2-920c-e743bdfe48e5",
         "2fdccb0e-ac88-811d-8a97-e9997a5fc71d"
       ],
-      "Required by": null,
+      "Required by": "External",
       "Owner": [
         {
           "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
@@ -20209,7 +20206,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20285,7 +20282,7 @@
   {
     "id": "2feccb0e-ac88-8026-9ce4-ea4fc8c02f99",
     "created_time": "2026-02-05T04:27:00.000Z",
-    "last_edited_time": "2026-02-05T04:28:00.000Z",
+    "last_edited_time": "2026-02-24T08:47:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20298,10 +20295,16 @@
         "2feccb0e-ac88-812b-8bf0-d6579745937c"
       ],
       "Required by": null,
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "c31f5ca2-171e-4c43-ba2d-7bf63f8a5b60",
+          "name": "Trung Đỗ",
+          "email": "trungdt@sangygroup.com"
+        }
+      ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20531,7 +20534,7 @@
   {
     "id": "2feccb0e-ac88-805e-8457-ee56c1ada8ef",
     "created_time": "2026-02-05T04:40:00.000Z",
-    "last_edited_time": "2026-02-05T04:40:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20553,7 +20556,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20579,7 +20582,7 @@
   {
     "id": "2feccb0e-ac88-8060-9e93-c057fb1b7fb2",
     "created_time": "2026-02-05T04:23:00.000Z",
-    "last_edited_time": "2026-02-05T04:24:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20602,7 +20605,7 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20676,7 +20679,7 @@
   {
     "id": "2feccb0e-ac88-80a2-8d1b-f1fc88d43a28",
     "created_time": "2026-02-05T04:37:00.000Z",
-    "last_edited_time": "2026-02-05T04:37:00.000Z",
+    "last_edited_time": "2026-02-24T08:46:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20698,7 +20701,7 @@
       ],
       "Loại cảnh            ": "D",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Completed",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -24051,6 +24054,496 @@
       "Product": "tiệc khai xuân"
     },
     "_title": "tiệc khai xuân",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-802e-8c73-d808ea873917",
+    "created_time": "2026-02-24T08:21:00.000Z",
+    "last_edited_time": "2026-02-24T10:09:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-8196-b176-ef708593adff"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "E",
+      "UTNL": 0.75,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.75,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "Min": 0.5,
+      "Check task done": "Done others",
+      "Due Date": null,
+      "Product type": "Phát sinh chuyên môn",
+      "Total QC": 0,
+      "Product": "Tách line"
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-8036-92bb-e39e2af95d31",
+    "created_time": "2026-02-24T08:29:00.000Z",
+    "last_edited_time": "2026-02-24T10:10:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 2,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-811c-991c-fb1a6f47509d",
+        "311ccb0e-ac88-819e-83a0-e2bf5e225721"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": 0.25,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 3,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others,Done QC",
+      "Due Date": null,
+      "Product type": "Phát sinh chuyên môn",
+      "Total QC": 1,
+      "Product": "test tách line"
+    },
+    "_title": "test tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-8056-8e6f-f6b87cd42f23",
+    "created_time": "2026-02-24T08:22:00.000Z",
+    "last_edited_time": "2026-02-24T09:31:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 2,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-8125-9a8c-f72ec5511ae7",
+        "311ccb0e-ac88-806a-ad9d-e2f836b383fa"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "E",
+      "UTNL": 0.75,
+      "Status": "Pending Review",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 3,
+      "Xe 3D": null,
+      "Max": 0.75,
+      "Total Main": 2,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "Min": 0.5,
+      "Check task done": "Done others,Done",
+      "Due Date": null,
+      "Product type": "Phát sinh chuyên môn",
+      "Total QC": 0,
+      "Product": "Tách line"
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-80f2-a56e-fdb2cef04152",
+    "created_time": "2026-02-24T08:22:00.000Z",
+    "last_edited_time": "2026-02-24T08:44:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-813c-83fc-f5b3791f2421"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "E",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.75,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "Min": 0.5,
+      "Check task done": "Done others",
+      "Due Date": null,
+      "Product type": "Phát sinh chuyên môn",
+      "Total QC": 0,
+      "Product": "Tách line"
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-8010-a0ab-ffb649a997c8",
+    "created_time": "2026-02-24T09:15:00.000Z",
+    "last_edited_time": "2026-02-24T09:16:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-81c2-b60f-c03a67d647c3"
+      ],
+      "Required by": "Internal",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:15:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-809c-9e91-fdf54b36c6a4",
+    "created_time": "2026-02-24T09:14:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-81b2-b3b4-e233c2114575"
+      ],
+      "Required by": "Internal",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:14:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-8033-a7e9-e4d53b263173",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:20:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-811a-b009-f90dfb5d38b5"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-806e-ab6f-c05dfe9f3e37",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:21:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-8108-84e8-ca16915c3754"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-80d6-b302-edf6f6279985",
+    "created_time": "2026-02-24T09:21:00.000Z",
+    "last_edited_time": "2026-02-24T09:21:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-8185-9c0f-e7dff2088958"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": null,
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": null,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "Min": null,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:21:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-80d8-b7c1-dff0a7bf340b",
+    "created_time": "2026-02-24T09:19:00.000Z",
+    "last_edited_time": "2026-02-24T09:20:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-813a-985d-fc8b73ecfab5"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:19:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "Plan lại cảnh cho OS"
+    },
+    "_title": "Plan lại cảnh cho OS",
     "database_name": "[CHIBI] Product ",
     "project_name": "[CHIBI]",
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"

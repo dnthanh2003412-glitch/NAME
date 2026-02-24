@@ -39906,5 +39906,159 @@
     "database_name": "[Sunny Side Down] Product ",
     "project_name": "[Sunny Side Down]",
     "database_id": "28eccb0e-ac88-81fa-8346-c8611aceff52"
+  },
+  {
+    "id": "311ccb0e-ac88-80a7-a1d0-d9d45d7e1faa",
+    "created_time": "2026-02-24T07:38:00.000Z",
+    "last_edited_time": "2026-02-24T09:46:00.000Z",
+    "properties": {
+      "Episode ": "EP 06",
+      "Task count ": 2,
+      "Total Fixed": 0,
+      "Resource": null,
+      "DO": null,
+      "Render EXR": "Not started",
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
+          "name": "Mai Hà",
+          "email": "maiht@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": null,
+      "UTNL": null,
+      "Max": null,
+      "Status": "Need Fix",
+      "Tasks ": [
+        "311ccb0e-ac88-8023-8dbf-f34ee8067787",
+        "311ccb0e-ac88-8133-ae12-caf080ac03f8"
+      ],
+      "Ưu tiên": null,
+      "Checkbox": false,
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Total Main": 1,
+      "Point Status": "Unconfirmed",
+      "Chỉnh Line": "Not started",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done,Done QC",
+      "Due Date": null,
+      "Combo": null,
+      "Product type": "Rigging",
+      "Total QC": 1,
+      "BG STATUS": "Not started",
+      "Product": "Snailah Connor ",
+      "Description": ""
+    },
+    "_title": "Snailah Connor ",
+    "database_name": "[Sunny Side Down] Product ",
+    "project_name": "[Sunny Side Down]",
+    "database_id": "28eccb0e-ac88-81fa-8346-c8611aceff52"
+  },
+  {
+    "id": "311ccb0e-ac88-8083-8801-f5664f702d70",
+    "created_time": "2026-02-24T08:38:00.000Z",
+    "last_edited_time": "2026-02-24T08:38:00.000Z",
+    "properties": {
+      "Episode ": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Resource": null,
+      "DO": null,
+      "Render EXR": "Not started",
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "134d872b-594c-8101-981a-0002a8c4661d",
+          "name": "Lê Thịnh",
+          "email": "thinhlv@sangygroup.com"
+        }
+      ],
+      "Loại cảnh": null,
+      "UTNL": null,
+      "Max": null,
+      "Status": "Completed",
+      "Tasks ": [
+        "311ccb0e-ac88-8148-ac34-f20a11df44fd"
+      ],
+      "Ưu tiên": null,
+      "Checkbox": false,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Point Status": "Unconfirmed",
+      "Chỉnh Line": "Not started",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T15:38:00.000+07:00",
+        "end": null
+      },
+      "Combo": null,
+      "Product type": "Họp dự án",
+      "Total QC": 0,
+      "BG STATUS": "Not started",
+      "Product": "Họp dự án",
+      "Description": ""
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Sunny Side Down] Product ",
+    "project_name": "[Sunny Side Down]",
+    "database_id": "28eccb0e-ac88-81fa-8346-c8611aceff52"
+  },
+  {
+    "id": "311ccb0e-ac88-80ee-bdbd-eef19ef2d6ba",
+    "created_time": "2026-02-24T08:48:00.000Z",
+    "last_edited_time": "2026-02-24T08:48:00.000Z",
+    "properties": {
+      "Episode ": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Resource": null,
+      "DO": null,
+      "Render EXR": "Not started",
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "38ad2754-5cc0-4675-ba8c-bab49ef690d9",
+          "name": "Trinh Ngụy",
+          "email": "production@deedeestudio.net"
+        }
+      ],
+      "Loại cảnh": null,
+      "UTNL": null,
+      "Max": null,
+      "Status": "Completed",
+      "Tasks ": [
+        "311ccb0e-ac88-8105-8e25-e5557e554045"
+      ],
+      "Ưu tiên": null,
+      "Checkbox": false,
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Total Main": 1,
+      "Point Status": "Unconfirmed",
+      "Chỉnh Line": "Not started",
+      "Min": null,
+      "Product point": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T15:48:00.000+07:00",
+        "end": null
+      },
+      "Combo": null,
+      "Product type": "Họp dự án",
+      "Total QC": 0,
+      "BG STATUS": "Not started",
+      "Product": "Họp dự án",
+      "Description": ""
+    },
+    "_title": "Họp dự án",
+    "database_name": "[Sunny Side Down] Product ",
+    "project_name": "[Sunny Side Down]",
+    "database_id": "28eccb0e-ac88-81fa-8346-c8611aceff52"
   }
 ]

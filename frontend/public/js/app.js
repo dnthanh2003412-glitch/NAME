@@ -170,6 +170,26 @@ class DashboardApp {
             return;
         }
 
+
+        const applySyncToastPosition = (toast) => {
+            if (!toast) return;
+            const isMobile = (typeof window.matchMedia === 'function')
+                ? window.matchMedia('(max-width: 768px)').matches
+                : false;
+            if (isMobile) {
+                toast.style.left = '10px';
+                toast.style.right = '10px';
+                toast.style.bottom = '10px';
+                toast.style.maxWidth = 'none';
+                return;
+            }
+
+            toast.style.left = '20px';
+            toast.style.right = 'auto';
+            toast.style.bottom = '20px';
+            toast.style.maxWidth = '320px';
+        };
+
         const getToast = () => {
             let toast = document.getElementById('sync-progress-toast');
             if (!toast) {
@@ -177,9 +197,9 @@ class DashboardApp {
                 toast.id = 'sync-progress-toast';
                 toast.setAttribute('role', 'status');
                 toast.setAttribute('aria-live', 'polite');
-                toast.style.cssText = 'position:fixed;right:20px;bottom:20px;z-index:9999;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.35);padding:12px 14px;min-width:260px;max-width:360px;display:none;';
+                toast.style.cssText = 'position:fixed;z-index:9999;background:#0f172a;color:#e2e8f0;border:1px solid #334155;border-radius:10px;box-shadow:0 12px 30px rgba(0,0,0,0.35);padding:12px 14px;min-width:260px;display:none;';
                 toast.innerHTML = `
-                    <div id="sync-toast-message" style="font-size:0.88rem;margin-bottom:8px;">Đang đồng bộ...</div>
+                    <div id="sync-toast-message" style="font-size:0.88rem;margin-bottom:8px;">Dang dong bo...</div>
                     <div style="height:6px;background:#1e293b;border-radius:999px;overflow:hidden;">
                         <div id="sync-toast-progress" style="height:100%;width:0%;background:#22c55e;transition:width 0.2s ease;"></div>
                     </div>
@@ -187,12 +207,17 @@ class DashboardApp {
                 document.body.appendChild(toast);
             }
 
+            applySyncToastPosition(toast);
+
             return {
                 toast,
                 message: toast.querySelector('#sync-toast-message'),
                 progress: toast.querySelector('#sync-toast-progress')
             };
         };
+        window.addEventListener('resize', () => {
+            applySyncToastPosition(document.getElementById('sync-progress-toast'));
+        });
 
         const setConnectionStatus = (type) => {
             const statusEl = document.getElementById('connection-status');
@@ -2867,6 +2892,17 @@ class DashboardApp {
 
             // Apply pagination
             const visibleCols = getVisibleColumns();
+            const getProdColLabel = (col) => {
+                const labelOverrides = {
+                    projects: 'Dự án',
+                    taskCount: 'Tổng task',
+                    effortRatio: 'Tỷ lệ nỗ lực thống kê'
+                };
+                if (col?.id && labelOverrides[col.id]) {
+                    return labelOverrides[col.id];
+                }
+                return col?.name || col?.id || '';
+            };
             const totalPages = Math.ceil(data.length / pageSize) || 1;
             const start = (currentPage - 1) * pageSize;
             const end = Math.min(start + pageSize, data.length);
@@ -2956,7 +2992,7 @@ class DashboardApp {
                                     ${columns.filter(c => c.id !== 'stt').map(col => `
                                         <label>
                                             <input type="checkbox" class="prod-col-toggle" data-col-id="${col.id}" ${!hiddenColumns.has(col.id) ? 'checked' : ''}>
-                                            ${col.name}
+                                            ${getProdColLabel(col)}
                                         </label>
                                     `).join('')}
                                 </div>
@@ -2986,7 +3022,7 @@ class DashboardApp {
                         <thead>
                             <tr>
                                 <th style="width: 50px; min-width: 50px;">STT</th>
-                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th style="min-width:120px;">${c.name}</th>`).join('')}
+                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th style="min-width:120px;">${getProdColLabel(c)}</th>`).join('')}
                             </tr>
                         </thead>
                         <tbody>
@@ -3304,7 +3340,7 @@ class DashboardApp {
             document.getElementById('prod-export-csv')?.addEventListener('click', () => {
                 const visibleCols = getVisibleColumns();
                 const csv = [
-                    ['STT', ...visibleCols.filter(c => c.id !== 'stt').map(c => c.name)].join(';'),
+                    ['STT', ...visibleCols.filter(c => c.id !== 'stt').map(c => getProdColLabel(c))].join(';'),
                     ...data.map((row, idx) => {
                         const cells = [(idx + 1).toString()];
                         visibleCols.filter(c => c.id !== 'stt').forEach(col => {
@@ -3343,7 +3379,7 @@ class DashboardApp {
                         <table border="1">
                             <tr>
                                 <th style="background:#0f172a;color:white;font-weight:bold;">STT</th>
-                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th style="background:#0f172a;color:white;font-weight:bold;">${c.name}</th>`).join('')}
+                                ${visibleCols.filter(c => c.id !== 'stt').map(c => `<th style="background:#0f172a;color:white;font-weight:bold;">${getProdColLabel(c)}</th>`).join('')}
                             </tr>
                             ${data.map((row, idx) => `
                                 <tr>
@@ -4843,4 +4879,8 @@ class DashboardApp {
 // Expose for AuthManager
 window.DashboardApp = DashboardApp;
 window.app = new DashboardApp(); // Create instance but don't init
+
+
+
+
 

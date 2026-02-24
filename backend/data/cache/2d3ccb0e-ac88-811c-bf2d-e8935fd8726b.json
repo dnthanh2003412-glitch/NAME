@@ -70768,7 +70768,7 @@
   {
     "id": "2fdccb0e-ac88-811b-a38b-ced1a64a5428",
     "created_time": "2026-02-04T09:36:00.000Z",
-    "last_edited_time": "2026-02-04T09:36:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
     "properties": {
       "Product (1)": [
         "QC"
@@ -70817,13 +70817,7 @@
         }
       ],
       "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0,
       "Ngày làm": null,
@@ -71007,7 +71001,7 @@
   {
     "id": "2fdccb0e-ac88-811f-874e-e8b5cffdf40d",
     "created_time": "2026-02-04T09:36:00.000Z",
-    "last_edited_time": "2026-02-04T09:36:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
     "properties": {
       "Product (1)": [
         "QC"
@@ -71054,13 +71048,7 @@
         }
       ],
       "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0,
       "Ngày làm": {
@@ -71401,7 +71389,7 @@
   {
     "id": "2fdccb0e-ac88-813c-ae40-ea68326b175b",
     "created_time": "2026-02-04T09:36:00.000Z",
-    "last_edited_time": "2026-02-04T09:36:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
     "properties": {
       "Product (1)": [
         "QC"
@@ -71448,13 +71436,7 @@
         }
       ],
       "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0,
       "Ngày làm": {
@@ -72112,7 +72094,7 @@
   {
     "id": "2fdccb0e-ac88-8174-9a4f-dcad0a9f4bd3",
     "created_time": "2026-02-04T08:15:00.000Z",
-    "last_edited_time": "2026-02-04T08:15:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
     "properties": {
       "Product (1)": [
         "qc"
@@ -72156,13 +72138,7 @@
         "Internal"
       ],
       "TP giả định 2": 0.4,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.32,
       "Ngày làm": {
@@ -72344,7 +72320,7 @@
   {
     "id": "2fdccb0e-ac88-8197-8d9c-f37cb6d64449",
     "created_time": "2026-02-04T08:15:00.000Z",
-    "last_edited_time": "2026-02-04T08:15:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
     "properties": {
       "Product (1)": [
         "qc"
@@ -72390,13 +72366,7 @@
         "Internal"
       ],
       "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.05,
       "Ngày làm": null,
@@ -75836,7 +75806,7 @@
   {
     "id": "2feccb0e-ac88-814e-a540-f51d8fe7bbe5",
     "created_time": "2026-02-05T04:24:00.000Z",
-    "last_edited_time": "2026-02-05T04:24:00.000Z",
+    "last_edited_time": "2026-02-24T09:17:00.000Z",
     "properties": {
       "Product (1)": [
         "check data, work shop"
@@ -75862,7 +75832,7 @@
         "Unconfirmed"
       ],
       "Product Status": [
-        "QC Approved"
+        "Completed"
       ],
       "Task Status": "Done others",
       "Sprint (1)": null,
@@ -75885,9 +75855,9 @@
       "TP giả định 2": 0.4,
       "Assignee": [
         {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
         }
       ],
       "NLTT": null,
@@ -81706,7 +81676,7 @@
   {
     "id": "303ccb0e-ac88-819d-9642-f01251f06498",
     "created_time": "2026-02-10T02:23:00.000Z",
-    "last_edited_time": "2026-02-10T02:23:00.000Z",
+    "last_edited_time": "2026-02-24T09:19:00.000Z",
     "properties": {
       "Product (1)": [
         "qc"
@@ -81714,8 +81684,8 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "1/1",
+      "Task QC": "0/1",
       "Run n8n": false,
       "UTNL": [
         0.25
@@ -81737,7 +81707,9 @@
         "Completed"
       ],
       "Task Status": "Done others",
-      "Sprint (1)": null,
+      "Sprint (1)": [
+        "Sprint Key"
+      ],
       "Episode": [
         {
           "type": "select",
@@ -81771,11 +81743,13 @@
           "select": null
         }
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/1",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "qc",
-      "Sprint": []
+      "Sprint": [
+        "2d3ccb0e-ac88-8096-b1cc-dad7312342ae"
+      ]
     },
     "_title": "qc",
     "database_name": "[CHIBI] Tasks ",
@@ -81785,7 +81759,7 @@
   {
     "id": "303ccb0e-ac88-81ea-b06b-c746b4873cfe",
     "created_time": "2026-02-10T02:23:00.000Z",
-    "last_edited_time": "2026-02-10T02:23:00.000Z",
+    "last_edited_time": "2026-02-24T09:19:00.000Z",
     "properties": {
       "Product (1)": [
         "qc"
@@ -81793,8 +81767,8 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Task main": "2/3",
-      "Task QC": "1/3",
+      "Task main": "1/1",
+      "Task QC": "0/1",
       "Run n8n": false,
       "UTNL": [],
       "TP giả định": 0,
@@ -81814,7 +81788,9 @@
         "Completed"
       ],
       "Task Status": "Done others",
-      "Sprint (1)": null,
+      "Sprint (1)": [
+        "Sprint Key"
+      ],
       "Episode": [
         {
           "type": "select",
@@ -81851,11 +81827,13 @@
           "select": null
         }
       ],
-      "Task fix": "0/3",
+      "Task fix": "0/1",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "qc",
-      "Sprint": []
+      "Sprint": [
+        "2d3ccb0e-ac88-8096-b1cc-dad7312342ae"
+      ]
     },
     "_title": "qc",
     "database_name": "[CHIBI] Tasks ",
@@ -81865,7 +81843,7 @@
   {
     "id": "303ccb0e-ac88-81f3-bba6-e46a811d608d",
     "created_time": "2026-02-10T02:23:00.000Z",
-    "last_edited_time": "2026-02-10T02:23:00.000Z",
+    "last_edited_time": "2026-02-24T09:19:00.000Z",
     "properties": {
       "Product (1)": [
         "qc"
@@ -81873,11 +81851,11 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Task main": "3/4",
-      "Task QC": "1/4",
+      "Task main": "1/1",
+      "Task QC": "0/1",
       "Run n8n": false,
       "UTNL": [],
-      "TP giả định": 0.32,
+      "TP giả định": 1,
       "Trọng số TP": 1,
       "Product Type": [
         "Lead"
@@ -81894,7 +81872,9 @@
         "QC Approved"
       ],
       "Task Status": "Done others",
-      "Sprint (1)": null,
+      "Sprint (1)": [
+        "Sprint Key"
+      ],
       "Episode": [
         {
           "type": "select",
@@ -81917,7 +81897,7 @@
         }
       ],
       "NLTT": null,
-      "TP thực tế": 0.32,
+      "TP thực tế": 1,
       "Ngày làm": {
         "start": "2026-02-10T09:23:00.000+07:00",
         "end": null
@@ -81925,11 +81905,13 @@
       "Loại cảnh": [
         "F"
       ],
-      "Task fix": "0/4",
+      "Task fix": "0/1",
       "Created time": null,
       "Status": "Not started",
       "Tasks": "qc",
-      "Sprint": []
+      "Sprint": [
+        "2d3ccb0e-ac88-8096-b1cc-dad7312342ae"
+      ]
     },
     "_title": "qc",
     "database_name": "[CHIBI] Tasks ",
@@ -85913,7 +85895,7 @@
   {
     "id": "304ccb0e-ac88-814f-8f15-e02de500f100",
     "created_time": "2026-02-11T08:31:00.000Z",
-    "last_edited_time": "2026-02-11T08:31:00.000Z",
+    "last_edited_time": "2026-02-24T09:13:00.000Z",
     "properties": {
       "Product (1)": null,
       "Point Status": null,
@@ -85938,13 +85920,7 @@
       "Product Point": null,
       "Required by": null,
       "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0,
       "Ngày làm": null,
@@ -89805,7 +89781,7 @@
   {
     "id": "305ccb0e-ac88-8125-94ec-cc0b782abbc7",
     "created_time": "2026-02-12T11:24:00.000Z",
-    "last_edited_time": "2026-02-12T11:24:00.000Z",
+    "last_edited_time": "2026-02-24T09:13:00.000Z",
     "properties": {
       "Product (1)": null,
       "Point Status": null,
@@ -89830,13 +89806,7 @@
       "Product Point": null,
       "Required by": null,
       "TP giả định 2": 0,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0,
       "Ngày làm": null,
@@ -94076,7 +94046,7 @@
   {
     "id": "306ccb0e-ac88-811b-8b7a-cb45250f110d",
     "created_time": "2026-02-13T08:24:00.000Z",
-    "last_edited_time": "2026-02-13T08:24:00.000Z",
+    "last_edited_time": "2026-02-24T09:12:00.000Z",
     "properties": {
       "Product (1)": [
         "FIX_CLIENT IBW 30"
@@ -94124,13 +94094,7 @@
         "External"
       ],
       "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.09,
       "Ngày làm": null,
@@ -94233,7 +94197,7 @@
   {
     "id": "306ccb0e-ac88-811d-b4c3-d33aa378c35d",
     "created_time": "2026-02-13T08:18:00.000Z",
-    "last_edited_time": "2026-02-13T08:18:00.000Z",
+    "last_edited_time": "2026-02-24T09:12:00.000Z",
     "properties": {
       "Product (1)": [
         "FIX_CLIENT IBW 43"
@@ -94281,13 +94245,7 @@
         "External"
       ],
       "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.09,
       "Ngày làm": null,
@@ -94470,7 +94428,7 @@
   {
     "id": "306ccb0e-ac88-8127-a3d6-c688260b7823",
     "created_time": "2026-02-13T08:18:00.000Z",
-    "last_edited_time": "2026-02-13T08:18:00.000Z",
+    "last_edited_time": "2026-02-24T09:12:00.000Z",
     "properties": {
       "Product (1)": [
         "FIX_CLIENT IBW 2"
@@ -94518,13 +94476,7 @@
         "External"
       ],
       "TP giả định 2": 0.06,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.08,
       "Ngày làm": null,
@@ -95159,7 +95111,7 @@
   {
     "id": "306ccb0e-ac88-8163-8faf-c23330dcb142",
     "created_time": "2026-02-13T08:18:00.000Z",
-    "last_edited_time": "2026-02-13T08:18:00.000Z",
+    "last_edited_time": "2026-02-24T09:12:00.000Z",
     "properties": {
       "Product (1)": [
         "FIX_CLIENT IBW 47"
@@ -95207,13 +95159,7 @@
         "External"
       ],
       "TP giả định 2": 0.3,
-      "Assignee": [
-        {
-          "id": "2c5d872b-594c-8134-9865-0002758422b9",
-          "name": "Anh Phuong Nguyen",
-          "email": "anhnp189@sangygroup.com"
-        }
-      ],
+      "Assignee": [],
       "NLTT": null,
       "TP thực tế": 0.3,
       "Ngày làm": null,
@@ -97447,6 +97393,1060 @@
       ]
     },
     "_title": "check lại data NLTT ver4",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8010-a1a1-f1026ffa8891",
+    "created_time": "2026-02-24T08:30:00.000Z",
+    "last_edited_time": "2026-02-24T09:27:00.000Z",
+    "properties": {
+      "Product (1)": null,
+      "Point Status": null,
+      "Task main": null,
+      "Task QC": null,
+      "Run n8n": false,
+      "UTNL": null,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "Product": [],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": null,
+      "Product Status": null,
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": null,
+      "Done date": null,
+      "Product Point": null,
+      "Required by": null,
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.25,
+      "TP thực tế": 0,
+      "Ngày làm": {
+        "start": "2026-02-24",
+        "end": null
+      },
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "test tách line ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "test tách line ver2",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-811c-991c-fb1a6f47509d",
+    "created_time": "2026-02-24T08:29:00.000Z",
+    "last_edited_time": "2026-02-24T10:10:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "test tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.87,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8036-92bb-e39e2af95d31"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.25,
+      "TP thực tế": 0.87,
+      "Ngày làm": {
+        "start": "2026-02-24T15:29:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "test tách line",
+      "Sprint": []
+    },
+    "_title": "test tách line",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8125-9a8c-f72ec5511ae7",
+    "created_time": "2026-02-24T08:23:00.000Z",
+    "last_edited_time": "2026-02-24T08:45:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "Tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "2/2",
+      "Task QC": "0/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 2.5,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8056-8e6f-f6b87cd42f23"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 2.5,
+      "Ngày làm": {
+        "start": "2026-02-24T15:23:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Tách line",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-813c-83fc-f5b3791f2421",
+    "created_time": "2026-02-24T08:22:00.000Z",
+    "last_edited_time": "2026-02-24T08:45:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "Tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 5,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-80f2-a56e-fdb2cef04152"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 5,
+      "Ngày làm": {
+        "start": "2026-02-24T15:22:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Tách line",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8196-b176-ef708593adff",
+    "created_time": "2026-02-24T08:22:00.000Z",
+    "last_edited_time": "2026-02-24T10:09:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "Tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 5,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-802e-8c73-d808ea873917"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.75,
+      "TP thực tế": 5,
+      "Ngày làm": {
+        "start": "2026-02-24T15:22:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Tách line",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-819e-83a0-e2bf5e225721",
+    "created_time": "2026-02-24T08:30:00.000Z",
+    "last_edited_time": "2026-02-24T08:30:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "test tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/2",
+      "Task QC": "1/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.25
+      ],
+      "TP giả định": 0.06,
+      "Trọng số TP": 0.15,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8036-92bb-e39e2af95d31"
+      ],
+      "[Dev] Total main": 0,
+      "Task type": "QC",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done QC",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0.06,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0.13,
+      "Ngày làm": null,
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "test tách line ver3",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "test tách line ver3",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8138-8659-ce012fa76efc",
+    "created_time": "2026-02-24T08:43:00.000Z",
+    "last_edited_time": "2026-02-24T08:43:00.000Z",
+    "properties": {
+      "Product (1)": null,
+      "Point Status": null,
+      "Task main": null,
+      "Task QC": null,
+      "Run n8n": false,
+      "UTNL": null,
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "Product": [],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": null,
+      "Product Status": null,
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": null,
+      "Done date": null,
+      "Product Point": null,
+      "Required by": null,
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "2c5d872b-594c-8134-9865-0002758422b9",
+          "name": "Anh Phuong Nguyen",
+          "email": "anhnp189@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0,
+      "Ngày làm": {
+        "start": "2026-02-24T15:43:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Phát sinh chuyên môn",
+      "Sprint": []
+    },
+    "_title": "Phát sinh chuyên môn",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-81b2-b3b4-e233c2114575",
+    "created_time": "2026-02-24T09:14:00.000Z",
+    "last_edited_time": "2026-02-24T09:15:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "QC"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 1,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-809c-9e91-fdf54b36c6a4"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 1,
+      "Ngày làm": {
+        "start": "2026-02-24T16:14:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "QC",
+      "Sprint": []
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-81c2-b60f-c03a67d647c3",
+    "created_time": "2026-02-24T09:15:00.000Z",
+    "last_edited_time": "2026-02-24T09:16:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "QC"
+      ],
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 1,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8010-a0ab-ffb649a997c8"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Confirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        "Internal"
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 1,
+      "Ngày làm": {
+        "start": "2026-02-24T16:15:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "QC",
+      "Sprint": []
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8108-84e8-ca16915c3754",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:21:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "QC"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 1,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-806e-ab6f-c05dfe9f3e37"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 1,
+      "Ngày làm": {
+        "start": "2026-02-24T16:20:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "QC",
+      "Sprint": []
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-811a-b009-f90dfb5d38b5",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:20:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "QC"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 1,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8033-a7e9-e4d53b263173"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 1,
+      "Ngày làm": {
+        "start": "2026-02-24T16:20:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "QC",
+      "Sprint": []
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-813a-985d-fc8b73ecfab5",
+    "created_time": "2026-02-24T09:19:00.000Z",
+    "last_edited_time": "2026-02-24T09:19:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "Plan lại cảnh cho OS"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 1,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-80d8-b7c1-dff0a7bf340b"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        1
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0.4,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 1,
+      "Ngày làm": {
+        "start": "2026-02-24T16:19:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Plan lại cảnh cho OS",
+      "Sprint": []
+    },
+    "_title": "Plan lại cảnh cho OS",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-8185-9c0f-e7dff2088958",
+    "created_time": "2026-02-24T09:21:00.000Z",
+    "last_edited_time": "2026-02-24T09:22:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "QC"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "1/1",
+      "Task QC": "0/1",
+      "Run n8n": false,
+      "UTNL": [],
+      "TP giả định": 0,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Lead"
+      ],
+      "Product": [
+        "311ccb0e-ac88-80d6-b302-edf6f6279985"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Completed"
+      ],
+      "Task Status": "Done others",
+      "Sprint (1)": null,
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        0
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 0,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "NLTT": null,
+      "TP thực tế": 0,
+      "Ngày làm": {
+        "start": "2026-02-24T16:21:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task fix": "0/1",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "QC",
+      "Sprint": []
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Tasks ",
+    "project_name": "[CHIBI] Tasks",
+    "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"
+  },
+  {
+    "id": "311ccb0e-ac88-806a-ad9d-e2f836b383fa",
+    "created_time": "2026-02-24T09:31:00.000Z",
+    "last_edited_time": "2026-02-24T09:39:00.000Z",
+    "properties": {
+      "Product (1)": [
+        "Tách line"
+      ],
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task main": "2/2",
+      "Task QC": "0/2",
+      "Run n8n": false,
+      "UTNL": [
+        0.75
+      ],
+      "TP giả định": 2.5,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Product": [
+        "311ccb0e-ac88-8056-8e6f-f6b87cd42f23"
+      ],
+      "[Dev] Total main": 1,
+      "Task type": "Main",
+      "Point Status (1)": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Task Status": "Done",
+      "Sprint (1)": [
+        "Sprint IBW"
+      ],
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Done date": null,
+      "Product Point": [
+        5
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP giả định 2": 2,
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "NLTT": 0.375,
+      "TP thực tế": 2.5,
+      "Ngày làm": {
+        "start": "2026-02-24",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Created time": null,
+      "Status": "Not started",
+      "Tasks": "Tách line ver2",
+      "Sprint": [
+        "2d5ccb0e-ac88-80be-b2c2-e0cdbff4ed87"
+      ]
+    },
+    "_title": "Tách line ver2",
     "database_name": "[CHIBI] Tasks ",
     "project_name": "[CHIBI] Tasks",
     "database_id": "2d3ccb0e-ac88-811c-bf2d-e8935fd8726b"

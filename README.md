@@ -9,6 +9,7 @@ Dashboard phân tích dữ liệu Notion theo thời gian thực, tối ưu cho 
 - Polling nền với incremental sync + full-sync checkpoint định kỳ để loại stale/ghost records.
 - Realtime progress qua WebSocket, frontend tự refresh report khi sync hoàn tất.
 - Bộ report: Sprint, Productivity, Raw Data, Raw All Projects (whitelist), Burndown, Sync Monitor (Admin).
+- Chatbot preview widget qua API `GET /api/chat/config` + `POST /api/chat`.
 - Cache cục bộ split-file:
   - `backend/data/cache/*.json`: dữ liệu theo từng database
   - `backend/data/config.json`: cấu hình chạy
@@ -67,6 +68,12 @@ SYNC_JOB_TIMEOUT_MS=1800000
 SYNC_JOB_RETRY_LIMIT=1
 SYNC_MISMATCH_THRESHOLD=0
 SYNC_MISMATCH_CONSECUTIVE_LIMIT=2
+
+# Chatbot preview (optional)
+CHATBOT_ENABLED=true
+AI_API_KEY=
+AI_BASE_URL=https://api.openai.com/v1
+AI_MODEL=gpt-4o-mini
 
 # Data directory (optional)
 # DATA_DIR=./data

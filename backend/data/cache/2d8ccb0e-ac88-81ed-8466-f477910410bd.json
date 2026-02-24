@@ -557,7 +557,7 @@
   {
     "id": "2eaccb0e-ac88-801a-b934-cfc4c5efea69",
     "created_time": "2026-01-16T07:10:00.000Z",
-    "last_edited_time": "2026-02-23T08:34:00.000Z",
+    "last_edited_time": "2026-02-24T09:16:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -576,7 +576,7 @@
       "DO": null,
       "Loại cảnh": "D",
       "Max": 2,
-      "Status": "In progress",
+      "Status": "Pending Review",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
@@ -589,7 +589,7 @@
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 0,
+      "Total QC": 1,
       "[Harry] Tasks": [
         "310ccb0e-ac88-80e0-a843-e3e725965c72"
       ],
@@ -2730,7 +2730,7 @@
   {
     "id": "2eaccb0e-ac88-809f-9250-d81da6d09bbc",
     "created_time": "2026-01-16T07:10:00.000Z",
-    "last_edited_time": "2026-02-23T02:11:00.000Z",
+    "last_edited_time": "2026-02-24T08:05:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -2749,7 +2749,7 @@
       "DO": null,
       "Loại cảnh": "B",
       "Max": 5,
-      "Status": "Pending Review",
+      "Status": "Need Fix Client",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
@@ -3088,11 +3088,11 @@
   {
     "id": "2eaccb0e-ac88-80b3-ab90-eee7671765a2",
     "created_time": "2026-01-16T07:10:00.000Z",
-    "last_edited_time": "2026-02-23T09:53:00.000Z",
+    "last_edited_time": "2026-02-24T09:37:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "UTNL": 0.75,
       "Required by": "Internal",
       "Task Create": null,
@@ -3107,23 +3107,24 @@
       "DO": null,
       "Loại cảnh": "E",
       "Max": 0.75,
-      "Status": "QC Approved",
+      "Status": "Pending Review",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
       "Episode": null,
       "Min": 0.25,
       "Total Main": 1,
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Product point": 5,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 2,
+      "Total QC": 3,
       "[Harry] Tasks": [
         "310ccb0e-ac88-80c1-9c70-dbaa1c68fd56",
-        "310ccb0e-ac88-81d0-b705-ded338a364a3"
+        "310ccb0e-ac88-81d0-b705-ded338a364a3",
+        "311ccb0e-ac88-805c-af89-dfa2fb1c1ffc"
       ],
       "Product": "CO IBW 6"
     },
@@ -5210,7 +5211,7 @@
   {
     "id": "302ccb0e-ac88-8043-b021-e8eb069fa2f2",
     "created_time": "2026-02-09T06:38:00.000Z",
-    "last_edited_time": "2026-02-10T07:53:00.000Z",
+    "last_edited_time": "2026-02-24T07:33:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -5229,14 +5230,14 @@
       "DO": null,
       "Loại cảnh": null,
       "Max": null,
-      "Status": "QC Approved",
+      "Status": "Need Fix Client",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
       "Episode": null,
       "Min": null,
       "Total Main": 1,
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Product point": 0,
       "Check task done": null,
       "Số hình": null,
@@ -5385,7 +5386,7 @@
   {
     "id": "306ccb0e-ac88-80cc-bf43-df1650522ed5",
     "created_time": "2026-02-13T05:29:00.000Z",
-    "last_edited_time": "2026-02-23T09:16:00.000Z",
+    "last_edited_time": "2026-02-24T09:55:00.000Z",
     "properties": {
       "Resource": null,
       "Task count ": 0,
@@ -5404,28 +5405,212 @@
       "DO": null,
       "Loại cảnh": null,
       "Max": null,
-      "Status": "QC Approved",
+      "Status": "Pending Review",
       "Tasks ": [],
       "Combo": null,
       "Task count + 1": 1,
       "Episode": null,
       "Min": null,
-      "Total Main": 1,
-      "Point Status": "Confirmed",
+      "Total Main": 2,
+      "Point Status": "Unconfirmed",
       "Product point": 0,
       "Check task done": null,
       "Số hình": null,
       "Due Date": null,
       "Product type": "Cutout Ibw",
-      "Total QC": 3,
+      "Total QC": 4,
       "[Harry] Tasks": [
         "310ccb0e-ac88-8016-9e54-c448866ee492",
         "310ccb0e-ac88-812c-8c49-ec79b9bbe757",
-        "310ccb0e-ac88-8192-9b19-c4f51d94243c"
+        "310ccb0e-ac88-8192-9b19-c4f51d94243c",
+        "311ccb0e-ac88-80c9-9c6e-fe29a9c47068"
       ],
       "Product": "FIX_CLIENT CO IBW 11"
     },
     "_title": "FIX_CLIENT CO IBW 11",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "311ccb0e-ac88-802b-84c9-d25ea68d804b",
+    "created_time": "2026-02-24T07:07:00.000Z",
+    "last_edited_time": "2026-02-24T08:51:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 0,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "DO": null,
+      "Loại cảnh": null,
+      "Max": null,
+      "Status": "Pending Review",
+      "Tasks ": [],
+      "Combo": null,
+      "Task count + 1": 1,
+      "Episode": null,
+      "Min": null,
+      "Total Main": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "Check task done": null,
+      "Số hình": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Total QC": 0,
+      "[Harry] Tasks": [
+        "311ccb0e-ac88-80fa-adc3-d54ca7aabdc7"
+      ],
+      "Product": "FIX_CLIENT LO 9"
+    },
+    "_title": "FIX_CLIENT LO 9",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "311ccb0e-ac88-8098-a23b-e8c6cc2a3183",
+    "created_time": "2026-02-24T07:07:00.000Z",
+    "last_edited_time": "2026-02-24T10:07:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 0,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "DO": null,
+      "Loại cảnh": null,
+      "Max": null,
+      "Status": "Pending Review",
+      "Tasks ": [],
+      "Combo": null,
+      "Task count + 1": 1,
+      "Episode": null,
+      "Min": null,
+      "Total Main": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "Check task done": null,
+      "Số hình": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Total QC": 0,
+      "[Harry] Tasks": [
+        "311ccb0e-ac88-80dd-86f4-f555c22692e1"
+      ],
+      "Product": "FIX_CLIENT LO 6"
+    },
+    "_title": "FIX_CLIENT LO 6",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "311ccb0e-ac88-80ef-8310-e8ffab687af9",
+    "created_time": "2026-02-24T07:07:00.000Z",
+    "last_edited_time": "2026-02-24T07:32:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 0,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "1fc365a3-6caf-4a7b-9866-0e7b43858917",
+          "name": "Lộc Nguyễn",
+          "email": "locng@sangygroup.com"
+        }
+      ],
+      "DO": null,
+      "Loại cảnh": null,
+      "Max": null,
+      "Status": "In progress",
+      "Tasks ": [],
+      "Combo": null,
+      "Task count + 1": 1,
+      "Episode": null,
+      "Min": null,
+      "Total Main": 0,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "Check task done": null,
+      "Số hình": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Total QC": 0,
+      "[Harry] Tasks": [
+        "311ccb0e-ac88-800a-b565-f09c0e193540"
+      ],
+      "Product": "FIX_CLIENT LO 10"
+    },
+    "_title": "FIX_CLIENT LO 10",
+    "database_name": "[Harry] Product",
+    "project_name": "[Harry]",
+    "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"
+  },
+  {
+    "id": "311ccb0e-ac88-8062-8687-ef4d7fa961cb",
+    "created_time": "2026-02-24T08:45:00.000Z",
+    "last_edited_time": "2026-02-24T08:45:00.000Z",
+    "properties": {
+      "Resource": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "UTNL": null,
+      "Required by": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "38ad2754-5cc0-4675-ba8c-bab49ef690d9",
+          "name": "Trinh Ngụy",
+          "email": "production@deedeestudio.net"
+        }
+      ],
+      "DO": null,
+      "Loại cảnh": "B",
+      "Max": 5,
+      "Status": "Completed",
+      "Tasks ": [
+        "311ccb0e-ac88-813a-89bd-ee84d2e61a0a"
+      ],
+      "Combo": null,
+      "Task count + 1": 2,
+      "Episode": null,
+      "Min": 3.75,
+      "Total Main": 1,
+      "Point Status": "Unconfirmed",
+      "Product point": 35,
+      "Check task done": "Done others",
+      "Số hình": null,
+      "Due Date": {
+        "start": "2026-02-24T15:45:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Họp dự án",
+      "Total QC": 1,
+      "[Harry] Tasks": [
+        "311ccb0e-ac88-813a-89bd-ee84d2e61a0a"
+      ],
+      "Product": "Họp dự án"
+    },
+    "_title": "Họp dự án",
     "database_name": "[Harry] Product",
     "project_name": "[Harry]",
     "database_id": "2d8ccb0e-ac88-81ed-8466-f477910410bd"

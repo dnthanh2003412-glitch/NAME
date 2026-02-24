@@ -138,6 +138,7 @@ export const COLUMNS = [
     { id: 'completionPointConfirmed', name: 'Mức độ hoàn thành task point - confirmed' },
     { id: 'completionPointTotal', name: 'Mức độ hoàn thành task point - tổng' },
 
-    { id: 'effortRatio', name: 'Tỷ lệ nỗ lực thống kê' },
-    { id: 'taskCount', name: 'Tổng task' }  // New: count of tasks
+    { id: 'effortRatio', name: 'T\u1ef7 l\u1ec7 n\u1ed7 l\u1ef1c th\u1ed1ng k\u00ea' },
+    { id: 'taskCount', name: 'T\u1ed5ng task' },
+    { id: 'projects', name: 'D\u1ef1 \u00e1n' }
 ];

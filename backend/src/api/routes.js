@@ -142,7 +142,7 @@ function expandSynonyms(q) {
         [/lam duoc|hoan thanh duoc|xong duoc/g, 'task'],
         [/noi chung|chung chung|tong the|tinh hinh/g, 'tong quan'],
         [/cho xem|show|hien thi/g, ''],
-        [/nhe|di|giup|voi|nha|ha/g, ''],
+        [/\b(nhe|giup|nha)\b/g, ''],
         // New synonyms for expanded catalog
         [/om nhieu viec|om viec|om nhieu|dang om/g, 'qua tai'],
         [/khong co viec|khong lam gi|ranh rang/g, 'ranh'],
@@ -175,6 +175,10 @@ function extractFirstText(value) {
         return parts.join(', ');
     }
     if (typeof value === 'object') {
+        // Notion date objects: {start: "2025-10-21", end: null}
+        if (value.start !== undefined && typeof value.start === 'string') {
+            return value.start;
+        }
         if (Array.isArray(value.people)) {
             const names = value.people
                 .map(person => person?.name || person?.person?.email || '')
@@ -331,6 +335,8 @@ function extractTaskProjectName(record) {
 }
 
 function extractTaskName(record) {
+    // Check _title first (common in Notion-synced records)
+    if (record?._title) return String(record._title).trim();
     return findRecordProp(record, [
         'TÊN TASK', 'Tên task', 'Task Name', 'task_name', 'Name', 'name',
         'Title', 'title', 'Summary', 'Tên công việc', 'TÊN CÔNG VIỆC'
@@ -345,9 +351,12 @@ function extractTaskType(record) {
 }
 
 function extractCreatedDate(record) {
+    // Use ONLY work date fields (matches dashboard filterByDateRange logic exactly)
+    // Dashboard uses: findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', ...)
+    // Records without a valid work date are EXCLUDED from time-filtered results (same as dashboard)
     return findRecordProp(record, [
-        'Created time', 'created_time', 'Created', 'Ngày tạo', 'NGÀY TẠO',
-        'Created At', 'created_at', 'Date', 'Ngày', 'Tháng', 'THÁNG'
+        'Ngày làm', 'NGÀY LÀM', 'Work Date', 'DoneDate', 'Done Date',
+        'Date', 'Ngày', 'Thời gian'
     ]);
 }
 
@@ -388,26 +397,39 @@ function parseTimeRange(q) {
         end = new Date(start); end.setDate(end.getDate() + 7);
         label = 'tuần trước';
     }
-    // tháng cụ thể: tháng 1..12
-    else if (/thang\s*(\d{1,2})/.test(q)) {
-        const m = parseInt(q.match(/thang\s*(\d{1,2})/)[1], 10);
-        if (m >= 1 && m <= 12) {
-            start = new Date(now.getFullYear(), m - 1, 1);
-            end = new Date(now.getFullYear(), m, 1);
-            label = `tháng ${m}`;
-        }
-    }
-    // tháng này
+    // tháng này (check BEFORE specific month regex)
     else if (q.includes('thang nay') || q.includes('this month') || q.includes('trong thang')) {
         start = new Date(now.getFullYear(), now.getMonth(), 1);
         end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
         label = 'tháng này';
     }
-    // tháng trước
+    // tháng trước (check BEFORE specific month regex)
     else if (q.includes('thang truoc') || q.includes('last month') || q.includes('thang qua')) {
         start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
         end = new Date(now.getFullYear(), now.getMonth(), 1);
         label = 'tháng trước';
+    }
+    // tháng cụ thể kèm năm: tháng 12/2025, tháng 1/2026
+    else if (/thang\s*(\d{1,2})\s*[\/.\-]\s*(\d{4})/.test(q)) {
+        const match = q.match(/thang\s*(\d{1,2})\s*[\/.\-]\s*(\d{4})/);
+        const m = parseInt(match[1], 10);
+        const y = parseInt(match[2], 10);
+        if (m >= 1 && m <= 12 && y >= 2020 && y <= 2099) {
+            start = new Date(y, m - 1, 1);
+            end = new Date(y, m, 1);
+            label = `tháng ${m}/${y}`;
+        }
+    }
+    // tháng cụ thể không có năm: tháng 1..12 (dùng năm hiện tại)
+    else if (/thang\s*(\d{1,2})(?!\s*[\/.\-]\s*\d)/.test(q)) {
+        const m = parseInt(q.match(/thang\s*(\d{1,2})/)[1], 10);
+        if (m >= 1 && m <= 12) {
+            // If month > current month, assume previous year
+            const y = m > (now.getMonth() + 1) ? now.getFullYear() - 1 : now.getFullYear();
+            start = new Date(y, m - 1, 1);
+            end = new Date(y, m, 1);
+            label = `tháng ${m}/${y}`;
+        }
     }
     // N ngày gần đây / qua
     else if (/(\d+)\s*ngay\s*(gan|qua|truoc|gan day|gan nhat)/.test(q)) {
@@ -670,10 +692,37 @@ function buildSmartCacheReply(userMessage, context, db) {
     // --- 10. Tỷ lệ hoàn thành / OKR ---
     if (q.includes('ty le') || q.includes('hoan thanh') || q.includes('okr') || q.includes('completion')) {
         const source = filteredByTime;
-        const done = source.filter(r => {
-            const s = normalizeQuery(extractStatus(r));
-            return s && (s.includes('done') || s.includes('hoan thanh') || s.includes('complete'));
-        });
+        const isDoneStatus = (s) => {
+            const n = normalizeQuery(s);
+            return n && (n.includes('done') || n.includes('hoan thanh') || n.includes('complete'));
+        };
+
+        // Per-person breakdown when asking about "người" / "ai"
+        const askPerPerson = q.includes('nguoi') || q.includes('ai') || q.includes('member') || q.includes('tung') || q.includes('cao nhat') || q.includes('thap nhat');
+        if (askPerPerson) {
+            const byPerson = new Map();
+            source.forEach(r => {
+                extractAssigneeNames(r).forEach(name => {
+                    if (!byPerson.has(name)) byPerson.set(name, { done: 0, total: 0 });
+                    const entry = byPerson.get(name);
+                    entry.total++;
+                    if (isDoneStatus(extractStatus(r))) entry.done++;
+                });
+            });
+            // Filter to people with at least 5 tasks for meaningful rates
+            const sorted = [...byPerson.entries()]
+                .filter(([, d]) => d.total >= 5)
+                .map(([name, d]) => ({ name, done: d.done, total: d.total, pct: (d.done / d.total * 100) }))
+                .sort((a, b) => q.includes('thap') ? a.pct - b.pct : b.pct - a.pct)
+                .slice(0, 10);
+            if (sorted.length === 0) return `Không có dữ liệu tỷ lệ hoàn thành theo người${timeLabel}.`;
+            const list = sorted.map((d, i) => `${i + 1}. ${d.name}: ${d.pct.toFixed(1)}% (${d.done}/${d.total} task)`).join('\n');
+            const direction = q.includes('thap') ? 'thấp nhất' : 'cao nhất';
+            return `Tỷ lệ hoàn thành ${direction}${timeLabel}:\n${list}`;
+        }
+
+        // Overall team rate
+        const done = source.filter(r => isDoneStatus(extractStatus(r)));
         const pct = source.length > 0 ? ((done.length / source.length) * 100).toFixed(1) : 0;
         return `Tỷ lệ hoàn thành${timeLabel}: ${done.length}/${source.length} task (${pct}%).`;
     }
@@ -697,8 +746,7 @@ function buildSmartCacheReply(userMessage, context, db) {
     }
 
     // --- 12. So sánh confirmed vs unconfirmed ---
-    if ((q.includes('confirmed') && q.includes('unconfirmed')) || (q.includes('so sanh') && q.includes('confirm')) ||
-        (q.includes('xac nhan') && q.includes('chua'))) {
+    if ((q.includes('confirmed') && q.includes('unconfirmed')) || (q.includes('so sanh') && (q.includes('confirm') || q.includes('xac nhan')))) {
         const source = filteredByTime;
         const byPerson = new Map();
         source.forEach(r => {
@@ -732,18 +780,70 @@ function buildSmartCacheReply(userMessage, context, db) {
         return `Có ${unassigned.length} task chưa assign${timeLabel}:\n${list}${extra}`;
     }
 
-    // --- 14. Task effort lớn ---
-    if (q.includes('effort') && (q.includes('lon') || q.includes('cao') || />\s*\d/.test(q))) {
-        const threshold = /(\d+)\s*(ngay|ngày|day)/.test(q) ? parseInt(q.match(/(\d+)/)[1], 10) : 3;
-        const bigTasks = filteredByTime.filter(r => extractEffort(r) > threshold);
-        if (bigTasks.length === 0) return `Không có task nào có effort > ${threshold} ngày công${timeLabel}.`;
-        const list = bigTasks.slice(0, 10).map((r, i) => {
-            const name = extractTaskName(r) || '(không tên)';
-            const eff = extractEffort(r);
-            const assignee = extractAssigneeName(r) || '?';
-            return `${i + 1}. ${name} — ${assignee} (${fmtNum(eff)} ngày)`;
-        }).join('\n');
-        return `Có ${bigTasks.length} task có effort > ${threshold} ngày công${timeLabel}:\n${list}`;
+    // --- 14. Task effort lớn / Ranking effort ---
+    if (q.includes('effort') && (q.includes('lon') || q.includes('cao') || />\s*\d/.test(q) || q.includes('ton'))) {
+        const hasThreshold = />\s*\d/.test(q) || /(\d+)\s*(ngay|day)/.test(q);
+        const askTop = q.includes('nhat') || q.includes('top') || q.includes('cao nhat');
+        const askPerson = q.includes('ai') || q.includes('nguoi') || q.includes('member') || q.includes('nhan su');
+
+        if (askPerson) {
+            // Ranking by person: "Ai tốn nhiều effort nhất?"
+            const byPerson = new Map();
+            filteredByTime.forEach(r => {
+                const eff = extractEffort(r);
+                if (eff <= 0) return;
+                extractAssigneeNames(r).forEach(n => {
+                    const cur = byPerson.get(n) || { effort: 0, tasks: 0 };
+                    cur.effort += eff; cur.tasks++;
+                    byPerson.set(n, cur);
+                });
+            });
+            const sorted = [...byPerson.entries()].sort((a, b) => b[1].effort - a[1].effort);
+            if (sorted.length === 0) return `Không có dữ liệu effort theo nhân sự${timeLabel}.`;
+
+            if (askTop || q.includes('nhat')) {
+                const [topName, topData] = sorted[0];
+                const otherList = sorted.slice(1, 6).map(([n, d], i) => `${i + 2}. ${n}: ${fmtNum(d.effort)} ngày`).join('\n');
+                return `Người tốn nhiều effort nhất${timeLabel} là **${topName}** (${fmtNum(topData.effort)} ngày công, ${topData.tasks} task).\n\nTop 5 khác:\n${otherList}`;
+            }
+            const list = sorted.slice(0, 10).map(([n, d], i) => `${i + 1}. ${n}: ${fmtNum(d.effort)} ngày (${d.tasks} task)`).join('\n');
+            return `Xếp hạng nhân sự theo effort${timeLabel}:\n${list}`;
+        }
+
+        if (hasThreshold && !askTop) {
+            // Threshold filter: "task effort > 3 ngày"
+            const threshold = /(\d+)/.test(q) ? parseInt(q.match(/(\d+)/)[1], 10) : 3;
+            const bigTasks = filteredByTime.filter(r => extractEffort(r) > threshold)
+                .sort((a, b) => extractEffort(b) - extractEffort(a));
+            if (bigTasks.length === 0) return `Không có task nào có effort > ${threshold} ngày công${timeLabel}.`;
+            const list = bigTasks.slice(0, 10).map((r, i) => {
+                const name = extractTaskName(r) || '(không tên)';
+                const eff = extractEffort(r);
+                const assignee = extractAssigneeName(r) || '?';
+                return `${i + 1}. ${name} (${fmtNum(eff)} ngày) — ${assignee}`;
+            }).join('\n');
+            const total = bigTasks.length;
+            const extra = total > 10 ? `\n...và ${total - 10} task khác.` : '';
+            return `Lọc ${total} task có effort > ${threshold} ngày công${timeLabel}:\n${list}${extra}`;
+        } else {
+            // Task ranking: "task tốn nhiều thời gian nhất"
+            const sorted = filteredByTime
+                .filter(r => extractEffort(r) > 0)
+                .sort((a, b) => extractEffort(b) - extractEffort(a));
+            if (sorted.length === 0) return `Không có dữ liệu effort${timeLabel}.`;
+
+            if (askTop || q.includes('nhat')) {
+                const r = sorted[0];
+                const name = extractTaskName(r) || '(không tên)';
+                const eff = extractEffort(r);
+                const assignee = extractAssigneeName(r) || '?';
+                const pj = extractTaskProjectName(r) || '?';
+                const otherList = sorted.slice(1, 6).map((r2, i) => `${i + 2}. ${extractTaskName(r2)} (${fmtNum(extractEffort(r2))} ngày)`).join('\n');
+                return `Task tốn nhiều thời gian nhất${timeLabel} là **${name}** (${fmtNum(eff)} ngày công) của **${assignee}** [Dự án: ${pj}].\n\nTop 5 khác:\n${otherList}`;
+            }
+            const list = sorted.slice(0, 10).map((r, i) => `${i + 1}. ${extractTaskName(r)} (${fmtNum(extractEffort(r))} ngày) — ${extractAssigneeName(r)}`).join('\n');
+            return `Top task tốn effort nhiều nhất${timeLabel}:\n${list}`;
+        }
     }
 
     // --- 15. Task type Bug ---
@@ -871,19 +971,43 @@ function buildSmartCacheReply(userMessage, context, db) {
     // --- 22. Confirmed / Unconfirmed point riêng lẻ ---
     if ((q.includes('confirm') || q.includes('xac nhan')) && !q.includes('so sanh')) {
         const isUnconfirm = q.includes('unconfirm') || q.includes('chua xac nhan') || q.includes('chua confirm');
+        const askPerson = q.includes('ai') || q.includes('nguoi') || q.includes('member');
         const source = filteredByTime;
-        let matchCount = 0, matchPt = 0;
+        let totalCount = 0, totalPt = 0;
+        const byPerson = new Map();
+
         source.forEach(r => {
             const ps = extractPointStatus(r);
             const pt = extractTaskPoint(r);
+            let matches = false;
             if (isUnconfirm) {
-                if (ps.includes('un') || !ps.includes('confirm')) { matchCount++; matchPt += pt; }
+                if (ps.includes('un') || !ps.includes('confirm')) matches = true;
             } else {
-                if (ps.includes('confirm') && !ps.includes('un')) { matchCount++; matchPt += pt; }
+                if (ps.includes('confirm') && !ps.includes('un')) matches = true;
+            }
+
+            if (matches) {
+                totalCount++; totalPt += pt;
+                extractAssigneeNames(r).forEach(n => {
+                    const cur = byPerson.get(n) || { count: 0, pt: 0 };
+                    cur.count++; cur.pt += pt;
+                    byPerson.set(n, cur);
+                });
             }
         });
+
         const label = isUnconfirm ? 'Unconfirmed' : 'Confirmed';
-        return `Task ${label}${timeLabel}: ${matchCount} task, tổng ${fmtNum(matchPt)} point.`;
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1].pt - a[1].pt);
+        if (sorted.length === 0) return `Task ${label}${timeLabel}: ${totalCount} task, tổng ${fmtNum(totalPt)} point.`;
+
+        if (askPerson || q.includes('nhat')) {
+            const [topName, topData] = sorted[0];
+            const otherList = sorted.slice(1, 6).map(([n, d], i) => `${i + 2}. ${n}: ${fmtNum(d.pt)} pt`).join('\n');
+            return `Người có nhiều point ${label}${timeLabel} nhất là **${topName}** với **${fmtNum(topData.pt)} point** (${topData.count} task).\n\nTop 5 khác:\n${otherList}`;
+        }
+
+        const list = sorted.slice(0, 10).map(([n, d], i) => `${i + 1}. ${n}: ${d.count} task (${fmtNum(d.pt)} point)`).join('\n');
+        return `Task ${label}${timeLabel}: ${totalCount} task, tổng ${fmtNum(totalPt)} point.\n\nChi tiết theo nhân sự:\n${list}`;
     }
 
     // --- 23. Task theo status cụ thể ---

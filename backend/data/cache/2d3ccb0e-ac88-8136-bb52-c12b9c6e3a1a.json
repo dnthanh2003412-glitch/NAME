@@ -128,7 +128,7 @@
   {
     "id": "2d3ccb0e-ac88-8008-8b4c-d318e5b65ac3",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T09:07:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -147,7 +147,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -402,7 +402,7 @@
   {
     "id": "2d3ccb0e-ac88-800c-8360-dcd1c63c261f",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T08:59:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -421,7 +421,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -3115,7 +3115,7 @@
   {
     "id": "2d3ccb0e-ac88-804b-81ab-c86b9002084e",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T06:57:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -3134,7 +3134,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -5026,7 +5026,7 @@
   {
     "id": "2d3ccb0e-ac88-806a-8ed3-dc92c6747129",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T08:12:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -5045,7 +5045,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -7711,7 +7711,7 @@
   {
     "id": "2d3ccb0e-ac88-8099-bdef-d78928015599",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T07:16:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -7730,7 +7730,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -7795,7 +7795,7 @@
   {
     "id": "2d3ccb0e-ac88-809a-a391-fa4f3bd57db2",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T08:24:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -7814,7 +7814,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -11053,7 +11053,7 @@
   {
     "id": "2d3ccb0e-ac88-80e0-bd48-e7cc499e5978",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T07:45:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -11072,7 +11072,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -11145,7 +11145,7 @@
   {
     "id": "2d3ccb0e-ac88-80e1-ad21-e3e5ea8e592b",
     "created_time": "2025-12-24T11:21:00.000Z",
-    "last_edited_time": "2026-02-24T03:56:00.000Z",
+    "last_edited_time": "2026-02-25T07:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -11164,7 +11164,7 @@
       ],
       "Loại cảnh            ": null,
       "UTNL": null,
-      "Status": "Ready to start",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20105,7 +20105,7 @@
   {
     "id": "2fdccb0e-ac88-80e9-9d04-f81706fb01ff",
     "created_time": "2026-02-04T10:44:00.000Z",
-    "last_edited_time": "2026-02-04T10:52:00.000Z",
+    "last_edited_time": "2026-02-25T07:27:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -20121,7 +20121,7 @@
       "Owner": [],
       "Loại cảnh            ": "E",
       "UTNL": null,
-      "Status": "QC Approved",
+      "Status": "Pending Review",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
@@ -20130,10 +20130,10 @@
       "Max": 0.75,
       "Total Main": 1,
       "Resource": null,
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Not started,Done QC",
+      "Check task done": "Done,Done QC",
       "Due Date": null,
       "Product type": "Họp dự án",
       "Total QC": 1,

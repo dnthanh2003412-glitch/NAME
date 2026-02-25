@@ -577,7 +577,7 @@
         "2f7ccb0e-ac88-804a-b572-f29235ab5c86"
       ],
       "Total tasks": 24,
-      "Completed tasks": 0.9583333333333334,
+      "Completed tasks": 1,
       "Sprint status": "Future"
     },
     "_title": "BG Ep 5",
@@ -693,9 +693,11 @@
       "Tasks": [
         "306ccb0e-ac88-801e-a0d0-f57381bdfd83",
         "310ccb0e-ac88-8070-bc66-cce931f0809f",
-        "310ccb0e-ac88-80f7-8b68-fd1b2e9fe67d"
+        "310ccb0e-ac88-80f7-8b68-fd1b2e9fe67d",
+        "312ccb0e-ac88-808d-a5d2-ed8eebef03cd",
+        "312ccb0e-ac88-8086-b983-e188fe81d264"
       ],
-      "Total tasks": 3,
+      "Total tasks": 5,
       "Completed tasks": 0,
       "Sprint status": "Future"
     },

@@ -182,6 +182,7 @@ class ChatPreviewWidget {
             if (!response.ok) return { enabled: false };
             return await response.json();
         } catch {
+
             return { enabled: false };
         }
     }

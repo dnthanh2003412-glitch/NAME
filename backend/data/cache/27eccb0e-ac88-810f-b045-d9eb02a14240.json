@@ -31413,7 +31413,7 @@
   {
     "id": "2a8ccb0e-ac88-804d-8696-df688d3897c2",
     "created_time": "2025-11-11T06:54:00.000Z",
-    "last_edited_time": "2026-02-24T04:12:00.000Z",
+    "last_edited_time": "2026-02-24T10:17:00.000Z",
     "properties": {
       "Resource": null,
       "Episode": null,
@@ -31426,7 +31426,7 @@
       "Required by": null,
       "Owner": [],
       "Loại cảnh": null,
-      "Shading Guide Status": "Not started",
+      "Shading Guide Status": "Done",
       "UTKT (1)": null,
       "Số hình": null,
       "Status": "Not started",
@@ -45135,7 +45135,7 @@
   {
     "id": "2a8ccb0e-ac88-80f5-8684-d008ed0cf37c",
     "created_time": "2025-11-11T06:54:00.000Z",
-    "last_edited_time": "2026-02-24T04:12:00.000Z",
+    "last_edited_time": "2026-02-25T03:35:00.000Z",
     "properties": {
       "Resource": null,
       "Episode": null,
@@ -45148,7 +45148,7 @@
       "Required by": null,
       "Owner": [],
       "Loại cảnh": null,
-      "Shading Guide Status": "Not started",
+      "Shading Guide Status": "Done",
       "UTKT (1)": null,
       "Số hình": null,
       "Status": "Not started",
@@ -45988,59 +45988,6 @@
       "Description": ""
     },
     "_title": "IBW 036",
-    "database_name": "[Immortals] Product ",
-    "project_name": "[Immortals]",
-    "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"
-  },
-  {
-    "id": "2b0ccb0e-ac88-808f-bb12-f1c84e2df5cf",
-    "created_time": "2025-11-19T08:42:00.000Z",
-    "last_edited_time": "2025-12-04T07:04:00.000Z",
-    "properties": {
-      "Resource": null,
-      "Episode": null,
-      "Max": null,
-      "Task count ": 0,
-      "🔄 Sprints": [],
-      "Rollup": null,
-      "Total Fixed": 0,
-      "UTKT CU": 2.73,
-      "Required by": null,
-      "Owner": [
-        {
-          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
-          "name": "Huy Đỗ",
-          "email": "huydq@sangygroup.com"
-        }
-      ],
-      "Loại cảnh": null,
-      "Shading Guide Status": "Not started",
-      "UTKT (1)": null,
-      "Số hình": 21,
-      "Status": "Pending Review",
-      "Combo": null,
-      "Tasks ": [],
-      "DO": null,
-      "Task Create": null,
-      "Task count + 1": 1,
-      "UTNL": null,
-      "Total Main": 0,
-      "Min": null,
-      "Point Status": "Unconfirmed",
-      "Product point": 0,
-      "Check task done": null,
-      "Ưu tiên": null,
-      "UTKT IBW": null,
-      "Due Date": null,
-      "Product type": "Inbetween",
-      "Total QC": 0,
-      "Product": "IBW 011",
-      "Tags": [
-        "External"
-      ],
-      "Description": ""
-    },
-    "_title": "IBW 011",
     "database_name": "[Immortals] Product ",
     "project_name": "[Immortals]",
     "database_id": "27eccb0e-ac88-810f-b045-d9eb02a14240"

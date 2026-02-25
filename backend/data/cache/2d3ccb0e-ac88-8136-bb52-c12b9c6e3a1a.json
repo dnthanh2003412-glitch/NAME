@@ -189,8 +189,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "F",
@@ -227,13 +227,14 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 4,
+      "Task count ": 5,
       "Total Fixed": 0,
       "Tasks": [
         "2f4ccb0e-ac88-8096-8487-e5873bbcbdcc",
         "2fdccb0e-ac88-8018-995e-e6fcaae2bdde",
         "2fdccb0e-ac88-81a8-a27b-e56602295392",
-        "2feccb0e-ac88-806d-8995-df1e8d6baed7"
+        "2feccb0e-ac88-806d-8995-df1e8d6baed7",
+        "2f5ccb0e-ac88-817e-8cfa-cf5bee02bc04"
       ],
       "Required by": "Internal",
       "Owner": [
@@ -249,7 +250,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 5,
+      "Task count + 1": 6,
       "Xe 3D": null,
       "Max": 0.75,
       "Total Main": 2,
@@ -257,10 +258,10 @@
       "Point Status": "Confirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Done,Done,Done QC,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 2,
+      "Total QC": 3,
       "Product": "IBW 10"
     },
     "_title": "IBW 10",
@@ -1299,8 +1300,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "E",
@@ -1349,8 +1350,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "E",
@@ -1445,8 +1446,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "F",
@@ -2218,8 +2219,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -3826,8 +3827,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -4954,8 +4955,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -8011,45 +8012,6 @@
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
   },
   {
-    "id": "2d3ccb0e-ac88-809e-bf74-e2788bdbaedd",
-    "created_time": "2025-12-24T11:19:00.000Z",
-    "last_edited_time": "2026-01-20T07:13:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Combo": null,
-      "DO": null,
-      "Episode": null,
-      "Task count ": 0,
-      "Total Fixed": 0,
-      "Tasks": [],
-      "Required by": "Internal",
-      "Owner": [],
-      "Loại cảnh            ": "F",
-      "UTNL": 0.125,
-      "Status": "Omited",
-      "Layout": null,
-      "Task Create": null,
-      "Ưu tiên": null,
-      "Task count + 1": 1,
-      "Xe 3D": null,
-      "Max": 0.25,
-      "Total Main": 0,
-      "Resource": null,
-      "Point Status": "Unconfirmed",
-      "Product point": 1,
-      "Min": 0,
-      "Check task done": null,
-      "Due Date": null,
-      "Product type": "Keyframe",
-      "Total QC": 0,
-      "Product": "KEY 39"
-    },
-    "_title": "KEY 39",
-    "database_name": "[CHIBI] Product ",
-    "project_name": "[CHIBI]",
-    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
-  },
-  {
     "id": "2d3ccb0e-ac88-80a1-93cc-ccdea842c918",
     "created_time": "2025-12-24T11:20:00.000Z",
     "last_edited_time": "2026-02-09T10:16:00.000Z",
@@ -9226,8 +9188,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -9525,12 +9487,13 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 3,
+      "Task count ": 4,
       "Total Fixed": 0,
       "Tasks": [
         "2f6ccb0e-ac88-8082-ba31-df09577994b1",
         "2fdccb0e-ac88-80ef-908a-ceeb24c9b5f1",
-        "2fdccb0e-ac88-815f-a4af-e241e4ddd293"
+        "2fdccb0e-ac88-815f-a4af-e241e4ddd293",
+        "2f8ccb0e-ac88-8127-a6ca-c05c170c6381"
       ],
       "Required by": "Internal",
       "Owner": [
@@ -9546,7 +9509,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 4,
+      "Task count + 1": 5,
       "Xe 3D": null,
       "Max": 2,
       "Total Main": 2,
@@ -9554,10 +9517,10 @@
       "Point Status": "Confirmed",
       "Product point": 14,
       "Min": 1,
-      "Check task done": "Done,Done,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "IBW 2"
     },
     "_title": "IBW 2",
@@ -10170,12 +10133,13 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 3,
+      "Task count ": 4,
       "Total Fixed": 0,
       "Tasks": [
         "2f1ccb0e-ac88-802e-91aa-c8ab23e2e57f",
         "305ccb0e-ac88-809c-a4b3-fe460a2ab2df",
-        "305ccb0e-ac88-8138-8b13-fb1dec461829"
+        "305ccb0e-ac88-8138-8b13-fb1dec461829",
+        "305ccb0e-ac88-8125-94ec-cc0b782abbc7"
       ],
       "Required by": "Internal",
       "Owner": [
@@ -10191,7 +10155,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 4,
+      "Task count + 1": 5,
       "Xe 3D": null,
       "Max": 0.75,
       "Total Main": 2,
@@ -10199,10 +10163,10 @@
       "Point Status": "Confirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Done,Done,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "IBW 27"
     },
     "_title": "IBW 27",
@@ -10462,8 +10426,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -10599,8 +10563,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -10797,8 +10761,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -11242,8 +11206,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "F",
@@ -11660,8 +11624,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "D",
@@ -12582,8 +12546,8 @@
       "Owner": [
         {
           "id": "2bcd872b-594c-810a-bedb-0002c25c2e66",
-          "name": "Nhi Quach",
-          "email": "nhiqty@sangygroup.com"
+          "name": "Unknown User",
+          "email": null
         }
       ],
       "Loại cảnh            ": "E",
@@ -18383,12 +18347,13 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 3,
+      "Task count ": 4,
       "Total Fixed": 0,
       "Tasks": [
         "2f4ccb0e-ac88-8068-91f0-f117c33a846a",
         "2fdccb0e-ac88-8061-8204-c03d61c8b021",
-        "2fdccb0e-ac88-8128-8186-f01656964bc4"
+        "2fdccb0e-ac88-8128-8186-f01656964bc4",
+        "2f5ccb0e-ac88-8169-a927-e22f7fdcbd92"
       ],
       "Required by": "Internal",
       "Owner": [
@@ -18404,7 +18369,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 4,
+      "Task count + 1": 5,
       "Xe 3D": null,
       "Max": 0.25,
       "Total Main": 2,
@@ -18412,10 +18377,10 @@
       "Point Status": "Confirmed",
       "Product point": 1,
       "Min": 0,
-      "Check task done": "Done,Done,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "IBW 8A"
     },
     "_title": "IBW 8A",
@@ -18831,11 +18796,9 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 3,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "2f5ccb0e-ac88-8014-be9a-f609d7444672",
-        "2f5ccb0e-ac88-8172-94cb-f65fde900e88",
         "303ccb0e-ac88-819d-9642-f01251f06498"
       ],
       "Required by": "Internal",
@@ -18852,18 +18815,18 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 4,
+      "Task count + 1": 2,
       "Xe 3D": null,
       "Max": null,
-      "Total Main": 2,
+      "Total Main": 1,
       "Resource": null,
       "Point Status": "Confirmed",
       "Product point": 0,
       "Min": null,
-      "Check task done": "Done,Done QC,Done others",
+      "Check task done": "Done others",
       "Due Date": null,
       "Product type": "Lead",
-      "Total QC": 1,
+      "Total QC": 0,
       "Product": "qc"
     },
     "_title": "qc",
@@ -19017,7 +18980,7 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 6,
+      "Task count ": 7,
       "Total Fixed": 1,
       "Tasks": [
         "2f7ccb0e-ac88-80c5-ac8a-e408d8c50db5",
@@ -19025,7 +18988,8 @@
         "2fdccb0e-ac88-81ef-ae37-e5faa2773051",
         "2feccb0e-ac88-80de-9206-ded1fbf59c2f",
         "304ccb0e-ac88-801e-89e9-d5f439944a7b",
-        "305ccb0e-ac88-819b-afb3-ecdc6265cb95"
+        "305ccb0e-ac88-819b-afb3-ecdc6265cb95",
+        "2f8ccb0e-ac88-81d2-9c25-d7330f59d599"
       ],
       "Required by": "External",
       "Owner": [
@@ -19041,7 +19005,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 7,
+      "Task count + 1": 8,
       "Xe 3D": null,
       "Max": 0.75,
       "Total Main": 2,
@@ -19049,10 +19013,10 @@
       "Point Status": "Confirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Done,Done,Done QC,Done QC,Done,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC,Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 3,
+      "Total QC": 4,
       "Product": "FIX_CLIENT IBW 24"
     },
     "_title": "FIX_CLIENT IBW 24",
@@ -19069,7 +19033,7 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 6,
+      "Task count ": 7,
       "Total Fixed": 1,
       "Tasks": [
         "2f7ccb0e-ac88-8047-985b-d1dda32864df",
@@ -19077,7 +19041,8 @@
         "2fdccb0e-ac88-81fc-a0c7-f0f10d54ec02",
         "2feccb0e-ac88-8048-8a3c-d88146a76df2",
         "304ccb0e-ac88-80c0-97f2-c63bd18d9e1d",
-        "305ccb0e-ac88-8151-9a44-c3d3593579a8"
+        "305ccb0e-ac88-8151-9a44-c3d3593579a8",
+        "2f8ccb0e-ac88-81ff-9cc1-ef06866f1fee"
       ],
       "Required by": "External",
       "Owner": [
@@ -19093,7 +19058,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 7,
+      "Task count + 1": 8,
       "Xe 3D": null,
       "Max": 0.75,
       "Total Main": 2,
@@ -19101,10 +19066,10 @@
       "Point Status": "Confirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Done,Done,Done QC,Done QC,Done,Done QC",
+      "Check task done": "Done,Done,Done QC,Done QC,Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 3,
+      "Total QC": 4,
       "Product": "FIX_CLIENT IBW 22"
     },
     "_title": "FIX_CLIENT IBW 22",
@@ -19169,11 +19134,9 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 3,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "2f8ccb0e-ac88-8076-b8ec-c7b58ac33cb3",
-        "2f8ccb0e-ac88-81ca-ade8-c704f93d882d",
         "303ccb0e-ac88-81ea-b06b-c746b4873cfe"
       ],
       "Required by": null,
@@ -19190,18 +19153,18 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 4,
+      "Task count + 1": 2,
       "Xe 3D": null,
       "Max": null,
-      "Total Main": 2,
+      "Total Main": 1,
       "Resource": null,
       "Point Status": "Unconfirmed",
       "Product point": 0,
       "Min": null,
-      "Check task done": "Done,Done QC,Done others",
+      "Check task done": "Done others",
       "Due Date": null,
       "Product type": "Lead",
-      "Total QC": 1,
+      "Total QC": 0,
       "Product": "qc"
     },
     "_title": "qc",
@@ -20238,12 +20201,9 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 4,
+      "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "2e8ccb0e-ac88-80d4-8b61-e9c080cb0960",
-        "2fdccb0e-ac88-8174-9a4f-dcad0a9f4bd3",
-        "2fdccb0e-ac88-8197-8d9c-f37cb6d64449",
         "303ccb0e-ac88-81f3-bba6-e46a811d608d"
       ],
       "Required by": "Internal",
@@ -20260,18 +20220,18 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 5,
+      "Task count + 1": 2,
       "Xe 3D": null,
       "Max": 0.25,
-      "Total Main": 3,
+      "Total Main": 1,
       "Resource": null,
       "Point Status": "Confirmed",
       "Product point": 1,
       "Min": 0,
-      "Check task done": "Done,Done others,Done QC,Done others",
+      "Check task done": "Done others",
       "Due Date": null,
       "Product type": "Lead",
-      "Total QC": 1,
+      "Total QC": 0,
       "Product": "qc"
     },
     "_title": "qc",
@@ -21849,11 +21809,12 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 2,
+      "Task count ": 3,
       "Total Fixed": 0,
       "Tasks": [
         "304ccb0e-ac88-8011-981f-d8a3420b76cb",
-        "305ccb0e-ac88-8194-915e-d121c8a9c445"
+        "305ccb0e-ac88-8194-915e-d121c8a9c445",
+        "304ccb0e-ac88-814f-8f15-e02de500f100"
       ],
       "Required by": "External",
       "Owner": [
@@ -21869,7 +21830,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 3,
+      "Task count + 1": 4,
       "Xe 3D": null,
       "Max": 0.25,
       "Total Main": 1,
@@ -21877,10 +21838,10 @@
       "Point Status": "Confirmed",
       "Product point": 1,
       "Min": 0,
-      "Check task done": "Done,Done QC",
+      "Check task done": "Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 1,
+      "Total QC": 2,
       "Product": "FIX_CLIENT IBW 49"
     },
     "_title": "FIX_CLIENT IBW 49",
@@ -21995,7 +21956,7 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 8,
+      "Task count ": 10,
       "Total Fixed": 3,
       "Tasks": [
         "304ccb0e-ac88-8046-b18b-e1ba0efee7c3",
@@ -22005,7 +21966,9 @@
         "306ccb0e-ac88-81ad-8717-e1c151889009",
         "306ccb0e-ac88-8163-8faf-c23330dcb142",
         "306ccb0e-ac88-809b-961b-d3825862139e",
-        "306ccb0e-ac88-810e-b4de-f6ef3be30edb"
+        "306ccb0e-ac88-810e-b4de-f6ef3be30edb",
+        "306ccb0e-ac88-8137-8586-d0c30a32e2be",
+        "306ccb0e-ac88-81ce-a13d-f1128717e9c3"
       ],
       "Required by": "External",
       "Owner": [
@@ -22021,7 +21984,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 9,
+      "Task count + 1": 11,
       "Xe 3D": null,
       "Max": 0.75,
       "Total Main": 1,
@@ -22029,10 +21992,10 @@
       "Point Status": "Confirmed",
       "Product point": 5,
       "Min": 0.5,
-      "Check task done": "Done,Done QC,Done,Done,Done QC,Done QC,Done,Done QC",
+      "Check task done": "Done,Done QC,Done,Done,Done QC,Done QC,Done,Done QC,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 4,
+      "Total QC": 6,
       "Product": "FIX_CLIENT IBW 47"
     },
     "_title": "FIX_CLIENT IBW 47",
@@ -22546,13 +22509,14 @@
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 4,
+      "Task count ": 5,
       "Total Fixed": 1,
       "Tasks": [
         "304ccb0e-ac88-809b-85c9-dbe62e77ffb2",
         "304ccb0e-ac88-8125-a2bf-e897b31d6cb6",
         "306ccb0e-ac88-804b-8b68-d8364a7ed406",
-        "306ccb0e-ac88-811d-8096-d2d5236876fd"
+        "306ccb0e-ac88-811d-8096-d2d5236876fd",
+        "306ccb0e-ac88-8091-9787-d4d635807692"
       ],
       "Required by": "External",
       "Owner": [
@@ -22568,7 +22532,7 @@
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 5,
+      "Task count + 1": 6,
       "Xe 3D": null,
       "Max": 0.25,
       "Total Main": 1,
@@ -22576,7 +22540,7 @@
       "Point Status": "Confirmed",
       "Product point": 1,
       "Min": 0,
-      "Check task done": "Done,Done QC,Done,Done QC",
+      "Check task done": "Done,Done QC,Done,Done QC,Not started",
       "Due Date": null,
       "Product type": "Inbetween",
       "Total QC": 2,
@@ -22731,51 +22695,6 @@
       "Product": "FIX_CLIENT IBW 21"
     },
     "_title": "FIX_CLIENT IBW 21",
-    "database_name": "[CHIBI] Product ",
-    "project_name": "[CHIBI]",
-    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
-  },
-  {
-    "id": "303ccb0e-ac88-807f-a9d2-ec70668ca8ab",
-    "created_time": "2026-02-10T02:20:00.000Z",
-    "last_edited_time": "2026-02-10T02:22:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Combo": null,
-      "DO": null,
-      "Episode": null,
-      "Task count ": 0,
-      "Total Fixed": 0,
-      "Tasks": [],
-      "Required by": null,
-      "Owner": [
-        {
-          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
-          "name": " Vân Trần",
-          "email": "vanttt@sangygroup.com"
-        }
-      ],
-      "Loại cảnh            ": null,
-      "UTNL": null,
-      "Status": "Not started",
-      "Layout": null,
-      "Task Create": null,
-      "Ưu tiên": null,
-      "Task count + 1": 1,
-      "Xe 3D": null,
-      "Max": null,
-      "Total Main": 0,
-      "Resource": null,
-      "Point Status": "Unconfirmed",
-      "Product point": 0,
-      "Min": null,
-      "Check task done": null,
-      "Due Date": null,
-      "Product type": "Họp công ty",
-      "Total QC": 0,
-      "Product": "c"
-    },
-    "_title": "c",
     "database_name": "[CHIBI] Product ",
     "project_name": "[CHIBI]",
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
@@ -23176,15 +23095,19 @@
   {
     "id": "303ccb0e-ac88-80b5-bee4-e3198202b685",
     "created_time": "2026-02-10T07:44:00.000Z",
-    "last_edited_time": "2026-02-11T04:50:00.000Z",
+    "last_edited_time": "2026-02-25T03:35:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
       "DO": null,
       "Episode": null,
-      "Task count ": 0,
+      "Task count ": 3,
       "Total Fixed": 0,
-      "Tasks": [],
+      "Tasks": [
+        "312ccb0e-ac88-80f2-8e63-fb7472cdd8ec",
+        "312ccb0e-ac88-8134-91db-ccf8c4961275",
+        "312ccb0e-ac88-819b-990e-cbe658e81a1d"
+      ],
       "Required by": "External",
       "Owner": [
         {
@@ -23195,22 +23118,22 @@
       ],
       "Loại cảnh            ": "F",
       "UTNL": 0.25,
-      "Status": "On Hold",
+      "Status": "QC Approved",
       "Layout": null,
       "Task Create": null,
       "Ưu tiên": null,
-      "Task count + 1": 1,
+      "Task count + 1": 4,
       "Xe 3D": null,
       "Max": 0.25,
-      "Total Main": 0,
+      "Total Main": 1,
       "Resource": null,
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 1,
       "Min": 0,
-      "Check task done": null,
+      "Check task done": "Done,Done QC,Done QC",
       "Due Date": null,
       "Product type": "Inbetween",
-      "Total QC": 0,
+      "Total QC": 2,
       "Product": "FIX_CLIENT IBW 6"
     },
     "_title": "FIX_CLIENT IBW 6",
@@ -24059,6 +23982,56 @@
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
   },
   {
+    "id": "311ccb0e-ac88-8010-a0ab-ffb649a997c8",
+    "created_time": "2026-02-24T09:15:00.000Z",
+    "last_edited_time": "2026-02-24T09:16:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-81c2-b60f-c03a67d647c3"
+      ],
+      "Required by": "Internal",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:15:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
     "id": "311ccb0e-ac88-802e-8c73-d808ea873917",
     "created_time": "2026-02-24T08:21:00.000Z",
     "last_edited_time": "2026-02-24T10:09:00.000Z",
@@ -24101,6 +24074,56 @@
       "Product": "Tách line"
     },
     "_title": "Tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-8033-a7e9-e4d53b263173",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:20:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-811a-b009-f90dfb5d38b5"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T16:20:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
     "database_name": "[CHIBI] Product ",
     "project_name": "[CHIBI]",
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
@@ -24202,9 +24225,9 @@
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
   },
   {
-    "id": "311ccb0e-ac88-80f2-a56e-fdb2cef04152",
-    "created_time": "2026-02-24T08:22:00.000Z",
-    "last_edited_time": "2026-02-24T08:44:00.000Z",
+    "id": "311ccb0e-ac88-806e-ab6f-c05dfe9f3e37",
+    "created_time": "2026-02-24T09:20:00.000Z",
+    "last_edited_time": "2026-02-24T09:21:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -24213,56 +24236,9 @@
       "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "311ccb0e-ac88-813c-83fc-f5b3791f2421"
+        "311ccb0e-ac88-8108-84e8-ca16915c3754"
       ],
       "Required by": null,
-      "Owner": [
-        {
-          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
-          "name": "Nhung Trần",
-          "email": "nhungtth@sangygroup.com"
-        }
-      ],
-      "Loại cảnh            ": "E",
-      "UTNL": null,
-      "Status": "Completed",
-      "Layout": null,
-      "Task Create": null,
-      "Ưu tiên": null,
-      "Task count + 1": 2,
-      "Xe 3D": null,
-      "Max": 0.75,
-      "Total Main": 1,
-      "Resource": null,
-      "Point Status": "Unconfirmed",
-      "Product point": 5,
-      "Min": 0.5,
-      "Check task done": "Done others",
-      "Due Date": null,
-      "Product type": "Phát sinh chuyên môn",
-      "Total QC": 0,
-      "Product": "Tách line"
-    },
-    "_title": "Tách line",
-    "database_name": "[CHIBI] Product ",
-    "project_name": "[CHIBI]",
-    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
-  },
-  {
-    "id": "311ccb0e-ac88-8010-a0ab-ffb649a997c8",
-    "created_time": "2026-02-24T09:15:00.000Z",
-    "last_edited_time": "2026-02-24T09:16:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Combo": null,
-      "DO": null,
-      "Episode": null,
-      "Task count ": 1,
-      "Total Fixed": 0,
-      "Tasks": [
-        "311ccb0e-ac88-81c2-b60f-c03a67d647c3"
-      ],
-      "Required by": "Internal",
       "Owner": [
         {
           "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
@@ -24281,12 +24257,12 @@
       "Max": 0.25,
       "Total Main": 1,
       "Resource": null,
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Product point": 1,
       "Min": 0,
       "Check task done": "Done others",
       "Due Date": {
-        "start": "2026-02-24T16:15:00.000+07:00",
+        "start": "2026-02-24T16:20:00.000+07:00",
         "end": null
       },
       "Product type": "Lead",
@@ -24349,9 +24325,9 @@
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
   },
   {
-    "id": "311ccb0e-ac88-8033-a7e9-e4d53b263173",
-    "created_time": "2026-02-24T09:20:00.000Z",
-    "last_edited_time": "2026-02-24T09:20:00.000Z",
+    "id": "311ccb0e-ac88-80aa-8e6e-e0ce96a54ed1",
+    "created_time": "2026-02-24T10:55:00.000Z",
+    "last_edited_time": "2026-02-24T10:57:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -24360,7 +24336,7 @@
       "Task count ": 1,
       "Total Fixed": 0,
       "Tasks": [
-        "311ccb0e-ac88-811a-b009-f90dfb5d38b5"
+        "311ccb0e-ac88-8120-8856-d3b7bf1a1667"
       ],
       "Required by": null,
       "Owner": [
@@ -24386,57 +24362,7 @@
       "Min": 0,
       "Check task done": "Done others",
       "Due Date": {
-        "start": "2026-02-24T16:20:00.000+07:00",
-        "end": null
-      },
-      "Product type": "Lead",
-      "Total QC": 0,
-      "Product": "QC"
-    },
-    "_title": "QC",
-    "database_name": "[CHIBI] Product ",
-    "project_name": "[CHIBI]",
-    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
-  },
-  {
-    "id": "311ccb0e-ac88-806e-ab6f-c05dfe9f3e37",
-    "created_time": "2026-02-24T09:20:00.000Z",
-    "last_edited_time": "2026-02-24T09:21:00.000Z",
-    "properties": {
-      "NLTT": null,
-      "Combo": null,
-      "DO": null,
-      "Episode": null,
-      "Task count ": 1,
-      "Total Fixed": 0,
-      "Tasks": [
-        "311ccb0e-ac88-8108-84e8-ca16915c3754"
-      ],
-      "Required by": null,
-      "Owner": [
-        {
-          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
-          "name": "Hòa Nguyễn",
-          "email": "hoant@sangygroup.com"
-        }
-      ],
-      "Loại cảnh            ": "F",
-      "UTNL": null,
-      "Status": "Completed",
-      "Layout": null,
-      "Task Create": null,
-      "Ưu tiên": null,
-      "Task count + 1": 2,
-      "Xe 3D": null,
-      "Max": 0.25,
-      "Total Main": 1,
-      "Resource": null,
-      "Point Status": "Unconfirmed",
-      "Product point": 1,
-      "Min": 0,
-      "Check task done": "Done others",
-      "Due Date": {
-        "start": "2026-02-24T16:20:00.000+07:00",
+        "start": "2026-02-24T17:55:00.000+07:00",
         "end": null
       },
       "Product type": "Lead",
@@ -24451,7 +24377,7 @@
   {
     "id": "311ccb0e-ac88-80d6-b302-edf6f6279985",
     "created_time": "2026-02-24T09:21:00.000Z",
-    "last_edited_time": "2026-02-24T09:21:00.000Z",
+    "last_edited_time": "2026-02-24T10:49:00.000Z",
     "properties": {
       "NLTT": null,
       "Combo": null,
@@ -24470,7 +24396,7 @@
           "email": "hoant@sangygroup.com"
         }
       ],
-      "Loại cảnh            ": null,
+      "Loại cảnh            ": "F",
       "UTNL": null,
       "Status": "Completed",
       "Layout": null,
@@ -24478,12 +24404,12 @@
       "Ưu tiên": null,
       "Task count + 1": 2,
       "Xe 3D": null,
-      "Max": null,
+      "Max": 0.25,
       "Total Main": 1,
       "Resource": null,
       "Point Status": "Unconfirmed",
-      "Product point": 0,
-      "Min": null,
+      "Product point": 1,
+      "Min": 0,
       "Check task done": "Done others",
       "Due Date": {
         "start": "2026-02-24T16:21:00.000+07:00",
@@ -24544,6 +24470,203 @@
       "Product": "Plan lại cảnh cho OS"
     },
     "_title": "Plan lại cảnh cho OS",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-80ed-9c03-f256dde0b102",
+    "created_time": "2026-02-24T10:56:00.000Z",
+    "last_edited_time": "2026-02-24T10:58:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-81e9-9286-fbb87f9a292d"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "E",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.75,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "Min": 0.5,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-24T17:56:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "311ccb0e-ac88-80f2-a56e-fdb2cef04152",
+    "created_time": "2026-02-24T08:22:00.000Z",
+    "last_edited_time": "2026-02-25T02:08:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "311ccb0e-ac88-813c-83fc-f5b3791f2421"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "D",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 2,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "Min": 1,
+      "Check task done": "Done others",
+      "Due Date": null,
+      "Product type": "Phát sinh chuyên môn",
+      "Total QC": 0,
+      "Product": "Tách line"
+    },
+    "_title": "Tách line",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "312ccb0e-ac88-8036-8072-c80f3fbed3bd",
+    "created_time": "2026-02-25T03:30:00.000Z",
+    "last_edited_time": "2026-02-25T03:30:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "312ccb0e-ac88-817d-882d-d1a48ddab5c6"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-25T10:30:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[CHIBI] Product ",
+    "project_name": "[CHIBI]",
+    "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"
+  },
+  {
+    "id": "312ccb0e-ac88-8037-821c-edc11d298f16",
+    "created_time": "2026-02-25T03:29:00.000Z",
+    "last_edited_time": "2026-02-25T03:30:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Combo": null,
+      "DO": null,
+      "Episode": null,
+      "Task count ": 1,
+      "Total Fixed": 0,
+      "Tasks": [
+        "312ccb0e-ac88-8129-8208-cae95c8305bc"
+      ],
+      "Required by": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Loại cảnh            ": "F",
+      "UTNL": null,
+      "Status": "Completed",
+      "Layout": null,
+      "Task Create": null,
+      "Ưu tiên": null,
+      "Task count + 1": 2,
+      "Xe 3D": null,
+      "Max": 0.25,
+      "Total Main": 1,
+      "Resource": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "Min": 0,
+      "Check task done": "Done others",
+      "Due Date": {
+        "start": "2026-02-25T10:29:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Lead",
+      "Total QC": 0,
+      "Product": "QC"
+    },
+    "_title": "QC",
     "database_name": "[CHIBI] Product ",
     "project_name": "[CHIBI]",
     "database_id": "2d3ccb0e-ac88-8136-bb52-c12b9c6e3a1a"

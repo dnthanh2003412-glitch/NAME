@@ -578,8 +578,8 @@
         "310ccb0e-ac88-80bf-b55a-d0f2849f28db",
         "311ccb0e-ac88-8095-b8bc-d868c61babb1"
       ],
-      "Total tasks": 27,
-      "Completed tasks": 0.5925925925925926,
+      "Total tasks": 32,
+      "Completed tasks": 0.71875,
       "Sprint status": "Future"
     },
     "_title": "Sprint 11",
@@ -613,10 +613,22 @@
         "311ccb0e-ac88-8035-a419-f88f8a23c635",
         "311ccb0e-ac88-80d8-9140-d96061ad0214",
         "311ccb0e-ac88-8095-b8bc-d868c61babb1",
-        "311ccb0e-ac88-8019-a3fc-d248d4ac732c"
+        "311ccb0e-ac88-8019-a3fc-d248d4ac732c",
+        "311ccb0e-ac88-808e-938a-e82f81074742",
+        "311ccb0e-ac88-8081-9bac-cfcb35f16774",
+        "311ccb0e-ac88-8048-bc3c-ced9e4579496",
+        "311ccb0e-ac88-8056-866d-f7fdd81037aa",
+        "311ccb0e-ac88-8015-a1cc-f14dccd94717",
+        "311ccb0e-ac88-80bc-ae45-f59ed5134e58",
+        "311ccb0e-ac88-80df-a190-fa8f7a4b3320",
+        "312ccb0e-ac88-81c5-887e-e4bf298c82e3",
+        "312ccb0e-ac88-8059-a462-d0208995504c",
+        "312ccb0e-ac88-80bd-9f5f-d2c92d3fa1a1",
+        "312ccb0e-ac88-809e-b0ca-ef6a7bd2190f",
+        "312ccb0e-ac88-80e4-a8dd-e2d3613b0b70"
       ],
-      "Total tasks": 13,
-      "Completed tasks": 0.9230769230769231,
+      "Total tasks": 25,
+      "Completed tasks": 0.88,
       "Sprint status": "Future"
     },
     "_title": "Sprint 12",

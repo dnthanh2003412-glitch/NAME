@@ -128,6 +128,44 @@ function normalizeQuery(text = '') {
         .replace(/[\u0300-\u036f]/g, '');
 }
 
+// Expand casual Vietnamese slang/synonyms to standard keywords
+function expandSynonyms(q) {
+    const map = [
+        [/dua nao|thang nao|con nao|nguoi nao/g, 'ai'],
+        [/may dua|moi dua|tat ca moi nguoi|ca team/g, 'tung member'],
+        [/nhieu nhat|so 1|number one|top 1/g, 'nhieu nhat'],
+        [/it nhat|thap nhat/g, 'it nhat'],
+        [/thang roi|thang vua roi|thang vua qua/g, 'thang truoc'],
+        [/tuan roi|tuan vua roi|tuan vua qua/g, 'tuan truoc'],
+        [/hom truoc|hom bua/g, 'hom qua'],
+        [/diem|taskpoint|task point/g, 'point'],
+        [/lam duoc|hoan thanh duoc|xong duoc/g, 'task'],
+        [/noi chung|chung chung|tong the|tinh hinh/g, 'tong quan'],
+        [/cho xem|show|hien thi/g, ''],
+        [/nhe|di|giup|voi|nha|ha/g, ''],
+        // New synonyms for expanded catalog
+        [/om nhieu viec|om viec|om nhieu|dang om/g, 'qua tai'],
+        [/khong co viec|khong lam gi|ranh rang/g, 'ranh'],
+        [/cay duoc|cay nhieu|cay/g, 'nhieu'],
+        [/hieu suat|hieu qua/g, 'nang suat'],
+        [/tang truong/g, 'cao nhat'],
+        [/ton dong|con lai|chua xong|chua xuly/g, 'chua hoan thanh'],
+        [/can gap|gap|khan cap/g, 'sap deadline'],
+        [/no luc|noluc|nltt/g, 'effort'],
+        [/ton nhieu thoi gian/g, 'effort lon'],
+        [/lui lich|backlog|de lai/g, 'not started'],
+        [/chua qc|xong chua qc/g, 'done chua qc'],
+        [/dang chay|dang hoat dong/g, 'in progress'],
+        [/chua fix|chua sua/g, 'bug chua hoan thanh'],
+    ];
+    let result = q;
+    for (const [pattern, replacement] of map) {
+        result = result.replace(pattern, replacement);
+    }
+    return result.replace(/\s+/g, ' ').trim();
+}
+
+
 function extractFirstText(value) {
     if (value === null || value === undefined) return '';
     if (typeof value === 'string') return value.trim();
@@ -225,8 +263,196 @@ function extractAssigneeNames(record) {
         );
 }
 
+// ---- Chat helper: generic property finder ----
+function findRecordProp(record, candidates) {
+    if (!record || typeof record !== 'object') return '';
+    for (const key of candidates) {
+        if (record[key] !== undefined) {
+            const v = extractFirstText(record[key]);
+            if (v) return v;
+        }
+    }
+    const props = record.properties && typeof record.properties === 'object' ? record.properties : null;
+    if (props) {
+        for (const key of candidates) {
+            if (props[key] !== undefined) {
+                const v = extractFirstText(props[key]);
+                if (v) return v;
+            }
+        }
+    }
+    return '';
+}
+
+function extractStatus(record) {
+    return findRecordProp(record, [
+        'Status', 'Trạng thái', 'Trang thai', 'status', 'STATE', 'State',
+        'Task Status', 'Task status', 'TASK STATUS'
+    ]);
+}
+
+function extractDeadline(record) {
+    return findRecordProp(record, [
+        'Deadline', 'Due Date', 'Due date', 'due_date', 'End Date', 'end_date',
+        'Hạn chót', 'Han chot', 'Ngày hết hạn', 'DUE DATE', 'TARGET DATE',
+        'Target Date', 'Finish Date', 'finish_date'
+    ]);
+}
+
+function extractTaskPoint(record) {
+    const v = findRecordProp(record, [
+        'Task point', 'task_point', 'TP thực tế', 'TP THỰC TẾ', 'Task Point',
+        'TASK POINT', 'Point', 'Points', 'Working hours', 'Task point thực tế',
+        'Task point yêu cầu dự án', 'TASK POINT THỰC TẾ'
+    ]);
+    return parseFloat(v) || 0;
+}
+
+function extractEffort(record) {
+    const v = findRecordProp(record, [
+        'NLTT', 'nltt', 'Actual Effort', 'actual effort', 'Nỗ lực thực tế',
+        'NỖ LỰC THỰC TẾ', 'Effort', 'effort', 'Working Days', 'Ngày công'
+    ]);
+    return parseFloat(v) || 0;
+}
+
+function extractPointStatus(record) {
+    return findRecordProp(record, [
+        'Point Status', 'POINT STATUS', 'point status', 'Confirmation',
+        'Xác nhận', 'Confirm Status'
+    ]).toLowerCase();
+}
+
+function extractTaskProjectName(record) {
+    return findRecordProp(record, [
+        'DỰ ÁN', 'Dự án', 'Project', 'project', 'Project Name',
+        'database_name', 'project_name', 'PROJECT'
+    ]);
+}
+
+function extractTaskName(record) {
+    return findRecordProp(record, [
+        'TÊN TASK', 'Tên task', 'Task Name', 'task_name', 'Name', 'name',
+        'Title', 'title', 'Summary', 'Tên công việc', 'TÊN CÔNG VIỆC'
+    ]);
+}
+
+function extractTaskType(record) {
+    return findRecordProp(record, [
+        'Task Type', 'TASK TYPE', 'task_type', 'Loại task', 'Report Type',
+        'report_type', 'Type', 'type', 'Category', 'Phân loại'
+    ]);
+}
+
+function extractCreatedDate(record) {
+    return findRecordProp(record, [
+        'Created time', 'created_time', 'Created', 'Ngày tạo', 'NGÀY TẠO',
+        'Created At', 'created_at', 'Date', 'Ngày', 'Tháng', 'THÁNG'
+    ]);
+}
+
+function extractSprint(record) {
+    return findRecordProp(record, [
+        'Sprint', 'sprint', 'SPRINT', 'Sprints', 'Sprint Name'
+    ]);
+}
+
+// ---- Chat helper: flexible time-range parser ----
+function parseTimeRange(q) {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let start = null, end = null, label = '';
+
+    // hôm nay
+    if (q.includes('hom nay') || q.includes('today')) {
+        start = new Date(today); end = new Date(today); end.setDate(end.getDate() + 1);
+        label = 'hôm nay';
+    }
+    // hôm qua
+    else if (q.includes('hom qua') || q.includes('yesterday')) {
+        start = new Date(today); start.setDate(start.getDate() - 1);
+        end = new Date(today);
+        label = 'hôm qua';
+    }
+    // tuần này
+    else if (q.includes('tuan nay') || q.includes('this week') || q.includes('trong tuan')) {
+        const dow = today.getDay() || 7;
+        start = new Date(today); start.setDate(start.getDate() - (dow - 1));
+        end = new Date(start); end.setDate(end.getDate() + 7);
+        label = 'tuần này';
+    }
+    // tuần trước
+    else if (q.includes('tuan truoc') || q.includes('last week') || q.includes('tuan qua')) {
+        const dow = today.getDay() || 7;
+        start = new Date(today); start.setDate(start.getDate() - (dow - 1) - 7);
+        end = new Date(start); end.setDate(end.getDate() + 7);
+        label = 'tuần trước';
+    }
+    // tháng cụ thể: tháng 1..12
+    else if (/thang\s*(\d{1,2})/.test(q)) {
+        const m = parseInt(q.match(/thang\s*(\d{1,2})/)[1], 10);
+        if (m >= 1 && m <= 12) {
+            start = new Date(now.getFullYear(), m - 1, 1);
+            end = new Date(now.getFullYear(), m, 1);
+            label = `tháng ${m}`;
+        }
+    }
+    // tháng này
+    else if (q.includes('thang nay') || q.includes('this month') || q.includes('trong thang')) {
+        start = new Date(now.getFullYear(), now.getMonth(), 1);
+        end = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+        label = 'tháng này';
+    }
+    // tháng trước
+    else if (q.includes('thang truoc') || q.includes('last month') || q.includes('thang qua')) {
+        start = new Date(now.getFullYear(), now.getMonth() - 1, 1);
+        end = new Date(now.getFullYear(), now.getMonth(), 1);
+        label = 'tháng trước';
+    }
+    // N ngày gần đây / qua
+    else if (/(\d+)\s*ngay\s*(gan|qua|truoc|gan day|gan nhat)/.test(q)) {
+        const days = parseInt(q.match(/(\d+)\s*ngay/)[1], 10);
+        start = new Date(today); start.setDate(start.getDate() - days);
+        end = new Date(today); end.setDate(end.getDate() + 1);
+        label = `${days} ngày qua`;
+    }
+
+    return { start, end, label };
+}
+
+function isDateInRange(dateStr, start, end) {
+    if (!dateStr || !start || !end) return false;
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return false;
+    return d >= start && d < end;
+}
+
+// ---- Chat helper: extract person name from query ----
+function extractPersonFromQuery(q, rows) {
+    const allNames = new Set();
+    rows.forEach(row => {
+        extractAssigneeNames(row).forEach(n => allNames.add(n));
+    });
+    const qLower = q;
+    let bestMatch = '';
+    let bestLen = 0;
+    for (const name of allNames) {
+        const nNorm = normalizeQuery(name);
+        if (qLower.includes(nNorm) && nNorm.length > bestLen) {
+            bestMatch = name;
+            bestLen = nNorm.length;
+        }
+    }
+    return bestMatch;
+}
+
+// ---- Chat helper: format number ----
+function fmtNum(n) {
+    return Number.isInteger(n) ? String(n) : n.toFixed(2);
+}
+
 function buildSmartCacheReply(userMessage, context, db) {
-    const q = normalizeQuery(userMessage);
+    const q = expandSynonyms(normalizeQuery(userMessage));
     if (!q) return null;
 
     const selectedFromContext = Array.isArray(context?.selected_database_ids) ? context.selected_database_ids : [];
@@ -249,45 +475,606 @@ function buildSmartCacheReply(userMessage, context, db) {
     });
     if (rows.length === 0) return null;
 
-    const askTopAssignee =
-        (q.includes('ai') && q.includes('nhieu') && q.includes('task')) ||
-        q.includes('top assignee') ||
-        q.includes('top nguoi');
-    const askTotalTask = q.includes('bao nhieu task') || q.includes('tong task') || q.includes('so task');
-    const askSyncTime = q.includes('sync luc nao') || q.includes('last sync') || q.includes('dong bo luc nao');
 
+    const askTopAssignee =
+        ((q.includes('ai') && q.includes('nhieu') && q.includes('task')) ||
+            q.includes('top assignee') || q.includes('top nguoi')) &&
+        !q.includes('qua han') && !q.includes('tre han') && !q.includes('overdue');
+    const askTotalTask = (q.includes('bao nhieu task') || q.includes('tong task') || q.includes('so task')) &&
+        !q.includes('confirm') && !q.includes('xac nhan');
+    const askSyncTime = q.includes('sync luc nao') || q.includes('last sync') || q.includes('dong bo luc nao');
+    const timeRange = parseTimeRange(q);
+    const personInQuery = extractPersonFromQuery(q, rows);
+
+    // Filter rows by time range if specified
+    const filteredByTime = (timeRange.start && timeRange.end)
+        ? rows.filter(r => {
+            const d = extractCreatedDate(r) || extractDeadline(r);
+            return isDateInRange(d, timeRange.start, timeRange.end);
+        })
+        : rows;
+    const timeLabel = timeRange.label ? ` (${timeRange.label})` : '';
+
+    // --- 1. Ai làm bao nhiêu task / Task / điểm / point của [tên] ---
+    if (personInQuery && (q.includes('task') || q.includes('lam') || q.includes('danh sach') || q.includes('may') || q.includes('bao nhieu') || q.includes('diem') || q.includes('point') || q.includes('taskpoint'))) {
+        const personRows = filteredByTime.filter(r =>
+            extractAssigneeNames(r).some(n => normalizeQuery(n) === normalizeQuery(personInQuery))
+        );
+        if (personRows.length === 0) {
+            return `Không tìm thấy task nào của ${personInQuery}${timeLabel}.`;
+        }
+        // Count by status
+        const byStatus = new Map();
+        let totalPt = 0;
+        personRows.forEach(r => {
+            const s = extractStatus(r) || 'Không rõ';
+            byStatus.set(s, (byStatus.get(s) || 0) + 1);
+            totalPt += extractTaskPoint(r);
+        });
+        const statusList = [...byStatus.entries()].sort((a, b) => b[1] - a[1])
+            .map(([s, c]) => `- ${s}: ${c}`).join('\n');
+        return `${personInQuery} có ${personRows.length} task${timeLabel}.\n📊 Tổng point: ${fmtNum(totalPt)}\n\nTheo trạng thái:\n${statusList}`;
+    }
+
+    // --- 2. Top assignee (existing, enhanced with time) ---
     if (askTopAssignee) {
+        const source = filteredByTime;
         const byAssignee = new Map();
-        rows.forEach(row => {
+        source.forEach(row => {
             const names = extractAssigneeNames(row);
-            if (names.length === 0) return;
-            names.forEach(name => {
-                byAssignee.set(name, (byAssignee.get(name) || 0) + 1);
-            });
+            names.forEach(name => byAssignee.set(name, (byAssignee.get(name) || 0) + 1));
         });
         const top = [...byAssignee.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
-        if (top.length === 0) {
-            return 'Chua xac dinh duoc nguoi phu trach trong dung scope du an dang generate. Vui long kiem tra cot Assignee/Owner trong cac database da chon.';
-        }
-        const [topName, topCount] = top[0];
+        if (top.length === 0) return `Không xác định được người phụ trách${timeLabel}.`;
         const leaderboard = top.map(([name, count], i) => `${i + 1}. ${name}: ${count} task`).join('\n');
-        return `Nguoi co nhieu task nhat hien tai: ${topName} (${topCount} task).\nTop 5:\n${leaderboard}`;
+        return `Người có nhiều task nhất${timeLabel}: ${top[0][0]} (${top[0][1]} task).\nTop 5:\n${leaderboard}`;
     }
 
+    // --- 3. Tổng task / bao nhiêu task ---
     if (askTotalTask) {
-        return `Tong task hien co trong cache cua cac database da chon: ${rows.length}.`;
+        const source = filteredByTime;
+        const byStatus = new Map();
+        source.forEach(r => {
+            const s = extractStatus(r) || 'Không rõ';
+            byStatus.set(s, (byStatus.get(s) || 0) + 1);
+        });
+        const statusBreakdown = [...byStatus.entries()]
+            .sort((a, b) => b[1] - a[1])
+            .map(([s, c]) => `- ${s}: ${c}`)
+            .join('\n');
+        return `Tổng task${timeLabel}: ${source.length}.\nPhân bổ theo trạng thái:\n${statusBreakdown}`;
     }
 
+    // --- 4. Task chưa hoàn thành ---
+    if ((q.includes('chua') && (q.includes('hoan thanh') || q.includes('xong') || q.includes('done'))) ||
+        q.includes('incomplete') || q.includes('not done') || q.includes('dang lam')) {
+        const incomplete = filteredByTime.filter(r => {
+            const s = normalizeQuery(extractStatus(r));
+            return s && !s.includes('done') && !s.includes('hoan thanh') && !s.includes('complete');
+        });
+        const byAssignee = new Map();
+        incomplete.forEach(r => {
+            extractAssigneeNames(r).forEach(n => {
+                byAssignee.set(n, (byAssignee.get(n) || 0) + 1);
+            });
+        });
+        const top = [...byAssignee.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+        const list = top.map(([n, c], i) => `${i + 1}. ${n}: ${c} task`).join('\n');
+        return `Tổng task chưa hoàn thành${timeLabel}: ${incomplete.length}.\n${list ? 'Theo người:\n' + list : ''}`;
+    }
+
+    // --- 5. Task quá hạn / overdue ---
+    if (q.includes('qua han') || q.includes('tre han') || q.includes('overdue') || q.includes('delay') || q.includes('bi delay')) {
+        const now = new Date();
+        const overdue = filteredByTime.filter(r => {
+            const dl = extractDeadline(r);
+            if (!dl) return false;
+            const dd = new Date(dl);
+            if (isNaN(dd.getTime())) return false;
+            const s = normalizeQuery(extractStatus(r));
+            return dd < now && s && !s.includes('done') && !s.includes('hoan thanh') && !s.includes('complete');
+        });
+        if (overdue.length === 0) return `Không có task quá hạn nào${timeLabel}. 🎉`;
+        const byPerson = new Map();
+        overdue.forEach(r => {
+            extractAssigneeNames(r).forEach(n => byPerson.set(n, (byPerson.get(n) || 0) + 1));
+        });
+        const top = [...byPerson.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+        const personList = top.map(([n, c], i) => `${i + 1}. ${n}: ${c} task quá hạn`).join('\n');
+        return `Có ${overdue.length} task quá hạn${timeLabel}.\nNgười có nhiều task quá hạn nhất:\n${personList}`;
+    }
+
+    // --- 6. Task sắp deadline / deadline gần ---
+    if (q.includes('sap') && (q.includes('deadline') || q.includes('han') || q.includes('het han'))) {
+        const days = /(\d+)\s*ngay/.test(q) ? parseInt(q.match(/(\d+)\s*ngay/)[1], 10) : 3;
+        const now = new Date();
+        const future = new Date(now); future.setDate(future.getDate() + days);
+        const upcoming = rows.filter(r => {
+            const dl = extractDeadline(r);
+            if (!dl) return false;
+            const dd = new Date(dl);
+            if (isNaN(dd.getTime())) return false;
+            const s = normalizeQuery(extractStatus(r));
+            return dd >= now && dd <= future && (!s || (!s.includes('done') && !s.includes('hoan thanh')));
+        });
+        if (upcoming.length === 0) return `Không có task nào sắp đến deadline trong ${days} ngày tới.`;
+        const list = upcoming.slice(0, 10).map((r, i) => {
+            const name = extractTaskName(r) || '(không tên)';
+            const dl = extractDeadline(r);
+            const assignee = extractAssigneeName(r) || '?';
+            return `${i + 1}. ${name} — ${assignee} (hạn: ${dl})`;
+        }).join('\n');
+        return `Có ${upcoming.length} task sắp đến deadline trong ${days} ngày tới:\n${list}`;
+    }
+
+    // --- 7. Tổng workload / point từng member ---
+    if ((q.includes('workload') || q.includes('point') || q.includes('diem')) &&
+        (q.includes('tung') || q.includes('member') || q.includes('moi nguoi') || q.includes('thanh vien'))) {
+        const source = filteredByTime;
+        const byPerson = new Map();
+        source.forEach(r => {
+            const pt = extractTaskPoint(r);
+            extractAssigneeNames(r).forEach(n => {
+                const cur = byPerson.get(n) || { tasks: 0, points: 0 };
+                cur.tasks += 1;
+                cur.points += pt;
+                byPerson.set(n, cur);
+            });
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1].points - a[1].points);
+        if (sorted.length === 0) return `Không có dữ liệu workload${timeLabel}.`;
+        const list = sorted.map(([n, d], i) => `${i + 1}. ${n}: ${fmtNum(d.points)} point (${d.tasks} task)`).join('\n');
+        return `Workload từng member${timeLabel}:\n${list}`;
+    }
+
+    // --- 8. Ai đang bị quá tải ---
+    if (q.includes('qua tai') || q.includes('overload') || (q.includes('ai') && q.includes('nhieu') && q.includes('point'))) {
+        const byPerson = new Map();
+        filteredByTime.forEach(r => {
+            const pt = extractTaskPoint(r);
+            extractAssigneeNames(r).forEach(n => {
+                byPerson.set(n, (byPerson.get(n) || 0) + pt);
+            });
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1] - a[1]);
+        if (sorted.length === 0) return 'Không có dữ liệu để đánh giá quá tải.';
+        const avg = sorted.reduce((s, [, p]) => s + p, 0) / sorted.length;
+        const overloaded = sorted.filter(([, p]) => p > avg * 1.2);
+        if (overloaded.length === 0) return `Không ai bị quá tải${timeLabel}. Trung bình: ${fmtNum(avg)} point/người.`;
+        const list = overloaded.map(([n, p], i) => `${i + 1}. ${n}: ${fmtNum(p)} point (trung bình: ${fmtNum(avg)})`).join('\n');
+        return `Có ${overloaded.length} người vượt >120% trung bình${timeLabel}:\n${list}`;
+    }
+
+    // --- 9. Task In Progress quá lâu ---
+    if ((q.includes('in progress') || q.includes('dang lam') || q.includes('dang thuc hien')) &&
+        (q.includes('qua') || q.includes('lau') || q.includes('ngay'))) {
+        const days = /(\d+)\s*ngay/.test(q) ? parseInt(q.match(/(\d+)\s*ngay/)[1], 10) : 5;
+        const cutoff = new Date(); cutoff.setDate(cutoff.getDate() - days);
+        const stuck = rows.filter(r => {
+            const s = normalizeQuery(extractStatus(r));
+            if (!s.includes('in progress') && !s.includes('dang')) return false;
+            const created = extractCreatedDate(r);
+            if (!created) return false;
+            const cd = new Date(created);
+            return !isNaN(cd.getTime()) && cd < cutoff;
+        });
+        if (stuck.length === 0) return `Không có task In Progress nào quá ${days} ngày.`;
+        const list = stuck.slice(0, 10).map((r, i) => {
+            const name = extractTaskName(r) || '(không tên)';
+            const assignee = extractAssigneeName(r) || '?';
+            return `${i + 1}. ${name} — ${assignee}`;
+        }).join('\n');
+        return `Có ${stuck.length} task In Progress quá ${days} ngày:\n${list}`;
+    }
+
+    // --- 10. Tỷ lệ hoàn thành / OKR ---
+    if (q.includes('ty le') || q.includes('hoan thanh') || q.includes('okr') || q.includes('completion')) {
+        const source = filteredByTime;
+        const done = source.filter(r => {
+            const s = normalizeQuery(extractStatus(r));
+            return s && (s.includes('done') || s.includes('hoan thanh') || s.includes('complete'));
+        });
+        const pct = source.length > 0 ? ((done.length / source.length) * 100).toFixed(1) : 0;
+        return `Tỷ lệ hoàn thành${timeLabel}: ${done.length}/${source.length} task (${pct}%).`;
+    }
+
+    // --- 11. Năng suất cao nhất ---
+    if ((q.includes('nang suat') || q.includes('productivity')) &&
+        (q.includes('cao nhat') || q.includes('top') || q.includes('best'))) {
+        const source = filteredByTime;
+        const byPerson = new Map();
+        source.forEach(r => {
+            const pt = extractTaskPoint(r);
+            if (pt <= 0) return;
+            extractAssigneeNames(r).forEach(n => {
+                byPerson.set(n, (byPerson.get(n) || 0) + pt);
+            });
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+        if (sorted.length === 0) return `Không có dữ liệu năng suất${timeLabel}.`;
+        const list = sorted.map(([n, p], i) => `${i + 1}. ${n}: ${fmtNum(p)} point`).join('\n');
+        return `Năng suất cao nhất${timeLabel}:\n${list}`;
+    }
+
+    // --- 12. So sánh confirmed vs unconfirmed ---
+    if ((q.includes('confirmed') && q.includes('unconfirmed')) || (q.includes('so sanh') && q.includes('confirm')) ||
+        (q.includes('xac nhan') && q.includes('chua'))) {
+        const source = filteredByTime;
+        const byPerson = new Map();
+        source.forEach(r => {
+            const ps = extractPointStatus(r);
+            const pt = extractTaskPoint(r);
+            extractAssigneeNames(r).forEach(n => {
+                const cur = byPerson.get(n) || { confirmed: 0, unconfirmed: 0 };
+                if (ps.includes('confirm') && !ps.includes('un')) cur.confirmed += pt;
+                else cur.unconfirmed += pt;
+                byPerson.set(n, cur);
+            });
+        });
+        const list = [...byPerson.entries()]
+            .sort((a, b) => (b[1].confirmed + b[1].unconfirmed) - (a[1].confirmed + a[1].unconfirmed))
+            .slice(0, 10)
+            .map(([n, d], i) => `${i + 1}. ${n}: ✅ ${fmtNum(d.confirmed)} | ⏳ ${fmtNum(d.unconfirmed)}`)
+            .join('\n');
+        return `So sánh Confirmed vs Unconfirmed${timeLabel}:\n(✅ Confirmed | ⏳ Unconfirmed)\n${list || 'Không có dữ liệu.'}`;
+    }
+
+    // --- 13. Task chưa assign ---
+    if ((q.includes('chua') || q.includes('khong co')) && (q.includes('assign') || q.includes('phu trach') || q.includes('nguoi'))) {
+        const unassigned = filteredByTime.filter(r => extractAssigneeNames(r).length === 0);
+        if (unassigned.length === 0) return `Tất cả task đều đã được assign${timeLabel}. ✅`;
+        const list = unassigned.slice(0, 10).map((r, i) => {
+            const name = extractTaskName(r) || '(không tên)';
+            const status = extractStatus(r) || '?';
+            return `${i + 1}. ${name} [${status}]`;
+        }).join('\n');
+        const extra = unassigned.length > 10 ? `\n...và ${unassigned.length - 10} task khác.` : '';
+        return `Có ${unassigned.length} task chưa assign${timeLabel}:\n${list}${extra}`;
+    }
+
+    // --- 14. Task effort lớn ---
+    if (q.includes('effort') && (q.includes('lon') || q.includes('cao') || />\s*\d/.test(q))) {
+        const threshold = /(\d+)\s*(ngay|ngày|day)/.test(q) ? parseInt(q.match(/(\d+)/)[1], 10) : 3;
+        const bigTasks = filteredByTime.filter(r => extractEffort(r) > threshold);
+        if (bigTasks.length === 0) return `Không có task nào có effort > ${threshold} ngày công${timeLabel}.`;
+        const list = bigTasks.slice(0, 10).map((r, i) => {
+            const name = extractTaskName(r) || '(không tên)';
+            const eff = extractEffort(r);
+            const assignee = extractAssigneeName(r) || '?';
+            return `${i + 1}. ${name} — ${assignee} (${fmtNum(eff)} ngày)`;
+        }).join('\n');
+        return `Có ${bigTasks.length} task có effort > ${threshold} ngày công${timeLabel}:\n${list}`;
+    }
+
+    // --- 15. Task type Bug ---
+    if (q.includes('bug') || (q.includes('loai') && q.includes('task')) || q.includes('task type') || q.includes('report type')) {
+        const typeKeyword = q.includes('bug') ? 'bug' : '';
+        const source = filteredByTime;
+        if (typeKeyword) {
+            const bugs = source.filter(r => normalizeQuery(extractTaskType(r)).includes(typeKeyword));
+            if (bugs.length === 0) return `Không có task loại Bug${timeLabel}.`;
+            const list = bugs.slice(0, 10).map((r, i) => {
+                const name = extractTaskName(r) || '(không tên)';
+                const assignee = extractAssigneeName(r) || '?';
+                return `${i + 1}. ${name} — ${assignee}`;
+            }).join('\n');
+            return `Có ${bugs.length} task loại Bug${timeLabel}:\n${list}`;
+        }
+        // General type breakdown
+        const byType = new Map();
+        source.forEach(r => {
+            const t = extractTaskType(r) || 'Không rõ';
+            byType.set(t, (byType.get(t) || 0) + 1);
+        });
+        const list = [...byType.entries()].sort((a, b) => b[1] - a[1])
+            .map(([t, c]) => `- ${t}: ${c}`).join('\n');
+        return `Phân bổ theo loại task${timeLabel}:\n${list}`;
+    }
+
+    // --- 16. Dự án tốn effort nhất ---
+    if ((q.includes('du an') || q.includes('project')) && (q.includes('effort') || q.includes('ton') || q.includes('nhieu nhat'))) {
+        const byProject = new Map();
+        filteredByTime.forEach(r => {
+            const pj = extractTaskProjectName(r) || 'Không rõ';
+            const eff = extractEffort(r);
+            const cur = byProject.get(pj) || { effort: 0, tasks: 0 };
+            cur.effort += eff; cur.tasks += 1;
+            byProject.set(pj, cur);
+        });
+        const sorted = [...byProject.entries()].sort((a, b) => b[1].effort - a[1].effort).slice(0, 10);
+        if (sorted.length === 0) return `Không có dữ liệu effort theo dự án${timeLabel}.`;
+        const list = sorted.map(([p, d], i) => `${i + 1}. ${p}: ${fmtNum(d.effort)} ngày công (${d.tasks} task)`).join('\n');
+        return `Dự án tốn effort nhất${timeLabel}:\n${list}`;
+    }
+
+    // --- 17. Tổng point lệch % ---
+    if (q.includes('lech') || (q.includes('thuc te') && q.includes('yeu cau')) || q.includes('gap')) {
+        let totalReq = 0, totalActual = 0;
+        filteredByTime.forEach(r => {
+            const req = parseFloat(findRecordProp(r, ['Task point yêu cầu dự án', 'Task point', 'task_point', 'Point Required'])) || 0;
+            const actual = extractTaskPoint(r);
+            totalReq += req; totalActual += actual;
+        });
+        if (totalReq === 0 && totalActual === 0) return 'Không có dữ liệu point yêu cầu / thực tế.';
+        const diff = totalReq > 0 ? (((totalActual - totalReq) / totalReq) * 100).toFixed(1) : 'N/A';
+        return `Tổng point${timeLabel}:\n- Yêu cầu: ${fmtNum(totalReq)}\n- Thực tế: ${fmtNum(totalActual)}\n- Chênh lệch: ${diff}%`;
+    }
+
+    // --- 18. Xu hướng workload 4 tuần ---
+    if (q.includes('xu huong') || q.includes('trend') || (q.includes('4') && q.includes('tuan'))) {
+        const now = new Date();
+        const weeks = [];
+        for (let w = 3; w >= 0; w--) {
+            const wStart = new Date(now); wStart.setDate(wStart.getDate() - (w * 7 + (now.getDay() || 7) - 1));
+            wStart.setHours(0, 0, 0, 0);
+            const wEnd = new Date(wStart); wEnd.setDate(wEnd.getDate() + 7);
+            const count = rows.filter(r => {
+                const d = extractCreatedDate(r);
+                return isDateInRange(d, wStart, wEnd);
+            }).length;
+            const label2 = `${wStart.getDate()}/${wStart.getMonth() + 1}`;
+            weeks.push({ label: label2, count });
+        }
+        const trend = weeks[3].count >= weeks[0].count ? '📈 Tăng' : '📉 Giảm';
+        const weekLines = weeks.map((w, i) => `Tuần ${i + 1} (${w.label}): ${w.count} task`).join('\n');
+        return `Xu hướng workload 4 tuần gần nhất: ${trend}\n${weekLines}`;
+    }
+
+    // --- 19. Sprint info ---
+    if (q.includes('sprint')) {
+        const bySprint = new Map();
+        filteredByTime.forEach(r => {
+            const sp = extractSprint(r) || 'Không rõ';
+            const cur = bySprint.get(sp) || { total: 0, done: 0, points: 0 };
+            cur.total += 1;
+            const s = normalizeQuery(extractStatus(r));
+            if (s.includes('done') || s.includes('hoan thanh')) cur.done += 1;
+            cur.points += extractTaskPoint(r);
+            bySprint.set(sp, cur);
+        });
+        const list = [...bySprint.entries()]
+            .filter(([s]) => s !== 'Không rõ')
+            .sort((a, b) => b[1].total - a[1].total)
+            .slice(0, 8)
+            .map(([s, d]) => `- ${s}: ${d.done}/${d.total} task hoàn thành (${fmtNum(d.points)} point)`)
+            .join('\n');
+        return `Thống kê Sprint${timeLabel}:\n${list || 'Không có dữ liệu Sprint.'}`;
+    }
+
+    // --- 20. Sync time (existing, kept) ---
     if (askSyncTime) {
         const syncLines = selectedIds.slice(0, 5).map(dbId => {
-            const syncAt = db.getLastSyncTime(dbId) || db.getLastUpdate() || 'khong ro';
+            const syncAt = db.getLastSyncTime(dbId) || db.getLastUpdate() || 'không rõ';
             const dbName = dbNameMap.get(dbId) || dbId;
             return `- ${dbName}: ${syncAt}`;
         });
-        return `Thoi gian dong bo gan nhat (toi da 5 database theo scope hien tai):\n${syncLines.join('\n')}`;
+        return `Thời gian đồng bộ gần nhất (tối đa 5 database):\n${syncLines.join('\n')}`;
+    }
+
+    // --- 21. Status breakdown / thống kê ---
+    if (q.includes('thong ke') || q.includes('thống kê') || q.includes('summary') || q.includes('tong quan') || q.includes('overview')) {
+        const source = filteredByTime;
+        const byStatus = new Map();
+        let totalPt = 0;
+        source.forEach(r => {
+            const s = extractStatus(r) || 'Không rõ';
+            byStatus.set(s, (byStatus.get(s) || 0) + 1);
+            totalPt += extractTaskPoint(r);
+        });
+        const statusList = [...byStatus.entries()].sort((a, b) => b[1] - a[1])
+            .map(([s, c]) => `- ${s}: ${c}`).join('\n');
+        const assigneeCount = new Set();
+        source.forEach(r => extractAssigneeNames(r).forEach(n => assigneeCount.add(n)));
+        return `Tổng quan${timeLabel}:\n📊 Tổng task: ${source.length}\n👥 Thành viên: ${assigneeCount.size}\n🎯 Tổng point: ${fmtNum(totalPt)}\n\nTheo trạng thái:\n${statusList}`;
+    }
+
+    // --- 22. Confirmed / Unconfirmed point riêng lẻ ---
+    if ((q.includes('confirm') || q.includes('xac nhan')) && !q.includes('so sanh')) {
+        const isUnconfirm = q.includes('unconfirm') || q.includes('chua xac nhan') || q.includes('chua confirm');
+        const source = filteredByTime;
+        let matchCount = 0, matchPt = 0;
+        source.forEach(r => {
+            const ps = extractPointStatus(r);
+            const pt = extractTaskPoint(r);
+            if (isUnconfirm) {
+                if (ps.includes('un') || !ps.includes('confirm')) { matchCount++; matchPt += pt; }
+            } else {
+                if (ps.includes('confirm') && !ps.includes('un')) { matchCount++; matchPt += pt; }
+            }
+        });
+        const label = isUnconfirm ? 'Unconfirmed' : 'Confirmed';
+        return `Task ${label}${timeLabel}: ${matchCount} task, tổng ${fmtNum(matchPt)} point.`;
+    }
+
+    // --- 23. Task theo status cụ thể ---
+    if (q.includes('task') && (q.includes('in progress') || q.includes('not started') || q.includes('done qc') || q.includes('pending'))) {
+        let statusKey = '';
+        if (q.includes('in progress')) statusKey = 'in progress';
+        else if (q.includes('not started')) statusKey = 'not started';
+        else if (q.includes('done qc')) statusKey = 'done qc';
+        else if (q.includes('pending')) statusKey = 'pending';
+        const matched = filteredByTime.filter(r => normalizeQuery(extractStatus(r)).includes(statusKey));
+        const byPerson = new Map();
+        matched.forEach(r => {
+            extractAssigneeNames(r).forEach(n => byPerson.set(n, (byPerson.get(n) || 0) + 1));
+        });
+        const top = [...byPerson.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+        const list = top.map(([n, c], i) => `${i + 1}. ${n}: ${c} task`).join('\n');
+        return `Có ${matched.length} task "${statusKey}"${timeLabel}.\n${list ? 'Theo người:\n' + list : ''}`;
+    }
+
+    // --- 24. Ai rảnh nhất / ít task nhất ---
+    if ((q.includes('ranh') || q.includes('it task') || q.includes('it nhat') || q.includes('least')) &&
+        (q.includes('ai') || q.includes('nguoi'))) {
+        const byPerson = new Map();
+        filteredByTime.forEach(r => {
+            extractAssigneeNames(r).forEach(n => byPerson.set(n, (byPerson.get(n) || 0) + 1));
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => a[1] - b[1]).slice(0, 5);
+        if (sorted.length === 0) return 'Không có dữ liệu.';
+        const list = sorted.map(([n, c], i) => `${i + 1}. ${n}: ${c} task`).join('\n');
+        return `Người ít task nhất${timeLabel}:\n${list}`;
+    }
+
+    // --- 25. Tổng effort từng người ---
+    if (q.includes('effort') && (q.includes('tung') || q.includes('member') || q.includes('moi nguoi') || q.includes('thanh vien'))) {
+        const byPerson = new Map();
+        filteredByTime.forEach(r => {
+            const eff = extractEffort(r);
+            extractAssigneeNames(r).forEach(n => {
+                const cur = byPerson.get(n) || { effort: 0, tasks: 0 };
+                cur.effort += eff; cur.tasks += 1;
+                byPerson.set(n, cur);
+            });
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1].effort - a[1].effort);
+        if (sorted.length === 0) return `Không có dữ liệu effort${timeLabel}.`;
+        const list = sorted.map(([n, d], i) => `${i + 1}. ${n}: ${fmtNum(d.effort)} ngày công (${d.tasks} task)`).join('\n');
+        return `Effort từng member${timeLabel}:\n${list}`;
+    }
+
+    // --- 26. Ai chưa có task ---
+    if ((q.includes('ai') || q.includes('nguoi')) && q.includes('chua co task')) {
+        const activeNames = new Set();
+        filteredByTime.forEach(r => extractAssigneeNames(r).forEach(n => activeNames.add(n)));
+        const allNames = new Set();
+        rows.forEach(r => extractAssigneeNames(r).forEach(n => allNames.add(n)));
+        const idle = [...allNames].filter(n => !activeNames.has(n));
+        if (idle.length === 0) return `Tất cả thành viên đều có task${timeLabel}. ✅`;
+        return `${idle.length} người chưa có task${timeLabel}:\n${idle.join(', ')}`;
     }
 
     return null;
+}
+
+// Wrapper that appends scope note
+function buildSmartCacheReplyWithScope(userMessage, context, db) {
+    const result = buildSmartCacheReply(userMessage, context, db);
+    if (!result) return null;
+
+    const selectedFromContext = Array.isArray(context?.selected_database_ids) ? context.selected_database_ids : [];
+    const selectedFromConfig = Array.isArray(db.getConfig('selected_databases')) ? db.getConfig('selected_databases') : [];
+    const usingAllCache = selectedFromContext.length === 0 && selectedFromConfig.length > 0;
+    const selectedIds = selectedFromContext.length > 0 ? selectedFromContext : selectedFromConfig;
+
+    // Collect project names
+    const projectNames = new Set();
+    selectedIds.forEach(dbId => {
+        const data = db.getData(dbId);
+        if (Array.isArray(data) && data.length > 0) {
+            const first = data[0];
+            const name = first?.database_name || first?.project_name || '';
+            if (name) projectNames.add(name);
+        }
+    });
+
+    if (usingAllCache) {
+        return result + `\n\n💡 Đang dùng dữ liệu từ tất cả ${projectNames.size} dự án đã cache. Chọn dự án cụ thể ở sidebar để thu hẹp phạm vi.`;
+    }
+
+    // Show selected project names
+    if (projectNames.size > 0) {
+        const names = [...projectNames].slice(0, 5).join(', ');
+        const extra = projectNames.size > 5 ? ` và ${projectNames.size - 5} dự án khác` : '';
+        return result + `\n\n📌 Dự án: ${names}${extra}`;
+    }
+
+    return result;
+}
+
+// ---- AI Intent Classifier: rewrite natural language to canonical query ----
+const INTENT_PATTERNS_DESC = [
+    'ai có nhiều task nhất / top assignee',
+    'bao nhiêu task / tổng task / số task',
+    'task chưa hoàn thành / chưa xong / chưa done',
+    'task quá hạn / trễ hạn / overdue / delay',
+    'task sắp deadline N ngày',
+    'workload point từng member / thành viên',
+    'ai đang bị quá tải',
+    'task in progress quá N ngày',
+    'tỷ lệ hoàn thành / completion',
+    'năng suất cao nhất / productivity',
+    'so sánh confirmed vs unconfirmed',
+    'task chưa assign / chưa có người phụ trách',
+    'task effort lớn hơn N ngày',
+    'task loại Bug / loại task / task type',
+    'dự án nào tốn effort nhất',
+    'tổng point thực tế so với yêu cầu / lệch',
+    'xu hướng workload 4 tuần / trend',
+    'thống kê sprint',
+    'sync lúc nào / last sync',
+    'tổng quan / thống kê / overview / summary',
+    'số task confirmed / unconfirmed',
+    'task in progress / not started / done qc / pending',
+    'ai rảnh nhất / ít task nhất',
+    'effort từng member / thành viên',
+    'ai chưa có task',
+    '[tên người] có bao nhiêu task / mấy task / điểm / point',
+].join('\n- ');
+
+async function classifyIntentWithAI(userMessage, apiKey, baseUrl) {
+    if (!apiKey) return null;
+    const geminiBaseUrl = baseUrl || 'https://generativelanguage.googleapis.com/v1beta';
+    const model = 'gemini-2.0-flash';
+    const url = `${geminiBaseUrl}/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
+
+    const prompt = `Bạn là bộ phân loại câu hỏi. Nhiệm vụ: viết lại câu hỏi của user thành dạng chuẩn mà hệ thống keyword-matching có thể hiểu.
+
+Danh sách pattern hệ thống hỗ trợ:
+- ${INTENT_PATTERNS_DESC}
+
+Thời gian hỗ trợ: hôm nay, hôm qua, tuần này, tuần trước, tháng 1-12, tháng này, tháng trước, N ngày qua.
+
+QUY TẮC:
+1. Chỉ trả về DUY NHẤT câu query đã viết lại, không giải thích
+2. Giữ nguyên tên người nếu có
+3. Giữ nguyên thời gian nếu có
+4. Nếu câu hỏi KHÔNG liên quan đến task/workload/project → trả về: NONE
+5. Viết bằng tiếng Việt không dấu nếu cần
+
+Ví dụ:
+- "Ê tuần này ai làm được nhiều nhất?" → "ai có nhiều task nhất tuần này"
+- "Cho xem điểm mấy đứa tháng rồi đi" → "workload point từng member tháng trước"
+- "Thịnh làm được bao nhiêu rồi?" → "Thịnh có bao nhiêu task"
+- "Tình hình chung tuần này thế nào?" → "tổng quan task tuần này"
+- "Xin chào!" → "NONE"
+- "Hôm nay trời đẹp quá" → "NONE"
+
+Câu hỏi user: "${userMessage.replace(/"/g, '\\"')}"`;
+
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                contents: [{ parts: [{ text: prompt }] }],
+                generationConfig: { temperature: 0, maxOutputTokens: 100 }
+            }),
+            signal: AbortSignal.timeout(8000)
+        });
+        if (!response.ok) return null;
+        const payload = await response.json();
+        const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        if (!text || text === 'NONE' || text.length > 200) return null;
+        // Clean up: remove quotes, extra whitespace
+        return text.replace(/^["']|["']$/g, '').trim();
+    } catch {
+        return null;
+    }
+}
+
+// Fun fallback replies when AI is unavailable (quota, error, etc.)
+const FUN_FALLBACKS = [
+    'Ối, não AI hết pin rồi 🪫😅 Thử hỏi mấy câu này nha:\n• "Tổng quan task tuần này"\n• "Ai có nhiều task nhất?"\n• "Task quá hạn"',
+    'AI đang nghỉ xả hơi chút 🧘 Nhưng mấy câu này thì mình trả lời ez:\n• "Workload point từng member"\n• "Task chưa hoàn thành"\n• "Ai rảnh nhất?"',
+    'Hết quota AI rồi nè, chill chút nhé 😎 Mình vẫn trả lời được mấy câu về task:\n• "Tổng quan task"\n• "Ai có nhiều task nhất?"\n• "Task sắp deadline 3 ngày"',
+    'Ê ê, AI quá tải rồi á 🤯 Đợi chút hoặc hỏi trực tiếp kiểu:\n• "Số task confirmed"\n• "Task In Progress"\n• "Xu hướng workload 4 tuần"',
+    'AI lag real 😵‍💫 Thử lại sau hoặc hỏi cụ thể nha:\n• "Tổng quan task tháng này"\n• "Năng suất cao nhất tuần trước"\n• "Effort từng member"',
+];
+
+function getQuotaFallbackReply(userMessage) {
+    const idx = Math.floor(Math.random() * FUN_FALLBACKS.length);
+    return FUN_FALLBACKS[idx];
 }
 
 export function setupRoutes(app, db, poller) {
@@ -467,15 +1254,18 @@ export function setupRoutes(app, db, poller) {
         const syncSource = context.sync_source || 'không rõ';
 
         const systemPrompt = [
-            'Bạn là trợ lý cho dashboard Notion.',
-            'Trả lời ngắn gọn, rõ ràng, bằng tiếng Việt.',
-            'Nếu thiếu dữ liệu thì nêu rõ thiếu gì, không bịa.',
-            'Ưu tiên hướng dẫn thao tác trực tiếp trên dashboard.'
+            'Bạn là Trợ lý AI của Notion Dashboard, tính cách vui vẻ, nói chuyện kiểu gen-z Việt Nam.',
+            'Trả lời ngắn gọn, dễ hiểu, bằng tiếng Việt. Dùng emoji phù hợp.',
+            'Nếu user hỏi về task/workload/project mà bạn không có data → gợi ý họ thử hỏi lại bằng cách khác hoặc dùng các câu gợi ý bên dưới.',
+            'Nếu user chào hỏi/nói chuyện phiếm → trả lời vui vẻ, friendly, ngắn gọn.',
+            'Nếu không biết → nói thẳng là "mình chịu 😅" thay vì bịa.',
+            'Thỉnh thoảng dùng từ gen-z như "chill", "slay", "real", "oke nha", "ez".',
+            'Luôn gợi ý 1-2 câu hỏi user có thể thử, ví dụ: "Thử hỏi: Tổng quan task tuần này / Ai có nhiều task nhất?"'
         ].join(' ');
 
         const contextPrompt = `Ngữ cảnh hiện tại: page="${pageTitle}", report="${reportType}", selected="${selectedCount}", sync="${syncSource}".`;
 
-        const smartReply = buildSmartCacheReply(userMessage, context, db);
+        const smartReply = buildSmartCacheReplyWithScope(userMessage, context, db);
         if (smartReply) {
             return res.json({
                 success: true,
@@ -483,10 +1273,29 @@ export function setupRoutes(app, db, poller) {
             });
         }
 
+        // AI Intent Classification fallback: rewrite question → retry keyword matching
+        if (chatApiKey) {
+            try {
+                const rewritten = await classifyIntentWithAI(userMessage, chatApiKey, chatBaseUrl);
+                if (rewritten) {
+                    console.log(`[Chat] AI rewrite: "${userMessage}" → "${rewritten}"`);
+                    const smartReply2 = buildSmartCacheReplyWithScope(rewritten, context, db);
+                    if (smartReply2) {
+                        return res.json({
+                            success: true,
+                            reply: smartReply2
+                        });
+                    }
+                }
+            } catch (err) {
+                console.warn('[Chat] AI classification failed:', err.message);
+            }
+        }
+
         if (!chatApiKey) {
             return res.json({
                 success: true,
-                reply: `Preview mode: bạn hỏi "${userMessage}". Hiện chưa cấu hình AI_API_KEY/OPENAI_API_KEY nên bot đang chạy fallback. ${contextPrompt}`
+                reply: 'Chưa có key AI nên mình chỉ trả lời được mấy câu cơ bản thôi nha 😅\n\nThử hỏi:\n• "Tổng quan task tuần này"\n• "Ai có nhiều task nhất?"\n• "Task quá hạn"'
             });
         }
 
@@ -582,9 +1391,16 @@ export function setupRoutes(app, db, poller) {
                     }
                 }
                 if (!geminiResponse.ok) {
-                    return res.status(geminiResponse.status).json({
-                        success: false,
-                        error: geminiPayload?.error?.message || geminiPayload?.error || 'Gemini request failed.'
+                    const errMsg = geminiPayload?.error?.message || '';
+                    if (geminiResponse.status === 429 || errMsg.includes('quota') || errMsg.includes('rate')) {
+                        return res.json({
+                            success: true,
+                            reply: getQuotaFallbackReply(userMessage)
+                        });
+                    }
+                    return res.json({
+                        success: true,
+                        reply: getQuotaFallbackReply(userMessage)
                     });
                 }
 
@@ -594,9 +1410,9 @@ export function setupRoutes(app, db, poller) {
                     .trim();
 
                 if (!geminiReply) {
-                    return res.status(502).json({
-                        success: false,
-                        error: 'Gemini returned empty content.'
+                    return res.json({
+                        success: true,
+                        reply: getQuotaFallbackReply(userMessage)
                     });
                 }
 
@@ -628,17 +1444,17 @@ export function setupRoutes(app, db, poller) {
 
             const payload = await response.json();
             if (!response.ok) {
-                return res.status(response.status).json({
-                    success: false,
-                    error: payload?.error?.message || payload?.error || 'AI provider request failed.'
+                return res.json({
+                    success: true,
+                    reply: getQuotaFallbackReply(userMessage)
                 });
             }
 
             const reply = payload?.choices?.[0]?.message?.content;
             if (!reply || typeof reply !== 'string') {
-                return res.status(502).json({
-                    success: false,
-                    error: 'AI provider trả về dữ liệu không hợp lệ.'
+                return res.json({
+                    success: true,
+                    reply: getQuotaFallbackReply(userMessage)
                 });
             }
 
@@ -647,9 +1463,10 @@ export function setupRoutes(app, db, poller) {
                 reply: reply.trim()
             });
         } catch (error) {
-            return res.status(500).json({
-                success: false,
-                error: `Chat request failed: ${error.message}`
+            console.warn('[Chat] Error:', error.message);
+            return res.json({
+                success: true,
+                reply: getQuotaFallbackReply(userMessage)
             });
         }
     });

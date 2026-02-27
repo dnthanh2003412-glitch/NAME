@@ -2,7 +2,7 @@
   {
     "id": "2edccb0e-ac88-8086-929a-f5a50f715be0",
     "created_time": "2026-01-19T09:42:00.000Z",
-    "last_edited_time": "2026-01-19T11:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:52:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -25,7 +25,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -72,7 +75,7 @@
   {
     "id": "2edccb0e-ac88-808d-997f-eb8fa6e3120a",
     "created_time": "2026-01-19T11:15:00.000Z",
-    "last_edited_time": "2026-01-19T11:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -92,7 +95,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -139,7 +145,7 @@
   {
     "id": "2eeccb0e-ac88-804f-9aaa-e71ddf4a21ee",
     "created_time": "2026-01-20T10:33:00.000Z",
-    "last_edited_time": "2026-02-02T02:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 4,
       "Product ": [
@@ -159,7 +165,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -422,7 +431,7 @@
   {
     "id": "2f1ccb0e-ac88-802d-8da1-eecfe5f7dc26",
     "created_time": "2026-01-23T07:17:00.000Z",
-    "last_edited_time": "2026-01-27T08:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 3,
       "Product ": [
@@ -442,7 +451,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -639,7 +651,7 @@
   {
     "id": "2f4ccb0e-ac88-8022-ab32-d491ab81e8e6",
     "created_time": "2026-01-26T11:21:00.000Z",
-    "last_edited_time": "2026-01-26T11:21:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [],
@@ -652,7 +664,7 @@
       "Product Type": null,
       "Point Status": null,
       "Ngày làm": {
-        "start": "2026-01-26",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -862,7 +874,7 @@
   {
     "id": "2f4ccb0e-ac88-80f2-a704-e8fd3d3d1444",
     "created_time": "2026-01-26T09:14:00.000Z",
-    "last_edited_time": "2026-01-26T09:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -882,7 +894,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -1208,7 +1223,7 @@
   {
     "id": "2f5ccb0e-ac88-8042-8f1a-cd857b1d0b98",
     "created_time": "2026-01-27T07:18:00.000Z",
-    "last_edited_time": "2026-01-29T04:29:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -1228,7 +1243,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -1275,7 +1293,7 @@
   {
     "id": "2f5ccb0e-ac88-8077-a0a6-dd45e28a3420",
     "created_time": "2026-01-27T03:59:00.000Z",
-    "last_edited_time": "2026-01-27T07:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -1295,7 +1313,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -1344,7 +1365,7 @@
   {
     "id": "2f5ccb0e-ac88-809a-857e-ce7de36f5cdd",
     "created_time": "2026-01-27T01:54:00.000Z",
-    "last_edited_time": "2026-01-27T02:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -1364,7 +1385,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -1413,7 +1437,7 @@
   {
     "id": "2f5ccb0e-ac88-80a7-a869-f33a7e41467c",
     "created_time": "2026-01-27T12:19:00.000Z",
-    "last_edited_time": "2026-01-27T12:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": 1,
       "Product ": [],
@@ -1426,7 +1450,7 @@
       "Product Type": null,
       "Point Status": null,
       "Ngày làm": {
-        "start": "2026-01-26",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -2968,7 +2992,7 @@
   {
     "id": "2f7ccb0e-ac88-802f-82a8-e9c1e8418df7",
     "created_time": "2026-01-29T11:03:00.000Z",
-    "last_edited_time": "2026-01-29T11:04:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -2988,7 +3012,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -3035,7 +3062,7 @@
   {
     "id": "2f7ccb0e-ac88-8036-b3aa-db70427727d5",
     "created_time": "2026-01-29T06:47:00.000Z",
-    "last_edited_time": "2026-01-29T11:03:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3055,7 +3082,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -3227,7 +3257,7 @@
   {
     "id": "2f7ccb0e-ac88-8061-81d4-e237c4b35f43",
     "created_time": "2026-01-29T04:29:00.000Z",
-    "last_edited_time": "2026-01-29T04:30:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3247,7 +3277,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -3294,7 +3327,7 @@
   {
     "id": "2f7ccb0e-ac88-8071-a450-c02c90ac61ab",
     "created_time": "2026-01-29T08:17:00.000Z",
-    "last_edited_time": "2026-01-29T08:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [],
@@ -3307,7 +3340,7 @@
       "Product Type": null,
       "Point Status": null,
       "Ngày làm": {
-        "start": "2026-01-29",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -3544,7 +3577,7 @@
   {
     "id": "2f7ccb0e-ac88-810c-b038-cad1eca64518",
     "created_time": "2026-01-29T13:19:00.000Z",
-    "last_edited_time": "2026-01-29T13:19:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3564,7 +3597,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3613,7 +3649,7 @@
   {
     "id": "2f7ccb0e-ac88-8113-94b8-d9596bea5b7c",
     "created_time": "2026-01-29T13:52:00.000Z",
-    "last_edited_time": "2026-01-29T13:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3633,7 +3669,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3680,7 +3719,7 @@
   {
     "id": "2f7ccb0e-ac88-811a-88b6-e90555ca54d4",
     "created_time": "2026-01-29T14:00:00.000Z",
-    "last_edited_time": "2026-01-29T14:00:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3700,7 +3739,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3747,7 +3789,7 @@
   {
     "id": "2f7ccb0e-ac88-8137-bab8-ea100e99dde6",
     "created_time": "2026-01-29T09:10:00.000Z",
-    "last_edited_time": "2026-02-02T03:39:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3767,7 +3809,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3814,7 +3859,7 @@
   {
     "id": "2f7ccb0e-ac88-813d-8727-c343ef1b18c7",
     "created_time": "2026-01-29T10:00:00.000Z",
-    "last_edited_time": "2026-02-02T03:45:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3834,7 +3879,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3883,7 +3931,7 @@
   {
     "id": "2f7ccb0e-ac88-815f-b6b2-f22867c1afab",
     "created_time": "2026-01-29T13:24:00.000Z",
-    "last_edited_time": "2026-01-29T13:24:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3903,7 +3951,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -3952,7 +4003,7 @@
   {
     "id": "2f7ccb0e-ac88-816f-ae51-fb3cf3600394",
     "created_time": "2026-01-29T08:23:00.000Z",
-    "last_edited_time": "2026-02-02T02:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -3972,7 +4023,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4021,7 +4075,7 @@
   {
     "id": "2f7ccb0e-ac88-8176-a4e3-d2a1581fcea3",
     "created_time": "2026-01-29T04:39:00.000Z",
-    "last_edited_time": "2026-01-29T04:39:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4044,7 +4098,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4094,7 +4151,7 @@
   {
     "id": "2f7ccb0e-ac88-8182-9b43-ed082e1c0146",
     "created_time": "2026-01-29T04:38:00.000Z",
-    "last_edited_time": "2026-01-29T04:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4114,7 +4171,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4161,7 +4221,7 @@
   {
     "id": "2f7ccb0e-ac88-8189-afca-e2d134b7c29c",
     "created_time": "2026-01-29T13:18:00.000Z",
-    "last_edited_time": "2026-01-29T13:18:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4181,7 +4241,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4230,7 +4293,7 @@
   {
     "id": "2f7ccb0e-ac88-8191-a0e7-e4d25fa51463",
     "created_time": "2026-01-29T13:23:00.000Z",
-    "last_edited_time": "2026-01-29T13:23:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4250,7 +4313,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4299,7 +4365,7 @@
   {
     "id": "2f7ccb0e-ac88-8193-88e4-e2ae8080ec5e",
     "created_time": "2026-01-29T13:19:00.000Z",
-    "last_edited_time": "2026-01-29T13:19:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4319,7 +4385,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4368,7 +4437,7 @@
   {
     "id": "2f7ccb0e-ac88-8196-947c-ef3455e6a737",
     "created_time": "2026-01-29T09:27:00.000Z",
-    "last_edited_time": "2026-02-02T03:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4388,7 +4457,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4437,7 +4509,7 @@
   {
     "id": "2f7ccb0e-ac88-81a5-b954-f1a53113f6fe",
     "created_time": "2026-01-29T08:57:00.000Z",
-    "last_edited_time": "2026-02-02T03:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4457,7 +4529,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4506,7 +4581,7 @@
   {
     "id": "2f7ccb0e-ac88-81a7-9d56-f1f139e8815b",
     "created_time": "2026-01-29T04:39:00.000Z",
-    "last_edited_time": "2026-01-29T04:39:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4529,7 +4604,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4579,7 +4657,7 @@
   {
     "id": "2f7ccb0e-ac88-81aa-bb42-c30b5d387aa1",
     "created_time": "2026-01-29T09:14:00.000Z",
-    "last_edited_time": "2026-01-29T09:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4599,7 +4677,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4646,7 +4727,7 @@
   {
     "id": "2f7ccb0e-ac88-81ab-b62f-eb80fbf2277d",
     "created_time": "2026-01-29T13:15:00.000Z",
-    "last_edited_time": "2026-01-29T13:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4666,7 +4747,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4715,7 +4799,7 @@
   {
     "id": "2f7ccb0e-ac88-81b0-a2f0-ee40bb6104b2",
     "created_time": "2026-01-29T13:22:00.000Z",
-    "last_edited_time": "2026-01-29T13:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4735,7 +4819,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4784,7 +4871,7 @@
   {
     "id": "2f7ccb0e-ac88-81b1-af2c-eb909dda6ca5",
     "created_time": "2026-01-29T13:24:00.000Z",
-    "last_edited_time": "2026-01-29T13:24:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4804,7 +4891,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4853,7 +4943,7 @@
   {
     "id": "2f7ccb0e-ac88-81c7-a234-ec37503bd454",
     "created_time": "2026-01-29T13:09:00.000Z",
-    "last_edited_time": "2026-01-29T13:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4873,7 +4963,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4922,7 +5015,7 @@
   {
     "id": "2f7ccb0e-ac88-81d5-8438-eb710166a512",
     "created_time": "2026-01-29T13:20:00.000Z",
-    "last_edited_time": "2026-01-29T13:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -4942,7 +5035,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -4991,7 +5087,7 @@
   {
     "id": "2f7ccb0e-ac88-81e1-a1cb-cea0931aa02e",
     "created_time": "2026-01-29T13:18:00.000Z",
-    "last_edited_time": "2026-01-29T13:18:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5011,7 +5107,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -5060,7 +5159,7 @@
   {
     "id": "2f7ccb0e-ac88-81e9-aa7c-e73746c4e923",
     "created_time": "2026-01-29T09:53:00.000Z",
-    "last_edited_time": "2026-02-02T03:45:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5080,7 +5179,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -5129,7 +5231,7 @@
   {
     "id": "2f7ccb0e-ac88-81f0-9852-eedef84df7c7",
     "created_time": "2026-01-29T13:12:00.000Z",
-    "last_edited_time": "2026-01-29T13:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5149,7 +5251,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -5198,7 +5303,7 @@
   {
     "id": "2f7ccb0e-ac88-81f9-80c4-e4d63b205454",
     "created_time": "2026-01-29T09:35:00.000Z",
-    "last_edited_time": "2026-02-02T03:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5218,7 +5323,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -5571,7 +5679,7 @@
   {
     "id": "2f8ccb0e-ac88-802a-9e0c-e647b071f491",
     "created_time": "2026-01-30T09:52:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0,
       "Product ": [
@@ -5647,7 +5755,7 @@
   {
     "id": "2f8ccb0e-ac88-8030-83e4-e2fea0437dd5",
     "created_time": "2026-01-30T02:25:00.000Z",
-    "last_edited_time": "2026-01-30T02:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5667,7 +5775,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -5714,7 +5825,7 @@
   {
     "id": "2f8ccb0e-ac88-8035-b0f5-cef253838955",
     "created_time": "2026-01-30T02:25:00.000Z",
-    "last_edited_time": "2026-01-30T02:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -5734,7 +5845,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -5781,7 +5895,7 @@
   {
     "id": "2f8ccb0e-ac88-8049-8223-f76f2342b3ca",
     "created_time": "2026-01-30T07:51:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -5933,7 +6047,7 @@
   {
     "id": "2f8ccb0e-ac88-8061-828c-ed1214060476",
     "created_time": "2026-01-30T10:11:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -6284,7 +6398,7 @@
   {
     "id": "2f8ccb0e-ac88-809e-9617-da4312e6e9cb",
     "created_time": "2026-01-30T04:06:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -6360,7 +6474,7 @@
   {
     "id": "2f8ccb0e-ac88-80bf-a66f-eace2729354c",
     "created_time": "2026-01-30T02:13:00.000Z",
-    "last_edited_time": "2026-01-30T02:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -6380,7 +6494,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -6427,7 +6544,7 @@
   {
     "id": "2f8ccb0e-ac88-80c2-8112-dcf785e47e7b",
     "created_time": "2026-01-30T10:38:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [],
@@ -6552,7 +6669,7 @@
   {
     "id": "2f8ccb0e-ac88-80ce-9107-d878d7d9fcb7",
     "created_time": "2026-01-30T03:12:00.000Z",
-    "last_edited_time": "2026-01-30T03:13:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -6626,7 +6743,7 @@
   {
     "id": "2f8ccb0e-ac88-80eb-834d-c12a6aa74ded",
     "created_time": "2026-01-30T07:01:00.000Z",
-    "last_edited_time": "2026-02-02T04:04:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -6646,7 +6763,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -6699,7 +6819,7 @@
   {
     "id": "2f8ccb0e-ac88-80f5-b9f0-ef7f45165c98",
     "created_time": "2026-01-30T09:50:00.000Z",
-    "last_edited_time": "2026-01-30T10:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -6775,7 +6895,7 @@
   {
     "id": "2f8ccb0e-ac88-80f8-ac2a-ca2ef368c1dd",
     "created_time": "2026-01-30T10:10:00.000Z",
-    "last_edited_time": "2026-01-31T08:00:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -6925,7 +7045,7 @@
   {
     "id": "2f8ccb0e-ac88-810c-9f1a-d665303ef7e8",
     "created_time": "2026-01-30T05:57:00.000Z",
-    "last_edited_time": "2026-02-02T03:36:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -6945,7 +7065,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -6994,7 +7117,7 @@
   {
     "id": "2f8ccb0e-ac88-812f-affd-ebd9d49fd308",
     "created_time": "2026-01-30T06:15:00.000Z",
-    "last_edited_time": "2026-01-30T06:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7014,7 +7137,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7063,7 +7189,7 @@
   {
     "id": "2f8ccb0e-ac88-815c-8e47-d73c6aca0139",
     "created_time": "2026-01-30T12:13:00.000Z",
-    "last_edited_time": "2026-01-30T12:13:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7083,7 +7209,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7132,7 +7261,7 @@
   {
     "id": "2f8ccb0e-ac88-815f-84a3-cab0e2e4ad5d",
     "created_time": "2026-01-30T11:57:00.000Z",
-    "last_edited_time": "2026-01-30T11:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7152,7 +7281,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7199,7 +7331,7 @@
   {
     "id": "2f8ccb0e-ac88-816e-82c3-e5c32e039c87",
     "created_time": "2026-01-30T11:51:00.000Z",
-    "last_edited_time": "2026-02-02T03:36:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7219,7 +7351,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7268,7 +7403,7 @@
   {
     "id": "2f8ccb0e-ac88-8172-b1dc-e79132fe9277",
     "created_time": "2026-01-30T11:54:00.000Z",
-    "last_edited_time": "2026-01-30T11:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7288,7 +7423,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7335,7 +7473,7 @@
   {
     "id": "2f8ccb0e-ac88-817b-9c4a-cb66d1836c5b",
     "created_time": "2026-01-30T05:59:00.000Z",
-    "last_edited_time": "2026-02-02T03:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7355,7 +7493,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7404,7 +7545,7 @@
   {
     "id": "2f8ccb0e-ac88-8180-9415-c98b5350cabe",
     "created_time": "2026-01-30T10:19:00.000Z",
-    "last_edited_time": "2026-01-30T10:19:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7424,7 +7565,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7473,7 +7617,7 @@
   {
     "id": "2f8ccb0e-ac88-818f-89fa-c8c4a167eec7",
     "created_time": "2026-01-30T11:03:00.000Z",
-    "last_edited_time": "2026-02-02T03:33:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7493,7 +7637,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7542,7 +7689,7 @@
   {
     "id": "2f8ccb0e-ac88-8193-a2c4-c5625837120e",
     "created_time": "2026-01-30T06:14:00.000Z",
-    "last_edited_time": "2026-01-30T06:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7562,7 +7709,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7611,7 +7761,7 @@
   {
     "id": "2f8ccb0e-ac88-81a0-8982-f57d72b8def4",
     "created_time": "2026-01-30T04:52:00.000Z",
-    "last_edited_time": "2026-02-02T02:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7631,7 +7781,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7680,7 +7833,7 @@
   {
     "id": "2f8ccb0e-ac88-81a0-9343-d2afc6e82860",
     "created_time": "2026-01-30T12:21:00.000Z",
-    "last_edited_time": "2026-02-02T03:30:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7700,7 +7853,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7749,7 +7905,7 @@
   {
     "id": "2f8ccb0e-ac88-81af-ab0e-e410e7a6f22d",
     "created_time": "2026-01-30T04:58:00.000Z",
-    "last_edited_time": "2026-02-02T03:28:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7769,7 +7925,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7818,7 +7977,7 @@
   {
     "id": "2f8ccb0e-ac88-81b5-8e6a-c50785d94437",
     "created_time": "2026-01-30T12:12:00.000Z",
-    "last_edited_time": "2026-01-30T12:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7838,7 +7997,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7887,7 +8049,7 @@
   {
     "id": "2f8ccb0e-ac88-81bc-bef7-f4e77c176f39",
     "created_time": "2026-01-30T03:48:00.000Z",
-    "last_edited_time": "2026-02-02T03:31:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7907,7 +8069,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -7956,7 +8121,7 @@
   {
     "id": "2f8ccb0e-ac88-81bd-bdaf-f9b97fb195c5",
     "created_time": "2026-01-30T06:51:00.000Z",
-    "last_edited_time": "2026-01-30T06:51:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -7976,7 +8141,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8023,7 +8191,7 @@
   {
     "id": "2f8ccb0e-ac88-81c8-abb4-e3111df8924a",
     "created_time": "2026-01-30T06:20:00.000Z",
-    "last_edited_time": "2026-01-30T06:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8043,7 +8211,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8092,7 +8263,7 @@
   {
     "id": "2f8ccb0e-ac88-81cb-8e4e-e2da935d43fa",
     "created_time": "2026-01-30T11:49:00.000Z",
-    "last_edited_time": "2026-02-02T03:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8112,7 +8283,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8161,7 +8335,7 @@
   {
     "id": "2f8ccb0e-ac88-81d0-9202-de0e88009ba1",
     "created_time": "2026-01-30T06:22:00.000Z",
-    "last_edited_time": "2026-02-02T02:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8181,7 +8355,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8230,7 +8407,7 @@
   {
     "id": "2f8ccb0e-ac88-81d0-b37f-d3da91a4aaea",
     "created_time": "2026-01-30T10:26:00.000Z",
-    "last_edited_time": "2026-02-02T03:36:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8250,7 +8427,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8299,7 +8479,7 @@
   {
     "id": "2f8ccb0e-ac88-81d1-9c2f-e3dc701848ad",
     "created_time": "2026-01-30T04:52:00.000Z",
-    "last_edited_time": "2026-01-30T04:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8319,7 +8499,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8366,7 +8549,7 @@
   {
     "id": "2f8ccb0e-ac88-81e9-adcd-d9cf332a1fb1",
     "created_time": "2026-01-30T12:12:00.000Z",
-    "last_edited_time": "2026-01-30T12:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8386,7 +8569,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8435,7 +8621,7 @@
   {
     "id": "2f8ccb0e-ac88-81f5-8450-eb798c4f877f",
     "created_time": "2026-01-30T05:00:00.000Z",
-    "last_edited_time": "2026-02-02T03:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8455,7 +8641,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8504,7 +8693,7 @@
   {
     "id": "2f8ccb0e-ac88-81f5-949c-c35b85b338d5",
     "created_time": "2026-01-30T06:51:00.000Z",
-    "last_edited_time": "2026-01-30T06:51:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8524,7 +8713,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8571,7 +8763,7 @@
   {
     "id": "2f8ccb0e-ac88-81fd-91f2-d16dab8320d0",
     "created_time": "2026-01-30T06:38:00.000Z",
-    "last_edited_time": "2026-01-30T06:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8591,7 +8783,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8638,7 +8833,7 @@
   {
     "id": "2f8ccb0e-ac88-81ff-a30b-e220959ea55f",
     "created_time": "2026-01-30T12:17:00.000Z",
-    "last_edited_time": "2026-01-30T12:17:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -8658,7 +8853,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -8783,7 +8981,7 @@
   {
     "id": "2f9ccb0e-ac88-800b-93ba-c053d84bb376",
     "created_time": "2026-01-31T07:59:00.000Z",
-    "last_edited_time": "2026-02-02T04:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -8804,7 +9002,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -8933,7 +9131,7 @@
   {
     "id": "2f9ccb0e-ac88-8020-8ef4-c8225109fd8b",
     "created_time": "2026-01-31T12:03:00.000Z",
-    "last_edited_time": "2026-02-02T11:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0,
       "Product ": [
@@ -8954,7 +9152,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -9081,7 +9279,7 @@
   {
     "id": "2f9ccb0e-ac88-802f-be40-d0e049eb5133",
     "created_time": "2026-01-31T03:09:00.000Z",
-    "last_edited_time": "2026-01-31T03:10:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -9102,7 +9300,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -9155,7 +9353,7 @@
   {
     "id": "2f9ccb0e-ac88-8040-aaaa-ff35d14a41da",
     "created_time": "2026-01-31T05:44:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0,
       "Product ": [
@@ -9176,7 +9374,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -9231,7 +9429,7 @@
   {
     "id": "2f9ccb0e-ac88-8048-82b6-c5848906d397",
     "created_time": "2026-01-31T06:54:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -9252,7 +9450,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -9307,7 +9505,7 @@
   {
     "id": "2f9ccb0e-ac88-8049-9cc0-f73ad42b3502",
     "created_time": "2026-01-31T05:43:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0,
       "Product ": [
@@ -9328,7 +9526,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -9383,7 +9581,7 @@
   {
     "id": "2f9ccb0e-ac88-804b-8b9f-fe3e4291ae69",
     "created_time": "2026-01-31T11:48:00.000Z",
-    "last_edited_time": "2026-01-31T11:48:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -9403,7 +9601,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -9447,7 +9648,7 @@
   {
     "id": "2f9ccb0e-ac88-8051-9f12-da8fddafabdd",
     "created_time": "2026-01-31T03:43:00.000Z",
-    "last_edited_time": "2026-01-31T03:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -9468,7 +9669,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -9521,7 +9722,7 @@
   {
     "id": "2f9ccb0e-ac88-8064-91e8-f1e4137a566c",
     "created_time": "2026-01-31T03:37:00.000Z",
-    "last_edited_time": "2026-01-31T03:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -9542,7 +9743,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -9669,7 +9870,7 @@
   {
     "id": "2f9ccb0e-ac88-806f-9ac0-ca7f007f1c68",
     "created_time": "2026-01-31T10:39:00.000Z",
-    "last_edited_time": "2026-01-31T10:40:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.0625,
       "Product ": [
@@ -9690,7 +9891,7 @@
         "Unconfirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 0,
@@ -9745,7 +9946,7 @@
   {
     "id": "2f9ccb0e-ac88-8077-8fd9-ff17687c9b3f",
     "created_time": "2026-01-31T11:47:00.000Z",
-    "last_edited_time": "2026-01-31T11:47:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -9765,7 +9966,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -9809,7 +10013,7 @@
   {
     "id": "2f9ccb0e-ac88-8088-bb36-f0203c007d94",
     "created_time": "2026-01-31T03:02:00.000Z",
-    "last_edited_time": "2026-02-02T04:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -9830,7 +10034,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -9959,7 +10163,7 @@
   {
     "id": "2f9ccb0e-ac88-808f-b2c7-f54e8d06822d",
     "created_time": "2026-01-31T02:39:00.000Z",
-    "last_edited_time": "2026-01-31T03:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -9980,7 +10184,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -10257,7 +10461,7 @@
   {
     "id": "2f9ccb0e-ac88-80b8-ad8f-fdfb65603da8",
     "created_time": "2026-01-31T11:47:00.000Z",
-    "last_edited_time": "2026-02-02T02:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 1,
       "Product ": [
@@ -10277,7 +10481,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -10321,7 +10528,7 @@
   {
     "id": "2f9ccb0e-ac88-80ba-afee-e9bc77463a1b",
     "created_time": "2026-01-31T08:40:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0,
       "Product ": [
@@ -10342,7 +10549,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -10471,7 +10678,7 @@
   {
     "id": "2f9ccb0e-ac88-80c2-8348-e7f2f17f65e0",
     "created_time": "2026-01-31T08:40:00.000Z",
-    "last_edited_time": "2026-01-31T10:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -10492,7 +10699,7 @@
         "Confirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -10623,7 +10830,7 @@
   {
     "id": "2f9ccb0e-ac88-80da-973b-fb7fb982eaf1",
     "created_time": "2026-01-31T05:27:00.000Z",
-    "last_edited_time": "2026-01-31T07:58:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -10644,7 +10851,7 @@
         "Unconfirmed"
       ],
       "Ngày làm": {
-        "start": "2026-01-31",
+        "start": "2026-01-30",
         "end": null
       },
       "[Dev] Total main": 1,
@@ -10699,7 +10906,7 @@
   {
     "id": "2f9ccb0e-ac88-80e6-b140-d898a8f896eb",
     "created_time": "2026-01-31T11:56:00.000Z",
-    "last_edited_time": "2026-01-31T11:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [],
@@ -10711,7 +10918,10 @@
       "Trọng số TP": 0,
       "Product Type": null,
       "Point Status": null,
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": null,
       "Sprint": null,
@@ -10739,7 +10949,7 @@
   {
     "id": "2f9ccb0e-ac88-8100-9ab6-c5da7ffc7210",
     "created_time": "2026-01-31T08:11:00.000Z",
-    "last_edited_time": "2026-02-02T02:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -10759,7 +10969,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -10808,7 +11021,7 @@
   {
     "id": "2f9ccb0e-ac88-810b-a320-ee21108e7e37",
     "created_time": "2026-01-31T04:09:00.000Z",
-    "last_edited_time": "2026-01-31T04:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -10828,7 +11041,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -10877,7 +11093,7 @@
   {
     "id": "2f9ccb0e-ac88-810e-a983-c9ce18f64d85",
     "created_time": "2026-01-31T11:37:00.000Z",
-    "last_edited_time": "2026-02-02T03:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -10897,7 +11113,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -10946,7 +11165,7 @@
   {
     "id": "2f9ccb0e-ac88-8113-99e4-f9074d9247d6",
     "created_time": "2026-01-31T09:34:00.000Z",
-    "last_edited_time": "2026-01-31T09:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -10966,7 +11185,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11015,7 +11237,7 @@
   {
     "id": "2f9ccb0e-ac88-811c-bbc2-fec04e422604",
     "created_time": "2026-01-31T10:25:00.000Z",
-    "last_edited_time": "2026-01-31T10:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11035,7 +11257,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11084,7 +11309,7 @@
   {
     "id": "2f9ccb0e-ac88-8122-b51d-df41cb9d80e8",
     "created_time": "2026-01-31T03:30:00.000Z",
-    "last_edited_time": "2026-01-31T03:30:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11104,7 +11329,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11153,7 +11381,7 @@
   {
     "id": "2f9ccb0e-ac88-8124-a58b-c75cc0a992a1",
     "created_time": "2026-01-31T11:21:00.000Z",
-    "last_edited_time": "2026-01-31T11:21:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11173,7 +11401,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11222,7 +11453,7 @@
   {
     "id": "2f9ccb0e-ac88-8126-915b-d15d537c19e3",
     "created_time": "2026-01-31T09:42:00.000Z",
-    "last_edited_time": "2026-01-31T09:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11242,7 +11473,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11289,7 +11523,7 @@
   {
     "id": "2f9ccb0e-ac88-8126-92da-e4a3564af669",
     "created_time": "2026-01-31T09:34:00.000Z",
-    "last_edited_time": "2026-01-31T09:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11309,7 +11543,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11358,7 +11595,7 @@
   {
     "id": "2f9ccb0e-ac88-812e-bda3-ff1cf3ac561c",
     "created_time": "2026-01-31T09:23:00.000Z",
-    "last_edited_time": "2026-01-31T09:23:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11378,7 +11615,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11427,7 +11667,7 @@
   {
     "id": "2f9ccb0e-ac88-8136-9f8b-f5b9f76c66a3",
     "created_time": "2026-01-31T08:01:00.000Z",
-    "last_edited_time": "2026-01-31T08:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11447,7 +11687,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11494,7 +11737,7 @@
   {
     "id": "2f9ccb0e-ac88-8139-a738-e7124fe34788",
     "created_time": "2026-01-31T06:26:00.000Z",
-    "last_edited_time": "2026-01-31T06:26:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11514,7 +11757,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11563,7 +11809,7 @@
   {
     "id": "2f9ccb0e-ac88-813f-96ec-cb5d71f19caa",
     "created_time": "2026-01-31T11:25:00.000Z",
-    "last_edited_time": "2026-01-31T11:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11583,7 +11829,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11630,7 +11879,7 @@
   {
     "id": "2f9ccb0e-ac88-8142-8692-d1c92b17c5e7",
     "created_time": "2026-01-31T07:45:00.000Z",
-    "last_edited_time": "2026-01-31T07:45:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11650,7 +11899,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11699,7 +11951,7 @@
   {
     "id": "2f9ccb0e-ac88-814a-bdb1-f269a18d6017",
     "created_time": "2026-01-31T11:14:00.000Z",
-    "last_edited_time": "2026-02-02T02:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11719,7 +11971,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11768,7 +12023,7 @@
   {
     "id": "2f9ccb0e-ac88-8153-b396-f708f3e922e8",
     "created_time": "2026-01-31T04:09:00.000Z",
-    "last_edited_time": "2026-01-31T04:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11788,7 +12043,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11837,7 +12095,7 @@
   {
     "id": "2f9ccb0e-ac88-8155-9920-f8abe6d91ceb",
     "created_time": "2026-01-31T04:09:00.000Z",
-    "last_edited_time": "2026-02-02T02:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11857,7 +12115,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": [
@@ -11910,7 +12171,7 @@
   {
     "id": "2f9ccb0e-ac88-815a-b3ea-e74980a336ee",
     "created_time": "2026-01-31T06:26:00.000Z",
-    "last_edited_time": "2026-01-31T06:26:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11930,7 +12191,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -11979,7 +12243,7 @@
   {
     "id": "2f9ccb0e-ac88-8169-9487-e4d1066e3de6",
     "created_time": "2026-01-31T05:26:00.000Z",
-    "last_edited_time": "2026-01-31T05:26:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -11999,7 +12263,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12046,7 +12313,7 @@
   {
     "id": "2f9ccb0e-ac88-816e-b14f-f4deaae68dde",
     "created_time": "2026-01-31T11:21:00.000Z",
-    "last_edited_time": "2026-01-31T11:21:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12066,7 +12333,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12115,7 +12385,7 @@
   {
     "id": "2f9ccb0e-ac88-816f-aa6c-d40a6aa75686",
     "created_time": "2026-01-31T09:19:00.000Z",
-    "last_edited_time": "2026-01-31T09:19:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12135,7 +12405,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12182,7 +12455,7 @@
   {
     "id": "2f9ccb0e-ac88-816f-aa7d-f275ca16c58b",
     "created_time": "2026-01-31T09:42:00.000Z",
-    "last_edited_time": "2026-01-31T09:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12202,7 +12475,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12249,7 +12525,7 @@
   {
     "id": "2f9ccb0e-ac88-8172-beb4-dcdaf428af96",
     "created_time": "2026-01-31T05:45:00.000Z",
-    "last_edited_time": "2026-02-02T02:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12269,7 +12545,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12318,7 +12597,7 @@
   {
     "id": "2f9ccb0e-ac88-8175-a6f0-f593327fe1c8",
     "created_time": "2026-01-31T04:09:00.000Z",
-    "last_edited_time": "2026-02-03T09:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12338,7 +12617,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12387,7 +12669,7 @@
   {
     "id": "2f9ccb0e-ac88-817b-86d7-e0a2611f5916",
     "created_time": "2026-01-31T11:28:00.000Z",
-    "last_edited_time": "2026-01-31T11:28:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12407,7 +12689,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12456,7 +12741,7 @@
   {
     "id": "2f9ccb0e-ac88-817e-ae56-d0446dccbcb0",
     "created_time": "2026-01-31T11:16:00.000Z",
-    "last_edited_time": "2026-02-02T02:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12476,7 +12761,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12525,7 +12813,7 @@
   {
     "id": "2f9ccb0e-ac88-8182-b2cb-e1d3e44a740b",
     "created_time": "2026-01-31T11:28:00.000Z",
-    "last_edited_time": "2026-01-31T11:28:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12545,7 +12833,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12594,7 +12885,7 @@
   {
     "id": "2f9ccb0e-ac88-818a-a078-d69a329859fd",
     "created_time": "2026-01-31T04:09:00.000Z",
-    "last_edited_time": "2026-01-31T04:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12614,7 +12905,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12663,7 +12957,7 @@
   {
     "id": "2f9ccb0e-ac88-8192-9dfa-cfbc0ea0a8a6",
     "created_time": "2026-01-31T11:39:00.000Z",
-    "last_edited_time": "2026-02-02T03:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12683,7 +12977,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12732,7 +13029,7 @@
   {
     "id": "2f9ccb0e-ac88-8193-a6f9-f5380d31be34",
     "created_time": "2026-01-31T11:24:00.000Z",
-    "last_edited_time": "2026-01-31T11:24:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12752,7 +13049,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12801,7 +13101,7 @@
   {
     "id": "2f9ccb0e-ac88-8197-981f-fe4eeaefdf4e",
     "created_time": "2026-01-31T05:02:00.000Z",
-    "last_edited_time": "2026-01-31T05:02:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12821,7 +13121,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12870,7 +13173,7 @@
   {
     "id": "2f9ccb0e-ac88-81a0-bac7-deb9345e0836",
     "created_time": "2026-01-31T09:27:00.000Z",
-    "last_edited_time": "2026-01-31T09:27:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12890,7 +13193,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -12939,7 +13245,7 @@
   {
     "id": "2f9ccb0e-ac88-81a1-82c8-fe7555c0a75e",
     "created_time": "2026-01-31T11:16:00.000Z",
-    "last_edited_time": "2026-01-31T11:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -12959,7 +13265,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13008,7 +13317,7 @@
   {
     "id": "2f9ccb0e-ac88-81ab-83f9-c6cca2f65758",
     "created_time": "2026-01-31T04:08:00.000Z",
-    "last_edited_time": "2026-02-03T09:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13028,7 +13337,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13077,7 +13389,7 @@
   {
     "id": "2f9ccb0e-ac88-81b5-834d-fd43546285ce",
     "created_time": "2026-01-31T11:20:00.000Z",
-    "last_edited_time": "2026-01-31T11:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13097,7 +13409,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13146,7 +13461,7 @@
   {
     "id": "2f9ccb0e-ac88-81bb-b8e6-eeabf113ddd6",
     "created_time": "2026-01-31T07:34:00.000Z",
-    "last_edited_time": "2026-01-31T07:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13166,7 +13481,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13215,7 +13533,7 @@
   {
     "id": "2f9ccb0e-ac88-81c8-9671-e942eba89c49",
     "created_time": "2026-01-31T08:09:00.000Z",
-    "last_edited_time": "2026-01-31T08:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13235,7 +13553,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13284,7 +13605,7 @@
   {
     "id": "2f9ccb0e-ac88-81d5-afe2-e1f12a05c3fa",
     "created_time": "2026-01-31T09:27:00.000Z",
-    "last_edited_time": "2026-01-31T09:27:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13304,7 +13625,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13353,7 +13677,7 @@
   {
     "id": "2f9ccb0e-ac88-81e4-9c8d-ca9675002cb0",
     "created_time": "2026-01-31T11:22:00.000Z",
-    "last_edited_time": "2026-02-02T02:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13373,7 +13697,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": [
@@ -13426,7 +13753,7 @@
   {
     "id": "2f9ccb0e-ac88-81e8-8777-e4f06e9b41de",
     "created_time": "2026-01-31T08:47:00.000Z",
-    "last_edited_time": "2026-01-31T08:47:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13446,7 +13773,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13493,7 +13823,7 @@
   {
     "id": "2f9ccb0e-ac88-81eb-87aa-ee917377ced7",
     "created_time": "2026-01-31T08:01:00.000Z",
-    "last_edited_time": "2026-01-31T08:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13513,7 +13843,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13562,7 +13895,7 @@
   {
     "id": "2f9ccb0e-ac88-81f5-b7c3-f7f7507d2eaa",
     "created_time": "2026-01-31T11:37:00.000Z",
-    "last_edited_time": "2026-01-31T11:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13582,7 +13915,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13629,7 +13965,7 @@
   {
     "id": "2f9ccb0e-ac88-81f7-84ad-cd435226ebf8",
     "created_time": "2026-01-31T11:36:00.000Z",
-    "last_edited_time": "2026-01-31T11:36:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13649,7 +13985,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13696,7 +14035,7 @@
   {
     "id": "2f9ccb0e-ac88-81f8-9839-f376acdfb435",
     "created_time": "2026-01-31T05:44:00.000Z",
-    "last_edited_time": "2026-01-31T05:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -13716,7 +14055,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -13839,7 +14181,7 @@
   {
     "id": "2fbccb0e-ac88-8006-864c-f8aa5e0d095a",
     "created_time": "2026-02-02T02:37:00.000Z",
-    "last_edited_time": "2026-02-02T02:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 0.5,
       "Product ": [
@@ -13859,7 +14201,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -14062,7 +14407,7 @@
   {
     "id": "2fbccb0e-ac88-800e-b6b1-d88eb79edebd",
     "created_time": "2026-02-02T08:06:00.000Z",
-    "last_edited_time": "2026-02-02T08:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -14082,7 +14427,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -14282,7 +14630,7 @@
   {
     "id": "2fbccb0e-ac88-801e-a4ee-c152b0402baf",
     "created_time": "2026-02-02T02:53:00.000Z",
-    "last_edited_time": "2026-02-02T02:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -14302,7 +14650,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -14355,7 +14706,7 @@
   {
     "id": "2fbccb0e-ac88-8024-a452-e14043109138",
     "created_time": "2026-02-02T02:16:00.000Z",
-    "last_edited_time": "2026-02-02T02:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -14431,7 +14782,7 @@
   {
     "id": "2fbccb0e-ac88-8027-8f80-e3f64f209301",
     "created_time": "2026-02-02T02:33:00.000Z",
-    "last_edited_time": "2026-02-02T02:35:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -14451,7 +14802,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -14785,7 +15139,7 @@
   {
     "id": "2fbccb0e-ac88-8042-9648-f0138ff3bc6d",
     "created_time": "2026-02-02T03:12:00.000Z",
-    "last_edited_time": "2026-02-02T03:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 1.5,
       "Product ": [
@@ -14805,7 +15159,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -14858,7 +15215,7 @@
   {
     "id": "2fbccb0e-ac88-8048-9117-feb010c19491",
     "created_time": "2026-02-02T02:33:00.000Z",
-    "last_edited_time": "2026-02-02T02:34:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -14878,7 +15235,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15005,7 +15365,7 @@
   {
     "id": "2fbccb0e-ac88-804f-b610-c516bd64484a",
     "created_time": "2026-02-02T02:39:00.000Z",
-    "last_edited_time": "2026-02-02T02:40:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -15025,7 +15385,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15154,7 +15517,7 @@
   {
     "id": "2fbccb0e-ac88-8056-8614-e2522120a971",
     "created_time": "2026-02-02T03:16:00.000Z",
-    "last_edited_time": "2026-02-02T03:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -15174,7 +15537,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15379,7 +15745,7 @@
   {
     "id": "2fbccb0e-ac88-805b-87c3-e32ec567aa19",
     "created_time": "2026-02-02T02:58:00.000Z",
-    "last_edited_time": "2026-02-02T02:58:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -15399,7 +15765,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15528,7 +15897,7 @@
   {
     "id": "2fbccb0e-ac88-805e-97c4-fdb47a6bf277",
     "created_time": "2026-02-02T02:41:00.000Z",
-    "last_edited_time": "2026-02-02T02:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 3.5,
       "Product ": [
@@ -15548,7 +15917,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15677,7 +16049,7 @@
   {
     "id": "2fbccb0e-ac88-8065-8696-ee6407f458b0",
     "created_time": "2026-02-02T03:45:00.000Z",
-    "last_edited_time": "2026-02-02T03:46:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -15697,7 +16069,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -15744,7 +16119,7 @@
   {
     "id": "2fbccb0e-ac88-806b-8293-f2eeccbf6570",
     "created_time": "2026-02-02T02:38:00.000Z",
-    "last_edited_time": "2026-02-02T02:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 2,
       "Product ": [
@@ -15764,7 +16139,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15893,7 +16271,7 @@
   {
     "id": "2fbccb0e-ac88-807c-ba21-f699812c13ba",
     "created_time": "2026-02-02T03:15:00.000Z",
-    "last_edited_time": "2026-02-02T03:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -15913,7 +16291,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -15966,7 +16347,7 @@
   {
     "id": "2fbccb0e-ac88-8088-8e6d-f451836eb016",
     "created_time": "2026-02-02T02:15:00.000Z",
-    "last_edited_time": "2026-02-02T02:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -16042,7 +16423,7 @@
   {
     "id": "2fbccb0e-ac88-808a-867e-dc1133cbcd6c",
     "created_time": "2026-02-02T02:37:00.000Z",
-    "last_edited_time": "2026-02-02T02:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 1.5,
       "Product ": [
@@ -16062,7 +16443,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -16267,7 +16651,7 @@
   {
     "id": "2fbccb0e-ac88-8094-9731-f479316c79e5",
     "created_time": "2026-02-02T03:42:00.000Z",
-    "last_edited_time": "2026-02-02T03:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -16287,7 +16671,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -16340,7 +16727,7 @@
   {
     "id": "2fbccb0e-ac88-8095-bf55-d463f8e7c774",
     "created_time": "2026-02-02T02:51:00.000Z",
-    "last_edited_time": "2026-02-02T02:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -16360,7 +16747,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -16489,7 +16879,7 @@
   {
     "id": "2fbccb0e-ac88-8098-927b-ca4d8ea7dcea",
     "created_time": "2026-02-02T03:17:00.000Z",
-    "last_edited_time": "2026-02-02T03:17:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 1,
       "Product ": [
@@ -16509,7 +16899,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -16636,7 +17029,7 @@
   {
     "id": "2fbccb0e-ac88-809f-8709-c60a2ddbdefb",
     "created_time": "2026-02-02T02:55:00.000Z",
-    "last_edited_time": "2026-02-02T02:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.5,
       "Product ": [
@@ -16656,7 +17049,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -16709,7 +17105,7 @@
   {
     "id": "2fbccb0e-ac88-80a1-8fa5-c4e8be58a6df",
     "created_time": "2026-02-02T09:10:00.000Z",
-    "last_edited_time": "2026-02-02T09:10:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [],
@@ -16721,7 +17117,10 @@
       "Trọng số TP": 0,
       "Product Type": null,
       "Point Status": null,
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": null,
       "Sprint": null,
@@ -16749,7 +17148,7 @@
   {
     "id": "2fbccb0e-ac88-80a8-9d26-ecd0ffff5e94",
     "created_time": "2026-02-02T02:14:00.000Z",
-    "last_edited_time": "2026-02-02T02:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -16825,7 +17224,7 @@
   {
     "id": "2fbccb0e-ac88-80a9-ba6a-f1d1fe898149",
     "created_time": "2026-02-02T02:54:00.000Z",
-    "last_edited_time": "2026-02-02T02:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -16845,7 +17244,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -17027,7 +17429,7 @@
   {
     "id": "2fbccb0e-ac88-80ae-bd2c-f2a9938e7864",
     "created_time": "2026-02-02T02:59:00.000Z",
-    "last_edited_time": "2026-02-02T02:59:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -17047,7 +17449,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -17176,7 +17581,7 @@
   {
     "id": "2fbccb0e-ac88-80b3-b46c-f006c37e4005",
     "created_time": "2026-02-02T03:16:00.000Z",
-    "last_edited_time": "2026-02-02T03:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.5,
       "Product ": [
@@ -17196,7 +17601,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -17249,7 +17657,7 @@
   {
     "id": "2fbccb0e-ac88-80c7-aff5-c763c1a9db0b",
     "created_time": "2026-02-02T03:13:00.000Z",
-    "last_edited_time": "2026-02-02T03:13:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 0.5,
       "Product ": [
@@ -17269,7 +17677,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -17322,7 +17733,7 @@
   {
     "id": "2fbccb0e-ac88-80d4-895f-d094167a8cd9",
     "created_time": "2026-02-02T02:57:00.000Z",
-    "last_edited_time": "2026-02-02T02:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": 1,
       "Product ": [
@@ -17342,7 +17753,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -17469,7 +17883,7 @@
   {
     "id": "2fbccb0e-ac88-80e9-8753-e1656ac44c03",
     "created_time": "2026-02-02T02:52:00.000Z",
-    "last_edited_time": "2026-02-02T02:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -17489,7 +17903,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": [
@@ -17616,7 +18033,7 @@
   {
     "id": "2fbccb0e-ac88-80ed-85a9-e65145f9070e",
     "created_time": "2026-02-02T03:38:00.000Z",
-    "last_edited_time": "2026-02-02T03:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -17636,7 +18053,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -17689,7 +18109,7 @@
   {
     "id": "2fbccb0e-ac88-80f0-8bc0-eb2296a6333b",
     "created_time": "2026-02-02T03:42:00.000Z",
-    "last_edited_time": "2026-02-02T03:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -17709,7 +18129,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -17762,7 +18185,7 @@
   {
     "id": "2fbccb0e-ac88-80f2-aa0f-d583bed5a6f2",
     "created_time": "2026-02-02T02:39:00.000Z",
-    "last_edited_time": "2026-02-02T02:39:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -17782,7 +18205,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -18137,7 +18563,7 @@
   {
     "id": "2fbccb0e-ac88-8106-a02d-d94fd3a231ea",
     "created_time": "2026-02-02T02:35:00.000Z",
-    "last_edited_time": "2026-02-02T03:28:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18157,7 +18583,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18206,7 +18635,7 @@
   {
     "id": "2fbccb0e-ac88-8107-a82a-f1e400b48f67",
     "created_time": "2026-02-02T03:17:00.000Z",
-    "last_edited_time": "2026-02-02T03:17:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18226,7 +18655,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18275,7 +18707,7 @@
   {
     "id": "2fbccb0e-ac88-810d-a3a7-d6eb00fa84ff",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18295,7 +18727,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18342,7 +18777,7 @@
   {
     "id": "2fbccb0e-ac88-8113-9c8e-dc3e1ff8b5fa",
     "created_time": "2026-02-02T05:07:00.000Z",
-    "last_edited_time": "2026-02-02T05:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18362,7 +18797,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18411,7 +18849,7 @@
   {
     "id": "2fbccb0e-ac88-8119-a2cd-f09deab25438",
     "created_time": "2026-02-02T02:38:00.000Z",
-    "last_edited_time": "2026-02-02T03:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18431,7 +18869,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18480,7 +18921,7 @@
   {
     "id": "2fbccb0e-ac88-8121-beeb-d1df335ed58c",
     "created_time": "2026-02-02T05:58:00.000Z",
-    "last_edited_time": "2026-02-02T05:58:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18500,7 +18941,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18549,7 +18993,7 @@
   {
     "id": "2fbccb0e-ac88-8134-9514-fbca64d46eef",
     "created_time": "2026-02-02T05:03:00.000Z",
-    "last_edited_time": "2026-02-02T05:03:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18569,7 +19013,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18616,7 +19063,7 @@
   {
     "id": "2fbccb0e-ac88-8139-aa81-e3bc1ff31dc3",
     "created_time": "2026-02-02T05:11:00.000Z",
-    "last_edited_time": "2026-02-02T05:11:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18636,7 +19083,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18685,7 +19135,7 @@
   {
     "id": "2fbccb0e-ac88-8144-9325-fd5f875e7c77",
     "created_time": "2026-02-02T02:04:00.000Z",
-    "last_edited_time": "2026-02-02T03:40:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18705,7 +19155,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18754,7 +19207,7 @@
   {
     "id": "2fbccb0e-ac88-8144-bcbb-e914c84af9e8",
     "created_time": "2026-02-02T01:56:00.000Z",
-    "last_edited_time": "2026-02-02T01:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18774,7 +19227,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18821,7 +19277,7 @@
   {
     "id": "2fbccb0e-ac88-8149-979f-d624c043b54a",
     "created_time": "2026-02-02T01:56:00.000Z",
-    "last_edited_time": "2026-02-02T01:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18841,7 +19297,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18890,7 +19349,7 @@
   {
     "id": "2fbccb0e-ac88-814a-8d8c-f743c37fac9c",
     "created_time": "2026-02-02T05:20:00.000Z",
-    "last_edited_time": "2026-02-02T05:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18910,7 +19369,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -18959,7 +19421,7 @@
   {
     "id": "2fbccb0e-ac88-8155-8379-d056efe5b37a",
     "created_time": "2026-02-02T02:19:00.000Z",
-    "last_edited_time": "2026-02-02T02:19:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -18979,7 +19441,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19026,7 +19491,7 @@
   {
     "id": "2fbccb0e-ac88-8164-8565-fc2685e12c31",
     "created_time": "2026-02-02T03:15:00.000Z",
-    "last_edited_time": "2026-02-02T03:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19046,7 +19511,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19095,7 +19563,7 @@
   {
     "id": "2fbccb0e-ac88-8165-8da4-ee36e2a1399b",
     "created_time": "2026-02-02T01:56:00.000Z",
-    "last_edited_time": "2026-02-02T01:56:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19115,7 +19583,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19162,7 +19633,7 @@
   {
     "id": "2fbccb0e-ac88-8168-af91-fee45dba4c99",
     "created_time": "2026-02-02T03:13:00.000Z",
-    "last_edited_time": "2026-02-02T03:13:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19182,7 +19653,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19231,7 +19705,7 @@
   {
     "id": "2fbccb0e-ac88-816b-9612-f934330295e1",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19251,7 +19725,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19300,7 +19777,7 @@
   {
     "id": "2fbccb0e-ac88-816f-bbaa-e9bcee6d448f",
     "created_time": "2026-02-02T03:17:00.000Z",
-    "last_edited_time": "2026-02-02T03:17:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19320,7 +19797,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19369,7 +19849,7 @@
   {
     "id": "2fbccb0e-ac88-818a-ae32-f0869cdeb19c",
     "created_time": "2026-02-02T05:29:00.000Z",
-    "last_edited_time": "2026-02-02T05:29:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19389,7 +19869,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19436,7 +19919,7 @@
   {
     "id": "2fbccb0e-ac88-8191-a1f7-e8e9fa3e5984",
     "created_time": "2026-02-02T02:04:00.000Z",
-    "last_edited_time": "2026-02-02T03:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19456,7 +19939,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19505,7 +19991,7 @@
   {
     "id": "2fbccb0e-ac88-819a-ac35-cd2e9242dd93",
     "created_time": "2026-02-02T03:46:00.000Z",
-    "last_edited_time": "2026-02-02T03:46:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19525,7 +20011,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19572,7 +20061,7 @@
   {
     "id": "2fbccb0e-ac88-81a5-8763-e78de306e04d",
     "created_time": "2026-02-02T02:04:00.000Z",
-    "last_edited_time": "2026-02-02T03:21:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19592,7 +20081,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19641,7 +20133,7 @@
   {
     "id": "2fbccb0e-ac88-81a8-b045-d8f70e247b33",
     "created_time": "2026-02-02T02:57:00.000Z",
-    "last_edited_time": "2026-02-02T02:58:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19661,7 +20153,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19710,7 +20205,7 @@
   {
     "id": "2fbccb0e-ac88-81c6-8b28-cf285a8e2c16",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19730,7 +20225,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19777,7 +20275,7 @@
   {
     "id": "2fbccb0e-ac88-81ce-9594-e0bc5fa662f6",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T02:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19797,7 +20295,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19846,7 +20347,7 @@
   {
     "id": "2fbccb0e-ac88-81ce-9924-fd81123252a1",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19866,7 +20367,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19913,7 +20417,7 @@
   {
     "id": "2fbccb0e-ac88-81d5-a03d-fad0f72919d6",
     "created_time": "2026-02-02T03:16:00.000Z",
-    "last_edited_time": "2026-02-02T03:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -19933,7 +20437,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -19982,7 +20489,7 @@
   {
     "id": "2fbccb0e-ac88-81d5-bead-d67ce2aa274b",
     "created_time": "2026-02-02T01:57:00.000Z",
-    "last_edited_time": "2026-02-02T01:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20002,7 +20509,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -20049,7 +20559,7 @@
   {
     "id": "2fbccb0e-ac88-81d8-a03d-cffcbcc3a252",
     "created_time": "2026-02-02T03:16:00.000Z",
-    "last_edited_time": "2026-02-02T03:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20069,7 +20579,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -20167,7 +20680,7 @@
   {
     "id": "2fbccb0e-ac88-81ed-8b58-f8ed6cb06505",
     "created_time": "2026-02-02T02:09:00.000Z",
-    "last_edited_time": "2026-02-02T03:31:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20187,7 +20700,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -20236,7 +20752,7 @@
   {
     "id": "2fbccb0e-ac88-81f5-a172-f3dbdb61de83",
     "created_time": "2026-02-02T02:39:00.000Z",
-    "last_edited_time": "2026-02-02T03:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20256,7 +20772,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -20305,7 +20824,7 @@
   {
     "id": "2fbccb0e-ac88-81f6-8a2b-d169c3e7bf7c",
     "created_time": "2026-02-02T02:59:00.000Z",
-    "last_edited_time": "2026-02-02T02:59:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20325,7 +20844,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -20374,7 +20896,7 @@
   {
     "id": "2fcccb0e-ac88-8002-9a33-c8c9c1467c74",
     "created_time": "2026-02-03T09:40:00.000Z",
-    "last_edited_time": "2026-02-03T09:41:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20394,7 +20916,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -20443,7 +20968,7 @@
   {
     "id": "2fcccb0e-ac88-8006-a671-db3ca24031ef",
     "created_time": "2026-02-03T09:15:00.000Z",
-    "last_edited_time": "2026-02-03T09:15:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20463,7 +20988,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -20512,7 +21040,7 @@
   {
     "id": "2fcccb0e-ac88-800a-8c29-d16f6b997c59",
     "created_time": "2026-02-03T09:14:00.000Z",
-    "last_edited_time": "2026-02-03T09:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20532,7 +21060,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -20581,7 +21112,7 @@
   {
     "id": "2fcccb0e-ac88-800f-9293-d57dfb766c64",
     "created_time": "2026-02-03T09:47:00.000Z",
-    "last_edited_time": "2026-02-03T09:48:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20601,7 +21132,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -20974,7 +21508,7 @@
   {
     "id": "2fcccb0e-ac88-804c-9746-d0856de673f7",
     "created_time": "2026-02-03T10:04:00.000Z",
-    "last_edited_time": "2026-02-03T10:05:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -20994,7 +21528,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21043,7 +21580,7 @@
   {
     "id": "2fcccb0e-ac88-8053-a387-d1781cd59f9b",
     "created_time": "2026-02-03T02:23:00.000Z",
-    "last_edited_time": "2026-02-03T07:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": 0.25,
       "Product ": [
@@ -21120,7 +21657,7 @@
   {
     "id": "2fcccb0e-ac88-8057-96e3-d6be1ca9165b",
     "created_time": "2026-02-03T09:41:00.000Z",
-    "last_edited_time": "2026-02-03T09:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21140,7 +21677,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21189,7 +21729,7 @@
   {
     "id": "2fcccb0e-ac88-8058-b698-ff72a417312d",
     "created_time": "2026-02-03T09:16:00.000Z",
-    "last_edited_time": "2026-02-03T09:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21209,7 +21749,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21334,7 +21877,7 @@
   {
     "id": "2fcccb0e-ac88-805e-a203-ff0c1765bcc9",
     "created_time": "2026-02-03T09:42:00.000Z",
-    "last_edited_time": "2026-02-03T09:42:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21354,7 +21897,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -21403,7 +21949,7 @@
   {
     "id": "2fcccb0e-ac88-8064-a28e-c608a287cd7b",
     "created_time": "2026-02-03T09:48:00.000Z",
-    "last_edited_time": "2026-02-03T09:48:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21423,7 +21969,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21470,7 +22019,7 @@
   {
     "id": "2fcccb0e-ac88-806a-969a-d999f528cb34",
     "created_time": "2026-02-03T10:03:00.000Z",
-    "last_edited_time": "2026-02-03T10:03:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21490,7 +22039,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -21616,7 +22168,7 @@
   {
     "id": "2fcccb0e-ac88-8073-b8a0-f1e9b1703139",
     "created_time": "2026-02-03T09:04:00.000Z",
-    "last_edited_time": "2026-02-03T09:04:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21636,7 +22188,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": [
@@ -21689,7 +22244,7 @@
   {
     "id": "2fcccb0e-ac88-808a-953b-e05a95c5ab23",
     "created_time": "2026-02-03T10:01:00.000Z",
-    "last_edited_time": "2026-02-03T10:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21709,7 +22264,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21758,7 +22316,7 @@
   {
     "id": "2fcccb0e-ac88-8096-ac25-efd35c471302",
     "created_time": "2026-02-03T09:12:00.000Z",
-    "last_edited_time": "2026-02-03T09:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21778,7 +22336,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21827,7 +22388,7 @@
   {
     "id": "2fcccb0e-ac88-80a7-adc2-d316d672e4f3",
     "created_time": "2026-02-03T09:55:00.000Z",
-    "last_edited_time": "2026-02-03T10:00:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21847,7 +22408,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -21896,7 +22460,7 @@
   {
     "id": "2fcccb0e-ac88-80ab-b446-c348ca53bc0f",
     "created_time": "2026-02-03T09:10:00.000Z",
-    "last_edited_time": "2026-02-03T09:11:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21916,7 +22480,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": [
@@ -21969,7 +22536,7 @@
   {
     "id": "2fcccb0e-ac88-80b2-b178-d9de85c52c8d",
     "created_time": "2026-02-03T09:16:00.000Z",
-    "last_edited_time": "2026-02-03T09:17:00.000Z",
+    "last_edited_time": "2026-02-27T04:53:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -21989,7 +22556,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -22038,7 +22608,7 @@
   {
     "id": "2fcccb0e-ac88-80bb-96fa-e1770d8fb2cc",
     "created_time": "2026-02-03T09:44:00.000Z",
-    "last_edited_time": "2026-02-03T09:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22058,7 +22628,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -22182,7 +22755,7 @@
   {
     "id": "2fcccb0e-ac88-80d9-a548-feb4ac26dc90",
     "created_time": "2026-02-03T09:53:00.000Z",
-    "last_edited_time": "2026-02-03T09:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22202,7 +22775,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -22251,7 +22827,7 @@
   {
     "id": "2fcccb0e-ac88-80de-9da8-c0a69160ca37",
     "created_time": "2026-02-03T09:54:00.000Z",
-    "last_edited_time": "2026-02-03T09:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22271,7 +22847,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -22320,7 +22899,7 @@
   {
     "id": "2fcccb0e-ac88-80e0-a443-ed28faf811bc",
     "created_time": "2026-02-03T10:05:00.000Z",
-    "last_edited_time": "2026-02-03T10:05:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22340,7 +22919,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": null,
@@ -22389,7 +22971,7 @@
   {
     "id": "2fcccb0e-ac88-80eb-aac8-f52e1f997023",
     "created_time": "2026-02-03T10:03:00.000Z",
-    "last_edited_time": "2026-02-03T10:03:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22409,7 +22991,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -22458,7 +23043,7 @@
   {
     "id": "2fcccb0e-ac88-80ec-967e-c1162df4d6e4",
     "created_time": "2026-02-03T09:40:00.000Z",
-    "last_edited_time": "2026-02-03T09:40:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22478,7 +23063,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Sprint": null,
@@ -22527,7 +23115,7 @@
   {
     "id": "2fcccb0e-ac88-80fe-821c-f8a9e9193a26",
     "created_time": "2026-02-03T09:09:00.000Z",
-    "last_edited_time": "2026-02-03T09:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22547,7 +23135,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": [
@@ -22600,7 +23191,7 @@
   {
     "id": "2fcccb0e-ac88-8110-a265-fae20ced54aa",
     "created_time": "2026-02-03T03:25:00.000Z",
-    "last_edited_time": "2026-02-03T03:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22620,7 +23211,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -22667,7 +23261,7 @@
   {
     "id": "2fcccb0e-ac88-8129-9582-fa149084cc9e",
     "created_time": "2026-02-03T07:06:00.000Z",
-    "last_edited_time": "2026-02-03T07:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22687,7 +23281,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -22737,7 +23334,7 @@
   {
     "id": "2fcccb0e-ac88-8139-bcc6-f3cfa7a3a3f0",
     "created_time": "2026-02-03T08:37:00.000Z",
-    "last_edited_time": "2026-02-03T08:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22757,7 +23354,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -22807,7 +23407,7 @@
   {
     "id": "2fcccb0e-ac88-8140-9c1f-e48acc8c18f9",
     "created_time": "2026-02-03T07:01:00.000Z",
-    "last_edited_time": "2026-02-03T07:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22827,7 +23427,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -22877,7 +23480,7 @@
   {
     "id": "2fcccb0e-ac88-8170-b0a4-f59c5e0d4d5b",
     "created_time": "2026-02-03T02:54:00.000Z",
-    "last_edited_time": "2026-02-03T02:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22897,7 +23500,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -22946,7 +23552,7 @@
   {
     "id": "2fcccb0e-ac88-8176-8e4e-d358462fb701",
     "created_time": "2026-02-03T07:07:00.000Z",
-    "last_edited_time": "2026-02-03T07:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -22966,7 +23572,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23016,7 +23625,7 @@
   {
     "id": "2fcccb0e-ac88-817a-b621-cc71d6b2c3bf",
     "created_time": "2026-02-03T02:53:00.000Z",
-    "last_edited_time": "2026-02-03T02:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23036,7 +23645,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23083,7 +23695,7 @@
   {
     "id": "2fcccb0e-ac88-8183-bac2-ee12d82ee1da",
     "created_time": "2026-02-03T04:22:00.000Z",
-    "last_edited_time": "2026-02-03T04:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23103,7 +23715,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23152,7 +23767,7 @@
   {
     "id": "2fcccb0e-ac88-818d-bd05-d70c53700f64",
     "created_time": "2026-02-03T02:55:00.000Z",
-    "last_edited_time": "2026-02-03T02:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23172,7 +23787,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23219,7 +23837,7 @@
   {
     "id": "2fcccb0e-ac88-8190-9399-d3604674dddb",
     "created_time": "2026-02-03T05:31:00.000Z",
-    "last_edited_time": "2026-02-03T05:31:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23239,7 +23857,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23289,7 +23910,7 @@
   {
     "id": "2fcccb0e-ac88-81b4-af15-f43853d1fed9",
     "created_time": "2026-02-03T05:22:00.000Z",
-    "last_edited_time": "2026-02-03T05:22:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23309,7 +23930,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23356,7 +23980,7 @@
   {
     "id": "2fcccb0e-ac88-81b6-9b81-ea6ac61397a0",
     "created_time": "2026-02-03T07:53:00.000Z",
-    "last_edited_time": "2026-02-03T07:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23376,7 +24000,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23425,7 +24052,7 @@
   {
     "id": "2fcccb0e-ac88-81c8-ad43-ec8340d2fa8b",
     "created_time": "2026-02-03T08:37:00.000Z",
-    "last_edited_time": "2026-02-03T08:37:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23445,7 +24072,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23495,7 +24125,7 @@
   {
     "id": "2fcccb0e-ac88-81da-a4cc-c4fed3d89e15",
     "created_time": "2026-02-03T02:50:00.000Z",
-    "last_edited_time": "2026-02-03T02:50:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23515,7 +24145,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23562,7 +24195,7 @@
   {
     "id": "2fcccb0e-ac88-81f1-95bd-ece7d9cff273",
     "created_time": "2026-02-03T02:53:00.000Z",
-    "last_edited_time": "2026-02-03T02:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:55:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23582,7 +24215,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23629,7 +24265,7 @@
   {
     "id": "2fcccb0e-ac88-81f2-ae77-cbfdefe547b0",
     "created_time": "2026-02-03T07:07:00.000Z",
-    "last_edited_time": "2026-02-03T07:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23649,7 +24285,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23699,7 +24338,7 @@
   {
     "id": "2fcccb0e-ac88-81fb-98f3-d075ab0de3ab",
     "created_time": "2026-02-03T07:01:00.000Z",
-    "last_edited_time": "2026-02-03T07:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23719,7 +24358,10 @@
       "Point Status": [
         "Confirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23769,7 +24411,7 @@
   {
     "id": "2fdccb0e-ac88-8002-8952-c653cb1690d8",
     "created_time": "2026-02-04T07:55:00.000Z",
-    "last_edited_time": "2026-02-04T07:55:00.000Z",
+    "last_edited_time": "2026-02-27T04:54:00.000Z",
     "properties": {
       "NLTT": 0.125,
       "Product ": [
@@ -23789,7 +24431,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "Fix",
       "Sprint": [
@@ -23842,7 +24487,7 @@
   {
     "id": "2feccb0e-ac88-81aa-bb6f-dff6d80469fc",
     "created_time": "2026-02-05T07:38:00.000Z",
-    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23862,7 +24507,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23912,7 +24560,7 @@
   {
     "id": "2feccb0e-ac88-81b4-a1fa-d58f50209e5a",
     "created_time": "2026-02-05T07:38:00.000Z",
-    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -23932,7 +24580,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -23982,7 +24633,7 @@
   {
     "id": "2feccb0e-ac88-81b7-9048-f4a1c9fd6d20",
     "created_time": "2026-02-05T07:38:00.000Z",
-    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -24002,7 +24653,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,
@@ -24052,7 +24706,7 @@
   {
     "id": "2feccb0e-ac88-81f5-81e0-d7bb5cc788ef",
     "created_time": "2026-02-05T07:38:00.000Z",
-    "last_edited_time": "2026-02-05T07:38:00.000Z",
+    "last_edited_time": "2026-02-27T04:56:00.000Z",
     "properties": {
       "NLTT": null,
       "Product ": [
@@ -24072,7 +24726,10 @@
       "Point Status": [
         "Unconfirmed"
       ],
-      "Ngày làm": null,
+      "Ngày làm": {
+        "start": "2026-01-30",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Sprint": null,

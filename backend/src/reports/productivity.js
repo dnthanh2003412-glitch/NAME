@@ -3,6 +3,7 @@ import { SENIORITY_MAPPING, KPI_MAPPING, PRODUCT_TYPE_MAPPING, NAME_ALIAS_MAPPIN
 export class ProductivityService {
     constructor(db) {
         this.db = db;
+        this.personAliasMap = this.buildPersonAliasMap();
     }
 
     /**
@@ -42,7 +43,7 @@ export class ProductivityService {
         let countDateMissing = 0;
         let countDateRangeReject = 0;
         let countAssigneeMissing = 0;
-        let countAccepted = 0;
+        let countAcceptedDone = 0;
         let missingDateSamples = [];
         let projectsSet = new Set();
 
@@ -82,8 +83,9 @@ export class ProductivityService {
                 return false;
             }
 
-            // Track all tasks in date range regardless of status (for task count parity with Notion views)
+            // Track all tasks in date range regardless of status (for parity with Notion views)
             tasksInRangeAllStatuses.push(task);
+            projectsSet.add(task.database_name);
 
             // Keep productivity metrics based on completed tasks only
             if (!isDone) {
@@ -100,13 +102,13 @@ export class ProductivityService {
                 // Actually loop 3 iterates assignees. If empty, task is ignored.
             }
 
-            countAccepted++;
-            projectsSet.add(task.database_name);
+            countAcceptedDone++;
             return true;
         });
 
         console.log(`[Productivity] Filter Stats:`);
-        console.log(`- Total Accepted: ${countAccepted}`);
+        console.log(`- Total Accepted (All statuses): ${tasksInRangeAllStatuses.length}`);
+        console.log(`- Total Accepted (Done only): ${countAcceptedDone}`);
         console.log(`- Rejected (Status != Done): ${countStatusReject}`);
         console.log(`- Rejected (Date Missing/Invalid): ${countDateMissing}`);
         console.log(`- Rejected (Date Out of Range): ${countDateRangeReject}`);
@@ -149,16 +151,24 @@ export class ProductivityService {
         // Combine: data assignees first, then any preset not in data
         const allPersonnel = [...assigneesFromData];
         for (const preset of presetPersonnel) {
-            if (!grouped[preset]) {
+            if (!allPersonnel.includes(preset)) {
                 allPersonnel.push(preset);
             }
         }
 
-        for (const personName of allPersonnel) {
+        const unknownSeniority = 'Ch\u01b0a x\u00e1c \u0111\u1ecbnh';
+        const seenPersonnel = new Set();
+
+        for (const rawPersonName of allPersonnel) {
+            const personName = this.resolvePersonName(rawPersonName);
+            if (!personName || seenPersonnel.has(personName)) {
+                continue;
+            }
+            seenPersonnel.add(personName);
+
             // Try to find seniority - exact match first, then fuzzy
             let seniority = SENIORITY_MAPPING[personName];
             if (!seniority) {
-                // Try case-insensitive/partial match
                 const knownNames = Object.keys(SENIORITY_MAPPING);
                 const normalizedRaw = this.removeAccents(personName.toLowerCase());
 
@@ -166,19 +176,22 @@ export class ProductivityService {
                     const normalizedKnown = this.removeAccents(known.toLowerCase());
                     return normalizedRaw.includes(normalizedKnown) || normalizedKnown.includes(normalizedRaw);
                 });
-                seniority = match ? SENIORITY_MAPPING[match] : 'Chưa xác định';
+                seniority = match ? SENIORITY_MAPPING[match] : unknownSeniority;
             }
 
             const kpi = KPI_MAPPING[seniority] || 0;
-            const tasksDone = grouped[personName] || [];
-            const tasksAllInRange = groupedAllInRange[personName] || [];
+            const tasksDone = grouped[personName] || grouped[rawPersonName] || [];
+            const tasksAllInRange = groupedAllInRange[personName] || groupedAllInRange[rawPersonName] || [];
 
             // Manual Inputs
             const standardDays = stats.standard_days || 0;
-            const actualDays = stats.actual_days?.[personName] || 0;
+            const actualDays = stats.actual_days?.[personName] || stats.actual_days?.[rawPersonName] || 0;
 
-            // Calculate Metrics
-            const metrics = this.calculateMetrics(tasksDone, kpi, standardDays, actualDays);
+            // Calculate metrics for both scopes:
+            // - all-status tasks: totals shown in report and completion point fields
+            // - done-only tasks: productivity and completion productivity fields
+            const metricsDone = this.calculateMetrics(tasksDone, kpi, standardDays, actualDays);
+            const metricsAll = this.calculateMetrics(tasksAllInRange, kpi, standardDays, actualDays);
 
             reportData.push({
                 fullName: personName,
@@ -186,22 +199,37 @@ export class ProductivityService {
                 productivityReq: kpi,
                 standardDays,
                 actualDays,
-                // Align "Tổng task" with productivity scope (completed tasks in selected range)
-                taskCount: tasksDone.length,
+                // Align "Tong task" with all in-range tasks (status-agnostic)
+                taskCount: tasksAllInRange.length,
                 taskCountDone: tasksDone.length,
                 taskCountAllStatuses: tasksAllInRange.length,
-                projects: projectsByPerson[personName]
-                    ? [...projectsByPerson[personName]].sort((a, b) => a.localeCompare(b, 'vi')).join(', ')
+                projects: projectsByPerson[personName] || projectsByPerson[rawPersonName]
+                    ? [...(projectsByPerson[personName] || projectsByPerson[rawPersonName])].sort((a, b) => a.localeCompare(b, 'vi')).join(', ')
                     : '',
-                ...metrics
+                pointReq: metricsAll.pointReq,
+                effortConfirmed: metricsAll.effortConfirmed,
+                effortUnconfirmed: metricsAll.effortUnconfirmed,
+                effortTotal: metricsAll.effortTotal,
+                pointConfirmed: metricsAll.pointConfirmed,
+                pointUnconfirmed: metricsAll.pointUnconfirmed,
+                pointTotal: metricsAll.pointTotal,
+                completionPointConfirmed: metricsAll.completionPointConfirmed,
+                completionPointTotal: metricsAll.completionPointTotal,
+                effortRatio: metricsAll.effortRatio,
+                productivityConfirmed: metricsDone.productivityConfirmed,
+                productivityUnconfirmed: metricsDone.productivityUnconfirmed,
+                productivityTotal: metricsDone.productivityTotal,
+                completionProdConfirmed: metricsDone.completionProdConfirmed,
+                completionProdTotal: metricsDone.completionProdTotal,
+                pointTotalDone: metricsDone.pointTotal
             });
         }
 
-        const validData = reportData.filter(r => r.seniority !== 'Chưa xác định');
+        const validData = reportData.filter(r => r.seniority !== unknownSeniority);
 
         // For unknown users, just return name and task count
         const unknownUsers = reportData
-            .filter(r => r.seniority === 'Chưa xác định')
+            .filter(r => r.seniority === unknownSeniority)
             .map(r => ({
                 name: r.fullName,
                 taskCount: r.taskCount
@@ -210,7 +238,8 @@ export class ProductivityService {
         const filterStats = {
             totalProcessed: allTasks.length,
             totalInRangeAllStatuses: tasksInRangeAllStatuses.length,
-            totalAccepted: countAccepted,
+            totalAccepted: tasksInRangeAllStatuses.length,
+            totalAcceptedDone: countAcceptedDone,
             rejectedStatus: countStatusReject,
             rejectedDateMissing: countDateMissing,
             rejectedDateRange: countDateRangeReject,
@@ -554,15 +583,6 @@ export class ProductivityService {
 
         const entries = Object.entries(props);
         const ngayLamKeys = new Set(['ngay lam']);
-        const doneDateKeys = new Set([
-            'done date',
-            'donedate',
-            'work date',
-            'date',
-            'ngay',
-            'time',
-            'thoi gian tao'
-        ]);
 
         const ngayLamEntry = entries.find(([key]) => ngayLamKeys.has(normalizeKey(key)));
         if (ngayLamEntry) {
@@ -570,12 +590,7 @@ export class ProductivityService {
             return extractDate(ngayLamEntry[1]);
         }
 
-        const doneDateEntry = entries.find(([key]) => doneDateKeys.has(normalizeKey(key)));
-        if (doneDateEntry) {
-            return extractDate(doneDateEntry[1]);
-        }
-
-        // Do not fallback to created_time/last_edited_time for productivity parity with Notion date filters.
+        // Strict "Ngay lam only" mode: no fallback to any other date column.
         return null;
     }
 
@@ -589,8 +604,8 @@ export class ProductivityService {
         // Handle Range string "Date1 -> Date2" (common in Notion formula output)
         if (rawDate.includes('->')) {
             const parts = rawDate.split('->');
-            // Use End Date (last part)
-            rawDate = parts[parts.length - 1].trim();
+            // Use Start Date (first part) for range checking
+            rawDate = parts[0].trim();
         }
 
         // ISO Date (YYYY-MM-DD)
@@ -607,10 +622,6 @@ export class ProductivityService {
             return new Date(year, month, day);
         }
 
-        // Handle "January 5, 2026" (Month DD, YYYY)
-        // JS Date constructor handles this well, but let's be explicit if needed.
-        // new Date("January 5, 2026") works.
-
         // Fallback: Let JS Date constructor try
         const fallback = new Date(rawDate);
         if (!isNaN(fallback.getTime())) return fallback;
@@ -623,11 +634,77 @@ export class ProductivityService {
         return this.parseDate(task);
     }
 
+    normalizePersonName(name) {
+        return this.removeAccents(String(name || '').toLowerCase().replace(/đ/g, 'd'))
+            .replace(/[^a-z0-9]/g, ' ')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    buildPersonAliasMap() {
+        const map = new Map();
+        const addAlias = (alias, canonical) => {
+            const normalizedAlias = this.normalizePersonName(alias);
+            if (!normalizedAlias || !canonical) return;
+            if (!map.has(normalizedAlias)) {
+                map.set(normalizedAlias, canonical);
+            }
+        };
+
+        for (const [alias, canonical] of Object.entries(NAME_ALIAS_MAPPING)) {
+            addAlias(alias, canonical);
+        }
+        for (const canonical of Object.keys(SENIORITY_MAPPING)) {
+            addAlias(canonical, canonical);
+        }
+
+        return map;
+    }
+
+    resolvePersonName(rawName) {
+        const raw = String(rawName || '').trim();
+        if (!raw) return '';
+
+        const directAlias = NAME_ALIAS_MAPPING[raw];
+        if (directAlias) return directAlias;
+
+        const normalizedRaw = this.normalizePersonName(raw);
+        const fixedMatch = this.personAliasMap.get(normalizedRaw);
+        if (fixedMatch) return fixedMatch;
+
+        const stripped = raw.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
+        if (stripped && stripped !== raw) {
+            const strippedAlias = NAME_ALIAS_MAPPING[stripped];
+            if (strippedAlias) return strippedAlias;
+
+            const normalizedStripped = this.normalizePersonName(stripped);
+            const strippedMatch = this.personAliasMap.get(normalizedStripped);
+            if (strippedMatch) return strippedMatch;
+        }
+
+        for (const canonical of Object.keys(SENIORITY_MAPPING)) {
+            const normalizedCanonical = this.normalizePersonName(canonical);
+            if (normalizedCanonical && normalizedRaw.includes(normalizedCanonical)) {
+                return canonical;
+            }
+        }
+
+        return raw;
+    }
+
     getAssignees(task) {
-        // Try Assignee first, then Owner as fallback
-        // Add Vietnamese support 'Người thực hiện', 'Nhân sự'
+        // Try Assignee first, then Owner as fallback.
         const props = task.properties || {};
-        const keys = ['Assignee', 'Owner', 'assignee', 'owner', 'Người thực hiện', 'Người xử lý', 'Nhân sự', 'Person'];
+        const keys = [
+            'Assignee',
+            'Owner',
+            'assignee',
+            'owner',
+            'Người thực hiện',
+            'Người xử lý',
+            'Nhân sự',
+            'Person'
+        ];
 
         let assignees = null;
         for (const key of keys) {
@@ -639,35 +716,17 @@ export class ProductivityService {
 
         if (!assignees) return [];
 
-        // Data is already transformed to array of {id, name, email}
         if (Array.isArray(assignees)) {
-            return assignees.map(p => {
-                const rawName = (p.name || '').trim();
-                if (!rawName) return '';
-
-                // Resolve alias: Notion short name → full name
-                const fullAlias = NAME_ALIAS_MAPPING[rawName];
-                if (fullAlias) return fullAlias;
-
-                // Fuzzy match against SENIORITY_MAPPING keys (Canonical Names)
-                // e.g. "Nguyễn Thị Hòa (Deedee)" -> "Nguyễn Thị Hòa"
-                // e.g. "Nguyễn Thị Hòa" -> "Nguyễn Thị Hòa"
-                // Fuzzy match against SENIORITY_MAPPING keys (Canonical Names)
-                // e.g. "Nguyễn Thị Hòa (Deedee)" -> "Nguyễn Thị Hòa"
-                // e.g. "Nguyễn Thị Hòa" -> "Nguyễn Thị Hòa"
-                const knownNames = Object.keys(SENIORITY_MAPPING);
-                const normalizedRaw = this.removeAccents(rawName.toLowerCase());
-
-                const matchedName = knownNames.find(known => {
-                    const normalizedKnown = this.removeAccents(known.toLowerCase());
-                    // Check if raw name contains the known full name (e.g. "Nguyen Thi Hoa (Team Lead)" contains "Nguyen Thi Hoa")
-                    // Or if known full name contains raw name (careful with short names, but useful for clean data)
-                    return normalizedRaw.includes(normalizedKnown);
-                });
-
-                return matchedName || rawName;
-            }).filter(n => n);
+            return assignees
+                .map(person => this.resolvePersonName(person?.name || ''))
+                .filter(Boolean);
         }
+
+        if (typeof assignees === 'string') {
+            const resolved = this.resolvePersonName(assignees);
+            return resolved ? [resolved] : [];
+        }
+
         return [];
     }
 

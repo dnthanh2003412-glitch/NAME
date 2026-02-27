@@ -518,7 +518,7 @@
   {
     "id": "2c5ccb0e-ac88-81c5-aacc-ca53672a8a08",
     "created_time": "2025-12-10T08:28:00.000Z",
-    "last_edited_time": "2025-12-10T08:29:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80d9-9913-fd91539a1b39"
@@ -544,7 +544,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -1736,7 +1739,7 @@
   {
     "id": "2c6ccb0e-ac88-8110-973e-d710aa1c97ed",
     "created_time": "2025-12-11T10:07:00.000Z",
-    "last_edited_time": "2025-12-11T10:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8010-8498-f61715cd2aa1"
@@ -1762,7 +1765,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -1803,7 +1809,7 @@
   {
     "id": "2c6ccb0e-ac88-814c-8217-c4e14670908d",
     "created_time": "2025-12-11T10:14:00.000Z",
-    "last_edited_time": "2025-12-11T10:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8046-8b0f-d9942909ba9d"
@@ -1829,7 +1835,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -1870,7 +1879,7 @@
   {
     "id": "2c6ccb0e-ac88-8169-881f-fb26a1bcbe17",
     "created_time": "2025-12-11T03:20:00.000Z",
-    "last_edited_time": "2025-12-11T03:20:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80ff-b1ab-e81d53874917"
@@ -1896,7 +1905,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -1937,7 +1949,7 @@
   {
     "id": "2c6ccb0e-ac88-8176-a5ed-d1d5d2c21b99",
     "created_time": "2025-12-11T10:12:00.000Z",
-    "last_edited_time": "2025-12-11T10:12:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-802c-a0c6-ff10054082d0"
@@ -1963,7 +1975,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2004,7 +2019,7 @@
   {
     "id": "2c6ccb0e-ac88-819a-964b-e5750e2ec475",
     "created_time": "2025-12-11T10:26:00.000Z",
-    "last_edited_time": "2025-12-11T10:26:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-801f-9eca-fe81c75a8dc8"
@@ -2030,7 +2045,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2071,7 +2089,7 @@
   {
     "id": "2c6ccb0e-ac88-81a6-b17a-d7cd892b2a87",
     "created_time": "2025-12-11T10:11:00.000Z",
-    "last_edited_time": "2025-12-11T10:11:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-806d-9ccf-d620fc9148f4"
@@ -2097,7 +2115,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2138,7 +2159,7 @@
   {
     "id": "2c6ccb0e-ac88-81bc-b10f-c4b2ec4f1c15",
     "created_time": "2025-12-11T10:16:00.000Z",
-    "last_edited_time": "2025-12-11T10:16:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8080-a066-ec25af94bb8e"
@@ -2164,7 +2185,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2651,7 +2675,7 @@
   {
     "id": "2c7ccb0e-ac88-812c-88d0-cafb75a1c898",
     "created_time": "2025-12-12T05:18:00.000Z",
-    "last_edited_time": "2025-12-12T05:18:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8099-9007-ffdf9d70161f"
@@ -2677,7 +2701,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2718,7 +2745,7 @@
   {
     "id": "2c7ccb0e-ac88-817d-be4a-e7a0a494bd77",
     "created_time": "2025-12-12T03:52:00.000Z",
-    "last_edited_time": "2025-12-12T03:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-802c-a0c6-ff10054082d0"
@@ -2744,7 +2771,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -2785,7 +2815,7 @@
   {
     "id": "2c7ccb0e-ac88-81c5-980c-c68b1b0d4d30",
     "created_time": "2025-12-12T03:51:00.000Z",
-    "last_edited_time": "2025-12-12T03:51:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8010-8498-f61715cd2aa1"
@@ -2811,7 +2841,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4145,7 +4178,7 @@
   {
     "id": "2caccb0e-ac88-8129-8676-f8ee46689751",
     "created_time": "2025-12-15T02:47:00.000Z",
-    "last_edited_time": "2025-12-15T02:47:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8046-8b0f-d9942909ba9d"
@@ -4171,7 +4204,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4212,7 +4248,7 @@
   {
     "id": "2caccb0e-ac88-812b-b561-da764962c7ce",
     "created_time": "2025-12-15T02:44:00.000Z",
-    "last_edited_time": "2025-12-15T02:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-806d-9ccf-d620fc9148f4"
@@ -4238,7 +4274,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4279,7 +4318,7 @@
   {
     "id": "2caccb0e-ac88-8159-b07c-d73dfa3157d9",
     "created_time": "2025-12-15T02:45:00.000Z",
-    "last_edited_time": "2025-12-30T04:48:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-806d-9ccf-d620fc9148f4"
@@ -4305,7 +4344,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4346,7 +4388,7 @@
   {
     "id": "2caccb0e-ac88-8175-9a0b-f6c051e5bb4d",
     "created_time": "2025-12-15T02:48:00.000Z",
-    "last_edited_time": "2025-12-30T04:44:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8024-95d7-ef20e0360fd0"
@@ -4372,7 +4414,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4413,7 +4458,7 @@
   {
     "id": "2caccb0e-ac88-8193-a06d-e6775cee9cba",
     "created_time": "2025-12-15T02:50:00.000Z",
-    "last_edited_time": "2025-12-15T02:50:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8024-95d7-ef20e0360fd0"
@@ -4439,7 +4484,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4480,7 +4528,7 @@
   {
     "id": "2caccb0e-ac88-8197-879c-c8f28579ea91",
     "created_time": "2025-12-15T02:59:00.000Z",
-    "last_edited_time": "2025-12-15T02:59:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8030-ac22-d2f6ee62535d"
@@ -4506,7 +4554,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4547,7 +4598,7 @@
   {
     "id": "2caccb0e-ac88-819d-863b-f75d219e3268",
     "created_time": "2025-12-15T03:00:00.000Z",
-    "last_edited_time": "2025-12-15T03:00:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80dd-95d1-e47440b78fd5"
@@ -4573,7 +4624,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4614,7 +4668,7 @@
   {
     "id": "2caccb0e-ac88-819f-92e5-f99327dbade7",
     "created_time": "2025-12-15T03:00:00.000Z",
-    "last_edited_time": "2025-12-15T03:00:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8080-a066-ec25af94bb8e"
@@ -4640,7 +4694,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4681,7 +4738,7 @@
   {
     "id": "2caccb0e-ac88-81b9-bc1a-ee97c7a553c0",
     "created_time": "2025-12-15T02:47:00.000Z",
-    "last_edited_time": "2025-12-30T04:47:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8001-836e-f275614e9491"
@@ -4707,7 +4764,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4748,7 +4808,7 @@
   {
     "id": "2caccb0e-ac88-81d4-ba51-c6f9e30eb97e",
     "created_time": "2025-12-15T03:21:00.000Z",
-    "last_edited_time": "2025-12-15T03:21:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8030-ac22-d2f6ee62535d"
@@ -4774,7 +4834,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4815,7 +4878,7 @@
   {
     "id": "2caccb0e-ac88-81dd-83b1-c346b661d115",
     "created_time": "2025-12-15T02:48:00.000Z",
-    "last_edited_time": "2025-12-15T02:48:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8001-836e-f275614e9491"
@@ -4841,7 +4904,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4882,7 +4948,7 @@
   {
     "id": "2caccb0e-ac88-81ea-907c-c4ff48796801",
     "created_time": "2025-12-15T02:44:00.000Z",
-    "last_edited_time": "2025-12-30T04:50:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80d3-ad64-fdb079adb370"
@@ -4908,7 +4974,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -4949,7 +5018,7 @@
   {
     "id": "2caccb0e-ac88-81f5-8ef4-f250c68959c3",
     "created_time": "2025-12-15T02:47:00.000Z",
-    "last_edited_time": "2025-12-30T04:47:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8001-836e-f275614e9491"
@@ -4975,7 +5044,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5016,7 +5088,7 @@
   {
     "id": "2caccb0e-ac88-81ff-99a1-d8d2bceaf519",
     "created_time": "2025-12-15T02:45:00.000Z",
-    "last_edited_time": "2025-12-15T02:45:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80d3-ad64-fdb079adb370"
@@ -5042,7 +5114,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5597,7 +5672,7 @@
   {
     "id": "2cbccb0e-ac88-811c-ac47-c75fe2ec312a",
     "created_time": "2025-12-16T08:13:00.000Z",
-    "last_edited_time": "2025-12-16T08:13:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804c-b712-f20a4ed0b24d"
@@ -5623,7 +5698,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5664,7 +5742,7 @@
   {
     "id": "2cbccb0e-ac88-8125-b77e-cfba5d63da37",
     "created_time": "2025-12-16T05:31:00.000Z",
-    "last_edited_time": "2025-12-16T05:31:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80da-9997-c7158226dddb"
@@ -5690,7 +5768,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5729,7 +5810,7 @@
   {
     "id": "2cbccb0e-ac88-8127-94c0-ea6a54fb7739",
     "created_time": "2025-12-16T08:10:00.000Z",
-    "last_edited_time": "2025-12-16T08:10:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8087-aceb-e83ab8d6f775"
@@ -5755,7 +5836,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5796,7 +5880,7 @@
   {
     "id": "2cbccb0e-ac88-8138-a6b4-db7947a28598",
     "created_time": "2025-12-16T08:11:00.000Z",
-    "last_edited_time": "2025-12-16T08:11:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80bf-bcb4-f271f2d75a6f"
@@ -5822,7 +5906,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5863,7 +5950,7 @@
   {
     "id": "2cbccb0e-ac88-815c-ac3e-fcd8c1698d0a",
     "created_time": "2025-12-16T07:08:00.000Z",
-    "last_edited_time": "2025-12-16T07:08:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8087-aceb-e83ab8d6f775"
@@ -5889,7 +5976,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5930,7 +6020,7 @@
   {
     "id": "2cbccb0e-ac88-8186-9cd7-dc027d472b89",
     "created_time": "2025-12-16T03:43:00.000Z",
-    "last_edited_time": "2025-12-16T03:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80c2-938b-f7257c118771"
@@ -5956,7 +6046,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -5997,7 +6090,7 @@
   {
     "id": "2cbccb0e-ac88-8199-8cd3-c8a89602bb7d",
     "created_time": "2025-12-16T03:04:00.000Z",
-    "last_edited_time": "2025-12-16T03:04:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8076-8318-dd0dac6242d3"
@@ -6023,7 +6116,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -6064,7 +6160,7 @@
   {
     "id": "2cbccb0e-ac88-81b9-bd8f-d4f83cdb9111",
     "created_time": "2025-12-16T03:04:00.000Z",
-    "last_edited_time": "2025-12-16T03:04:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8046-8b0f-d9942909ba9d"
@@ -6090,7 +6186,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -6131,7 +6230,7 @@
   {
     "id": "2cbccb0e-ac88-81c6-88e6-ec54b6ea08da",
     "created_time": "2025-12-16T03:01:00.000Z",
-    "last_edited_time": "2025-12-16T03:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8076-8cea-d84c961853f1"
@@ -6157,7 +6256,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -6198,7 +6300,7 @@
   {
     "id": "2cbccb0e-ac88-81d1-80ee-de02b32f211e",
     "created_time": "2025-12-16T08:10:00.000Z",
-    "last_edited_time": "2025-12-16T08:10:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80c2-938b-f7257c118771"
@@ -6224,7 +6326,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7108,7 +7213,7 @@
   {
     "id": "2ccccb0e-ac88-810b-8dd2-d61bdeb44348",
     "created_time": "2025-12-17T11:09:00.000Z",
-    "last_edited_time": "2025-12-17T11:09:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80a6-a567-dad4057df783"
@@ -7134,7 +7239,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7175,7 +7283,7 @@
   {
     "id": "2ccccb0e-ac88-810e-9afe-c67a3f87c420",
     "created_time": "2025-12-17T02:52:00.000Z",
-    "last_edited_time": "2025-12-17T02:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-802e-a414-cdc1e30792b5"
@@ -7201,7 +7309,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7242,7 +7353,7 @@
   {
     "id": "2ccccb0e-ac88-8112-b1a6-e982aa40b2df",
     "created_time": "2025-12-17T06:57:00.000Z",
-    "last_edited_time": "2025-12-17T06:57:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8046-b963-f70969b57a1b"
@@ -7268,7 +7379,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7309,7 +7423,7 @@
   {
     "id": "2ccccb0e-ac88-8119-a5cb-fafa0bf39411",
     "created_time": "2025-12-17T03:50:00.000Z",
-    "last_edited_time": "2025-12-17T03:50:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80f8-afdf-f4e0bc3521d9"
@@ -7335,7 +7449,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7376,7 +7493,7 @@
   {
     "id": "2ccccb0e-ac88-8140-9c82-fd52be7f5fe4",
     "created_time": "2025-12-17T03:40:00.000Z",
-    "last_edited_time": "2025-12-17T03:40:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8010-81fa-f90ae66c0876"
@@ -7402,7 +7519,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7443,7 +7563,7 @@
   {
     "id": "2ccccb0e-ac88-8147-b99e-d77c6d4e9786",
     "created_time": "2025-12-17T02:53:00.000Z",
-    "last_edited_time": "2025-12-17T02:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80fa-81a9-e69e79afbea4"
@@ -7469,7 +7589,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7510,7 +7633,7 @@
   {
     "id": "2ccccb0e-ac88-814c-9c43-dfd5c50e1112",
     "created_time": "2025-12-17T11:07:00.000Z",
-    "last_edited_time": "2025-12-17T11:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80dd-816c-cae3af8e17b9"
@@ -7536,7 +7659,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7577,7 +7703,7 @@
   {
     "id": "2ccccb0e-ac88-814d-a48b-f1e2f2095c43",
     "created_time": "2025-12-17T07:16:00.000Z",
-    "last_edited_time": "2025-12-30T04:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804c-b712-f20a4ed0b24d"
@@ -7603,7 +7729,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7644,7 +7773,7 @@
   {
     "id": "2ccccb0e-ac88-8154-8f47-d0600dd29edf",
     "created_time": "2025-12-17T11:06:00.000Z",
-    "last_edited_time": "2025-12-17T11:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804a-8177-e2476046318f"
@@ -7670,7 +7799,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7711,7 +7843,7 @@
   {
     "id": "2ccccb0e-ac88-8157-afe8-dac830182ebf",
     "created_time": "2025-12-17T07:02:00.000Z",
-    "last_edited_time": "2025-12-17T07:02:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-805c-aac9-f089fb6edd36"
@@ -7737,7 +7869,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7778,7 +7913,7 @@
   {
     "id": "2ccccb0e-ac88-816b-9c90-d5aa24dc7154",
     "created_time": "2025-12-17T11:08:00.000Z",
-    "last_edited_time": "2025-12-17T11:08:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8072-8e8d-e52d18a0da98"
@@ -7804,7 +7939,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7845,7 +7983,7 @@
   {
     "id": "2ccccb0e-ac88-8175-932f-f5e9475a2b3a",
     "created_time": "2025-12-17T03:14:00.000Z",
-    "last_edited_time": "2025-12-17T03:14:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8046-b963-f70969b57a1b"
@@ -7871,7 +8009,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7912,7 +8053,7 @@
   {
     "id": "2ccccb0e-ac88-8176-8db9-e9f626f0008c",
     "created_time": "2025-12-17T07:01:00.000Z",
-    "last_edited_time": "2025-12-17T07:01:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80fa-96e5-d41190fb4a7a"
@@ -7938,7 +8079,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -7979,7 +8123,7 @@
   {
     "id": "2ccccb0e-ac88-819e-884e-cd014f022503",
     "created_time": "2025-12-17T02:53:00.000Z",
-    "last_edited_time": "2025-12-30T04:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804c-b712-f20a4ed0b24d"
@@ -8005,7 +8149,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8046,7 +8193,7 @@
   {
     "id": "2ccccb0e-ac88-81ae-b68d-f78f4d02a4f1",
     "created_time": "2025-12-17T11:07:00.000Z",
-    "last_edited_time": "2025-12-17T11:07:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8010-81fa-f90ae66c0876"
@@ -8072,7 +8219,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8113,7 +8263,7 @@
   {
     "id": "2ccccb0e-ac88-81c6-abc7-d6fe7c32651b",
     "created_time": "2025-12-17T02:52:00.000Z",
-    "last_edited_time": "2025-12-30T04:52:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804c-b712-f20a4ed0b24d"
@@ -8139,7 +8289,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8180,7 +8333,7 @@
   {
     "id": "2ccccb0e-ac88-81c8-ab8d-e97ed972e851",
     "created_time": "2025-12-17T11:05:00.000Z",
-    "last_edited_time": "2025-12-17T11:05:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-806b-9fe1-cc5422a3fd26"
@@ -8206,7 +8359,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8247,7 +8403,7 @@
   {
     "id": "2ccccb0e-ac88-81d1-a82f-e4f16aba6575",
     "created_time": "2025-12-17T07:25:00.000Z",
-    "last_edited_time": "2025-12-17T07:25:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80fa-96e5-d41190fb4a7a"
@@ -8273,7 +8429,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8314,7 +8473,7 @@
   {
     "id": "2ccccb0e-ac88-81d6-bf58-f0e1af654d71",
     "created_time": "2025-12-17T04:43:00.000Z",
-    "last_edited_time": "2025-12-17T04:43:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8068-8b89-ea3a3bb64ca7"
@@ -8340,7 +8499,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8381,7 +8543,7 @@
   {
     "id": "2ccccb0e-ac88-81db-b5fd-de091dd12fe7",
     "created_time": "2025-12-17T03:35:00.000Z",
-    "last_edited_time": "2025-12-17T03:35:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80dd-816c-cae3af8e17b9"
@@ -8407,7 +8569,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8448,7 +8613,7 @@
   {
     "id": "2ccccb0e-ac88-81f2-bfac-f460f6db2ecb",
     "created_time": "2025-12-17T11:10:00.000Z",
-    "last_edited_time": "2025-12-17T11:10:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8012-ae37-f360edd65886"
@@ -8474,7 +8639,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -8515,7 +8683,7 @@
   {
     "id": "2ccccb0e-ac88-81fe-9bca-f11bcc354b70",
     "created_time": "2025-12-17T03:29:00.000Z",
-    "last_edited_time": "2025-12-17T03:29:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804a-8177-e2476046318f"
@@ -8541,7 +8709,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9264,7 +9435,7 @@
   {
     "id": "2cdccb0e-ac88-812a-9770-d90467967a34",
     "created_time": "2025-12-18T04:31:00.000Z",
-    "last_edited_time": "2025-12-18T04:31:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80a6-a567-dad4057df783"
@@ -9290,7 +9461,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9331,7 +9505,7 @@
   {
     "id": "2cdccb0e-ac88-8135-803b-c14ec02456cb",
     "created_time": "2025-12-18T09:53:00.000Z",
-    "last_edited_time": "2025-12-18T09:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80d7-82d6-c0f121ac1dd2"
@@ -9357,7 +9531,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9396,7 +9573,7 @@
   {
     "id": "2cdccb0e-ac88-8166-ac23-d5f455db8a26",
     "created_time": "2025-12-18T04:27:00.000Z",
-    "last_edited_time": "2025-12-18T04:27:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-807a-a13f-ca4248bbf4bb"
@@ -9422,7 +9599,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9463,7 +9643,7 @@
   {
     "id": "2cdccb0e-ac88-8177-8068-e6a6b16e900a",
     "created_time": "2025-12-18T03:58:00.000Z",
-    "last_edited_time": "2025-12-18T03:58:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80b7-aa35-dd26b6418efd"
@@ -9489,7 +9669,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9530,7 +9713,7 @@
   {
     "id": "2cdccb0e-ac88-8186-bba4-d005da2af3db",
     "created_time": "2025-12-18T04:53:00.000Z",
-    "last_edited_time": "2025-12-18T04:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2ccccb0e-ac88-800c-a5fb-d7b1ef2a30f3"
@@ -9556,7 +9739,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9597,7 +9783,7 @@
   {
     "id": "2cdccb0e-ac88-818c-80bd-c2cb54f103ce",
     "created_time": "2025-12-18T09:54:00.000Z",
-    "last_edited_time": "2025-12-18T09:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80b7-aa35-dd26b6418efd"
@@ -9623,7 +9809,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9664,7 +9853,7 @@
   {
     "id": "2cdccb0e-ac88-81a9-becb-c90f4e4492b7",
     "created_time": "2025-12-18T09:53:00.000Z",
-    "last_edited_time": "2025-12-18T09:53:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2ccccb0e-ac88-800c-a5fb-d7b1ef2a30f3"
@@ -9690,7 +9879,10 @@
         "Clean Up"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9731,7 +9923,7 @@
   {
     "id": "2cdccb0e-ac88-81d6-9d7c-fe6cc4fbc449",
     "created_time": "2025-12-18T09:54:00.000Z",
-    "last_edited_time": "2025-12-18T09:54:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80f5-9872-f68031959e47"
@@ -9757,7 +9949,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9798,7 +9993,7 @@
   {
     "id": "2ceccb0e-ac88-8122-a9d0-d5a4fe09e93c",
     "created_time": "2025-12-19T04:06:00.000Z",
-    "last_edited_time": "2025-12-19T04:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-80c8-9111-de000aec43fa"
@@ -9824,7 +10019,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9865,7 +10063,7 @@
   {
     "id": "2ceccb0e-ac88-81bd-8a9b-dfc2f32b610c",
     "created_time": "2025-12-19T04:06:00.000Z",
-    "last_edited_time": "2025-12-19T04:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-804d-8e8c-f45c9eac18e1"
@@ -9891,7 +10089,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9932,7 +10133,7 @@
   {
     "id": "2ceccb0e-ac88-81c9-9972-f6120f37ba1b",
     "created_time": "2025-12-19T04:06:00.000Z",
-    "last_edited_time": "2025-12-19T04:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2c3ccb0e-ac88-8066-a8df-e244680502a1"
@@ -9958,7 +10159,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -9999,7 +10203,7 @@
   {
     "id": "2ceccb0e-ac88-81c9-a867-c8d99565aeee",
     "created_time": "2025-12-19T04:06:00.000Z",
-    "last_edited_time": "2025-12-19T04:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2ccccb0e-ac88-80e5-9034-f2deba73f2c8"
@@ -10025,7 +10229,10 @@
         "Color"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [
@@ -10066,7 +10273,7 @@
   {
     "id": "2ceccb0e-ac88-81d8-b90c-c7b5d9cb9e78",
     "created_time": "2025-12-19T04:06:00.000Z",
-    "last_edited_time": "2025-12-19T04:06:00.000Z",
+    "last_edited_time": "2026-02-27T04:57:00.000Z",
     "properties": {
       "Product ": [
         "2ccccb0e-ac88-8015-b86e-cb797502e5f3"
@@ -10092,7 +10299,10 @@
         "Inbetween"
       ],
       "NLTT": null,
-      "Ngày Làm": null,
+      "Ngày Làm": {
+        "start": "2025-12-16",
+        "end": null
+      },
       "[Dev] Total main": 0,
       "Task type": "QC",
       "Product Status": [

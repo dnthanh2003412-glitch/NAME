@@ -478,7 +478,7 @@
         "2d9ccb0e-ac88-8149-9f12-ddb381afdf74"
       ],
       "Total tasks": 25,
-      "Completed tasks": 0.92,
+      "Completed tasks": 0.96,
       "Sprint status": "Future"
     },
     "_title": "Key Ep 4 Batch 2",
@@ -671,7 +671,7 @@
         "2ffccb0e-ac88-8124-8dea-cc9c4889f06f"
       ],
       "Total tasks": 25,
-      "Completed tasks": 0.96,
+      "Completed tasks": 1,
       "Sprint status": "Future"
     },
     "_title": "IBW Ep 5",
@@ -695,10 +695,13 @@
         "310ccb0e-ac88-8070-bc66-cce931f0809f",
         "310ccb0e-ac88-80f7-8b68-fd1b2e9fe67d",
         "312ccb0e-ac88-808d-a5d2-ed8eebef03cd",
-        "312ccb0e-ac88-8086-b983-e188fe81d264"
+        "312ccb0e-ac88-8086-b983-e188fe81d264",
+        "304ccb0e-ac88-80d7-afd2-c401fb1ae2e0",
+        "313ccb0e-ac88-80a3-98dc-c3a585f50306",
+        "314ccb0e-ac88-80e8-9659-fea05f5c2f92"
       ],
-      "Total tasks": 5,
-      "Completed tasks": 0,
+      "Total tasks": 8,
+      "Completed tasks": 0.625,
       "Sprint status": "Future"
     },
     "_title": "BG Ep 6",

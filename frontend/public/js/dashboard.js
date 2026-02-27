@@ -70,15 +70,47 @@ function getVisibleColumns(allColumns) {
 const CHART_COLORS = {
     primary: ['#3b82f6', '#22c55e', '#f59e0b', '#ef4444', '#8b5cf6', '#06b6d4', '#ec4899', '#84cc16'],
     seniority: {
-        'Dưới 2 năm': '#3b82f6',
-        'Từ 2 - 3.5 năm': '#22c55e',
-        'Trên 3.5 năm': '#f59e0b'
+        under2: '#3b82f6',
+        from2to35: '#22c55e',
+        over35: '#f59e0b'
     },
     pointStatus: {
         'Confirmed': '#22c55e',
         'Unconfirmed': '#f59e0b'
     }
 };
+
+function normalizeSeniorityLabel(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9.\- ]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function getSeniorityColor(label) {
+    const norm = normalizeSeniorityLabel(label);
+
+    if (norm.includes('duoi 2') || norm.includes('under 2') || (norm.includes('duoi') && norm.includes('2 nam'))) {
+        return CHART_COLORS.seniority.under2;
+    }
+    if (
+        norm.includes('tu 2 - 3.5') ||
+        norm.includes('tu 2 3.5') ||
+        norm.includes('2 - 3.5') ||
+        norm.includes('2 3.5') ||
+        norm.includes('from 2 to 3.5')
+    ) {
+        return CHART_COLORS.seniority.from2to35;
+    }
+    if (norm.includes('tren 3.5') || norm.includes('over 3.5') || (norm.includes('tren') && norm.includes('3.5'))) {
+        return CHART_COLORS.seniority.over35;
+    }
+
+    return '#64748b';
+}
 
 /**
  * Parse date from Vietnamese format or common formats
@@ -902,7 +934,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
     });
 
     const labels = Object.keys(seniorityGroups);
-    const colors = labels.map(l => CHART_COLORS.seniority[l] || '#64748b');
+    const colors = labels.map(l => getSeniorityColor(l));
 
     // Chart 1: Count by Seniority
     setTimeout(() => {

@@ -1,7 +1,7 @@
 {
-  "executed_at": "2026-02-24T10:08:58.171Z",
-  "cold_ms": 815,
-  "hot_ms": 27,
+  "executed_at": "2026-02-26T10:00:50.874Z",
+  "cold_ms": 60,
+  "hot_ms": 3,
   "total_records": 6000,
   "total_filtered": 6000,
   "page_size": 200

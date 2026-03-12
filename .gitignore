@@ -5,9 +5,8 @@ package-lock.json
 # Environment
 .env
 
-# Database cache & runtime data (keep config files)
-backend/data/cache/*.json
-backend/data/metadata.json
+# Database cache & metadata are tracked in git for fast deploys
+# Use `push.bat` to auto-update cache before pushing
 
 # Logs
 logs/

@@ -5,8 +5,9 @@ package-lock.json
 # Environment
 .env
 
-# Database cache only (keep config files)
+# Database cache & runtime data (keep config files)
 backend/data/cache/*.json
+backend/data/metadata.json
 
 # Logs
 logs/

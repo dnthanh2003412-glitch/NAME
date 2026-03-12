@@ -125,7 +125,8 @@ function normalizeQuery(text = '') {
     return String(text)
         .toLowerCase()
         .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '');
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/đ/g, 'd').replace(/Đ/g, 'D');
 }
 
 // Expand casual Vietnamese slang/synonyms to standard keywords
@@ -138,6 +139,7 @@ function expandSynonyms(q) {
         [/thang roi|thang vua roi|thang vua qua/g, 'thang truoc'],
         [/tuan roi|tuan vua roi|tuan vua qua/g, 'tuan truoc'],
         [/hom truoc|hom bua/g, 'hom qua'],
+        [/tong diem|diem thuc te/g, 'tong point thuc te'],
         [/diem|taskpoint|task point/g, 'point'],
         [/lam duoc|hoan thanh duoc|xong duoc/g, 'task'],
         [/noi chung|chung chung|tong the|tinh hinh/g, 'tong quan'],
@@ -157,6 +159,11 @@ function expandSynonyms(q) {
         [/chua qc|xong chua qc/g, 'done chua qc'],
         [/dang chay|dang hoat dong/g, 'in progress'],
         [/chua fix|chua sua/g, 'bug chua hoan thanh'],
+        // Extra synonyms for better matching
+        [/nang suat nhat|hieu qua nhat|productivity nhat/g, 'nang suat cao nhat'],
+        [/so sanh.*du an|du an.*so sanh|workload.*du an|du an.*workload/g, 'so sanh workload du an'],
+        [/confirm.*unco|unco.*confirm|confirmed.*unconfirmed|unconfirmed.*confirmed/g, 'so sanh confirmed unconfirmed'],
+        [/slay|carry|gánh|ganh/g, 'nhieu nhat'],
     ];
     let result = q;
     for (const [pattern, replacement] of map) {
@@ -458,12 +465,64 @@ function extractPersonFromQuery(q, rows) {
     const qLower = q;
     let bestMatch = '';
     let bestLen = 0;
+
+    // 1. Exact full-name match (longest wins)
     for (const name of allNames) {
         const nNorm = normalizeQuery(name);
         if (qLower.includes(nNorm) && nNorm.length > bestLen) {
             bestMatch = name;
             bestLen = nNorm.length;
         }
+    }
+    if (bestMatch) return bestMatch;
+
+    // 2. Partial match: any single word of name (≥2 chars) appears in query
+    //    Prefer longer word matches, then disambiguate by checking both parts
+    //    Skip Vietnamese stopwords that collide with names (only VERY common grammar words)
+    const vnStopwords = new Set([
+        'nhung',  // những (those) - collides with Nhung
+        'cua',    // của (of)
+        'duoc',   // được (can/able)
+        'khong',  // không (not)
+        'nhieu',  // nhiều (many)
+        'truoc',  // trước (before)
+        'sau',    // sau (after)
+        'them',   // thêm (more)
+        'toan',   // toàn (all)
+        'thi',    // thì (then)
+        'cho',    // cho (for/give)
+        'khi',    // khi (when)
+        'moi',    // mới (new) / mỗi (each)
+        'qua',    // qua (past/over)
+        'ngoai',  // ngoài (outside)
+        'duoi',   // dưới (below)
+        'tren',   // trên (above)
+        'theo',   // theo (follow/according)
+        'voi',    // với (with)
+        'nao',    // nào (which)
+        'biet',   // biết (know)
+        'the',    // thế (so)
+        'chay',   // chạy (run)
+    ]);
+    const candidates = [];
+    for (const name of allNames) {
+        const nNorm = normalizeQuery(name);
+        const parts = nNorm.split(/\s+/).filter(p => p.length >= 2);
+        for (const part of parts) {
+            // Skip if this name-part is a common Vietnamese word
+            if (vnStopwords.has(part)) continue;
+            // Match as whole word in query using word boundary check
+            const regex = new RegExp(`(^|\\s)${part.replace(/[.*+?^${}()|[\\]\\]/g, '\\$&')}($|\\s)`);
+            if (regex.test(qLower)) {
+                candidates.push({ name, matchLen: part.length, part });
+            }
+        }
+    }
+    if (candidates.length === 1) return candidates[0].name;
+    if (candidates.length > 1) {
+        // Pick longest matched part (most specific)
+        candidates.sort((a, b) => b.matchLen - a.matchLen);
+        return candidates[0].name;
     }
     return bestMatch;
 }
@@ -729,7 +788,7 @@ function buildSmartCacheReply(userMessage, context, db) {
 
     // --- 11. Năng suất cao nhất ---
     if ((q.includes('nang suat') || q.includes('productivity')) &&
-        (q.includes('cao nhat') || q.includes('top') || q.includes('best'))) {
+        (q.includes('cao nhat') || q.includes('top') || q.includes('best') || q.includes('nhat') || q.includes('ai') || q.includes('nguoi'))) {
         const source = filteredByTime;
         const byPerson = new Map();
         source.forEach(r => {
@@ -885,6 +944,40 @@ function buildSmartCacheReply(userMessage, context, db) {
         if (sorted.length === 0) return `Không có dữ liệu effort theo dự án${timeLabel}.`;
         const list = sorted.map(([p, d], i) => `${i + 1}. ${p}: ${fmtNum(d.effort)} ngày công (${d.tasks} task)`).join('\n');
         return `Dự án tốn effort nhất${timeLabel}:\n${list}`;
+    }
+
+    // --- 16b. So sánh workload theo dự án ---
+    if (q.includes('so sanh workload du an') || ((q.includes('so sanh') || q.includes('workload')) && q.includes('du an'))) {
+        const byProject = new Map();
+        filteredByTime.forEach(r => {
+            const pj = extractTaskProjectName(r) || '(Không rõ)';
+            const pt = extractTaskPoint(r);
+            const eff = extractEffort(r);
+            const cur = byProject.get(pj) || { tasks: 0, points: 0, effort: 0 };
+            cur.tasks += 1; cur.points += pt; cur.effort += eff;
+            byProject.set(pj, cur);
+        });
+        const sorted = [...byProject.entries()].sort((a, b) => b[1].tasks - a[1].tasks).slice(0, 15);
+        if (sorted.length === 0) return `Không có dữ liệu workload theo dự án${timeLabel}.`;
+        const list = sorted.map(([p, d], i) => `${i + 1}. ${p}: ${d.tasks} task | ${fmtNum(d.points)} pt | ${fmtNum(d.effort)} ngày`).join('\n');
+        return `📊 Workload theo dự án${timeLabel}:\n(Thứ tự: Task | Point | Effort)\n${list}`;
+    }
+
+    // --- 16c. Tổng point thực tế ---
+    if (q.includes('tong point thuc te') || (q.includes('tong') && q.includes('point') && !q.includes('tung') && !q.includes('member'))) {
+        const source = filteredByTime;
+        let totalPt = 0;
+        const byPerson = new Map();
+        source.forEach(r => {
+            const pt = extractTaskPoint(r);
+            totalPt += pt;
+            extractAssigneeNames(r).forEach(n => {
+                byPerson.set(n, (byPerson.get(n) || 0) + pt);
+            });
+        });
+        const sorted = [...byPerson.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10);
+        const list = sorted.map(([n, p], i) => `${i + 1}. ${n}: ${fmtNum(p)} pt`).join('\n');
+        return `🎯 Tổng point thực tế${timeLabel}: ${fmtNum(totalPt)} point (${source.length} task)\n\nTop 10 người:\n${list}`;
     }
 
     // --- 17. Tổng point lệch % ---
@@ -1068,6 +1161,35 @@ function buildSmartCacheReply(userMessage, context, db) {
         return `${idle.length} người chưa có task${timeLabel}:\n${idle.join(', ')}`;
     }
 
+    // --- 27. Danh sách dự án / dự án đang chạy ---
+    if (q.includes('du an') && (q.includes('dang chay') || q.includes('danh sach') || q.includes('list') || q.includes('co nhung') || q.includes('nhung') || q.includes('nao'))) {
+        const byProject = new Map();
+        rows.forEach(r => {
+            const pj = r?.database_name || r?.project_name || extractTaskProjectName(r) || '(Không rõ)';
+            byProject.set(pj, (byProject.get(pj) || 0) + 1);
+        });
+        const sorted = [...byProject.entries()].sort((a, b) => b[1] - a[1]);
+        const list = sorted.slice(0, 20).map(([p, c], i) => `${i + 1}. ${p}: ${c} task`).join('\n');
+        const extra = sorted.length > 20 ? `\n...và ${sorted.length - 20} dự án khác` : '';
+        return `📌 ${sorted.length} dự án đang có dữ liệu${timeLabel}:\n${list}${extra}`;
+    }
+
+    // --- 28. Tìm người / kiểm tra ai làm ở đâu ---
+    if (personInQuery && (q.includes('du an nao') || q.includes('o dau') || q.includes('lam o') || q.includes('nhung du an') || q.includes('thuoc du an'))) {
+        const personRows = filteredByTime.filter(r =>
+            extractAssigneeNames(r).some(n => normalizeQuery(n) === normalizeQuery(personInQuery))
+        );
+        if (personRows.length === 0) return `Không tìm thấy task nào của ${personInQuery}${timeLabel}.`;
+        const byProject = new Map();
+        personRows.forEach(r => {
+            const pj = r?.database_name || r?.project_name || extractTaskProjectName(r) || '?';
+            byProject.set(pj, (byProject.get(pj) || 0) + 1);
+        });
+        const sorted = [...byProject.entries()].sort((a, b) => b[1] - a[1]);
+        const list = sorted.map(([p, c], i) => `${i + 1}. ${p}: ${c} task`).join('\n');
+        return `${personInQuery} có ${personRows.length} task${timeLabel} ở ${sorted.length} dự án:\n${list}`;
+    }
+
     return null;
 }
 
@@ -1138,9 +1260,6 @@ const INTENT_PATTERNS_DESC = [
 
 async function classifyIntentWithAI(userMessage, apiKey, baseUrl) {
     if (!apiKey) return null;
-    const geminiBaseUrl = baseUrl || 'https://generativelanguage.googleapis.com/v1beta';
-    const model = 'gemini-2.0-flash';
-    const url = `${geminiBaseUrl}/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
 
     const prompt = `Bạn là bộ phân loại câu hỏi. Nhiệm vụ: viết lại câu hỏi của user thành dạng chuẩn mà hệ thống keyword-matching có thể hiểu.
 
@@ -1166,21 +1285,54 @@ Ví dụ:
 
 Câu hỏi user: "${userMessage.replace(/"/g, '\\"')}"`;
 
+    const provider = (process.env.AI_PROVIDER || '').toLowerCase();
+    const isGemini = provider === 'gemini' || apiKey.startsWith('AIza');
+
     try {
-        const response = await fetch(url, {
+        if (isGemini) {
+            const geminiBaseUrl = baseUrl || 'https://generativelanguage.googleapis.com/v1beta';
+            const model = 'gemini-2.0-flash';
+            const url = `${geminiBaseUrl}/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`;
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    contents: [{ parts: [{ text: prompt }] }],
+                    generationConfig: { temperature: 0, maxOutputTokens: 100 }
+                }),
+                signal: AbortSignal.timeout(8000)
+            });
+            if (!response.ok) return null;
+            const payload = await response.json();
+            const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+            if (!text || text === 'NONE' || text.length > 200) return null;
+            return text.replace(/^["']|["']$/g, '').trim();
+        }
+
+        // OpenAI-compatible (Ollama, LM Studio, etc.)
+        const chatModel = process.env.AI_MODEL || 'qwen3:8b';
+        const response = await fetch(`${baseUrl}/chat/completions`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+            },
             body: JSON.stringify({
-                contents: [{ parts: [{ text: prompt }] }],
-                generationConfig: { temperature: 0, maxOutputTokens: 100 }
+                model: chatModel,
+                temperature: 0,
+                max_tokens: 150,
+                messages: [
+                    { role: 'user', content: prompt }
+                ]
             }),
-            signal: AbortSignal.timeout(8000)
+            signal: AbortSignal.timeout(15000)
         });
         if (!response.ok) return null;
         const payload = await response.json();
-        const text = payload?.candidates?.[0]?.content?.parts?.[0]?.text?.trim();
+        let text = payload?.choices?.[0]?.message?.content?.trim();
         if (!text || text === 'NONE' || text.length > 200) return null;
-        // Clean up: remove quotes, extra whitespace
+        // Strip <think>...</think> tags from reasoning models
+        text = text.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
         return text.replace(/^["']|["']$/g, '').trim();
     } catch {
         return null;
@@ -1378,16 +1530,58 @@ export function setupRoutes(app, db, poller) {
         const syncSource = context.sync_source || 'không rõ';
 
         const systemPrompt = [
-            'Bạn là Trợ lý AI của Notion Dashboard, tính cách vui vẻ, nói chuyện kiểu gen-z Việt Nam.',
-            'Trả lời ngắn gọn, dễ hiểu, bằng tiếng Việt. Dùng emoji phù hợp.',
-            'Nếu user hỏi về task/workload/project mà bạn không có data → gợi ý họ thử hỏi lại bằng cách khác hoặc dùng các câu gợi ý bên dưới.',
-            'Nếu user chào hỏi/nói chuyện phiếm → trả lời vui vẻ, friendly, ngắn gọn.',
-            'Nếu không biết → nói thẳng là "mình chịu 😅" thay vì bịa.',
-            'Thỉnh thoảng dùng từ gen-z như "chill", "slay", "real", "oke nha", "ez".',
-            'Luôn gợi ý 1-2 câu hỏi user có thể thử, ví dụ: "Thử hỏi: Tổng quan task tuần này / Ai có nhiều task nhất?"'
+            'Bạn là Trợ lý AI siêu chill của Notion Dashboard. Tính cách: vui nhộn, hài hước kiểu gen-z Việt Nam, nhưng vẫn chính xác.',
+            'PHONG CÁCH: Nói chuyện như bạn thân gen-z. Dùng emoji nhiều 🔥✨💀😎🫡. Dùng từ gen-z tự nhiên: "slay", "real", "chill", "oke nha", "ez", "gánh team", "carry", "vibe", "flex", "no cap", "bet", "W", "L", "đỉnh nóc", "xịn sò".',
+            'FORMAT: Trả lời NGẮN GỌN, đúng trọng tâm, max 3-5 dòng. KHÔNG lan man. Dùng bullet point cho data.',
+            'Nếu user hỏi task/workload → trả lời dựa trên DỮ LIỆU THỰC TẾ được cung cấp trong ngữ cảnh. Đọc kỹ phần DỮ LIỆU THỰC TẾ.',
+            'Nếu user chào hỏi/nói linh tinh → trả lời hài hước, ngắn, rồi gợi ý câu hỏi hay.',
+            'Nếu không biết → nói thẳng "mình chịu 😅" ĐỪNG bịa data.',
+            'LUÔN kết thúc bằng 1-2 gợi ý câu hỏi tiếp theo dạng: "Thử hỏi: ..."'
         ].join(' ');
 
-        const contextPrompt = `Ngữ cảnh hiện tại: page="${pageTitle}", report="${reportType}", selected="${selectedCount}", sync="${syncSource}".`;
+        // Build data summary from cache for AI context
+        let dataSummary = '';
+        try {
+            const selectedIds = Array.isArray(context?.selected_database_ids) && context.selected_database_ids.length > 0
+                ? context.selected_database_ids
+                : (Array.isArray(db.getConfig('selected_databases')) ? db.getConfig('selected_databases') : []);
+            if (selectedIds.length > 0) {
+                let allRows = [];
+                const projectNames = [];
+                selectedIds.forEach(dbId => {
+                    const data = db.getData(dbId);
+                    if (Array.isArray(data)) {
+                        allRows = allRows.concat(data);
+                        if (data.length > 0) {
+                            const name = data[0]?.database_name || data[0]?.project_name || '';
+                            if (name) projectNames.push(name);
+                        }
+                    }
+                });
+                const totalTasks = allRows.length;
+                // Count by status
+                const byStatus = new Map();
+                const assigneeSet = new Set();
+                allRows.forEach(r => {
+                    const s = r?.Status || r?.status || Object.values(r).find(v => typeof v === 'string' && /done|progress|todo|review/i.test(v)) || 'Unknown';
+                    byStatus.set(s, (byStatus.get(s) || 0) + 1);
+                    const names = extractAssigneeNames(r);
+                    names.forEach(n => assigneeSet.add(n));
+                });
+                const statusStr = [...byStatus.entries()].sort((a, b) => b[1] - a[1]).slice(0, 8).map(([s, c]) => `${s}: ${c}`).join(', ');
+                // Build per-project breakdown for AI context
+                const perProject = new Map();
+                allRows.forEach(r => {
+                    const pj = r?.database_name || r?.project_name || '?';
+                    perProject.set(pj, (perProject.get(pj) || 0) + 1);
+                });
+                const projectBreakdown = [...perProject.entries()].sort((a, b) => b[1] - a[1]).slice(0, 10)
+                    .map(([p, c]) => `${p}: ${c}`).join(', ');
+                dataSummary = `\nDỮ LIỆU THỰC TẾ: ${totalTasks} task từ ${projectNames.length} dự án.\nDự án lớn nhất: ${projectBreakdown}.\nTất cả thành viên: ${[...assigneeSet].join(', ')}.\nTrạng thái: ${statusStr}.\nLưu ý: Dùng ĐÚNG tên thành viên như trong danh sách khi trả lời. Nếu user hỏi về 1 người, tìm tên gần nhất trong danh sách.`;
+            }
+        } catch (e) { /* ignore */ }
+
+        const contextPrompt = `Ngữ cảnh hiện tại: page="${pageTitle}", report="${reportType}", selected="${selectedCount}", sync="${syncSource}".${dataSummary}`;
 
         const smartReply = buildSmartCacheReplyWithScope(userMessage, context, db);
         if (smartReply) {
@@ -1555,7 +1749,7 @@ export function setupRoutes(app, db, poller) {
                 body: JSON.stringify({
                     model: chatModel,
                     temperature: 0.3,
-                    max_tokens: 500,
+                    max_tokens: 1024,
                     messages: [
                         { role: 'system', content: systemPrompt },
                         { role: 'system', content: contextPrompt },
@@ -1563,7 +1757,7 @@ export function setupRoutes(app, db, poller) {
                         { role: 'user', content: userMessage }
                     ]
                 }),
-                signal: AbortSignal.timeout(25000)
+                signal: AbortSignal.timeout(60000)
             });
 
             const payload = await response.json();
@@ -1574,8 +1768,18 @@ export function setupRoutes(app, db, poller) {
                 });
             }
 
-            const reply = payload?.choices?.[0]?.message?.content;
+            let reply = payload?.choices?.[0]?.message?.content;
             if (!reply || typeof reply !== 'string') {
+                return res.json({
+                    success: true,
+                    reply: getQuotaFallbackReply(userMessage)
+                });
+            }
+
+            // Strip <think>...</think> reasoning blocks from thinking models (Qwen3, DeepSeek, etc.)
+            reply = reply.replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+
+            if (!reply) {
                 return res.json({
                     success: true,
                     reply: getQuotaFallbackReply(userMessage)
@@ -1584,7 +1788,7 @@ export function setupRoutes(app, db, poller) {
 
             return res.json({
                 success: true,
-                reply: reply.trim()
+                reply: reply
             });
         } catch (error) {
             console.warn('[Chat] Error:', error.message);

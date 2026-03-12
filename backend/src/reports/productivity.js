@@ -44,6 +44,7 @@ export class ProductivityService {
         let countDateRangeReject = 0;
         let countAssigneeMissing = 0;
         let countAcceptedDone = 0;
+        const tasksNoDate = []; // Tasks with empty Ngày Làm - count only, no score
         let missingDateSamples = [];
         let projectsSet = new Set();
 
@@ -59,7 +60,8 @@ export class ProductivityService {
             // Check Date Missing
             if (!doneDate) {
                 countDateMissing++;
-                // DEBUG: Analyze why date is missing for Done tasks
+                // Task without "Ngày Làm": still count but don't score
+                tasksNoDate.push(task);
                 if (missingDateSamples.length < 5) {
                     const propKeys = Object.keys(task.properties).join(', ');
                     missingDateSamples.push({
@@ -143,6 +145,16 @@ export class ProductivityService {
             }
         }
 
+        // Group tasks with no date for counting only (no scoring)
+        const groupedNoDate = {};
+        for (const task of tasksNoDate) {
+            const assignees = this.getAssignees(task);
+            for (const person of assignees) {
+                if (!groupedNoDate[person]) groupedNoDate[person] = 0;
+                groupedNoDate[person]++;
+            }
+        }
+
         // 4. Build Rows per Assignee
         const assigneesFromData = [...new Set([...Object.keys(grouped), ...Object.keys(groupedAllInRange)])];
         const presetPersonnel = Object.keys(SENIORITY_MAPPING);
@@ -199,8 +211,8 @@ export class ProductivityService {
                 productivityReq: kpi,
                 standardDays,
                 actualDays,
-                // Align "Tong task" with all in-range tasks (status-agnostic)
-                taskCount: tasksAllInRange.length,
+                // Align "Tong task" with all in-range tasks (status-agnostic) + tasks without date
+                taskCount: tasksAllInRange.length + (groupedNoDate[personName] || groupedNoDate[rawPersonName] || 0),
                 taskCountDone: tasksDone.length,
                 taskCountAllStatuses: tasksAllInRange.length,
                 projects: projectsByPerson[personName] || projectsByPerson[rawPersonName]
@@ -604,8 +616,8 @@ export class ProductivityService {
         // Handle Range string "Date1 -> Date2" (common in Notion formula output)
         if (rawDate.includes('->')) {
             const parts = rawDate.split('->');
-            // Use Start Date (first part) for range checking
-            rawDate = parts[0].trim();
+            // Use End Date (last part) for month assignment
+            rawDate = parts[parts.length - 1].trim();
         }
 
         // ISO Date (YYYY-MM-DD)

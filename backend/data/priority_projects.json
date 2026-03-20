@@ -1,5 +1,5 @@
 {
-  "description": "Whitelist dự án ưu tiên - gồm 11 dự án",
+  "description": "Whitelist dự án ưu tiên - gồm 12 dự án",
   "projects": [
     {
       "name": "[DeeDee_2025_SUN] Sunny Side Down",
@@ -377,6 +377,23 @@
           "type": "sprints"
         }
       ]
+    },
+    {
+      "name": "[DeeDee_2026_XAV] Xanh Van",
+      "id": "318ccb0e-ac88-80d9-81eb-dd3b621a92b1",
+      "code": "XAV",
+      "databases": [
+        {
+          "id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa",
+          "name": "[XAV_ko QC] Product (1)",
+          "type": "products"
+        },
+        {
+          "id": "318ccb0e-ac88-802a-af65-dc9c20726f4e",
+          "name": "[XAV_ko QC] Tasks (1)",
+          "type": "tasks"
+        }
+      ]
     }
   ],
   "priority_databases": [
@@ -439,6 +456,8 @@
     "2efccb0e-ac88-80f2-a2e2-f9bdeabd279a",
     "2f6ccb0e-ac88-80ee-820b-fda54d75d7cf",
     "2f6ccb0e-ac88-803a-a0b0-edccc8397943",
-    "2f6ccb0e-ac88-80b2-90ce-d27c8a0fc008"
+    "2f6ccb0e-ac88-80b2-90ce-d27c8a0fc008",
+    "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa",
+    "318ccb0e-ac88-802a-af65-dc9c20726f4e"
   ]
 }

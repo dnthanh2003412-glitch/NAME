@@ -180,7 +180,7 @@ export class ProjectsService {
             'HARRY', 'MIRACULOUS', 'XANHSM',
             'KNIGHTS', 'GENEVIEVE', 'Sunny Side', 'GUINEVERE', 'GUI',
             'Đại Hiệp', 'UPZI', 'LEGO', 'Victory',
-            'Immortals', 'Mami', 'MAMI', 'GEN', 'HAR', 'LEG', 'SUN', 'IMM', 'FCM', 'MIR'
+            'Immortals', 'Mami', 'MAMI', 'GEN', 'HAR', 'LEG', 'SUN', 'IMM', 'FCM', 'MIR', 'XAV', 'Xanh Van'
         ];
 
         const targetProjects = projects.filter(p => {

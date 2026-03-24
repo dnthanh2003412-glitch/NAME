@@ -2751,8 +2751,8 @@ class DashboardApp {
                 <div>
                     <h5 class="alert-heading mb-1 fw-bold">Đã tổng hợp dữ liệu thành công!</h5>
                     <div class="mb-1">
-                        <span class="badge bg-success me-2">Tổng: ${stats.totalProcessed.toLocaleString()}</span>
-                        <span class="badge bg-primary">Hợp lệ: ${stats.totalAccepted.toLocaleString()}</span>
+                        <span class="badge bg-success me-2">Tổng: ${this.formatDisplayNumber(stats.totalProcessed, 0)}</span>
+                        <span class="badge bg-primary">Hợp lệ: ${this.formatDisplayNumber(stats.totalAccepted, 0)}</span>
                     </div>
                     <div class="small text-muted mt-1">
                         <i class="bi bi-database me-1"></i> Dữ liệu từ <strong>${projects.length}</strong> dự án: ${projects.join(', ')}
@@ -3049,7 +3049,7 @@ class DashboardApp {
                         </div>`;
                     } else if (col.id === 'productivityReq') {
                         // KPI value - show as decimal number (6.30, 7.83, 9.46)
-                        cellContent = `<div class="num-cell">${(parseFloat(val) || 0).toFixed(2)}</div>`;
+                        cellContent = `<div class="num-cell">${this.formatDisplayNumber(parseFloat(val) || 0, 2)}</div>`;
                     } else if ([
                         'completionProdConfirmed',
                         'completionProdTotal',
@@ -3063,11 +3063,11 @@ class DashboardApp {
                             cellContent = `<div class="num-cell" style="color:#64748b;font-style:italic;">Chờ</div>`;
                         } else {
                             const percent = (parseFloat(val) || 0) * 100;
-                            cellContent = `<div class="num-cell">${percent.toFixed(1)}%</div>`;
+                            cellContent = `<div class="num-cell">${this.formatDisplayPercent(percent, 1, false)}</div>`;
                         }
                     } else if (typeof val === 'number') {
                         // Number (2 decimals for floats, 0 for integers?)
-                        cellContent = `<div class="num-cell">${Number.isInteger(val) ? val : val.toFixed(2)}</div>`;
+                        cellContent = `<div class="num-cell">${this.formatDisplayNumber(val)}</div>`;
                     } else {
                         // Text
                         cellContent = val || '';
@@ -3125,7 +3125,7 @@ class DashboardApp {
                 const updateCell = (id, val, isPct) => {
                     const cell = row.querySelector(`[data-col-id="${id}"] .num-cell`);
                     if (cell) {
-                        cell.textContent = isPct ? (val * 100).toFixed(1) + '%' : (Number.isInteger(val) ? val : val.toFixed(2));
+                        cell.textContent = isPct ? this.formatDisplayPercent(val, 1) : this.formatDisplayNumber(val);
                     }
                 };
 
@@ -3349,9 +3349,9 @@ class DashboardApp {
                                 'completionProdConfirmed', 'completionProdTotal',
                                 'completionPointConfirmed', 'completionPointTotal', 'effortRatio'
                             ].includes(col.id)) {
-                                val = ((parseFloat(val) || 0) * 100).toFixed(1) + '%';
+                                val = this.formatDisplayPercent(parseFloat(val) || 0, 1);
                             } else if (typeof val === 'number') {
-                                val = Number.isInteger(val) ? val.toString() : val.toFixed(2);
+                                val = this.formatDisplayNumber(val);
                             }
                             // Escape dấu chấm phẩy và dấu ngoặc kép
                             cells.push(`"${String(val || '').replace(/"/g, '""')}"`);
@@ -3390,9 +3390,9 @@ class DashboardApp {
                         'completionProdConfirmed', 'completionProdTotal',
                         'completionPointConfirmed', 'completionPointTotal', 'effortRatio'
                     ].includes(col.id)) {
-                        val = ((parseFloat(val) || 0) * 100).toFixed(1) + '%';
+                        val = this.formatDisplayPercent(parseFloat(val) || 0, 1);
                     } else if (typeof val === 'number') {
-                        val = Number.isInteger(val) ? val : val.toFixed(2);
+                        val = this.formatDisplayNumber(val);
                     }
                     return `<td>${val || ''}</td>`;
                 }).join('')}
@@ -4082,12 +4082,46 @@ class DashboardApp {
 
     formatCell(value) {
         if (value === null || value === undefined) return '<span style="color:#475569;">—</span>';
+        if (typeof value === 'number') return this.escapeHtml(this.formatDisplayNumber(value));
         if (typeof value === 'object') {
             // Handle Notion-specific formats
             if (Array.isArray(value)) return this.escapeHtml(value.join(', '));
             return this.escapeHtml(JSON.stringify(value));
         }
         return this.escapeHtml(String(value));
+    }
+
+    formatDisplayNumber(value, decimals = null) {
+        if (typeof window.formatDisplayNumber === 'function') {
+            return window.formatDisplayNumber(value, {
+                decimals: Number.isInteger(decimals) ? decimals : undefined
+            });
+        }
+
+        const numericValue = typeof value === 'number' ? value : Number(value);
+        if (!Number.isFinite(numericValue)) {
+            return String(value ?? '');
+        }
+
+        if (Number.isInteger(decimals)) {
+            return numericValue.toFixed(decimals);
+        }
+
+        return Number.isInteger(numericValue) ? String(numericValue) : numericValue.toFixed(2);
+    }
+
+    formatDisplayPercent(value, decimals = 1, inputIsRatio = true) {
+        if (typeof window.formatDisplayPercent === 'function') {
+            return window.formatDisplayPercent(value, decimals, { inputIsRatio });
+        }
+
+        const numericValue = typeof value === 'number' ? value : Number(value);
+        if (!Number.isFinite(numericValue)) {
+            return '';
+        }
+
+        const percentValue = inputIsRatio ? numericValue * 100 : numericValue;
+        return `${percentValue.toFixed(decimals)}%`;
     }
 
     // UTILS

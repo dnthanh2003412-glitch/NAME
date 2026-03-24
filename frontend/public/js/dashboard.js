@@ -80,6 +80,43 @@ const CHART_COLORS = {
     }
 };
 
+function formatDisplayNumber(value, options = {}) {
+    if (value === null || value === undefined || value === '') return '';
+
+    const numericValue = typeof value === 'number' ? value : Number(value);
+    if (!Number.isFinite(numericValue)) {
+        return String(value);
+    }
+
+    const decimals = Number.isInteger(options.decimals)
+        ? options.decimals
+        : (Number.isInteger(numericValue) ? 0 : 2);
+
+    return numericValue.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+        useGrouping: false
+    });
+}
+
+function formatDisplayPercent(value, decimals = 1, options = {}) {
+    const inputIsRatio = options.inputIsRatio !== false;
+    const numericValue = typeof value === 'number' ? value : Number(value);
+    if (!Number.isFinite(numericValue)) {
+        return '';
+    }
+
+    const percentValue = inputIsRatio ? numericValue * 100 : numericValue;
+    return `${formatDisplayNumber(percentValue, { decimals })}%`;
+}
+
+window.formatDisplayNumber = formatDisplayNumber;
+window.formatDisplayPercent = formatDisplayPercent;
+
+if (window.Chart?.defaults) {
+    window.Chart.defaults.locale = 'en-US';
+}
+
 function normalizeSeniorityLabel(value) {
     return String(value || '')
         .normalize('NFD')
@@ -969,7 +1006,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                         backgroundColor: '#0f172a',
                         titleColor: '#e2e8f0',
                         bodyColor: '#94a3b8',
-                        callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} người` }
+                        callbacks: { label: (ctx) => `${ctx.label}: ${formatDisplayNumber(ctx.raw)} người` }
                     }
                 }
             }
@@ -990,7 +1027,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     label: 'Năng suất TB',
                     data: labels.map(l => {
                         const g = seniorityGroups[l];
-                        return g.count > 0 ? (g.productivityTotal / g.count).toFixed(2) : 0;
+                        return g.count > 0 ? Number(formatDisplayNumber(g.productivityTotal / g.count, { decimals: 2 })) : 0;
                     }),
                     backgroundColor: colors,
                     borderRadius: 4
@@ -1010,7 +1047,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     legend: { display: false },
                     tooltip: {
                         backgroundColor: '#0f172a',
-                        callbacks: { label: (ctx) => `Năng suất: ${ctx.raw}` }
+                        callbacks: { label: (ctx) => `Năng suất: ${formatDisplayNumber(ctx.raw, { decimals: 2 })}` }
                     }
                 },
                 scales: {
@@ -1035,7 +1072,7 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     label: 'Tỷ lệ hoàn thành',
                     data: labels.map(l => {
                         const g = seniorityGroups[l];
-                        return g.count > 0 ? ((g.completionTotal / g.count) * 100).toFixed(1) : 0;
+                        return g.count > 0 ? Number(formatDisplayNumber((g.completionTotal / g.count) * 100, { decimals: 1 })) : 0;
                     }),
                     backgroundColor: colors,
                     borderRadius: 4
@@ -1056,11 +1093,11 @@ export function renderProductivityDashboard(data, container, options = {}) {
                     legend: { display: false },
                     tooltip: {
                         backgroundColor: '#0f172a',
-                        callbacks: { label: (ctx) => `Hoàn thành: ${ctx.raw}%` }
+                        callbacks: { label: (ctx) => `Hoàn thành: ${formatDisplayPercent(ctx.raw, 1, { inputIsRatio: false })}` }
                     }
                 },
                 scales: {
-                    x: { ticks: { color: '#94a3b8', callback: v => v + '%' }, grid: { color: '#334155' }, beginAtZero: true, max: 150 },
+                    x: { ticks: { color: '#94a3b8', callback: v => formatDisplayPercent(v, 1, { inputIsRatio: false }) }, grid: { color: '#334155' }, beginAtZero: true, max: 150 },
                     y: { ticks: { color: '#94a3b8' }, grid: { display: false } }
                 }
             }
@@ -1202,7 +1239,7 @@ function renderGroupedChart(canvasId, data, columnName, chartType) {
                         backgroundColor: '#0f172a',
                         titleColor: '#e2e8f0',
                         bodyColor: '#94a3b8',
-                        callbacks: { label: (ctx) => `${ctx.label}: ${ctx.raw} task` }
+                        callbacks: { label: (ctx) => `${ctx.label}: ${formatDisplayNumber(ctx.raw)} task` }
                     }
                 },
                 scales: chartType === 'bar' ? {

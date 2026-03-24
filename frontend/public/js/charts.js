@@ -1,5 +1,23 @@
 // charts.js - Chart rendering using Chart.js
 
+const formatDisplayNumber = window.formatDisplayNumber || ((value, options = {}) => {
+    if (value === null || value === undefined || value === '') return '';
+    const numericValue = typeof value === 'number' ? value : Number(value);
+    if (!Number.isFinite(numericValue)) return String(value);
+    const decimals = Number.isInteger(options.decimals)
+        ? options.decimals
+        : (Number.isInteger(numericValue) ? 0 : 2);
+    return numericValue.toLocaleString('en-US', {
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals,
+        useGrouping: false
+    });
+});
+
+if (window.Chart?.defaults) {
+    window.Chart.defaults.locale = 'en-US';
+}
+
 /**
  * Render Sprint Report Chart
  */
@@ -371,8 +389,8 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
             <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
                 <h4 style="margin:0;color:#f1f5f9;font-size:1rem;">🔥 Burndown Chart - ${sprintName}</h4>
                 <div style="display:flex;gap:16px;font-size:0.8rem;">
-                    <span style="color:#60a5fa;">📊 Tổng: ${totalPoints.toFixed(1)} points</span>
-                    <span style="color:#4ade80;">✅ Còn lại: ${actualLine[actualLine.length-1]?.toFixed(1) || 0} points</span>
+                    <span style="color:#60a5fa;">📊 Tổng: ${formatDisplayNumber(totalPoints, { decimals: 1 })} points</span>
+                    <span style="color:#4ade80;">✅ Còn lại: ${formatDisplayNumber(actualLine[actualLine.length-1] || 0, { decimals: 1 })} points</span>
                 </div>
             </div>
             <canvas id="${canvasId}" style="max-height:300px;"></canvas>
@@ -439,7 +457,7 @@ window.renderBurndownChart = function(containerId, sprintData, tasksData, option
                     displayColors: true,
                     callbacks: {
                         label: function(context) {
-                            return `${context.dataset.label}: ${context.parsed.y.toFixed(1)} points`;
+                            return `${context.dataset.label}: ${formatDisplayNumber(context.parsed.y, { decimals: 1 })} points`;
                         }
                     }
                 }

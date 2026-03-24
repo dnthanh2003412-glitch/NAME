@@ -472,6 +472,11 @@ export class ProjectsService {
 
         // 2. Name after brackets
         const nameAfterBracket = name.replace(/\[.*?\]\s*/, '').trim();
+        const dbNameHint = nameAfterBracket
+            // Project titles sometimes have suffixes like "TEST" but DB titles do not.
+            .replace(/\btest\b/gi, '')
+            .replace(/\s+/g, ' ')
+            .trim();
         if (nameAfterBracket.length > 0) {
             keywords.push(nameAfterBracket);
 
@@ -503,18 +508,37 @@ export class ProjectsService {
             brand,
             year,
             projectId,
+            dbNameHint,
             keywords: [...new Set(keywords)].filter(k => k && k.length > 2)
         };
     }
 
     findMatchingDatabases(projectInfo, allDatabases) {
+        const exactPhraseMatches = [];
         const matched = [];
+        const dbNameHintLower = projectInfo.dbNameHint?.toLowerCase() || '';
 
         for (const db of allDatabases) {
             const dbNameLower = db.name.toLowerCase();
 
             // Skip parent database itself
             if (db.id === this.parentDbId) continue;
+
+            if (
+                dbNameHintLower &&
+                (
+                    dbNameLower.includes(`[${dbNameHintLower}]`) ||
+                    dbNameLower.startsWith(`${dbNameHintLower} `) ||
+                    dbNameLower.includes(` ${dbNameHintLower} `)
+                )
+            ) {
+                exactPhraseMatches.push({
+                    id: db.id,
+                    name: db.name,
+                    type: this.determineDatabaseType(db.name)
+                });
+                continue;
+            }
 
             let isMatch = false;
 
@@ -541,6 +565,10 @@ export class ProjectsService {
                     type: dbType
                 });
             }
+        }
+
+        if (exactPhraseMatches.length > 0) {
+            return exactPhraseMatches;
         }
 
         return matched;

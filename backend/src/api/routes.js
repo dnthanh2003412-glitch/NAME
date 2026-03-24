@@ -25,6 +25,7 @@ const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 const RAW_FORMAT_CACHE_TTL_MS = parseInt(process.env.RAW_FORMAT_CACHE_TTL_MS || '120000', 10);
 const RAW_RELATION_RESOLVE_MAX_ROWS = parseInt(process.env.RAW_RELATION_RESOLVE_MAX_ROWS || '400', 10);
 const FULL_SYNC_CHECKPOINT_MS = parseInt(process.env.FULL_SYNC_CHECKPOINT_MS || `${6 * 60 * 60 * 1000}`, 10);
+const PRODUCTIVITY_LIVE_FALLBACK_PAGE_SIZE = parseInt(process.env.PRODUCTIVITY_LIVE_FALLBACK_PAGE_SIZE || '5', 10);
 const rawFormatCache = new Map();
 
 function getRawFormatCacheKey(databaseId, syncTime, options = {}) {
@@ -47,6 +48,93 @@ function pruneRawFormatCache() {
             rawFormatCache.delete(key);
         }
     }
+}
+
+function normalizeDatePropertyKey(key = '') {
+    return String(key)
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, ' ')
+        .trim();
+}
+
+async function fetchTaskRowsForProductivityFallback({ databaseId, startDate, endDate, notionToken, db }) {
+    if (!databaseId || !startDate || !endDate || !notionToken) {
+        return [];
+    }
+
+    const fetcher = new DataFetcher(notionToken, db);
+    const dbInfo = await fetcher.client.notion.databases.retrieve({ database_id: databaseId });
+    const databaseName = fetcher.extractDatabaseName(dbInfo);
+    const projectName = fetcher.extractProjectName(databaseName);
+    const dateEntry = Object.entries(dbInfo.properties || {}).find(([name]) => normalizeDatePropertyKey(name) === 'ngay lam');
+
+    if (!dateEntry) {
+        console.warn(`[Productivity] Live fallback skipped for ${databaseId}: no "Ngay lam" property found`);
+        return [];
+    }
+
+    const [datePropertyName, datePropertyMeta] = dateEntry;
+    const dateProperty = datePropertyMeta?.id || datePropertyName;
+    const filter = {
+        and: [
+            { property: dateProperty, date: { on_or_after: startDate } },
+            { property: dateProperty, date: { on_or_before: endDate } }
+        ]
+    };
+
+    const rows = [];
+    let hasMore = true;
+    let startCursor = undefined;
+    let pageCount = 0;
+
+    while (hasMore) {
+        let attempts = 0;
+
+        while (true) {
+            try {
+                const response = await fetcher.client.notion.databases.query({
+                    database_id: databaseId,
+                    start_cursor: startCursor,
+                    filter,
+                    page_size: PRODUCTIVITY_LIVE_FALLBACK_PAGE_SIZE
+                });
+
+                rows.push(...response.results);
+                hasMore = response.has_more;
+                startCursor = response.next_cursor;
+                pageCount += 1;
+
+                if (hasMore) {
+                    await fetcher.client.delay(fetcher.client.requestDelay);
+                }
+                break;
+            } catch (error) {
+                attempts += 1;
+                const retriable = error?.code === 'notionhq_client_request_timeout'
+                    || error?.code === 'rate_limited'
+                    || /ECONNRESET|ETIMEDOUT|ENOTFOUND/i.test(error?.message || '');
+
+                if (!retriable || attempts >= 3) {
+                    throw error;
+                }
+
+                const backoffMs = Math.pow(2, attempts) * 1000;
+                console.warn(`[Productivity] Live fallback retry ${attempts}/3 for ${databaseId} after ${backoffMs}ms: ${error.message}`);
+                await fetcher.client.delay(backoffMs);
+            }
+        }
+    }
+
+    console.log(`[Productivity] Live fallback fetched ${rows.length} rows from ${databaseName} (${pageCount} pages)`);
+
+    return rows.map(page => ({
+        ...fetcher.transformPage(page),
+        database_name: databaseName,
+        project_name: projectName,
+        database_id: databaseId
+    }));
 }
 
 function parsePaginationParams(query) {
@@ -1439,7 +1527,7 @@ export function setupRoutes(app, db, poller) {
                 const result = await fetcher.fetchAllData([databaseId], null, {
                     fullSync: true,
                     fullSyncCheckpointMs: FULL_SYNC_CHECKPOINT_MS,
-                    failOnDatabaseError: false
+                    failOnDatabaseError: true
                 });
                 const rows = Array.isArray(result?.[databaseId]) ? result[databaseId] : null;
                 if (rows) {
@@ -2314,6 +2402,7 @@ export function setupRoutes(app, db, poller) {
 
         try {
             const prodService = new ProductivityService(db);
+            const liveFallbacks = [];
 
             // If standardDays is provided, save it first
             if (standardDays !== undefined && standardDays !== null) {
@@ -2329,8 +2418,46 @@ export function setupRoutes(app, db, poller) {
                 return res.json({ success: true, columns: PROD_COLUMNS, data: [], error: 'No projects selected' });
             }
 
-            const { validData, unknownUsers, filterStats } = await prodService.generateReport(startDate, endDate, selectedDatabases);
+            const dataOverrides = {};
+            for (const dbId of selectedDatabases) {
+                const cachedRows = db.getData(dbId);
+                if (Array.isArray(cachedRows) && cachedRows.length > 0) {
+                    continue;
+                }
+
+                const knownName = String(db.getDatabaseName(dbId) || '').toLowerCase();
+                if (knownName && !knownName.includes('task')) {
+                    continue;
+                }
+
+                try {
+                    const liveRows = await fetchTaskRowsForProductivityFallback({
+                        databaseId: dbId,
+                        startDate,
+                        endDate,
+                        notionToken,
+                        db
+                    });
+
+                    if (Array.isArray(liveRows) && liveRows.length > 0) {
+                        dataOverrides[dbId] = liveRows;
+                        liveFallbacks.push({
+                            database_id: dbId,
+                            database_name: liveRows[0]?.database_name || db.getDatabaseName(dbId) || dbId,
+                            rows: liveRows.length
+                        });
+                    }
+                } catch (error) {
+                    console.warn(`[Productivity] Live fallback failed for ${dbId}:`, error.message);
+                }
+            }
+
+            const { validData, unknownUsers, filterStats } = await prodService.generateReport(startDate, endDate, selectedDatabases, {
+                dataOverrides
+            });
             const stats = prodService.getStats(startDate, endDate);
+            const dataSource = liveFallbacks.length > 0 ? 'mixed_live_cache' : 'local_cache';
+            const freshnessStatus = liveFallbacks.length > 0 ? 'mixed_live_cache' : 'cached';
 
             res.json({
                 success: true,
@@ -2339,13 +2466,13 @@ export function setupRoutes(app, db, poller) {
                 unknownUsers,
                 filterStats,
                 stats,
-                meta: { startDate, endDate },
+                meta: { startDate, endDate, liveFallbacks },
                 freshness: buildFreshnessContract({
-                    freshness_status: 'cached',
-                    data_source: 'local_cache',
+                    freshness_status: freshnessStatus,
+                    data_source: dataSource,
                     synced_at: db.getLastUpdate()
                 }),
-                data_source: 'local_cache',
+                data_source: dataSource,
                 stale_reason: null,
                 synced_at: db.getLastUpdate()
             });

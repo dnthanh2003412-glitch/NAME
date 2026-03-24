@@ -4,6 +4,7 @@ export class ProductivityService {
     constructor(db) {
         this.db = db;
         this.personAliasMap = this.buildPersonAliasMap();
+        this.personSkeletonMap = this.buildPersonSkeletonMap();
     }
 
     /**
@@ -12,9 +13,10 @@ export class ProductivityService {
      * @param {string} endDate - Format "YYYY-MM-DD"
      * @param {Array<string>} databaseIds 
      */
-    async generateReport(startDate, endDate, databaseIds) {
+    async generateReport(startDate, endDate, databaseIds, options = {}) {
         const stats = this.getStats(startDate, endDate); // Helper to get Manual Inputs
         const reportData = [];
+        const dataOverrides = options.dataOverrides || {};
 
         // Parse date range
         const start = startDate ? new Date(startDate) : null;
@@ -22,11 +24,12 @@ export class ProductivityService {
         if (end) {
             end.setHours(23, 59, 59, 999);
         }
+        const includeUndatedTasksInCount = !start && !end;
 
         // 1. Collect all data (Productivity report should use Task databases only)
         let allTasks = [];
         for (const dbId of databaseIds) {
-            const data = this.db.getData(dbId);
+            const data = Array.isArray(dataOverrides[dbId]) ? dataOverrides[dbId] : this.db.getData(dbId);
             if (!Array.isArray(data) || data.length === 0) continue;
             const dbName = String(data[0]?.database_name || '').toLowerCase();
             if (!dbName.includes('task')) {
@@ -211,8 +214,12 @@ export class ProductivityService {
                 productivityReq: kpi,
                 standardDays,
                 actualDays,
-                // Align "Tong task" with all in-range tasks (status-agnostic) + tasks without date
-                taskCount: tasksAllInRange.length + (groupedNoDate[personName] || groupedNoDate[rawPersonName] || 0),
+                // Monthly/date-range reports should only count tasks that can be placed in the range.
+                taskCount: tasksAllInRange.length + (
+                    includeUndatedTasksInCount
+                        ? (groupedNoDate[personName] || groupedNoDate[rawPersonName] || 0)
+                        : 0
+                ),
                 taskCountDone: tasksDone.length,
                 taskCountAllStatuses: tasksAllInRange.length,
                 projects: projectsByPerson[personName] || projectsByPerson[rawPersonName]
@@ -256,6 +263,7 @@ export class ProductivityService {
             rejectedDateMissing: countDateMissing,
             rejectedDateRange: countDateRangeReject,
             missingAssignee: countAssigneeMissing,
+            includedUndatedInTaskCount: includeUndatedTasksInCount,
             missingDateSamples: missingDateSamples || [],
             projects: Array.from(projectsSet)
         };
@@ -283,6 +291,15 @@ export class ProductivityService {
         const dbName = String(task?.database_name || '').trim();
         if (!dbName) return '';
         return normalizeProjectName(dbName);
+    }
+
+    normalizePropertyLookupKey(name) {
+        return this.removeAccents(String(name || '').toLowerCase().replace(/đ/g, 'd'))
+            .replace(/[^a-z0-9]+/g, '');
+    }
+
+    buildPropertySkeleton(name) {
+        return this.normalizePropertyLookupKey(name).replace(/[aeiouy]+/g, '');
     }
 
     calculateMetrics(tasks, kpi, standardDays, actualDays) {
@@ -374,6 +391,24 @@ export class ProductivityService {
             if (value === null || value === undefined) {
                 const lowerName = propName.toLowerCase();
                 const matchingKey = Object.keys(props).find(k => k.toLowerCase() === lowerName);
+                if (matchingKey) {
+                    value = props[matchingKey];
+                }
+            }
+
+            // 3. Accent-insensitive normalized match
+            if (value === null || value === undefined) {
+                const normalizedName = this.normalizePropertyLookupKey(propName);
+                const matchingKey = Object.keys(props).find(k => this.normalizePropertyLookupKey(k) === normalizedName);
+                if (matchingKey) {
+                    value = props[matchingKey];
+                }
+            }
+
+            // 4. Skeleton match for mojibake keys such as "Ng�y l�m", "TP th?c t?"
+            if (value === null || value === undefined) {
+                const skeletonName = this.buildPropertySkeleton(propName);
+                const matchingKey = Object.keys(props).find(k => this.buildPropertySkeleton(k) === skeletonName);
                 if (matchingKey) {
                     value = props[matchingKey];
                 }
@@ -547,10 +582,6 @@ export class ProductivityService {
         const props = task.properties;
         if (!props) return null;
 
-        const normalizeKey = (key) => this.removeAccents(String(key || '').toLowerCase())
-            .replace(/[^a-z0-9]+/g, ' ')
-            .trim();
-
         const extractDate = (rawValue) => {
             let dateValue = rawValue;
 
@@ -594,9 +625,8 @@ export class ProductivityService {
         };
 
         const entries = Object.entries(props);
-        const ngayLamKeys = new Set(['ngay lam']);
-
-        const ngayLamEntry = entries.find(([key]) => ngayLamKeys.has(normalizeKey(key)));
+        const ngayLamSkeleton = this.buildPropertySkeleton('Ngay lam');
+        const ngayLamEntry = entries.find(([key]) => this.buildPropertySkeleton(key) === ngayLamSkeleton);
         if (ngayLamEntry) {
             // Strict mode: if "Ngay lam" exists but empty/invalid, skip this task.
             return extractDate(ngayLamEntry[1]);
@@ -653,6 +683,10 @@ export class ProductivityService {
             .trim();
     }
 
+    buildPersonSkeleton(name) {
+        return this.normalizePropertyLookupKey(name).replace(/[aeiouy]+/g, '');
+    }
+
     buildPersonAliasMap() {
         const map = new Map();
         const addAlias = (alias, canonical) => {
@@ -660,6 +694,26 @@ export class ProductivityService {
             if (!normalizedAlias || !canonical) return;
             if (!map.has(normalizedAlias)) {
                 map.set(normalizedAlias, canonical);
+            }
+        };
+
+        for (const [alias, canonical] of Object.entries(NAME_ALIAS_MAPPING)) {
+            addAlias(alias, canonical);
+        }
+        for (const canonical of Object.keys(SENIORITY_MAPPING)) {
+            addAlias(canonical, canonical);
+        }
+
+        return map;
+    }
+
+    buildPersonSkeletonMap() {
+        const map = new Map();
+        const addAlias = (alias, canonical) => {
+            const skeletonAlias = this.buildPersonSkeleton(alias);
+            if (!skeletonAlias || !canonical) return;
+            if (!map.has(skeletonAlias)) {
+                map.set(skeletonAlias, canonical);
             }
         };
 
@@ -683,6 +737,9 @@ export class ProductivityService {
         const normalizedRaw = this.normalizePersonName(raw);
         const fixedMatch = this.personAliasMap.get(normalizedRaw);
         if (fixedMatch) return fixedMatch;
+        const skeletonRaw = this.buildPersonSkeleton(raw);
+        const skeletonMatch = this.personSkeletonMap.get(skeletonRaw);
+        if (skeletonMatch) return skeletonMatch;
 
         const stripped = raw.replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim();
         if (stripped && stripped !== raw) {
@@ -692,11 +749,18 @@ export class ProductivityService {
             const normalizedStripped = this.normalizePersonName(stripped);
             const strippedMatch = this.personAliasMap.get(normalizedStripped);
             if (strippedMatch) return strippedMatch;
+            const strippedSkeleton = this.buildPersonSkeleton(stripped);
+            const strippedSkeletonMatch = this.personSkeletonMap.get(strippedSkeleton);
+            if (strippedSkeletonMatch) return strippedSkeletonMatch;
         }
 
         for (const canonical of Object.keys(SENIORITY_MAPPING)) {
             const normalizedCanonical = this.normalizePersonName(canonical);
             if (normalizedCanonical && normalizedRaw.includes(normalizedCanonical)) {
+                return canonical;
+            }
+            const canonicalSkeleton = this.buildPersonSkeleton(canonical);
+            if (canonicalSkeleton && skeletonRaw && skeletonRaw === canonicalSkeleton) {
                 return canonical;
             }
         }

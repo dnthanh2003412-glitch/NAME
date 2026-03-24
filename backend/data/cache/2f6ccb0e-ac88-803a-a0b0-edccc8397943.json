@@ -2033,7 +2033,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         1
@@ -2103,7 +2103,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         5
@@ -2236,7 +2236,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         5
@@ -2303,7 +2303,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2571,7 +2571,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2638,7 +2638,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2705,7 +2705,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2772,7 +2772,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2839,7 +2839,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -2906,7 +2906,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -3107,7 +3107,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -3171,7 +3171,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -3238,7 +3238,7 @@
     "properties": {
       "NLTT": null,
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Point": [
         0
@@ -3291,6 +3291,527 @@
       "Tasks": "Chọn những cảnh cần SP ver1"
     },
     "_title": "Chọn những cảnh cần SP ver1",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "325ccb0e-ac88-8132-9e1c-eb4193014fdd",
+    "created_time": "2026-03-16T09:42:00.000Z",
+    "last_edited_time": "2026-03-16T09:42:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        1
+      ],
+      "Ngày làm": {
+        "start": "2026-03-16T16:42:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Phát sinh chuyên môn - merge 10 file"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 1,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "38ad2754-5cc0-4675-ba8c-bab49ef690d9",
+          "name": "Trinh Ngụy",
+          "email": "production@deedeestudio.net"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "325ccb0e-ac88-80e5-986a-ed8052d8cc16"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Tasks": "Phát sinh chuyên môn - merge 10 file"
+    },
+    "_title": "Phát sinh chuyên môn - merge 10 file",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "325ccb0e-ac88-8152-b12a-f8d0dc4cc7a9",
+    "created_time": "2026-03-16T10:12:00.000Z",
+    "last_edited_time": "2026-03-16T10:12:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        1
+      ],
+      "Ngày làm": {
+        "start": "2026-03-16T17:12:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Phát sinh chuyên môn - merge 10 lo"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 1,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "38ad2754-5cc0-4675-ba8c-bab49ef690d9",
+          "name": "Trinh Ngụy",
+          "email": "production@deedeestudio.net"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "325ccb0e-ac88-8012-98a9-db7b90610251"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Tasks": "Phát sinh chuyên môn - merge 10 lo"
+    },
+    "_title": "Phát sinh chuyên môn - merge 10 lo",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "326ccb0e-ac88-8196-b4d2-d029421d338a",
+    "created_time": "2026-03-17T09:52:00.000Z",
+    "last_edited_time": "2026-03-17T09:52:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        0
+      ],
+      "Ngày làm": {
+        "start": "2026-03-17T16:52:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Họp dự án"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Họp dự án"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 0,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "326ccb0e-ac88-8012-8b69-c0d6d1e58e55"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Tasks": "Họp dự án"
+    },
+    "_title": "Họp dự án",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "326ccb0e-ac88-81f9-a555-f865b2961522",
+    "created_time": "2026-03-17T09:52:00.000Z",
+    "last_edited_time": "2026-03-17T09:52:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        0
+      ],
+      "Ngày làm": {
+        "start": "2026-03-17T16:52:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Phát sinh chuyên môn"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 0,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "326ccb0e-ac88-8079-865d-d1c5950e3187"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Tasks": "Phát sinh chuyên môn"
+    },
+    "_title": "Phát sinh chuyên môn",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "328ccb0e-ac88-8192-8b59-c01fe9883112",
+    "created_time": "2026-03-19T10:53:00.000Z",
+    "last_edited_time": "2026-03-19T10:53:00.000Z",
+    "properties": {
+      "NLTT": 0.125,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        1
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19T17:53:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Họp dự án"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Họp dự án"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 1,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "1bd1e5a6-31bf-4224-8ed4-9189e60c0787",
+          "name": "Linh Hoàng",
+          "email": "linhhv@sangygroup.com"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "328ccb0e-ac88-804c-b976-c3664ac1aea8"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Tasks": "Họp dự án"
+    },
+    "_title": "Họp dự án",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "328ccb0e-ac88-81a6-afc4-e0f3f529d222",
+    "created_time": "2026-03-19T09:02:00.000Z",
+    "last_edited_time": "2026-03-19T09:02:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        0
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19T16:02:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Họp dự án"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Họp dự án"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 0,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "328ccb0e-ac88-80bb-b13c-ffb8a1695fe9"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Tasks": "Họp dự án"
+    },
+    "_title": "Họp dự án",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "328ccb0e-ac88-81b8-b2b0-f6c24b736789",
+    "created_time": "2026-03-19T10:56:00.000Z",
+    "last_edited_time": "2026-03-19T10:56:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "Point Status": null,
+      "Product Point": null,
+      "Ngày làm": {
+        "start": "2026-03-19T17:56:00.000+07:00",
+        "end": null
+      },
+      "Product Status": null,
+      "Required by": null,
+      "Product (1)": null,
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "Task QC": null,
+      "TP thực tế": 0,
+      "Task type": "Main",
+      "Task fix": null,
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": null,
+      "Assignee": [
+        {
+          "id": "800e396f-b978-41ef-8557-655d376d2603",
+          "name": "Minh Anh Nguyen Pham",
+          "email": "anhnpm@sangygroup.com"
+        }
+      ],
+      "UTNL": null,
+      "Product": [],
+      "Created time": null,
+      "Task main": null,
+      "Loại cảnh": null,
+      "Tasks": "Phát sinh chuyên môn"
+    },
+    "_title": "Phát sinh chuyên môn",
+    "database_name": "[OTH] Tasks",
+    "project_name": "[OTH] Tasks",
+    "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"
+  },
+  {
+    "id": "328ccb0e-ac88-81f6-96a7-fdef1a9dca9d",
+    "created_time": "2026-03-19T10:53:00.000Z",
+    "last_edited_time": "2026-03-19T10:54:00.000Z",
+    "properties": {
+      "NLTT": 0.375,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Product Point": [
+        5
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19T17:53:00.000+07:00",
+        "end": null
+      },
+      "Product Status": [
+        "Completed"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product (1)": [
+        "Scan Data"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 5,
+      "Task type": "Main",
+      "Task fix": "0/1",
+      "Sprint": null,
+      "Task Status": "Done others",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "1bd1e5a6-31bf-4224-8ed4-9189e60c0787",
+          "name": "Linh Hoàng",
+          "email": "linhhv@sangygroup.com"
+        }
+      ],
+      "UTNL": [],
+      "Product": [
+        "328ccb0e-ac88-80ec-819e-f1dad0997bee"
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Tasks": "Scan Data"
+    },
+    "_title": "Scan Data",
     "database_name": "[OTH] Tasks",
     "project_name": "[OTH] Tasks",
     "database_id": "2f6ccb0e-ac88-803a-a0b0-edccc8397943"

@@ -27,6 +27,7 @@ export const SENIORITY_MAPPING = {
     "Bùi Thị Giang": "Từ 2 - 3.5 năm",
     "Nguyễn Gia Lộc": "Từ 2 - 3.5 năm",
     "Lê Văn Ngoan": "Từ 2 - 3.5 năm",
+    "Vương Hồng Thảo": "Từ 2 - 3.5 năm",
 
     // Trên 3.5 năm
     "Nguyễn Thị Mỹ Khanh": "Trên 3.5 năm",

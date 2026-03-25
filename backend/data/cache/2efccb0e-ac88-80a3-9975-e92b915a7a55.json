@@ -15,10 +15,10 @@
         1
       ],
       "Point status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "UTNL": null,
       "Trọng số TP": 1,
@@ -210,10 +210,10 @@
         1
       ],
       "Point status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "UTNL": null,
       "Trọng số TP": 0.15,
@@ -255,6 +255,118 @@
       "Sprint (2)": []
     },
     "_title": "LO 01 (1) Completed 2",
+    "database_name": "[LEG] Tasks ",
+    "project_name": "[LEG] Tasks",
+    "database_id": "2efccb0e-ac88-80a3-9975-e92b915a7a55"
+  },
+  {
+    "id": "32cccb0e-ac88-80a3-98e7-fe4ba4f32e9b",
+    "created_time": "2026-03-23T07:18:00.000Z",
+    "last_edited_time": "2026-03-23T07:18:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "[LEG] Product": [
+        "32cccb0e-ac88-8015-8749-ece74a5753f0"
+      ],
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Product Point": [
+        5
+      ],
+      "Point status": [
+        "Unconfirmed"
+      ],
+      "Product Status": [
+        "Unconfirmed"
+      ],
+      "UTNL": null,
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Phát sinh chuyên môn"
+      ],
+      "Task QC": "0/1",
+      "TP thực tế": 3.85,
+      "Task type": "Main",
+      "Product (1)": [
+        "Phát sinh chuyên môn_sửa sc 1"
+      ],
+      "Task fix": "1/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Loại cảnh": [
+        "E"
+      ],
+      "Sprint ": null,
+      "Created time": null,
+      "Task main": "1/1",
+      "Tasks": "Phát sinh chuyên môn_sửa sc 1 Completed 1",
+      "Sprint (2)": []
+    },
+    "_title": "Phát sinh chuyên môn_sửa sc 1 Completed 1",
+    "database_name": "[LEG] Tasks ",
+    "project_name": "[LEG] Tasks",
+    "database_id": "2efccb0e-ac88-80a3-9975-e92b915a7a55"
+  },
+  {
+    "id": "32cccb0e-ac88-8110-8413-eb06dffe69b0",
+    "created_time": "2026-03-23T07:18:00.000Z",
+    "last_edited_time": "2026-03-23T07:18:00.000Z",
+    "properties": {
+      "NLTT": null,
+      "[LEG] Product": [],
+      "Required by": null,
+      "Product Point": null,
+      "Point status": null,
+      "Product Status": null,
+      "UTNL": null,
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "Task QC": null,
+      "TP thực tế": 0,
+      "Task type": "Main",
+      "Product (1)": null,
+      "Task fix": null,
+      "Task Status": "Done others",
+      "Episode": null,
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23T14:18:00.000+07:00",
+        "end": null
+      },
+      "Loại cảnh": null,
+      "Sprint ": null,
+      "Created time": null,
+      "Task main": null,
+      "Tasks": "Phát sinh chuyên môn_sửa sc 1",
+      "Sprint (2)": []
+    },
+    "_title": "Phát sinh chuyên môn_sửa sc 1",
     "database_name": "[LEG] Tasks ",
     "project_name": "[LEG] Tasks",
     "database_id": "2efccb0e-ac88-80a3-9975-e92b915a7a55"

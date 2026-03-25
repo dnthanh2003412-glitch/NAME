@@ -195,6 +195,109 @@ function parseDate(dateStr) {
     return null;
 }
 
+function toColumnArray(columnOrColumns) {
+    if (Array.isArray(columnOrColumns)) {
+        return columnOrColumns.filter(Boolean);
+    }
+    return columnOrColumns ? [columnOrColumns] : [];
+}
+
+function normalizeLookupKey(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/\u0111/g, 'd')
+        .replace(/[^a-z0-9]+/g, '');
+}
+
+function buildLookupSkeleton(value) {
+    return normalizeLookupKey(value).replace(/[aeiouy]+/g, '');
+}
+
+function findMatchingColumns(columns, ...names) {
+    const matches = new Map();
+
+    const consider = (columnName, score) => {
+        if (!columnName) return;
+        const existing = matches.get(columnName);
+        if (!existing || score > existing.score) {
+            matches.set(columnName, { score });
+        }
+    };
+
+    names.filter(Boolean).forEach(name => {
+        const exactName = String(name).toLowerCase();
+        const normalizedName = normalizeLookupKey(name);
+        const skeletonName = buildLookupSkeleton(name);
+
+        columns.forEach(columnName => {
+            const exactColumn = String(columnName).toLowerCase();
+            const normalizedColumn = normalizeLookupKey(columnName);
+            const skeletonColumn = buildLookupSkeleton(columnName);
+
+            if (exactColumn === exactName) {
+                consider(columnName, 400);
+                return;
+            }
+            if (normalizedName && normalizedColumn === normalizedName) {
+                consider(columnName, 300);
+                return;
+            }
+            if (skeletonName && skeletonColumn === skeletonName) {
+                consider(columnName, 200);
+                return;
+            }
+            if (normalizedName && normalizedColumn && normalizedColumn.includes(normalizedName)) {
+                consider(columnName, 100);
+            }
+        });
+    });
+
+    return Array.from(matches.entries())
+        .sort((a, b) => {
+            const scoreDiff = b[1].score - a[1].score;
+            if (scoreDiff !== 0) return scoreDiff;
+            return String(a[0]).length - String(b[0]).length;
+        })
+        .map(([columnName]) => columnName);
+}
+
+function getRowValueFromColumns(row, columnOrColumns) {
+    const columns = toColumnArray(columnOrColumns);
+    for (const columnName of columns) {
+        const value = row?.[columnName];
+        if (value !== null && value !== undefined && value !== '') {
+            return value;
+        }
+    }
+    return '';
+}
+
+function getRowDateFromColumns(row, primaryDateColumns, fallbackDateColumns) {
+    const primaryColumns = toColumnArray(primaryDateColumns);
+    for (const columnName of primaryColumns) {
+        const parsed = parseDate(row?.[columnName]);
+        if (parsed) {
+            return { date: parsed, column: columnName };
+        }
+    }
+
+    if (primaryColumns.length > 0) {
+        return null;
+    }
+
+    const fallbackColumns = toColumnArray(fallbackDateColumns);
+    for (const columnName of fallbackColumns) {
+        const parsed = parseDate(row?.[columnName]);
+        if (parsed) {
+            return { date: parsed, column: columnName };
+        }
+    }
+
+    return null;
+}
+
 /**
  * Get month/year from date
  */
@@ -211,8 +314,7 @@ function extractMonthsYears(data, dateColName) {
     const years = new Set();
 
     data.forEach(row => {
-        const dateVal = row[dateColName];
-        const parsed = parseDate(dateVal);
+        const parsed = getRowDateFromColumns(row, dateColName)?.date || null;
         if (parsed) {
             months.add(parsed.getMonth() + 1);
             years.add(parsed.getFullYear());
@@ -232,8 +334,7 @@ function filterByMonthYear(data, dateColName, month, year) {
     if (!month && !year) return data;
 
     return data.filter(row => {
-        const dateVal = row[dateColName];
-        const parsed = parseDate(dateVal);
+        const parsed = getRowDateFromColumns(row, dateColName)?.date || null;
         if (!parsed) return false;
 
         if (month && parsed.getMonth() + 1 !== month) return false;
@@ -264,21 +365,12 @@ function filterByDateRange(data, primaryDateCol, fallbackDateCol, startDate, end
 
     return data.filter(row => {
         // Try primary date column first, then fallback
-        let dateVal = row[primaryDateCol];
-        let parsed = null;
-        if (typeof dateVal === 'object' && dateVal !== null) {
-            parsed = parseDate(dateVal); // It handles objects now
-        } else {
-            parsed = parseDate(dateVal);
-        }
-
-        // REMOVED PER-ROW FALLBACK:
-        // If primary date column exists (e.g. NGÀY LÀM), we use it exclusively.
-        // We do NOT fallback to "Created Time" specific to this row, because it confuses the user.
+        const parsed = getRowDateFromColumns(row, primaryDateCol, fallbackDateCol)?.date || null;
 
         // Log first few failures or successes for debugging
         if (window._debugFilterCount < 5) {
-            console.log(`[FilterDebug] Row: ${row[primaryDateCol]} -> Parsed: ${parsed}, In Range: ${parsed >= start && parsed <= end}`);
+            const previewValue = getRowValueFromColumns(row, primaryDateCol);
+            console.log(`[FilterDebug] Row: ${previewValue} -> Parsed: ${parsed}, In Range: ${parsed >= start && parsed <= end}`);
             window._debugFilterCount++;
         }
 
@@ -366,8 +458,9 @@ function formatDateDisplay(date) {
  * Get unique values from column
  */
 function getUniqueValues(data, colName) {
-    if (!colName) return [];
-    return [...new Set(data.map(r => r[colName]).filter(v => v && v !== '-' && v !== ''))].sort();
+    const columns = toColumnArray(colName);
+    if (columns.length === 0) return [];
+    return [...new Set(data.map(r => getRowValueFromColumns(r, columns)).filter(v => v && v !== '-' && v !== ''))].sort();
 }
 
 /**
@@ -605,36 +698,24 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     data.forEach(row => Object.keys(row).forEach(k => allKeys.add(k)));
     const columns = Array.from(allKeys);
 
-    // Normalize string for Vietnamese comparison (remove accents, lowercase)
-    const normalizeStr = (str) => {
-        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
-    };
-
-    // Find column names - robust matching with strict priority
-    const findCol = (...names) => {
-        for (const name of names) {
-            const normName = normalizeStr(name);
-            let found = columns.find(c => c.toLowerCase() === name.toLowerCase());
-            if (found) return found;
-            found = columns.find(c => normalizeStr(c) === normName);
-            if (found) return found;
-        }
-        for (const name of names) {
-            const found = columns.find(c => c.toLowerCase().includes(name.toLowerCase()));
-            if (found) return found;
-        }
-        return undefined;
-    };
+    const findCol = (...names) => findMatchingColumns(columns, ...names)[0];
+    const assigneeCandidates = findMatchingColumns(columns, 'ASSIGNEE', 'Nguoi thuc hien', 'Assignee', 'Nguoi lam', 'OWNER', 'Owner');
+    const dateCandidates = findMatchingColumns(columns, 'NGAY LAM', 'Ngay lam', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
+    const fallbackDateCandidates = findMatchingColumns(columns, 'LastEditTime', 'Last Edit Time', 'LastEdited', 'Updated', 'Created');
 
     const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
     const dateCol = findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
     const fallbackDateCol = findCol('LastEditTime', 'Last Edit Time', 'LastEdited', 'Updated', 'Created');
+    const resolvedAssigneeCol = assigneeCandidates[0] || assigneeCol;
+    const resolvedDateCol = dateCandidates[0] || dateCol;
+    const resolvedFallbackDateCol = fallbackDateCandidates[0] || fallbackDateCol;
 
     console.log('[Dashboard] Columns analysis:', {
         totalCols: columns.length,
         allColumnNames: columns,
-        dateCol,
-        fallbackDateCol
+        dateCol: resolvedDateCol,
+        dateCandidates,
+        fallbackDateCol: resolvedFallbackDateCol
     });
 
     const productCol = findCol('Product', 'PRODUCT', 'Sản phẩm', 'Dự án con', 'PRODUCT TYPE', 'Product Type', 'Loại sản phẩm');
@@ -645,7 +726,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
 
     // Get filter options
     const sprints = getUniqueValues(data, sprintCol);
-    const assignees = getUniqueValues(data, assigneeCol);
+    const assignees = getUniqueValues(data, assigneeCandidates);
     const presets = getDateRangePresets();
 
     // Get current date range values
@@ -664,17 +745,17 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
     if (sprintFilter && sprintCol) {
         filteredData = filteredData.filter(r => r[sprintCol] === sprintFilter);
     }
-    if (assigneeFilter && assigneeCol) {
-        filteredData = filteredData.filter(r => r[assigneeCol] === assigneeFilter);
+    if (assigneeFilter && resolvedAssigneeCol) {
+        filteredData = filteredData.filter(r => getRowValueFromColumns(r, assigneeCandidates) === assigneeFilter);
     }
-    if (dateCol && (currentStartDate || currentEndDate)) {
-        filteredData = filterByDateRange(filteredData, dateCol, fallbackDateCol, currentStartDate, currentEndDate);
+    if (resolvedDateCol && (currentStartDate || currentEndDate)) {
+        filteredData = filterByDateRange(filteredData, dateCandidates, fallbackDateCandidates, currentStartDate, currentEndDate);
     }
 
     // Check for "No Data in Range" warning
     let rangeWarning = '';
     if (filteredData.length === 0 && data.length > 0 && (currentStartDate || currentEndDate)) {
-        if (!dateCol) {
+        if (!resolvedDateCol) {
             rangeWarning = `<div style="padding:12px;margin-bottom:16px;background:#451a03;border:1px solid #ef4444;border-radius:8px;color:#fca5a5;font-size:0.9rem;">
                  ⚠️ <strong>Lỗi cấu hình:</strong> Không tìm thấy cột ngày (Done Date / Ngày làm).<br>
                  Hệ thống không thể lọc theo thời gian. Vui lòng kiểm tra lại tên cột trong Notion.
@@ -682,7 +763,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
         } else {
             let minDate = null, maxDate = null;
             data.forEach(r => {
-                const d = parseDate(r[dateCol]);
+                const d = getRowDateFromColumns(r, dateCandidates)?.date || null;
                 if (d) {
                     if (!minDate || d < minDate) minDate = d;
                     if (!maxDate || d > maxDate) maxDate = d;
@@ -696,7 +777,7 @@ export function renderRawDataDashboard(data, container, databaseName, options = 
                         <strong>Không có dữ liệu trong khoảng thời gian đã chọn.</strong><br>
                         <span style="opacity:0.9;font-size:0.85rem;">
                             Dữ liệu thực tế có từ: <strong>${formatDateDisplay(minDate)}</strong> đến <strong>${formatDateDisplay(maxDate)}</strong><br>
-                            (Cột ngày được dùng: <code>${dateCol}</code>)
+                            (Cột ngày được dùng: <code>${resolvedDateCol}</code>)
                         </span>
                      </div>
                  </div>`;
@@ -1261,3 +1342,6 @@ window.filterByDateRange = filterByDateRange;
 window.getDateRangePresets = getDateRangePresets;
 window.formatDateForInput = formatDateForInput;
 window.formatDateDisplay = formatDateDisplay;
+window.findMatchingRawColumns = findMatchingColumns;
+window.getRawRowValueFromColumns = getRowValueFromColumns;
+window.getRawRowDateFromColumns = getRowDateFromColumns;

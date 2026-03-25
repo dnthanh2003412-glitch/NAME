@@ -1811,22 +1811,47 @@ class DashboardApp {
             }
             return undefined;
         };
+        const findMatchingColumns = typeof window.findMatchingRawColumns === 'function'
+            ? (...names) => window.findMatchingRawColumns(originalColumns, ...names)
+            : (...names) => {
+                const match = findCol(...names);
+                return match ? [match] : [];
+            };
+        const getRowValueFromColumns = typeof window.getRawRowValueFromColumns === 'function'
+            ? window.getRawRowValueFromColumns
+            : (row, columnOrColumns) => {
+                const columns = Array.isArray(columnOrColumns)
+                    ? columnOrColumns.filter(Boolean)
+                    : (columnOrColumns ? [columnOrColumns] : []);
+                for (const columnName of columns) {
+                    const value = row?.[columnName];
+                    if (value !== null && value !== undefined && value !== '') {
+                        return value;
+                    }
+                }
+                return '';
+            };
         const assigneeCol = findCol('ASSIGNEE', 'Người thực hiện', 'Assignee', 'Người làm', 'OWNER', 'Owner');
         // Prioritize "NGÀY LÀM" as requested
         const dateCol = findCol('NGÀY LÀM', 'Ngày làm', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
         console.log('[RawTable] findCol dateCol result:', dateCol);
         const sprintCol = findCol('Sprint', 'SPRINT');
-        const assignees = assigneeCol ? [...new Set(originalData.map(r => r[assigneeCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
-        const sprints = sprintCol ? [...new Set(originalData.map(r => r[sprintCol]).filter(v => v && v !== '-' && v !== ''))].sort() : [];
+        const assigneeColumns = findMatchingColumns('ASSIGNEE', 'Nguoi thuc hien', 'Assignee', 'Nguoi lam', 'OWNER', 'Owner');
+        const dateColumns = findMatchingColumns('NGAY LAM', 'Ngay lam', 'Work Date', 'DoneDate', 'Done Date', 'DONE DATE', 'DONE', 'Date');
+        const sprintColumns = sprintCol ? [sprintCol] : [];
+        const resolvedAssigneeCol = assigneeColumns[0] || assigneeCol;
+        const resolvedDateCol = dateColumns[0] || dateCol;
+        const assignees = resolvedAssigneeCol ? [...new Set(originalData.map(r => getRowValueFromColumns(r, assigneeColumns)).filter(v => v && v !== '-' && v !== ''))].sort() : [];
+        const sprints = sprintCol ? [...new Set(originalData.map(r => getRowValueFromColumns(r, sprintColumns)).filter(v => v && v !== '-' && v !== ''))].sort() : [];
 
         // Extract available months/years from date column
         const extractMonthsYears = () => {
-            if (!dateCol) return { months: [], years: [] };
+            if (!resolvedDateCol) return { months: [], years: [] };
             const yearsSet = new Set();
             originalData.forEach(row => {
-                const dateStr = row[dateCol];
-                if (!dateStr) return;
-                const d = new Date(dateStr);
+                const dateValue = getRowValueFromColumns(row, dateColumns);
+                if (!dateValue) return;
+                const d = new Date(dateValue);
                 if (!isNaN(d.getTime())) {
                     yearsSet.add(d.getFullYear());
                 }
@@ -1847,6 +1872,7 @@ class DashboardApp {
             c.toLowerCase().includes('updated') ||
             c.toLowerCase().includes('created')
         ) || '';
+        const fallbackDateColumns = fallbackDateCol ? [fallbackDateCol] : [];
 
         // Get visible columns
         const getVisibleColumns = () => columnOrder.filter(col => !hiddenColumns.has(col));
@@ -1870,25 +1896,50 @@ class DashboardApp {
             const d = new Date(str);
             return isNaN(d.getTime()) ? null : d;
         };
+        const getRowDateFromColumns = typeof window.getRawRowDateFromColumns === 'function'
+            ? window.getRawRowDateFromColumns
+            : (row, primaryDateColumns, fallbackDateColumns) => {
+                const primaryColumns = Array.isArray(primaryDateColumns)
+                    ? primaryDateColumns.filter(Boolean)
+                    : (primaryDateColumns ? [primaryDateColumns] : []);
+                for (const columnName of primaryColumns) {
+                    const parsed = parseDate(row?.[columnName]);
+                    if (parsed) {
+                        return { date: parsed, column: columnName };
+                    }
+                }
+                if (primaryColumns.length > 0) {
+                    return null;
+                }
+                const fallbackColumns = Array.isArray(fallbackDateColumns)
+                    ? fallbackDateColumns.filter(Boolean)
+                    : (fallbackDateColumns ? [fallbackDateColumns] : []);
+                for (const columnName of fallbackColumns) {
+                    const parsed = parseDate(row?.[columnName]);
+                    if (parsed) {
+                        return { date: parsed, column: columnName };
+                    }
+                }
+                return null;
+            };
 
         // Apply search and sort
         const applyFiltersAndSearch = () => {
             filteredData = originalData.filter(row => {
                 // Assignee Filter
-                if (assigneeTableFilter && assigneeCol) {
-                    if (row[assigneeCol] !== assigneeTableFilter) return false;
+                if (assigneeTableFilter && resolvedAssigneeCol) {
+                    if (getRowValueFromColumns(row, assigneeColumns) !== assigneeTableFilter) return false;
                 }
 
                 // Sprint Filter
                 if (sprintTableFilter && sprintCol) {
-                    if (row[sprintCol] !== sprintTableFilter) return false;
+                    if (getRowValueFromColumns(row, sprintColumns) !== sprintTableFilter) return false;
                 }
 
                 // Date Range Filter (with fallback)
-                if (dateCol && (startDateFilter || endDateFilter)) {
+                if (resolvedDateCol && (startDateFilter || endDateFilter)) {
                     // Try primary date column first
-                    let dateStr = row[dateCol];
-                    let d = parseDate(dateStr);
+                    const d = getRowDateFromColumns(row, dateColumns, fallbackDateColumns)?.date || null;
 
                     // Fallback logic MOVED: Only use fallback info if dateCol was NOT found globally.
                     // If dateCol exists (e.g. NGÀY LÀM), we MUST use it. 
@@ -2225,7 +2276,7 @@ class DashboardApp {
             document.addEventListener('dashboard-filter-change', (e) => {
                 if (e.detail) {
                     const { startDate, endDate, assigneeFilter, sprintFilter } = e.detail;
-                    console.log('[RawTable] dashboard-filter-change:', { startDate, endDate, assigneeFilter, sprintFilter, dateCol });
+                    console.log('[RawTable] dashboard-filter-change:', { startDate, endDate, assigneeFilter, sprintFilter, dateCol: resolvedDateCol });
 
                     startDateFilter = startDate || '';
                     endDateFilter = endDate || '';
@@ -2238,19 +2289,16 @@ class DashboardApp {
 
                     // Skip dashboard update since it triggered this event
                     filteredData = originalData.filter(row => {
-                        if (assigneeTableFilter && assigneeCol && row[assigneeCol] !== assigneeTableFilter) return false;
-                        if (sprintTableFilter && sprintCol && row[sprintCol] !== sprintTableFilter) return false;
-                        if (dateCol && (startDateFilter || endDateFilter)) {
-                            let d = parseDate(row[dateCol]);
-                            if (!d && fallbackDateCol) d = parseDate(row[fallbackDateCol]);
-                            // Include tasks without dates, only filter if date exists
-                            if (d) {
-                                if (startDateFilter && d < new Date(startDateFilter)) return false;
-                                if (endDateFilter) {
-                                    const end = new Date(endDateFilter);
-                                    end.setHours(23, 59, 59, 999);
-                                    if (d > end) return false;
-                                }
+                        if (assigneeTableFilter && resolvedAssigneeCol && getRowValueFromColumns(row, assigneeColumns) !== assigneeTableFilter) return false;
+                        if (sprintTableFilter && sprintCol && getRowValueFromColumns(row, sprintColumns) !== sprintTableFilter) return false;
+                        if (resolvedDateCol && (startDateFilter || endDateFilter)) {
+                            const d = getRowDateFromColumns(row, dateColumns, fallbackDateColumns)?.date || null;
+                            if (!d) return false;
+                            if (startDateFilter && d < new Date(startDateFilter)) return false;
+                            if (endDateFilter) {
+                                const end = new Date(endDateFilter);
+                                end.setHours(23, 59, 59, 999);
+                                if (d > end) return false;
                             }
                         }
                         return true;

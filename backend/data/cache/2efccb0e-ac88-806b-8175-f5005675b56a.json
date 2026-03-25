@@ -719,7 +719,7 @@
   {
     "id": "2efccb0e-ac88-80f6-843f-eb38f4cae49a",
     "created_time": "2026-01-21T08:20:00.000Z",
-    "last_edited_time": "2026-01-23T03:58:00.000Z",
+    "last_edited_time": "2026-03-23T05:29:00.000Z",
     "properties": {
       "Total Main": 0,
       "Combo": null,
@@ -730,13 +730,7 @@
       "Resource": "Freelance",
       "Min": 3.75,
       "Max": 5,
-      "Owner": [
-        {
-          "id": "38ad2754-5cc0-4675-ba8c-bab49ef690d9",
-          "name": "Trinh Ngụy",
-          "email": "production@deedeestudio.net"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Ưu tiên": null,
       "Loại cảnh": "B",
@@ -864,13 +858,60 @@
       ],
       "Total Fixed": 0,
       "Required by": "External",
-      "Point Status": "Confirmed",
+      "Point Status": "Unconfirmed",
       "Product point": 1,
       "Due Date": null,
       "Product type": "Layout",
       "Product": "LO 01 (1)"
     },
     "_title": "LO 01 (1)",
+    "database_name": "[LEG] Product",
+    "project_name": "[LEG]",
+    "database_id": "2efccb0e-ac88-806b-8175-f5005675b56a"
+  },
+  {
+    "id": "32cccb0e-ac88-8015-8749-ece74a5753f0",
+    "created_time": "2026-03-23T07:18:00.000Z",
+    "last_edited_time": "2026-03-23T07:18:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Combo": null,
+      "Total QC": 0,
+      "UTNL": null,
+      "Episode": null,
+      "DO": null,
+      "Resource": null,
+      "Min": 0.25,
+      "Max": 0.75,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Ưu tiên": null,
+      "Loại cảnh": "E",
+      "Status": "Completed",
+      "Task Create": null,
+      "Task Fix": null,
+      "Task count + 1": 2,
+      "[LEG] Tasks ": [
+        "32cccb0e-ac88-80a3-98e7-fe4ba4f32e9b"
+      ],
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "Due Date": {
+        "start": "2026-03-23T14:18:00.000+07:00",
+        "end": null
+      },
+      "Product type": "Phát sinh chuyên môn",
+      "Product": "Phát sinh chuyên môn_sửa sc 1"
+    },
+    "_title": "Phát sinh chuyên môn_sửa sc 1",
     "database_name": "[LEG] Product",
     "project_name": "[LEG]",
     "database_id": "2efccb0e-ac88-806b-8175-f5005675b56a"

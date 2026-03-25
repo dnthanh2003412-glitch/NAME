@@ -439,7 +439,7 @@
   {
     "id": "312ccb0e-ac88-8016-9725-c22b8518922a",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:32:00.000Z",
+    "last_edited_time": "2026-03-24T10:16:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -454,9 +454,9 @@
       "Ưu tiên": null,
       "Owner": [
         {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
         }
       ],
       "Task count": 0,
@@ -651,7 +651,7 @@
   {
     "id": "312ccb0e-ac88-801c-a4b6-f7116850811e",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:33:00.000Z",
+    "last_edited_time": "2026-03-24T09:02:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -662,13 +662,7 @@
       "Số Giây": 2,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -823,11 +817,13 @@
   {
     "id": "312ccb0e-ac88-8020-9f90-fc6143d358d4",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-17T03:15:00.000Z",
+    "last_edited_time": "2026-03-24T10:09:00.000Z",
     "properties": {
-      "Total Main": 0,
+      "Total Main": 1,
       "Episode": "EP 04",
-      "Tasks ": [],
+      "Tasks ": [
+        "32dccb0e-ac88-807b-bcc9-d437d3604a52"
+      ],
       "Min": 3.75,
       "DO": null,
       "Combo": [
@@ -844,11 +840,11 @@
           "email": "mynth@sangygroup.com"
         }
       ],
-      "Task count": 0,
+      "Task count": 1,
       "Loại cảnh": "B",
-      "Status": "Not started",
+      "Status": "In progress",
       "Task Create": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Resource": null,
       "Total Fixed": 0,
       "Required by": "Internal",
@@ -956,7 +952,7 @@
   {
     "id": "312ccb0e-ac88-8022-88e6-fdcafc758628",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:32:00.000Z",
+    "last_edited_time": "2026-03-24T10:16:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -971,9 +967,9 @@
       "Ưu tiên": null,
       "Owner": [
         {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
         }
       ],
       "Task count": 0,
@@ -1238,7 +1234,7 @@
   {
     "id": "312ccb0e-ac88-8027-9c7d-f126705321b2",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T09:02:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -1319,7 +1315,7 @@
   {
     "id": "312ccb0e-ac88-8028-82d1-c6238a881365",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:38:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -1347,7 +1343,7 @@
       "Required by": "Internal",
       "Point Status": "Unconfirmed",
       "Product point": 1,
-      "UTNL": null,
+      "UTNL": 0.25,
       "Due Date": null,
       "Product type": "Inbetween",
       "Product": "IBW 80",
@@ -1737,7 +1733,7 @@
   {
     "id": "312ccb0e-ac88-802d-b190-dee7824e8b59",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:33:00.000Z",
+    "last_edited_time": "2026-03-24T09:00:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -2324,7 +2320,7 @@
   {
     "id": "312ccb0e-ac88-8043-8021-cede0813bc95",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-24T07:28:00.000Z",
+    "last_edited_time": "2026-03-24T09:49:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
@@ -2349,13 +2345,13 @@
       ],
       "Task count": 2,
       "Loại cảnh": "D",
-      "Status": "Pending Review",
+      "Status": "QC Approved",
       "Task Create": null,
       "Task count + 1": 3,
       "Resource": null,
       "Total Fixed": 1,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 14,
       "UTNL": 2,
       "Due Date": null,
@@ -2415,7 +2411,7 @@
   {
     "id": "312ccb0e-ac88-8043-abe2-e053981996a8",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:33:00.000Z",
+    "last_edited_time": "2026-03-24T09:01:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -2426,13 +2422,7 @@
       "Số Giây": 10,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -2457,7 +2447,7 @@
   {
     "id": "312ccb0e-ac88-8043-b2fd-e3f3738f7afe",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-24T02:00:00.000Z",
+    "last_edited_time": "2026-03-24T09:50:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
@@ -2483,13 +2473,13 @@
       ],
       "Task count": 2,
       "Loại cảnh": "C",
-      "Status": "Pending Review",
+      "Status": "QC Approved",
       "Task Create": null,
       "Task count + 1": 3,
       "Resource": null,
       "Total Fixed": 1,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "UTNL": 3.5,
       "Due Date": null,
@@ -2505,7 +2495,7 @@
   {
     "id": "312ccb0e-ac88-8044-8cc0-e6e588b10557",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T09:02:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -2615,7 +2605,7 @@
   {
     "id": "312ccb0e-ac88-8045-8f1f-fadce1ed7bdc",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-19T05:08:00.000Z",
+    "last_edited_time": "2026-03-24T08:35:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -2628,13 +2618,7 @@
       "Số Giây": 3,
       "Max": 2,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "D",
       "Status": "Not started",
@@ -2741,12 +2725,13 @@
   {
     "id": "312ccb0e-ac88-8047-9137-cca9701ffb73",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-23T10:06:00.000Z",
+    "last_edited_time": "2026-03-24T09:50:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
       "Tasks ": [
-        "328ccb0e-ac88-8032-b4eb-efaa6e2402d4"
+        "328ccb0e-ac88-8032-b4eb-efaa6e2402d4",
+        "32dccb0e-ac88-8070-8082-dfa7a90444b8"
       ],
       "Min": 0.25,
       "DO": null,
@@ -2763,15 +2748,15 @@
           "email": "linhnt@sangygroup.com"
         }
       ],
-      "Task count": 1,
+      "Task count": 2,
       "Loại cảnh": "E",
-      "Status": "Need Fix",
+      "Status": "QC Approved",
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Resource": null,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 5,
       "UTNL": null,
       "Due Date": null,
@@ -2787,7 +2772,7 @@
   {
     "id": "312ccb0e-ac88-8047-a959-e68ef0aa302f",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:35:00.000Z",
+    "last_edited_time": "2026-03-24T08:47:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -2800,13 +2785,7 @@
       "Số Giây": 8,
       "Max": 3.5,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "C",
       "Status": "Not started",
@@ -3554,12 +3533,13 @@
   {
     "id": "312ccb0e-ac88-805a-b754-c4e53ff506ad",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-23T10:18:00.000Z",
+    "last_edited_time": "2026-03-24T10:29:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
       "Tasks ": [
-        "329ccb0e-ac88-80c3-8681-e35442dae813"
+        "329ccb0e-ac88-80c3-8681-e35442dae813",
+        "32dccb0e-ac88-80cd-966e-df289aea25b6"
       ],
       "Min": 1,
       "DO": null,
@@ -3576,13 +3556,13 @@
           "email": "linhnt@sangygroup.com"
         }
       ],
-      "Task count": 1,
+      "Task count": 2,
       "Loại cảnh": "D",
-      "Status": "Need Fix",
+      "Status": "Pending Review",
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Resource": null,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "Required by": "Internal",
       "Point Status": "Unconfirmed",
       "Product point": 14,
@@ -3832,7 +3812,7 @@
   {
     "id": "312ccb0e-ac88-805e-9c22-ea2cf381312b",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-24T07:12:00.000Z",
+    "last_edited_time": "2026-03-24T09:50:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
@@ -3856,13 +3836,13 @@
       ],
       "Task count": 1,
       "Loại cảnh": "C",
-      "Status": "Pending Review",
+      "Status": "QC Approved",
       "Task Create": null,
       "Task count + 1": 2,
       "Resource": null,
       "Total Fixed": 0,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "UTNL": 3,
       "Due Date": null,
@@ -3878,7 +3858,7 @@
   {
     "id": "312ccb0e-ac88-805e-be91-e903f23a9d36",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:51:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -3889,7 +3869,13 @@
       "Số Giây": null,
       "Max": 3.5,
       "Ưu tiên": null,
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
       "Task count": 0,
       "Loại cảnh": "C",
       "Status": "Not started",
@@ -4128,7 +4114,7 @@
   {
     "id": "312ccb0e-ac88-8066-9cf2-c17202901805",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:52:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -4139,7 +4125,13 @@
       "Số Giây": null,
       "Max": 0.75,
       "Ưu tiên": null,
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
       "Task count": 0,
       "Loại cảnh": "E",
       "Status": "Not started",
@@ -4458,7 +4450,7 @@
   {
     "id": "312ccb0e-ac88-806a-b1fd-e840f87a8217",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-19T05:07:00.000Z",
+    "last_edited_time": "2026-03-24T08:36:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -4469,13 +4461,7 @@
       "Số Giây": 1,
       "Max": 0.75,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "E",
       "Status": "Not started",
@@ -4582,7 +4568,7 @@
   {
     "id": "312ccb0e-ac88-806b-be54-d2065c5b789a",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:35:00.000Z",
+    "last_edited_time": "2026-03-24T08:45:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -4595,13 +4581,7 @@
       "Số Giây": 1,
       "Max": 0.75,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "E",
       "Status": "Not started",
@@ -5022,7 +5002,7 @@
   {
     "id": "312ccb0e-ac88-8076-97cd-c286c8a99b81",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:38:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -5050,7 +5030,7 @@
       "Required by": "Internal",
       "Point Status": "Unconfirmed",
       "Product point": 35,
-      "UTNL": null,
+      "UTNL": 4,
       "Due Date": null,
       "Product type": "Inbetween",
       "Product": "IBW 08",
@@ -5675,7 +5655,7 @@
   {
     "id": "312ccb0e-ac88-808c-8e11-f8ddd90b35ab",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:38:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -5703,7 +5683,7 @@
       "Required by": "Internal",
       "Point Status": "Unconfirmed",
       "Product point": 5,
-      "UTNL": null,
+      "UTNL": 0.75,
       "Due Date": null,
       "Product type": "Inbetween",
       "Product": "IBW 78",
@@ -6605,7 +6585,7 @@
   {
     "id": "312ccb0e-ac88-8099-adea-e53fd5029f54",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T09:00:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -6616,7 +6596,13 @@
       "Số Giây": null,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -6876,7 +6862,7 @@
   {
     "id": "312ccb0e-ac88-809f-9cdb-d07b8b1a0204",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-23T09:49:00.000Z",
+    "last_edited_time": "2026-03-24T09:51:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
@@ -6898,13 +6884,13 @@
       ],
       "Task count": 1,
       "Loại cảnh": "F",
-      "Status": "Pending Review",
+      "Status": "QC Approved",
       "Task Create": null,
       "Task count + 1": 2,
       "Resource": null,
       "Total Fixed": 0,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 1,
       "UTNL": null,
       "Due Date": null,
@@ -7525,7 +7511,7 @@
   {
     "id": "312ccb0e-ac88-80ab-95dc-e1450930b71c",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:36:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -7538,13 +7524,7 @@
       "Số Giây": null,
       "Max": 0.75,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "E",
       "Status": "Not started",
@@ -7731,7 +7711,7 @@
   {
     "id": "312ccb0e-ac88-80b1-9e5d-c7d118b15dc9",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:36:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -7742,13 +7722,7 @@
       "Số Giây": null,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -8430,7 +8404,7 @@
   {
     "id": "312ccb0e-ac88-80bf-8f18-f483b32aa4f0",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-19T05:13:00.000Z",
+    "last_edited_time": "2026-03-24T08:40:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -8441,13 +8415,7 @@
       "Số Giây": 2,
       "Max": 2,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "48eb043c-4af9-42f6-86bc-fdcc03609205",
-          "name": "Khôi Cao",
-          "email": "khoicm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "D",
       "Status": "Not started",
@@ -8554,7 +8522,7 @@
   {
     "id": "312ccb0e-ac88-80c0-ac2e-c08a69c5ef92",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:33:00.000Z",
+    "last_edited_time": "2026-03-24T09:02:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -8565,13 +8533,7 @@
       "Số Giây": 7,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -8802,13 +8764,14 @@
   {
     "id": "312ccb0e-ac88-80c5-bf13-fca320e2cd32",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-23T10:05:00.000Z",
+    "last_edited_time": "2026-03-24T09:49:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
       "Tasks ": [
         "325ccb0e-ac88-803c-b6c6-e2999705e987",
-        "32cccb0e-ac88-8069-8f0a-f4cedc021262"
+        "32cccb0e-ac88-8069-8f0a-f4cedc021262",
+        "32dccb0e-ac88-80c9-a3a7-d47ce224bc17"
       ],
       "Min": 2.25,
       "DO": null,
@@ -8825,15 +8788,15 @@
           "email": "linhnt@sangygroup.com"
         }
       ],
-      "Task count": 2,
+      "Task count": 3,
       "Loại cảnh": "C",
-      "Status": "Need Fix",
+      "Status": "QC Approved",
       "Task Create": null,
-      "Task count + 1": 3,
+      "Task count + 1": 4,
       "Resource": null,
-      "Total Fixed": 1,
+      "Total Fixed": 2,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 25,
       "UTNL": null,
       "Due Date": null,
@@ -8849,12 +8812,13 @@
   {
     "id": "312ccb0e-ac88-80c6-a950-cf1d5fe95287",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-23T10:13:00.000Z",
+    "last_edited_time": "2026-03-24T09:51:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
       "Tasks ": [
-        "326ccb0e-ac88-80d4-be5e-e68d38001a53"
+        "326ccb0e-ac88-80d4-be5e-e68d38001a53",
+        "32dccb0e-ac88-80af-bb2e-c92abce806de"
       ],
       "Min": 0.25,
       "DO": null,
@@ -8871,15 +8835,15 @@
           "email": "minhnndt@sangygroup.com"
         }
       ],
-      "Task count": 1,
+      "Task count": 2,
       "Loại cảnh": "E",
-      "Status": "Need Fix",
+      "Status": "QC Approved",
       "Task Create": null,
-      "Task count + 1": 2,
+      "Task count + 1": 3,
       "Resource": null,
-      "Total Fixed": 0,
+      "Total Fixed": 1,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 5,
       "UTNL": null,
       "Due Date": null,
@@ -8895,7 +8859,7 @@
   {
     "id": "312ccb0e-ac88-80c6-bc2a-f05f570ba2af",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T09:01:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -8967,7 +8931,7 @@
   {
     "id": "312ccb0e-ac88-80c8-8c1d-e8fd665745f6",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:52:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -8978,7 +8942,13 @@
       "Số Giây": null,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [],
+      "Owner": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -9565,7 +9535,7 @@
   {
     "id": "312ccb0e-ac88-80d3-a97c-e74f5b683f87",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-24T06:59:00.000Z",
+    "last_edited_time": "2026-03-24T09:49:00.000Z",
     "properties": {
       "Total Main": 1,
       "Episode": "EP 04",
@@ -9587,13 +9557,13 @@
       ],
       "Task count": 1,
       "Loại cảnh": "D",
-      "Status": "Pending Review",
+      "Status": "QC Approved",
       "Task Create": null,
       "Task count + 1": 2,
       "Resource": null,
       "Total Fixed": 0,
       "Required by": "Internal",
-      "Point Status": "Unconfirmed",
+      "Point Status": "Confirmed",
       "Product point": 14,
       "UTNL": null,
       "Due Date": null,
@@ -9697,7 +9667,7 @@
   {
     "id": "312ccb0e-ac88-80d5-9617-fed5940ed1c6",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:36:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -9710,13 +9680,7 @@
       "Số Giây": null,
       "Max": 0.75,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "E",
       "Status": "Not started",
@@ -9785,7 +9749,7 @@
   {
     "id": "312ccb0e-ac88-80d5-b024-fee601b1acef",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:58:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -9941,7 +9905,7 @@
   {
     "id": "312ccb0e-ac88-80d9-affe-d4b87427917c",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-19T05:08:00.000Z",
+    "last_edited_time": "2026-03-24T08:35:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -9954,13 +9918,7 @@
       "Số Giây": 3,
       "Max": 2,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "9b5ff2a7-5dd1-4fae-92e7-b29c97b64cfc",
-          "name": "Mai Hà",
-          "email": "maiht@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "D",
       "Status": "Not started",
@@ -10021,7 +9979,7 @@
   {
     "id": "312ccb0e-ac88-80dd-880f-c733287c4c4d",
     "created_time": "2026-02-25T10:56:00.000Z",
-    "last_edited_time": "2026-03-20T03:33:00.000Z",
+    "last_edited_time": "2026-03-24T08:57:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -10032,13 +9990,7 @@
       "Số Giây": 9,
       "Max": 0.25,
       "Ưu tiên": null,
-      "Owner": [
-        {
-          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
-          "name": "Thi Hoàng",
-          "email": "thihnm@sangygroup.com"
-        }
-      ],
+      "Owner": [],
       "Task count": 0,
       "Loại cảnh": "F",
       "Status": "Not started",
@@ -10099,7 +10051,7 @@
   {
     "id": "312ccb0e-ac88-80e0-9c5c-f8920d1e8245",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T09:04:00.000Z",
+    "last_edited_time": "2026-03-24T08:59:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -10350,9 +10302,11 @@
     "created_time": "2026-02-25T10:56:00.000Z",
     "last_edited_time": "2026-03-20T03:33:00.000Z",
     "properties": {
-      "Total Main": 0,
+      "Total Main": 1,
       "Episode": "EP 04",
-      "Tasks ": [],
+      "Tasks ": [
+        "32dccb0e-ac88-8063-af54-e6496f4d0024"
+      ],
       "Min": 3.75,
       "DO": null,
       "Combo": [],
@@ -10366,11 +10320,11 @@
           "email": "thihnm@sangygroup.com"
         }
       ],
-      "Task count": 0,
+      "Task count": 1,
       "Loại cảnh": "B",
       "Status": "Not started",
       "Task Create": null,
-      "Task count + 1": 1,
+      "Task count + 1": 2,
       "Resource": null,
       "Total Fixed": 0,
       "Required by": "Internal",
@@ -11104,7 +11058,7 @@
   {
     "id": "312ccb0e-ac88-80ee-a861-e0bb1f1e123e",
     "created_time": "2026-02-25T10:57:00.000Z",
-    "last_edited_time": "2026-03-19T06:49:00.000Z",
+    "last_edited_time": "2026-03-24T08:38:00.000Z",
     "properties": {
       "Total Main": 0,
       "Episode": "EP 04",
@@ -11132,7 +11086,7 @@
       "Required by": "Internal",
       "Point Status": "Unconfirmed",
       "Product point": 14,
-      "UTNL": null,
+      "UTNL": 2,
       "Due Date": null,
       "Product type": "Inbetween",
       "Product": "IBW 79",

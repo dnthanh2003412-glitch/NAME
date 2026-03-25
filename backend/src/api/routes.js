@@ -9,7 +9,7 @@ import { DatabaseManager } from '../database/db.js';
 import { reportRegistry } from '../reports/index.js';
 import { ProductivityService } from '../reports/productivity.js';
 import { SyncService } from '../notion/sync.js';
-import { COLUMNS as PROD_COLUMNS } from '../constants.js';
+import { COLUMNS as PROD_COLUMNS, EMAIL_ALIAS_MAPPING, NAME_ALIAS_MAPPING } from '../constants.js';
 import { buildFreshnessContract } from '../utils/freshness.js';
 import { loadSyncJobs, persistSyncJobs } from '../utils/sync-job-store.js';
 
@@ -3005,6 +3005,99 @@ async function resolveUnresolvedIds(formattedData, lookupMap, notionToken, dbMan
 /**
  * Helper: Format Notion property value for display (Enhanced Recursive with Lookup)
  */
+function normalizeLookupEmail(email) {
+    return String(email || '').toLowerCase().trim();
+}
+
+function normalizeDisplayName(name) {
+    return String(name || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/\u0111/g, 'd')
+        .replace(/[^a-z0-9]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function buildDisplayNameSkeleton(name) {
+    return normalizeDisplayName(name).replace(/[aeiouy]+/g, '');
+}
+
+function resolveDisplayNameAlias(name) {
+    const raw = String(name || '').trim();
+    if (!raw) return '';
+
+    const directAlias = NAME_ALIAS_MAPPING[raw];
+    if (directAlias) {
+        return directAlias;
+    }
+
+    const normalizedRaw = normalizeDisplayName(raw);
+    if (normalizedRaw) {
+        for (const [alias, canonical] of Object.entries(NAME_ALIAS_MAPPING)) {
+            if (normalizeDisplayName(alias) === normalizedRaw) {
+                return canonical;
+            }
+        }
+    }
+
+    const skeletonRaw = buildDisplayNameSkeleton(raw);
+    if (skeletonRaw) {
+        for (const [alias, canonical] of Object.entries(NAME_ALIAS_MAPPING)) {
+            if (buildDisplayNameSkeleton(alias) === skeletonRaw) {
+                return canonical;
+            }
+        }
+    }
+
+    return '';
+}
+
+function looksCorruptedDisplayName(name) {
+    const raw = String(name || '').trim();
+    if (!raw) return true;
+    if (/^unknown user$/i.test(raw) || /^unknown$/i.test(raw)) return true;
+    return /[\uFFFD]/.test(raw);
+}
+
+function resolveDisplayUserName(name, email, globalUserMap = new Map()) {
+    const normalizedEmail = normalizeLookupEmail(email);
+    const directEmailAlias = normalizedEmail ? EMAIL_ALIAS_MAPPING[normalizedEmail] : '';
+    if (directEmailAlias) {
+        return directEmailAlias;
+    }
+
+    const mappedByEmail = normalizedEmail && globalUserMap.has(normalizedEmail)
+        ? globalUserMap.get(normalizedEmail)
+        : '';
+
+    const rawName = String(name || '').trim();
+    const aliasFromRawName = resolveDisplayNameAlias(rawName);
+    if (aliasFromRawName) {
+        return aliasFromRawName;
+    }
+
+    const aliasFromMappedEmail = resolveDisplayNameAlias(mappedByEmail);
+    if (aliasFromMappedEmail) {
+        return aliasFromMappedEmail;
+    }
+
+    if (rawName && !looksCorruptedDisplayName(rawName) && !rawName.includes('@')) {
+        return rawName;
+    }
+
+    if (mappedByEmail) {
+        return mappedByEmail;
+    }
+
+    if (rawName) {
+        return rawName;
+    }
+
+    return email || 'Unknown User';
+}
+
 function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
     // 1. Null/Undefined
     if (value === null || value === undefined) return '';
@@ -3042,27 +3135,18 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
         if (value.plain_text) return value.plain_text;
         if (value.content) return value.content;
 
-        // Select / Status / Multi-select item
-        if (value.name) return value.name;
-
         // User / People object - Prioritize name over email, but use Map if name is email-like
         if (value.object === 'user' || value.email !== undefined) {
-            let name = value.name || value.email || 'Unknown User';
-            // Enhance name from map if it looks like an email or is fallback
-            if (name.includes('@') && globalUserMap.has(name.toLowerCase().trim())) {
-                name = globalUserMap.get(name.toLowerCase().trim());
-            }
-            return name;
+            return resolveDisplayUserName(value.name, value.email, globalUserMap);
         }
 
         // People object from fetcher (has name and email)
         if (value.name && value.id) {
-            let name = value.name;
-            if (name.includes('@') && globalUserMap.has(name.toLowerCase().trim())) {
-                name = globalUserMap.get(name.toLowerCase().trim());
-            }
-            return name;
+            return resolveDisplayUserName(value.name, value.email, globalUserMap);
         }
+
+        // Select / Status / Multi-select item
+        if (value.name) return value.name;
 
         // Formula
         if (value.string !== undefined) return value.string;
@@ -3143,8 +3227,14 @@ function formatValue(value, lookupMap = new Map(), globalUserMap = new Map()) {
     }
 
     // Check if primitive is an email we can resolve
-    if (strVal.includes('@') && globalUserMap.has(strVal.toLowerCase().trim())) {
-        return globalUserMap.get(strVal.toLowerCase().trim());
+    if (strVal.includes('@')) {
+        const normalizedEmail = normalizeLookupEmail(strVal);
+        if (EMAIL_ALIAS_MAPPING[normalizedEmail]) {
+            return EMAIL_ALIAS_MAPPING[normalizedEmail];
+        }
+        if (globalUserMap.has(normalizedEmail)) {
+            return globalUserMap.get(normalizedEmail);
+        }
     }
 
     // Also try checking map even if not strict UUID (for some system IDs)

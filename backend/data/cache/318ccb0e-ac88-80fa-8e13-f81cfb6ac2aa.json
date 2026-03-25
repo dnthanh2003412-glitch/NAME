@@ -1,0 +1,6901 @@
+[
+  {
+    "id": "318ccb0e-ac88-809c-a60a-d8bf16b0704d",
+    "created_time": "2026-03-03T11:33:00.000Z",
+    "last_edited_time": "2026-03-10T03:46:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "319ccb0e-ac88-809a-81e7-ec550f0efd62"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Storyboard",
+      "Product": "Animatic"
+    },
+    "_title": "Animatic",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "318ccb0e-ac88-80b2-a4a6-c82dc694da4e",
+    "created_time": "2026-03-03T11:35:00.000Z",
+    "last_edited_time": "2026-03-10T03:46:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "319ccb0e-ac88-80bc-b32d-d3ce73187d82"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Storyboard",
+      "Product": "Animatic fix client"
+    },
+    "_title": "Animatic fix client",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "319ccb0e-ac88-8023-bcd6-e3440bf61fb6",
+    "created_time": "2026-03-04T11:17:00.000Z",
+    "last_edited_time": "2026-03-16T03:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "Client Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "31accb0e-ac88-8020-897b-ee9c47d2f957"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 13"
+    },
+    "_title": "Layout 13",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "319ccb0e-ac88-80ac-9484-fcf5445e9b64",
+    "created_time": "2026-03-04T11:17:00.000Z",
+    "last_edited_time": "2026-03-11T10:28:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "Client Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "31bccb0e-ac88-8050-b28a-febe95582a1b"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 13"
+    },
+    "_title": "Background 13",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8000-a9cb-f1ebc53c055c",
+    "created_time": "2026-03-06T11:24:00.000Z",
+    "last_edited_time": "2026-03-19T10:37:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "328ccb0e-ac88-807d-8aa2-e66c24c5d0f0"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 05"
+    },
+    "_title": "Layout 05",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8004-9307-de07a9c9b069",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80cb-b533-fc61a386c7c8"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 20"
+    },
+    "_title": "Background 20",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-800a-b58a-d1e5fffbc33d",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-80b4-8858-d3906fd0b47e"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 18"
+    },
+    "_title": "Layout 18",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-800b-b7b8-d36bcef618e6",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:19:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 19"
+    },
+    "_title": "Background 19",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-800c-a0b6-fdf618b9d901",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8062-ae97-eebf03913ef3"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 16"
+    },
+    "_title": "Background 16",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8014-8a31-d4bbc34d216e",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80dd-bcf9-ed043384c375"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 30"
+    },
+    "_title": "Background 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8024-aa83-d752725f6dbe",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-804a-9f80-d1f4c7adfed5"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 25"
+    },
+    "_title": "Background 25",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-802a-b232-f542631d71dc",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 24"
+    },
+    "_title": "Layout 24",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-802c-a184-fe20cd2e31fe",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8087-abe0-cae9c72911cc"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 04"
+    },
+    "_title": "Background 04",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-802c-bafb-eb2a4c1adb99",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 08"
+    },
+    "_title": "Layout 08",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8031-acca-f55fc67147b6",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:34:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-800c-874d-d7f16c71db93"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 02"
+    },
+    "_title": "Background 02",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8032-b985-f54398af90b1",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-16T03:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 3.75,
+      "DO": null,
+      "Combo": null,
+      "Max": 5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "B",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "31eccb0e-ac88-80f8-a946-d93c5ba6dfbc"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 35,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 12"
+    },
+    "_title": "Layout 12",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8041-840d-f9777defd869",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 16"
+    },
+    "_title": "Layout 16",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8044-869f-ce937c459da0",
+    "created_time": "2026-03-06T11:24:00.000Z",
+    "last_edited_time": "2026-03-19T02:38:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-8046-a808-d1a30e28b745"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 02"
+    },
+    "_title": "Layout 02",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8048-97ec-fc88c8cb92ee",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 01"
+    },
+    "_title": "Background 01",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-804a-ba0e-f1cf806cc763",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-19T10:37:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "328ccb0e-ac88-80cf-8a15-d1ae7f1ae089"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 29"
+    },
+    "_title": "Layout 29",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8051-b03b-ca0934d4df5e",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80e4-a435-ecb6350b7d1f"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 03"
+    },
+    "_title": "Background 03",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8053-9261-eb7b33266887",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80b5-a04d-d5df6e5b1100"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 28"
+    },
+    "_title": "Layout 28",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8061-a82d-df21db47c6cd",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 09"
+    },
+    "_title": "Background 09",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8068-b3cf-fd46e3dd5401",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 26"
+    },
+    "_title": "Layout 26",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-806b-8dc7-f8af81fe9a6f",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "325ccb0e-ac88-8072-8eb0-eca3a68e2de3",
+        "32cccb0e-ac88-805a-b7b7-cf6b286d12a1"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 14"
+    },
+    "_title": "Background 14",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-806c-b023-f277af5d58cc",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T06:51:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-80ff-b0da-edac9bd6cf24"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 10"
+    },
+    "_title": "Layout 10",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-806d-9e2c-c967abee717b",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 19"
+    },
+    "_title": "Layout 19",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-806e-8042-c9c6db2a906e",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8083-8717-fa545c01d4b7"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 31"
+    },
+    "_title": "Background 31",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8073-b8a3-c7237d55e409",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 08"
+    },
+    "_title": "Background 08",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8078-9d3f-c40f3c640539",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-20T10:52:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-8063-bd96-e6d6794c3b76"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 11"
+    },
+    "_title": "Layout 11",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-807d-8068-d4f6531d35c5",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T10:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 29"
+    },
+    "_title": "Background 29",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-807d-87d7-f77b942e6582",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 10"
+    },
+    "_title": "Background 10",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8081-97d4-e265f31c6042",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-20T08:48:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-80d6-8a35-f7b0c9e05537"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 21"
+    },
+    "_title": "Layout 21",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8083-b71c-f9907fa139f8",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "327ccb0e-ac88-8000-9195-d6cc5543cf1b",
+        "32cccb0e-ac88-8072-b8d4-d88085d8fea6"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 32"
+    },
+    "_title": "Background 32",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8084-bdce-f3d61c8fd3e4",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 28"
+    },
+    "_title": "Background 28",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8086-9870-c53d2f80f6a2",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8079-9811-cfedd8f98804"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 23"
+    },
+    "_title": "Background 23",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8088-a922-f05afe2c60e2",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-17T02:02:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 3.75,
+      "DO": null,
+      "Combo": null,
+      "Max": 5,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "B",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "326ccb0e-ac88-807b-b43f-ea3dd979d046"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 35,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 06B"
+    },
+    "_title": "Layout 06B",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8088-ac09-f887215a3545",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 07"
+    },
+    "_title": "Background 07",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-808a-a5ab-ea5c8aa119f4",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 17"
+    },
+    "_title": "Background 17",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-808b-9a4f-cd40e66bdbb3",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-20T10:52:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 23"
+    },
+    "_title": "Layout 23",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-808b-bcdd-f74b7fcea5bf",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-80a5-937e-ca64b56599db"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 20"
+    },
+    "_title": "Layout 20",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8090-9709-ea1495f78802",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:35:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 05"
+    },
+    "_title": "Background 05",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8091-8066-d3daf6f151a8",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-18T11:01:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-80a8-8c12-e97c9d2a5cb9"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 32"
+    },
+    "_title": "Layout 32",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-8091-80f8-c79bb2ef909c",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-8054-9041-fba5e29951c9"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 25"
+    },
+    "_title": "Layout 25",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80a0-9940-f1dbd04b64d3",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-20T08:24:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 5,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 6,
+      "Tasks": [
+        "326ccb0e-ac88-8028-8af0-d14061d77769",
+        "326ccb0e-ac88-80ee-9563-e07c8888b777",
+        "327ccb0e-ac88-8006-afed-dee99b827835",
+        "327ccb0e-ac88-80a7-a1e4-f22374d6e1a2",
+        "327ccb0e-ac88-802d-b24e-e54d180e961b"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 17"
+    },
+    "_title": "Layout 17",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80a4-a0e1-ffda7ee124ef",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T11:12:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "Need Fix",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 21"
+    },
+    "_title": "Background 21",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80a6-83cc-e3e537ea9c3e",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-19T06:51:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "326ccb0e-ac88-80ae-948d-d30aa492e979"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 14"
+    },
+    "_title": "Layout 14",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80aa-ba71-d7651c19b049",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-803b-9964-e57a70a6c4c6"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 27"
+    },
+    "_title": "Background 27",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80b2-952d-f89fb729aa4f",
+    "created_time": "2026-03-06T11:24:00.000Z",
+    "last_edited_time": "2026-03-24T09:41:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 01"
+    },
+    "_title": "Layout 01",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80b2-b86c-f802bbf6f661",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80ca-a7d5-e5ce0ab72a42"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 11"
+    },
+    "_title": "Background 11",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80b3-a416-db617e6f5f42",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 22"
+    },
+    "_title": "Background 22",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80b4-acdd-fa516fdf008d",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-18T11:08:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-8098-9d8c-da69869dc240"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 30"
+    },
+    "_title": "Layout 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80bb-a12a-c88ed611a413",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 27"
+    },
+    "_title": "Layout 27",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80c0-95b5-ef72ae44e2f7",
+    "created_time": "2026-03-06T11:24:00.000Z",
+    "last_edited_time": "2026-03-19T10:37:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "328ccb0e-ac88-802b-b6f5-db9a229b5fa4"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 04"
+    },
+    "_title": "Layout 04",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80c2-b4ff-c60216b01099",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 09"
+    },
+    "_title": "Layout 09",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80c9-953e-cf6553af1bd8",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T10:20:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 26"
+    },
+    "_title": "Background 26",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80d4-9b56-f072592c7fdd",
+    "created_time": "2026-03-06T11:24:00.000Z",
+    "last_edited_time": "2026-03-18T09:21:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "326ccb0e-ac88-8081-8d9c-c76aff4999ee",
+        "327ccb0e-ac88-80d4-93f3-c3afb2a1e603"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 03"
+    },
+    "_title": "Layout 03",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80dc-8934-f1aed30118f3",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:43:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8091-be12-c7595cb13664"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 15"
+    },
+    "_title": "Background 15",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80e3-9759-cb2cb710b992",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-18T11:01:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "326ccb0e-ac88-8061-a18c-c722a0a2098a"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 31"
+    },
+    "_title": "Layout 31",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80e4-add2-ee6ef11e3026",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 07"
+    },
+    "_title": "Layout 07",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80e5-b2f4-dbd5e411ad0e",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T02:03:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32cccb0e-ac88-8032-bb5a-d6f2d4449efc",
+        "32cccb0e-ac88-8005-aa03-ddd953f77660"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 06A"
+    },
+    "_title": "Background 06A",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80e8-a72c-ead16badeaf7",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-16T02:25:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 3.75,
+      "DO": null,
+      "Combo": null,
+      "Max": 5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "B",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "320ccb0e-ac88-80af-a04b-c9bc9e7840b6"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 35,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 12"
+    },
+    "_title": "Background 12",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80e8-b8d0-c6a1fcdf230e",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80c4-b3c3-ddd19beefd3e"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 24"
+    },
+    "_title": "Background 24",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80f0-921c-f1186965de51",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-24T09:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 15"
+    },
+    "_title": "Layout 15",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80ff-91ba-e849af523880",
+    "created_time": "2026-03-06T11:27:00.000Z",
+    "last_edited_time": "2026-03-24T06:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80ab-9993-c415041fdb3c"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 18"
+    },
+    "_title": "Background 18",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31bccb0e-ac88-80ff-bfac-fd5b0bb77135",
+    "created_time": "2026-03-06T11:25:00.000Z",
+    "last_edited_time": "2026-03-18T11:07:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": "High",
+      "Owner": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-8052-b124-dec9314263d3"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 22"
+    },
+    "_title": "Layout 22",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8000-b0c5-d43b5ce596a8",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 28"
+    },
+    "_title": "Inbetween 28",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8003-9a96-f52d4817f282",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-805d-97be-cd6ca7ed66a4"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": 0.25,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 14"
+    },
+    "_title": "Inbetween 14",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8006-83bb-c5d32ac56593",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T02:34:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 15"
+    },
+    "_title": "Special pose 15",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-800b-9287-c414c78c2406",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T03:00:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80a2-876e-efeed7193309"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 14"
+    },
+    "_title": "Keyframe 14",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-800d-9c25-f89bbfa84eaa",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T10:06:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "Pending Review",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-8042-85d1-e9c6e3589015"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": 1,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 11"
+    },
+    "_title": "Keyframe 11",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-800f-9c43-ee814bec002e",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-20T10:27:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-8099-bf40-f45ff5494959"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 07"
+    },
+    "_title": "Keyframe 07",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-801c-9c01-ecc901c72a32",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T03:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 32"
+    },
+    "_title": "Special pose 32",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8021-a481-cac0b0422b24",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T05:18:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32dccb0e-ac88-8015-bdbd-cb50c9bb1b4f",
+        "32dccb0e-ac88-80f6-8320-eaeef5aa1dfb"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 26"
+    },
+    "_title": "Keyframe 26",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8023-bd98-d1f3d2843acf",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:53:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "Need Fix",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8070-acbc-f41914ca87f7"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 05"
+    },
+    "_title": "Keyframe 05",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8028-bf06-ccc2d243e966",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80fd-9662-caf4a1b3b943"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 31"
+    },
+    "_title": "Inbetween 31",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8029-81f7-c7f91b940d84",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T05:17:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "329ccb0e-ac88-803f-913b-dff9bd14fd19",
+        "32dccb0e-ac88-80a2-9917-f262843e84c0"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 17"
+    },
+    "_title": "Keyframe 17",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8029-bf83-c3f0fad61200",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 30"
+    },
+    "_title": "Inbetween 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-802f-8af0-d4d87eb83c89",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T08:19:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 25"
+    },
+    "_title": "Special pose 25",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-802f-b5eb-de6973d9df66",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T07:28:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 10"
+    },
+    "_title": "Inbetween 10",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8031-98a8-e44b0e5cd1cb",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T10:02:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 10"
+    },
+    "_title": "Special pose 10",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8038-a1de-eb4a256b0123",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T08:03:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 24"
+    },
+    "_title": "Special pose 24",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8044-9a53-fe27127a486a",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-13T09:25:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 30"
+    },
+    "_title": "Special pose 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8044-a452-e05c1685c5b3",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T04:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 03"
+    },
+    "_title": "Inbetween 03",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8047-80df-e18d7ab7c98a",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T05:01:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 24"
+    },
+    "_title": "Inbetween 24",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-804b-9b36-c41961015930",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 27"
+    },
+    "_title": "Inbetween 27",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-804b-a3e6-e85425d696e0",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-20T10:19:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "328ccb0e-ac88-80dd-a346-cd6c0e4853fe"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 23"
+    },
+    "_title": "Keyframe 23",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-804c-bfe9-cc0cecac8196",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-20T10:18:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "327ccb0e-ac88-8040-b2e2-dd04330d0b08"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.625,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 22"
+    },
+    "_title": "Keyframe 22",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-804e-bb24-d20f93f0538e",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T07:05:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 03"
+    },
+    "_title": "Special pose 03",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8055-9519-ecb05f7d0a3e",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T08:11:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 08"
+    },
+    "_title": "Special pose 08",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8055-96de-ff155df00872",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-8001-bb16-f50b2b3d7ba8"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 13"
+    },
+    "_title": "Inbetween 13",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8055-b65c-f34094fd3780",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T04:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 02"
+    },
+    "_title": "Inbetween 02",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8059-9620-d2603c08bb85",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:52:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32cccb0e-ac88-80ee-aff3-dfd32acafcaf",
+        "32cccb0e-ac88-80fb-aac5-cbc25e7160ad"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 04"
+    },
+    "_title": "Keyframe 04",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-805a-b209-ca3332279ac8",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-13T02:52:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 29"
+    },
+    "_title": "Special pose 29",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-805b-9803-c74934c64219",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T07:27:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 22"
+    },
+    "_title": "Special pose 22",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-805b-a6e4-edbe3d768a29",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-13T02:32:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 28"
+    },
+    "_title": "Special pose 28",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-805d-860b-c29ffd78cc9d",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-20T10:20:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-806f-9899-c2827e358c71"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 24"
+    },
+    "_title": "Keyframe 24",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-805f-af11-eecf14dc9c4f",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T04:27:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 12"
+    },
+    "_title": "Special pose 12",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8061-a451-f4489219d6de",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T03:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 31"
+    },
+    "_title": "Special pose 31",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8068-b92e-cdb67fd797c2",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T08:06:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8043-8399-f3ed7d605732"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 10"
+    },
+    "_title": "Keyframe 10",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-806a-9826-cf3aa2d2a850",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T04:34:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 14"
+    },
+    "_title": "Special pose 14",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8071-94a4-c4d2707988c9",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T09:57:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80c7-924f-e481db71085c"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 25"
+    },
+    "_title": "Inbetween 25",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8072-995a-e40092bd645c",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T03:56:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 17"
+    },
+    "_title": "Special pose 17",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8073-9d69-f1c8f58941ac",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "Need Fix",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32dccb0e-ac88-807e-8078-f6f7ee8d0e43",
+        "32dccb0e-ac88-8029-b597-e1cd1af9557b"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 30"
+    },
+    "_title": "Keyframe 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8073-b469-c6799aec18b7",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T05:01:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 16"
+    },
+    "_title": "Inbetween 16",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8073-b767-da111c76bf75",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T05:00:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 21"
+    },
+    "_title": "Special pose 21",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8075-ab2e-d2e2eed3a664",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T07:28:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 08"
+    },
+    "_title": "Inbetween 08",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8079-bd61-df32056b7c32",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T07:10:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 05"
+    },
+    "_title": "Special pose 05",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-807a-b50b-ecb33b6d4147",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T10:11:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.25,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 11"
+    },
+    "_title": "Inbetween 11",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8082-a2b5-c699e615112a",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T05:01:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 17"
+    },
+    "_title": "Inbetween 17",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8083-93a0-d87cc13b9972",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T04:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 04"
+    },
+    "_title": "Inbetween 04",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8085-b129-c5048dd04c55",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:55:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80fb-a4e9-f05eae048459"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": 0.25,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 15"
+    },
+    "_title": "Keyframe 15",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8087-924d-c566d66ca515",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80fe-b5e4-f39bbdea9806"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": 0.25,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 15"
+    },
+    "_title": "Inbetween 15",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-808d-ae5a-eff6ec4ad43f",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T07:50:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 07"
+    },
+    "_title": "Special pose 07",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8094-af08-ca850144bd84",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-20T10:13:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-8059-a725-dd1f38f6cbb7"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 02"
+    },
+    "_title": "Keyframe 02",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8095-bad9-ea10a7e2329d",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T07:28:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 07"
+    },
+    "_title": "Inbetween 07",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8096-a4d3-c3aa60e80895",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T10:15:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "C",
+      "Status": "Pending Review",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "329ccb0e-ac88-804a-b2cb-ccb5a16b4c5a",
+        "32cccb0e-ac88-8042-92dd-ea6e2ec8b0af"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 25,
+      "UTNL": 3.25,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 20"
+    },
+    "_title": "Keyframe 20",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8098-afd8-fd484767b498",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T03:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 18"
+    },
+    "_title": "Special pose 18",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8098-b146-fb2783d931ed",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T05:18:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-80d1-9c43-e5367181f23a"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 19"
+    },
+    "_title": "Keyframe 19",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-8099-9b95-d3c82477907f",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:52:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "329ccb0e-ac88-8024-a331-f654f0254488",
+        "32cccb0e-ac88-80ee-a394-f01dd084c316"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 01"
+    },
+    "_title": "Keyframe 01",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-809a-a46d-fad45f4272fb",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:54:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "328ccb0e-ac88-8073-8fbb-ec3b8080255a"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 09"
+    },
+    "_title": "Keyframe 09",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-809a-b3ad-efdb94210b8a",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T09:34:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8084-8fce-d0599e421068"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 21"
+    },
+    "_title": "Inbetween 21",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-809e-88a1-d32cad60f37c",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:04:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32dccb0e-ac88-8028-afd5-db1618b97e9f",
+        "32dccb0e-ac88-8054-b949-cd361ffa825c"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 13"
+    },
+    "_title": "Keyframe 13",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-809f-82c8-da9311d6205a",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T08:34:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 3,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 4,
+      "Tasks": [
+        "328ccb0e-ac88-80b4-9a4a-e17f016130da",
+        "32dccb0e-ac88-8031-84e5-ff8cf598ac5e",
+        "32dccb0e-ac88-8088-aa0f-fd1d15dd5ff5"
+      ],
+      "Resource": null,
+      "Total Fixed": 2,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 16"
+    },
+    "_title": "Keyframe 16",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-809f-b376-ec916c24c01d",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T04:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 01"
+    },
+    "_title": "Inbetween 01",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a1-a7bf-d1fcecc9acd1",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T10:28:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 11"
+    },
+    "_title": "Special pose 11",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a4-a176-f8a58ba71d44",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T07:08:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 20"
+    },
+    "_title": "Special pose 20",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a5-893b-effceea294b3",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T05:26:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 01"
+    },
+    "_title": "Special pose 01",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a8-ab56-f362009f2acc",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:19:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80e6-9979-c232f47761da"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 19"
+    },
+    "_title": "Inbetween 19",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a9-8c05-dd3992216809",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T08:01:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 09"
+    },
+    "_title": "Special pose 09",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80a9-bd38-c3c3990cb14f",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 3,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 4,
+      "Tasks": [
+        "32cccb0e-ac88-805e-80a0-ef9ebc0d2aff",
+        "32cccb0e-ac88-8040-9239-c59e71e13352",
+        "32dccb0e-ac88-80d5-9dd9-cbe005a6f0d1"
+      ],
+      "Resource": null,
+      "Total Fixed": 2,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 1,
+      "UTNL": 0.25,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 18"
+    },
+    "_title": "Keyframe 18",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80ad-84bb-d465f8ef37c0",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T06:45:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 06"
+    },
+    "_title": "Keyframe 06",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80ae-96b1-d9cfac92f002",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T04:17:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 19"
+    },
+    "_title": "Special pose 19",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80b1-94df-f62fd51e9e40",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T09:06:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 26"
+    },
+    "_title": "Special pose 26",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80b8-abef-e631a35def93",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:44:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "In progress",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-8072-a3bc-d8aa1f48ddc5"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 27"
+    },
+    "_title": "Keyframe 27",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80b8-b7d8-c0f4d8da8508",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-8056-9f78-f8822800ff91"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 18"
+    },
+    "_title": "Inbetween 18",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80bb-a919-dc62024d8e4c",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-11T07:05:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 02"
+    },
+    "_title": "Special pose 02",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80bc-a208-fd8beb7e40b7",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T03:00:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "329ccb0e-ac88-8032-a039-dc5836f2d201",
+        "32cccb0e-ac88-8036-8330-ffd530ad6e82"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 2,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 32"
+    },
+    "_title": "Keyframe 32",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80bc-a426-f326dd5b34fb",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:42:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "C",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 06"
+    },
+    "_title": "Inbetween 06",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80c6-a6cf-e7dc3aebecea",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T07:33:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-805a-9091-ea37a18e78c7"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 29"
+    },
+    "_title": "Keyframe 29",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80cb-9d55-c10d4ca6fd9b",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T06:41:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": null,
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8031-96c9-d8a1b0281e81"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 0,
+      "UTNL": 0.75,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 12"
+    },
+    "_title": "Keyframe 12",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80cf-9212-e087f28c1335",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:05:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "329ccb0e-ac88-8047-b83e-e973cb15a1c5",
+        "32dccb0e-ac88-8005-bb40-ded5592b56ac"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 25"
+    },
+    "_title": "Keyframe 25",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d1-a26b-c900afa57183",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T08:03:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 23"
+    },
+    "_title": "Special pose 23",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d3-a3e0-c5de54a79f7d",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T09:35:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-809f-9b01-c0b19d940dd3"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 22"
+    },
+    "_title": "Inbetween 22",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d4-ad34-ea528f9c37a5",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T03:37:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 16"
+    },
+    "_title": "Special pose 16",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d4-b345-f2c59eb95b70",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T09:18:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 27"
+    },
+    "_title": "Special pose 27",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d5-91c1-e8c0b6ef6776",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T05:17:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-8090-bd8c-dbb8c67f2908"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": 2,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 32"
+    },
+    "_title": "Inbetween 32",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d5-aac2-f56c195680eb",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T04:33:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 06"
+    },
+    "_title": "Special pose 06",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80d6-ba2f-fb818ad38ab5",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-12T02:30:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 13"
+    },
+    "_title": "Special pose 13",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80db-865d-c98b9eedc1e7",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T04:46:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 05"
+    },
+    "_title": "Inbetween 05",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80dd-9192-fe3818518116",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-18T07:28:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 09"
+    },
+    "_title": "Inbetween 09",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80dd-9809-d32928ad0639",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T09:35:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32cccb0e-ac88-80df-bae8-f1a97c04f716",
+        "32dccb0e-ac88-8077-ab14-c5eba7f70350"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 23"
+    },
+    "_title": "Inbetween 23",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80de-b991-d045a7ab7bf3",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:53:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32cccb0e-ac88-80b2-8085-d53012166834",
+        "32dccb0e-ac88-8008-99eb-e81b54766207"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 28"
+    },
+    "_title": "Keyframe 28",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80e2-8874-e1932363a91e",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T03:05:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-808d-abdc-cd457233d9d0"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 31"
+    },
+    "_title": "Keyframe 31",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80e5-9b1a-ffa2e77dcbbe",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:52:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "32cccb0e-ac88-8081-939d-d0da7f7c1188",
+        "32cccb0e-ac88-806a-9b25-d6d3f7b9c46e"
+      ],
+      "Resource": null,
+      "Total Fixed": 1,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 03"
+    },
+    "_title": "Keyframe 03",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80e6-8de2-e04b738143b8",
+    "created_time": "2026-03-10T03:35:00.000Z",
+    "last_edited_time": "2026-03-10T04:33:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Special pose",
+      "Product": "Special pose 04"
+    },
+    "_title": "Special pose 04",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80ef-97c8-e3285a5bff6e",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T07:55:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "E",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80a2-87ca-d4fcee985ea7"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 26"
+    },
+    "_title": "Inbetween 26",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80f0-bcc2-d94b97d79cf8",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-24T06:42:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32dccb0e-ac88-80ef-989f-d1763bfdff73"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": 1,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 12"
+    },
+    "_title": "Inbetween 12",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80fa-936e-dc7e2f33ce7e",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-23T02:59:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": null,
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-8092-b133-fbded59ba6d9"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 08"
+    },
+    "_title": "Keyframe 08",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80fa-9503-f970156ed857",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 1,
+      "DO": null,
+      "Combo": null,
+      "Max": 2,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "D",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "32cccb0e-ac88-80d1-a328-e8c76442f104"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 14,
+      "UTNL": 1.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 20"
+    },
+    "_title": "Inbetween 20",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80fc-b65a-cf043a5ef3c0",
+    "created_time": "2026-03-10T03:44:00.000Z",
+    "last_edited_time": "2026-03-24T02:56:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-80b6-909b-f765b3890e97"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": 3.25,
+      "Due Date": null,
+      "Product type": "Keyframe",
+      "Product": "Keyframe 21"
+    },
+    "_title": "Keyframe 21",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "31fccb0e-ac88-80fe-8b26-fe4bdeb1d8b1",
+    "created_time": "2026-03-10T03:46:00.000Z",
+    "last_edited_time": "2026-03-23T03:51:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": 0.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.75,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": "E",
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Unconfirmed",
+      "Product point": 5,
+      "UTNL": 0.5,
+      "Due Date": null,
+      "Product type": "Inbetween",
+      "Product": "Inbetween 29"
+    },
+    "_title": "Inbetween 29",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "321ccb0e-ac88-80e8-a3e7-c782e6c6221a",
+    "created_time": "2026-03-12T07:20:00.000Z",
+    "last_edited_time": "2026-03-17T09:03:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "325ccb0e-ac88-8058-a520-fe4a6fbdc6a3"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": "Internal",
+      "Point Status": "Confirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Background",
+      "Product": "Background 06B"
+    },
+    "_title": "Background 06B",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "321ccb0e-ac88-80ec-97b4-df5df44bc431",
+    "created_time": "2026-03-12T07:13:00.000Z",
+    "last_edited_time": "2026-03-19T10:36:00.000Z",
+    "properties": {
+      "Total Main": 2,
+      "Episode": null,
+      "Min": 2.25,
+      "DO": null,
+      "Combo": null,
+      "Max": 3.5,
+      "Ưu tiên": "Critical",
+      "Owner": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Task count": 2,
+      "Loại cảnh": "C",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 3,
+      "Tasks": [
+        "326ccb0e-ac88-80f1-a1aa-cd558d6c5e36",
+        "328ccb0e-ac88-8026-8316-f5a95ae553a2"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 25,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": "Layout",
+      "Product": "Layout 06A"
+    },
+    "_title": "Layout 06A",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "326ccb0e-ac88-805c-a237-c9e3774976c3",
+    "created_time": "2026-03-17T10:14:00.000Z",
+    "last_edited_time": "2026-03-17T10:16:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "326ccb0e-ac88-80e2-b9d1-e50eea11d335"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": "Họp phân loại cảnh"
+    },
+    "_title": "Họp phân loại cảnh",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "326ccb0e-ac88-807a-9367-ceedc0d392bd",
+    "created_time": "2026-03-17T10:13:00.000Z",
+    "last_edited_time": "2026-03-17T10:13:00.000Z",
+    "properties": {
+      "Total Main": null,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": null,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": null,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "326ccb0e-ac88-807f-9bee-c05d51bdd994",
+    "created_time": "2026-03-17T10:04:00.000Z",
+    "last_edited_time": "2026-03-17T10:04:00.000Z",
+    "properties": {
+      "Total Main": null,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": null,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": null,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "326ccb0e-ac88-80d9-88e7-dc84f1c9686f",
+    "created_time": "2026-03-17T10:13:00.000Z",
+    "last_edited_time": "2026-03-17T10:13:00.000Z",
+    "properties": {
+      "Total Main": null,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": null,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": null,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "326ccb0e-ac88-80dc-85d6-df60ad834443",
+    "created_time": "2026-03-17T10:03:00.000Z",
+    "last_edited_time": "2026-03-17T10:03:00.000Z",
+    "properties": {
+      "Total Main": null,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": null,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": null,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "329ccb0e-ac88-80c5-996b-f0d957205437",
+    "created_time": "2026-03-20T03:02:00.000Z",
+    "last_edited_time": "2026-03-20T03:03:00.000Z",
+    "properties": {
+      "Total Main": 1,
+      "Episode": null,
+      "Min": 0,
+      "DO": null,
+      "Combo": null,
+      "Max": 0.25,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Task count": 1,
+      "Loại cảnh": "F",
+      "Status": "QC Approved",
+      "Task Create": null,
+      "Task count + 1": 2,
+      "Tasks": [
+        "329ccb0e-ac88-800b-9fde-e16e5a9ca3b5"
+      ],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 1,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": "Merge 02, 03, 04, 05, 29, 30"
+    },
+    "_title": "Merge 02, 03, 04, 05, 29, 30",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "329ccb0e-ac88-80f2-8369-db605fc3d8a8",
+    "created_time": "2026-03-20T10:05:00.000Z",
+    "last_edited_time": "2026-03-20T10:05:00.000Z",
+    "properties": {
+      "Total Main": null,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [],
+      "Task count": null,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": null,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "32cccb0e-ac88-80e3-bf17-f6d519c3a3e6",
+    "created_time": "2026-03-23T10:30:00.000Z",
+    "last_edited_time": "2026-03-23T10:30:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": "chia canh XAV "
+    },
+    "_title": "chia canh XAV ",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  },
+  {
+    "id": "32dccb0e-ac88-80b8-b7f8-f68c926906cd",
+    "created_time": "2026-03-24T10:09:00.000Z",
+    "last_edited_time": "2026-03-24T10:09:00.000Z",
+    "properties": {
+      "Total Main": 0,
+      "Episode": null,
+      "Min": null,
+      "DO": null,
+      "Combo": null,
+      "Max": null,
+      "Ưu tiên": null,
+      "Owner": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Task count": 0,
+      "Loại cảnh": null,
+      "Status": "Not started",
+      "Task Create": null,
+      "Task count + 1": 1,
+      "Tasks": [],
+      "Resource": null,
+      "Total Fixed": 0,
+      "Required by": null,
+      "Point Status": "Unconfirmed",
+      "Product point": 0,
+      "UTNL": null,
+      "Due Date": null,
+      "Product type": null,
+      "Product": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Product (1)",
+    "project_name": "[XAV_ko QC] Product (1)",
+    "database_id": "318ccb0e-ac88-80fa-8e13-f81cfb6ac2aa"
+  }
+]

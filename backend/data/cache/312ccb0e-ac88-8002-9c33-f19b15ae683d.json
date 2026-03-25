@@ -3894,7 +3894,7 @@
         25
       ],
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -3907,15 +3907,15 @@
       "Product Type": [
         "Keyframe"
       ],
-      "TP thực tế": 19.23,
+      "TP thực tế": 15.63,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
         "C"
       ],
-      "Task fix": "1/2",
+      "Task fix": "2/3",
       "Task Status": "Done",
       "Episode": [
         "Key 21"
@@ -3932,7 +3932,7 @@
         }
       ],
       "Created time": null,
-      "Task main": "1/2",
+      "Task main": "1/3",
       "Tasks": "Key 21 Not started 1 "
     },
     "_title": "Key 21 Not started 1 ",
@@ -4575,12 +4575,12 @@
   {
     "id": "326ccb0e-ac88-8047-9a13-f220e9759660",
     "created_time": "2026-03-17T02:41:00.000Z",
-    "last_edited_time": "2026-03-17T10:07:00.000Z",
+    "last_edited_time": "2026-03-24T10:10:00.000Z",
     "properties": {
       "UTNL": [
         5
       ],
-      "NLTT": 2.25,
+      "NLTT": 2.5,
       "Product Point": [
         35
       ],
@@ -4613,7 +4613,7 @@
       ],
       "Ngày Làm": {
         "start": "2026-03-16",
-        "end": "2026-03-17"
+        "end": "2026-03-23"
       },
       "Assignee": [
         {
@@ -5267,7 +5267,7 @@
         5
       ],
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Sprint": null,
       "Required by": [
@@ -5282,13 +5282,13 @@
       ],
       "TP thực tế": 0,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": null,
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "1/2",
       "Task Status": "Done",
       "Episode": [
         "Key 61"
@@ -5305,7 +5305,7 @@
         }
       ],
       "Created time": null,
-      "Task main": "0/1",
+      "Task main": "0/2",
       "Tasks": "Key 61 Not started 1 "
     },
     "_title": "Key 61 Not started 1 ",
@@ -6345,7 +6345,7 @@
         5
       ],
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -6358,15 +6358,15 @@
       "Product Type": [
         "Keyframe"
       ],
-      "TP thực tế": 5,
+      "TP thực tế": 3.85,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
         "E"
       ],
-      "Task fix": "0/1",
+      "Task fix": "1/2",
       "Task Status": "Done",
       "Episode": [
         "Key 26"
@@ -6383,7 +6383,7 @@
         }
       ],
       "Created time": null,
-      "Task main": "1/1",
+      "Task main": "1/2",
       "Tasks": "Key 26 Not started 1 "
     },
     "_title": "Key 26 Not started 1 ",
@@ -6862,7 +6862,7 @@
         14
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": null,
       "Required by": [
@@ -6877,7 +6877,7 @@
       ],
       "TP thực tế": 10.77,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
@@ -7263,7 +7263,7 @@
         25
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -7278,7 +7278,7 @@
       ],
       "TP thực tế": 19.23,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
@@ -7380,7 +7380,7 @@
         14
       ],
       "Product Status": [
-        "Need Fix"
+        "Pending Review"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -7393,7 +7393,7 @@
       "Product Type": [
         "Keyframe"
       ],
-      "TP thực tế": 14,
+      "TP thực tế": 10.77,
       "Point Status": [
         "Unconfirmed"
       ],
@@ -7401,7 +7401,7 @@
       "Loại cảnh": [
         "D"
       ],
-      "Task fix": "0/1",
+      "Task fix": "1/2",
       "Task Status": "Done",
       "Episode": [
         "Key 67"
@@ -7418,7 +7418,7 @@
         }
       ],
       "Created time": null,
-      "Task main": "1/1",
+      "Task main": "1/2",
       "Tasks": "Key 67 ver 1 "
     },
     "_title": "Key 67 ver 1 ",
@@ -7437,7 +7437,7 @@
         14
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": null,
       "Required by": [
@@ -7452,7 +7452,7 @@
       ],
       "TP thực tế": 14,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
@@ -7551,7 +7551,7 @@
         25
       ],
       "Product Status": [
-        "Need Fix"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -7564,15 +7564,15 @@
       "Product Type": [
         "Keyframe"
       ],
-      "TP thực tế": 5.77,
+      "TP thực tế": 4.69,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Fix",
       "Loại cảnh": [
         "C"
       ],
-      "Task fix": "1/2",
+      "Task fix": "2/3",
       "Task Status": "Done",
       "Episode": [
         "Key 21"
@@ -7589,7 +7589,7 @@
         }
       ],
       "Created time": null,
-      "Task main": "1/2",
+      "Task main": "1/3",
       "Tasks": "Key 21 ver 2 "
     },
     "_title": "Key 21 ver 2 ",
@@ -7726,7 +7726,7 @@
         1
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -7741,7 +7741,7 @@
       ],
       "TP thực tế": 1,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
@@ -7826,7 +7826,7 @@
         14
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": null,
       "Required by": [
@@ -7841,7 +7841,7 @@
       ],
       "TP thực tế": 3.23,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Fix",
       "Loại cảnh": [
@@ -7875,7 +7875,7 @@
   {
     "id": "32dccb0e-ac88-8034-92c0-db70a22ba5ef",
     "created_time": "2026-03-24T03:11:00.000Z",
-    "last_edited_time": "2026-03-24T07:13:00.000Z",
+    "last_edited_time": "2026-03-24T08:20:00.000Z",
     "properties": {
       "UTNL": [
         3
@@ -7885,7 +7885,7 @@
         25
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -7900,7 +7900,7 @@
       ],
       "TP thực tế": 25,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Main",
       "Loại cảnh": [
@@ -7927,6 +7927,217 @@
       "Tasks": "Key 36 ver 1 "
     },
     "_title": "Key 36 ver 1 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-8063-af54-e6496f4d0024",
+    "created_time": "2026-03-24T10:09:00.000Z",
+    "last_edited_time": "2026-03-24T10:09:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 1,
+      "Product Point": [
+        35
+      ],
+      "Product Status": [
+        "Not started"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-80e3-82ef-d72305f8c9f6"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 35,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "B"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "In progress",
+      "Episode": [
+        "Key 48"
+      ],
+      "Ngày Làm": null,
+      "Assignee": [
+        {
+          "id": "a8b38e3d-2194-4ec4-bbfd-56f062d3f049",
+          "name": "Thi Hoàng",
+          "email": "thihnm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Tasks": "Key 48 ver 1 "
+    },
+    "_title": "Key 48 ver 1 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-8070-8082-dfa7a90444b8",
+    "created_time": "2026-03-24T09:28:00.000Z",
+    "last_edited_time": "2026-03-24T09:28:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-8047-9137-cca9701ffb73"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        "Key 26"
+      ],
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "1/2",
+      "Tasks": "Key 26 ver 2 "
+    },
+    "_title": "Key 26 ver 2 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-8077-a4d1-d0a0aef08c15",
+    "created_time": "2026-03-24T10:35:00.000Z",
+    "last_edited_time": "2026-03-24T10:36:00.000Z",
+    "properties": {
+      "UTNL": null,
+      "NLTT": 0.0625,
+      "Product Point": null,
+      "Product Status": null,
+      "Sprint": null,
+      "Required by": null,
+      "Product": [],
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "TP thực tế": 0,
+      "Point Status": null,
+      "Task type": "Main",
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": null,
+      "Tasks": "QC"
+    },
+    "_title": "QC",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-807b-bcc9-d437d3604a52",
+    "created_time": "2026-03-24T10:09:00.000Z",
+    "last_edited_time": "2026-03-24T10:10:00.000Z",
+    "properties": {
+      "UTNL": [
+        5
+      ],
+      "NLTT": 0.75,
+      "Product Point": [
+        35
+      ],
+      "Product Status": [
+        "In progress"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-8020-9f90-fc6143d358d4"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 35,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "B"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "In progress",
+      "Episode": [
+        "Key 11"
+      ],
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "1/1",
+      "Tasks": "Key 11 ver 1 "
+    },
+    "_title": "Key 11 ver 1 ",
     "database_name": "[OTH_ko QC] Tasks (1)",
     "project_name": "[OTH_ko QC] Tasks (1)",
     "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
@@ -7975,17 +8186,17 @@
   {
     "id": "32dccb0e-ac88-80ab-8cf7-c953e3663cd2",
     "created_time": "2026-03-24T02:00:00.000Z",
-    "last_edited_time": "2026-03-24T04:28:00.000Z",
+    "last_edited_time": "2026-03-24T08:20:00.000Z",
     "properties": {
       "UTNL": [
         3.5
       ],
-      "NLTT": 0.25,
+      "NLTT": 0.5,
       "Product Point": [
         25
       ],
       "Product Status": [
-        "Pending Review"
+        "QC Approved"
       ],
       "Sprint": "Sprint 1",
       "Required by": [
@@ -8000,7 +8211,7 @@
       ],
       "TP thực tế": 5.77,
       "Point Status": [
-        "Unconfirmed"
+        "Confirmed"
       ],
       "Task type": "Fix",
       "Loại cảnh": [
@@ -8027,6 +8238,177 @@
       "Tasks": "Key 35 ver 2 "
     },
     "_title": "Key 35 ver 2 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-80af-bb2e-c92abce806de",
+    "created_time": "2026-03-24T09:18:00.000Z",
+    "last_edited_time": "2026-03-24T09:19:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.25,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-80c6-a950-cf1d5fe95287"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        "Key 61"
+      ],
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "0/2",
+      "Tasks": "Key 61 ver 2 "
+    },
+    "_title": "Key 61 ver 2 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-80c9-a3a7-d47ce224bc17",
+    "created_time": "2026-03-24T08:51:00.000Z",
+    "last_edited_time": "2026-03-24T08:52:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "QC Approved"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-80c5-bf13-fca320e2cd32"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 4.69,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        "Key 21"
+      ],
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "1/3",
+      "Tasks": "Key 21 ver 3 "
+    },
+    "_title": "Key 21 ver 3 ",
+    "database_name": "[OTH_ko QC] Tasks (1)",
+    "project_name": "[OTH_ko QC] Tasks (1)",
+    "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"
+  },
+  {
+    "id": "32dccb0e-ac88-80cd-966e-df289aea25b6",
+    "created_time": "2026-03-24T10:28:00.000Z",
+    "last_edited_time": "2026-03-24T10:28:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Pending Review"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Product": [
+        "312ccb0e-ac88-805a-b754-c4e53ff506ad"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.23,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        "Key 67"
+      ],
+      "Ngày Làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "6fac67e4-7a58-401b-a896-68b5dadd539c",
+          "name": "Linh Nguyễn",
+          "email": "linhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Task main": "1/2",
+      "Tasks": "Key 67 ver 2 "
+    },
+    "_title": "Key 67 ver 2 ",
     "database_name": "[OTH_ko QC] Tasks (1)",
     "project_name": "[OTH_ko QC] Tasks (1)",
     "database_id": "312ccb0e-ac88-8002-9c33-f19b15ae683d"

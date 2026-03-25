@@ -1,0 +1,7089 @@
+[
+  {
+    "id": "319ccb0e-ac88-809a-81e7-ec550f0efd62",
+    "created_time": "2026-03-04T04:08:00.000Z",
+    "last_edited_time": "2026-03-04T04:11:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 7,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Animatic"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Storyboard"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-02",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "318ccb0e-ac88-809c-a60a-d8bf16b0704d"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Animatic QC Approved 1 "
+    },
+    "_title": "Animatic QC Approved 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "319ccb0e-ac88-80bc-b32d-d3ce73187d82",
+    "created_time": "2026-03-04T04:08:00.000Z",
+    "last_edited_time": "2026-03-04T11:17:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 2,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Animatic fix client"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Storyboard"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-04",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "c72480b4-20ff-4b54-b198-775df6d6771a",
+          "name": "Kiên Đoàn",
+          "email": "kiendt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "318ccb0e-ac88-80b2-a4a6-c82dc694da4e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Animatic fix client In progress 1 "
+    },
+    "_title": "Animatic fix client In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "31accb0e-ac88-8020-897b-ee9c47d2f957",
+    "created_time": "2026-03-05T02:31:00.000Z",
+    "last_edited_time": "2026-03-06T11:22:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 2,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Layout 13"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-05",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "319ccb0e-ac88-8023-bcd6-e3440bf61fb6"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 13 Not started 1 "
+    },
+    "_title": "Layout 13 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "31bccb0e-ac88-8050-b28a-febe95582a1b",
+    "created_time": "2026-03-06T06:37:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 2,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Background 13"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-06",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "319ccb0e-ac88-80ac-9484-fcf5445e9b64"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 13 Not started 1 "
+    },
+    "_title": "Background 13 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "31eccb0e-ac88-80f8-a946-d93c5ba6dfbc",
+    "created_time": "2026-03-09T03:18:00.000Z",
+    "last_edited_time": "2026-03-17T02:02:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 4,
+      "Product Point": [
+        35
+      ],
+      "Product Status": [
+        "Layout 12"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 35,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "B"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8032-b985-f54398af90b1"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 12 Not started 1 "
+    },
+    "_title": "Layout 12 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "320ccb0e-ac88-80af-a04b-c9bc9e7840b6",
+    "created_time": "2026-03-11T10:28:00.000Z",
+    "last_edited_time": "2026-03-17T02:02:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 4,
+      "Product Point": [
+        35
+      ],
+      "Product Status": [
+        "Background 12"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 35,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "B"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80e8-a72c-ead16badeaf7"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 12 In progress 1 "
+    },
+    "_title": "Background 12 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "325ccb0e-ac88-8058-a520-fe4a6fbdc6a3",
+    "created_time": "2026-03-16T04:10:00.000Z",
+    "last_edited_time": "2026-03-17T09:06:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 1.5,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Background 06B"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "321ccb0e-ac88-80e8-a3e7-c782e6c6221a"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 06B In progress 1 "
+    },
+    "_title": "Background 06B In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "325ccb0e-ac88-8072-8eb0-eca3a68e2de3",
+    "created_time": "2026-03-16T02:25:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 14"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-806b-8dc7-f8af81fe9a6f"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Background 14 Not started 1 "
+    },
+    "_title": "Background 14 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-800e-b4b7-d9c1c0851a41",
+    "created_time": "2026-03-17T10:09:00.000Z",
+    "last_edited_time": "2026-03-17T10:09:00.000Z",
+    "properties": {
+      "UTNL": null,
+      "NLTT": null,
+      "Product Point": null,
+      "Product Status": null,
+      "Sprint": null,
+      "Required by": null,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "TP thực tế": 0,
+      "Point Status": null,
+      "Task type": null,
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Ngày làm": null,
+      "Assignee": [],
+      "Created time": null,
+      "Product": [],
+      "Task main": null,
+      "Tasks": "test"
+    },
+    "_title": "test",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-8028-8af0-d14061d77769",
+    "created_time": "2026-03-17T05:21:00.000Z",
+    "last_edited_time": "2026-03-17T05:21:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 17"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/5",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a0-9940-f1dbd04b64d3"
+      ],
+      "Task main": "1/5",
+      "Tasks": "Layout 17 In progress 1 "
+    },
+    "_title": "Layout 17 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-8061-a18c-c722a0a2098a",
+    "created_time": "2026-03-17T10:10:00.000Z",
+    "last_edited_time": "2026-03-18T09:18:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 31"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80e3-9759-cb2cb710b992"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 31 In progress 1 "
+    },
+    "_title": "Layout 31 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-807b-b43f-ea3dd979d046",
+    "created_time": "2026-03-17T02:02:00.000Z",
+    "last_edited_time": "2026-03-17T09:06:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 2,
+      "Product Point": [
+        35
+      ],
+      "Product Status": [
+        "Layout 06B"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 35,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "B"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8088-a922-f05afe2c60e2"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 06B Not started 1 "
+    },
+    "_title": "Layout 06B Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-8081-8d9c-c76aff4999ee",
+    "created_time": "2026-03-17T09:36:00.000Z",
+    "last_edited_time": "2026-03-17T10:18:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 03"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-17",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80d4-9b56-f072592c7fdd"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Layout 03 Not started 1 "
+    },
+    "_title": "Layout 03 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80ae-948d-d30aa492e979",
+    "created_time": "2026-03-17T09:05:00.000Z",
+    "last_edited_time": "2026-03-19T06:51:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 14"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a6-83cc-e3e537ea9c3e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 14 Not started 1 "
+    },
+    "_title": "Layout 14 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80c8-bab7-f8df80f60850",
+    "created_time": "2026-03-17T10:08:00.000Z",
+    "last_edited_time": "2026-03-17T10:08:00.000Z",
+    "properties": {
+      "UTNL": null,
+      "NLTT": null,
+      "Product Point": null,
+      "Product Status": null,
+      "Sprint": null,
+      "Required by": null,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "TP thực tế": 0,
+      "Point Status": null,
+      "Task type": null,
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Ngày làm": null,
+      "Assignee": [],
+      "Created time": null,
+      "Product": [],
+      "Task main": null,
+      "Tasks": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80e2-b9d1-e50eea11d335",
+    "created_time": "2026-03-17T10:15:00.000Z",
+    "last_edited_time": "2026-03-17T10:18:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Họp phân loại cảnh"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-17",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "326ccb0e-ac88-805c-a237-c9e3774976c3"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Họp phân loại cảnh Not started 1 "
+    },
+    "_title": "Họp phân loại cảnh Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80ee-9563-e07c8888b777",
+    "created_time": "2026-03-17T05:22:00.000Z",
+    "last_edited_time": "2026-03-17T05:22:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 17"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/5",
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a0-9940-f1dbd04b64d3"
+      ],
+      "Task main": "1/5",
+      "Tasks": "Layout 17 In progress 1"
+    },
+    "_title": "Layout 17 In progress 1",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80f1-a1aa-cd558d6c5e36",
+    "created_time": "2026-03-17T02:02:00.000Z",
+    "last_edited_time": "2026-03-19T10:36:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Layout 06A"
+      ],
+      "Sprint": null,
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 12.5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "321ccb0e-ac88-80ec-97b4-df5df44bc431"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Layout 06A Not started 1 "
+    },
+    "_title": "Layout 06A Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "326ccb0e-ac88-80fe-a710-e8fa059eb3e1",
+    "created_time": "2026-03-17T10:07:00.000Z",
+    "last_edited_time": "2026-03-17T10:07:00.000Z",
+    "properties": {
+      "UTNL": null,
+      "NLTT": null,
+      "Product Point": null,
+      "Product Status": null,
+      "Sprint": null,
+      "Required by": null,
+      "Trọng số TP": 0,
+      "Product Type": null,
+      "TP thực tế": 0,
+      "Point Status": null,
+      "Task type": null,
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Ngày làm": null,
+      "Assignee": [],
+      "Created time": null,
+      "Product": [],
+      "Task main": null,
+      "Tasks": ""
+    },
+    "_title": "",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8000-9195-d6cc5543cf1b",
+    "created_time": "2026-03-18T11:01:00.000Z",
+    "last_edited_time": "2026-03-18T11:01:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 32"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8083-b71c-f9907fa139f8"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Background 32 Not started 1 "
+    },
+    "_title": "Background 32 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8006-afed-dee99b827835",
+    "created_time": "2026-03-18T03:31:00.000Z",
+    "last_edited_time": "2026-03-18T03:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 17"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/5",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a0-9940-f1dbd04b64d3"
+      ],
+      "Task main": "1/5",
+      "Tasks": "Layout 17 In progress 3 "
+    },
+    "_title": "Layout 17 In progress 3 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-802d-b24e-e54d180e961b",
+    "created_time": "2026-03-18T03:31:00.000Z",
+    "last_edited_time": "2026-03-18T03:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 17"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/5",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a0-9940-f1dbd04b64d3"
+      ],
+      "Task main": "1/5",
+      "Tasks": "Layout 17 In progress 5 "
+    },
+    "_title": "Layout 17 In progress 5 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8040-b2e2-dd04330d0b08",
+    "created_time": "2026-03-18T08:57:00.000Z",
+    "last_edited_time": "2026-03-20T05:01:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.625
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 22"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-18",
+        "end": "2026-03-19"
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-804c-bfe9-cc0cecac8196"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 22 VER01"
+    },
+    "_title": "Keyframe 22 VER01",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8046-a808-d1a30e28b745",
+    "created_time": "2026-03-18T09:10:00.000Z",
+    "last_edited_time": "2026-03-19T04:33:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 02"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-18",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8044-869f-ce937c459da0"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 02 In progress 1 "
+    },
+    "_title": "Layout 02 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8052-b124-dec9314263d3",
+    "created_time": "2026-03-18T03:31:00.000Z",
+    "last_edited_time": "2026-03-18T03:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 22"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80ff-bfac-fd5b0bb77135"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 22 In progress 1 "
+    },
+    "_title": "Layout 22 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-8098-9d8c-da69869dc240",
+    "created_time": "2026-03-18T08:39:00.000Z",
+    "last_edited_time": "2026-03-19T04:34:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 30"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-18",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80b4-acdd-fa516fdf008d"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 30 In progress 1 "
+    },
+    "_title": "Layout 30 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-80a7-a1e4-f22374d6e1a2",
+    "created_time": "2026-03-18T03:31:00.000Z",
+    "last_edited_time": "2026-03-18T03:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 17"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/5",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80a0-9940-f1dbd04b64d3"
+      ],
+      "Task main": "1/5",
+      "Tasks": "Layout 17 In progress 4 "
+    },
+    "_title": "Layout 17 In progress 4 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-80a8-8c12-e97c9d2a5cb9",
+    "created_time": "2026-03-18T07:29:00.000Z",
+    "last_edited_time": "2026-03-18T09:18:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 32"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8091-8066-d3daf6f151a8"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 32 Not started 1 "
+    },
+    "_title": "Layout 32 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-80d4-93f3-c3afb2a1e603",
+    "created_time": "2026-03-18T08:41:00.000Z",
+    "last_edited_time": "2026-03-19T04:34:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 03"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-18",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80d4-9b56-f072592c7fdd"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Layout 03 Need Fix 2 "
+    },
+    "_title": "Layout 03 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "327ccb0e-ac88-80d6-8a35-f7b0c9e05537",
+    "created_time": "2026-03-18T09:28:00.000Z",
+    "last_edited_time": "2026-03-18T09:28:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 21"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "c2266065-7d98-480f-82f3-6308d5402577",
+          "name": "Giang Bùi",
+          "email": "giangbt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8081-97d4-e265f31c6042"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 21 In progress 1 "
+    },
+    "_title": "Layout 21 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-8026-8316-f5a95ae553a2",
+    "created_time": "2026-03-19T10:36:00.000Z",
+    "last_edited_time": "2026-03-19T10:36:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Layout 06A"
+      ],
+      "Sprint": null,
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 12.5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "321ccb0e-ac88-80ec-97b4-df5df44bc431"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Layout 06A Not started 2 "
+    },
+    "_title": "Layout 06A Not started 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-802b-b6f5-db9a229b5fa4",
+    "created_time": "2026-03-19T07:37:00.000Z",
+    "last_edited_time": "2026-03-19T07:38:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 04"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80c0-95b5-ef72ae44e2f7"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 04 Not started 1 "
+    },
+    "_title": "Layout 04 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-8073-8fbb-ec3b8080255a",
+    "created_time": "2026-03-19T07:59:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 09"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809a-a46d-fad45f4272fb"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 09 Not started 1 "
+    },
+    "_title": "Keyframe 09 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-807d-8aa2-e66c24c5d0f0",
+    "created_time": "2026-03-19T04:33:00.000Z",
+    "last_edited_time": "2026-03-19T04:33:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 05"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8000-a9cb-f1ebc53c055c"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 05 In progress 1 "
+    },
+    "_title": "Layout 05 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-80b4-9a4a-e17f016130da",
+    "created_time": "2026-03-19T09:16:00.000Z",
+    "last_edited_time": "2026-03-20T08:40:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 16"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 8.75,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809f-82c8-da9311d6205a"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 16 Not started 1 "
+    },
+    "_title": "Keyframe 16 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-80cf-8a15-d1ae7f1ae089",
+    "created_time": "2026-03-19T07:38:00.000Z",
+    "last_edited_time": "2026-03-19T07:38:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 29"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-804a-ba0e-f1cf806cc763"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 29 Not started 1 "
+    },
+    "_title": "Layout 29 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "328ccb0e-ac88-80dd-a346-cd6c0e4853fe",
+    "created_time": "2026-03-19T02:43:00.000Z",
+    "last_edited_time": "2026-03-20T05:01:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.75
+      ],
+      "NLTT": 1.5,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 23"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": "2026-03-20"
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-804b-a3e6-e85425d696e0"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 23 ver01"
+    },
+    "_title": "Keyframe 23 ver01",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-800b-9fde-e16e5a9ca3b5",
+    "created_time": "2026-03-20T03:03:00.000Z",
+    "last_edited_time": "2026-03-20T03:03:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Merge 02, 03, 04, 05, 29, 30"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "329ccb0e-ac88-80c5-996b-f0d957205437"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Merge 02, 03, 04, 05, 29, 30 Not started 1 "
+    },
+    "_title": "Merge 02, 03, 04, 05, 29, 30 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8024-a331-f654f0254488",
+    "created_time": "2026-03-20T02:21:00.000Z",
+    "last_edited_time": "2026-03-20T03:00:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 1,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 01"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8099-9b95-d3c82477907f"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 01 Not started 1 "
+    },
+    "_title": "Keyframe 01 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8032-a039-dc5836f2d201",
+    "created_time": "2026-03-20T02:31:00.000Z",
+    "last_edited_time": "2026-03-20T10:03:00.000Z",
+    "properties": {
+      "UTNL": [
+        2
+      ],
+      "NLTT": 2.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 32"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2027-02-04",
+        "end": "2027-02-05"
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80bc-a208-fd8beb7e40b7"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 32 In progress 1 "
+    },
+    "_title": "Keyframe 32 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-803f-913b-dff9bd14fd19",
+    "created_time": "2026-03-20T08:38:00.000Z",
+    "last_edited_time": "2026-03-20T08:39:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 17"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8029-81f7-c7f91b940d84"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 17 Pending Review 1 "
+    },
+    "_title": "Keyframe 17 Pending Review 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8047-b83e-e973cb15a1c5",
+    "created_time": "2026-03-20T08:41:00.000Z",
+    "last_edited_time": "2026-03-20T08:41:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 25"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80cf-9212-e087f28c1335"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 25 Not started 1 "
+    },
+    "_title": "Keyframe 25 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-804a-b2cb-ccb5a16b4c5a",
+    "created_time": "2026-03-20T04:36:00.000Z",
+    "last_edited_time": "2026-03-20T04:37:00.000Z",
+    "properties": {
+      "UTNL": [
+        3.25
+      ],
+      "NLTT": null,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Keyframe 20"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 12.5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8096-a4d3-c3aa60e80895"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 20 ver01"
+    },
+    "_title": "Keyframe 20 ver01",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8054-9041-fba5e29951c9",
+    "created_time": "2026-03-20T04:30:00.000Z",
+    "last_edited_time": "2026-03-20T04:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 25"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8091-80f8-c79bb2ef909c"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 25 Not started 1 "
+    },
+    "_title": "Layout 25 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8059-a725-dd1f38f6cbb7",
+    "created_time": "2026-03-20T05:01:00.000Z",
+    "last_edited_time": "2026-03-20T05:01:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 1,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 02"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-19",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8094-af08-ca850144bd84"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 02 Pending Review 1 "
+    },
+    "_title": "Keyframe 02 Pending Review 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8063-bd96-e6d6794c3b76",
+    "created_time": "2026-03-20T04:30:00.000Z",
+    "last_edited_time": "2026-03-20T04:31:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 11"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8078-9d3f-c40f3c640539"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 11 Not started 1 "
+    },
+    "_title": "Layout 11 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-806f-9899-c2827e358c71",
+    "created_time": "2026-03-20T08:38:00.000Z",
+    "last_edited_time": "2026-03-20T08:38:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 24"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-805d-860b-c29ffd78cc9d"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 24 Not started 1 "
+    },
+    "_title": "Keyframe 24 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8082-9ede-cece7d76b1ff",
+    "created_time": "2026-03-20T04:37:00.000Z",
+    "last_edited_time": "2026-03-20T04:37:00.000Z",
+    "properties": {
+      "UTNL": null,
+      "NLTT": null,
+      "Product Point": null,
+      "Product Status": null,
+      "Sprint": null,
+      "Required by": null,
+      "Trọng số TP": 1,
+      "Product Type": null,
+      "TP thực tế": 0,
+      "Point Status": null,
+      "Task type": "Main",
+      "Loại cảnh": null,
+      "Task fix": null,
+      "Task Status": "Not started",
+      "Episode": null,
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [],
+      "Task main": null,
+      "Tasks": "Keyframe 13 ver01 "
+    },
+    "_title": "Keyframe 13 ver01 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8092-b133-fbded59ba6d9",
+    "created_time": "2026-03-20T02:14:00.000Z",
+    "last_edited_time": "2026-03-20T11:00:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        0
+      ],
+      "Product Status": [
+        "Keyframe 08"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80fa-936e-dc7e2f33ce7e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 08 In progress 1 "
+    },
+    "_title": "Keyframe 08 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-8099-bf40-f45ff5494959",
+    "created_time": "2026-03-20T03:02:00.000Z",
+    "last_edited_time": "2026-03-20T10:26:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 07"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-800f-9c43-ee814bec002e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 07 In progress 1 "
+    },
+    "_title": "Keyframe 07 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-80a5-937e-ca64b56599db",
+    "created_time": "2026-03-20T04:30:00.000Z",
+    "last_edited_time": "2026-03-23T02:23:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Layout 20"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-808b-bcdd-f74b7fcea5bf"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 20 Not started 1 "
+    },
+    "_title": "Layout 20 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-80b4-8858-d3906fd0b47e",
+    "created_time": "2026-03-20T04:30:00.000Z",
+    "last_edited_time": "2026-03-23T02:23:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 18"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-800a-b58a-d1e5fffbc33d"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 18 Not started 1 "
+    },
+    "_title": "Layout 18 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-80b6-909b-f765b3890e97",
+    "created_time": "2026-03-20T04:34:00.000Z",
+    "last_edited_time": "2026-03-23T10:18:00.000Z",
+    "properties": {
+      "UTNL": [
+        3.25
+      ],
+      "NLTT": 3,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Keyframe 21"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80fc-b65a-cf043a5ef3c0"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 21 ver01 "
+    },
+    "_title": "Keyframe 21 ver01 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-80d1-9c43-e5367181f23a",
+    "created_time": "2026-03-20T04:59:00.000Z",
+    "last_edited_time": "2026-03-20T06:38:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 19"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8098-b146-fb2783d931ed"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 19 ver01 "
+    },
+    "_title": "Keyframe 19 ver01 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "329ccb0e-ac88-80ff-b0da-edac9bd6cf24",
+    "created_time": "2026-03-20T10:43:00.000Z",
+    "last_edited_time": "2026-03-20T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Layout 10"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-806c-b023-f277af5d58cc"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 10 In progress 1 "
+    },
+    "_title": "Layout 10 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8005-aa03-ddd953f77660",
+    "created_time": "2026-03-23T04:39:00.000Z",
+    "last_edited_time": "2026-03-23T04:39:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Background 06A"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80e5-b2f4-dbd5e411ad0e"
+      ],
+      "Task main": "0/2",
+      "Tasks": "Background 06A Not started 2 "
+    },
+    "_title": "Background 06A Not started 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-800c-874d-d7f16c71db93",
+    "created_time": "2026-03-23T10:42:00.000Z",
+    "last_edited_time": "2026-03-23T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Background 02"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-06",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8031-acca-f55fc67147b6"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 02 Not started 1 "
+    },
+    "_title": "Background 02 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8031-96c9-d8a1b0281e81",
+    "created_time": "2026-03-23T09:43:00.000Z",
+    "last_edited_time": "2026-03-23T09:58:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.75
+      ],
+      "NLTT": 0.75,
+      "Product Point": [
+        0
+      ],
+      "Product Status": [
+        "Keyframe 12"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80cb-9d55-c10d4ca6fd9b"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 12 Not started 1 "
+    },
+    "_title": "Keyframe 12 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8032-bb5a-d6f2d4449efc",
+    "created_time": "2026-03-23T04:09:00.000Z",
+    "last_edited_time": "2026-03-23T08:57:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Background 06A"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80e5-b2f4-dbd5e411ad0e"
+      ],
+      "Task main": "0/2",
+      "Tasks": "Background 06A Not started 1 "
+    },
+    "_title": "Background 06A Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8036-8330-ffd530ad6e82",
+    "created_time": "2026-03-23T02:16:00.000Z",
+    "last_edited_time": "2026-03-23T02:16:00.000Z",
+    "properties": {
+      "UTNL": [
+        2
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 32"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80bc-a208-fd8beb7e40b7"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 32 Need Fix 2 "
+    },
+    "_title": "Keyframe 32 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-803b-9964-e57a70a6c4c6",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 27"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80aa-ba71-d7651c19b049"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 27 Not started 1 "
+    },
+    "_title": "Background 27 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8040-9239-c59e71e13352",
+    "created_time": "2026-03-23T10:20:00.000Z",
+    "last_edited_time": "2026-03-23T10:20:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Keyframe 18"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 0.19,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80a9-bd38-c3c3990cb14f"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 18 Need Fix 2 "
+    },
+    "_title": "Keyframe 18 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8042-92dd-ea6e2ec8b0af",
+    "created_time": "2026-03-23T06:38:00.000Z",
+    "last_edited_time": "2026-03-24T10:15:00.000Z",
+    "properties": {
+      "UTNL": [
+        3.25
+      ],
+      "NLTT": 2.75,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Keyframe 20"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 12.5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": "2026-03-24"
+      },
+      "Assignee": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8096-a4d3-c3aa60e80895"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 20 Not started 2 "
+    },
+    "_title": "Keyframe 20 Not started 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8043-8399-f3ed7d605732",
+    "created_time": "2026-03-23T08:05:00.000Z",
+    "last_edited_time": "2026-03-23T08:06:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 10"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
+          "name": "Hưng Nguyễn",
+          "email": "hungnn@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8068-b92e-cdb67fd797c2"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 10 Not started 1 "
+    },
+    "_title": "Keyframe 10 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-805a-9091-ea37a18e78c7",
+    "created_time": "2026-03-23T07:00:00.000Z",
+    "last_edited_time": "2026-03-23T07:01:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.375,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 29"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80c6-a6cf-e7dc3aebecea"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 29 Not started 1 "
+    },
+    "_title": "Keyframe 29 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-805a-b7b7-cf6b286d12a1",
+    "created_time": "2026-03-23T08:04:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 14"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-806b-8dc7-f8af81fe9a6f"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Background 14 Not started 2 "
+    },
+    "_title": "Background 14 Not started 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-805d-97be-cd6ca7ed66a4",
+    "created_time": "2026-03-23T10:29:00.000Z",
+    "last_edited_time": "2026-03-23T10:29:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Inbetween 14"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8003-9a96-f52d4817f282"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 14 Not started 1 "
+    },
+    "_title": "Inbetween 14 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-805e-80a0-ef9ebc0d2aff",
+    "created_time": "2026-03-23T07:57:00.000Z",
+    "last_edited_time": "2026-03-23T07:57:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Keyframe 18"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 0.63,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80a9-bd38-c3c3990cb14f"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 18 Not started 1 "
+    },
+    "_title": "Keyframe 18 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8062-ae97-eebf03913ef3",
+    "created_time": "2026-03-23T10:42:00.000Z",
+    "last_edited_time": "2026-03-23T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 16"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-06",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-800c-a0b6-fdf618b9d901"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 16 Not started 1 "
+    },
+    "_title": "Background 16 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-806a-9b25-d6d3f7b9c46e",
+    "created_time": "2026-03-23T10:17:00.000Z",
+    "last_edited_time": "2026-03-23T10:18:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.125,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 03"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80e5-9b1a-ffa2e77dcbbe"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 03 Need Fix 1 "
+    },
+    "_title": "Keyframe 03 Need Fix 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8070-acbc-f41914ca87f7",
+    "created_time": "2026-03-23T09:33:00.000Z",
+    "last_edited_time": "2026-03-23T09:33:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.75,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 05"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8023-bd98-d1f3d2843acf"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 05 Not started 1 "
+    },
+    "_title": "Keyframe 05 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8072-b8d4-d88085d8fea6",
+    "created_time": "2026-03-23T08:04:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 32"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8083-b71c-f9907fa139f8"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Background 32 Not started 2 "
+    },
+    "_title": "Background 32 Not started 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8079-9811-cfedd8f98804",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Background 23"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8086-9870-c53d2f80f6a2"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 23 Not started 1 "
+    },
+    "_title": "Background 23 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8081-939d-d0da7f7c1188",
+    "created_time": "2026-03-23T10:18:00.000Z",
+    "last_edited_time": "2026-03-23T10:19:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 03"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-20",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80e5-9b1a-ffa2e77dcbbe"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 03 Pending Review 2 "
+    },
+    "_title": "Keyframe 03 Pending Review 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8083-8717-fa545c01d4b7",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 31"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-806e-8042-c9c6db2a906e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 31 Not started 1 "
+    },
+    "_title": "Background 31 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8084-8fce-d0599e421068",
+    "created_time": "2026-03-23T10:27:00.000Z",
+    "last_edited_time": "2026-03-23T10:27:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Inbetween 21"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809a-b3ad-efdb94210b8a"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Inbetween 21 Not started 1 "
+    },
+    "_title": "Inbetween 21 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8087-abe0-cae9c72911cc",
+    "created_time": "2026-03-23T10:42:00.000Z",
+    "last_edited_time": "2026-03-23T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 04"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-802c-a184-fe20cd2e31fe"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 04 Not started 1 "
+    },
+    "_title": "Background 04 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-808d-abdc-cd457233d9d0",
+    "created_time": "2026-03-23T09:34:00.000Z",
+    "last_edited_time": "2026-03-23T09:34:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 31"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80e2-8874-e1932363a91e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 31 Not started 1 "
+    },
+    "_title": "Keyframe 31 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8090-bd8c-dbb8c67f2908",
+    "created_time": "2026-03-23T10:21:00.000Z",
+    "last_edited_time": "2026-03-23T10:21:00.000Z",
+    "properties": {
+      "UTNL": [
+        2
+      ],
+      "NLTT": 0,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Inbetween 32"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80d5-91c1-e8c0b6ef6776"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 32 Not started 1 "
+    },
+    "_title": "Inbetween 32 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-8091-be12-c7595cb13664",
+    "created_time": "2026-03-23T10:42:00.000Z",
+    "last_edited_time": "2026-03-23T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 15"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-06",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80dc-8934-f1aed30118f3"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 15 Not started 1 "
+    },
+    "_title": "Background 15 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-809f-9b01-c0b19d940dd3",
+    "created_time": "2026-03-23T10:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:14:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 22"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80d3-a3e0-c5de54a79f7d"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Inbetween 22 Not started 1 "
+    },
+    "_title": "Inbetween 22 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80a2-876e-efeed7193309",
+    "created_time": "2026-03-23T02:16:00.000Z",
+    "last_edited_time": "2026-03-23T02:16:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.75
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 14"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-800b-9287-c414c78c2406"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 14 Not started 1 "
+    },
+    "_title": "Keyframe 14 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80ab-9993-c415041fdb3c",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 18"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80ff-91ba-e849af523880"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 18 Not started 1 "
+    },
+    "_title": "Background 18 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80b2-8085-d53012166834",
+    "created_time": "2026-03-23T08:50:00.000Z",
+    "last_edited_time": "2026-03-23T08:50:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.375,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 28"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80de-b991-d045a7ab7bf3"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 28 Not started 1 "
+    },
+    "_title": "Keyframe 28 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80c4-b3c3-ddd19beefd3e",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Background 24"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80e8-b8d0-c6a1fcdf230e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 24 Not started 1 "
+    },
+    "_title": "Background 24 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80ca-a7d5-e5ce0ab72a42",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 11"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-80b2-b86c-f802bbf6f661"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 11 Not started 1 "
+    },
+    "_title": "Background 11 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80cb-b533-fc61a386c7c8",
+    "created_time": "2026-03-23T08:03:00.000Z",
+    "last_edited_time": "2026-03-23T08:05:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Background 20"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8004-9307-de07a9c9b069"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 20 Not started 1 "
+    },
+    "_title": "Background 20 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80d1-a328-e8c76442f104",
+    "created_time": "2026-03-23T06:37:00.000Z",
+    "last_edited_time": "2026-03-23T06:37:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Inbetween 20"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "82ba9b87-e198-4438-a1c2-7b873cd364b5",
+          "name": "Phúc Nguyễn",
+          "email": "phucnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80fa-9503-f970156ed857"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Inbetween 20 Not started 1 "
+    },
+    "_title": "Inbetween 20 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80df-bae8-f1a97c04f716",
+    "created_time": "2026-03-23T10:27:00.000Z",
+    "last_edited_time": "2026-03-24T09:01:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 23"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80dd-9809-d32928ad0639"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Inbetween 23 v01"
+    },
+    "_title": "Inbetween 23 v01",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80e4-a435-ecb6350b7d1f",
+    "created_time": "2026-03-23T10:42:00.000Z",
+    "last_edited_time": "2026-03-23T10:43:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Background 03"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-06",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "ce62dd6e-6b4c-4d26-a9c9-929205c03462",
+          "name": "Thảo Vương",
+          "email": "thaovh@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8051-b03b-ca0934d4df5e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Background 03 Not started 1 "
+    },
+    "_title": "Background 03 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80e6-9979-c232f47761da",
+    "created_time": "2026-03-23T10:27:00.000Z",
+    "last_edited_time": "2026-03-24T05:19:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 19"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80a8-ab56-f362009f2acc"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Inbetween 19 Not started 1 "
+    },
+    "_title": "Inbetween 19 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80ee-a394-f01dd084c316",
+    "created_time": "2026-03-23T09:47:00.000Z",
+    "last_edited_time": "2026-03-23T09:48:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.0625,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 01"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8099-9b95-d3c82477907f"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 01 Need Fix 2 "
+    },
+    "_title": "Keyframe 01 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80ee-aff3-dfd32acafcaf",
+    "created_time": "2026-03-23T05:26:00.000Z",
+    "last_edited_time": "2026-03-23T05:26:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 1,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 04"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 10.77,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8059-9620-d2603c08bb85"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 04 In progress 1 "
+    },
+    "_title": "Keyframe 04 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32cccb0e-ac88-80fb-aac5-cbc25e7160ad",
+    "created_time": "2026-03-23T10:29:00.000Z",
+    "last_edited_time": "2026-03-23T10:29:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": 0.0625,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 04"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.23,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "0e281966-9999-4a71-b6dd-7bb825e4f55c",
+          "name": "Bảo Anh",
+          "email": "anhdtb@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8059-9620-d2603c08bb85"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 04 Need Fix 2 "
+    },
+    "_title": "Keyframe 04 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8001-bb16-f50b2b3d7ba8",
+    "created_time": "2026-03-24T05:04:00.000Z",
+    "last_edited_time": "2026-03-24T05:12:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Inbetween 13"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8055-96de-ff155df00872"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 13 Not started 1 "
+    },
+    "_title": "Inbetween 13 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8005-bb40-ded5592b56ac",
+    "created_time": "2026-03-24T03:14:00.000Z",
+    "last_edited_time": "2026-03-24T03:15:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 25"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80cf-9212-e087f28c1335"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 25 Need Fix 2 "
+    },
+    "_title": "Keyframe 25 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8008-99eb-e81b54766207",
+    "created_time": "2026-03-24T04:35:00.000Z",
+    "last_edited_time": "2026-03-24T04:36:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 28"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80de-b991-d045a7ab7bf3"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 28 Need Fix 2 "
+    },
+    "_title": "Keyframe 28 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8015-bdbd-cb50c9bb1b4f",
+    "created_time": "2026-03-24T04:31:00.000Z",
+    "last_edited_time": "2026-03-24T04:31:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.75
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 26"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8021-a481-cac0b0422b24"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 26 Not started 1 "
+    },
+    "_title": "Keyframe 26 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8028-afd5-db1618b97e9f",
+    "created_time": "2026-03-24T03:01:00.000Z",
+    "last_edited_time": "2026-03-24T05:11:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.75
+      ],
+      "NLTT": 2.25,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 13"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 10.77,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809e-88a1-d32cad60f37c"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 13 ver1 "
+    },
+    "_title": "Keyframe 13 ver1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8029-b597-e1cd1af9557b",
+    "created_time": "2026-03-24T04:35:00.000Z",
+    "last_edited_time": "2026-03-24T04:36:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 30"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8073-9d69-f1c8f58941ac"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 30 Need Fix 2 "
+    },
+    "_title": "Keyframe 30 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8031-84e5-ff8cf598ac5e",
+    "created_time": "2026-03-24T07:40:00.000Z",
+    "last_edited_time": "2026-03-24T08:13:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 16"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.63,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809f-82c8-da9311d6205a"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 16 Need Fix 2 "
+    },
+    "_title": "Keyframe 16 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8042-85d1-e9c6e3589015",
+    "created_time": "2026-03-24T10:06:00.000Z",
+    "last_edited_time": "2026-03-24T10:07:00.000Z",
+    "properties": {
+      "UTNL": [
+        1
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 11"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-800d-9c25-f89bbfa84eaa"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 11 In progress 1 "
+    },
+    "_title": "Keyframe 11 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-804a-9f80-d1f4c7adfed5",
+    "created_time": "2026-03-24T08:12:00.000Z",
+    "last_edited_time": "2026-03-24T08:12:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Background 25"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8024-aa83-d752725f6dbe"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Background 25 Pending Review 1 "
+    },
+    "_title": "Background 25 Pending Review 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8054-b949-cd361ffa825c",
+    "created_time": "2026-03-24T03:59:00.000Z",
+    "last_edited_time": "2026-03-24T05:12:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.75
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 13"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.23,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "d08fd54c-8a87-485d-9980-e211a5ed9f67",
+          "name": " Vân Trần",
+          "email": "vanttt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809e-88a1-d32cad60f37c"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 13 Need Fix 2 "
+    },
+    "_title": "Keyframe 13 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8056-9f78-f8822800ff91",
+    "created_time": "2026-03-24T04:17:00.000Z",
+    "last_edited_time": "2026-03-24T10:08:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 18"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80b8-b7d8-c0f4d8da8508"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 18 Not started 1 "
+    },
+    "_title": "Inbetween 18 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8072-a3bc-d8aa1f48ddc5",
+    "created_time": "2026-03-24T04:44:00.000Z",
+    "last_edited_time": "2026-03-24T04:44:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.75
+      ],
+      "NLTT": 0.75,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 27"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "In progress",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80b8-abef-e631a35def93"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 27 Not started 1 "
+    },
+    "_title": "Keyframe 27 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8077-ab14-c5eba7f70350",
+    "created_time": "2026-03-24T09:14:00.000Z",
+    "last_edited_time": "2026-03-24T09:14:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": null,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 23"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "508830f8-a383-4b7f-9395-19e9088aac2b",
+          "name": "Nhung Trần",
+          "email": "nhungtth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80dd-9809-d32928ad0639"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Inbetween 23 v02 "
+    },
+    "_title": "Inbetween 23 v02 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-807e-8078-f6f7ee8d0e43",
+    "created_time": "2026-03-24T02:42:00.000Z",
+    "last_edited_time": "2026-03-24T02:42:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 30"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 3.85,
+      "Point Status": [
+        "Unconfirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-23",
+        "end": "2026-03-24"
+      },
+      "Assignee": [
+        {
+          "id": "cc7a67f2-ff5b-4e07-8876-5573006123b1",
+          "name": "Huy Đỗ",
+          "email": "huydq@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8073-9d69-f1c8f58941ac"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 30 Not started 1 "
+    },
+    "_title": "Keyframe 30 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-8088-aa0f-fd1d15dd5ff5",
+    "created_time": "2026-03-24T08:13:00.000Z",
+    "last_edited_time": "2026-03-24T08:13:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": 0.0625,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Keyframe 16"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.63,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-809f-82c8-da9311d6205a"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 16 Need Fix 3 "
+    },
+    "_title": "Keyframe 16 Need Fix 3 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80a2-87ca-d4fcee985ea7",
+    "created_time": "2026-03-24T06:40:00.000Z",
+    "last_edited_time": "2026-03-24T06:41:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 26"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80ef-97c8-e3285a5bff6e"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 26 Not started 1 "
+    },
+    "_title": "Inbetween 26 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80a2-9917-f262843e84c0",
+    "created_time": "2026-03-24T04:55:00.000Z",
+    "last_edited_time": "2026-03-24T04:55:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.5,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 17"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 2.5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8029-81f7-c7f91b940d84"
+      ],
+      "Task main": "2/2",
+      "Tasks": "Keyframe 17 Need Fix 2 "
+    },
+    "_title": "Keyframe 17 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80b5-a04d-d5df6e5b1100",
+    "created_time": "2026-03-24T08:40:00.000Z",
+    "last_edited_time": "2026-03-24T08:40:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Layout 28"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Layout"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "375ed7c6-3d8d-4adc-82fd-beb97a7f0921",
+          "name": "Hòa Nguyễn",
+          "email": "hoant@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8053-9261-eb7b33266887"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Layout 28 In progress 1 "
+    },
+    "_title": "Layout 28 In progress 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80c7-924f-e481db71085c",
+    "created_time": "2026-03-24T09:52:00.000Z",
+    "last_edited_time": "2026-03-24T09:53:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.5
+      ],
+      "NLTT": 0.0625,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Inbetween 25"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 5,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "787eac37-7158-4071-b8e3-504598737fa4",
+          "name": "Minh Ngô  ",
+          "email": "minhnndt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8071-94a4-c4d2707988c9"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 25 Not started 1 "
+    },
+    "_title": "Inbetween 25 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80d5-9dd9-cbe005a6f0d1",
+    "created_time": "2026-03-24T03:32:00.000Z",
+    "last_edited_time": "2026-03-24T03:32:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Keyframe 18"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 0.19,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "2/3",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80a9-bd38-c3c3990cb14f"
+      ],
+      "Task main": "1/3",
+      "Tasks": "Keyframe 18 Need Fix 3 "
+    },
+    "_title": "Keyframe 18 Need Fix 3 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80dd-bcf9-ed043384c375",
+    "created_time": "2026-03-24T08:12:00.000Z",
+    "last_edited_time": "2026-03-24T08:12:00.000Z",
+    "properties": {
+      "UTNL": [],
+      "NLTT": null,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Background 30"
+      ],
+      "Sprint": null,
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0,
+      "Product Type": [
+        "Background"
+      ],
+      "TP thực tế": 0,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": null,
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Not started",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": null,
+      "Assignee": [
+        {
+          "id": "591f230f-efcf-478e-9dc0-6529bf787f1f",
+          "name": "Thanh Nguyễn ",
+          "email": "thanhnt@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31bccb0e-ac88-8014-8a31-d4bbc34d216e"
+      ],
+      "Task main": "0/1",
+      "Tasks": "Background 30 Pending Review 1 "
+    },
+    "_title": "Background 30 Pending Review 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80ef-989f-d1763bfdff73",
+    "created_time": "2026-03-24T03:08:00.000Z",
+    "last_edited_time": "2026-03-24T03:10:00.000Z",
+    "properties": {
+      "UTNL": [
+        1
+      ],
+      "NLTT": 1,
+      "Product Point": [
+        25
+      ],
+      "Product Status": [
+        "Inbetween 12"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 25,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "C"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-80f0-bcc2-d94b97d79cf8"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 12 Not started 1 "
+    },
+    "_title": "Inbetween 12 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80f6-8320-eaeef5aa1dfb",
+    "created_time": "2026-03-24T05:01:00.000Z",
+    "last_edited_time": "2026-03-24T05:01:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.75
+      ],
+      "NLTT": 0.25,
+      "Product Point": [
+        5
+      ],
+      "Product Status": [
+        "Keyframe 26"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 0.3,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1.15,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Fix",
+      "Loại cảnh": [
+        "E"
+      ],
+      "Task fix": "1/2",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "513760cb-f9a6-4210-8a71-8ff101e41eb5",
+          "name": "Quỳnh Trương",
+          "email": "quynhtpm@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8021-a481-cac0b0422b24"
+      ],
+      "Task main": "1/2",
+      "Tasks": "Keyframe 26 Need Fix 2 "
+    },
+    "_title": "Keyframe 26 Need Fix 2 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80fb-a4e9-f05eae048459",
+    "created_time": "2026-03-24T02:50:00.000Z",
+    "last_edited_time": "2026-03-24T02:50:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0.375,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Keyframe 15"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Keyframe"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8085-b129-c5048dd04c55"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Keyframe 15 Not started 1 "
+    },
+    "_title": "Keyframe 15 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80fd-9662-caf4a1b3b943",
+    "created_time": "2026-03-24T03:47:00.000Z",
+    "last_edited_time": "2026-03-24T03:47:00.000Z",
+    "properties": {
+      "UTNL": [
+        1.5
+      ],
+      "NLTT": 0.125,
+      "Product Point": [
+        14
+      ],
+      "Product Status": [
+        "Inbetween 31"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 14,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "D"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8028-bf06-ccc2d243e966"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 31 Not started 1 "
+    },
+    "_title": "Inbetween 31 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  },
+  {
+    "id": "32dccb0e-ac88-80fe-b5e4-f39bbdea9806",
+    "created_time": "2026-03-24T03:49:00.000Z",
+    "last_edited_time": "2026-03-24T03:49:00.000Z",
+    "properties": {
+      "UTNL": [
+        0.25
+      ],
+      "NLTT": 0,
+      "Product Point": [
+        1
+      ],
+      "Product Status": [
+        "Inbetween 15"
+      ],
+      "Sprint": "Sprint 1",
+      "Required by": [
+        "Internal"
+      ],
+      "Trọng số TP": 1,
+      "Product Type": [
+        "Inbetween"
+      ],
+      "TP thực tế": 1,
+      "Point Status": [
+        "Confirmed"
+      ],
+      "Task type": "Main",
+      "Loại cảnh": [
+        "F"
+      ],
+      "Task fix": "0/1",
+      "Task Status": "Done",
+      "Episode": [
+        {
+          "type": "select",
+          "select": null
+        }
+      ],
+      "Ngày làm": {
+        "start": "2026-03-24",
+        "end": null
+      },
+      "Assignee": [
+        {
+          "id": "3397c9a6-dd39-48d5-9bb5-6651a798e025",
+          "name": "My Nguyễn",
+          "email": "mynth@sangygroup.com"
+        }
+      ],
+      "Created time": null,
+      "Product": [
+        "31fccb0e-ac88-8087-924d-c566d66ca515"
+      ],
+      "Task main": "1/1",
+      "Tasks": "Inbetween 15 Not started 1 "
+    },
+    "_title": "Inbetween 15 Not started 1 ",
+    "database_name": "[XAV_ko QC] Tasks (1)",
+    "project_name": "[XAV_ko QC] Tasks (1)",
+    "database_id": "318ccb0e-ac88-802a-af65-dc9c20726f4e"
+  }
+]

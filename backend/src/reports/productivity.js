@@ -1,10 +1,12 @@
-import { SENIORITY_MAPPING, KPI_MAPPING, PRODUCT_TYPE_MAPPING, NAME_ALIAS_MAPPING } from '../constants.js';
+import { SENIORITY_MAPPING, KPI_MAPPING, PRODUCT_TYPE_MAPPING, NAME_ALIAS_MAPPING, EMAIL_ALIAS_MAPPING } from '../constants.js';
 
 export class ProductivityService {
     constructor(db) {
         this.db = db;
         this.personAliasMap = this.buildPersonAliasMap();
         this.personSkeletonMap = this.buildPersonSkeletonMap();
+        const lookupMaps = typeof db?.getLookupMaps === 'function' ? db.getLookupMaps() : {};
+        this.personEmailMap = this.buildPersonEmailMap(lookupMaps.userMap);
     }
 
     /**
@@ -727,12 +729,48 @@ export class ProductivityService {
         return map;
     }
 
-    resolvePersonName(rawName) {
+    normalizeEmail(email) {
+        return String(email || '').toLowerCase().trim();
+    }
+
+    buildPersonEmailMap(userMap = new Map()) {
+        const map = new Map();
+        const addEmail = (email, canonical) => {
+            const normalizedEmail = this.normalizeEmail(email);
+            if (!normalizedEmail || !canonical) return;
+            if (!map.has(normalizedEmail)) {
+                map.set(normalizedEmail, canonical);
+            }
+        };
+
+        for (const [email, canonical] of Object.entries(EMAIL_ALIAS_MAPPING)) {
+            addEmail(email, canonical);
+        }
+
+        if (userMap && typeof userMap.forEach === 'function') {
+            userMap.forEach((name, email) => {
+                const resolvedName = this.resolvePersonName(name);
+                if (resolvedName && resolvedName !== 'Unknown User') {
+                    addEmail(email, resolvedName);
+                }
+            });
+        }
+
+        return map;
+    }
+
+    resolvePersonName(rawName, rawEmail = '') {
         const raw = String(rawName || '').trim();
+        const normalizedEmail = this.normalizeEmail(rawEmail);
         if (!raw) return '';
 
         const directAlias = NAME_ALIAS_MAPPING[raw];
         if (directAlias) return directAlias;
+
+        if (normalizedEmail) {
+            const emailAlias = this.personEmailMap?.get(normalizedEmail) || EMAIL_ALIAS_MAPPING[normalizedEmail];
+            if (emailAlias) return emailAlias;
+        }
 
         const normalizedRaw = this.normalizePersonName(raw);
         const fixedMatch = this.personAliasMap.get(normalizedRaw);
@@ -794,7 +832,7 @@ export class ProductivityService {
 
         if (Array.isArray(assignees)) {
             return assignees
-                .map(person => this.resolvePersonName(person?.name || ''))
+                .map(person => this.resolvePersonName(person?.name || person?.email || '', person?.email || ''))
                 .filter(Boolean);
         }
 

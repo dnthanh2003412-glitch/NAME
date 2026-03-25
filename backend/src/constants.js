@@ -114,7 +114,15 @@ export const NAME_ALIAS_MAPPING = {
     "Kiệt Đoàn": "Đoàn Anh Kiệt",
     "Kiet Doan": "Đoàn Anh Kiệt",
     "Hòa Trần": "Trần Xuân Hòa",
-    "Hoa Tran": "Trần Xuân Hòa"
+    "Hoa Tran": "Trần Xuân Hòa",
+    "Thảo Vương": "Vương Hồng Thảo",
+    "Thao Vuong": "Vương Hồng Thảo"
+};
+
+export const EMAIL_ALIAS_MAPPING = {
+    "kiendt@sangygroup.com": "Đoàn Trung Kiên",
+    "trungdt@sangygroup.com": "Đỗ Thành Trung",
+    "linhntt@sangygroup.com": "Nguyễn Thùy Linh"
 };
 
 export const KPI_MAPPING = {

@@ -445,7 +445,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -569,7 +569,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -620,10 +620,7 @@
       "NLTT": 0.5,
       "crea": null,
       "Loại cảnh": [
-        {
-          "type": "select",
-          "select": null
-        }
+        "E"
       ],
       "Task main": "1",
       "Task QC": "0/1",
@@ -631,7 +628,7 @@
         0.5
       ],
       "Run n8n": false,
-      "TP giả định": 0,
+      "TP giả định": 5,
       "Required by": null,
       "Sprint": [
         "Sprint 1"
@@ -647,7 +644,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -664,9 +661,9 @@
       ],
       "Done date": null,
       "Product Point": [
-        0
+        5
       ],
-      "TP giả định 2": 0,
+      "TP giả định 2": 2,
       "Assignee": [
         {
           "id": "0b9c48d9-e3d0-4f8c-9b39-ca52da0939c0",
@@ -674,7 +671,7 @@
           "email": "hungnn@sangygroup.com"
         }
       ],
-      "TP thực tế": 0,
+      "TP thực tế": 5,
       "Task fix": "0/1",
       "Created time": null,
       "Tasks": "Cut-out 02 fb client ver1",
@@ -989,7 +986,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -1058,7 +1055,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -1127,7 +1124,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -1196,7 +1193,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"
@@ -2191,7 +2188,7 @@
       "[Dev] Total main": 1,
       "Task type": "Main",
       "Point Status": [
-        "Confirmed"
+        "Unconfirmed"
       ],
       "Product Status": [
         "QC Approved"

@@ -1,53 +1,53 @@
 # Dash Notion
 
-Dashboard phan tich du lieu Notion theo thoi gian thuc, toi uu cho whitelist project, co cache cuc bo dang file va sync nen dinh ky.
+Dashboard phân tích dữ liệu Notion theo thời gian thực, tối ưu cho whitelist project, có cache cục bộ dạng file và sync nền định kỳ.
 
-## Tinh nang chinh
+## Tính năng chính
 
-- Doc du lieu Notion bang `NOTION_ACCESS_TOKEN` / `NOTION_TOKEN` (khong bat buoc OAuth flow tren UI).
+- Đọc dữ liệu Notion bằng `NOTION_ACCESS_TOKEN` / `NOTION_TOKEN` (không bắt buộc OAuth flow trên UI).
 - Sidebar project tree + whitelist pin/unpin.
-- Polling nen voi incremental sync + full-sync checkpoint dinh ky de loai stale/ghost records.
-- Realtime progress qua WebSocket, frontend tu refresh report khi sync hoan tat.
-- Bo report: Sprint, Productivity, Raw Data, Raw All Projects (whitelist), Burndown, Sync Monitor (Admin).
+- Polling nền với incremental sync + full-sync checkpoint định kỳ để loại stale/ghost records.
+- Realtime progress qua WebSocket, frontend tự refresh report khi sync hoàn tất.
+- Bộ report: Sprint, Productivity, Raw Data, Raw All Projects (whitelist), Burndown, Sync Monitor (Admin).
 - Chatbot preview widget qua API `GET /api/chat/config` + `POST /api/chat`.
-- Cache cuc bo split-file:
-  - `backend/data/cache/*.json`: du lieu theo tung database
-  - `backend/data/config.json`: cau hinh chay
+- Cache cục bộ split-file:
+  - `backend/data/cache/*.json`: dữ liệu theo từng database
+  - `backend/data/config.json`: cấu hình chạy
   - `backend/data/metadata.json`: sync times, audit, relation cache
 
-## Yeu cau
+## Yêu cầu
 
 - Node.js `>=18`
-- Notion Integration Token da co quyen doc cac database can dung
+- Notion Integration Token đã có quyền đọc các database cần dùng
 
-## Chay nhanh (local)
+## Chạy nhanh (local)
 
 ```bash
-# Cai dependencies backend
+# Cài dependencies backend
 cd backend
 npm install
 
-# Tao file env
+# Tạo file env
 copy .env.example .env
 
-# Chay server
+# Chạy server
 npm start
 ```
 
-Hoac tu root:
+Hoặc từ root:
 
 ```bash
 npm start
 ```
 
-Mac dinh app chay o `http://localhost:3000`.
+Mặc định app chạy ở `http://localhost:3000`.
 
-## Cau hinh moi truong
+## Cấu hình môi trường
 
 `backend/.env`:
 
 ```env
-# Bat buoc: token Notion (uu tien NOTION_ACCESS_TOKEN)
+# Bắt buộc: token Notion (ưu tiên NOTION_ACCESS_TOKEN)
 NOTION_ACCESS_TOKEN=secret_xxx
 # NOTION_TOKEN=secret_xxx
 
@@ -79,96 +79,96 @@ AI_MODEL=gpt-4o-mini
 # DATA_DIR=./data
 ```
 
-## Whitelist va cache
+## Whitelist và cache
 
 - File whitelist: `backend/data/priority_projects.json`.
-- Poller luon sync ca `selected_databases` va `priority_databases` (whitelist) de giu cache nong.
-- Khi pin/unpin whitelist, backend se:
-  - cap nhat file whitelist,
+- Poller luôn sync cả `selected_databases` và `priority_databases` (whitelist) để giữ cache nóng.
+- Khi pin/unpin whitelist, backend sẽ:
+  - cập nhật file whitelist,
   - clear formatted raw cache,
-  - kich hoat background warmup de lam moi cache som.
+  - kích hoạt background warmup để làm mới cache sớm.
 
-## Scripts huu ich
+## Scripts hữu ích
 
 ```bash
-# Chay test backend
+# Chạy test backend
 npm --prefix backend test
 
-# Chay backend o mode watch
+# Chạy backend ở mode watch
 npm --prefix backend run dev
 ```
 
-## Deploy len Render (onrender.com)
+## Deploy lên Render (onrender.com)
 
-### 1) Push code len GitHub
+### 1) Push code lên GitHub
 
-Dam bao ban da push repo nay len GitHub (Render se ket noi vao repo). Neu chua co repo rieng, tao repo moi tren GitHub va push code len.
+Đảm bảo bạn đã push repo này lên GitHub (Render sẽ kết nối vào repo). Nếu chưa có repo riêng, tạo repo mới trên GitHub và push code lên.
 
-### 2) Ket noi Render voi repo
+### 2) Kết nối Render với repo
 
-Co 2 cach: dung Blueprint (khuyen nghi) hoac tao Web Service thu cong.
+Có 2 cách: dùng Blueprint (khuyến nghị) hoặc tạo Web Service thủ công.
 
-#### Cach A: Blueprint (tu dong doc `render.yaml`)
+#### Cách A: Blueprint (tự động đọc `render.yaml`)
 
-1. Dang nhap Render.
-2. Chon **New** -> **Blueprint**.
-3. Chon repo GitHub chua code nay.
-4. Render se doc `render.yaml` va tao service `notion-dashboard`.
-5. Set cac bien moi truong bat buoc (xem muc 4).
+1. Đăng nhập Render.
+2. Chọn **New** -> **Blueprint**.
+3. Chọn repo GitHub chứa code này.
+4. Render sẽ đọc `render.yaml` và tạo service `notion-dashboard`.
+5. Set các biến môi trường bắt buộc (xem mục 4).
 6. Deploy.
 
-#### Cach B: Tao Web Service thu cong
+#### Cách B: Tạo Web Service thủ công
 
-1. Dang nhap Render.
-2. Chon **New** -> **Web Service**.
-3. Chon repo GitHub chua code nay.
-4. Cau hinh:
+1. Đăng nhập Render.
+2. Chọn **New** -> **Web Service**.
+3. Chọn repo GitHub chứa code này.
+4. Cấu hình:
    - Runtime: `Node`
    - Build Command: `cd backend && npm install`
    - Start Command: `cd backend && npm start`
-   - Auto-Deploy: On (tuy chon)
-5. Set bien moi truong (xem muc 4).
+   - Auto-Deploy: On (tùy chọn)
+5. Set biến môi trường (xem mục 4).
 6. Deploy.
 
 ### 3) Static frontend
 
-Frontend la static file trong `frontend/public`. Render co the publish static path nay neu deploy theo `render.yaml` (thuoc tinh `staticPublishPath`). Neu deploy thu cong, dam bao file `frontend/public` co san va backend serve dung đường dan public neu can.
+Frontend là static file trong `frontend/public`. Render có thể publish static path này nếu deploy theo `render.yaml` (thuộc tính `staticPublishPath`). Nếu deploy thủ công, đảm bảo file `frontend/public` có sẵn và backend serve đúng đường dẫn public nếu cần.
 
-### 4) Bien moi truong can thiet tren Render
+### 4) Biến môi trường cần thiết trên Render
 
 Set trong Render dashboard (Environment):
 
-Bat buoc:
-- `NOTION_ACCESS_TOKEN` (uu tien) hoac `NOTION_TOKEN`
-- `SESSION_SECRET` (Render co the tu generate)
+Bắt buộc:
+- `NOTION_ACCESS_TOKEN` (ưu tiên) hoặc `NOTION_TOKEN`
+- `SESSION_SECRET` (Render có thể tự generate)
 
-Khuyen nghi:
-- `CORS_ORIGIN`: dat bang URL production cua Render, vi du `https://your-app.onrender.com`
-- `ADMIN_MODE=false` (true neu can Sync Monitor)
-- `POLLING_INTERVAL`, `FULL_SYNC_CHECKPOINT_MS` neu can tuning
+Khuyến nghị:
+- `CORS_ORIGIN`: đặt bằng URL production của Render, ví dụ `https://your-app.onrender.com`
+- `ADMIN_MODE=false` (true nếu cần Sync Monitor)
+- `POLLING_INTERVAL`, `FULL_SYNC_CHECKPOINT_MS` nếu cần tuning
 
-Optional (neu dung chatbot):
+Optional (nếu dùng chatbot):
 - `CHATBOT_ENABLED=true`
 - `AI_API_KEY`
-- `AI_BASE_URL` (mac dinh `https://api.openai.com/v1`)
-- `AI_MODEL` (vi du `gpt-4o-mini`)
+- `AI_BASE_URL` (mặc định `https://api.openai.com/v1`)
+- `AI_MODEL` (ví dụ `gpt-4o-mini`)
 
-### 5) Luu tru cache (khuyen nghi)
+### 5) Lưu trữ cache (khuyến nghị)
 
-Render free/standard dung filesystem ephemereal, data trong `backend/data` co the bi mat khi redeploy.
-Neu can giu cache on dinh:
+Render free/standard dùng filesystem ephemeral, data trong `backend/data` có thể bị mất khi redeploy.
+Nếu cần giữ cache ổn định:
 
-1. Tao **Persistent Disk** tren Render.
-2. Mount vao service (vi du `/data`).
+1. Tạo **Persistent Disk** trên Render.
+2. Mount vào service (ví dụ `/data`).
 3. Set env `DATA_DIR=/data`.
 
-### 6) Kiem tra sau deploy
+### 6) Kiểm tra sau deploy
 
-1. Mo URL service: `https://your-app.onrender.com`.
-2. Kiem tra log service tren Render, dam bao sync Notion chay khong loi.
-3. Neu loi CORS, cap nhat `CORS_ORIGIN` theo domain moi.
+1. Mở URL service: `https://your-app.onrender.com`.
+2. Kiểm tra log service trên Render, đảm bảo sync Notion chạy không lỗi.
+3. Nếu lỗi CORS, cập nhật `CORS_ORIGIN` theo domain mới.
 
-## Tai lieu noi bo
+## Tài liệu nội bộ
 
 - `docs/todo_master_plan_2026-02-23.md`
 - `docs/audit_sync_uiux_performance_2026-02-23.md`

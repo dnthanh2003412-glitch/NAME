@@ -12,8 +12,10 @@ class AuthManager {
         const sessionAuthenticated = !!status.session_authenticated;
 
         if (tokenConfigured) {
-            // Auto-select all databases and go to dashboard
-            // await this.autoSelectAllDatabases(); // Disabled to reduce load. User selects via Sidebar.
+            const hasSelected = await this.checkDatabases();
+            if (!hasSelected) {
+                await this.autoSelectAllDatabases();
+            }
             console.log(`[Auth] token_configured=${tokenConfigured}, session_authenticated=${sessionAuthenticated}`);
             this.showDashboard();
         } else {

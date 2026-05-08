@@ -3483,6 +3483,8 @@ class DashboardApp {
                 this.projectsHierarchy = data.projects || data.tree; // Expecting { projects: [...] }
                 this.renderProjectsTreeHierarchical();
 
+                await this.ensureDefaultSelection();
+
                 // NOTE: Removed auto-fetch on page load
                 // User must select a report type and click "Tạo Báo Cáo" to see data
                 // Just update the button state to reflect saved selections
@@ -3494,6 +3496,60 @@ class DashboardApp {
         } catch (error) {
             console.error('Network error loading projects:', error);
             this.showError('Network error. Check server.');
+        }
+    }
+
+    async ensureDefaultSelection() {
+        if (this.selectedDatabases.size > 0) return;
+        if (!Array.isArray(this.projectsHierarchy) || this.projectsHierarchy.length === 0) return;
+
+        const hasWhitelist = this.whitelistProjects.size > 0 || this.whitelistProjectNames.size > 0;
+        if (hasWhitelist) {
+            this.selectAllVisibleDatabases();
+        } else {
+            this.selectAllDatabasesAcrossProjects();
+        }
+
+        await this.syncSelectedDatabasesToBackend();
+    }
+
+    selectAllDatabasesAcrossProjects() {
+        this.selectedDatabases.clear();
+
+        let addedCount = 0;
+        for (const proj of this.projectsHierarchy) {
+            if (this.hiddenProjects.has(proj.name)) continue;
+
+            const databases = proj.databases || [];
+            for (const db of databases) {
+                if (this.hiddenDatabases.has(db.id)) continue;
+
+                this.selectedDatabases.add(db.id);
+                addedCount++;
+            }
+        }
+
+        this.savePersistedState();
+        this.renderProjectsTreeHierarchical();
+        this.updateGenerateButtonState();
+
+        console.log(`[SelectAll] Selected ${addedCount} databases across all projects`);
+    }
+
+    async syncSelectedDatabasesToBackend() {
+        const dbIds = Array.from(this.selectedDatabases);
+        if (dbIds.length === 0) return;
+
+        try {
+            await fetch(`${API_BASE}/api/databases/select`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ database_ids: dbIds })
+            });
+            console.log(`[Dashboard] Auto-synced ${dbIds.length} databases to backend`);
+        } catch (error) {
+            console.warn('[Dashboard] Failed to sync selected databases:', error);
         }
     }
 
